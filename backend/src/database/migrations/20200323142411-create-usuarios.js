@@ -46,6 +46,10 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING
     },
+    bairro: {
+      allowNull: false,
+      type: Sequelize.STRING
+    },
     logradouro:{
       allowNull: false,
       type: Sequelize.STRING
@@ -54,7 +58,7 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING
     },
-    foto:{
+    url_foto:{
       allowNull: false,
       type: Sequelize.STRING
     },

@@ -11,7 +11,7 @@ module.exports = async (req, res, next)=>{
   const parts = authHeader.split(' ');
 
   if(parts.length !== 2) 
-    return res.status(401).json('Token errado');
+    return res.status(401).json({erro: 'Token errado'});
 
   const [ bearer, token ] = parts;
   console.log(parts);
