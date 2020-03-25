@@ -1,38 +1,41 @@
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Modal } from 'react-native';
 
 
-function HomeScreen() {
-	return (
-		<View style = { styles.container }>
+class HomeScreen extends Component{
 
-			<View style = { styles.logoContainer }>
-				<Image style= {styles.imagem} source={require('../images/logo.png')} />
+	render(){
+		return (
+			<View style = { styles.container }>
+
+				<View style = { styles.logoContainer }>
+					<Image style= {styles.logo} source={require('../images/logo.png')} />
+				</View>
+
+				<View style={styles.options}>
+					<TouchableOpacity style={styles.loginButton}>
+						<Text style={styles.loginTextButton}>ENTRAR</Text>
+					</TouchableOpacity>
+
+					<TouchableOpacity style={styles.signUpButton}>
+						<Text style={styles.signUpTextButton}>CRIAR UMA CONTA</Text>
+					</TouchableOpacity>
+
+					<Text style = {styles.txtSkip}>
+						Pular
+					</Text>
+				</View>
+
 			</View>
-
-			<View style={styles.options}>
-				<TouchableOpacity style={styles.loginButton}>
-					<Text style={styles.loginTextButton}>ENTRAR</Text>
-				</TouchableOpacity>
-
-				<TouchableOpacity style={styles.signUpButton}>
-					<Text style={styles.signUpTextButton}>CRIAR UMA CONTA</Text>
-				</TouchableOpacity>
-
-				<Text style = {styles.txtSkip}>
-					Pular
-				</Text>
-			</View>
-
-		</View>
-	);
+		);
+	}
 }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: "column",
-		backgroundColor: '#fff',
+		backgroundColor: '#FFF',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 	},
 
-	imagem: {
+	logo: {
 		width: 300,
 		height: 200,
 		margin: 18,
