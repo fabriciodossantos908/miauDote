@@ -29,14 +29,22 @@ module.exports = {
       if (usuarioExistente) {
         return res.status(400).json({
           erro: "Email já cadastrado!",
-          usuario: usuarioExistente
+          usuario: {
+            nome: usuarioExistente.nome,
+            email: usuarioExistente.email,
+            celular: usuarioExistente.celular
+          }
         })
       } else {
         usuarioExistente = await Usuario.findOne({ where: { cpf: usuario.cpf } });
         if (usuarioExistente)
           return res.status(400).json({
             erro: "CPF já cadastrado!",
-            usuario: usuarioExistente
+            usuario: {
+              nome: usuarioExistente.nome,
+              email: usuarioExistente.email,
+              celular: usuarioExistente.celular
+            }
           })
       }
 
