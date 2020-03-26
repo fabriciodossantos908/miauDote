@@ -1,10 +1,15 @@
 const { Router } = require('express');
 
-const authController = require('../app/controllers/public/AutenticacaoController');
+const authUsuarioController = require('../app/controllers/public/AutenticacaoUsuarioController');
+const authEmpresaController = require('../app/controllers/public/AutenticacaoEmpresaController');
 
 const router = Router();
 
-router.post('/registrar', authController.registra);
-router.post('/autenticar', authController.autentica);
+router.post('/usuarios/registrar', authUsuarioController.registra);
+router.post('/usuarios/autenticar', authUsuarioController.autentica);
+
+router.post('/empresas/registrar', authEmpresaController.registra);
+router.post('/empresas/autenticar', authEmpresaController.autentica);
+
 
 module.exports = router;
