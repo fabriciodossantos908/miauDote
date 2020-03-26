@@ -1,28 +1,24 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+// const bcrypt = require('bcryptjs');
 
-const auth = require('../../../config/auth');
 
 const { Usuario } = require('../../models');
-
-
-gerarToken = (params) =>
-  jwt.sign(params, auth.usuario_secret, {
-    expiresIn: 86400000
-  });
+const autenticacaoHelper = require('../../../helpers/AutenticacaoHelper');
 
 module.exports = {
 
   async registra(req, res) {
     let usuario = req.body;
+    
+    if(usuario.senha.length < 8 || usuario.senha.length >30){
+      return res.status(400).json({erro:{campo: 'senha', mensagem: 'Este campo deve conter entre 8 e 30 caracteres'}})
+    }
 
     try {
-      if(usuario.senha.length < 8 || usuario.senha.length >30){
-        return res.status(400).json({erro:{campo: 'senha', mensagem: 'Este campo deve conter entre 8 e 30 caracteres'}})
-      }
 
-      const hash = await bcrypt.hash(usuario.senha, 10);
-      usuario.senha = hash;
+      
+      usuario.senha = await autenticacaoHelper.criptografarSenha(usuario.senha);
+    
+  
 
       let usuarioExistente = await Usuario.findOne({ where: { email: usuario.email } })
 
@@ -53,7 +49,7 @@ module.exports = {
 
       res.status(201).json({
         usuario: usuario,
-        token: gerarToken({ id: usuario.id })
+        token: autenticacaoHelper.gerarTokenUsuario({ id: usuario.id })
       })
 
     } catch (error) {
@@ -75,12 +71,12 @@ module.exports = {
       return res.status(401).json({ erro: 'Usuário e/ou senha inválidos.' });
     }
 
-    if (! await bcrypt.compare(senha, usuario.senha)) {
-      console.log('Senha');
+    // if (! await bcrypt.compare(senha, usuario.senha))
+    if (! await autenticacaoHelper.compararSenha(senha, usuario.senha)) {
       return res.status(401).json({ erro: "Usuário e/ou senha inválidos." })
     }
 
-    const token = gerarToken({ id: usuario.id });
+    const token = autenticacaoHelper.gerarTokenUsuario({ id: usuario.id });
 
     delete usuario.senha;
     res.json({ usuario, token });

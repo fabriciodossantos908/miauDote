@@ -75,6 +75,10 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING
     },
+    url_logo:{
+      allowNull: false,
+      type: Sequelize.STRING
+    }
   }),
 
   down: (queryInterface) => queryInterface.dropTable('tbl_empresas')

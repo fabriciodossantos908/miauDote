@@ -9,8 +9,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         len: {
           args: [5, 100],
-          msg: 'Este campo deve conter de 5 a 100 caracteres'
+          msg: 'Este campo deve conter de 5 a 100 caracteres.'
         },
+        is:{ 
+          args:  /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,
+          msg: 'Insira apenas letras.'
+        }
       }
     },
     email_representante: {
@@ -28,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: 'Este campo não pode ser nulo'
+          msg: 'Este campo não pode ser nulo.'
         },
         len: {
           args: [11, 11],
@@ -36,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         isNumeric: {
           args: true,
-          msg: 'Digite apenas números'
+          msg: 'Digite apenas números.'
         }
       }
     },
@@ -49,7 +53,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         len: {
           args: [5, 100],
-          msg: 'Este campo deve conter de 5 a 50 caracteres'
+          msg: 'Este campo deve conter de 5 a 50 caracteres.'
         },
       }
     },
@@ -62,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         len: {
           args: [5, 100],
-          msg: 'Este campo deve conter de 5 a 100 caracteres'
+          msg: 'Este campo deve conter de 5 a 100 caracteres.'
         },
       }
     },
@@ -97,7 +101,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: 'Este campo não pode ser nulo'
+          msg: 'Este campo não pode ser nulo.'
         },
         len: {
           args: [10, 11],
@@ -105,7 +109,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         isNumeric: {
           args: true,
-          msg: 'Digite apenas números'
+          msg: 'Digite apenas números.'
         }
       }
     },
@@ -121,7 +125,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         len: {
           args: [8, 8],
-          msg: 'Quantidade de dígitos incorreta'
+          msg: 'Quantidade de dígitos incorreta.'
         }
       }
     },
@@ -133,8 +137,8 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Este campo não pode ser nulo.'
         },
         len: {
-          args: [2, 100],
-          msg: 'Este campo deve conter de 2 a 100 caracteres'
+          args: [3, 100],
+          msg: 'Este campo deve conter de 3 a 100 caracteres.'
         }
       }
     },
@@ -147,7 +151,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         len: {
           args: [2, 100],
-          msg: 'Este campo deve conter de 2 a 100 caracteres'
+          msg: 'Este campo deve conter de 2 a 100 caracteres.'
         }
       }
     },
@@ -160,7 +164,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 100],
-          msg: 'Este campo deve conter de 3 a 100 caracteres'
+          msg: 'Este campo deve conter de 3 a 100 caracteres.'
         }
       }
     },
@@ -169,22 +173,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: 'Este campo não pode ser nulo'
+          msg: 'Este campo não pode ser nulo.'
         }
       }
     },
     complemento: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: 'Este campo não pode ser nulo'
-        },
-        len: {
-          args: [3, 15],
-          msg: 'Este campo deve conter de 3 a 15 caracteres.'
-        }
-      },
+      allowNull: true,
       uf: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -194,7 +189,7 @@ module.exports = (sequelize, DataTypes) => {
           },
           len: {
             args: [2, 2],
-            msg: 'UF inválida'
+            msg: 'UF inválida.'
           }
         }
       },
@@ -207,15 +202,60 @@ module.exports = (sequelize, DataTypes) => {
           },
           len: {
             args: [5, 100],
-            msg: 'Este campo deve conter de 5 a 100 caracteres'
+            msg: 'Este campo deve conter de 5 a 100 caracteres.'
           },
         }
       }
 
+    },
+    uf: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Este campo não pode ser nulo.'
+        },
+        len: {
+          args: [2, 2],
+          msg: 'UF inválida'
+        }
+      }
+    },
+    tipo_servico:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Este campo não pode ser nulo.'
+        },
+        len: {
+          args: [3, 30],
+          msg: 'Este campo deve conter de 3 a 30 caracteres.'
+        }
+      }
+    },
+    url_logo:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty: {
+          msg: 'Este campo não pode ser nulo.'
+        },
+        len:{
+          args: [4, 255],
+          msg: 'tamanho da URL inválido'
+        },
+        isUrl:{
+          args: true,
+          msg: 'URL inválida'
+        }
+      }
     }
 
 
 
+  }, {
+    tableName: 'tbl_empresas'
   })
 
   return Empresa;

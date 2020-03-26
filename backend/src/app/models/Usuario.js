@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
           args: [5, 100],
           msg: 'Este campo deve conter de 5 a 100 caracteres'
         },
+        is:{ 
+          args:  /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,
+          msg: 'Insira apenas letras.'
+        }
       }
     },
     email: {
