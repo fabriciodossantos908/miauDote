@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 
+// import Icon from 'react-native-vector-icons/FontAwesome';
+// import { Input } from 'react-native-elements';
+
+// import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
+
 import { 
-	Tittle, 
+	Tittle,
 	Container, 
 	Div, 
 	CuteLine, 
@@ -16,6 +21,8 @@ import {
 	SecondaryText,
 	ContainerSingInOptions, 
 	IconSingInOptions } from './styles'
+
+
 
 export default class Login extends Component {
 
@@ -57,7 +64,6 @@ export default class Login extends Component {
 					<TxtInputLogin
 						placeholder="Digite sua senha"
 						keyboardType='email-address'>
-						{/* // formatText={this.validateEmail} */}
 					</TxtInputLogin>
 
 					<LargeButton>

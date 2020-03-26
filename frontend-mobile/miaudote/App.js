@@ -7,7 +7,7 @@ import Login from './src/pages/user/login/Login'
 
 export default function App() {
   return (
-    <Login />
+    <SignUp />
   );
 }
 
