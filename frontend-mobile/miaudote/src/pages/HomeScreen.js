@@ -9,7 +9,7 @@ class HomeScreen extends Component{
 			<View style = { styles.container }>
 
 				<View style = { styles.logoContainer }>
-					<Image style= {styles.logo} source={require('../images/logo.png')} />
+					<Image style= {styles.logo} source={require('../assets/logo.png')} />
 				</View>
 
 				<View style={styles.options}>
