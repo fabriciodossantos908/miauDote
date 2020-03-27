@@ -14,6 +14,19 @@ class UsuarioController {
     }
   }
 
+  async indexWithFilter(req, res) {
+    try {
+      const usuarios = await Usuario.findAll();
+      if (usuarios.length > 0) {
+        return res.json(usuarios);
+      }
+
+      return res.status(404).json({ erro: "Não há usuários cadastrados." });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
+
   async show(req, res) {
     try {
       const usuario = await Usuario.findByPk(req.params.id);
