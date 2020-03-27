@@ -80,9 +80,7 @@ export const LargeButton = styled.TouchableOpacity `
     padding: 14px;
     marginTop:35;
     borderRadius:21;
-    alignSelf:center;
-
-    
+    alignSelf:center;  
 `;
 
 export const TxtButon = styled.Text `
