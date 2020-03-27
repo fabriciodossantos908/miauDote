@@ -2,8 +2,9 @@ const { Router } = require('express');
 
 const usuarioController = require('../app/controllers/UsuarioController');
 const empresaController = require('../app/controllers/EmpresaController');
+const tipoServico = require('../app/controllers/TipoServicoController');
 
-const router = Router(); 
+const router = Router();
 
 // Rotas de Usuário
 router.get('/usuarios', usuarioController.index);
@@ -20,6 +21,11 @@ router.get('/empresas/cnpj/:cnpj', empresaController.showByCnpj);
 router.get('/empresas/nome/:nome', empresaController.showByNome);
 
 
+// Rotas de Tipos de Serviços
+router.get('/servicos', tipoServico.index);
+router.post('/servicos', tipoServico.store);
+router.put('/servicos/:id', tipoServico.update);
+router.delete('/servicos/:id', tipoServico.destroy);
 
 
 module.exports = router;

@@ -14,7 +14,6 @@ module.exports = async (req, res, next)=>{
     return res.status(401).json({erro: 'Token errado'});
 
   const [ bearer, token ] = parts;
-  console.log(parts);
 
   if(!/^Bearer$/i.test(bearer))
     return res.status(401).json({erro: 'Token mal formatado'});

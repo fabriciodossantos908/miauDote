@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
   gerarToken(params) {
-    console.log(params);
     return jwt.sign(params, auth.secret, {
       expiresIn: 86400000
     })

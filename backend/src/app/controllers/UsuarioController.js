@@ -60,7 +60,7 @@ class UsuarioController {
         }
       });
     
-      if (usuario != null) {
+      if (usuario.length > 0) {
         return res.json(usuario);
       }
 
