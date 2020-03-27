@@ -8,17 +8,17 @@ module.exports = {
 
   async registra(req, res) {
     let usuario = req.body;
-    
-    if(usuario.senha.length < 8 || usuario.senha.length >30){
-      return res.status(400).json({erro:{campo: 'senha', mensagem: 'Este campo deve conter entre 8 e 30 caracteres'}})
+
+    if (usuario.senha.length < 8 || usuario.senha.length > 30) {
+      return res.status(400).json({ erro: { campo: 'senha', mensagem: 'Este campo deve conter entre 8 e 30 caracteres' } })
     }
 
     try {
 
-      
+
       usuario.senha = await autenticacaoHelper.criptografarSenha(usuario.senha);
-    
-  
+
+
 
       let usuarioExistente = await Usuario.findOne({ where: { email: usuario.email } })
 
@@ -46,10 +46,13 @@ module.exports = {
 
       usuario = await Usuario.create(usuario);
 
-
+      console.log(usuario);
       res.status(201).json({
         usuario: usuario,
-        token: autenticacaoHelper.gerarTokenUsuario({ id: usuario.id })
+        token: autenticacaoHelper.gerarToken({
+            id: usuario.id,
+            permissions: usuario.permissions
+        })
       })
 
     } catch (error) {
@@ -67,16 +70,17 @@ module.exports = {
     })
 
     if (!usuario) {
-      console.log('Email');
       return res.status(401).json({ erro: 'Usuário e/ou senha inválidos.' });
     }
 
-    // if (! await bcrypt.compare(senha, usuario.senha))
     if (! await autenticacaoHelper.compararSenha(senha, usuario.senha)) {
       return res.status(401).json({ erro: "Usuário e/ou senha inválidos." })
     }
 
-    const token = autenticacaoHelper.gerarTokenUsuario({ id: usuario.id });
+    const token = autenticacaoHelper.gerarToken({
+        id: usuario.id,
+        permissions: usuario.permissions
+    });
 
     delete usuario.senha;
     res.json({ usuario, token });

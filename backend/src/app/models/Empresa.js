@@ -250,10 +250,11 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'URL inválida'
         }
       }
+    },
+    permissions: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
-
-
-
   }, {
     tableName: 'tbl_empresas'
   })

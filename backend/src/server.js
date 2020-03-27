@@ -1,10 +1,11 @@
 const express = require('express');
+const jwt = require('express-jwt');
 const authMid = require('./app/middlewares/auth');
-const authEmpresaMid = require('./app/middlewares/authEmpresa');
+const authConfig = require('./config/auth');
 
 const authRoutes = require('./routes/authRoutes');
-const usuarioRoutes = require('./routes/usuarioRoutes');
-const empresaRoutes = require('./routes/empresaRoutes');
+const publicRoutes = require('./routes/publicRoutes');
+const privateRoutes = require('./routes/privateRoutes');
 
 const app = express();
 
@@ -12,13 +13,14 @@ app.use(express.json());
 
 
 app.use(authRoutes);
-
-// app.use(authEmpresaMid);
-
-app.use(empresaRoutes)
+app.use(publicRoutes);
 
 app.use(authMid);
+app.use(jwt({secret: authConfig.secret}));
 
-app.use(usuarioRoutes)
+app.use(privateRoutes);
+
+
+// app.use(usuarioRoutes)
 
 module.exports = app;
