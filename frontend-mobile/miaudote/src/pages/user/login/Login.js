@@ -4,8 +4,6 @@ import { StyleSheet, View, TextInput, TouchableOpacity, Text, Image } from 'reac
 // import Icon from 'react-native-vector-icons/FontAwesome';
 // import { Input } from 'react-native-elements';
 
-// import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
-
 import { 
 	Tittle,
 	Container, 
