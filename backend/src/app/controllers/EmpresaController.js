@@ -1,4 +1,5 @@
 const { Empresa } = require('../models');
+const { Op } = require('sequelize');
 
 class EmpresaController {
 
@@ -29,6 +30,55 @@ class EmpresaController {
       }
 
       return res.status(404).json({ erro: 'Empresa não encontrada.' })
+    } catch (error) {
+
+      return res.status(400).json({ erro: error.message })
+    }
+
+  }
+
+  async showByCnpj(req, res) {
+
+    try {
+      const empresa = await Empresa.findOne({
+        where: {
+          cnpj: req.params.cnpj
+        }
+      });
+
+      if (empresa != null) {
+        return res.json(empresa)
+      }
+
+      return res.status(404).json({ erro: 'Nenhuma empresa foi encontrada.' })
+    } catch (error) {
+
+      return res.status(400).json({ erro: error.message })
+    }
+
+  }
+
+  async showByNome(req, res) {
+    const query = `%${req.params.nome}%`;
+    try {
+      const empresa = await Empresa.findOne({
+        where: {
+          [Op.or]:{
+            nome_empresa:{
+              [Op.like]: query
+            },
+            razao_social: {
+              [Op.like]: query
+            }
+          }
+        }
+      });
+
+      if (empresa != null) {
+        return res.json(empresa)
+      }
+
+      return res.status(404).json({ erro: 'Nenhuma empresa foi encontrada.' })
     } catch (error) {
 
       return res.status(400).json({ erro: error.message })
