@@ -1,6 +1,15 @@
 // Global componentes
 import styled from 'styled-components/native'
 
+export const Container = styled.View `
+    flex: 1;
+    backgroundColor: '#FFF';
+    justifyContent: center;
+    borderWidth: 1;
+    borderColor:'#000';
+
+`;
+
 export const CuteLine = styled.View `
     height: 40;
     width: 100%;
@@ -36,3 +45,66 @@ export const IconPaw = styled.Image `
 
 `;
 
+export const TittleBlue = styled.Text `
+    color:#1bc7cb;
+    fontSize:30;
+    fontWeight: bold;
+`;
+
+export const TittleBlack = styled.Text `
+    color:#47525E;
+    fontSize:30;
+    fontWeight: bold;
+`;
+
+export const TittleRed = styled.Text `
+    color:#fc6b6e;
+    fontSize:30;
+    fontWeight: bold
+`;
+
+export const Div = styled.View `
+    flex: 1;
+    justifyContent: center;
+    // borderWidth: 4;
+    // borderColor:#000;
+    padding: 10px;
+    alignItems: center;
+    
+`;
+
+export const SecundaryTittle = styled.Text `
+    color:'#9A9DA3';
+    fontSize:15;
+    fontFamily:'Consolas';
+
+`;
+
+export const TextInputForm = styled.TextInput `
+    alignSelf: 'center';
+    color: 'black';
+    fontSize: 18;
+    flex: 1;
+    minHeight: 40;
+`
+
+
+// inputContainer: theme => ({
+//     flexDirection: 'row';
+//     borderBottomWidth: 1;
+//     alignItems: 'center';
+//     borderColor: theme.colors.grey3;
+//   });
+//   iconContainer: {
+//     height: 40;
+//     justifyContent: 'center';
+//     alignItems: 'center';
+//     marginLeft: 15;
+//   };
+//   input: {
+//     alignSelf: 'center';
+//     color: 'black';
+//     fontSize: 18;
+//     flex: 1;
+//     minHeight: 40;
+//   };
