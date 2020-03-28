@@ -4,14 +4,8 @@ const bcrypt = require('bcryptjs');
 
 
 module.exports = {
-  gerarTokenUsuario(params) {
-    return jwt.sign(params, auth.usuario_secret, {
-      expiresIn: 86400000
-    })
-  },
-
-  gerarTokenEmpresa(params) {
-    return jwt.sign(params, auth.empresa_secret, {
+  gerarToken(params) {
+    return jwt.sign(params, auth.secret, {
       expiresIn: 86400000
     })
   },

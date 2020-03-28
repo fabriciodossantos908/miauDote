@@ -1,4 +1,5 @@
-const { Empresa } = require('../models');
+const { Empresa, TipoServico } = require('../models');
+const { Op } = require('sequelize');
 
 class EmpresaController {
 
@@ -6,7 +7,14 @@ class EmpresaController {
 
     try {
 
-      const empresas = await Empresa.findAll();
+      const empresas = await Empresa.findAll({
+        include: [
+          {
+            model: TipoServico,
+            as: 'tipo_servico'
+          }
+        ]
+      });
       if (empresas.length > 0) {
         return res.json(empresas);
       }
@@ -22,13 +30,80 @@ class EmpresaController {
   async show(req, res) {
 
     try {
-      const empresa = await Empresa.findByPk(req.params.id);
+      const empresa = await Empresa.findByPk(req.params.id, {
+        include: [
+          {
+            model: TipoServico,
+            as: 'tipo_servico'
+          }
+        ]
+      });
 
       if (empresa != null) {
         return res.json(empresa)
       }
 
       return res.status(404).json({ erro: 'Empresa não encontrada.' })
+    } catch (error) {
+
+      return res.status(400).json({ erro: error.message })
+    }
+
+  }
+
+  async showByCnpj(req, res) {
+
+    try {
+      const empresa = await Empresa.findOne({
+        where: {
+          cnpj: req.params.cnpj
+        },
+        include: [
+          {
+            model: TipoServico,
+            as: 'tipo_servico'
+          }
+        ]
+      });
+
+      if (empresa != null) {
+        return res.json(empresa)
+      }
+
+      return res.status(404).json({ erro: 'Nenhuma empresa foi encontrada.' })
+    } catch (error) {
+
+      return res.status(400).json({ erro: error.message })
+    }
+
+  }
+
+  async showByNome(req, res) {
+    const query = `%${req.params.nome}%`;
+    try {
+      const empresa = await Empresa.findAll({
+        where: {
+          [Op.or]: {
+            nome_empresa: {
+              [Op.like]: query
+            },
+            razao_social: {
+              [Op.like]: query
+            }
+          }
+        },
+        include: [
+          {
+            model: TipoServico,
+            as: 'tipo_servico'
+          }
+        ]
+      });
+      if (empresa.length > 0) {
+        return res.json(empresa)
+      }
+
+      return res.status(404).json({ erro: 'Nenhuma empresa foi encontrada.' })
     } catch (error) {
 
       return res.status(400).json({ erro: error.message })
@@ -92,7 +167,7 @@ class EmpresaController {
 
       return res.json({ empresa });
     } catch (err) {
-      return res.status(400).json({erro: { campo: err.errors[0].path, mensagem: err.errors[0].message }});
+      return res.status(400).json({ erro: { campo: err.errors[0].path, mensagem: err.errors[0].message } });
     }
   }
 

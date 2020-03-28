@@ -26,11 +26,11 @@ module.exports = {
       type: Sequelize.STRING,
       unique: true
     },
-    nome_empresa:{
+    nome_empresa: {
       allowNull: false,
       type: Sequelize.STRING,
     },
-    cnpj:{
+    cnpj: {
       allowNull: false,
       type: Sequelize.STRING,
       unique: true
@@ -39,43 +39,52 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING,
     },
-    telefone:{
+    telefone: {
       allowNull: false,
       type: Sequelize.STRING
     },
-    cep:{
+    cep: {
       allowNull: false,
       type: Sequelize.STRING
     },
-    cidade:{
+    cidade: {
       allowNull: false,
       type: Sequelize.STRING
     },
-    bairro:{
+    bairro: {
       allowNull: false,
       type: Sequelize.STRING
     },
-    logradouro:{
+    logradouro: {
       allowNull: false,
       type: Sequelize.STRING
     },
-    numero:{
+    numero: {
       allowNull: false,
       type: Sequelize.STRING
     },
-    complemento:{
+    complemento: {
       allowNull: true,
       type: Sequelize.STRING
     },
-    uf:{
+    uf: {
       allowNull: false,
       type: Sequelize.STRING
     },
-    tipo_servico:{
+    id_tipo_servico: {
+      type: Sequelize.INTEGER,
       allowNull: false,
-      type: Sequelize.STRING
+      references: {
+        model: 'tbl_tipo_servicos',
+        key: 'id'
+      }
     },
-    url_logo:{
+    permissions: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      defaultValue: 'COMPANY'
+    },
+    url_logo: {
       allowNull: false,
       type: Sequelize.STRING
     }

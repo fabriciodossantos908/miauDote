@@ -178,6 +178,10 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    permissions: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
   },
     {
       tableName: 'tbl_usuarios'

@@ -46,8 +46,8 @@ module.exports = {
 
 
       res.status(201).json({
-        usuario: empresa,
-        token: autenticacaoHelper.gerarTokenEmpresa({ id: empresa.id })
+        empresa,
+        token: autenticacaoHelper.gerarToken({ id: empresa.id, permissions: empresa.permissions })
       })
 
     } catch (error) {
@@ -73,7 +73,7 @@ module.exports = {
       return res.status(401).json({ erro: "CNPJ e/ou senha inválidos." })
     }
 
-    const token = autenticacaoHelper.gerarTokenEmpresa({ id: empresa.id });
+    const token = autenticacaoHelper.gerarToken({ id: empresa.id, permissions: empresa.permissions });
 
     delete empresa.senha;
     res.json({ empresa, token });

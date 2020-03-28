@@ -14,13 +14,12 @@ module.exports = async (req, res, next)=>{
     return res.status(401).json({erro: 'Token errado'});
 
   const [ bearer, token ] = parts;
-  console.log(parts);
 
   if(!/^Bearer$/i.test(bearer))
     return res.status(401).json({erro: 'Token mal formatado'});
 
   try {
-    const decoded = await jwt.verify(token, auth.usuario_secret);
+    const decoded = await jwt.verify(token, auth.secret);
     req.userid = decoded.id;
     return next()
 

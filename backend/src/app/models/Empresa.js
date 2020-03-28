@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
           args: [5, 100],
           msg: 'Este campo deve conter de 5 a 100 caracteres.'
         },
-        is:{ 
-          args:  /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,
+        is: {
+          args: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,
           msg: 'Insira apenas letras.'
         }
       }
@@ -221,7 +221,11 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    tipo_servico:{
+    id_tipo_servico: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    url_logo: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -229,34 +233,29 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Este campo não pode ser nulo.'
         },
         len: {
-          args: [3, 30],
-          msg: 'Este campo deve conter de 3 a 30 caracteres.'
-        }
-      }
-    },
-    url_logo:{
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate:{
-        notEmpty: {
-          msg: 'Este campo não pode ser nulo.'
-        },
-        len:{
           args: [4, 255],
           msg: 'tamanho da URL inválido'
         },
-        isUrl:{
+        isUrl: {
           args: true,
           msg: 'URL inválida'
         }
       }
+    },
+    permissions: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
-
-
-
   }, {
     tableName: 'tbl_empresas'
-  })
+  });
+
+  Empresa.associate = function (models) {
+    Empresa.belongsTo(models.TipoServico, {
+      foreignKey: 'id',
+      as: 'tipo_servico'
+    });
+  };
 
   return Empresa;
 }
