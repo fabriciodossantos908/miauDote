@@ -40,14 +40,24 @@ export const Label = styled.Text `
     color: #369696;
 `;
 
-export const ContainerSignUpOptions = styled.View `
-    flex:0.5;	
+export const ContainerSignUpOptions = styled.View `	
     width:100%;
     justifyContent: center;
     alignItems: center;
     flexDirection:row;
     padding:0;
-    marginTop:120;
+    marginTop:7;
+    // background-color:#c9c9c9;
+    // borderWidth:1;
+    shadowColor: "#000",
+    // shadowOffset: {
+    //     width: 0,
+    //     height: 5,
+    // },
+    // shadowOpacity: 0.34,
+    // shadowRadius: 6.27,
+
+    // elevation: 10,
     
     
 `;
@@ -57,14 +67,24 @@ export const IconSignUpOptions = styled.Image `
     height: 70;
     width: 70;
     marginLeft:15;
-    marginRight:15
+    marginRight:15;
+    // backgroundColor:#c789;
 `
+export const HorizontalLine = styled.View `
+    borderWidth: 0.5;
+    borderColor:#5A6978;
+    margin:10px;
+    top:3;
+    width:50
+`;
 
-// export const Div = styled.View `
-//     flex:1;
-//     backgroundColor:#c789;
 
-// `;
+export const Div = styled.View `
+    height:100;
+    // backgroundColor:#c789;
+    marginTop:55;
+
+`;
 
 // export const Header = styled.View `
     

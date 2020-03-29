@@ -23,9 +23,10 @@ import {
 	Form,
 	DivInput,
 	Label,
-	Div,
 	ContainerSignUpOptions,
-	IconSignUpOptions } from './styles'
+	IconSignUpOptions,
+	Div,
+	HorizontalLine} from './styles'
 
 
 
@@ -46,7 +47,8 @@ export default class SignUp extends Component {
 			height: '45px',
 			width: '100px',
 			left: '36px',
-			color:'#fff'
+			color:'#fff',
+			// bottom:150
 
 		}
 
@@ -69,6 +71,7 @@ export default class SignUp extends Component {
 			completedStepIconColor: '#1bc8c2',
 			completedProgressBarColor: '#55d9db',
 			completedCheckColor: '#fff', 
+			
 		  };
 
 		  const circleStyle = {
@@ -78,6 +81,7 @@ export default class SignUp extends Component {
 
 			return (
 				<Container>
+					<View style={{height:20, backgroundColor:'#1BC7CB'}}></View>
 					<Header>
 						<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>
 						{/* <MaterialIcons name={'supervisor-account'} size={40} color={'#000'}/>	 */}
@@ -142,10 +146,25 @@ export default class SignUp extends Component {
 											/>
 										</View>
 									</DivInput>
-									<ContainerSignUpOptions>
-										<IconSignUpOptions source={require('../../../assets/facebook.png')} ></IconSignUpOptions>
-										<IconSignUpOptions source={require('../../../assets/google.png')} ></IconSignUpOptions>
-									</ContainerSignUpOptions>
+									<Div style={{justifyContent: 'center',
+											alignItems: 'center',borderWidth: 0.5,
+    										borderColor:'#e2e2e2', borderTopLeftRadius:15, marginTop:50, minHeight:110, padding:10}}>
+										<View style={{width: '100%',
+											justifyContent: 'center',
+											alignItems: 'center',
+											flexDirection:'row',
+											}}>
+											<HorizontalLine/>
+											<Text>ou inscreva-se com:</Text>
+											<HorizontalLine/>
+
+										</View>
+										<ContainerSignUpOptions>
+											<IconSignUpOptions source={require('../../../assets/facebook.png')} ></IconSignUpOptions>
+											<IconSignUpOptions source={require('../../../assets/google.png')} ></IconSignUpOptions>
+										</ContainerSignUpOptions> 
+									</Div>
+									
 								</Form>
 
 								
