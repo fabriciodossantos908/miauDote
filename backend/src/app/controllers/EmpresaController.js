@@ -7,7 +7,7 @@ class EmpresaController {
 
     try {
 
-      const empresas = await Empresa.findAll({
+      let empresas = await Empresa.findAll({
         include: [
           {
             model: TipoServico,
@@ -16,6 +16,10 @@ class EmpresaController {
         ]
       });
       if (empresas.length > 0) {
+        empresas = empresas.map(empresa => {
+          empresa.senha = undefined;
+          return empresa;
+        })
         return res.json(empresas);
       }
 
@@ -40,6 +44,7 @@ class EmpresaController {
       });
 
       if (empresa != null) {
+        empresa.senha = undefined;
         return res.json(empresa)
       }
 
@@ -67,6 +72,7 @@ class EmpresaController {
       });
 
       if (empresa != null) {
+        empresa.senha = undefined;
         return res.json(empresa)
       }
 
@@ -81,7 +87,7 @@ class EmpresaController {
   async showByNome(req, res) {
     const query = `%${req.params.nome}%`;
     try {
-      const empresa = await Empresa.findAll({
+      let empresas = await Empresa.findAll({
         where: {
           [Op.or]: {
             nome_empresa: {
@@ -99,8 +105,12 @@ class EmpresaController {
           }
         ]
       });
-      if (empresa.length > 0) {
-        return res.json(empresa)
+      if (empresas.length > 0) {
+        empresas = empresas.map(empresa =>{
+          empresa.senha = undefined;
+          return empresa;
+        });
+        return res.json(empresas)
       }
 
       return res.status(404).json({ erro: 'Nenhuma empresa foi encontrada.' })
@@ -150,7 +160,7 @@ class EmpresaController {
       }
 
       empresa = await Empresa.create(empresa);
-
+      empresa.senha = undefined;
       return res.json(empresa)
     } catch (error) {
       return res.status(400).json({ erro: { campo: error.errors[0].path, mensagem: error.errors[0].message } });
@@ -164,7 +174,7 @@ class EmpresaController {
         return res.status(404).json({ erro: 'a empresa a ser editada não existe.' })
 
       await empresa.update(req.body);
-
+      empresa.senha = undefined;
       return res.json({ empresa });
     } catch (err) {
       return res.status(400).json({ erro: { campo: err.errors[0].path, mensagem: err.errors[0].message } });

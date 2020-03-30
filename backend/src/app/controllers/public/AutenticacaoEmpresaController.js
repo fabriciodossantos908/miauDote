@@ -1,4 +1,4 @@
-const { Empresa } = require('../../models');
+const { Empresa, TipoServico } = require('../../models');
 const autenticacaoHelper = require('../../../helpers/AutenticacaoHelper');
 
 module.exports = {
@@ -42,8 +42,13 @@ module.exports = {
         })
       }
 
+      let servico = await TipoServico.findByPk(empresa.id_tipo_servico);
+      if(!servico)
+        return res.status(400).json({erro: {campo: 'id_tipo_servico', mensagem: 'Tipo de serviço não existe.'}});
+
       empresa = await Empresa.create(empresa);
 
+      empresa.senha = undefined;
 
       res.status(201).json({
         empresa,
@@ -58,7 +63,7 @@ module.exports = {
   async autentica(req, res) {
     const { cnpj, senha } = req.body;
 
-    let empresa = await Empresa.findOne({
+    var empresa = await Empresa.findOne({
       where: {
         cnpj: cnpj
       }
@@ -75,7 +80,8 @@ module.exports = {
 
     const token = autenticacaoHelper.gerarToken({ id: empresa.id, permissions: empresa.permissions });
 
-    delete empresa.senha;
+    empresa.senha = undefined;
+    
     res.json({ empresa, token });
 
 
