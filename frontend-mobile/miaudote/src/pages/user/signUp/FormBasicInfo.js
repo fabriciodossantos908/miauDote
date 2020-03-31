@@ -60,6 +60,7 @@ export default class FormBasicInfo extends Component {
 						<ActiveStepIconColor/>
 						<DesabledStepIconColor/>
 						<DesabledStepIconColor/>
+						<DesabledStepIconColor/>
 					
 					</DivProgressBar>
 

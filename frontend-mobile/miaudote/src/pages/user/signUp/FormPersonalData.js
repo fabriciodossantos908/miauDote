@@ -65,6 +65,7 @@ export default class FormPersonalData extends Component {
 						<DesabledStepIconColor/>
 						<ActiveStepIconColor/>
 						<DesabledStepIconColor/>
+						<DesabledStepIconColor/>
 					</DivProgressBar>
 
 					<SubtittleContainer>

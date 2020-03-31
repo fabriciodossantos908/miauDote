@@ -28,7 +28,6 @@ export const OvalView = styled.View `
 
  export const Div = styled.View `
     flex: 1;
-    // backgroundColor: #c78;
     padding:8px;
     justifyContent: center;
     alignItems: center;
@@ -68,10 +67,9 @@ export const DesabledStepIconColor = styled.View `
 
 
 export const Form = styled.View `
-    flex:2;
-    backgroundColor: #cccccc;
-    borderColor: #000;
-    borderWidth:1;
+    flex:1;
+    // borderColor: #000;
+    // borderWidth:1;
     justifyContent:center;
     marginBottom:50;
    
@@ -80,11 +78,10 @@ export const Form = styled.View `
 
 export const DivForm = styled.View `
     flex: 2;
-    backgroundColor: #ddd8;
     padding:8px;
     marginTop:20
-    borderColor: #000;
-    borderWidth:1;
+    // borderColor: #000;
+    // borderWidth:1;
 
 `
 export const DivProgressBar = styled.View `
@@ -118,7 +115,6 @@ export const DivSignOpions = styled.View `
     width: 100%;
     justifyContent: center;
     alignItems: center;
-    // backgroundColor:#c789b8;
 
 `
 
@@ -128,7 +124,6 @@ export const ContainerLine = styled.View `
     justifyContent: center;
     alignItems: center;
     flexDirection:row;
-    // backgroundColor:#cc7;
 
 `;
 
@@ -150,7 +145,6 @@ export const SignOptions = styled.View `
     justifyContent: center;
     alignItems: center;
     flexDirection:row;
-    // backgroundColor:#bd9;
     `
 
 export const IconSignUpOptions = styled.Image `
@@ -164,7 +158,6 @@ export const ButtonIcon = styled.TouchableOpacity `
     width: 60;
     marginLeft:15;
     marginRight:15;
-    // backgroundColor:#c78;
 `
 
 export const SubtittleContainer = styled.View `
@@ -179,8 +172,8 @@ export const DivInput = styled.View `
     flex:0.3;
     paddingHorizontal:3;
     backgroundColor:#fff;
-    borderWidth: 0.5;
-    borderColor:#5A6978;
+    // borderWidth: 0.5;
+    // borderColor:#5A6978;
 `
 
 export const FormLabel = styled.Text `
@@ -212,8 +205,9 @@ export const FormTextInput = styled.TextInput `
 export const DivInputRow = styled.View `
     width:100%;
     flexDirection:row;
-    borderWidth: 0.5;
-    borderColor:#5A6978;
+    // borderWidth: 0.5;
+    // borderColor:#5A6978;
+    
 `
 
 export const DivInputMedium = styled.View `
@@ -263,7 +257,16 @@ export const ButtonSmallPrevious = styled.TouchableOpacity `
     backgroundColor:#fc6b6e;
 `
 
+// ****** Form User Adress
 
+// export const InputMaterialIcon = styled.MaterialIcons ``
+// export const InputMaterialIcon = styled.MaterialIcons ``
+// export const InputMaterialIcon = styled.MaterialIcons ``
+// export const InputMaterialIcon = styled.MaterialIcons ``
+// export const InputMaterialIcon = styled.MaterialIcons ``
+// export const InputMaterialIcon = styled.MaterialIcons ``
+// export const InputMaterialIcon = styled.MaterialIcons ``
+// export const InputMaterialIcon = styled.MaterialIcons ``
 // export const InputMaterialIcon = styled.MaterialIcons ``
 // export const InputMaterialIcon = styled.MaterialIcons ``
 // export const InputMaterialIcon = styled.MaterialIcons ``

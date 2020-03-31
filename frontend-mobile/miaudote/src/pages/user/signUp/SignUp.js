@@ -7,7 +7,6 @@ import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import { Input, Icon  } from 'react-native-elements';
 import { MaterialIcons } from '@expo/vector-icons'
 
-import Teste from './Teste'
 
 import { 
 	CuteLine, 
@@ -102,7 +101,7 @@ export default class SignUp extends Component {
 						<ProgressStep
 							nextBtnTextStyle={btnTextStyle} 
 							nextBtnStyle={buttonTextStyle}>
-								<Teste />
+								
 							{/* <SubtittleContainer>
 								<SecundaryTittle>Informações básicas:</SecundaryTittle>
 							</SubtittleContainer>
