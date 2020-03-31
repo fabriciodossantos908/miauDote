@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { View, StyleSheet , Text, TextInput, Image } from 'react-native';
+import { View, StyleSheet , Text, TextInput, Image, TouchableOpacity, Button } from 'react-native';
 
 
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 
 import { Input, Icon  } from 'react-native-elements';
 import { MaterialIcons } from '@expo/vector-icons'
+
+import Teste from './Teste'
 
 import { 
 	CuteLine, 
@@ -30,7 +32,10 @@ import {
 	DivInputMedium,
 	DivRow,
 	DivInputSmall,
-	TxtInputFormSmall} from './styles'
+	TxtInputFormSmall,
+	DivPhoto,
+	DivButtonPhoto,
+	LargeButtonGrey} from './styles'
 
 
 
@@ -65,6 +70,7 @@ export default class SignUp extends Component {
 
 		const btnTextStyle = {
 			color: '#fff',
+			tittle: 'teste'
 		};
 
 		const progressStepsStyle = {
@@ -96,8 +102,8 @@ export default class SignUp extends Component {
 						<ProgressStep
 							nextBtnTextStyle={btnTextStyle} 
 							nextBtnStyle={buttonTextStyle}>
-
-							<SubtittleContainer>
+								<Teste />
+							{/* <SubtittleContainer>
 								<SecundaryTittle>Informações básicas:</SecundaryTittle>
 							</SubtittleContainer>
 
@@ -169,7 +175,7 @@ export default class SignUp extends Component {
 										</ContainerSignUpOptions> 
 									</Div>
 									
-								</Form>
+								</Form> */}
 
 								
 							
@@ -278,6 +284,9 @@ export default class SignUp extends Component {
 							</Form>
 						</ProgressStep>
 
+
+						{/* INFORMAÇÕES DE ENDEREÇO */}
+
 						<ProgressStep 
 							label="" 
 							previousBtnTextStyle={btnTextStyle} 
@@ -288,9 +297,77 @@ export default class SignUp extends Component {
 							<SubtittleContainer>
 								<SecundaryTittle>Informações de endereço:</SecundaryTittle>
 							</SubtittleContainer>
-							{/* <Header>
-								<Text>Informações de endereço</Text>
-							</Header> */}
+
+
+							<Form>
+								<DivRow>
+									<DivInputMedium style={{backgroundColor:'#c78'}}>
+										<Label>CEP:</Label>
+											<View style={styles.passwordContainer}>
+												<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+												<TextInput
+													style={styles.inputStyle}
+													autoCorrect={false}
+													placeholder=""
+												/>
+											</View>
+									</DivInputMedium>
+
+									<DivInputMedium style={{backgroundColor:'#c78'}}>
+									<Label>Cidade:</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+											<TextInput
+												style={styles.inputStyle}
+												autoCorrect={false}
+												placeholder=""
+											/>
+										</View>
+									</DivInputMedium>
+								</DivRow>
+
+								
+								<DivInput>
+									<Label>Endereço:</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+											<TextInput
+												style={styles.inputStyle}
+												autoCorrect={false}
+												placeholder=""
+											/>
+										</View>
+								</DivInput>
+
+								<DivRow>
+
+									<DivInputMedium>
+										<Label>Bairro</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+											<TextInput
+												style={styles.inputStyle}
+												autoCorrect={false}
+												placeholder=""
+											/>
+										</View>
+									</DivInputMedium>
+
+									<DivInputMedium>
+										<Label>UF</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+												<TextInput
+													style={styles.inputStyle}
+													autoCorrect={false}
+													placeholder=""
+												/>
+										</View>
+									</DivInputMedium>
+								
+								</DivRow>
+
+							</Form>
 						</ProgressStep>
 
 						<ProgressStep 
@@ -301,11 +378,23 @@ export default class SignUp extends Component {
 							nextBtnStyle={buttonTextStyle} 
 						>
 							<SubtittleContainer>
-								<SecundaryTittle>Foto:</SecundaryTittle>
+								<SecundaryTittle>Escolha sua melhor foto:</SecundaryTittle>
 							</SubtittleContainer>
-							{/* <Header>
-								<Text>Foto</Text>
-							</Header> */}
+
+							<Form>
+								<DivPhoto style={{backgroundColor:'#c78'}} > 
+									<MaterialIcons  name={'vpn-key'} size={20} color={'#000'}></MaterialIcons>
+								</DivPhoto>
+
+								<DivButtonPhoto>
+									<LargeButtonGrey>
+										<Text>Adicionar uma foto</Text>
+									</LargeButtonGrey>
+								</DivButtonPhoto>
+							</Form>
+							
+							
+
 						</ProgressStep>
 					</ProgressSteps>
 				</Container>

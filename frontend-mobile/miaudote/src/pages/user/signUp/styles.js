@@ -121,5 +121,40 @@ export const TxtInputFormSmall = styled.TextInput `
     alignSelf: center;
     fontSize: 18;
     maxWidth: 60%;
-`
+`;
+
+export const DivPhoto = styled.View `
+    flex:1;
+    justifyContent:center;
+    alignItems:center;
+    backgroundColor:#c78
+
+`; 
+
+export const DivButtonPhoto = styled.View `
+    flex:1;
+    justifyContent:center;
+    alignItems:center;
+    backgroundColor:#c78
+
+`;
+
+export const LargeButtonGrey = styled.TouchableOpacity `
+    alignItems: center;
+    height:40;
+    width:300;
+    borderColor:#999a;
+    backgroundColor:#999;
+    borderWidth: 1.5;
+    padding: 5px;
+    marginTop:35;
+    borderRadius:10;
+    alignSelf:center; 
+
+`;
+
+// export const DivPhoto = styled.View `
+
+
+// `;
 
