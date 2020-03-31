@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 
 export const Tittle = styled.Text `
     color:#fc6b6e;
-    fontSize:30;
+    fontSize:45;
     fontWeight: bold
 `;
 
@@ -51,7 +51,7 @@ export const LoginForm = styled.View `
     padding:8px;
     borderRadius: 10;
     alignItems: center;
-    backgroundColor:#eaeaea;
+    backgroundColor:#f7f7f7;
     // shadow: 5px 5px 5px 5px black;
     paddingTop:15px;
 `;

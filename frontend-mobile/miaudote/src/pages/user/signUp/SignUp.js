@@ -26,7 +26,11 @@ import {
 	ContainerSignUpOptions,
 	IconSignUpOptions,
 	Div,
-	HorizontalLine} from './styles'
+	HorizontalLine,
+	DivInputMedium,
+	DivRow,
+	DivInputSmall,
+	TxtInputFormSmall} from './styles'
 
 
 
@@ -178,9 +182,100 @@ export default class SignUp extends Component {
 							previousBtnStyle={previousButtonStyle} 
 							nextBtnStyle={buttonTextStyle} 
 						>
-							<Header style={{ alignItems: 'center' }}>
-								<Text>Diga mais sobre você</Text>
-							</Header>
+							<SubtittleContainer>
+								<SecundaryTittle>Diga mais sobre você:</SecundaryTittle>
+							</SubtittleContainer>
+
+							<Form>
+
+								<DivInput> 
+									<Label>Nome completo</Label>
+									<View style={styles.passwordContainer}>
+										<MaterialIcons style={styles.inputIcon} name={'user'} size={20} color={'#000'}/>
+									<TextInput
+										style={styles.inputStyle}
+										autoCorrect={false}
+										placeholder="ex: email@gmail.com"
+										keyboardType={'email-address'}
+										textContentType={'emailAddress'}
+										value={this.state.password}
+										onChangeText={this.onPasswordEntry}
+										/>
+									</View>
+								</DivInput>
+
+							<DivRow>
+								<DivInputMedium> 
+									<Label>Data de Nascimento</Label>
+									<View style={styles.passwordContainer}>
+										<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+									<TextInput
+										style={styles.inputStyle}
+										autoCorrect={false}
+										secureTextEntry
+										placeholder=""
+										value={this.state.password}
+										onChangeText={this.onPasswordEntry}
+										/>
+									</View>
+								</DivInputMedium>
+								
+								<DivInputMedium> 
+									<Label>Sexo</Label>
+									<View style={styles.passwordContainer}>
+										<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+									<TextInput
+										style={styles.inputStyle}
+										autoCorrect={false}
+										secureTextEntry
+										placeholder=""
+										value={this.state.password}
+										onChangeText={this.onPasswordEntry}
+										/>
+									</View>
+								</DivInputMedium>
+
+							</DivRow>
+
+								<DivInput> 
+									<Label>CPF</Label>
+									<View style={styles.passwordContainer}>
+										<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+									<TextInput
+										style={styles.inputStyle}
+										autoCorrect={false}
+										placeholder=""
+										/>
+									</View>
+								</DivInput>
+
+								<DivRow>
+									<DivInputSmall>
+										<Label>DDD</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+										<TxtInputFormSmall
+											autoCorrect={false}
+											placeholder=""
+											/>
+										</View>
+									</DivInputSmall>
+
+									<DivInputMedium> 
+										<Label>Celular</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+											<TextInput
+												style={styles.inputStyle}
+												autoCorrect={false}
+												placeholder=""
+												/>
+										</View>
+									</DivInputMedium>
+
+								</DivRow>
+								
+							</Form>
 						</ProgressStep>
 
 						<ProgressStep 
@@ -190,9 +285,12 @@ export default class SignUp extends Component {
 							previousBtnStyle={previousButtonStyle} 
 							nextBtnStyle={buttonTextStyle} 
 						>
-							<Header>
+							<SubtittleContainer>
+								<SecundaryTittle>Informações de endereço:</SecundaryTittle>
+							</SubtittleContainer>
+							{/* <Header>
 								<Text>Informações de endereço</Text>
-							</Header>
+							</Header> */}
 						</ProgressStep>
 
 						<ProgressStep 
@@ -202,9 +300,12 @@ export default class SignUp extends Component {
 							previousBtnStyle={previousButtonStyle} 
 							nextBtnStyle={buttonTextStyle} 
 						>
-							<Header>
+							<SubtittleContainer>
+								<SecundaryTittle>Foto:</SecundaryTittle>
+							</SubtittleContainer>
+							{/* <Header>
 								<Text>Foto</Text>
-							</Header>
+							</Header> */}
 						</ProgressStep>
 					</ProgressSteps>
 				</Container>
@@ -230,7 +331,19 @@ const styles = StyleSheet.create({
 		minHeight: 40,
 		alignSelf: 'center',
 		fontSize: 18,
+		maxWidth: '80%'
+		
 	  },
+
+	//   inputStyleMedium: {
+	// 	// flex: 0.5,
+	// 	minHeight: 40,
+	// 	// width:
+	// 	alignSelf: 'center',
+	// 	fontSize: 18,
+	// 	width:'50%'
+
+	//   },
 
 	  inputIcon:{
 		  marginRight:15,
