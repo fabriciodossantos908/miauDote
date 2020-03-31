@@ -69,21 +69,22 @@ export const DesabledStepIconColor = styled.View `
 
 export const Form = styled.View `
     flex:2;
-    // backgroundColor: #cccccc;
-    // borderColor: #000;
-    // borderWidth:1;
+    backgroundColor: #cccccc;
+    borderColor: #000;
+    borderWidth:1;
     justifyContent:center;
-    alignItems:center
-    // marginTop:10;
-    // paddingHorizontal:20;
+    marginBottom:50;
+   
 `
 
 
 export const DivForm = styled.View `
     flex: 2;
-    // backgroundColor: #ddd8;
+    backgroundColor: #ddd8;
     padding:8px;
     marginTop:20
+    borderColor: #000;
+    borderWidth:1;
 
 `
 export const DivProgressBar = styled.View `
@@ -95,7 +96,7 @@ export const DivProgressBar = styled.View `
     // backgroundColor: #fff;
 `
 
-export const ButtonSmall = styled.TouchableOpacity `
+export const ButtonSmallNext = styled.TouchableOpacity `
     position: absolute; 
     height: 45px;
 	width: 130px;
@@ -136,7 +137,8 @@ export const HorizontalLine = styled.View `
     borderColor:#5A6978;
     margin:10px;
     // top:3;
-    width:100
+    width:80;
+    top:3
 `;
 
 
@@ -176,10 +178,9 @@ export const SubtittleContainer = styled.View `
 export const DivInput = styled.View `
     flex:0.3;
     paddingHorizontal:3;
-    // marginTop:25;
     backgroundColor:#fff;
-//     borderWidth: 0.5;
-//     borderColor:#5A6978;
+    borderWidth: 0.5;
+    borderColor:#5A6978;
 `
 
 export const FormLabel = styled.Text `
@@ -200,20 +201,73 @@ export const FormTextInput = styled.TextInput `
     flex: 1;
     width:80%;
     minHeight: 40;
+    maxHeight:50;
     alignSelf: center;
     fontSize: 18;
 `
 
 
-// export const InputMaterialIcon = style.MaterialIcons ``
-// export const InputMaterialIcon = style.MaterialIcons ``
-// export const InputMaterialIcon = style.MaterialIcons ``
-// export const InputMaterialIcon = style.MaterialIcons ``
-// export const InputMaterialIcon = style.MaterialIcons ``
-// export const InputMaterialIcon = style.MaterialIcons ``
-// export const InputMaterialIcon = style.MaterialIcons ``
-// export const InputMaterialIcon = style.MaterialIcons ``
-// export const InputMaterialIcon = style.MaterialIcons ``
+// ****** Form Personal Data
+
+export const DivInputRow = styled.View `
+    width:100%;
+    flexDirection:row;
+    borderWidth: 0.5;
+    borderColor:#5A6978;
+`
+
+export const DivInputMedium = styled.View `
+    flex:1;
+    paddingHorizontal:3;
+    marginRight:10;
+`
+export const FormTextInputMedium = styled.TextInput `
+    flex: 1;
+    width:70%;
+    minHeight: 40;
+    maxHeight:50;
+    alignSelf: center;
+    fontSize: 18;
+`
+
+export const DivInputSmall = styled.View `
+    flex:0.5;
+    paddingHorizontal:3;
+    marginRight:10;
+`
+
+export const FormTextInputSmall = styled.TextInput `
+    flex: 0.5;
+    width:60%;
+    minHeight: 40;
+    maxHeight:50;
+    alignSelf: center;
+    fontSize: 18;
+`
+
+export const DivButtons = styled.View `
+    flex:0.4;
+    flexDirection:row;
+    padding:8px;
+    alignItems: center;
+`
+
+
+export const ButtonSmallPrevious = styled.TouchableOpacity `
+    position: absolute; 
+    height: 45px;
+    width: 130px;
+    justifyContent:center;
+    alignItems:center
+    textAlign: center;
+    backgroundColor:#fc6b6e;
+`
+
+
+// export const InputMaterialIcon = styled.MaterialIcons ``
+// export const InputMaterialIcon = styled.MaterialIcons ``
+// export const InputMaterialIcon = styled.MaterialIcons ``
+// export const InputMaterialIcon = styled.MaterialIcons ``
 
 
 

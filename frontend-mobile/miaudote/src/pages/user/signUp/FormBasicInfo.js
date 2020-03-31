@@ -47,7 +47,7 @@ export default class FormBasicInfo extends Component {
 			<BlueContainer>
 				<HeaderDecoration>
 						<View style={styles.OvalShapeView}></View>
-					</HeaderDecoration>
+				</HeaderDecoration>
 				<MainContainer>
 					
 
@@ -119,13 +119,11 @@ export default class FormBasicInfo extends Component {
 					<DivSignOpions>
 						<ContainerLine>
 							<HorizontalLine/>
-								<Text>ou</Text>
+								<Text>ou inscreva-se com</Text>
 							<HorizontalLine/>
 						</ContainerLine> 
 
 						<SignOptions>
-							
-							
 							<ButtonIcon>
 								<IconSignUpOptions source={require('../../../assets/facebook.png')} ></IconSignUpOptions>
 							</ButtonIcon>
@@ -133,7 +131,6 @@ export default class FormBasicInfo extends Component {
 							<ButtonIcon>
 								<IconSignUpOptions source={require('../../../assets/google.png')} ></IconSignUpOptions>
 							</ButtonIcon>
-
 						</SignOptions>
 					</DivSignOpions>
 				
