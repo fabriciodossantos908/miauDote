@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, StyleSheet , Text, TextInput, Image } from 'react-native';
+import { View, StyleSheet , Text, TextInput, Image, TouchableOpacity, Button } from 'react-native';
 
 
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 
 import { Input, Icon  } from 'react-native-elements';
 import { MaterialIcons } from '@expo/vector-icons'
+
 
 import { 
 	CuteLine, 
@@ -26,7 +27,14 @@ import {
 	ContainerSignUpOptions,
 	IconSignUpOptions,
 	Div,
-	HorizontalLine} from './styles'
+	HorizontalLine,
+	DivInputMedium,
+	DivRow,
+	DivInputSmall,
+	TxtInputFormSmall,
+	DivPhoto,
+	DivButtonPhoto,
+	LargeButtonGrey} from './styles'
 
 
 
@@ -61,6 +69,7 @@ export default class SignUp extends Component {
 
 		const btnTextStyle = {
 			color: '#fff',
+			tittle: 'teste'
 		};
 
 		const progressStepsStyle = {
@@ -92,8 +101,8 @@ export default class SignUp extends Component {
 						<ProgressStep
 							nextBtnTextStyle={btnTextStyle} 
 							nextBtnStyle={buttonTextStyle}>
-
-							<SubtittleContainer>
+								
+							{/* <SubtittleContainer>
 								<SecundaryTittle>Informações básicas:</SecundaryTittle>
 							</SubtittleContainer>
 
@@ -165,7 +174,7 @@ export default class SignUp extends Component {
 										</ContainerSignUpOptions> 
 									</Div>
 									
-								</Form>
+								</Form> */}
 
 								
 							
@@ -178,9 +187,186 @@ export default class SignUp extends Component {
 							previousBtnStyle={previousButtonStyle} 
 							nextBtnStyle={buttonTextStyle} 
 						>
-							<Header style={{ alignItems: 'center' }}>
-								<Text>Diga mais sobre você</Text>
-							</Header>
+							<SubtittleContainer>
+								<SecundaryTittle>Diga mais sobre você:</SecundaryTittle>
+							</SubtittleContainer>
+
+							<Form>
+
+								<DivInput> 
+									<Label>Nome completo</Label>
+									<View style={styles.passwordContainer}>
+										<MaterialIcons style={styles.inputIcon} name={'user'} size={20} color={'#000'}/>
+									<TextInput
+										style={styles.inputStyle}
+										autoCorrect={false}
+										placeholder="ex: email@gmail.com"
+										keyboardType={'email-address'}
+										textContentType={'emailAddress'}
+										value={this.state.password}
+										onChangeText={this.onPasswordEntry}
+										/>
+									</View>
+								</DivInput>
+
+							<DivRow>
+								<DivInputMedium> 
+									<Label>Data de Nascimento</Label>
+									<View style={styles.passwordContainer}>
+										<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+									<TextInput
+										style={styles.inputStyle}
+										autoCorrect={false}
+										secureTextEntry
+										placeholder=""
+										value={this.state.password}
+										onChangeText={this.onPasswordEntry}
+										/>
+									</View>
+								</DivInputMedium>
+								
+								<DivInputMedium> 
+									<Label>Sexo</Label>
+									<View style={styles.passwordContainer}>
+										<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+									<TextInput
+										style={styles.inputStyle}
+										autoCorrect={false}
+										secureTextEntry
+										placeholder=""
+										value={this.state.password}
+										onChangeText={this.onPasswordEntry}
+										/>
+									</View>
+								</DivInputMedium>
+
+							</DivRow>
+
+								<DivInput> 
+									<Label>CPF</Label>
+									<View style={styles.passwordContainer}>
+										<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+									<TextInput
+										style={styles.inputStyle}
+										autoCorrect={false}
+										placeholder=""
+										/>
+									</View>
+								</DivInput>
+
+								<DivRow>
+									<DivInputSmall>
+										<Label>DDD</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+										<TxtInputFormSmall
+											autoCorrect={false}
+											placeholder=""
+											/>
+										</View>
+									</DivInputSmall>
+
+									<DivInputMedium> 
+										<Label>Celular</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+											<TextInput
+												style={styles.inputStyle}
+												autoCorrect={false}
+												placeholder=""
+												/>
+										</View>
+									</DivInputMedium>
+
+								</DivRow>
+								
+							</Form>
+						</ProgressStep>
+
+
+						{/* INFORMAÇÕES DE ENDEREÇO */}
+
+						<ProgressStep 
+							label="" 
+							previousBtnTextStyle={btnTextStyle} 
+							nextBtnTextStyle={btnTextStyle} 
+							previousBtnStyle={previousButtonStyle} 
+							nextBtnStyle={buttonTextStyle} 
+						>
+							<SubtittleContainer>
+								<SecundaryTittle>Informações de endereço:</SecundaryTittle>
+							</SubtittleContainer>
+
+
+							<Form>
+								<DivRow>
+									<DivInputMedium style={{backgroundColor:'#c78'}}>
+										<Label>CEP:</Label>
+											<View style={styles.passwordContainer}>
+												<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+												<TextInput
+													style={styles.inputStyle}
+													autoCorrect={false}
+													placeholder=""
+												/>
+											</View>
+									</DivInputMedium>
+
+									<DivInputMedium style={{backgroundColor:'#c78'}}>
+									<Label>Cidade:</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+											<TextInput
+												style={styles.inputStyle}
+												autoCorrect={false}
+												placeholder=""
+											/>
+										</View>
+									</DivInputMedium>
+								</DivRow>
+
+								
+								<DivInput>
+									<Label>Endereço:</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+											<TextInput
+												style={styles.inputStyle}
+												autoCorrect={false}
+												placeholder=""
+											/>
+										</View>
+								</DivInput>
+
+								<DivRow>
+
+									<DivInputMedium>
+										<Label>Bairro</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+											<TextInput
+												style={styles.inputStyle}
+												autoCorrect={false}
+												placeholder=""
+											/>
+										</View>
+									</DivInputMedium>
+
+									<DivInputMedium>
+										<Label>UF</Label>
+										<View style={styles.passwordContainer}>
+											<MaterialIcons style={styles.inputIcon} name={'vpn-key'} size={20} color={'#000'}/>
+												<TextInput
+													style={styles.inputStyle}
+													autoCorrect={false}
+													placeholder=""
+												/>
+										</View>
+									</DivInputMedium>
+								
+								</DivRow>
+
+							</Form>
 						</ProgressStep>
 
 						<ProgressStep 
@@ -190,21 +376,24 @@ export default class SignUp extends Component {
 							previousBtnStyle={previousButtonStyle} 
 							nextBtnStyle={buttonTextStyle} 
 						>
-							<Header>
-								<Text>Informações de endereço</Text>
-							</Header>
-						</ProgressStep>
+							<SubtittleContainer>
+								<SecundaryTittle>Escolha sua melhor foto:</SecundaryTittle>
+							</SubtittleContainer>
 
-						<ProgressStep 
-							label="" 
-							previousBtnTextStyle={btnTextStyle} 
-							nextBtnTextStyle={btnTextStyle} 
-							previousBtnStyle={previousButtonStyle} 
-							nextBtnStyle={buttonTextStyle} 
-						>
-							<Header>
-								<Text>Foto</Text>
-							</Header>
+							<Form>
+								<DivPhoto style={{backgroundColor:'#c78'}} > 
+									<MaterialIcons  name={'vpn-key'} size={20} color={'#000'}></MaterialIcons>
+								</DivPhoto>
+
+								<DivButtonPhoto>
+									<LargeButtonGrey>
+										<Text>Adicionar uma foto</Text>
+									</LargeButtonGrey>
+								</DivButtonPhoto>
+							</Form>
+							
+							
+
 						</ProgressStep>
 					</ProgressSteps>
 				</Container>
@@ -230,7 +419,19 @@ const styles = StyleSheet.create({
 		minHeight: 40,
 		alignSelf: 'center',
 		fontSize: 18,
+		maxWidth: '80%'
+		
 	  },
+
+	//   inputStyleMedium: {
+	// 	// flex: 0.5,
+	// 	minHeight: 40,
+	// 	// width:
+	// 	alignSelf: 'center',
+	// 	fontSize: 18,
+	// 	width:'50%'
+
+	//   },
 
 	  inputIcon:{
 		  marginRight:15,

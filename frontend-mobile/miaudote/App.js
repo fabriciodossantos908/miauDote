@@ -4,10 +4,15 @@ import HomeScreen from './src/pages/HomeScreen';
 import ModalHomeScreen from './src/pages/ModalHomeScreen-test'
 import SignUp from './src/pages/user/signUp/SignUp'
 import Login from './src/pages/user/login/Login'
+import FormBasicInfo from './src/pages/user/signUp/FormBasicInfo'
+import FormPersonalData from './src/pages/user/signUp/FormPersonalData'
+import FormUserAddress from './src/pages/user/signUp/FormUserAddress'
+
+
 
 export default function App() {
   return (
-    <SignUp />
+    <FormUserAddress />
   );
 }
 
