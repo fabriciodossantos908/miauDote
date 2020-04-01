@@ -110,22 +110,23 @@ export default class FormUserAddress extends Component {
 							</DivInput>
 
 							<DivInputRow>
-								<DivInputSmall>
-									<FormLabel>Bairro:</FormLabel>
-									<ContainerTxtInput>
-										 <MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-										<FormTextInputSmall
-											autoCorrect={false}
-											placeholder=""
-										/>
-									</ContainerTxtInput>  
-								</DivInputSmall>
-
 								<DivInputMedium>
-									<FormLabel>Cidade:</FormLabel>
+									<FormLabel>Bairro:</FormLabel>
 									<ContainerTxtInput>
 										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
 										<FormTextInputMedium
+											autoCorrect={false}
+											placeholder=""
+										/>
+									</ContainerTxtInput> 
+								</DivInputMedium>
+
+								<DivInputMedium>
+									<FormLabel>Estado:</FormLabel>
+									<ContainerTxtInput>
+										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
+										<FormTextInputMedium
+											// style={{backgroundColor:'#d54'}}
 											autoCorrect={false}
 											placeholder=""
 										/>

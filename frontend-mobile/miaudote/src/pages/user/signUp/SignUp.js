@@ -102,7 +102,7 @@ export default class SignUp extends Component {
 							nextBtnTextStyle={btnTextStyle} 
 							nextBtnStyle={buttonTextStyle}>
 								
-							{/* <SubtittleContainer>
+							<SubtittleContainer>
 								<SecundaryTittle>Informações básicas:</SecundaryTittle>
 							</SubtittleContainer>
 
@@ -174,10 +174,7 @@ export default class SignUp extends Component {
 										</ContainerSignUpOptions> 
 									</Div>
 									
-								</Form> */}
-
-								
-							
+								</Form>
 						</ProgressStep>
 
 						<ProgressStep 

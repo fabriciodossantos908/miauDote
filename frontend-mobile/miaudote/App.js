@@ -12,7 +12,7 @@ import FormUserAddress from './src/pages/user/signUp/FormUserAddress'
 
 export default function App() {
   return (
-    <FormUserAddress />
+    <FormBasicInfo />
   );
 }
 
