@@ -189,7 +189,7 @@ class EmpresaController {
 
       await empresa.destroy();
 
-      return res.json();
+      return res.status(204).json();
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
