@@ -25,7 +25,6 @@ import {
 	Form,
 	DivForm,
 	DivProgressBar,
-	ButtonSmall,
 	BtnText,
 	HorizontalLine,
 	ContainerLine,
@@ -37,7 +36,8 @@ import {
 	DivInput,
 	ContainerTxtInput,
 	FormTextInput,
-	FormLabel
+	FormLabel,
+	ButtonSmallNext
 } from './first-style'
 
 export default class FormBasicInfo extends Component {
@@ -112,9 +112,9 @@ export default class FormBasicInfo extends Component {
 					</DivForm>
 
 					<Div style={{flex:0.4}}>
-						<ButtonSmall>
+						<ButtonSmallNext>
 							<BtnText>Próximo</BtnText>
-						</ButtonSmall>
+						</ButtonSmallNext>
 					</Div>
 
 					<DivSignOpions>
