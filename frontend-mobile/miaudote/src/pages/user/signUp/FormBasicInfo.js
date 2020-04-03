@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity, Button } from 'react-native';
 
 import { MaterialIcons } from '@expo/vector-icons'
+import Teste from './Teste'
 
 import { 
 	CuteLine, 
@@ -42,7 +43,33 @@ import {
 
 export default class FormBasicInfo extends Component {
 
+	// constructor(props) {
+	// 	super(props)
+	// 	this.state = {
+	// 		email: '',
+	// 		senha: ''
+	// 	}
+	// }
+
+	validate = () => {
+		const { email, senha } = this.state
+		if (!email || !senha) {
+			alert('Ops... Todos os campos são obrigatórios')
+			return false
+		}
+		return true
+	}
+
+	// teste = () => {
+	// 	console.log('eu sou um TESTEEEEEE!!!!')
+
+	// 	console.log(this.state)
+	// }
+
 	render() {
+		// const { teste } = this.props;
+		// console.log(teste)
+
 		return (
 			<BlueContainer>
 				<HeaderDecoration>
@@ -76,9 +103,10 @@ export default class FormBasicInfo extends Component {
 									<MaterialIcons style={{marginRight:15}} name={'email'} size={20} color={'#000'}/>
 								<FormTextInput
 									autoCorrect={false}
-									placeholder="ex: email@gmail.com"
-									keyboardType={'email-address'}
-									textContentType={'emailAddress'}
+									onChangeText={txt => this.setState({ email: txt })}
+									// placeholder="ex: email@gmail.com"
+									// keyboardType={'email-address'}
+									// textContentType={'emailAddress'}
 									/>
 								</ContainerTxtInput> 
 							</DivInput>
@@ -89,9 +117,8 @@ export default class FormBasicInfo extends Component {
 									<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
 								<FormTextInput
 									autoCorrect={false}
-									placeholder="ex: email@gmail.com"
-									keyboardType={'email-address'}
-									textContentType={'emailAddress'}
+									placeholder=""
+									onChangeText={txt => this.setState({ senha: txt })}
 									/>
 								</ContainerTxtInput> 
 							</DivInput>
@@ -146,9 +173,9 @@ const styles = StyleSheet.create({
 	OvalShapeView: {    
 	width: '50%',
 	height: 40,
-	borderBottomEndRadius:'100%',
-	borderBottomStartRadius:'100%',
-	backgroundColor: '#42a9aa',
+	borderBottomEndRadius:100,
+	borderBottomStartRadius:100,
+	backgroundColor: "#42a9aa",
 	transform: [
 	{scaleX: 2}
 	]

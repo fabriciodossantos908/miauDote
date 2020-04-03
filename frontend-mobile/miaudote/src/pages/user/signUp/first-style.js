@@ -1,18 +1,20 @@
 import styled from 'styled-components/native'
 
+
+// backgroundColor:#42a9aa;
+// padding:8px;
 export const BlueContainer = styled.View `
     flex: 1;
-    // backgroundColor:#42a9aa;
-    // padding:8px;
 
 `;
 
+// justifyContent: center;
+    // alignItems: center
 export const MainContainer = styled.View `
     flex: 1;
     backgroundColor:#fff;
     padding:16px;
-    // justifyContent: center;
-    // alignItems: center
+    
 `
 
 export const OvalView = styled.View `
@@ -33,16 +35,18 @@ export const OvalView = styled.View `
     alignItems: center;
 `
 
+// borderWidth: 1;
+    // borderColor:#000;
 export const Header = styled.View `
     flex: 0.5;
     justifyContent: center;
-    // borderWidth: 1;
-    // borderColor:#000;
     alignItems: center;
     flexDirection: row;
 `
+
+// flex: 0.3;
 export const HeaderDecoration = styled.View `
-    // flex: 0.3;
+    
     backgroundColor:#fff;
     justifyContent: center;
     alignItems: center
@@ -52,7 +56,7 @@ export const ActiveStepIconColor = styled.View `
     height:15;
     width:15;
     backgroundColor:#FC6B6E;
-    borderRadius:100%;
+    borderRadius:1000;
     
 `
 
@@ -61,36 +65,38 @@ export const DesabledStepIconColor = styled.View `
     height:15;
     width:15;
     backgroundColor:#cccccc;
-    borderRadius:100%;
+    borderRadius:1000;
 `
 
 
-
+// borderColor: #000;
+    // borderWidth:1;
 export const Form = styled.View `
     flex:1;
-    // borderColor: #000;
-    // borderWidth:1;
+    
     justifyContent:center;
     marginBottom:50;
    
 `
 
-
+ // borderColor: #000;
+    // borderWidth:1;
 export const DivForm = styled.View `
     flex: 2;
     padding:8px;
     marginTop:20
-    // borderColor: #000;
-    // borderWidth:1;
+   
 
 `
+
+    // backgroundColor: #fff;
+
 export const DivProgressBar = styled.View `
     flex: 0.3;
     padding:8px;
     flexDirection:row;
     justifyContent: center;
     alignItems: center;
-    // backgroundColor: #fff;
 `
 
 export const ButtonSmallNext = styled.TouchableOpacity `
@@ -127,11 +133,13 @@ export const ContainerLine = styled.View `
 
 `;
 
+
+
+// top:3;
 export const HorizontalLine = styled.View `
     borderWidth: 0.5;
     borderColor:#5A6978;
     margin:10px;
-    // top:3;
     width:80;
     top:3
 `;
@@ -160,24 +168,28 @@ export const ButtonIcon = styled.TouchableOpacity `
     marginRight:15;
 `
 
+    // backgroundColor:#f88c;
+    // marginBottom:10
+
 export const SubtittleContainer = styled.View `
     flex:0.2;
     padding:8px;
-    // backgroundColor:#f88c;
     top:10;
-    // marginBottom:10
 `
+
+
+    // borderWidth: 0.5;
+    // borderColor:#5A6978;
 
 export const DivInput = styled.View `
     flex:0.3;
     paddingHorizontal:3;
     backgroundColor:#fff;
-    // borderWidth: 0.5;
-    // borderColor:#5A6978;
 `
 
+// fontFamily:Arial;
 export const FormLabel = styled.Text `
-    fontFamily:Arial;
+    
     color: #369696;
     fontWeight:bold
 `
@@ -202,11 +214,13 @@ export const FormTextInput = styled.TextInput `
 
 // ****** Form Personal Data
 
+
+    // borderWidth: 0.5;
+    // borderColor:#5A6978;
+
 export const DivInputRow = styled.View `
     width:100%;
     flexDirection:row;
-    // borderWidth: 0.5;
-    // borderColor:#5A6978;
     
 `
 
@@ -257,20 +271,7 @@ export const ButtonSmallPrevious = styled.TouchableOpacity `
     backgroundColor:#fc6b6e;
 `
 
-// ****** Form User Adress
 
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
-// export const InputMaterialIcon = styled.MaterialIcons ``
 
 
 

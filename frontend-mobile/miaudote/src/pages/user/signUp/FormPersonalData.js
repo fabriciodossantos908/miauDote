@@ -52,9 +52,9 @@ export default class FormPersonalData extends Component {
 	render() {
 		return (
 			<BlueContainer>
-				<HeaderDecoration>
+				{/* <HeaderDecoration>
 						<View style={styles.OvalShapeView}></View>
-				</HeaderDecoration>
+				</HeaderDecoration> */}
 				<MainContainer>
 					<Header>
 						<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
@@ -164,17 +164,17 @@ export default class FormPersonalData extends Component {
 	}
 }
 
-const styles = StyleSheet.create({  
-	OvalShapeView: {    
-	width: '50%',
-	height: 40,
-	borderBottomEndRadius:'100%',
-	borderBottomStartRadius:'100%',
-	backgroundColor: '#42a9aa',
-	transform: [
-	{scaleX: 2}
-	]
+// const styles = StyleSheet.create({  
+// 	OvalShapeView: {    
+// 	width: '50%',
+// 	height: 40,
+// 	borderBottomEndRadius:10000,
+// 	borderBottomStartRadius:1000,
+// 	backgroundColor: '#42a9aa',
+// 	transform: [
+// 	{scaleX: 2}
+// 	]
 	 
-  },
+//   },
  
- });
+//  });

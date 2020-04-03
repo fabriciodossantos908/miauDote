@@ -52,9 +52,9 @@ export default class FormUserAddress extends Component {
 	render() {
 		return (
 			<BlueContainer>
-				<HeaderDecoration>
+				{/* <HeaderDecoration>
 						<View style={styles.OvalShapeView}></View>
-				</HeaderDecoration>
+				</HeaderDecoration> */}
 				<MainContainer>
 					<Header>
 						<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
@@ -73,7 +73,7 @@ export default class FormUserAddress extends Component {
 					</SubtittleContainer>
 
 					<DivForm style={{marginTop:0, bottom:10}}>
-						<Form  style={{justifyContent:"none", top:20}}>
+						<Form  style={{top:20}}>
 							<DivInputRow>
 								<DivInputMedium>
 									<FormLabel>CEP:</FormLabel>
@@ -152,17 +152,17 @@ export default class FormUserAddress extends Component {
 	}
 }
 
-const styles = StyleSheet.create({  
-	OvalShapeView: {    
-	width: '50%',
-	height: 40,
-	borderBottomEndRadius:'100%',
-	borderBottomStartRadius:'100%',
-	backgroundColor: '#42a9aa',
-	transform: [
-	{scaleX: 2}
-	]
+// const styles = StyleSheet.create({  
+// 	OvalShapeView: {    
+// 	width: '50%',
+// 	height: 40,
+// 	borderBottomEndRadius:10000,
+// 	borderBottomStartRadius:1000,
+// 	backgroundColor: '#42a9aa',
+// 	transform: [
+// 	{scaleX: 2}
+// 	]
 	 
-  },
+//   },
  
- });
+//  });

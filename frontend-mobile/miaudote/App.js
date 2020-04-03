@@ -7,12 +7,13 @@ import Login from './src/pages/user/login/Login'
 import FormBasicInfo from './src/pages/user/signUp/FormBasicInfo'
 import FormPersonalData from './src/pages/user/signUp/FormPersonalData'
 import FormUserAddress from './src/pages/user/signUp/FormUserAddress'
+import Teste from './src/pages/user/signUp/Teste'
 
 
 
 export default function App() {
   return (
-    <FormBasicInfo />
+    <FormUserAddress />
   );
 }
 

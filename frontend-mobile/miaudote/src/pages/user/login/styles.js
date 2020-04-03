@@ -9,18 +9,16 @@ export const Tittle = styled.Text `
 export const Container = styled.View `
 
     flex: 1;
-    backgroundColor: '#FFF';
+    backgroundColor: #FFF;
     justifyContent: center;
     borderWidth: 1;
-    borderColor:'#000';
+    borderColor:#000;
 
 `;
 
 export const Div = styled.View `
     flex: 1;
     justifyContent: center;
-    // borderWidth: 1;
-    // borderColor:#000;
     padding: 10px;
     alignItems: center;
     
@@ -52,7 +50,6 @@ export const LoginForm = styled.View `
     borderRadius: 10;
     alignItems: center;
     backgroundColor:#f7f7f7;
-    // shadow: 5px 5px 5px 5px black;
     paddingTop:15px;
 `;
 
@@ -85,7 +82,7 @@ export const LargeButton = styled.TouchableOpacity `
 
 export const TxtButon = styled.Text `
     fontWeight: bold;
-    color: '#000';
+    color: #000;
 `;
 
 export const ContainerLine = styled.View `
@@ -111,14 +108,13 @@ export const HorizontalLine = styled.View `
 export const SecondaryText = styled.Text `
 
     fontSize: 20px;
-    color: '#5A6978';
+    color: #5A6978;
     letterSpacing: 0.15
 `;
 
 
 export const ContainerSingInOptions = styled.View `
     flex:0.5;	
-    width:'100%';
     justifyContent: center;
     alignItems: center;
     flexDirection:row;

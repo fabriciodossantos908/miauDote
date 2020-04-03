@@ -63,20 +63,21 @@ export const TittleRed = styled.Text `
     fontWeight: bold
 `;
 
+
+// borderWidth: 4;
+// borderColor:#000;
 export const Div = styled.View `
     flex: 1;
     justifyContent: center;
-    // borderWidth: 4;
-    // borderColor:#000;
+    
     padding: 10px;
     alignItems: center;
     
 `;
 
 export const SecundaryTittle = styled.Text `
-    color:'#9A9DA3';
+    color:#9A9DA3;
     fontSize:15;
-    fontFamily:'Consolas';
 
 `;
 
