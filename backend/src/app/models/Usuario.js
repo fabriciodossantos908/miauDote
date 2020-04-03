@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
           args: [5, 100],
           msg: 'Este campo deve conter de 5 a 100 caracteres'
         },
-        is:{ 
-          args:  /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,
+        is: {
+          args: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,
           msg: 'Insira apenas letras.'
         }
       }
@@ -112,11 +112,11 @@ module.exports = (sequelize, DataTypes) => {
     cidade: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate:{
+      validate: {
         notEmpty: {
           msg: 'Este campo não pode ser nulo.'
         },
-        len:{
+        len: {
           args: [2, 100],
           msg: 'Este campo deve conter de 2 a 100 caracteres'
         }
@@ -125,11 +125,11 @@ module.exports = (sequelize, DataTypes) => {
     bairro: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate:{
+      validate: {
         notEmpty: {
           msg: 'Este campo não pode ser nulo.'
         },
-        len:{
+        len: {
           args: [2, 100],
           msg: 'Este campo deve conter de 2 a 100 caracteres'
         }
@@ -138,24 +138,24 @@ module.exports = (sequelize, DataTypes) => {
     logradouro: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate:{
+      validate: {
         notEmpty: {
           msg: 'Este campo não pode ser nulo.'
         },
-        len:{
+        len: {
           args: [3, 100],
           msg: 'Este campo deve conter de 3 a 100 caracteres'
         }
       }
     },
-    uf:{
+    uf: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate:{
+      validate: {
         notEmpty: {
           msg: 'Este campo não pode ser nulo.'
         },
-        len:{
+        len: {
           args: [2, 2],
           msg: 'UF inválida'
         }
@@ -164,15 +164,15 @@ module.exports = (sequelize, DataTypes) => {
     url_foto: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate:{
+      validate: {
         notEmpty: {
           msg: 'Este campo não pode ser nulo.'
         },
-        len:{
+        len: {
           args: [4, 255],
           msg: 'tamanho da URL inválido'
         },
-        isUrl:{
+        isUrl: {
           args: true,
           msg: 'URL inválida'
         }
@@ -186,6 +186,12 @@ module.exports = (sequelize, DataTypes) => {
     {
       tableName: 'tbl_usuarios'
     });
+
+  Usuario.associate = function (models) {
+    Usuario.hasMany(models.Pet, {
+      foreignKey: 'id_usuario'
+    })
+  };
 
   return Usuario;
 };

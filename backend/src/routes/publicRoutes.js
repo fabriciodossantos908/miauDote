@@ -2,7 +2,8 @@ const { Router } = require('express');
 
 const usuarioController = require('../app/controllers/UsuarioController');
 const empresaController = require('../app/controllers/EmpresaController');
-const tipoServico = require('../app/controllers/TipoServicoController');
+const tipoServicoController = require('../app/controllers/TipoServicoController');
+const petController = require('../app/controllers/PetController');
 
 const router = Router();
 
@@ -22,10 +23,16 @@ router.get('/empresas/nome/:nome', empresaController.showByNome);
 
 
 // Rotas de Tipos de Serviços
-router.get('/servicos', tipoServico.index);
-router.post('/servicos', tipoServico.store);
-router.put('/servicos/:id', tipoServico.update);
-router.delete('/servicos/:id', tipoServico.destroy);
+router.get('/servicos', tipoServicoController.index);
+router.post('/servicos', tipoServicoController.store);
+router.put('/servicos/:id', tipoServicoController.update);
+router.delete('/servicos/:id', tipoServicoController.destroy);
+
+// Rotas de Pets
+router.get('/pets', petController.index);
+router.post('/pets', petController.store);
+router.put('/pets/:id', petController.update);
+router.delete('/pets/:id', petController.destroy);
 
 
 module.exports = router;
