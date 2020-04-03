@@ -204,6 +204,9 @@ module.exports = (sequelize, DataTypes) => {
             args: [5, 100],
             msg: 'Este campo deve conter de 5 a 100 caracteres.'
           },
+          isNumeric: {
+            msg: 'Insira um tipo de serviço válido.'
+          }
         }
       }
 
@@ -223,7 +226,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     id_tipo_servico: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate:{
+        notEmpty: {
+          msg: 'Este campo não pode ser nulo.'
+        }
+      }
     },
     url_logo: {
       type: DataTypes.STRING,

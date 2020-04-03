@@ -46,7 +46,7 @@ module.exports = {
 
       usuario = await Usuario.create(usuario);
 
-      console.log(usuario);
+      usuario.senha = undefined;
       res.status(201).json({
         usuario: usuario,
         token: autenticacaoHelper.gerarToken({
@@ -77,12 +77,13 @@ module.exports = {
       return res.status(401).json({ erro: "Usuário e/ou senha inválidos." })
     }
 
+    usuario.senha = undefined;
     const token = autenticacaoHelper.gerarToken({
         id: usuario.id,
         permissions: usuario.permissions
     });
 
-    delete usuario.senha;
+    usuario.senha = undefined;
     res.json({ usuario, token });
 
 
