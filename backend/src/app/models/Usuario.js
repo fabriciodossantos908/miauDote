@@ -148,6 +148,31 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    numero: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Este campo não pode ser nulo.'
+        },
+        len: {
+          args: [1, 6],
+          msg: 'Este campo deve conter de 1 a 6 caracteres'
+        }
+      }
+    },
+    complemento:{
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Este campo não pode ser nulo.'
+        },
+        len: {
+          args: [3, 100],
+          msg: 'Este campo deve conter de 3 a 100 caracteres'
+        }
+      }
+    },
     uf: {
       type: DataTypes.STRING,
       allowNull: false,
