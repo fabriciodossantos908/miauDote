@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Axios } from "axios";
-import {  User } from "../../../../api/user";
+// import {  User } from "../../../api/user";
 export default class UserInfo extends Component {
     constructor(props) {
         super(props);
@@ -13,13 +13,25 @@ export default class UserInfo extends Component {
             senha_confirmation: "",
             userInfoErrors: ""
         }
+
+
+        this.searchCep = this.searchCep.bind(this);
     }
     
-    // handleChange(event) {
-    //     this.setState({
-    //         [event.target.name]: event.target.value
-    //     });
-    // }
+    searchCep(event) {
+        const cepUrl =  "https://viacep.com.br/ws/"
+        const ResponseFormat = "/json/"
+        const cep = event.target.value
+        console.log(cepUrl + cep + ResponseFormat);
+        // Axios.get(cepUrl + cep + ResponseFormat)
+    }
+
+    handleChange(event) {
+        // event.target.value = User.user;
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
 
     // making the get of viacep api, using the user cep 
     handleSubmit(event) {
