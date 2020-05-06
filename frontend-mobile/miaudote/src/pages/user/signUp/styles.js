@@ -99,17 +99,7 @@ export const DivProgressBar = styled.View `
     alignItems: center;
 `
 
-export const ButtonSmallNext = styled.TouchableOpacity `
-    position: absolute; 
-    height: 45px;
-	width: 130px;
-    right: 10;
-    justifyContent:center;
-    alignItems:center
-    textAlign: center;
-    backgroundColor:#1bc7cb;
-    
-`
+
 
 export const BtnText = styled.Text `
     color: #fff;
@@ -266,9 +256,19 @@ export const ButtonSmallPrevious = styled.TouchableOpacity `
     height: 45px;
     width: 130px;
     justifyContent:center;
-    alignItems:center
-    textAlign: center;
+    alignItems:center;
     backgroundColor:#fc6b6e;
+`
+
+export const ButtonSmallNext = styled.TouchableOpacity `
+    position: absolute; 
+    height: 45px;
+	width: 130px;
+    right: 10;
+    justifyContent:center;
+    alignItems:center;
+    backgroundColor:#1bc7cb;
+    
 `
 
 

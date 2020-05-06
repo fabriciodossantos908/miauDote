@@ -12,6 +12,10 @@ class HomeScreen extends Component{
 		this.props.navigation.navigate('FormBasicInfo')	
 	}
 
+	skipToHome = ( e ) => {
+		this.props.navigation.navigate('Teste')	
+	}
+
 	render(){
 		return (
 			<View style = { styles.container }>
@@ -29,11 +33,12 @@ class HomeScreen extends Component{
 						<Text style={styles.signUpTextButton}>CRIAR UMA CONTA</Text>
 					</TouchableOpacity>
 
-					<Text style = {styles.txtSkip}>
-						Pular
-					</Text>
+					<TouchableOpacity style={styles.skipButton} onPress = {this.skipToHome}>
+						<Text style = {styles.txtSkip}>
+							Pular
+						</Text>
+					</TouchableOpacity>
 				</View>
-
 			</View>
 		);
 	}
@@ -43,7 +48,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: "column",
-		backgroundColor: '#FFF',
+		backgroundColor: '#ffffff',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
@@ -113,6 +118,13 @@ const styles = StyleSheet.create({
 		bottom:25,
 		right:25
 		//   marginBottom: 12
+	},
+
+	skipButton: {
+		alignSelf:"flex-end",
+		position: 'absolute',
+		bottom:25,
+		right:25
 	}
 
 

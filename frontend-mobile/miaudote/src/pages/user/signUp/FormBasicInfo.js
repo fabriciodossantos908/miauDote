@@ -43,13 +43,13 @@ import {
 
 export default class FormBasicInfo extends Component {
 
-	// constructor(props) {
-	// 	super(props)
-	// 	this.state = {
-	// 		email: '',
-	// 		senha: ''
-	// 	}
-	// }
+	constructor(props) {
+		super(props)
+		this.state = {
+			email: '',
+			senha: ''
+		}
+	}
 
 	validate = () => {
 		const { email, senha } = this.state
@@ -60,15 +60,25 @@ export default class FormBasicInfo extends Component {
 		return true
 	}
 
+	nextPage = ( props ) => {
+		if (!this.validate()) return
+		console.log(this.state)
+
+		this.props.navigation.navigate('FormPersonalData', {
+			screen: 'FormBasicInfo',
+			params: { email: this.state.email, senha: this.state.senha },
+			});
+
+		// this.props.navigation.navigate('FormPersonalData')
+	}
+
 	// teste = () => {
 	// 	console.log('eu sou um TESTEEEEEE!!!!')
 
 	// 	console.log(this.state)
 	// }
 
-	nextPage = ( e ) => {
-		this.props.navigation.navigate('FormPersonalData')
-	}
+	
 
 	render() {
 		// const { teste } = this.props;

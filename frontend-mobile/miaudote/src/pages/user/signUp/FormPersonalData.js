@@ -58,6 +58,7 @@ export default class FormPersonalData extends Component {
 	}
 
 	render() {
+		console.log(this.props.route.params.params.email)
 		return (
 			<BlueContainer>
 				{/* <HeaderDecoration>

@@ -116,6 +116,31 @@ export default class FormUserAddress extends Component {
 									/>
 								</ContainerTxtInput>
 							</DivInput>
+ {/* nova add */}
+							<DivInputRow>
+								<DivInputMedium>
+									<FormLabel>Número:</FormLabel>
+									<ContainerTxtInput>
+										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
+										<FormTextInputMedium
+											autoCorrect={false}
+											placeholder=""
+										/>
+									</ContainerTxtInput> 
+								</DivInputMedium>
+
+								<DivInputMedium>
+									<FormLabel>Complemento:</FormLabel>
+									<ContainerTxtInput>
+										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
+										<FormTextInputMedium
+											// style={{backgroundColor:'#d54'}}
+											autoCorrect={false}
+											placeholder=""
+										/>
+									</ContainerTxtInput> 
+								</DivInputMedium>
+							</DivInputRow>
 
 							<DivInputRow>
 								<DivInputMedium>
