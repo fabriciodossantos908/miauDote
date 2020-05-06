@@ -4,10 +4,10 @@ Aplicativo desenvolvido com o intuito de facilitar a adoção de pets e divulgar
 
 ## SQUAD
 
-** Davi Soares **
-** Fabrício dos Santos **
-** Joanna Regina **
-** João Passini **
+**Davi Soares
+**Fabrício dos Santos
+**Joanna Regina
+**João Passini
 
 ## **TECNOLOGIAS UTILIZADAS**
 
