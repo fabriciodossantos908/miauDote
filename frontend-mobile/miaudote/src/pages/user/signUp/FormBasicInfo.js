@@ -39,7 +39,7 @@ import {
 	FormTextInput,
 	FormLabel,
 	ButtonSmallNext
-} from './first-style'
+} from './styles'
 
 export default class FormBasicInfo extends Component {
 
@@ -66,15 +66,19 @@ export default class FormBasicInfo extends Component {
 	// 	console.log(this.state)
 	// }
 
+	nextPage = ( e ) => {
+		this.props.navigation.navigate('FormPersonalData')
+	}
+
 	render() {
 		// const { teste } = this.props;
 		// console.log(teste)
 
 		return (
 			<BlueContainer>
-				<HeaderDecoration>
-						<View style={styles.OvalShapeView}></View>
-				</HeaderDecoration>
+				{/* <HeaderDecoration>
+						<View style={styles.OvalShapeView, {borderBottomEndRadius:'100%'}}></View>
+				</HeaderDecoration> */}
 				<MainContainer>
 					
 
@@ -139,7 +143,7 @@ export default class FormBasicInfo extends Component {
 					</DivForm>
 
 					<Div style={{flex:0.4}}>
-						<ButtonSmallNext>
+						<ButtonSmallNext onPress={this.nextPage}>
 							<BtnText>Próximo</BtnText>
 						</ButtonSmallNext>
 					</Div>
@@ -169,17 +173,17 @@ export default class FormBasicInfo extends Component {
 	}
 }
 
-const styles = StyleSheet.create({  
-	OvalShapeView: {    
-	width: '50%',
-	height: 40,
-	borderBottomEndRadius:100,
-	borderBottomStartRadius:100,
-	backgroundColor: "#42a9aa",
-	transform: [
-	{scaleX: 2}
-	]
+// const styles = StyleSheet.create({  
+// 	OvalShapeView: {    
+// 	width: '55%',
+// 	height: 45,
+// 	borderBottomEndRadius:100,
+// 	borderBottomStartRadius:100,
+// 	backgroundColor: "#42a9aa",
+// 	transform: [
+// 	{scaleX: 2}
+// 	]
 	 
-  },
+//   },
  
- });
+//  });
