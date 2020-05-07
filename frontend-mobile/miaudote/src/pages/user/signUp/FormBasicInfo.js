@@ -47,14 +47,25 @@ export default class FormBasicInfo extends Component {
 		super(props)
 		this.state = {
 			email: '',
-			senha: ''
+			password: '',
+			confirmPassword: ''
+			
 		}
 	}
 
 	validate = () => {
-		const { email, senha } = this.state
-		if (!email || !senha) {
+		const { email, password } = this.state
+		if (!email || !password) {
 			alert('Ops... Todos os campos são obrigatórios')
+			return false
+		}
+		return true
+	}
+
+	validatePassword = () => {
+		const { password, confirmPassword } = this.state
+		if( password != confirmPassword ) {
+			alert('As senhas não condizem')
 			return false
 		}
 		return true
@@ -62,14 +73,17 @@ export default class FormBasicInfo extends Component {
 
 	nextPage = ( props ) => {
 		if (!this.validate()) return
+		else if (!this.validatePassword()) return
+
 		console.log(this.state)
+
+		const { email, password } = this.state
 
 		this.props.navigation.navigate('FormPersonalData', {
 			screen: 'FormBasicInfo',
-			params: { email: this.state.email, senha: this.state.senha },
-			});
+			params: { email: email, password: password },
+			}); 
 
-		// this.props.navigation.navigate('FormPersonalData')
 	}
 
 	// teste = () => {
@@ -126,26 +140,26 @@ export default class FormBasicInfo extends Component {
 							</DivInput>
 
 							<DivInput> 
-								<FormLabel>Senha:</FormLabel>
+								<FormLabel>senha:</FormLabel>
 								<ContainerTxtInput>
 									<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
 								<FormTextInput
 									autoCorrect={false}
 									placeholder=""
-									onChangeText={txt => this.setState({ senha: txt })}
+									onChangeText={txt => this.setState({ password: txt })}
 									/>
 								</ContainerTxtInput> 
 							</DivInput>
 
 							<DivInput> 
-								<FormLabel>Confirme sua Senha:</FormLabel>
+								<FormLabel>Confirme sua senha:</FormLabel>
 								<ContainerTxtInput>
 									<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
 								<FormTextInput
 									autoCorrect={false}
-									placeholder="ex: email@gmail.com"
+									placeholder=""
 									keyboardType={'email-address'}
-									textContentType={'emailAddress'}
+									onChangeText={txt => this.setState({ confirmPassword: txt })}
 									/>
 								</ContainerTxtInput> 
 							</DivInput>

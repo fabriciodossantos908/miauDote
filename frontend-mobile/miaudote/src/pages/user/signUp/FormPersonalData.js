@@ -49,8 +49,52 @@ import {
 
 export default class FormPersonalData extends Component {
 
-	nextPage = ( e ) => {
-		this.props.navigation.navigate('FormUserAddress')
+	constructor(props){
+		super(props)
+		const { params } = this.props.route.params
+		this.state = {
+			email: params.email,
+			password : params.password,
+			name: '',
+			birthDate : '',
+			gender: '',
+			cpf: '',
+			ddd: '',
+			phone: '' 
+		}
+	}
+
+	validate = () => {
+		const { name, birthDate, gender, cpf, ddd, phone } = this.state
+		if (!name || !birthDate || !gender || !cpf || !ddd || !phone ) {
+			alert('Ops... Todos os campos são obrigatórios')
+			return false
+		}
+		return true
+	}
+
+	nextPage = ( props ) => {
+		if (!this.validate()) return
+
+		const { email, password, name, birthDate, gender, cpf, ddd, phone } = this.state
+
+		console.log(this.state)
+
+		this.props.navigation.navigate('FormUserAddress', {
+			screen: 'FormPersonalData',
+			params: { 
+				email: email,
+				password: password,
+				name: name,
+				birthDate: birthDate,
+				gender: gender,
+				cpf: cpf,
+				ddd: ddd,
+				phone: phone
+
+			},
+		}); 
+
 	}
 
 	previousPage = ( e ) => {
@@ -58,7 +102,7 @@ export default class FormPersonalData extends Component {
 	}
 
 	render() {
-		console.log(this.props.route.params.params.email)
+		// console.log(this.props.route.params.params.email)
 		return (
 			<BlueContainer>
 				{/* <HeaderDecoration>
@@ -92,6 +136,7 @@ export default class FormPersonalData extends Component {
 										placeholder="ex: email@gmail.com"
 										keyboardType={'email-address'}
 										textContentType={'emailAddress'}
+										onChangeText={txt => this.setState({name: txt})}
 									/>
 								</ContainerTxtInput> 
 							</DivInput>
@@ -104,17 +149,19 @@ export default class FormPersonalData extends Component {
 										<FormTextInputMedium
 											autoCorrect={false}
 											placeholder=""
+											onChangeText={txt => this.setState({birthDate: txt})}
 										/>
 									</ContainerTxtInput> 
 								</DivInputMedium>
 
 								<DivInputMedium>
-									<FormLabel>Sexo::</FormLabel>
+									<FormLabel>Sexo:</FormLabel>
 									<ContainerTxtInput>
 										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
 										<FormTextInputMedium
 											autoCorrect={false}
 											placeholder=""
+											onChangeText={txt => this.setState({gender: txt})}
 										/>
 									</ContainerTxtInput> 
 								</DivInputMedium>
@@ -127,6 +174,7 @@ export default class FormPersonalData extends Component {
 									<FormTextInput
 										autoCorrect={false}
 										placeholder=""
+										onChangeText={txt => this.setState({cpf: txt})}
 									/>
 								</ContainerTxtInput>
 							</DivInput>
@@ -139,6 +187,7 @@ export default class FormPersonalData extends Component {
 										<FormTextInputSmall
 											autoCorrect={false}
 											placeholder=""
+											onChangeText={txt => this.setState({ddd: txt})}
 										/>
 									</ContainerTxtInput>  
 								</DivInputSmall>
@@ -150,6 +199,7 @@ export default class FormPersonalData extends Component {
 										<FormTextInputMedium
 											autoCorrect={false}
 											placeholder=""
+											onChangeText={txt => this.setState({phone: txt})}
 										/>
 									</ContainerTxtInput> 
 								</DivInputMedium>

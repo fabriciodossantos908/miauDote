@@ -49,8 +49,76 @@ import {
 
 export default class FormUserAddress extends Component {
 
-	nextPage = ( e ) => {
-		this.props.navigation.navigate('FormUserPhoto')
+
+	constructor(props){
+		super(props)
+		const { params } = this.props.route.params
+		this.state = {
+			email: params.email,
+			password : params.password,
+			name: params.name,
+			birthDate : params.birthDate,
+			gender: params.gender,
+			cpf: params.cpf,
+			ddd: params.ddd,
+			phone: params.phone,
+			cep: '',
+			city: '',
+			address: '',
+			number: '',
+			complement: '',
+			neighborhood: '',
+			state: ''
+		}
+	}
+
+	validate = () => {
+		const { cep, city, address, number, complement, neighborhood, state } = this.state
+		if (!cep || !city || !address || !number || !complement || !neighborhood || !state ) {
+			alert('Ops... Todos os campos são obrigatórios')
+			return false
+		}
+		return true
+	}
+
+	nextPage = ( props ) => {
+		if (!this.validate()) return
+
+		const { 
+			email, 
+			password, 
+			name, 
+			birthDate, 
+			gender, 
+			cpf, 
+			ddd, 
+			phone, 
+			cep, city, address, number, complement, neighborhood, state } = this.state
+
+		console.log(this.state)
+
+		this.props.navigation.navigate('FormUserPhoto', {
+			screen: 'FormUserAddress',
+			params: { 
+				email: email,
+				password: password,
+				name: name,
+				birthDate: birthDate,
+				gender: gender,
+				cpf: cpf,
+				ddd: ddd,
+				phone: phone,
+				cep: cep,
+				city: city,
+				address: address,
+				number: number,
+				complement: complement,
+				neighborhood: neighborhood,
+				state: state
+
+			},
+		}); 
+
 	}
 
 	previousPage = ( e ) => {
@@ -90,6 +158,7 @@ export default class FormUserAddress extends Component {
 										<FormTextInputMedium
 											autoCorrect={false}
 											placeholder=""
+											onChangeText={txt => this.setState({cep: txt})}
 										/>
 									</ContainerTxtInput> 
 								</DivInputMedium>
@@ -101,6 +170,7 @@ export default class FormUserAddress extends Component {
 										<FormTextInputMedium
 											autoCorrect={false}
 											placeholder=""
+											onChangeText={txt => this.setState({city: txt})}
 										/>
 									</ContainerTxtInput> 
 								</DivInputMedium>
@@ -113,6 +183,7 @@ export default class FormUserAddress extends Component {
 									<FormTextInput
 										autoCorrect={false}
 										placeholder=""
+										onChangeText={txt => this.setState({address: txt})}
 									/>
 								</ContainerTxtInput>
 							</DivInput>
@@ -125,6 +196,7 @@ export default class FormUserAddress extends Component {
 										<FormTextInputMedium
 											autoCorrect={false}
 											placeholder=""
+											onChangeText={txt => this.setState({number: txt})}
 										/>
 									</ContainerTxtInput> 
 								</DivInputMedium>
@@ -137,6 +209,7 @@ export default class FormUserAddress extends Component {
 											// style={{backgroundColor:'#d54'}}
 											autoCorrect={false}
 											placeholder=""
+											onChangeText={txt => this.setState({complement: txt})}
 										/>
 									</ContainerTxtInput> 
 								</DivInputMedium>
@@ -150,6 +223,7 @@ export default class FormUserAddress extends Component {
 										<FormTextInputMedium
 											autoCorrect={false}
 											placeholder=""
+											onChangeText={txt => this.setState({neighborhood: txt})}
 										/>
 									</ContainerTxtInput> 
 								</DivInputMedium>
@@ -162,6 +236,7 @@ export default class FormUserAddress extends Component {
 											// style={{backgroundColor:'#d54'}}
 											autoCorrect={false}
 											placeholder=""
+											onChangeText={txt => this.setState({state: txt})}
 										/>
 									</ContainerTxtInput> 
 								</DivInputMedium>
