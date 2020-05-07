@@ -36,7 +36,7 @@ export default class Registration extends Component {
                             type="text"
                             name="nome"
                             placeholder="nome"
-                            value={this.state.nome}
+                            value="não deu certo o switch"
                             onChange={this.handleChange}
                         />
                         <input

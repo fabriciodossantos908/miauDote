@@ -1,5 +1,7 @@
 import React from 'react';
-import Registration from './components/auth/user/register/userBaseInfo'
+import CompanyForm from './components/auth/company/registration/companyForm'
 // import User from "./api/user";
-const App = () => < Registration />;
+const App = () => <div className="App">
+    < CompanyForm />
+</div>;
 export default App;
