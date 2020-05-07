@@ -58,6 +58,13 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING
     },
+    numero:{
+      allowNull: false,
+      type: Sequelize.INTEGER
+    },
+    complemento:{
+      type: Sequelize.STRING
+    },
     uf:{
       allowNull: false,
       type: Sequelize.STRING

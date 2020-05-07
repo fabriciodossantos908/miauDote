@@ -4,6 +4,14 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Modal } fro
 
 class HomeScreen extends Component{
 
+	loginPage = ( e ) => {
+		this.props.navigation.navigate('Login')
+	}
+
+	signUpPage = ( e ) => {
+		this.props.navigation.navigate('FormBasicInfo')	
+	}
+
 	render(){
 		return (
 			<View style = { styles.container }>
@@ -13,11 +21,11 @@ class HomeScreen extends Component{
 				</View>
 
 				<View style={styles.options}>
-					<TouchableOpacity style={styles.loginButton}>
+					<TouchableOpacity style={styles.loginButton} onPress={this.loginPage}>
 						<Text style={styles.loginTextButton}>ENTRAR</Text>
 					</TouchableOpacity>
 
-					<TouchableOpacity style={styles.signUpButton}>
+					<TouchableOpacity style={styles.signUpButton} onPress={this.signUpPage}>
 						<Text style={styles.signUpTextButton}>CRIAR UMA CONTA</Text>
 					</TouchableOpacity>
 

@@ -21,11 +21,21 @@ import {
 	Form,
 	DivForm,
 	DivProgressBar,
-	ButtonSmall,
-	BtnText
-} from './first-style'
+	ButtonSmallNext,
+	BtnText,
+	ActiveStepIconColor,
+	DesabledStepIconColor,
+} from './styles'
 
 export default class FormUserPhoto extends Component {
+
+	nextPage = ( e ) => {
+		this.props.navigation.navigate('Teste')
+	}
+
+	previousPage = ( e ) => {
+		this.props.navigation.navigate('FormUserAddress')
+	}
 
 	render() {
 		return (
@@ -35,10 +45,11 @@ export default class FormUserPhoto extends Component {
 					<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
 				</Header>
 
-				<DivProgressBar>
-					<ProgressBar>
-						<Text>PregressBar</Text>
-					</ProgressBar>
+				<DivProgressBar style={{justifyContent:'space-evenly'}}>
+					<DesabledStepIconColor/>
+					<DesabledStepIconColor/>
+					<ActiveStepIconColor/>
+					<DesabledStepIconColor/>
 				</DivProgressBar>
 
 				<DivForm>
@@ -48,13 +59,13 @@ export default class FormUserPhoto extends Component {
 				</DivForm>
 
 				<Div>
-					<ButtonSmall>
-						<BtnText>Próximo</BtnText>
-					</ButtonSmall>
+					<ButtonSmallNext onPress={this.nextPage}>
+						<BtnText>Confirmar</BtnText>
+					</ButtonSmallNext>
 				</Div>
 
 				<Div>
-					<Text>Opcçoes de cadastro</Text>
+					<Text>Opções de cadastro</Text>
 				</Div>
 
 				

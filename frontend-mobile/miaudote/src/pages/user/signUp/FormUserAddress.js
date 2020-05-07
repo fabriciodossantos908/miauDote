@@ -45,9 +45,17 @@ import {
 	FormTextInputSmall,
 	DivButtons,
 	ButtonSmallPrevious
-} from './first-style'
+} from './styles'
 
 export default class FormUserAddress extends Component {
+
+	nextPage = ( e ) => {
+		this.props.navigation.navigate('FormUserPhoto')
+	}
+
+	previousPage = ( e ) => {
+		this.props.navigation.navigate('FormPersonalData')
+	}
 
 	render() {
 		return (
@@ -137,11 +145,11 @@ export default class FormUserAddress extends Component {
 					</DivForm>
 
 					<DivButtons style={{justifyContent:"space-between"}}>
-						<ButtonSmallNext>
+						<ButtonSmallNext onPress={this.nextPage}>
 							<BtnText>Próximo</BtnText>
 						</ButtonSmallNext>
 
-						<ButtonSmallPrevious>
+						<ButtonSmallPrevious onPress={this.previousPage}>
 							<BtnText>Anterior</BtnText>
 						</ButtonSmallPrevious>
 					</DivButtons>

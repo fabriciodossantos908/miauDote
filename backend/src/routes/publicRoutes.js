@@ -29,7 +29,7 @@ router.put('/servicos/:id', tipoServicoController.update);
 router.delete('/servicos/:id', tipoServicoController.destroy);
 
 // Rotas de Pets
-router.get('/pets', petController.index);
+router.get('/pets', petController.showByProximity);
 router.post('/pets', petController.store);
 router.put('/pets/:id', petController.update);
 router.delete('/pets/:id', petController.destroy);

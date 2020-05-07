@@ -1,12 +1,13 @@
 const { Pet } = require('../models');
 const { Op } = require('sequelize');
+const { sequelize } = require('../models/index');
 
 class PetController {
   async index(req, res) {
     try {
       let pets = await Pet.findAll();
       if (pets.length > 0) {
-        pets = pets.map(pet =>{
+        pets = pets.map(pet => {
           pet.senha = undefined;
           return pet;
         })
@@ -22,26 +23,93 @@ class PetController {
   async showByNome(req, res) {
     try {
       const query = `%${req.params.nome}%`
-      let pets = await pets.findAll({
-        where:{
-          nome:{
+      let pets = await Pet.findAll({
+        where: {
+          nome: {
             [Op.like]: query
           }
         }
       });
-    
+
       if (pets.length > 0) {
-        pets = pets.map(pet=>{
+        pets = pets.map(pet => {
           pet.senha = undefined;
           return pet;
         })
         return res.json(pet);
       }
 
-      return res.status(404).json({ erro: "Nenhum usuário encontrado." });
+      return res.status(404).json({ erro: "Nenhum pet encontrado." });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
+  }
+
+  async showByProximity(req, res) {
+
+    const { 
+      lat, 
+      lgt, 
+      distancia, 
+      pag = 1, 
+      limite = 5 
+    } = req.query;
+
+    try {
+      let [results, metadata] = await sequelize.query(`
+        SELECT COUNT(*),
+        ((3956 *
+        2 *
+        ASIN(
+          SQRT(POWER(SIN((abs(${lat}) - abs(pets.latitude)) *
+                pi()/180 / 2),2) +
+          COS(abs(${lat}) * pi()/180 ) *
+          COS(abs(pets.latitude) * pi()/180) *
+          POWER(SIN((abs(${lgt}) - abs(pets.longitude)) *
+                pi()/180 / 2), 2))
+          )
+          ) * 1.609344) as distancia
+        FROM tbl_pets pets
+        having distancia < ${distancia}
+        ORDER BY distancia;
+        `);
+
+      const count = (results[0]['COUNT(*)']);
+      const offset = (pag - 1) * limite;
+      
+      res.header('X-Total-Count', count);
+
+      [results, metadata] = await sequelize.query(`
+        SELECT *,
+        ((3956 *
+        2 *
+        ASIN(
+          SQRT(POWER(SIN((abs(${lat}) - abs(pets.latitude)) *
+                pi()/180 / 2),2) +
+          COS(abs(${lat}) * pi()/180 ) *
+          COS(abs(pets.latitude) * pi()/180) *
+          POWER(SIN((abs(${lgt}) - abs(pets.longitude)) *
+                pi()/180 / 2), 2))
+          )
+          ) * 1.609344) as distancia
+        FROM tbl_pets pets
+        having distancia < ${distancia}
+        ORDER BY distancia
+        LIMIT ${limite} OFFSET ${offset};
+        `);
+
+      if (results.length == 0){
+        return res.status(404)
+        .json({erro: 'Não existem mais pets, aumente a distância para uma busca mais ampla'})
+      }
+
+
+      return res.json(results);
+    } catch (error) {
+      return res.status(400).json({ error: err.message });
+    }
+
+
   }
 
   async show(req, res) {
