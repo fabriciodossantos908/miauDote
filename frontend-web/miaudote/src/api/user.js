@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import Axios from "axios";
 
 export default class User extends Component {
-    state = {
-        user: []
-    }
+    
 
     // get users using axios 
     userList = () => {
         Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios')
             .then(
                 (res) => {
-                    this.setState.user = res.data;
-                    // this.setState({user})
+                    const user = res.data;
+                    this.setState({user})
+                    console.log(JSON.stringify(user))
+
                 })
 
 
@@ -32,14 +32,14 @@ export default class User extends Component {
 
 
     componentWillMount(){
-        const user = this.userListFetch()
-        console.log(user)
+        this.setState.user = this.userList()
+        // console.log(user)
     }
 
     render() {
         return (
             <div>
-                <input value="teste"/>
+                <input value={JSON.stringify(this.state.user)}/>
             </div>
         )
     }
