@@ -23,6 +23,16 @@ export default class UserAddress extends Component {
         console.log(Axios.get('https://viacep.com.br/ws/01001000/json/'));
     }
 
+
+    // Seach cep 
+    searchCep(event) {
+        const cepUrl = "https://viacep.com.br/ws/";
+        const ResponseFormat = "/json/";
+        const cep = event.target.value;
+        console.log(cepUrl + cep + ResponseFormat);
+        // Axios.get(cepUrl + cep + ResponseFormat)
+    }
+
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -35,13 +45,13 @@ export default class UserAddress extends Component {
     render() {
         return (
             <div>
-                <form onSubmit= {this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
                         name="cep"
                         placeholder="cep"
                         value={this.state.cep}
-                        onChange={this.findCep}
+                        onChange={this.searchCep}
                     />
                     <input
                         type="email"
@@ -57,7 +67,7 @@ export default class UserAddress extends Component {
                         value={this.state.celular}
                         onChange={this.handleChange}
                     />
-                          <input
+                    <input
                         type="text"
                         name="logradouro"
                         placeholder="cof"
@@ -78,8 +88,8 @@ export default class UserAddress extends Component {
                         value={this.state.bairro}
                         onChange={this.handleChange}
                     />
-              
-                    <button type= "submit" > Criar</button>
+
+                    <button type="submit" > Criar</button>
                 </form>
             </div>
         )

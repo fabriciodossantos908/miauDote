@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { Axios } from "axios";
-// import {  User } from "../../../api/user";
+
+// verificar o local de post
+// import User from "../../../../api/user";
 export default class UserInfo extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            // Importing the user
+            // user: User,
             nome: "",
             email: "",
             celular: "",
@@ -14,17 +18,13 @@ export default class UserInfo extends Component {
             userInfoErrors: ""
         }
 
+        // const userList = User.bind(this);
+        // console.log(userList);
 
+        // bind in the functions
         this.searchCep = this.searchCep.bind(this);
     }
-    
-    searchCep(event) {
-        const cepUrl =  "https://viacep.com.br/ws/"
-        const ResponseFormat = "/json/"
-        const cep = event.target.value
-        console.log(cepUrl + cep + ResponseFormat);
-        // Axios.get(cepUrl + cep + ResponseFormat)
-    }
+
 
     handleChange(event) {
         // event.target.value = User.user;
@@ -33,6 +33,12 @@ export default class UserInfo extends Component {
         });
     }
 
+
+    componentWillMount() {
+        // pegando os métodos do user
+        // const userInto = this.userList
+        // console.log(userInto);
+    }
     // making the get of viacep api, using the user cep 
     handleSubmit(event) {
         console.log(Axios.get('https://viacep.com.br/ws/01001000/json/'));
@@ -40,11 +46,12 @@ export default class UserInfo extends Component {
     render() {
         return (
             <div>
-                <form onSubmit= {this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
                         name="nome"
                         placeholder="nome"
+                        onChange={this.searchCep}
                         value={this.state.nome}
                     />
                     <input
@@ -71,7 +78,7 @@ export default class UserInfo extends Component {
                         placeholder="repita a senha"
                         value={this.state.senha_confirmation}
                     />
-                    <button type= "submit">Próximo</button>
+                    <button type="submit">Próximo</button>
                 </form>
             </div>
         )
