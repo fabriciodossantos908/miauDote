@@ -108,6 +108,32 @@ module.exports = (sequelize, DataTypes) => {
             }
          }
       },
+      uf: {
+         type: DataTypes.STRING,
+         allowNull: false,
+         validate: {
+            notEmpty: {
+               msg: 'Este campo não pode ser nulo.'
+            },
+            len: {
+               args: [2, 2],
+               msg: 'UF inválida'
+            }
+         }
+      },
+      cidade: {
+         type: DataTypes.STRING,
+         allowNull: false,
+         validate: {
+            notEmpty: {
+               msg: 'Este campo não pode ser nulo.'
+            },
+            len: {
+               args: [2, 100],
+               msg: 'Este campo deve conter de 2 a 100 caracteres'
+            }
+         }
+      },
       latitude: {
          type: DataTypes.STRING,
          validate: {

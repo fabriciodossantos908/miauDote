@@ -4,8 +4,28 @@ const { sequelize } = require('../models/index');
 
 class PetController {
   async index(req, res) {
+
+    const { limite = 5, pag = 1} = req.query;
+    const offset = (pag - 1) * limite;
+
     try {
-      let pets = await Pet.findAll();
+
+      let count = await Pet.count({
+        where: {
+          id: {
+            [Op.gt]: offset
+          }
+        }
+      });
+      res.header('X-Total-Count', count);
+
+      let pets = await Pet.findAll({
+        limit: parseInt(limite),
+        offset: offset,
+        order: [
+          ['id', 'DESC']
+        ]
+      });
       if (pets.length > 0) {
         pets = pets.map(pet => {
           pet.senha = undefined;
@@ -14,32 +34,7 @@ class PetController {
         return res.json(pets);
       }
 
-      return res.status(404).json({ erro: "Não há pets cadastrados." });
-    } catch (err) {
-      return res.status(400).json({ error: err.message });
-    }
-  }
-
-  async showByNome(req, res) {
-    try {
-      const query = `%${req.params.nome}%`
-      let pets = await Pet.findAll({
-        where: {
-          nome: {
-            [Op.like]: query
-          }
-        }
-      });
-
-      if (pets.length > 0) {
-        pets = pets.map(pet => {
-          pet.senha = undefined;
-          return pet;
-        })
-        return res.json(pet);
-      }
-
-      return res.status(404).json({ erro: "Nenhum pet encontrado." });
+      return res.status(404).json({ erro: "Não há mais pets cadastrados." });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
@@ -47,17 +42,44 @@ class PetController {
 
   async showByProximity(req, res) {
 
-    const { 
-      lat, 
-      lgt, 
-      distancia, 
-      pag = 1, 
-      limite = 5 
+    let {
+      lat,
+      lgt,
+      distancia = 25,
+      pag = 1,
+      limite = 5,
+      especie = "",
+      porte = "",
+      sexo = ""
     } = req.query;
 
+    if (!lat || !lgt)
+      return res.status(400).json({ erro: "A Latitude e Longitude são necessárias." });
+
+    console.log(sexo);
+
+    if (especie)
+      especie = `WHERE especie = "${especie}"` 
+    
+    if(!especie && porte != ""){
+      porte = `WHERE porte = "${porte}"` 
+    }else if(porte){
+      porte = `AND porte = "${porte}"` 
+    }
+
+    if(!especie && sexo != "" && !porte && sexo != ""){
+      sexo = `WHERE sexo = "${sexo}"`
+    }else if(sexo){
+      sexo = `AND sexo = "${sexo}"`
+    }
+
+    const offset = (pag - 1) * limite;
+
+
     try {
+
       let [results, metadata] = await sequelize.query(`
-        SELECT COUNT(*),
+        SELECT SQL_CALC_FOUND_ROWS *,
         ((3956 *
         2 *
         ASIN(
@@ -70,43 +92,30 @@ class PetController {
           )
           ) * 1.609344) as distancia
         FROM tbl_pets pets
-        having distancia < ${distancia}
-        ORDER BY distancia;
-        `);
-
-      const count = (results[0]['COUNT(*)']);
-      const offset = (pag - 1) * limite;
-      
-      res.header('X-Total-Count', count);
-
-      [results, metadata] = await sequelize.query(`
-        SELECT *,
-        ((3956 *
-        2 *
-        ASIN(
-          SQRT(POWER(SIN((abs(${lat}) - abs(pets.latitude)) *
-                pi()/180 / 2),2) +
-          COS(abs(${lat}) * pi()/180 ) *
-          COS(abs(pets.latitude) * pi()/180) *
-          POWER(SIN((abs(${lgt}) - abs(pets.longitude)) *
-                pi()/180 / 2), 2))
-          )
-          ) * 1.609344) as distancia
-        FROM tbl_pets pets
+        ${especie} ${porte} ${sexo}
         having distancia < ${distancia}
         ORDER BY distancia
         LIMIT ${limite} OFFSET ${offset};
         `);
 
-      if (results.length == 0){
+      if (results.length == 0) {
         return res.status(404)
-        .json({erro: 'Não existem mais pets, aumente a distância para uma busca mais ampla'})
+          .json({ erro: 'Não encontramos mais pets, você pode aumentar a distância para uma busca mais ampla' })
       }
 
+      const pets = results;
 
-      return res.json(results);
+      [results, metadata] = await sequelize.query(`
+        SELECT FOUND_ROWS()
+        `);
+
+      const count = (results[0]['FOUND_ROWS()']);
+
+      res.header('X-Total-Count', count);
+
+      return res.json(pets);
     } catch (error) {
-      return res.status(400).json({ error: err.message });
+      return res.status(400).json({ erro: error.message });
     }
 
 
@@ -129,12 +138,12 @@ class PetController {
 
   async store(req, res) {
     try {
-      console.log(req.body);
+
       const pet = await Pet.create(req.body);
-      console.log(pet);
       return res.json(pet);
+
     } catch (err) {
-      return res.status(400).json({ erro: { campo: err.errors[0].path, mensagem: err.errors[0].message } });
+      return res.status(400).json({ erro: { campo: error.errors[0].path, mensagem: error.errors[0].message } });
     }
   }
 

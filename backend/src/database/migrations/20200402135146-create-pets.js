@@ -40,6 +40,14 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING,
     },
+    uf: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    cidade: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
     latitude: {
       type: Sequelize.STRING,
       allowNull: false
