@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from "axios";
 
-export default class User extends Component {
+export class User extends Component {
     
 
     // get users using axios 
@@ -39,8 +39,10 @@ export default class User extends Component {
     render() {
         return (
             <div>
-                <input value={JSON.stringify(this.state.user)}/>
+                <User userList={this.userList}/>;
+
             </div>
-        )
+        );
     }
 }
+export default User;
