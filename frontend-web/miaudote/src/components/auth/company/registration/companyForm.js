@@ -5,16 +5,20 @@ import CompanyAddress from './companyAddress'
 import Confirm from './Confirm'
 import Sucess from './Sucess'
 import Home from '../../../home'
-// import { userList } from '../../../../api/user'
+// import { User } from '../../../../api/user'
+
+
 
 export class companyForm extends Component {
-        state = {
+    constructor(props){
+        super(props)
+        this.state = {
             // Reveal the actually registration step
             step: 1,
             values: {
                 id: "",
-                nomeRepresentante: "Carlos ribeiro",
-                emailRepresentante: "",
+                nome_representante: "Carlos ribeiro",
+                email_representante: "",
                 celular_representante: "",
                 razao_social: "",
                 nome_empresa: "",
@@ -38,13 +42,20 @@ export class companyForm extends Component {
                 senha_confirmation: ""
             }
         }
+        this.nextStep =  this.nextStep.bind(this)
+        this.prevStep =  this.prevStep.bind(this)
+    }
     // Go to next step
     nextStep() {
-        const { step } = this.state;
+        // const step = 1;
+        const { step } = this.state
+        const next = step + 1;
+
         this.setState({
-            step: step + 1
+            step: next
         });
     };
+
 
     // Go back to previous step
     prevStep() {
@@ -63,15 +74,15 @@ export class companyForm extends Component {
 
     render() {
         const { step } = this.state
-        const { nomeRepresentante, emailRepresentante } = this.state;
+        const { values } = this.state;
         const valuesTest = this.state.values
-        const values = { nomeRepresentante, emailRepresentante };
         switch (step) {
             case 1:
                 return (
                     <CompanyBaseInfo
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        state={this.state}
                         values={values}
                         valuesTest={valuesTest}
                     />
@@ -82,7 +93,7 @@ export class companyForm extends Component {
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         values={values}
-
+                        step={step}
                     />
                 );
             case 3:
