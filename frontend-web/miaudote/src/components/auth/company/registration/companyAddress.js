@@ -61,7 +61,6 @@ export default class Registration extends Component {
 
                 <button onClick={this.props.prevStep}>Voltar</button>
                 <button onClick={this.props.nextStep}>Próximo</button>
-
             </div>
         )
     }

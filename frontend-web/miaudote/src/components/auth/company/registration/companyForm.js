@@ -5,49 +5,47 @@ import CompanyAddress from './companyAddress'
 import Confirm from './Confirm'
 import Sucess from './Sucess'
 import Home from '../../../home'
-// import { User } from '../../../../api/user'
+import CompanyTypeInfo from './companyTypeInfo'
 
 
 
 export class companyForm extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             // Reveal the actually registration step
             step: 1,
-            values: {
-                id: "",
-                nome_representante: "Carlos ribeiro",
-                email_representante: "",
-                celular_representante: "",
-                razao_social: "",
-                nome_empresa: "",
-                cnpj: "",
-                telefone: "",
-                cep: "",
-                cidade: "",
-                bairro: "",
-                logradouro: "",
-                numero: "",
-                complemento: "",
-                uf: "",
-                id_tipo_servico: "",
-                url_logo: "",
-                permissions: "",
-                // "tipo_servico": {
-                //   "id": 1,
-                //   "nome": "Hotel para Pets"
-                // }
-                senha: "",
-                senha_confirmation: ""
-            }
+            id: "",
+            nome_representante: "",
+            email_representante: "",
+            celular_representante: "",
+            razao_social: "",
+            nome_empresa: "",
+            cnpj: "",
+            telefone: "",
+            cep: "",
+            cidade: "",
+            bairro: "",
+            logradouro: "",
+            numero: "",
+            complemento: "",
+            uf: "",
+            id_tipo_servico: "",
+            url_logo: "https://urlFotoTeste.jpg",
+            permissions: "COMPANY",
+            // "tipo_servico": {
+            //   "id": 1,
+            //   "nome": "Hotel para Pets"
+            // }
+            senha: "",
+            senha_confirmation: ""
         }
-        this.nextStep =  this.nextStep.bind(this)
-        this.prevStep =  this.prevStep.bind(this)
+        this.nextStep = this.nextStep.bind(this)
+        this.prevStep = this.prevStep.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
     // Go to next step
     nextStep() {
-        // const step = 1;
         const { step } = this.state
         const next = step + 1;
 
@@ -56,7 +54,6 @@ export class companyForm extends Component {
         });
     };
 
-
     // Go back to previous step
     prevStep() {
         const { step } = this.state;
@@ -64,6 +61,7 @@ export class companyForm extends Component {
             step: step - 1
         });
     };
+
 
     handleChange(event) {
         this.setState({
@@ -74,17 +72,16 @@ export class companyForm extends Component {
 
     render() {
         const { step } = this.state
-        const { values } = this.state;
-        const valuesTest = this.state.values
+        const values = this.state;
         switch (step) {
             case 1:
                 return (
                     <CompanyBaseInfo
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         state={this.state}
                         values={values}
-                        valuesTest={valuesTest}
                     />
                 );
             case 2:
@@ -107,6 +104,14 @@ export class companyForm extends Component {
 
             case 4:
                 return (
+                    <CompanyTypeInfo
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        values={values}
+                    />
+                );
+            case 5:
+                return (
                     <Confirm
                         // createCompany={this.sea}
                         nextStep={this.nextStep}
@@ -114,7 +119,7 @@ export class companyForm extends Component {
                         values={values}
                     />
                 );
-            case 5:
+            case 6:
                 return (
                     <Sucess
                         nextStep={this.nextStep}

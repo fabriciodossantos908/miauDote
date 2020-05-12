@@ -9,14 +9,18 @@ export class companyBaseInfo extends Component {
         this.state = this.props.state
     }
 
+    componentWillMount(){
+        console.log(JSON.stringify(this.state));
+    }
 
+    // Going to the next step with all saved
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
     render() {
-        const { values } = this.props
-        console.log(values)
+        const { values, handleChange } = this.props
+        // console.log(values)
         return (
             <div>
                 <h1>Cadastro de usuario</h1>
@@ -28,15 +32,17 @@ export class companyBaseInfo extends Component {
                     placeholder="pedro"
                     name="nome_representante"
                     id="nome_representante"
+                    onChange={handleChange}
                 />
 
                 <label htmlFor="email_representante">Email do representante</label>
                 <input
-                    type="text"
+                    type="email"
                     defaultValue={values.email_representante}
                     placeholder="pedro@miaudote.com"
                     name="email_representante"
                     id="email_representante"
+                    onChange={handleChange}
                 />
 
                 <label htmlFor="senha">Senha</label>
@@ -46,6 +52,7 @@ export class companyBaseInfo extends Component {
                     placeholder="senha"
                     name="senha"
                     id="senha"
+                    onChange={handleChange}
                 />
 
                 <label htmlFor="senha_confirmation">repita a Senha</label>
@@ -55,8 +62,8 @@ export class companyBaseInfo extends Component {
                     placeholder="Repita a senha"
                     name="senha_confirmation"
                     id="senha_confirmation"
+                    onChange={handleChange}
                 />
-                type="text"
                 {/* <input defaultValue={console.log(valuesTest)} /> */}
                 <button onClick={this.continue}>Próxima etapa</button>
             </div>
