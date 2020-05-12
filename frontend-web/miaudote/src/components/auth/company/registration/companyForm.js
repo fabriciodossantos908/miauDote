@@ -5,15 +5,19 @@ import CompanyAddress from './companyAddress'
 import Confirm from './Confirm'
 import Sucess from './Sucess'
 import Home from '../../../home'
+import CompanyTypeInfo from './companyTypeInfo'
+
+
 
 export class companyForm extends Component {
-    state = {
-        // Reveal the actually registration stage
-        stage: 1,
-        values: {
+    constructor(props) {
+        super(props)
+        this.state = {
+            // Reveal the actually registration step
+            step: 1,
             id: "",
-            nomeRepresentante: "Carlos ribeiro",
-            emailRepresentante: "",
+            nome_representante: "",
+            email_representante: "",
             celular_representante: "",
             razao_social: "",
             nome_empresa: "",
@@ -27,8 +31,8 @@ export class companyForm extends Component {
             complemento: "",
             uf: "",
             id_tipo_servico: "",
-            url_logo: "",
-            permissions: "",
+            url_logo: "https://urlFotoTeste.jpg",
+            permissions: "COMPANY",
             // "tipo_servico": {
             //   "id": 1,
             //   "nome": "Hotel para Pets"
@@ -36,13 +40,17 @@ export class companyForm extends Component {
             senha: "",
             senha_confirmation: ""
         }
+        this.nextStep = this.nextStep.bind(this)
+        this.prevStep = this.prevStep.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
-
     // Go to next step
     nextStep() {
-        const { step } = this.state;
+        const { step } = this.state
+        const next = step + 1;
+
         this.setState({
-            step: step + 1
+            step: next
         });
     };
 
@@ -54,6 +62,7 @@ export class companyForm extends Component {
         });
     };
 
+
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -62,18 +71,17 @@ export class companyForm extends Component {
 
 
     render() {
-        const { stage } = this.state
-        const { nomeRepresentante, emailRepresentante } = this.state;
-        const valuesTest = this.state.values
-        const values = { nomeRepresentante, emailRepresentante };
-        switch (stage) {
+        const { step } = this.state
+        const values = this.state;
+        switch (step) {
             case 1:
                 return (
                     <CompanyBaseInfo
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        state={this.state}
                         values={values}
-                        valuesTest={valuesTest}
                     />
                 );
             case 2:
@@ -82,7 +90,7 @@ export class companyForm extends Component {
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         values={values}
-
+                        step={step}
                     />
                 );
             case 3:
@@ -96,13 +104,22 @@ export class companyForm extends Component {
 
             case 4:
                 return (
-                    <Confirm
+                    <CompanyTypeInfo
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         values={values}
                     />
                 );
             case 5:
+                return (
+                    <Confirm
+                        // createCompany={this.sea}
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        values={values}
+                    />
+                );
+            case 6:
                 return (
                     <Sucess
                         nextStep={this.nextStep}
