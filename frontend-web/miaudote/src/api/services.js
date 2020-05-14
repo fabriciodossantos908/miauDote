@@ -1,8 +1,8 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import Axios from "axios";
 
 export class Services extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -11,18 +11,21 @@ export class Services extends Component {
 
         this.servicesList = this.servicesList.bind(this);
     }
+
+
     // get servicess using axios 
+
     servicesList = () => {
         Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/servicos')
             .then(
                 (res) => {
                     const services = res.data;
-                    this.setState({services})
+                    this.setState({ services })
                     console.log(JSON.stringify(services))
                 })
     }
 
-    createService =(service) => {
+    createService = (service) => {
         Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/servicos', service)
             .then(
                 (res) => {
@@ -31,5 +34,13 @@ export class Services extends Component {
             )
     }
 
+    render() {
+        const services = this.state
+        return (
+            <div>
+                <h1> that's are all the services types {services}</h1>
+            </div>
+        )
+    }
 }
 export default Services;

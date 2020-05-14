@@ -30,8 +30,20 @@ export class Company extends Component {
         Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresa', company)
             .then(
                 (res) => {
-                    res.status(201);
+                    console.log("It's really works, finnaly a new company!", res.data)
                 });
     }
+
+
+    // Authenticating the company
+    AuthCompany = (authInfo) => {
+        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas/autenticar', authInfo)
+            .then(
+                (res) => {
+                    console.log("Company Authenticated!!", res.data)
+                }
+            )
+    }
+
 }
 export default Company;

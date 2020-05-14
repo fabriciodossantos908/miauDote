@@ -2,10 +2,18 @@ import React, { Component } from 'react'
 
 export class companyPersonalInfo extends Component {
 
-    componentWillMount() {
-        const { step } = this.props
-        console.log(step)
-    }
+    // componentWillMount() {
+    //     const { step } = this.props
+    //     const { values } = this.props
+    //     console.log(step, values)
+    // }
+
+        // Going to the next step with all saved
+        continue = e => {
+            e.preventDefault();
+            this.props.nextStep();
+        }
+    
 
     render() {
         const { values, handleChange } = this.props;
@@ -65,7 +73,7 @@ export class companyPersonalInfo extends Component {
                 />
 
                 <button onClick={this.props.prevStep}>Voltar</button>
-                <button onClick={this.props.nextStep}>Próxima</button>
+                <button onClick={this.continue}>Próxima</button>
             </div>
         )
     }

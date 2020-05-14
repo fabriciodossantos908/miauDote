@@ -1,28 +1,48 @@
 import React, { Component } from 'react'
-import { servicesList } from '../../../../api/services'
-
+import Axios from 'axios'
 
 export class companyBaseInfo extends Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            services:''
+        }
         this.state = this.props.state
     }
 
-    // used to require all services types
-    componentWillMount(){
-        // const services = servicesList();
-        // console.log(JSON.stringify(services));
+    // Create a new company
+    createCompany = (company) => {
+        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas/registrar',
+        company)
+            .then(
+                (res) => {
+                    res.status(201);
+                });
     }
 
-    // Going to the next step with all saved
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
+
+    componentWillMount() {
+        const { values } = this.props
+        console.log(values)
+    }
+
+    SendCompany = () => {
+        const { values } = this.props
+        try {
+            this.createCompany(values);
+            console.log("It's works!! ", values)
+        } catch (error) {
+            console.log("we have a problem!", error)
+        }
+        
+    } 
     render() {
-        const { values, handleChange } = this.props
-        // console.log(values)
+        const { values, handleChange, prevStep } = this.props
         return (
             <div>
                 <h1>Cadastro de usuario</h1>
@@ -43,7 +63,8 @@ export class companyBaseInfo extends Component {
 
                 {/* Image field */}
                 <label htmlFor="logo_empresa">Logo da empresa</label>
-                <button onClick={this.continue}>Próxima etapa</button>
+                <button onClick={prevStep}>Voltar</button>
+                <button onClick={this.SendCompany}>Criar</button>
             </div>
 
         )

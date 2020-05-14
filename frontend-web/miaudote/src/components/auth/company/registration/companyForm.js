@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import CompanyBaseInfo from './companyBaseInfo'
 import CompanyPersonalInfo from './companyPersonalInfo'
 import CompanyAddress from './companyAddress'
-import Confirm from './Confirm'
-import Sucess from './Sucess'
+// import Sucess from './Sucess'
 import Home from '../../../home'
 import CompanyTypeInfo from './companyTypeInfo'
-
+// import Services from '../../../../api/services'
 
 
 export class companyForm extends Component {
@@ -15,7 +14,6 @@ export class companyForm extends Component {
         this.state = {
             // Reveal the actually registration step
             step: 1,
-            id: "",
             nome_representante: "",
             email_representante: "",
             celular_representante: "",
@@ -30,20 +28,18 @@ export class companyForm extends Component {
             numero: "",
             complemento: "",
             uf: "",
-            id_tipo_servico: "",
+            id_tipo_servico: "1",
             url_logo: "https://urlFotoTeste.jpg",
             permissions: "COMPANY",
-            // "tipo_servico": {
-            //   "id": 1,
-            //   "nome": "Hotel para Pets"
-            // }
             senha: "",
-            senha_confirmation: ""
+            // senha_confirmation: ""
         }
         this.nextStep = this.nextStep.bind(this)
         this.prevStep = this.prevStep.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
+
+
     // Go to next step
     nextStep() {
         const { step } = this.state
@@ -62,17 +58,42 @@ export class companyForm extends Component {
         });
     };
 
-
+    // change the state when was inserted anything
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         });
     }
 
-
     render() {
+        const service = this.props
         const { step } = this.state
-        const values = this.state;
+        const { 
+            nome_representante,email_representante,celular_representante,razao_social,
+            nome_empresa,bairro,cep,cidade,cnpj,complemento,id_tipo_servico,logradouro,
+            numero,permissions,senha,telefone,uf,url_logo
+        } = this.state;
+
+        const values = {
+            nome_representante,
+            email_representante,
+            celular_representante,
+            razao_social,
+            nome_empresa,
+            bairro,
+            cep,
+            cidade,
+            cnpj,
+            complemento,
+            id_tipo_servico,
+            logradouro,
+            numero,
+            permissions,
+            senha,
+            telefone,
+            uf,
+            url_logo
+        }
         switch (step) {
             case 1:
                 return (
@@ -82,6 +103,7 @@ export class companyForm extends Component {
                         handleChange={this.handleChange}
                         state={this.state}
                         values={values}
+                        services={service}
                     />
                 );
             case 2:
@@ -89,8 +111,8 @@ export class companyForm extends Component {
                     <CompanyPersonalInfo
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
-                        step={step}
                     />
                 );
             case 3:
@@ -98,6 +120,7 @@ export class companyForm extends Component {
                     <CompanyAddress
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
                     />
                 );
@@ -107,23 +130,7 @@ export class companyForm extends Component {
                     <CompanyTypeInfo
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
-                        values={values}
-                    />
-                );
-            case 5:
-                return (
-                    <Confirm
-                        // createCompany={this.sea}
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        values={values}
-                    />
-                );
-            case 6:
-                return (
-                    <Sucess
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
                         values={values}
                     />
                 );

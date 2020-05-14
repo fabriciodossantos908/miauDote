@@ -1,16 +1,34 @@
 import React, { Component } from 'react'
 // import CompanyForm from './companyForm'
+import Axios from 'axios'
 
+const Header = () => {
+    return (
+        <div>
+            <h1>Cadastro de usuario</h1>
+            <h2>Informções básicas</h2>
+        </div>
+    )
+}
 
 export class companyBaseInfo extends Component {
-    constructor(props) {
-        super(props)
 
-        this.state = this.props.state
+    // Getting all services
+    servicesList = () => {
+        Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/servicos')
+            .then(
+                (res) => {
+                    const services = res.data;
+                    this.setState({ services })
+                    console.log(JSON.stringify(services))
+                })
     }
 
-    componentWillMount(){
-        console.log(JSON.stringify(this.state));
+    // Create the service options element
+    ServiceOpt = () => {
+        const service = this.servicesList()
+        console.log(JSON.stringify(service))
+
     }
 
     // Going to the next step with all saved
@@ -18,13 +36,23 @@ export class companyBaseInfo extends Component {
         e.preventDefault();
         this.props.nextStep();
     }
+
+
+    componentWillMount() {
+        const { values } = this.props
+        console.log(values)
+    }
+
+
+
     render() {
         const { values, handleChange } = this.props
+        // const { servicesList } =this.props
         // console.log(values)
         return (
             <div>
-                <h1>Cadastro de usuario</h1>
-                <h2>Informções básicas</h2>
+                
+                <Header/>
                 <label htmlFor="nome_representante">Nome do representante</label>
                 <input
                     type="text"
@@ -32,7 +60,7 @@ export class companyBaseInfo extends Component {
                     placeholder="pedro"
                     name="nome_representante"
                     id="nome_representante"
-                    onChange={handleChange}
+                        onChange={handleChange}
                 />
 
                 <label htmlFor="email_representante">Email do representante</label>
