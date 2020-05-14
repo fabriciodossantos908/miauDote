@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-export class companyBaseInfo extends Component {
+export class companyTypeInfo extends Component {
     constructor(props) {
         super(props)
 
@@ -17,7 +17,7 @@ export class companyBaseInfo extends Component {
         company)
             .then(
                 (res) => {
-                    res.status(201);
+                    console.log("created!")
                 });
     }
 
@@ -72,4 +72,4 @@ export class companyBaseInfo extends Component {
     }
 }
 
-export default companyBaseInfo
+export default companyTypeInfo

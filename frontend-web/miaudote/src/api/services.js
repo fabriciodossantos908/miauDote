@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Axios from "axios";
 
-export class Services extends Component {
+export class Services {
     constructor(props) {
         super(props);
 

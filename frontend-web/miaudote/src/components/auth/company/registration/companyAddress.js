@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Registration extends Component {
+export default class CompanyAddress extends Component {
 
     // Going to the next step with all saved
     continue = e => {
@@ -74,3 +74,4 @@ export default class Registration extends Component {
         )
     }
 }
+

@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
+import Axios from 'axios'
 
 export class login extends Component {
-    state = {
-        cnpj: '',
-        senha: ''
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            cnpj: '',
+            senha: ''
+        }
+
+        this.handleChange = this.handleChange.bind(this)
     }
+
 
     // Auth method 
     // ps: make this separetely please!! For your code be healthy
@@ -20,36 +28,45 @@ export class login extends Component {
     // Login function
     // pps: that's function will need to be the unique login function here, in this file
     login = () => {
+        console.log("inside the method")
         try {
             const authInfo = this.state
 
             if (this.AuthCompany(authInfo)) {
-                console.log("evething are going nice!")
+                console.log("everthing are going good!")
             }
         } catch (error) {
             console.log(error)
         }
     }
 
-    handleChange = () => {
-        console.log("filled that with code folk!")
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
     }
 
     render() {
         const values = this.state
         return (
             <div>
+                <h1>Login</h1>
+                <label htmlFor="cnpj">CNPJ</label>
                 <input
                     defaultValue={values.cnpj}
                     onChange={this.handleChange}
                     name="cnpj"
+                    id="cnpj"
                 />
+                <label htmlFor="senha">senha</label>
                 <input
                     defaultValue={values.senha}
                     onChange={this.handleChange}
                     name="senha"
+                    id="senha"
                 />
 
+                <button onClick={this.login}>Logar</button>
             </div>
         )
     }

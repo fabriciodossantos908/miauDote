@@ -8,7 +8,7 @@ import CompanyTypeInfo from './companyTypeInfo'
 // import Services from '../../../../api/services'
 
 
-export class companyForm extends Component {
+export class FormCompany extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -139,4 +139,4 @@ export class companyForm extends Component {
     }
 }
 
-export default companyForm
+export default FormCompany

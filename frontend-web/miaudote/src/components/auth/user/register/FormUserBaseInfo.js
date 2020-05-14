@@ -3,27 +3,7 @@ import { Axios } from "axios";
 
 // verificar o local de post
 // import User from "../../../../api/user";
-export default class UserInfo extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            // Importing the user
-            // user: User,
-            nome: "",
-            email: "",
-            celular: "",
-            senha: "",
-            senha_confirmation: "",
-            userInfoErrors: ""
-        }
-
-        // const userList = User.bind(this);
-        // console.log(userList);
-
-        // bind in the functions
-        this.searchCep = this.searchCep.bind(this);
-    }
+export default class FormBaseInfo extends Component {
 
 
     handleChange(event) {
@@ -43,43 +23,51 @@ export default class UserInfo extends Component {
     handleSubmit(event) {
         console.log(Axios.get('https://viacep.com.br/ws/01001000/json/'));
     }
+
+    continue = e => {
+        this.props.nextStep();
+    }
+
     render() {
+        const { state, handleChange } = this.props
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
                         name="nome"
                         placeholder="nome"
-                        onChange={this.searchCep}
-                        value={this.state.nome}
+                        onChange={handleChange}
+                        defaultValue={state.nome}
                     />
                     <input
                         type="email"
                         name="email"
                         placeholder="email"
-                        value={this.state.email}
+                        onChange={handleChange}
+                        defaultValue={state.email}
                     />
                     <input
                         type="text"
                         name="celular"
                         placeholder="celular"
-                        value={this.state.celular}
+                        onChange={handleChange}
+                        defaultValue={state.celular}
                     />
                     <input
                         type="password"
                         name="senha"
                         placeholder="senha"
-                        value={this.state.senha}
+                        onChange={handleChange}
+                        defaultValue={state.senha}
                     />
                     <input
                         type="password"
                         name="senha_confirmation"
                         placeholder="repita a senha"
-                        value={this.state.senha_confirmation}
+                        onChange={handleChange}
+                        defaultValue={state.senha_confirmation}
                     />
-                    <button type="submit">Próximo</button>
-                </form>
+                    <button onClick={this.continue}>Próximo</button>
             </div>
         )
     }
