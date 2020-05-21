@@ -1,8 +1,6 @@
-// const bcrypt = require('bcryptjs');
-
-
 const { Usuario } = require('../../models');
 const autenticacaoHelper = require('../../../helpers/AutenticacaoHelper');
+const emailConfirmation = require('../../../helpers/emailConfirmation');
 
 module.exports = {
 
@@ -46,13 +44,13 @@ module.exports = {
 
       usuario = await Usuario.create(usuario);
 
+      await emailConfirmation.emailConfirmation(usuario.email);
+
+
+
       usuario.senha = undefined;
       res.status(201).json({
-        usuario: usuario,
-        token: autenticacaoHelper.gerarToken({
-            id: usuario.id,
-            permissions: usuario.permissions
-        })
+        mensagem: "Usuario registrado com sucesso, confirme seu email para prosseguirmos"
       })
 
     } catch (error) {
@@ -75,6 +73,10 @@ module.exports = {
 
     if (! await autenticacaoHelper.compararSenha(senha, usuario.senha)) {
       return res.status(401).json({ erro: "Usuário e/ou senha inválidos." })
+    }
+
+    if(!usuario.email_confirmado){
+      return res.status(200).json({aviso: "Uma mensagem foi enviada ao seu email, confirme-o para prosseguirmos."})
     }
 
     usuario.senha = undefined;

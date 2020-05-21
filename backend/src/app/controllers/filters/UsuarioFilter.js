@@ -1,5 +1,6 @@
 const { Usuario } = require('../../models');
 const { Op } = require('sequelize');
+const autenticacaoHelper = require('../../../helpers/AutenticacaoHelper');
 
 class UsuarioFilter{
 
@@ -61,6 +62,39 @@ class UsuarioFilter{
         return res.status(404).json({ erro: "Nenhum usuário encontrado." });
       } catch (err) {
         return res.status(400).json({ error: err.message });
+      }
+    }
+
+    async confirmarEmail(req, res){
+      try {
+        const usuario = await Usuario.findOne({
+          where:{
+            email: req.params.email
+          }
+        })
+
+        if(usuario.email_confirmado){
+          return res.status(400).json({aviso: "Este endereço de email já foi confirmado."})
+        }
+
+        if(!usuario) {
+          return res.status(400).json({erro: "Não há usuários cadastrados com este endereço de email."});
+        }
+
+        usuario.email_confirmado = true;
+        usuario.save({ fields: ['email_confirmado'] });
+
+        const token = autenticacaoHelper.gerarToken({
+          id: usuario.id,
+          permissions: usuario.permissions
+        })
+
+        usuario.senha = undefined;
+        usuario.permissions = undefined;
+
+        return res.json({usuario, token});
+      } catch (err) {
+        return res.status(400).json({erro: err.message})
       }
     }
 
