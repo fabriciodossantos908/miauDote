@@ -15,11 +15,11 @@ export class Company extends Component {
     }
     // get all company 
     companyList = () => {
-        Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresa')
+        Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas')
             .then(
                 (res) => {
                     const company = res.data;
-                    this.setState({ company })
+                    // this.setState({ company })
                     console.log(JSON.stringify(company))
 
                 });

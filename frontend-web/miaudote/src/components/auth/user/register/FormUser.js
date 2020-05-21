@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FormBaseInfo from './FormUserBaseInfo'
+import FormUserBaseInfo from './FormUserBaseInfo'
 import FormPersonalInfo from './FormPersonalInfo'
 import Home from '../../../home'
 
@@ -57,25 +57,6 @@ export default class UserInfo extends Component {
 
     render() {
         const { step } = this.state
-        /* 
-            const values = [
-                this.state.nome,
-                this.state.email,
-                this.state.celular,
-                this.state.senha,
-                this.state.sexo,
-                this.state.data_nascimento,
-                this.state.cpf,
-                this.state.cep,
-                this.state.cidade,
-                this.state.bairro,
-                this.state.logradouro,
-                this.state.uf,
-                this.state.url_foto,
-                this.state.permissions
-            ]
-    
-        */
         const state = this.state
         switch (step) {
             case 1:

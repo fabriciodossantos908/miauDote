@@ -15,11 +15,11 @@ export class companyBaseInfo extends Component {
 
     // Getting all services
     servicesList = () => {
-        Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/servicos')
+        Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas')
             .then(
                 (res) => {
                     const services = res.data;
-                    this.setState({ services })
+                    // this.setvalues({ services })
                     console.log(JSON.stringify(services))
                 })
     }
@@ -28,19 +28,18 @@ export class companyBaseInfo extends Component {
     ServiceOpt = () => {
         const service = this.servicesList()
         console.log(JSON.stringify(service))
-
     }
 
     // Going to the next step with all saved
     continue = e => {
         e.preventDefault();
-        this.props.nextStep();
+        // this.props.nextStep();
     }
 
 
     componentWillMount() {
         const { values } = this.props
-        console.log(values)
+        // console.log(values)
     }
 
 

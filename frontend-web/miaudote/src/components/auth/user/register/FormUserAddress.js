@@ -19,11 +19,6 @@ export default class UserAddress extends Component {
 
     }
 
-    findCep(event) {
-        console.log(Axios.get('https://viacep.com.br/ws/01001000/json/'));
-    }
-
-
     // Seach cep 
     searchCep(event) {
         const cepUrl = "https://viacep.com.br/ws/";

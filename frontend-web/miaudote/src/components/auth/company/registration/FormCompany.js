@@ -66,34 +66,9 @@ export class FormCompany extends Component {
     }
 
     render() {
-        const service = this.props
+        // const service = this.props
         const { step } = this.state
-        const { 
-            nome_representante,email_representante,celular_representante,razao_social,
-            nome_empresa,bairro,cep,cidade,cnpj,complemento,id_tipo_servico,logradouro,
-            numero,permissions,senha,telefone,uf,url_logo
-        } = this.state;
-
-        const values = {
-            nome_representante,
-            email_representante,
-            celular_representante,
-            razao_social,
-            nome_empresa,
-            bairro,
-            cep,
-            cidade,
-            cnpj,
-            complemento,
-            id_tipo_servico,
-            logradouro,
-            numero,
-            permissions,
-            senha,
-            telefone,
-            uf,
-            url_logo
-        }
+        const values = this.state
         switch (step) {
             case 1:
                 return (
@@ -103,7 +78,7 @@ export class FormCompany extends Component {
                         handleChange={this.handleChange}
                         state={this.state}
                         values={values}
-                        services={service}
+                        // services={service}
                     />
                 );
             case 2:

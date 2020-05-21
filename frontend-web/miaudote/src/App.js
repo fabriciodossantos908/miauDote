@@ -1,9 +1,10 @@
 import React from 'react';
-import FormUser from './components/auth/user/register/FormUser'
-import Login from './components/auth/company/login/Login'
+import Routes from './routes'
+// import moduleName from './components/auth/user/register/FormUser'
 
 // import User from "./api/user";
-const App = () => <div className="App">
-    <FormUser/>
-</div>;
+const App = () =>
+    <div>
+        <Routes />
+    </div>;
 export default App;

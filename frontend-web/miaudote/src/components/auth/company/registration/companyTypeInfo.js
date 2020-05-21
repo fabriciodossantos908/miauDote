@@ -26,6 +26,8 @@ export class companyTypeInfo extends Component {
         this.props.nextStep();
     }
 
+    
+
     componentWillMount() {
         const { values } = this.props
         console.log(values)

@@ -16,13 +16,10 @@ export default class FormBaseInfo extends Component {
 
     componentWillMount() {
         // pegando os métodos do user
-        // const userInto = this.userList
+        // const userInto = this.userList'
         // console.log(userInto);
     }
     // making the get of viacep api, using the user cep 
-    handleSubmit(event) {
-        console.log(Axios.get('https://viacep.com.br/ws/01001000/json/'));
-    }
 
     continue = e => {
         this.props.nextStep();
@@ -32,6 +29,8 @@ export default class FormBaseInfo extends Component {
         const { state, handleChange } = this.props
         return (
             <div>
+                <h1>Informações básicas</h1>
+                <h2>Para começar seu login, preencha as seguintes Informações</h2>
                     <input
                         type="text"
                         name="nome"
