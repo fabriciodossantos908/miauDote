@@ -204,8 +204,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     permissions: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
+    },
+    email_confirmado: {
+      type: DataTypes.BOOLEAN
     },
   },
     {

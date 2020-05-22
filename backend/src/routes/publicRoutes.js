@@ -18,6 +18,8 @@ router.get('/usuarios/email/:email', usuarioFilter.showByEmail);
 router.get('/usuarios/cpf/:cpf', usuarioFilter.showByCpf);
 router.get('/usuarios/nome/:nome', usuarioFilter.showByNome);
 
+router.get('/usuarios/confirmar/:email', usuarioFilter.confirmarEmail);
+
 
 // Rotas de Empresa
 router.get('/empresas', empresaController.index);
