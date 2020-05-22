@@ -40,19 +40,15 @@ export class FormCompany extends Component {
     }
 
 
-    // Go to next step
     nextStep() {
-        const { step } = this.state
-        const next = step + 1;
-
+        const {step} = this.state
         this.setState({
-            step: next
+            step: step + 1
         });
     };
 
-    // Go back to previous step
     prevStep() {
-        const { step } = this.state;
+        const {step} = this.state
         this.setState({
             step: step - 1
         });

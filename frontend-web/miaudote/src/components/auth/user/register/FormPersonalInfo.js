@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 
 export default class pesonalData extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-
     render() {
         const { values, handleChange } = this.props;
 

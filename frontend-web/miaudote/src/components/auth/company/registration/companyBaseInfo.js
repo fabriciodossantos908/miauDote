@@ -36,18 +36,8 @@ export class companyBaseInfo extends Component {
         // this.props.nextStep();
     }
 
-
-    componentWillMount() {
-        const { values } = this.props
-        // console.log(values)
-    }
-
-
-
     render() {
         const { values, handleChange } = this.props
-        // const { servicesList } =this.props
-        // console.log(values)
         return (
             <div>
                 

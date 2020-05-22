@@ -1,10 +1,28 @@
 import React from 'react';
-import Routes from './routes'
-// import moduleName from './components/auth/user/register/FormUser'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-// import User from "./api/user";
-const App = () =>
-    <div>
-        <Routes />
-    </div>;
+import Home from './components/home'
+import FormCompany from './components/auth/company/registration/FormCompany'
+import FormUser from './components/auth/user/register/FormUser'
+
+
+const App = () => {
+    return (
+        <div>
+            <Router>
+                <Switch>
+                    <Route path='/' exact >
+                        <Home/>
+                    </Route>
+                    <Route path='/formCompany' exact >
+                        <FormCompany/>
+                    </Route>
+                    <Route path='/formUser' exact >
+                        <FormUser/>
+                    </Route>
+                </Switch>
+            </Router>
+        </div>
+    )
+}
 export default App;

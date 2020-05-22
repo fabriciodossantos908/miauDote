@@ -3,10 +3,7 @@ import FormUserBaseInfo from './FormUserBaseInfo'
 import FormPersonalInfo from './FormPersonalInfo'
 import Home from '../../../home'
 
-import Axios from 'axios'
 
-// verificar o local de post
-// import User from "../../../../api/user";
 export default class UserInfo extends Component {
     constructor(props) {
         super(props);
@@ -46,14 +43,10 @@ export default class UserInfo extends Component {
     };
 
     handleChange(event) {
-        // event.target.value = User.user;
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log("updating")
     }
-
-
 
     render() {
         const { step } = this.state
