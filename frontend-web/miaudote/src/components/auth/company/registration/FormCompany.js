@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import CompanyBaseInfo from './companyBaseInfo'
 import CompanyPersonalInfo from './companyPersonalInfo'
 import CompanyAddress from './companyAddress'
-// import Sucess from './Sucess'
-import Home from '../../../home'
+import Home from '../../../../pages/home'
 import CompanyTypeInfo from './companyTypeInfo'
-// import Services from '../../../../api/services'
-
+// import CheckInput from '../../../validations/CheckInput'
 
 export class FormCompany extends Component {
     constructor(props) {
@@ -14,6 +12,7 @@ export class FormCompany extends Component {
         this.state = {
             // Reveal the actually registration step
             step: 1,
+            values: {
             nome_representante: "",
             email_representante: "",
             celular_representante: "",
@@ -31,14 +30,15 @@ export class FormCompany extends Component {
             id_tipo_servico: "1",
             url_logo: "https://urlFotoTeste.jpg",
             permissions: "COMPANY",
-            senha: "",
-            // senha_confirmation: ""
+            senha: ""
+            },
+            senha_confirmation: "",
+            company_error: ""
         }
         this.nextStep = this.nextStep.bind(this)
         this.prevStep = this.prevStep.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
-
 
     nextStep() {
         const {step} = this.state
@@ -46,6 +46,8 @@ export class FormCompany extends Component {
             step: step + 1
         });
     };
+
+    
 
     prevStep() {
         const {step} = this.state
