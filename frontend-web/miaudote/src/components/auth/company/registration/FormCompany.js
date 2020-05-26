@@ -4,7 +4,7 @@ import CompanyPersonalInfo from './companyPersonalInfo'
 import CompanyAddress from './companyAddress'
 // import Sucess from './Sucess'
 import Home from '../../../home'
-import CompanyTypeInfo from './companyTypeInfo'
+import CompanyTypeInfo from './Confirm'
 // import Services from '../../../../api/services'
 
 

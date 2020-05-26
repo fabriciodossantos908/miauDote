@@ -5,8 +5,8 @@ import Axios from 'axios'
 const Header = () => {
     return (
         <div>
-            <h1>Cadastro de usuario</h1>
-            <h2>Informções básicas</h2>
+            <h1>Cadastro de Empresa</h1>
+            <h2>Informções básicas de seu representante</h2>
         </div>
     )
 }
@@ -33,7 +33,7 @@ export class companyBaseInfo extends Component {
     // Going to the next step with all saved
     continue = e => {
         e.preventDefault();
-        // this.props.nextStep();
+        this.props.nextStep();
     }
 
     render() {

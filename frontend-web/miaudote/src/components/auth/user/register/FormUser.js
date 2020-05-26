@@ -73,37 +73,5 @@ export default class UserInfo extends Component {
             default: return <Home />
         }
 
-        {/* <input
-                        type="text"
-                        name="nome"
-                        placeholder="nome"
-                        onChange={this.searchCep}
-                        value={this.state.nome}
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="email"
-                        value={this.state.email}
-                    />
-                    <input
-                        type="text"
-                        name="celular"
-                        placeholder="celular"
-                        value={this.state.celular}
-                    />
-                    <input
-                        type="password"
-                        name="senha"
-                        placeholder="senha"
-                        value={this.state.senha}
-                    />
-                    <input
-                        type="password"
-                        name="senha_confirmation"
-                        placeholder="repita a senha"
-                        value={this.state.senha_confirmation}
-                    />
-                    <button type="submit">Próximo</button> */}
     }
 }

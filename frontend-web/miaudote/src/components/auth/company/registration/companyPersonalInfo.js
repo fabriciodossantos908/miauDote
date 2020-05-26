@@ -8,12 +8,12 @@ export class companyPersonalInfo extends Component {
     //     console.log(step, values)
     // }
 
-        // Going to the next step with all saved
-        continue = e => {
-            e.preventDefault();
-            this.props.nextStep();
-        }
-    
+    // Going to the next step with all saved
+    continue = e => {
+        e.preventDefault();
+        this.props.nextStep();
+    }
+
 
     render() {
         const { values, handleChange } = this.props;
@@ -41,6 +41,11 @@ export class companyPersonalInfo extends Component {
                     id="telefone"
                     onChange={handleChange}
                 />
+
+                <label htmlFor="tipo_servico">tipo de segmento</label>
+                <select>
+                    <option>teste</option>
+                </select>
 
                 <label htmlFor="razao_social">Razão social</label>
                 <input
