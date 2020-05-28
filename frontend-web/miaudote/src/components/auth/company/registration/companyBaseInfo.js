@@ -1,30 +1,25 @@
 import React, { Component } from 'react'
-// import CompanyForm from './companyForm'
 import Axios from 'axios'
 
-import { Container, Row, Col } from 'react-bootstrap'
+
+import { Container, Row, Col, Button } from 'react-bootstrap'
 
 const Header = () => {
     return (
-<<<<<<< HEAD
-        <div>
-            <h1>Cadastro de Empresa</h1>
-            <h2>Informções básicas de seu representante</h2>
-        </div>
-=======
-        <Container>
-            <Row >
-                <Col>
-                    <h1>Cadastro de Empresa</h1>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <h2>Informções básicas de sua empresa</h2>
-                </Col>
-            </Row>
-        </Container>
->>>>>>> 50ffba82e83b4d2e34abd08d35932fb57d2815d8
+        <React.Fragment>
+            <Container fluid="md">
+                <Row className="justify-content-md-left" lg={8}>
+                    <Col xs={6}>
+                        <h1>Cadastro de Empresa</h1>
+                    </Col>
+                </Row>
+                <Row className="justify-content-md-left" lg={8}>
+                    <Col xs={6}>
+                        <h2>Informções básicas de sua empresa</h2>
+                    </Col>
+                </Row>
+            </Container>
+        </React.Fragment>
     )
 }
 
@@ -57,14 +52,13 @@ export class companyBaseInfo extends Component {
         const { values, handleChange } = this.props
         return (
             <div>
-
                 <Header />
-                <Container>
-                    <Row>
-                        <Col>
+                <Container  border="primary" className="mt-5 mr-1" fluid="lg" >
+                    <Row className="justify-content-md-left">
+                        <Col xs={3}>
                             <label htmlFor="nome_representante">Nome do representante</label>
                         </Col>
-                        <Col>
+                        <Col xs={3}>
 
                             <input
                                 type="text"
@@ -76,12 +70,12 @@ export class companyBaseInfo extends Component {
                             />
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>
+                    <Row className="justify-content-md-left">
+                        <Col xs={3}>
 
                             <label htmlFor="email_representante">Email do representante</label>
                         </Col>
-                        <Col>
+                        <Col xs={3}>
 
                             <input
                                 type="email"
@@ -93,12 +87,12 @@ export class companyBaseInfo extends Component {
                             />
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>
+                    <Row className="justify-content-md-left">
+                        <Col xs={3}>
 
                             <label htmlFor="senha">Senha</label>
                         </Col>
-                        <Col>
+                        <Col xs={3}>
 
                             <input
                                 type="password"
@@ -110,12 +104,12 @@ export class companyBaseInfo extends Component {
                             />
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>
+                    <Row className="justify-content-md-left">
+                        <Col xs={3}>
 
                             <label htmlFor="senha_confirmation">repita a Senha</label>
                         </Col>
-                        <Col>
+                        <Col xs={3}>
 
                             <input
                                 type="password"
@@ -127,11 +121,11 @@ export class companyBaseInfo extends Component {
                             />
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>
-
+                    <Row className="justify-content-md-center mt-2">
+                        <Col xs={5}>
                             {/* <input defaultValue={console.log(valuesTest)} /> */}
-                            <button onClick={this.continue}>Próxima etapa</button>
+                            <Button variant="outline-primary" onClick={this.continue}>Próxima etapa</Button>{''}
+                            
                         </Col>
                     </Row>
                 </Container>

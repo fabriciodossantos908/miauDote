@@ -28,9 +28,7 @@ export default class companyTypeInfo extends Component {
         console.log(this.props)
         return (
             <div>
-<<<<<<< HEAD:frontend-web/miaudote/src/components/auth/company/registration/Confirm.js
                 <h1>Confirmação de dados</h1>
-=======
                 <h1>Cadastro de usuario</h1>
                 <h2>Indivções básicas</h2>
                 <label htmlFor="tipo_servico">tipo_servico</label>
@@ -51,7 +49,7 @@ export default class companyTypeInfo extends Component {
                 <label htmlFor="logo_empresa">Logo da empresa</label>
                 <button onClick={prevStep}>Voltar</button>
                 <button onClick={this.SendCompany()}>Criar</button>
->>>>>>> 50ffba82e83b4d2e34abd08d35932fb57d2815d8:frontend-web/miaudote/src/components/auth/company/registration/companyTypeInfo.js
+
             </div>
 
         )

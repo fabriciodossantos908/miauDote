@@ -20,6 +20,12 @@ const Navbar = () => {
                         cadastrar Empresa
                 </Link>
                 </li>
+
+                <li>
+                    <Link to='/test'>
+                        Test
+                </Link>
+                </li>
             </ul>
         </React.Fragment>
     )

@@ -69,9 +69,5 @@ export default class UserInfo extends Component {
             }
             default: return <Home />
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 50ffba82e83b4d2e34abd08d35932fb57d2815d8
     }
 }

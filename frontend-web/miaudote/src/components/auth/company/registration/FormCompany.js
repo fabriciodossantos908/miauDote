@@ -2,17 +2,7 @@ import React, { Component } from 'react'
 import CompanyBaseInfo from './companyBaseInfo'
 import CompanyPersonalInfo from './companyPersonalInfo'
 import CompanyAddress from './companyAddress'
-<<<<<<< HEAD
-// import Sucess from './Sucess'
-import Home from '../../../home'
-import CompanyTypeInfo from './Confirm'
-// import Services from '../../../../api/services'
-
-=======
 import Home from '../../../../pages/home'
-import CompanyTypeInfo from './companyTypeInfo'
-// import CheckInput from '../../../validations/CheckInput'
->>>>>>> 50ffba82e83b4d2e34abd08d35932fb57d2815d8
 
 export class FormCompany extends Component {
     constructor(props) {
@@ -55,8 +45,6 @@ export class FormCompany extends Component {
         });
     };
 
-    
-
     prevStep() {
         const {step} = this.state
         this.setState({
@@ -64,7 +52,6 @@ export class FormCompany extends Component {
         });
     };
 
-    // change the state when was inserted anything
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -72,7 +59,6 @@ export class FormCompany extends Component {
     }
 
     render() {
-        // const service = this.props
         const { step } = this.state
         const values = this.state
         switch (step) {
@@ -99,16 +85,6 @@ export class FormCompany extends Component {
             case 3:
                 return (
                     <CompanyAddress
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                );
-
-            case 4:
-                return (
-                    <CompanyTypeInfo
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
