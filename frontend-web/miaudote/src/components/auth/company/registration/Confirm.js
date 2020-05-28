@@ -1,58 +1,60 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-export class companyTypeInfo extends Component {
-    constructor(props) {
+export default class companyTypeInfo extends Component {
+    constructor(props){
         super(props)
-
-        this.state = {
-            services:''
-        }
-        this.state = this.props.state
+        this.SendCompany = this.SendCompany.bind(this)
     }
 
-    // Create a new company
-    createCompany = (company) => {
-        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas/registrar',
-        company)
-            .then(
-                (res) => {
-                    console.log("created!")
-                });
-    }
-
-    continue = e => {
-        e.preventDefault();
-        this.props.nextStep();
-    }
-
-    
-
-    componentWillMount() {
-        const { values } = this.props
-        console.log(values)
-    }
 
     SendCompany = () => {
         const { values } = this.props
-        try {
-            this.createCompany(values);
-            console.log("It's works!! ", values)
-        } catch (error) {
-            console.log("we have a problem!", error)
-        }
-        
-    } 
+
+        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas/registrar',
+        values)
+            .then(
+                (res) => {
+                    console.log("created!" + res.data)
+                });
+
+    }
+    
+    handleSubmit = () => {
+        this.SendCompany()
+    }
     render() {
         const { values, handleChange, prevStep } = this.props
+        console.log(this.props)
         return (
             <div>
+<<<<<<< HEAD:frontend-web/miaudote/src/components/auth/company/registration/Confirm.js
                 <h1>Confirmação de dados</h1>
+=======
+                <h1>Cadastro de usuario</h1>
+                <h2>Indivções básicas</h2>
+                <label htmlFor="tipo_servico">tipo_servico</label>
+                <select>
+                    <option>teste</option>
+                </select>
+                <label htmlFor="email_representante">Email do representante</label>
+                <input
+                    type="email"
+                    defaultValue={values.email_representante}
+                    placeholder="pedro@miaudote.com"
+                    name="email_representante"
+                    id="email_representante"
+                    onChange={handleChange}
+                />
+
+                {/* Image field */}
+                <label htmlFor="logo_empresa">Logo da empresa</label>
+                <button onClick={prevStep}>Voltar</button>
+                <button onClick={this.SendCompany()}>Criar</button>
+>>>>>>> 50ffba82e83b4d2e34abd08d35932fb57d2815d8:frontend-web/miaudote/src/components/auth/company/registration/companyTypeInfo.js
             </div>
 
         )
 
     }
 }
-
-export default companyTypeInfo

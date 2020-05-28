@@ -1,17 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class CheckInput extends Component {
-
-    OnlyLetter = (input) => {
+export default class CheckInput{
+    constructor(){
+        this.OnlyLetter = this.OnlyLetter.bind(this)
     }
-
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
+    OnlyLetter = (input) => {
+        const ValueInput = input
+        let letter = /^[A-Za-z]+$/
+        if(ValueInput.match(letter)){
+            return true;
+        }else {
+            return (
+                <div>
+                    <h3>Apenas letras</h3>
+                </div>
+            )
+        }
     }
 }
-
-export default CheckInput

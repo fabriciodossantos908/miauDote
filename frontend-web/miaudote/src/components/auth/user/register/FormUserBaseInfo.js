@@ -1,20 +1,13 @@
 import React, { Component } from 'react'
 export default class FormBaseInfo extends Component {
 
-
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-
-
     continue = e => {
         this.props.nextStep();
     }
 
     render() {
         const { state, handleChange } = this.props
+        console.log(this.props.input)
         return (
             <div>
                 <h1>Informações básicas</h1>

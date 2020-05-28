@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import FormUserBaseInfo from './FormUserBaseInfo'
 import FormPersonalInfo from './FormPersonalInfo'
-import Home from '../../../home'
-
+import Home from '../../../../pages/home'
 
 export default class UserInfo extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            // Importing the user
-            // user: User,
             step: 1,
             nome: "",
             email: "",
@@ -72,6 +69,9 @@ export default class UserInfo extends Component {
             }
             default: return <Home />
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 50ffba82e83b4d2e34abd08d35932fb57d2815d8
     }
 }
