@@ -48,12 +48,13 @@ export class companyBaseInfo extends Component {
         this.props.nextStep();
     }
 
+
     render() {
         const { values, handleChange } = this.props
         return (
             <div>
                 <Header />
-                <Container  border="primary" className="mt-5 mr-1" fluid="lg" >
+                <Container border="primary" className="mt-5 mr-1" fluid="lg" >
                     <Row className="justify-content-md-left">
                         <Col xs={3}>
                             <label htmlFor="nome_representante">Nome do representante</label>
@@ -66,7 +67,7 @@ export class companyBaseInfo extends Component {
                                 placeholder="pedro"
                                 name="nome_representante"
                                 id="nome_representante"
-                                onChange={handleChange}
+                            // onChange={handleChange}
                             />
                         </Col>
                     </Row>
@@ -125,7 +126,7 @@ export class companyBaseInfo extends Component {
                         <Col xs={5}>
                             {/* <input defaultValue={console.log(valuesTest)} /> */}
                             <Button variant="outline-primary" onClick={this.continue}>Próxima etapa</Button>{''}
-                            
+
                         </Col>
                     </Row>
                 </Container>
