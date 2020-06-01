@@ -1,6 +1,6 @@
 const { Usuario } = require('../../models');
 const autenticacaoHelper = require('../../../helpers/AutenticacaoHelper');
-const emailConfirmation = require('../../../helpers/emailConfirmation');
+const emailConfirmation = require('../../../helpers/EmailConfirmation');
 
 module.exports = {
 
@@ -50,7 +50,8 @@ module.exports = {
 
       usuario.senha = undefined;
       res.status(201).json({
-        mensagem: "Usuario registrado com sucesso, confirme seu email para prosseguirmos"
+        id_usuario: usuario.id,
+        mensagem: 'Usuario registrado com sucesso, confirme seu email para prosseguirmos'
       })
 
     } catch (error) {

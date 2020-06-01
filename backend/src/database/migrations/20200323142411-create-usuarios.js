@@ -70,8 +70,9 @@ module.exports = {
       type: Sequelize.STRING
     },
     url_foto:{
-      allowNull: false,
-      type: Sequelize.STRING
+      allowNull: true,
+      type: Sequelize.STRING,
+      defaultValue: 'http://storage.googleapis.com/miaudote-c4d26.appspot.com/profile%2Fuser.png'
     },
     created_at: {
       allowNull: false,

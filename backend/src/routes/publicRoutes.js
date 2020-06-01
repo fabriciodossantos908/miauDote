@@ -1,5 +1,22 @@
 const { Router } = require('express');
 
+// Modulos para o upload de arquivo
+const Multer = require('multer');
+const path = require('path');
+const md5 = require('md5');
+
+// Configuração do multer
+const storage = Multer.diskStorage({
+   destination: (req, file, cb)=> {
+      cb(null, './src/app/tmp');
+   },
+   filename: (req, file, cb)=>{
+      cb(null, `${md5(file.fieldname)}-${Date.now()}${path.extname(file.originalname)}`);
+   }
+});
+const upload = Multer({ storage });
+
+
 const usuarioController = require('../app/controllers/UsuarioController');
 const empresaController = require('../app/controllers/EmpresaController');
 const tipoServicoController = require('../app/controllers/TipoServicoController');
@@ -17,8 +34,8 @@ router.get('/usuarios/:id', usuarioController.show);
 router.get('/usuarios/email/:email', usuarioFilter.showByEmail);
 router.get('/usuarios/cpf/:cpf', usuarioFilter.showByCpf);
 router.get('/usuarios/nome/:nome', usuarioFilter.showByNome);
-
 router.get('/usuarios/confirmar/:email', usuarioFilter.confirmarEmail);
+router.put('/usuarios/upload/foto/:id', upload.single('file'), usuarioFilter.uploadProfilePhoto);
 
 
 // Rotas de Empresa

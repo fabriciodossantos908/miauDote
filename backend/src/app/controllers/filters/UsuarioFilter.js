@@ -1,6 +1,9 @@
-const { Usuario } = require('../../models');
 const { Op } = require('sequelize');
+const fs = require('fs')
+
+const { Usuario } = require('../../models');
 const autenticacaoHelper = require('../../../helpers/AutenticacaoHelper');
+const fileUpload = require('../../../helpers/FileUpload');
 
 class UsuarioFilter{
 
@@ -73,12 +76,13 @@ class UsuarioFilter{
           }
         })
 
-        if(usuario.email_confirmado){
-          return res.status(400).json({aviso: "Este endereço de email já foi confirmado."})
-        }
-
+        
         if(!usuario) {
           return res.status(400).json({erro: "Não há usuários cadastrados com este endereço de email."});
+        }
+
+        if(usuario.email_confirmado){
+          return res.status(400).json({aviso: "Este endereço de email já foi confirmado."})
         }
 
         usuario.email_confirmado = true;
@@ -92,9 +96,32 @@ class UsuarioFilter{
         usuario.senha = undefined;
         usuario.permissions = undefined;
 
-        return res.json({usuario, token});
+        return res.json({mensagem: "Usuário confirmado com sucesso", usuario, token});
       } catch (err) {
         return res.status(400).json({erro: err.message})
+      }
+    }
+
+    async uploadProfilePhoto(req, res){
+      try {
+        let file = req;
+
+        const url_foto = await fileUpload.upload(`./src/app/tmp/${file.file.filename}`, `profile/${file.file.filename}`);
+        
+        const usuario = await Usuario.findByPk(req.params.id);
+        usuario.url_foto = url_foto;
+        usuario.save({fields: ['url_foto']});
+
+        await fs.unlink(`./src/app/tmp/${file.file.filename}`, (err)=>{
+          if(err){
+            return res.status(400).json(err);
+          }
+        });
+        
+        return res.json({mensagem: 'Foto atualizada com sucesso', url_foto})
+      
+      } catch (error) {
+        return res.status(400).json(error);
       }
     }
 
