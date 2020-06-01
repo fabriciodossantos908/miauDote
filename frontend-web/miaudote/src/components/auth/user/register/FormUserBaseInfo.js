@@ -1,25 +1,5 @@
 import React, { Component } from 'react'
-import { Axios } from "axios";
-
-// verificar o local de post
-// import User from "../../../../api/user";
 export default class FormBaseInfo extends Component {
-
-
-    handleChange(event) {
-        // event.target.value = User.user;
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-
-
-    componentWillMount() {
-        // pegando os métodos do user
-        // const userInto = this.userList'
-        // console.log(userInto);
-    }
-    // making the get of viacep api, using the user cep 
 
     continue = e => {
         this.props.nextStep();
@@ -27,6 +7,7 @@ export default class FormBaseInfo extends Component {
 
     render() {
         const { state, handleChange } = this.props
+        console.log(this.props.input)
         return (
             <div>
                 <h1>Informações básicas</h1>

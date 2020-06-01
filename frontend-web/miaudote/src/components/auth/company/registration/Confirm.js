@@ -1,54 +1,36 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-export class companyTypeInfo extends Component {
-    constructor(props) {
+export default class companyTypeInfo extends Component {
+    constructor(props){
         super(props)
-
-        this.state = {
-            services:''
-        }
-        this.state = this.props.state
+        this.SendCompany = this.SendCompany.bind(this)
     }
 
-    // Create a new company
-    createCompany = (company) => {
-        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas/registrar',
-        company)
-            .then(
-                (res) => {
-                    console.log("created!")
-                });
-    }
-
-    continue = e => {
-        e.preventDefault();
-        this.props.nextStep();
-    }
-
-    
-
-    componentWillMount() {
-        const { values } = this.props
-        console.log(values)
-    }
 
     SendCompany = () => {
         const { values } = this.props
-        try {
-            this.createCompany(values);
-            console.log("It's works!! ", values)
-        } catch (error) {
-            console.log("we have a problem!", error)
-        }
-        
-    } 
+
+        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas/registrar',
+        values)
+            .then(
+                (res) => {
+                    console.log("created!" + res.data)
+                });
+
+    }
+    
+    handleSubmit = () => {
+        this.SendCompany()
+    }
     render() {
         const { values, handleChange, prevStep } = this.props
+        console.log(this.props)
         return (
             <div>
+                <h1>Confirmação de dados</h1>
                 <h1>Cadastro de usuario</h1>
-                <h2>Informções básicas</h2>
+                <h2>Indivções básicas</h2>
                 <label htmlFor="tipo_servico">tipo_servico</label>
                 <select>
                     <option>teste</option>
@@ -66,12 +48,11 @@ export class companyTypeInfo extends Component {
                 {/* Image field */}
                 <label htmlFor="logo_empresa">Logo da empresa</label>
                 <button onClick={prevStep}>Voltar</button>
-                <button onClick={this.SendCompany}>Criar</button>
+                <button onClick={this.SendCompany()}>Criar</button>
+
             </div>
 
         )
 
     }
 }
-
-export default companyTypeInfo

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-export class login extends Component {
+export class loginCompany extends Component {
     constructor(props) {
         super(props)
 
@@ -25,9 +25,9 @@ export class login extends Component {
             )
     }
 
-    // Login function
-    // pps: that's function will need to be the unique login function here, in this file
-    login = () => {
+    // LoginCompany function
+    // pps: that's function will need to be the unique loginCompany function here, in this file
+    loginCompany = () => {
         console.log("inside the method")
         try {
             const authInfo = this.state
@@ -50,7 +50,7 @@ export class login extends Component {
         const values = this.state
         return (
             <div>
-                <h1>Login</h1>
+                <h1>LoginCompany</h1>
                 <label htmlFor="cnpj">CNPJ</label>
                 <input
                     defaultValue={values.cnpj}
@@ -66,10 +66,10 @@ export class login extends Component {
                     id="senha"
                 />
 
-                <button onClick={this.login}>Logar</button>
+                <button onClick={this.loginCompany}>Logar</button>
             </div>
         )
     }
 }
 
-export default login
+export default loginCompany

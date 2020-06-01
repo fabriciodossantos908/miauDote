@@ -2,11 +2,7 @@ import React, { Component } from 'react'
 import CompanyBaseInfo from './companyBaseInfo'
 import CompanyPersonalInfo from './companyPersonalInfo'
 import CompanyAddress from './companyAddress'
-// import Sucess from './Sucess'
-import Home from '../../../home'
-import CompanyTypeInfo from './companyTypeInfo'
-// import Services from '../../../../api/services'
-
+import Home from '../../../../pages/home'
 
 export class FormCompany extends Component {
     constructor(props) {
@@ -14,6 +10,7 @@ export class FormCompany extends Component {
         this.state = {
             // Reveal the actually registration step
             step: 1,
+            values: {
             nome_representante: "",
             email_representante: "",
             celular_representante: "",
@@ -31,34 +28,30 @@ export class FormCompany extends Component {
             id_tipo_servico: "1",
             url_logo: "https://urlFotoTeste.jpg",
             permissions: "COMPANY",
-            senha: "",
-            // senha_confirmation: ""
+            senha: ""
+            },
+            senha_confirmation: "",
+            company_error: ""
         }
         this.nextStep = this.nextStep.bind(this)
         this.prevStep = this.prevStep.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
 
-
-    // Go to next step
     nextStep() {
-        const { step } = this.state
-        const next = step + 1;
-
+        const {step} = this.state
         this.setState({
-            step: next
+            step: step + 1
         });
     };
 
-    // Go back to previous step
     prevStep() {
-        const { step } = this.state;
+        const {step} = this.state
         this.setState({
             step: step - 1
         });
     };
 
-    // change the state when was inserted anything
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -66,7 +59,6 @@ export class FormCompany extends Component {
     }
 
     render() {
-        // const service = this.props
         const { step } = this.state
         const values = this.state
         switch (step) {
@@ -93,16 +85,6 @@ export class FormCompany extends Component {
             case 3:
                 return (
                     <CompanyAddress
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                    />
-                );
-
-            case 4:
-                return (
-                    <CompanyTypeInfo
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}

@@ -1,33 +1,41 @@
-import React, { Component } from 'react'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Home from './components/home'
+import Home from './pages/home'
 import FormCompany from './components/auth/company/registration/FormCompany'
+import LoginCompany from './components/auth/company/login/LoginCompany'
 import FormUser from './components/auth/user/register/FormUser'
+import Navbar from './components/baseComponent/Navbar'
 
-export class Routes extends Component {
-    render() {
-        return (
-            <BrowserRouter>
-                <div>
-                    <ul>
-                        <li><Link to='/'>Home</Link></li>
-                        <li>
-                            <Link to='/RegistrarEmpresa'>Cadastro de empresa</Link>
-                        </li>
-                        <li><Link to='/RegistrarUsuario'>Cadastro de Usuário</Link></li>
-                    </ul>
-                </div>
+function Routes() {
+    return (
+        <Router>
+            <Navbar />
 
-                <hr />
-                <Switch>
-                    <Route path='/' Component={Home} />
-                    <Route path='/RegistrarEmpresa' Component={FormCompany} />
-                    <Route path='/RegistrarUsuario' Component={FormUser} />
-                </Switch>
-            </BrowserRouter>
-        )
-    }
+            <Switch>
+                <Route path='/' exact >
+                    <Home />
+                </Route>
+
+                <Route path='/formCompany' exact >
+                    <FormCompany />
+                </Route>
+
+                <Route path='/loginCompany' exact >
+                    <LoginCompany />
+                </Route>
+
+                <Route path='/formUser' exact >
+                    <FormUser />
+                </Route>
+
+                <Route path='/loginUser' exact >
+                    <FormUser />
+                </Route>
+            </Switch>
+
+        </Router>
+    )
 }
 
-export default Routes
+export default Routes;
