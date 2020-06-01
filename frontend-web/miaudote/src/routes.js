@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/home'
 import FormCompany from './components/auth/company/registration/FormCompany'
+import LoginCompany from './components/auth/company/login/LoginCompany'
 import FormUser from './components/auth/user/register/FormUser'
 import Navbar from './components/baseComponent/Navbar'
-
-import Test from './pages/test'
 
 function Routes() {
     return (
@@ -17,15 +16,21 @@ function Routes() {
                 <Route path='/' exact >
                     <Home />
                 </Route>
+
                 <Route path='/formCompany' exact >
                     <FormCompany />
                 </Route>
+
+                <Route path='/loginCompany' exact >
+                    <LoginCompany />
+                </Route>
+
                 <Route path='/formUser' exact >
                     <FormUser />
                 </Route>
 
-                <Route path='/test' exact >
-                    <Test />
+                <Route path='/loginUser' exact >
+                    <FormUser />
                 </Route>
             </Switch>
 

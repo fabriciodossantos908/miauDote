@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
+import Axios from 'axios'
 
 const Header = () => {
     return (
@@ -28,7 +29,28 @@ export class companyPersonalInfo extends Component {
         this.props.nextStep();
     }
 
+    // This function need to be async on code
+    seachType = () => {
+        Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/servicos')
+            .then(
+                (res) => {
+                    const services = res.data;
+                    console.log(JSON.stringify(services))
+                })
+    }
 
+    // same async with seachtype
+    companytype = () => {
+        const service = this.seachType
+        service() 
+        // call the api service uri
+    }
+
+    componentWillMount() {
+        const service = this.seachType
+        service() 
+
+    }
     render() {
         const { values, handleChange } = this.props;
         return (

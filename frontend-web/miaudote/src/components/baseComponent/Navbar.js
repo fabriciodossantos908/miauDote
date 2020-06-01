@@ -1,35 +1,43 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {
+    Navbar,
+    Nav,
+    Form,
+    FormControl,
+    Button,
+    NavDropdown
+} from 'react-bootstrap'
 
-const Navbar = () => {
+const Links = () => {
     return (
         <React.Fragment>
-            <ul>
-                <li>
-                    <Link to='/'>
-                        home page
-                </Link>
-                </li>
-                <li>
-                    <Link to='/formUser'>
-                        Cadastrar Usuário
-                </Link>
-                </li>
-                <li>
-                    <Link to='/formCompany'>
-                        cadastrar Empresa
-                </Link>
-                </li>
+            <Nav className="mr-auto">
+                <NavDropdown title="Empresa" id="basic-nav-dropdown">
+                    <NavDropdown.Item href="/formCompany">SignUp Empresa</NavDropdown.Item>
+                    <NavDropdown.Item href="/loginCompany">SignIn Empresa</NavDropdown.Item>
+                </NavDropdown>
 
-                <li>
-                    <Link to='/test'>
-                        Test
-                </Link>
-                </li>
-            </ul>
+                <NavDropdown title="Usuario" id="basic-nav-dropdown">
+                    <NavDropdown.Item href="/formUser">SignUp Usuário</NavDropdown.Item>
+                    <NavDropdown.Item href="/loginUser">SignIn Usuário</NavDropdown.Item>
+                </NavDropdown>
+            </Nav>
         </React.Fragment>
     )
 }
 
+const Header = () => {
+    return (
+        <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="/">MiauDote</Navbar.Brand>
+            <Links />
+            <Form inline>
+                <FormControl type="text" placeholder="procurar" className="mr-sm-2" />
+                <Button variant="outline-info">Procurar</Button>
+            </Form>
+        </Navbar>
+    )
+}
 
-export default Navbar
+
+export default Header

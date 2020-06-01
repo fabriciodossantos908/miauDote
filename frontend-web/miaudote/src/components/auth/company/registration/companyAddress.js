@@ -42,16 +42,20 @@ export default class CompanyAddress extends Component {
                 .then(
                     (res) => {
                         console.log(res.data)
-                        this.setState({
-                            [target.cidade.value] : res.data.logradouro
-                        })
                     }
                 )
             : console.log("dont " + baseUrl.midCep)
 
         // console.log(JSON.stringify(baseUrl.start + baseUrl.midCep + baseUrl.end));
     }
-
+    
+    // Pick the cep require and display on address fields
+    showPlace = () => {
+        this.setState({
+            // [target.cidade.value] : res.data.logradouro
+        })
+    }
+    
     render() {
         const { values, handleChange } = this.props;
         // console.log(values)
