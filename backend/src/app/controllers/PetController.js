@@ -61,7 +61,7 @@ class PetController {
     try {
 
       const pet = await Pet.create(req.body);
-      return res.json(pet);
+      return res.status(201).json(pet);
 
     } catch (err) {
       return res.status(400).json({ erro: { campo: error.errors[0].path, mensagem: error.errors[0].message } });

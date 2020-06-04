@@ -11,7 +11,7 @@ const storage = Multer.diskStorage({
       cb(null, './src/app/tmp');
    },
    filename: (req, file, cb)=>{
-      cb(null, `${md5(file.fieldname)}-${Date.now()}${path.extname(file.originalname)}`);
+      cb(null, `${md5(file.originalname)}-${Date.now()}${path.extname(file.originalname)}`);
    }
 });
 const upload = Multer({ storage });
@@ -35,6 +35,7 @@ router.get('/usuarios/email/:email', usuarioFilter.showByEmail);
 router.get('/usuarios/cpf/:cpf', usuarioFilter.showByCpf);
 router.get('/usuarios/nome/:nome', usuarioFilter.showByNome);
 router.get('/usuarios/confirmar/:email', usuarioFilter.confirmarEmail);
+router.get('/usuarios/redefinir_senha/:email', usuarioFilter.forgotPassword);
 router.put('/usuarios/upload/foto/:id', upload.single('file'), usuarioFilter.uploadProfilePhoto);
 
 

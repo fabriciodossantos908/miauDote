@@ -1,14 +1,15 @@
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+   service: 'gmail',
+   auth: {
+      user: "sds.miaudote@gmail.com",
+      pass: "H0r1z0nt4l"
+   }
+});
+
 module.exports = {
    emailConfirmation(emailDestinatario) {
-      const nodemailer = require('nodemailer');
-
-      const transporter = nodemailer.createTransport({
-         service: 'gmail',
-         auth: {
-            user: "sds.miaudote@gmail.com",
-            pass: "H0r1z0nt4l"
-         }
-      });
 
       const html = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
             <html style="width:100%;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0;">
@@ -161,7 +162,6 @@ module.exports = {
          from: 'Miaudote <no-reply@miaudote.com>',
          to: emailDestinatario,
          subject: 'Confirmação de endereço de e-mail.',
-         text: 'Bem fácil, não?',
          html: html
       }
 
@@ -173,5 +173,22 @@ module.exports = {
          }
       });
 
+   },
+   forgotPassword(userEmail){
+
+      const mailOptions = {
+         from: 'Miaudote <no-reply@miaudote.com>',
+         to: userEmail,
+         subject: 'Esqueceu sua senha?',
+         html: `<a href='urldeumapaginafeitapelofront'></a?`
+      }
+
+      transporter.sendMail(mailOptions, (error, info) => {
+         if (error) {
+            console.log(error);
+         } else {
+            console.log('Email enviado: ' + info.response);
+         }
+      });
    }
 }
