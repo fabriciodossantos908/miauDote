@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Button, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback, ScrollView } from 'react-native';
 
 import { MaterialIcons } from '@expo/vector-icons'
 import Teste from './Teste'
 
+// import { keyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 import { 
 	CuteLine, 
-	IconPaw, 
+	IconPaw,
 	LargeButton,   
 	SecondaryText,
 	TittleBlack,
 	SecundaryTittle,
-	TextInputForm 
+	TextInputForm ,
+	Container
 } from '../../../components/styles';
 
 
@@ -20,6 +23,7 @@ import {
 	MainContainer,
 	HeaderDecoration,
 	Header,
+	Head,
 	Div,
 	ActiveStepIconColor,
 	DesabledStepIconColor,
@@ -38,8 +42,15 @@ import {
 	ContainerTxtInput,
 	FormTextInput,
 	FormLabel,
-	ButtonSmallNext
+	ButtonSmallNext,
+	Body,
+	Footer
 } from './styles'
+
+import { HelperText, TextInput } from 'react-native-paper';
+
+import { TextInputMask } from 'react-native-masked-text'
+
 
 export default class FormBasicInfo extends Component {
 
@@ -96,36 +107,183 @@ export default class FormBasicInfo extends Component {
 
 	render() {
 		// const { teste } = this.props;
-		// console.log(teste)
+		console.log(this.state)
+
 
 		return (
-			<BlueContainer>
-				{/* <HeaderDecoration>
-						<View style={styles.OvalShapeView, {borderBottomEndRadius:'100%'}}></View>
-				</HeaderDecoration> */}
+			// <KeyboardAvoidingView
+			// 	behavior={Platform.OS == "ios" ? "padding" : "height"}
+			// 	style={styles.container}
+			// >
+			<KeyboardAvoidingView style={{flex:1}}  behavior={Platform.OS == "ios" ? "padding" : "height"}>
+			
+			{/* <Container style={{backgroundColor:'#ccc7', padding:5}}> */}
+			
+				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 				<MainContainer>
-					
-
+				{/* <ScrollView style={{flex:1}}> */}
 					<Header>
-						<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
-						<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
+						<Head style={{}}>
+							<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
+							<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
+						</Head>
+
+						<DivProgressBar style={{justifyContent:'space-evenly'}}>
+							<ActiveStepIconColor/>
+							<DesabledStepIconColor/>
+							<DesabledStepIconColor/>
+							<DesabledStepIconColor/>
+						</DivProgressBar>
+
 					</Header>
 
-					<DivProgressBar style={{justifyContent:'space-evenly'}}>
-						<ActiveStepIconColor/>
-						<DesabledStepIconColor/>
-						<DesabledStepIconColor/>
-						<DesabledStepIconColor/>
+					<Body style={{top:0}}>
+						<SubtittleContainer style={{height: 30}}>
+							<SecundaryTittle style={{fontWeight:'bold', color:'#5A6978'}}>Informações Básicas:</SecundaryTittle>
+						</SubtittleContainer>
+
+
+						<DivForm style={{}}>
+
+							<TextInput
+								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:20}}
+								label='Email'
+								keyboardType='email-address'
+								mode={'outlined'}
+								value={this.state.email || ''}
+								onChangeText={txt => this.setState({email: txt})}
+								theme={{
+									// roundness: 50,
+									colors: {
+									primary:'#1bc7cb',
+									underlineColor:'transparent',
+									}
+							}}/>
+
+
+							<TextInput
+								// maxLength={3}
+								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:40}}
+								label='Senha' 
+								returnKeyType='go'
+								mode={'outlined'}
+								secureTextEntry={true}
+								value={this.state.password || ''}
+								onChangeText={txt => this.setState({ password: txt })}
+								theme={{
+									// roundness: 50,
+									colors: {
+									primary:'#1bc7cb',
+									underlineColor:'transparent',
+									}
+							}}/>
+
+							<TextInput
+								// maxLength={3}
+								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:50}}
+								label='Confirme sua senha' 
+								returnKeyType='go'
+								mode={'outlined'}
+								secureTextEntry={true}
+								value={this.state.confirmPassword || ''}
+								onChangeText={txt => this.setState({ confirmPassword: txt })}
+								theme={{
+									// roundness: 50,
+									colors: {
+									primary:'#1bc7cb',
+									underlineColor:'transparent',
+									}
+							}}/>
+
+						</DivForm>
+					</Body>
+
+					<Footer>
+						<Div>
+							<ButtonSmallNext onPress={this.nextPage}>
+								<BtnText>Próximo</BtnText>
+							</ButtonSmallNext>
+						</Div>
+
+						{/* <DivSignOpions>
+							<ContainerLine>
+								<HorizontalLine/>
+									<Text>ou inscreva-se com</Text>
+								<HorizontalLine/>
+							</ContainerLine> 
+
+						<SignOptions>
+							<ButtonIcon>
+								<IconSignUpOptions source={require('../../../assets/facebook.png')} ></IconSignUpOptions>
+							</ButtonIcon>
+
+							<ButtonIcon>
+								<IconSignUpOptions source={require('../../../assets/google.png')} ></IconSignUpOptions>
+							</ButtonIcon>
+						</SignOptions>
+						</DivSignOpions> */}
+					</Footer>
 					
-					</DivProgressBar>
+
+					
+{/* 
+					
 
 					<SubtittleContainer>
 						<SecundaryTittle style={{fontWeight:'bold', color:'#5A6978'}}>Informações Básicas:</SecundaryTittle>
-					</SubtittleContainer>
+					</SubtittleContainer> */}
 
-					<DivForm>
-						<Form>
-							<DivInput> 
+					{/* <DivForm style={{backgroundColor: '#cc78'}}>
+						<Form style={{backgroundColor: '#ccc8'}}> */}
+							{/* <TextInput
+								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch'}}
+								label='Email'
+								keyboardType='email-address'
+								mode={'outlined'}
+								value={this.state.email || ''}
+								onChangeText={txt => this.setState({email: txt})}
+								theme={{
+									// roundness: 50,
+									colors: {
+									primary:'#1bc7cb',
+									underlineColor:'transparent',
+									}
+							}}/>
+
+							<TextInput
+								// maxLength={3}
+								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch'}}
+								label='Senha' 
+								returnKeyType='go'
+								mode={'outlined'}
+								secureTextEntry={true}
+								value={this.state.password || ''}
+								onChangeText={txt => this.setState({ password: txt })}
+								theme={{
+									// roundness: 50,
+									colors: {
+									primary:'#1bc7cb',
+									underlineColor:'transparent',
+									}
+							}}/>
+
+							<TextInput
+								// maxLength={3}
+								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch'}}
+								label='Confirme sua senha' 
+								returnKeyType='go'
+								mode={'outlined'}
+								secureTextEntry={true}
+								value={this.state.confirmPassword || ''}
+								onChangeText={txt => this.setState({ confirmPassword: txt })}
+								theme={{
+									// roundness: 50,
+									colors: {
+									primary:'#1bc7cb',
+									underlineColor:'transparent',
+									}
+							}}/>							 */}
+							{/* <DivInput> 
 								<FormLabel>E-mail:</FormLabel>
 								<ContainerTxtInput>
 									<MaterialIcons style={{marginRight:15}} name={'email'} size={20} color={'#000'}/>
@@ -137,9 +295,9 @@ export default class FormBasicInfo extends Component {
 									// textContentType={'emailAddress'}
 									/>
 								</ContainerTxtInput> 
-							</DivInput>
+							</DivInput> */}
 
-							<DivInput> 
+							{/* <DivInput> 
 								<FormLabel>senha:</FormLabel>
 								<ContainerTxtInput>
 									<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
@@ -149,9 +307,9 @@ export default class FormBasicInfo extends Component {
 									onChangeText={txt => this.setState({ password: txt })}
 									/>
 								</ContainerTxtInput> 
-							</DivInput>
+							</DivInput> */}
 
-							<DivInput> 
+							{/* <DivInput> 
 								<FormLabel>Confirme sua senha:</FormLabel>
 								<ContainerTxtInput>
 									<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
@@ -162,11 +320,11 @@ export default class FormBasicInfo extends Component {
 									onChangeText={txt => this.setState({ confirmPassword: txt })}
 									/>
 								</ContainerTxtInput> 
-							</DivInput>
-						</Form>
-					</DivForm>
+							</DivInput> */}
+						{/* </Form>
+					</DivForm> */}
 
-					<Div style={{flex:0.4}}>
+					{/* <Div style={{flex:0.4}}>
 						<ButtonSmallNext onPress={this.nextPage}>
 							<BtnText>Próximo</BtnText>
 						</ButtonSmallNext>
@@ -188,16 +346,19 @@ export default class FormBasicInfo extends Component {
 								<IconSignUpOptions source={require('../../../assets/google.png')} ></IconSignUpOptions>
 							</ButtonIcon>
 						</SignOptions>
-					</DivSignOpions>
+					</DivSignOpions> */}
 				
-
+				{/* </ScrollView> */}
 				</MainContainer>
-			</BlueContainer>
+				</TouchableWithoutFeedback>
+				
+			{/* </Container> */}
+			</KeyboardAvoidingView>
 		);
 	}
 }
 
-// const styles = StyleSheet.create({  
+const styles = StyleSheet.create({  
 // 	OvalShapeView: {    
 // 	width: '55%',
 // 	height: 45,
@@ -209,5 +370,9 @@ export default class FormBasicInfo extends Component {
 // 	]
 	 
 //   },
+
+container: {
+	flex:1
+}
  
-//  });
+ });

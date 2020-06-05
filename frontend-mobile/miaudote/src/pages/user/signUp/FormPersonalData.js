@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Button, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
-import { MaterialIcons } from '@expo/vector-icons'
+
+import { HelperText, TextInput } from 'react-native-paper';
+
+import { TextInputMask } from 'react-native-masked-text'
 
 import { 
 	CuteLine, 
@@ -44,8 +47,11 @@ import {
 	DivInputSmall,
 	FormTextInputSmall,
 	DivButtons,
-	ButtonSmallPrevious
+	ButtonSmallPrevious,
+	Head
 } from './styles'
+
+
 
 export default class FormPersonalData extends Component {
 
@@ -59,14 +65,14 @@ export default class FormPersonalData extends Component {
 			birthDate : '',
 			gender: '',
 			cpf: '',
-			ddd: '',
+			// ddd: '',
 			phone: '' 
 		}
 	}
 
 	validate = () => {
-		const { name, birthDate, gender, cpf, ddd, phone } = this.state
-		if (!name || !birthDate || !gender || !cpf || !ddd || !phone ) {
+		const { name, birthDate, gender, cpf, phone } = this.state
+		if (!name || !birthDate || !gender || !cpf || !phone ) {
 			alert('Ops... Todos os campos são obrigatórios')
 			return false
 		}
@@ -76,7 +82,7 @@ export default class FormPersonalData extends Component {
 	nextPage = ( props ) => {
 		if (!this.validate()) return
 
-		const { email, password, name, birthDate, gender, cpf, ddd, phone } = this.state
+		const { email, password, name, birthDate, gender, cpf, phone } = this.state
 
 		console.log(this.state)
 
@@ -89,7 +95,6 @@ export default class FormPersonalData extends Component {
 				birthDate: birthDate,
 				gender: gender,
 				cpf: cpf,
-				ddd: ddd,
 				phone: phone
 
 			},
@@ -101,15 +106,37 @@ export default class FormPersonalData extends Component {
 		this.props.navigation.navigate('FormBasicInfo')
 	}
 
+	unmask = () => {
+		const unmasked = this.cpfField.getRawValue()
+		console.log(unmasked)
+	}
+
 	render() {
 		// console.log(this.props.route.params.params.email)
+		// console.log(this.state)
 		return (
 			<BlueContainer>
+				<KeyboardAvoidingView style={{flex:1}}  behavior={Platform.OS == "ios" ? "padding" : "height"}>
 				{/* <HeaderDecoration>
 						<View style={styles.OvalShapeView}></View>
 				</HeaderDecoration> */}
+				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 				<MainContainer>
-					<Header>
+				<Header>
+						<Head style={{}}>
+							<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
+							<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
+						</Head>
+
+						<DivProgressBar style={{justifyContent:'space-evenly'}}>
+							<DesabledStepIconColor/>
+							<ActiveStepIconColor/>
+							<DesabledStepIconColor/>
+							<DesabledStepIconColor/>
+						</DivProgressBar>
+
+					</Header>
+					{/* <Header>
 						<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
 						<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
 					</Header>
@@ -119,7 +146,7 @@ export default class FormPersonalData extends Component {
 						<ActiveStepIconColor/>
 						<DesabledStepIconColor/>
 						<DesabledStepIconColor/>
-					</DivProgressBar>
+					</DivProgressBar> */}
 
 					<SubtittleContainer>
 						<SecundaryTittle style={{fontWeight:'bold', color:'#5A6978'}}>Diga mais sobre você:</SecundaryTittle>
@@ -127,22 +154,77 @@ export default class FormPersonalData extends Component {
 
 					<DivForm style={{marginTop:0, bottom:10}}>
 						<Form>
-							<DivInput> 
-								<FormLabel>Nome completo:</FormLabel>
-								<ContainerTxtInput>
-									<MaterialIcons style={{marginRight:15}} name={'email'} size={20} color={'#000'}/>
-									<FormTextInput
-										autoCorrect={false}
-										placeholder="ex: email@gmail.com"
-										keyboardType={'email-address'}
-										textContentType={'emailAddress'}
-										onChangeText={txt => this.setState({name: txt})}
-									/>
-								</ContainerTxtInput> 
-							</DivInput>
+							<TextInput
+									// maxLength={3}
+									// maxLength={8}
+									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:40}}
+									label='Nome completo' 
+									returnKeyType='go'
+									mode={'outlined'}
+									value={this.state.name || ''}
+									onChangeText={txt => this.setState({ name: txt })}
+									theme={{
+										// roundness: 50,
+										colors: {
+										primary:'#1bc7cb',
+										underlineColor:'transparent',
+										}
+							}}/>
+							
+						
+							 {/* <DivInputRow > */}
+							 <TextInput
+								style={{ backgroundColor: '#ffff',  height: 40, alignSelf: 'stretch', top:40}}
+								label="datanasc"
+								mode={'outlined'}
+								returnKeyType='go'
+								value={this.state.birthDate || ''}
+								ref={(ref) => this.birthDateField = ref}
+								onChangeText={text => {
+											this.setState({
+											birthDate: text
+											})}}
+								theme={{
+									// roundness: 50,
+									colors: {
+									primary:'#1bc7cb',
+									underlineColor:'transparent',
+								}}}
+								// render={props =>
+								// 	<TextInputMask
+								// 	{...props}
+								// 	type={'datetime'}
+								// 	value={this.state.birthDate}
+								// 	onChangeText={text => {
+								// 		this.setState({
+								// 		birthDate: text
+								// 		})
+								// 	}}
+								// 	options={{
+								// 		format: 'YYYY/MM/DD'
+								// 	}}
+								// />
+								// }
+							/>
 
-							<DivInputRow>
-								<DivInputMedium>
+							<TextInput
+								// maxLength={3}
+								style={{ backgroundColor: '#ffff',  height: 40, alignSelf: 'stretch', top:40}}
+								label='Sexo' 
+								returnKeyType='go'
+								mode={'outlined'}
+								value={this.state.gender || ''}
+								onChangeText={txt => this.setState({ gender: txt })}
+								theme={{
+									// roundness: 50,
+									colors: {
+									primary:'#1bc7cb',
+									underlineColor:'transparent',
+									}
+								}}
+							/>
+
+								{/*<DivInputMedium>
 									<FormLabel>Data de Nascimento:</FormLabel>
 									<ContainerTxtInput>
 										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
@@ -164,9 +246,111 @@ export default class FormPersonalData extends Component {
 											onChangeText={txt => this.setState({gender: txt})}
 										/>
 									</ContainerTxtInput> 
-								</DivInputMedium>
-							</DivInputRow>
+								</DivInputMedium> */}
+							{/* </DivInputRow> */}
+							<TextInput
+								// maxLength={3}
+								maxLength={11}
+								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:40}}
+								label='CPF' 
+								returnKeyType='go'
+								mode={'outlined'}
+								value={this.state.cpf || ''}
+								ref={(ref) => this.cpfField = ref}
+								onChangeText={text => {
+											this.setState({
+											cpf: text
+											})}}
+								theme={{
+									// roundness: 50,
+									colors: {
+									primary:'#1bc7cb',
+									underlineColor:'transparent',
+								}
+								}}
+								// render={props =>
+								// 	<TextInputMask
+								// 	{...props}
+								// 	type={'cpf'}
+								// 	value={this.state.cpf}
+								// 	onChangeText={text => {
+								// 		this.setState({
+								// 		cpf: text
+								// 		})
+								// 	}}
+								// 	options={{
+								// 		format: '999.999.999-99'
+								// 	}}
+								// 	ref={(ref) => this.cpfField = ref}
+								//  />
+								// }
+								
+							/>
 
+							{/* <DivInputRow> width:'30%' */}
+								{/* <TextInput
+									maxLength={4}
+									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:40}}
+									label='DDD' 
+									returnKeyType='go'
+									mode={'outlined'}
+									value={this.state.ddd || ''}
+									onChangeText={txt => this.setState({ ddd: txt })}
+									theme={{
+										// roundness: 50,
+										colors: {
+										primary:'#1bc7cb',
+										underlineColor:'transparent',
+										}
+									}}
+								/> */}
+
+								<TextInput
+										// maxLength={3}
+										// ,width:'70%'
+									maxLength={11}
+									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:40}}
+									label='Celular' 
+									returnKeyType='go'
+									mode={'outlined'}
+									value={this.state.phone || ''}
+									onChangeText={text => {
+												this.setState({
+												phone: text
+												})}}
+									ref={(ref) => this.phoneField = ref}
+									// onChangeText={txt => this.setState({ phone: txt })}
+									theme={{
+										// roundness: 50,
+										colors: {
+										primary:'#1bc7cb',
+										underlineColor:'transparent',
+										}
+									}}
+									// render={props =>
+									// 	<TextInputMask
+									// 	{...props}
+									// 	type={'cel-phone'}
+									// 	value={this.state.phone}
+									// 	onChangeText={text => {
+									// 		this.setState({
+									// 		phone: text
+									// 		})
+									// 	}}
+									// 	options={{
+									// 		maskType: 'BRL',
+									// 		withDDD: false,
+									// 		// format: '999.999.999-99'
+									// 	}}
+									//  />
+									// }
+								
+								/>
+
+							{/* </DivInputRow> */}
+
+
+{/*
 							<DivInput>
 							<FormLabel>CPF:</FormLabel>
 								<ContainerTxtInput>
@@ -203,7 +387,7 @@ export default class FormPersonalData extends Component {
 										/>
 									</ContainerTxtInput> 
 								</DivInputMedium>
-							</DivInputRow>
+							</DivInputRow> */}
 						</Form>
 					</DivForm>
 
@@ -218,6 +402,8 @@ export default class FormPersonalData extends Component {
 					</DivButtons>
 
 				</MainContainer>
+				</TouchableWithoutFeedback>
+				</KeyboardAvoidingView>
 			</BlueContainer>
 		);
 	}

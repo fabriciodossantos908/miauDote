@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 // padding:8px;
 export const BlueContainer = styled.View `
     flex: 1;
-
 `;
 
 // justifyContent: center;
@@ -15,6 +14,23 @@ export const MainContainer = styled.View `
     backgroundColor:#fff;
     padding:16px;
     
+`
+
+export const Header = styled.View `
+    flex: 1;
+`
+
+export const Body = styled.View `
+    flex: 3;
+    
+`
+
+// backgroundColor: #ccc8;
+// borderWidth: 1;
+// borderColor:#5A6978;
+
+export const Footer = styled.View `
+    flex: 1;
 `
 
 export const OvalView = styled.View `
@@ -29,15 +45,15 @@ export const OvalView = styled.View `
 `
 
  export const Div = styled.View `
-    flex: 1;
-    padding:8px;
+    flex:1;
     justifyContent: center;
     alignItems: center;
 `
+// height:50
 
 // borderWidth: 1;
     // borderColor:#000;
-export const Header = styled.View `
+export const Head = styled.View `
     flex: 0.5;
     justifyContent: center;
     alignItems: center;
@@ -73,7 +89,6 @@ export const DesabledStepIconColor = styled.View `
     // borderWidth:1;
 export const Form = styled.View `
     flex:1;
-    
     justifyContent:center;
     marginBottom:50;
    
@@ -107,10 +122,11 @@ export const BtnText = styled.Text `
 `
 
 export const DivSignOpions = styled.View `
-    flex: 0.8;
+    flex: 1;
     width: 100%;
     justifyContent: center;
     alignItems: center;
+    backgroundColor: #c78
 
 `
 
@@ -138,7 +154,7 @@ export const HorizontalLine = styled.View `
 
 
 export const SignOptions = styled.View `
-    flex: 1;
+height:50
     width: 100%;
     justifyContent: center;
     alignItems: center;
@@ -162,9 +178,9 @@ export const ButtonIcon = styled.TouchableOpacity `
     // marginBottom:10
 
 export const SubtittleContainer = styled.View `
-    flex:0.2;
+    
     padding:8px;
-    top:10;
+    top:15;
 `
 
 
@@ -262,8 +278,8 @@ export const ButtonSmallPrevious = styled.TouchableOpacity `
 
 export const ButtonSmallNext = styled.TouchableOpacity `
     position: absolute; 
-    height: 45px;
-	width: 130px;
+    height: 45;
+	width: 130;
     right: 10;
     justifyContent:center;
     alignItems:center;
