@@ -1,6 +1,6 @@
 const { Usuario } = require('../../models');
 const autenticacaoHelper = require('../../../helpers/AutenticacaoHelper');
-const emailConfirmation = require('../../../helpers/EmailConfirmation');
+const sendEmail = require('../../../helpers/sendEmail');
 
 module.exports = {
 
@@ -44,7 +44,7 @@ module.exports = {
 
       usuario = await Usuario.create(usuario);
 
-      await emailConfirmation.emailConfirmation(usuario.email);
+      await sendEmail.emailConfirmation(usuario.email);
 
 
 

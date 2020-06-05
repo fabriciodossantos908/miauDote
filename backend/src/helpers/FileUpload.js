@@ -36,6 +36,22 @@ module.exports = {
          console.log(error);
          return;
       };
+   },
+   async delete(fileName) {
+      try {
+         const file = await bucket.file('profile/'+fileName);
+         await file.delete((err, apiResponse) => {
+            if(err){
+               console.log(err);
+               return;
+            }
+            console.log('Arquivo deletado');
+            return true;
+         })
+      } catch (error) {
+         console.log(error);
+         return false;
+      }
    }
 }
 
