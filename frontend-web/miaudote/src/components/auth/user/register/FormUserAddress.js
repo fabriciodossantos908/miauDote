@@ -1,10 +1,33 @@
 import React, { Component } from 'react'
 import Cep from '../../../../api/cep'
+import Axios from 'axios'
 import { Container, Row, Col, Button } from '../../../../../node_modules/react-bootstrap';
+
 
 const CepApi = new Cep()
 
 export default class UserAddress extends Component {
+
+    createUser = () => {
+        if(this.SendCompany){
+            console.log("usuário cadastrado!.")
+        }
+
+        return alert("Verifique se todos os campos estão preenchidos!.")
+        
+    }
+
+    SendCompany = () => {
+        const { values } = this.props
+
+        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuario/registrar',
+        values)
+            .then(
+                (res) => {
+                    console.log("created!" + res.data)
+                });
+
+    }
 
     consultCep(event) {
         const address = CepApi.getAddress()
@@ -113,7 +136,7 @@ export default class UserAddress extends Component {
                             onChange={handleChange}
                         />
                     </Row>
-                    <Button variant="outline-primary" type="submit" > Criar</Button>
+                    <Button variant="outline-primary" onClick={this.createUser} > Criar</Button>
                 </Container>
             </div>
         )
