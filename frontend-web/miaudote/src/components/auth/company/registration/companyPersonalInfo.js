@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import Axios from 'axios'
+import InputMask from 'react-input-mask'
 
 const Header = () => {
     return (
@@ -53,8 +54,9 @@ export class companyPersonalInfo extends Component {
     }
     render() {
         const { values, handleChange } = this.props;
+        console.log(values);
         return (
-            <div>
+            <React.Fragment>
                 <Header />
                 <Container>
                     <Row className="justify-content-md-left">
@@ -62,10 +64,12 @@ export class companyPersonalInfo extends Component {
                             <label htmlFor="celular_representante">Celular do representante</label>
                         </Col>
                         <Col xs={3}>
-                            <input
+                            <InputMask
                                 type="text"
+                                mask="+55 (99) 9 9999-9999"
+                                maskChar="_"
                                 defaultValue={values.celular_representante}
-                                placeholder="(11) 911211-1231"
+                                placeholder="(11) 9 9999-9999"
                                 name="celular_representante"
                                 id="celular_representante"
                                 onChange={handleChange}
@@ -77,10 +81,12 @@ export class companyPersonalInfo extends Component {
                             <label htmlFor="celular_representante">Telefone</label>
                         </Col>
                         <Col xs={3}>
-                            <input
+                            <InputMask
                                 type="text"
+                                mask="(11) 9999-9999"
+                                maskChar="_"
                                 defaultValue={values.telefone}
-                                placeholder="(11) 51211-1231"
+                                placeholder="(11) 9999-9999"
                                 name="telefone"
                                 id="telefone"
                                 onChange={handleChange}
@@ -93,7 +99,9 @@ export class companyPersonalInfo extends Component {
                         </Col>
                         <Col xs={3}>
                             <select>
-                                <option>teste</option>
+                                <option>Test 01</option>
+                                <option>Test 02</option>
+                                <option>Test 03</option>
                             </select>
                         </Col>
                     </Row>
@@ -132,10 +140,12 @@ export class companyPersonalInfo extends Component {
                             <label htmlFor="cnpj">CNPJ</label>
                         </Col>
                         <Col xs={3}>
-                            <input
+                            <InputMask
                                 type="text"
+                                mask="99.999.999/9999-99"
+                                maskChar="_"
                                 defaultValue={values.cnpj}
-                                placeholder="19.522.543/0001-05"
+                                placeholder="99.999.999/9999-99"
                                 name="cnpj"
                                 id="cnpj"
                                 onChange={handleChange}
@@ -151,7 +161,7 @@ export class companyPersonalInfo extends Component {
                         </Col>
                     </Row>
                 </Container>
-            </div>
+            </React.Fragment>
         )
     }
 }

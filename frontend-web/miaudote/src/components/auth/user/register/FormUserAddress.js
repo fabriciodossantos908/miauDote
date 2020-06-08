@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import Cep from '../../../../api/cep'
+<<<<<<< HEAD
 import { Container, Row, Col, Button } from 'react-bootstrap';
+=======
+import { Container, Row, Col, Button } from '../../../../../node_modules/react-bootstrap';
+>>>>>>> 052cc8654424067d30b89d58b10ce0e1b75b131a
 
 const CepApi = new Cep()
 

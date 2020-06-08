@@ -29,21 +29,7 @@ export default class companyTypeInfo extends Component {
         return (
             <div>
                 <h1>Confirmação de dados</h1>
-                <h1>Cadastro de usuario</h1>
-                <h2>Indivções básicas</h2>
-                <label htmlFor="tipo_servico">tipo_servico</label>
-                <select>
-                    <option>teste</option>
-                </select>
-                <label htmlFor="email_representante">Email do representante</label>
-                <input
-                    type="email"
-                    defaultValue={values.email_representante}
-                    placeholder="pedro@miaudote.com"
-                    name="email_representante"
-                    id="email_representante"
-                    onChange={handleChange}
-                />
+
 
                 {/* Image field */}
                 <label htmlFor="logo_empresa">Logo da empresa</label>

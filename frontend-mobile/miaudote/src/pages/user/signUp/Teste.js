@@ -11,13 +11,13 @@ import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity, Button } fr
 
 export default class Teste extends Component {
 
-    constructor(props) {
+    constructor(props){
 		super(props)
+		const { params } = this.props.route.params
 		this.state = {
-			email: '',
-			senha: ''
+			name: params.name,
 		}
-    }
+	}
     
     teste = () => {
 		console.log('eu sou um TESTEEEEEE!!!!')
@@ -26,9 +26,7 @@ export default class Teste extends Component {
 	}
 
     render(){
-
-        
-
+        console.log("Vim da tela teste" + this.state)
         return(
             <>
                 <Text>teste</Text>

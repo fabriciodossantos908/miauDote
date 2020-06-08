@@ -1,14 +1,15 @@
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+   service: 'gmail',
+   auth: {
+      user: "sds.miaudote@gmail.com",
+      pass: "H0r1z0nt4l"
+   }
+});
+
 module.exports = {
    emailConfirmation(emailDestinatario) {
-      const nodemailer = require('nodemailer');
-
-      const transporter = nodemailer.createTransport({
-         service: 'gmail',
-         auth: {
-            user: "sds.miaudote@gmail.com",
-            pass: "H0r1z0nt4l"
-         }
-      });
 
       const html = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
             <html style="width:100%;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0;">
@@ -114,7 +115,7 @@ module.exports = {
                               <td width="560" align="center" valign="top" style="padding:0;Margin:0;"> 
                               <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"> 
                                  <tr style="border-collapse:collapse;"> 
-                                 <td align="center" style="padding:0;Margin:0;font-size:0px;"><a target="_blank" href="https://stripo.email" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;font-size:14px;text-decoration:underline;color:#1376C8;"><img src="https://hfdewi.stripocdn.email/content/guids/91d143f2-d7b5-4a1e-910a-dcff309ba358/images/61551589887628948.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;width:126px;height:117px;" width="126" class="adapt-img" height="126"></a></td> 
+                                 <td align="center" style="padding:0;Margin:0;font-size:0px;"><a target="_blank" href="#" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;font-size:14px;text-decoration:underline;color:#1376C8;"><img src="https://hfdewi.stripocdn.email/content/guids/91d143f2-d7b5-4a1e-910a-dcff309ba358/images/61551589887628948.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;width:126px;height:117px;" width="126" class="adapt-img" height="126"></a></td> 
                                  </tr> 
                                  <tr style="border-collapse:collapse;"> 
                                  <td align="center" height="65" style="padding:0;Margin:0;"></td> 
@@ -161,7 +162,6 @@ module.exports = {
          from: 'Miaudote <no-reply@miaudote.com>',
          to: emailDestinatario,
          subject: 'Confirmação de endereço de e-mail.',
-         text: 'Bem fácil, não?',
          html: html
       }
 
@@ -173,5 +173,22 @@ module.exports = {
          }
       });
 
+   },
+   forgotPassword(userEmail){
+
+      const mailOptions = {
+         from: 'Miaudote <no-reply@miaudote.com>',
+         to: userEmail,
+         subject: 'Esqueceu sua senha?',
+         html: `<a href='urldeumapaginafeitapelofront'></a?`
+      }
+
+      transporter.sendMail(mailOptions, (error, info) => {
+         if (error) {
+            console.log(error);
+         } else {
+            console.log('Email enviado: ' + info.response);
+         }
+      });
    }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import Axios from 'axios'
+import InputMask from 'react-input-mask'
 
 const Header = () => {
     return (
@@ -23,10 +24,33 @@ const Header = () => {
 
 export default class CompanyAddress extends Component {
 
+    //validation create user (create with success !).
+
+    companyInput = () => {
+        if(this.SendCompany()){
+                console.log("Usuário cadastrado com sucesso ! ")
+        }
+ 
+        return alert("ops algo deu errado ! ")
+        
+    }
+
     // Going to the next step with all saved
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
+    }
+
+    SendCompany = () => {
+        const { values } = this.props
+
+        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas/registrar',
+        values)
+            .then(
+                (res) => {
+                    console.log("created!" + res.data)
+                });
+
     }
 
     SeachCepStart = (event) => {
@@ -58,7 +82,7 @@ export default class CompanyAddress extends Component {
     
     render() {
         const { values, handleChange } = this.props;
-        // console.log(values)
+            //console.log(values)
         return (
             <div>
                 <Header />
@@ -68,9 +92,11 @@ export default class CompanyAddress extends Component {
                             <label htmlFor="">Cep</label>
                         </Col>
                         <Col xs={3}>
-                            <input
+                            <InputMask
                                 type="text"
                                 name="cep"
+                                mask="99999-999"
+                                maskChar="_"
                                 placeholder="cep"
                                 defaultValue={values.cep}
                                 onChange={handleChange}
@@ -169,7 +195,7 @@ export default class CompanyAddress extends Component {
                             <Button variant="outline-primary" onClick={this.props.prevStep}>Voltar</Button>
                         </Col>
                         <Col xs={3}>
-                            <Button variant="outline-primary" onClick={this.props.nextStep}>Próximo</Button>
+                            <Button variant="outline-primary" onClick={this.companyInput}>Próximo</Button>
                         </Col>
                     </Row>
                 </Container>

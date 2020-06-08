@@ -1,6 +1,6 @@
 const { Usuario } = require('../../models');
 const autenticacaoHelper = require('../../../helpers/AutenticacaoHelper');
-const emailConfirmation = require('../../../helpers/emailConfirmation');
+const sendEmail = require('../../../helpers/sendEmail');
 
 module.exports = {
 
@@ -44,13 +44,14 @@ module.exports = {
 
       usuario = await Usuario.create(usuario);
 
-      await emailConfirmation.emailConfirmation(usuario.email);
+      await sendEmail.emailConfirmation(usuario.email);
 
 
 
       usuario.senha = undefined;
       res.status(201).json({
-        mensagem: "Usuario registrado com sucesso, confirme seu email para prosseguirmos"
+        id_usuario: usuario.id,
+        mensagem: 'Usuario registrado com sucesso, confirme seu email para prosseguirmos'
       })
 
     } catch (error) {

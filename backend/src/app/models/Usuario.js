@@ -188,20 +188,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     url_foto: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: 'Este campo não pode ser nulo.'
-        },
-        len: {
-          args: [4, 255],
-          msg: 'tamanho da URL inválido'
-        },
-        isUrl: {
-          args: true,
-          msg: 'URL inválida'
-        }
-      }
+      allowNull: true
     },
     permissions: {
       type: DataTypes.STRING
