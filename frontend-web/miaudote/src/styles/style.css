@@ -1,0 +1,34 @@
+.parent {
+    position: relative;
+    width: 100%;
+}
+
+.one, .two {
+    position: absolute;
+    height: 300px;
+    width: 65%;
+}
+
+.one {
+    left: 5;
+    top: 20;
+    background-color: black;
+    clip-path: polygon(0% 50%, 0% 0%, 100% 0%, 0% 100%);
+}
+
+.one h1, h2 {
+    color: white;
+}
+
+.two {
+    right: 5;
+    top: 20;
+    background-color: salmon;
+    clip-path: polygon(100% 0, 100% 0%, 10% 100%, 10% 100%);
+}
+
+.two > Row {
+    width: 250px;
+    height: 100px;
+    margin-left: auto
+}

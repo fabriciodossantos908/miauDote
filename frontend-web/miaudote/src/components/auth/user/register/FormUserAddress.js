@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Cep from '../../../../api/cep'
 import Axios from 'axios'
-import { Container, Row, Col, Button } from '../../../../../node_modules/react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 
 const CepApi = new Cep()
