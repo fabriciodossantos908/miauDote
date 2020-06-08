@@ -5,6 +5,7 @@ import Home from './pages/home'
 import FormCompany from './components/auth/company/registration/FormCompany'
 import LoginCompany from './components/auth/company/login/LoginCompany'
 import FormUser from './components/auth/user/register/FormUser'
+import Test from './pages/test'
 import Navbar from './components/baseComponent/Navbar'
 
 function Routes() {
@@ -31,6 +32,9 @@ function Routes() {
 
                 <Route path='/loginUser' exact >
                     <FormUser />
+                </Route>
+                <Route path='/test' exact >
+                    <Test />
                 </Route>
             </Switch>
 

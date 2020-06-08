@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
-import FormUserBaseInfo from './FormUserBaseInfo'
-import FormPersonalInfo from './FormPersonalInfo'
+import FormUserInitialInfo from './FormUserInitialnfo'
+import FormPersonalInfo from './FormUserPersonalInfo'
+import FormUserAddress from './FormUserAddress'
+import Confirm from './Confirm'
 import Home from '../../../../pages/home'
+import '../../../../api/cep'
+import Cep from '../../../../api/cep';
 
 export default class UserInfo extends Component {
     constructor(props) {
@@ -28,6 +32,7 @@ export default class UserInfo extends Component {
 
         this.handleChange = this.handleChange.bind(this)
         this.nextStep = this.nextStep.bind(this)
+        this.prevStep = this.prevStep.bind(this)
     }
 
     nextStep() {
@@ -39,6 +44,16 @@ export default class UserInfo extends Component {
         });
     };
 
+    prevStep() {
+        const { step } = this.state
+        const prev = step - 1;
+
+        this.setState({
+            step: prev
+        });
+        return console.log("Should make you go back")
+    };
+
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -48,20 +63,43 @@ export default class UserInfo extends Component {
     render() {
         const { step } = this.state
         const state = this.state
+
         switch (step) {
-            case 1:
-                return (
-                    <FormUserBaseInfo
-                        nextStep={this.nextStep}
-                        handleChange={this.handleChange}
-                        state={state}
-                    />
-                );
+            case 1: return (
+                < FormUserInitialInfo
+                    seachCep={Cep}
+                    nextStep={this.nextStep}
+                    prevStep={this.prevStep}
+                    handleChange={this.handleChange}
+                    state={state}
+                />
+            );
             case 2: {
                 return (
                     <FormPersonalInfo
                         nextStep={this.nextStep}
+                        prevStep={this.prevStep}
                         handleChange={this.handleChange}
+                        state={state}
+                    />
+
+                );
+            }
+            case 3: {
+                return (
+                    <FormUserAddress
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        state={state}
+                    />
+
+                );
+            }
+            case 4: {
+                return (
+                    <Confirm
+                        nextStep={this.nextStep}
                         state={state}
                     />
 

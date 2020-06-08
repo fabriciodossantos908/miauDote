@@ -30,6 +30,7 @@ const Header = () => {
     return (
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="/">MiauDote</Navbar.Brand>
+            <Navbar.Brand href="/test">teste</Navbar.Brand>
             <Links />
             <Form inline>
                 <FormControl type="text" placeholder="procurar" className="mr-sm-2" />

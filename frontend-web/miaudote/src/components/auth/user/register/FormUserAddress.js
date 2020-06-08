@@ -1,91 +1,120 @@
 import React, { Component } from 'react'
-import Axios from "axios";
+import Cep from '../../../../api/cep'
+import { Container, Row, Col, Button } from 'react-bootstrap';
+
+const CepApi = new Cep()
+
 export default class UserAddress extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            cep: "",
-            cidade: "",
-            bairro: "",
-            logradouro: "",
-            uf: "",
-            numeroCasa: "",
-            permissions: "",
-            userAddressErrors: ""
-        }
+    consultCep(event) {
+        const address = CepApi.getAddress()
 
-        this.handleChange = this.handleChange.bind(this)
-
-    }
-
-    // Seach cep 
-    searchCep(event) {
-        const cepUrl = "https://viacep.com.br/ws/";
-        const ResponseFormat = "/json/";
-        const cep = event.target.value;
-        console.log(cepUrl + cep + ResponseFormat);
-        // Axios.get(cepUrl + cep + ResponseFormat)
-    }
-
-    handleChange(event) {
         this.setState({
-            [event.target.name]: event.target.value
-        });
+            [event.target.name.bairro]: address.bairro
+        })
     }
 
-    handleSubmit(event) {
-        console.log("form enviado!!");
-    }
     render() {
+        const { state, handleChange } = this.props
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        name="cep"
-                        placeholder="cep"
-                        value={this.state.cep}
-                        onChange={this.searchCep}
-                    />
-                    <input
-                        type="email"
-                        name="cidade"
-                        placeholder="email"
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        name="bairro"
-                        placeholder="celular"
-                        value={this.state.celular}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        name="logradouro"
-                        placeholder="cof"
-                        value={this.state.cpf}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        name="uf"
-                        placeholder="cep"
-                        value={this.state.cep}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        name="numeroCasa"
-                        placeholder="bairro"
-                        value={this.state.bairro}
-                        onChange={this.handleChange}
-                    />
-
-                    <button type="submit" > Criar</button>
-                </form>
+                <Container>
+                    <Row>
+                        <h1>
+                            Seu endereco
+                        </h1>
+                    </Row>
+                    <Row>
+                        <h2>Etapa:{state.step}</h2>
+                    </Row>
+                </Container>
+                <Container className="mt-1 mr-5 al-center">
+                    <Row>
+                        <label>Cep</label>
+                    </Row>
+                    <Row>
+                        <input
+                            type="text"
+                            name="cep"
+                            placeholder="cep"
+                            value={state.cep}
+                            onChange={handleChange}
+                        />
+                    </Row>
+                    <Row xs={5}>
+                        <Col>
+                            <Row>
+                                <label>Cidade</label>
+                            </Row>
+                            <Row>
+                                <input
+                                    type="text"
+                                    name="cidade"
+                                    placeholder="Osasco"
+                                    value={state.cidade}
+                                    onChange={handleChange}
+                                />
+                            </Row>
+                        </Col>
+                        <Col>
+                            <Row>
+                                <label>Bairro</label>
+                            </Row>
+                            <Row>
+                                <input
+                                    type="text"
+                                    name="bairro"
+                                    placeholder="jardins das macieiras"
+                                    value={state.bairro}
+                                    onChange={handleChange}
+                                />
+                            </Row>
+                        </Col>
+                    </Row>
+                    <Row xs={5}>
+                        <Col>
+                            <Row>
+                                <label>Logradouro</label>
+                            </Row>
+                            <Row>
+                                <input
+                                    type="text"
+                                    name="logradouro"
+                                    placeholder="logradouro"
+                                    value={state.logradouro}
+                                    onChange={handleChange}
+                                />
+                            </Row>
+                        </Col>
+                        <Col>
+                            <Row>
+                                <label>Numero da residência</label>
+                            </Row>
+                            <Row>
+                                <input
+                                    type="text"
+                                    name="numeroCasa"
+                                    placeholder="500"
+                                    value={state.numero}
+                                    onChange={handleChange}
+                                />
+                            </Row>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <label>Estado</label>
+                    </Row>
+                    <Row>
+                        <input
+                            type="text"
+                            name="uf"
+                            placeholder="São Paulo"
+                            value={state.uf}
+                            onChange={handleChange}
+                        />
+                    </Row>
+                    <Button variant="outline-primary" type="submit" > Criar</Button>
+                </Container>
             </div>
         )
     }
