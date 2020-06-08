@@ -1,18 +1,6 @@
-import { Component } from 'react'
 import Axios from "axios";
 
 export class Company {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            company: ""
-        }
-
-        // Check the options to bind
-        this.companyList = this.companyList.bind(this);
-        this.createCompany = this.createCompany.bind(this);
-    }
     // get all company 
     companyList = () => {
         Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas')
@@ -27,10 +15,11 @@ export class Company {
 
     // Create a new company
     createCompany = (company) => {
-        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresa', company)
+        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas/registrar', company)
             .then(
                 (res) => {
                     console.log("It's really works, finnaly a new company!", res.data)
+                    res.status(201)
                 });
     }
 

@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import Axios from 'axios'
 import InputMask from 'react-input-mask'
+import Company from '../../../../api/company'
+
+const apiCompany = new Company()
 
 const Header = () => {
     return (
@@ -26,31 +29,37 @@ export default class CompanyAddress extends Component {
 
     //validation create user (create with success !).
 
-    companyInput = () => {
-        if(this.SendCompany()){
-                console.log("Usuário cadastrado com sucesso ! ")
+    createCompany = () => {
+        const { state } = this.props
+        const company = {
+            nome_representante: state.nome_representante,
+            email_representante: state.email_representante,
+            celular_representante: state.celular_representante,
+            razao_social: state.razao_social,
+            nome_empresa: state.nome_empresa,
+            cnpj: state.cnpj,
+            telefone: state.telefone,
+            cep: state.cep,
+            cidade: state.cidade,
+            bairro: state.bairro,
+            logradouro: state.logradouro,
+            numero: state.numero,
+            complemento: state.complemento,
+            uf: state.uf,
+            id_tipo_servico: state.id_tipo_servico,
+            url_foto: state.url_foto,
+            permissions: state.permissions,
+            senha: state.senha
         }
- 
-        return alert("ops algo deu errado ! ")
-        
+        console.log(company)
+        apiCompany.createCompany(company)
+                
     }
 
     // Going to the next step with all saved
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
-    }
-
-    SendCompany = () => {
-        const { values } = this.props
-
-        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas/registrar',
-        values)
-            .then(
-                (res) => {
-                    console.log("created!" + res.data)
-                });
-
     }
 
     SeachCepStart = (event) => {
@@ -81,12 +90,11 @@ export default class CompanyAddress extends Component {
     }
     
     render() {
-        const { values, handleChange } = this.props;
-            //console.log(values)
+        const { handleChange, state } = this.props;
         return (
             <div>
                 <Header />
-                <Container>
+                <Container variant='primary'>
                     <Row className="justify-content-md-left">
                         <Col xs={3}>
                             <label htmlFor="">Cep</label>
@@ -98,7 +106,7 @@ export default class CompanyAddress extends Component {
                                 mask="99999-999"
                                 maskChar="_"
                                 placeholder="cep"
-                                defaultValue={values.cep}
+                                defaultValue={state.cep}
                                 onChange={handleChange}
                                 onKeyUp={this.SeachCepStart}
                             />
@@ -113,7 +121,7 @@ export default class CompanyAddress extends Component {
                                 type="text"
                                 name="cidade"
                                 placeholder="cidade"
-                                defaultValue={values.cidade}
+                                defaultValue={state.cidade}
                                 onChange={handleChange}
                             />
                         </Col>
@@ -127,7 +135,7 @@ export default class CompanyAddress extends Component {
                                 type="text"
                                 name="bairro"
                                 placeholder="jardim boas novas"
-                                defaultValue={values.bairro}
+                                defaultValue={state.bairro}
                                 onChange={handleChange}
                             />
                         </Col>
@@ -141,7 +149,7 @@ export default class CompanyAddress extends Component {
                                 type="text"
                                 name="logradouro"
                                 placeholder="alameda trakinas"
-                                defaultValue={values.logradouro}
+                                defaultValue={state.logradouro}
                                 onChange={handleChange}
                             />
                         </Col>
@@ -155,7 +163,7 @@ export default class CompanyAddress extends Component {
                                 type="text"
                                 name="numero"
                                 placeholder="500"
-                                defaultValue={values.numero}
+                                defaultValue={state.numero}
                                 onChange={handleChange}
                             />
                         </Col>
@@ -169,7 +177,7 @@ export default class CompanyAddress extends Component {
                                 type="text"
                                 name="complemento"
                                 placeholder="complemento"
-                                defaultValue={values.complemento}
+                                defaultValue={state.complemento}
                                 onChange={handleChange}
                             />
                         </Col>
@@ -183,7 +191,7 @@ export default class CompanyAddress extends Component {
                                 type="text"
                                 name="uf"
                                 placeholder="uf"
-                                defaultValue={values.uf}
+                                defaultValue={state.uf}
                                 onChange={handleChange}
                             />
                         </Col>
@@ -195,7 +203,7 @@ export default class CompanyAddress extends Component {
                             <Button variant="outline-primary" onClick={this.props.prevStep}>Voltar</Button>
                         </Col>
                         <Col xs={3}>
-                            <Button variant="outline-primary" onClick={this.companyInput}>Próximo</Button>
+                            <Button variant="outline-primary" onClick={this.createCompany}>Criar</Button>
                         </Col>
                     </Row>
                 </Container>

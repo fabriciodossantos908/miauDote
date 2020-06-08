@@ -10,7 +10,6 @@ export class FormCompany extends Component {
         this.state = {
             // Reveal the actually registration step
             step: 1,
-            values: {
             nome_representante: "",
             email_representante: "",
             celular_representante: "",
@@ -28,8 +27,7 @@ export class FormCompany extends Component {
             id_tipo_servico: "1",
             url_logo: "https://urlFotoTeste.jpg",
             permissions: "COMPANY",
-            senha: ""
-            },
+            senha: "",
             senha_confirmation: "",
             company_error: ""
         }
@@ -60,7 +58,6 @@ export class FormCompany extends Component {
 
     render() {
         const { step } = this.state
-        const values = this.state
         switch (step) {
             case 1:
                 return (
@@ -69,8 +66,6 @@ export class FormCompany extends Component {
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
                         state={this.state}
-                        values={values}
-                        // services={service}
                     />
                 );
             case 2:
@@ -79,7 +74,7 @@ export class FormCompany extends Component {
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
-                        values={values}
+                        state={this.state}
                     />
                 );
             case 3:
@@ -88,7 +83,7 @@ export class FormCompany extends Component {
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
-                        values={values}
+                        state={this.state}
                     />
                 );
             default: return <Home />

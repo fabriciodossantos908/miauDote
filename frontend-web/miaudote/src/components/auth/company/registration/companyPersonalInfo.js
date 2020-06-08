@@ -53,8 +53,7 @@ export class companyPersonalInfo extends Component {
 
     }
     render() {
-        const { values, handleChange } = this.props;
-        console.log(values);
+        const { state, handleChange } = this.props;
         return (
             <React.Fragment>
                 <Header />
@@ -68,7 +67,7 @@ export class companyPersonalInfo extends Component {
                                 type="text"
                                 mask="+55 (99) 9 9999-9999"
                                 maskChar="_"
-                                defaultValue={values.celular_representante}
+                                defaultValue={state.celular_representante}
                                 placeholder="(11) 9 9999-9999"
                                 name="celular_representante"
                                 id="celular_representante"
@@ -85,7 +84,7 @@ export class companyPersonalInfo extends Component {
                                 type="text"
                                 mask="(11) 9999-9999"
                                 maskChar="_"
-                                defaultValue={values.telefone}
+                                defaultValue={state.telefone}
                                 placeholder="(11) 9999-9999"
                                 name="telefone"
                                 id="telefone"
@@ -112,7 +111,7 @@ export class companyPersonalInfo extends Component {
                         <Col xs={3}>
                             <input
                                 type="text"
-                                defaultValue={values.razao_social}
+                                defaultValue={state.razao_social}
                                 placeholder="miaudote s.a"
                                 name="razao_social"
                                 id="razao_social"
@@ -127,7 +126,7 @@ export class companyPersonalInfo extends Component {
                         <Col xs={3}>
                             <input
                                 type="text"
-                                defaultValue={values.nome_empresa}
+                                defaultValue={state.nome_empresa}
                                 placeholder="Miaudote"
                                 name="nome_empresa"
                                 id="nome_empresa"
@@ -144,7 +143,7 @@ export class companyPersonalInfo extends Component {
                                 type="text"
                                 mask="99.999.999/9999-99"
                                 maskChar="_"
-                                defaultValue={values.cnpj}
+                                defaultValue={state.cnpj}
                                 placeholder="99.999.999/9999-99"
                                 name="cnpj"
                                 id="cnpj"

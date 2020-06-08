@@ -50,7 +50,7 @@ export class companyBaseInfo extends Component {
 
 
     render() {
-        const { values, handleChange } = this.props
+        const { state, handleChange } = this.props
         return (
             <div>
                 <Header />
@@ -63,11 +63,11 @@ export class companyBaseInfo extends Component {
 
                             <input
                                 type="text"
-                                defaultValue={values.nome_representante}
+                                defaultValue={state.nome_representante}
                                 placeholder="pedro"
                                 name="nome_representante"
                                 id="nome_representante"
-                            // onChange={handleChange}
+                                onChange={handleChange}
                             />
                         </Col>
                     </Row>
@@ -80,7 +80,7 @@ export class companyBaseInfo extends Component {
 
                             <input
                                 type="email"
-                                defaultValue={values.email_representante}
+                                defaultValue={state.email_representante}
                                 placeholder="pedro@miaudote.com"
                                 name="email_representante"
                                 id="email_representante"
@@ -97,7 +97,7 @@ export class companyBaseInfo extends Component {
 
                             <input
                                 type="password"
-                                defaultValue={values.senha}
+                                defaultValue={state.senha}
                                 placeholder="senha"
                                 name="senha"
                                 id="senha"
@@ -114,7 +114,7 @@ export class companyBaseInfo extends Component {
 
                             <input
                                 type="password"
-                                defaultValue={values.senha_confirmation}
+                                defaultValue={state.senha_confirmation}
                                 placeholder="Repita a senha"
                                 name="senha_confirmation"
                                 id="senha_confirmation"
