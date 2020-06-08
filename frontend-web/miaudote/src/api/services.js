@@ -1,26 +1,13 @@
-import React from 'react'
 import Axios from "axios";
 
 export class Services {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            services: []
-        }
-
-        this.servicesList = this.servicesList.bind(this);
-    }
-
-
     // get servicess using axios 
 
     servicesList = () => {
         Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/servicos')
             .then(
                 (res) => {
-                    const services = res.data;
-                    this.setState({ services })
+                    const services = {tipo_servico: res.data};
                     console.log(JSON.stringify(services))
                 })
     }
@@ -34,13 +21,6 @@ export class Services {
             )
     }
 
-    render() {
-        const services = this.state
-        return (
-            <div>
-                <h1> that's are all the services types {services}</h1>
-            </div>
-        )
-    }
 }
+
 export default Services;

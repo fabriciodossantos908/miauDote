@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Alert } from 'react-bootstrap'
 import Axios from 'axios'
 import InputMask from 'react-input-mask'
 import Company from '../../../../api/company'
@@ -51,8 +51,11 @@ export default class CompanyAddress extends Component {
             permissions: state.permissions,
             senha: state.senha
         }
-        console.log(company)
-        apiCompany.createCompany(company)
+        if (apiCompany.createCompany(company)) {
+            return( <Alert>Cadastro efetuado com sucesso!</Alert>)
+        }else {
+            return( <Alert>Cadastro efetuado com sucesso!</Alert>)
+        }
                 
     }
 
@@ -70,7 +73,7 @@ export default class CompanyAddress extends Component {
         }
         baseUrl.midCep = event.target.value
         baseUrl.midCep.length === 8
-        
+
             ? Axios(baseUrl.start + baseUrl.midCep + baseUrl.end)
                 .then(
                     (res) => {
@@ -81,16 +84,17 @@ export default class CompanyAddress extends Component {
 
         // console.log(JSON.stringify(baseUrl.start + baseUrl.midCep + baseUrl.end));
     }
-    
+
     // Pick the cep require and display on address fields
     showPlace = () => {
         this.setState({
             // [target.cidade.value] : res.data.logradouro
         })
     }
-    
+
     render() {
         const { handleChange, state } = this.props;
+        console.log(state)
         return (
             <div>
                 <Header />
