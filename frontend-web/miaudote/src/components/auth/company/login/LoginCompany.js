@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
+import { Container, Row } from 'react-bootstrap'
 
 export class loginCompany extends Component {
     constructor(props) {
@@ -49,25 +50,32 @@ export class loginCompany extends Component {
     render() {
         const values = this.state
         return (
-            <div>
-                <h1>LoginCompany</h1>
-                <label htmlFor="cnpj">CNPJ</label>
-                <input
-                    defaultValue={values.cnpj}
-                    onChange={this.handleChange}
-                    name="cnpj"
-                    id="cnpj"
-                />
-                <label htmlFor="senha">senha</label>
-                <input
-                    defaultValue={values.senha}
-                    onChange={this.handleChange}
-                    name="senha"
-                    id="senha"
-                />
-
-                <button onClick={this.loginCompany}>Logar</button>
-            </div>
+            <Container>
+                <Row>
+                    <h1>LoginCompany</h1>
+                </Row>
+                <Row>
+                    <label htmlFor="cnpj">CNPJ</label>
+                    <input
+                        defaultValue={values.cnpj}
+                        onChange={this.handleChange}
+                        name="cnpj"
+                        id="cnpj"
+                    />
+                </Row>
+                <Row>
+                    <label htmlFor="senha">senha</label>
+                    <input
+                        defaultValue={values.senha}
+                        onChange={this.handleChange}
+                        name="senha"
+                        id="senha"
+                    />
+                </Row>
+                <Row>
+                    <button onClick={this.loginCompany}>Logar</button>
+                </Row>
+            </Container>
         )
     }
 }
