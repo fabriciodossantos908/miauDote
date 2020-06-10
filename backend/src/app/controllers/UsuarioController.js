@@ -6,8 +6,10 @@ class UsuarioController {
     try {
       let usuarios = await Usuario.findAll();
       if (usuarios.length > 0) {
-        usuarios = usuarios.map(usuario =>{
+        usuarios = usuarios.map(usuario => {
           usuario.senha = undefined;
+          usuario.email_confirmado = undefined;
+
           return usuario;
         })
         return res.json(usuarios);
@@ -24,6 +26,8 @@ class UsuarioController {
       const usuario = await Usuario.findByPk(req.params.id);
       if (usuario != null) {
         usuario.senha = undefined;
+        usuario.email_confirmado = undefined;
+
         return res.json(usuario);
       }
 
@@ -38,6 +42,7 @@ class UsuarioController {
     try {
       const usuario = await Usuario.create(req.body);
       usuario.senha = undefined;
+      usuario.email_confirmado = undefined;
       return res.json(usuario);
     } catch (err) {
       return res.status(400).json({ erro: { campo: err.errors[0].path, mensagem: err.errors[0].message } });
@@ -52,6 +57,8 @@ class UsuarioController {
 
       await usuario.update(req.body);
       usuario.senha = undefined;
+      usuario.email_confirmado = undefined;
+
 
       return res.json({ usuario });
     } catch (err) {

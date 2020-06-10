@@ -1,4 +1,4 @@
-const { Pet } = require('../models');
+const { Pet, Usuario } = require('../models');
 const { Op } = require('sequelize');
 
 class PetController {
@@ -60,7 +60,13 @@ class PetController {
   async store(req, res) {
     try {
 
-      const pet = await Pet.create(req.body);
+      let pet = req.body;
+      const usuario = await Usuario.findByPk(pet.id_usuario);
+      if(!usuario){
+        return res.status(404).json({erro: 'Não existem usuários cadastrados com esse ID.'})
+      }
+
+      pet = await Pet.create(pet);
       return res.status(201).json(pet);
 
     } catch (err) {

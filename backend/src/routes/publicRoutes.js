@@ -44,6 +44,7 @@ router.get('/empresas', empresaController.index);
 router.get('/empresas/:id', empresaController.show);
 router.get('/empresas/cnpj/:cnpj', empresaFilter.indexByCnpj);
 router.get('/empresas/nome/:nome', empresaFilter.indexByNome);
+router.put('/empresas/upload/logo/:id', upload.single('file'), empresaFilter.uploadCompanyPhoto);
 
 
 // Rotas de Tipos de Serviços

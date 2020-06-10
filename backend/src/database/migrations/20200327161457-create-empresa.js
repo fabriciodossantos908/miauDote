@@ -77,7 +77,9 @@ module.exports = {
       references: {
         model: 'tbl_tipo_servicos',
         key: 'id'
-      }
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
     },
     permissions: {
       type: Sequelize.STRING,
@@ -85,8 +87,9 @@ module.exports = {
       defaultValue: 'COMPANY'
     },
     url_logo: {
-      allowNull: false,
-      type: Sequelize.STRING
+      allowNull: true,
+      type: Sequelize.STRING,
+      defaultValue: "http://storage.googleapis.com/miaudote-c4d26.appspot.com/profile%2Fuser.png"
     }
   }),
 

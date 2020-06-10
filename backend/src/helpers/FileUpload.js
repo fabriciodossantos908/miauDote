@@ -37,9 +37,9 @@ module.exports = {
          return;
       };
    },
-   async delete(fileName) {
+   async delete(filePath) {
       try {
-         const file = await bucket.file('profile/'+fileName);
+         const file = await bucket.file(filePath);
          await file.delete((err, apiResponse) => {
             if(err){
                console.log(err);

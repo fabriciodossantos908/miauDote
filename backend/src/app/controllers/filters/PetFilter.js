@@ -53,6 +53,9 @@ class PetFilter {
 
          res.header('X-Total-Count', count);
 
+         if(pets.length == 0){
+            return res.status(404).json({aviso: 'Nenhum pet foi encontrado'})
+         }
 
          return res.json(pets);
 
@@ -81,7 +84,6 @@ class PetFilter {
       if (!latitude || !longitude)
         return res.status(400).json({ erro: "A Latitude e Longitude são necessárias." });
   
-      console.log(sexo);
   
       if (especie)
         especie = `WHERE especie = "${especie}"` 

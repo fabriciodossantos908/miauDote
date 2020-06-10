@@ -11,6 +11,10 @@ module.exports = {
       return res.status(400).json({ erro: { campo: 'senha', mensagem: 'Este campo deve conter entre 8 e 30 caracteres' } })
     }
 
+    if(usuario.url_foto != "http://storage.googleapis.com/miaudote-c4d26.appspot.com/profile%2Fuser.png"){
+      usuario.url_foto = "http://storage.googleapis.com/miaudote-c4d26.appspot.com/profile%2Fuser.png"
+    }
+
     try {
 
 
@@ -81,6 +85,8 @@ module.exports = {
     }
 
     usuario.senha = undefined;
+    usuario.email_confirmado = undefined;
+    
     const token = autenticacaoHelper.gerarToken({
         id: usuario.id,
         permissions: usuario.permissions
