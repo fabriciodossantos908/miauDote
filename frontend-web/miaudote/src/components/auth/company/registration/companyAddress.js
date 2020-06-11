@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
-import Axios from 'axios'
 import InputMask from 'react-input-mask'
 import Company from '../../../../api/company'
 import RemoveMask from '../../../../validations/RemoveMask';
+import Cep from '../../../../api/cep';
 
 const apiCompany = new Company()
 const rmvMask = new RemoveMask()
+const apiCep = new Cep()
 
 const Header = () => {
     return (
@@ -59,7 +60,7 @@ export default class CompanyAddress extends Component {
         )
         } else {
             return (
-            alert("fail meanwhile creating")
+            alert("failed meanwhile creating")
             )
         }
 
@@ -72,23 +73,17 @@ export default class CompanyAddress extends Component {
         this.props.nextStep();
     }
 
-    SeachCepStart = (event) => {
+    SeachCep = (event) => {
         const baseUrl = {
             start: 'https://viacep.com.br/ws/',
             midCep: '',
             end: '/json/'
         }
-        baseUrl.midCep = event.target.value
-        console.log(baseUrl.midCep)
-        baseUrl.midCep.length === 8
-            ? Axios.get(baseUrl.start + baseUrl.midCep + baseUrl.end)
-                .then(
-                    (res) => {
-                        console.log("Are inside the if" + res.data)
-                    }
-                )
+        // stop at this issue
+        baseUrl.midCep = rmvMask.trimMaskCep(event.target.value)
+        baseUrl.midCep.length >= 8
+            ? apiCep.getAddress(baseUrl.start + baseUrl.midCep + baseUrl.end)
             : console.log("Ins't on the if: " + baseUrl.midCep)
-
     }
 
     // Pick the cep require and display on address fields
@@ -116,6 +111,7 @@ export default class CompanyAddress extends Component {
                                 name="cep"
                                 defaultValue={state.cep}
                                 onChange={handleChange}
+                                onKeyUp={this.SeachCep}
                             />
                         </Col>
                     </Row>
