@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button, Alert } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import Axios from 'axios'
 import InputMask from 'react-input-mask'
 import Company from '../../../../api/company'
+import RemoveMask from '../../../../validations/RemoveMask';
 
 const apiCompany = new Company()
+const rmvMask = new RemoveMask()
 
 const Header = () => {
     return (
@@ -27,19 +29,17 @@ const Header = () => {
 
 export default class CompanyAddress extends Component {
 
-    //validation create user (create with success !).
-
     createCompany = () => {
-        const { state, trimMask } = this.props
+        const { state } = this.props
         const company = {
             nome_representante: state.nome_representante,
             email_representante: state.email_representante,
-            celular_representante: state.celular_representante,
+            celular_representante: rmvMask.trimMaskCell(state.celular_representante),
             razao_social: state.razao_social,
             nome_empresa: state.nome_empresa,
-            cnpj: state.cnpj,
-            telefone: trimMask(state.telefone),
-            cep: state.cep,
+            cnpj: rmvMask.trimMaskCnpj(state.cnpj),
+            telefone: rmvMask.trimMaskCell(state.telefone),
+            cep: rmvMask.trimMaskCep(state.cep),
             cidade: state.cidade,
             bairro: state.bairro,
             logradouro: state.logradouro,
@@ -47,17 +47,24 @@ export default class CompanyAddress extends Component {
             complemento: state.complemento,
             uf: state.uf,
             id_tipo_servico: state.id_tipo_servico,
-            url_foto: state.url_foto,
+            url_logo: state.url_logo,
             permissions: state.permissions,
             senha: state.senha
         }
+
+        console.log(company)
         if (apiCompany.createCompany(company)) {
-            return (<Alert>Company created!</Alert>)
+            return (
+                alert("created with success!")
+        )
         } else {
-            return (<Alert>Ins't possible to create a company!</Alert>)
+            return (
+            alert("fail meanwhile creating")
+            )
         }
 
     }
+
 
     // Going to the next step with all saved
     continue = e => {
@@ -91,7 +98,7 @@ export default class CompanyAddress extends Component {
     }
 
     render() {
-        const { handleChange, trimMask, state } = this.props;
+        const { handleChange, state } = this.props;
         return (
             <div>
                 <Header />
@@ -106,10 +113,9 @@ export default class CompanyAddress extends Component {
                                 mask="99999-999"
                                 maskChar="_"
                                 placeholder="cep"
+                                name="cep"
                                 defaultValue={state.cep}
                                 onChange={handleChange}
-                                onKeyUp={trimMask}
-                            // onKeyUp={this.SeachCepStart}
                             />
                         </Col>
                     </Row>
@@ -120,8 +126,8 @@ export default class CompanyAddress extends Component {
                         <Col xs={3}>
                             <input
                                 type="text"
-                                name="cidade"
                                 placeholder="cidade"
+                                name="cidade"
                                 defaultValue={state.cidade}
                                 onChange={handleChange}
                             />

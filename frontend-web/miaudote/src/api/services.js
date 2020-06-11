@@ -16,7 +16,8 @@ export class Services {
         Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/servicos', service)
             .then(
                 (res) => {
-                    res.status(201);
+                    const company = {company: res.data};
+                    return company
                 }
             )
     }

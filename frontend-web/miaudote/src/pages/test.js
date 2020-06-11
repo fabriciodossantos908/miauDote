@@ -2,37 +2,32 @@ import React, { Component } from 'react';
 
 export class test extends Component {
 
-    trimMask(event) {
-        if (event.target.value.match("/")) {
-            const value = event.target.value.split("/").join("")
-            console.log(value);
-            return value;
-        }
-        else if (event.target.value.match(".")) {
-            const value = event.target.value.split(".").join("")
-            return value;
-        }
-        else if (event.target.value.match("-")) {
-            const value = event.target.value.split("-").join("")
-            return value;
-        }
-        else if (event.target.value.match("(")) {
-            const value = event.target.value.split("(").join("")
-            return value;
-        }
-        else if (event.target.value.match(")")) {
-            const value = event.target.value.split(")").join("")
-            return value;
-        }
-        else {
-            return event.target.value
+    trimMask(input) {
+        let regE = /\(([^)]+)\)/
+        var strValidated = input
+        var strLength = input.length
+        let i
+
+        for (i = input; strLength >= i.length; i++) {
+            if (i.match("/")) {
+                strValidated = i.split("/").join("")
+                if (i.match("")) {
+                    strValidated = strValidated.split(".").join("")
+                    if (strValidated.match("-")) {
+                        strValidated = strValidated.split("-").join("")
+                        if (strValidated.match(regE)) {
+                            strValidated = strValidated.split(regE).join("")
+                        }
+                    }
+                }
+            }
+            return strValidated
         }
     }
- 
 
     componentWillMount() {
-        const value = "tes-te/again.teste-tested(teste)"
-        console.log(this.trimMask(value))
+        const value = "(11)tes-te/again.teste-tested(11)"
+        console.log("true trim value " + this.trimMask(value))
     }
 
     render() {

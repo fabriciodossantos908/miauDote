@@ -57,7 +57,7 @@ render() {
                         <InputMask
                             type="text"
                             inputRef={trimMask}
-                            mask="+55 (99) 9 9999-9999"
+                            mask="(99) 9 9999-9999"
                             maskChar="_"
                             defaultValue={state.celular_representante}
                             placeholder="(11) 9 9999-9999"
