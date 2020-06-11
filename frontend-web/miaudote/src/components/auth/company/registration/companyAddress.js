@@ -30,7 +30,7 @@ export default class CompanyAddress extends Component {
     //validation create user (create with success !).
 
     createCompany = () => {
-        const { state } = this.props
+        const { state, trimMask } = this.props
         const company = {
             nome_representante: state.nome_representante,
             email_representante: state.email_representante,
@@ -38,7 +38,7 @@ export default class CompanyAddress extends Component {
             razao_social: state.razao_social,
             nome_empresa: state.nome_empresa,
             cnpj: state.cnpj,
-            telefone: state.telefone,
+            telefone: trimMask(state.telefone),
             cep: state.cep,
             cidade: state.cidade,
             bairro: state.bairro,
@@ -52,11 +52,11 @@ export default class CompanyAddress extends Component {
             senha: state.senha
         }
         if (apiCompany.createCompany(company)) {
-            return( <Alert>Cadastro efetuado com sucesso!</Alert>)
-        }else {
-            return( <Alert>Cadastro efetuado com sucesso!</Alert>)
+            return (<Alert>Company created!</Alert>)
+        } else {
+            return (<Alert>Ins't possible to create a company!</Alert>)
         }
-                
+
     }
 
     // Going to the next step with all saved
@@ -72,29 +72,26 @@ export default class CompanyAddress extends Component {
             end: '/json/'
         }
         baseUrl.midCep = event.target.value
+        console.log(baseUrl.midCep)
         baseUrl.midCep.length === 8
-
-            ? Axios(baseUrl.start + baseUrl.midCep + baseUrl.end)
+            ? Axios.get(baseUrl.start + baseUrl.midCep + baseUrl.end)
                 .then(
                     (res) => {
-                        console.log(res.data)
+                        console.log("Are inside the if" + res.data)
                     }
                 )
-            : console.log("dont " + baseUrl.midCep)
+            : console.log("Ins't on the if: " + baseUrl.midCep)
 
-        // console.log(JSON.stringify(baseUrl.start + baseUrl.midCep + baseUrl.end));
     }
 
     // Pick the cep require and display on address fields
     showPlace = () => {
         this.setState({
-            // [target.cidade.value] : res.data.logradouro
         })
     }
 
     render() {
-        const { handleChange, state } = this.props;
-        console.log(state)
+        const { handleChange, trimMask, state } = this.props;
         return (
             <div>
                 <Header />
@@ -106,13 +103,13 @@ export default class CompanyAddress extends Component {
                         <Col xs={3}>
                             <InputMask
                                 type="text"
-                                name="cep"
                                 mask="99999-999"
                                 maskChar="_"
                                 placeholder="cep"
                                 defaultValue={state.cep}
                                 onChange={handleChange}
-                                onKeyUp={this.SeachCepStart}
+                                onKeyUp={trimMask}
+                            // onKeyUp={this.SeachCepStart}
                             />
                         </Col>
                     </Row>

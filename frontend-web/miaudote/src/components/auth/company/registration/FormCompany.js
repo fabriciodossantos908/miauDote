@@ -37,19 +37,49 @@ export class FormCompany extends Component {
     }
 
     nextStep() {
-        const {step} = this.state
+        const { step } = this.state
         this.setState({
             step: step + 1
         });
     };
 
     prevStep() {
-        const {step} = this.state
+        const { step } = this.state
         this.setState({
             step: step - 1
         });
     };
 
+
+    // Replace the mask with empty
+    trimMask(input) {
+        var inputl = input
+        if (inputl.match("/")) {
+            inputl = inputl.split("/").join("")
+            console.log("are here 1 " + input)
+        }
+        else if (inputl.match(".")) {
+            inputl = inputl.split(".").join("")
+            console.log("are here 2")
+        }
+        else if (input.match("-")) {
+            input.split("-").join("")
+            console.log("are here 3")
+        }
+        else if (input.match("(")) {
+            input.split("(").join("")
+            console.log("are here 4")
+        }
+        else if (input.match(")")) {
+            input.split(")").join("")
+            console.log("are here 5")
+        }else{
+            return input
+        }
+
+    }
+   
+   
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -84,6 +114,7 @@ export class FormCompany extends Component {
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
                         state={this.state}
+                        trimMask={this.trimMask}
                     />
                 );
             default: return <Home />

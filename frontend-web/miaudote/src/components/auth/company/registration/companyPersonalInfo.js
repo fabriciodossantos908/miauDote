@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import InputMask from 'react-input-mask'
-import Services from '../../../../api/services'
+// import Services from '../../../../api/services'
 
 // const apiServices = new Services()
 
@@ -41,20 +41,14 @@ companytype = () => {
 }
 
 
-// Replace the mask with empty
-trimMask (event) {
-    if(event.target.value.match("/")){        
-        console.log(event.target.value.replace("/", ""))
-    }
-}
 
 
 render() {
-    const { state, handleChange } = this.props;
+    const { state, handleChange, trimMask } = this.props;
     return (
         <React.Fragment>
             <Header />
-            <Container>
+            <Container >
                 <Row className="justify-content-md-left">
                     <Col xs={3}>
                         <label htmlFor="celular_representante">Celular do representante</label>
@@ -62,9 +56,9 @@ render() {
                     <Col xs={3}>
                         <InputMask
                             type="text"
+                            inputRef={trimMask}
                             mask="+55 (99) 9 9999-9999"
                             maskChar="_"
-                            beforeMaskedValueChange={this.trimMask}
                             defaultValue={state.celular_representante}
                             placeholder="(11) 9 9999-9999"
                             name="celular_representante"
@@ -91,7 +85,7 @@ render() {
                     </Col>
                 </Row>
                 <Row className="justify-content-md-left">
-                    <Col xs={3}>
+                    <Col  xs={3}>
                         <label htmlFor="tipo_servico">tipo de segmento</label>
                     </Col>
                     <Col xs={3}>

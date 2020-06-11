@@ -1,13 +1,47 @@
-import React from 'react';
-import { Button } from 'react-bootstrap'
+import React, { Component } from 'react';
 
-function Test() {
-    return (
-        <div variant="primary" className="d-flex flex-wrap justify-content=center position-absolute w-100 h-100 align-items-center align-content-center">
-            <h1>Teste</h1>
-            <Button variant="link">Primary</Button>{''}
-        </div>
-    );
+export class test extends Component {
+
+    trimMask(event) {
+        if (event.target.value.match("/")) {
+            const value = event.target.value.split("/").join("")
+            console.log(value);
+            return value;
+        }
+        else if (event.target.value.match(".")) {
+            const value = event.target.value.split(".").join("")
+            return value;
+        }
+        else if (event.target.value.match("-")) {
+            const value = event.target.value.split("-").join("")
+            return value;
+        }
+        else if (event.target.value.match("(")) {
+            const value = event.target.value.split("(").join("")
+            return value;
+        }
+        else if (event.target.value.match(")")) {
+            const value = event.target.value.split(")").join("")
+            return value;
+        }
+        else {
+            return event.target.value
+        }
+    }
+ 
+
+    componentWillMount() {
+        const value = "tes-te/again.teste-tested(teste)"
+        console.log(this.trimMask(value))
+    }
+
+    render() {
+        return (
+            <div>
+
+            </div>
+        )
+    }
 }
 
-export default Test
+export default test
