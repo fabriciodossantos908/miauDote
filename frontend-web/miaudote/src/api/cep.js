@@ -13,7 +13,7 @@ export default class Cep {
         Axios.get(finalUrl)
             .then(
                 (res) => {
-                    const address = res.data
+                    const address = { address: res.data }
                     return address
                 })
 

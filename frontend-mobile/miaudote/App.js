@@ -8,6 +8,7 @@ import { StyleSheet, Text, View } from 'react-native';
 // import FormPersonalData from './src/pages/user/signUp/FormPersonalData'
 // import FormUserAddress from './src/pages/user/signUp/FormUserAddress'
 // import Teste from './src/pages/user/signUp/Teste'
+// import Photo from './src/pages/user/signUp/FormUserPhoto'
 import Routes from './src/routes'
 
 

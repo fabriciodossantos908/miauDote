@@ -1,13 +1,42 @@
-import React from 'react';
-import { Button } from 'react-bootstrap'
+import React, { Component } from 'react';
 
-function Test() {
-    return (
-        <div variant="primary" className="d-flex flex-wrap justify-content=center position-absolute w-100 h-100 align-items-center align-content-center">
-            <h1>Teste</h1>
-            <Button variant="link">Primary</Button>{''}
-        </div>
-    );
+export class test extends Component {
+
+    trimMask(input) {
+        let regE = /\(([^)]+)\)/
+        var strValidated = input
+        var strLength = input.length
+        let i
+
+        for (i = input; strLength >= i.length; i++) {
+            if (i.match("/")) {
+                strValidated = i.split("/").join("")
+                if (i.match("")) {
+                    strValidated = strValidated.split(".").join("")
+                    if (strValidated.match("-")) {
+                        strValidated = strValidated.split("-").join("")
+                        if (strValidated.match(regE)) {
+                            strValidated = strValidated.split(regE).join("")
+                        }
+                    }
+                }
+            }
+            return strValidated
+        }
+    }
+
+    componentWillMount() {
+        const value = "(11)tes-te/again.teste-tested(11)"
+        console.log("true trim value " + this.trimMask(value))
+    }
+
+    render() {
+        return (
+            <div>
+
+            </div>
+        )
+    }
 }
 
-export default Test
+export default test

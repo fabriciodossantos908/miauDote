@@ -13,7 +13,8 @@
     "react-dom": "^16.13.0",
     "react-input-mask": "^2.0.4",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "yup": "^0.29.1"
   },
   "scripts": {
     "start": "react-scripts start",

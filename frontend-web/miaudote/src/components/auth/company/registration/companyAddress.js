@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button, Alert } from 'react-bootstrap'
 import Axios from 'axios'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import InputMask from 'react-input-mask'
 import Company from '../../../../api/company'
+import RemoveMask from '../../../../validations/RemoveMask';
 
 const apiCompany = new Company()
+const rmvMask = new RemoveMask()
 
 const Header = () => {
     return (
@@ -27,19 +29,17 @@ const Header = () => {
 
 export default class CompanyAddress extends Component {
 
-    //validation create user (create with success !).
-
     createCompany = () => {
         const { state } = this.props
         const company = {
             nome_representante: state.nome_representante,
             email_representante: state.email_representante,
-            celular_representante: state.celular_representante,
+            celular_representante: rmvMask.trimMaskCell(state.celular_representante),
             razao_social: state.razao_social,
             nome_empresa: state.nome_empresa,
-            cnpj: state.cnpj,
-            telefone: state.telefone,
-            cep: state.cep,
+            cnpj: rmvMask.trimMaskCnpj(state.cnpj),
+            telefone: rmvMask.trimMaskCell(state.telefone),
+            cep: rmvMask.trimMaskCep(state.cep),
             cidade: state.cidade,
             bairro: state.bairro,
             logradouro: state.logradouro,
@@ -47,16 +47,21 @@ export default class CompanyAddress extends Component {
             complemento: state.complemento,
             uf: state.uf,
             id_tipo_servico: state.id_tipo_servico,
-            url_foto: state.url_foto,
+            url_logo: state.url_logo,
             permissions: state.permissions,
             senha: state.senha
         }
+        console.log(company)
+        this.props.valInsert(company)
         if (apiCompany.createCompany(company)) {
-            return( <Alert>Cadastro efetuado com sucesso!</Alert>)
-        }else {
-            return( <Alert>Cadastro efetuado com sucesso!</Alert>)
+            return (
+                alert("created with success!")
+            )
+        } else {
+            return (
+                alert("failed meanwhile creating")
+            )
         }
-                
     }
 
     // Going to the next step with all saved
@@ -65,36 +70,27 @@ export default class CompanyAddress extends Component {
         this.props.nextStep();
     }
 
-    SeachCepStart = (event) => {
-        const baseUrl = {
-            start: 'https://viacep.com.br/ws/',
-            midCep: '',
-            end: '/json/'
-        }
-        baseUrl.midCep = event.target.value
-        baseUrl.midCep.length === 8
 
-            ? Axios(baseUrl.start + baseUrl.midCep + baseUrl.end)
+    SeachCep = (event) => {
+        // stop at this issue
+        var cep = rmvMask.trimMaskCep(rmvMask.trimSlash(event.target.value))
+        if (cep.length >= 8) {
+            let startUrl = "https://viacep.com.br/ws/";
+            let endUrl = "/json/";
+            const midCep = cep;
+            const finalUrl = startUrl + midCep + endUrl
+            Axios.get(finalUrl)
                 .then(
                     (res) => {
-                        console.log(res.data)
-                    }
-                )
-            : console.log("dont " + baseUrl.midCep)
-
-        // console.log(JSON.stringify(baseUrl.start + baseUrl.midCep + baseUrl.end));
-    }
-
-    // Pick the cep require and display on address fields
-    showPlace = () => {
-        this.setState({
-            // [target.cidade.value] : res.data.logradouro
-        })
+                        const address = res.data
+                        this.setState({[this.props.state.bairro] : address.bairro})
+                        console.log("the address neighbourhood" + address.bairro + "the state neighbourhood " + this.props.state.bairro)
+                    })
+        }
     }
 
     render() {
         const { handleChange, state } = this.props;
-        console.log(state)
         return (
             <div>
                 <Header />
@@ -106,13 +102,13 @@ export default class CompanyAddress extends Component {
                         <Col xs={3}>
                             <InputMask
                                 type="text"
-                                name="cep"
                                 mask="99999-999"
                                 maskChar="_"
                                 placeholder="cep"
+                                name="cep"
                                 defaultValue={state.cep}
+                                onKeyUp={this.SeachCep}
                                 onChange={handleChange}
-                                onKeyUp={this.SeachCepStart}
                             />
                         </Col>
                     </Row>
@@ -123,8 +119,8 @@ export default class CompanyAddress extends Component {
                         <Col xs={3}>
                             <input
                                 type="text"
-                                name="cidade"
                                 placeholder="cidade"
+                                name="cidade"
                                 defaultValue={state.cidade}
                                 onChange={handleChange}
                             />
@@ -202,8 +198,6 @@ export default class CompanyAddress extends Component {
                     </Row>
                     <Row className="justify-content-md-left">
                         <Col xs={3}>
-                            <Button variant="outline-primary" onClick={this.SeachCep}>cep</Button>
-                            <Button variant="outline-primary" onClick={this.SeachCepStart}>cep start</Button>
                             <Button variant="outline-primary" onClick={this.props.prevStep}>Voltar</Button>
                         </Col>
                         <Col xs={3}>
