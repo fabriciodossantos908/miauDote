@@ -44,13 +44,16 @@ class PetController {
 
   async show(req, res) {
     try {
-      const pet = await Pet.findByPk(req.params.id);
+      const pet = await Pet.findByPk(req.params.id,{include: {model: Usuario, as: 'doador'}});
       if (pet != null) {
         pet.senha = undefined;
+        pet.doador.senha = undefined;
+        pet.doador.permissions = undefined;
+        pet.doador.email_confirmado = undefined;
         return res.json(pet);
       }
 
-      return res.status(404).json({ erro: "Usuário não encontrado." });
+      return res.status(404).json({ erro: "Pet não encontrado." });
 
     } catch (err) {
       return res.status(400).json({ error: err.message });

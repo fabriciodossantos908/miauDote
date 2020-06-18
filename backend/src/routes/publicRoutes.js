@@ -21,6 +21,7 @@ const usuarioController = require('../app/controllers/UsuarioController');
 const empresaController = require('../app/controllers/EmpresaController');
 const tipoServicoController = require('../app/controllers/TipoServicoController');
 const petController = require('../app/controllers/PetController');
+const petPerdidoController = require('../app/controllers/PetPerdidoController');
 
 const usuarioFilter = require('../app/controllers/filters/UsuarioFilter');
 const empresaFilter = require('../app/controllers/filters/EmpresaFilter');
@@ -55,8 +56,12 @@ router.delete('/servicos/:id', tipoServicoController.destroy);
 
 // Rotas de Pets
 router.get('/pets', petController.index);
+router.get('/pets/:id', petController.show);
 router.get('/pets/uf/:uf', petFilter.indexBylocal);
 router.get('/pets/localizacao/latitude/:latitude/longitude/:longitude', petFilter.indexByProximity);
+
+// Rotas de Pets perdidos
+router.get('/pets_perdidos', petPerdidoController.index);
 
 
 

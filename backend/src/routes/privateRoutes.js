@@ -4,6 +4,7 @@ const guard = require('express-jwt-permissions')();
 const usuarioController = require('../app/controllers/UsuarioController');
 const empresaController = require('../app/controllers/EmpresaController');
 const petController = require('../app/controllers/PetController');
+const petPerdidoController = require('../app/controllers/PetPerdidoController');
 
 const router = Router(); 
 
@@ -20,5 +21,9 @@ router.delete('/empresas/:id', guard.check('COMPANY'), empresaController.destroy
 router.post('/pets', guard.check('USER'), petController.store);
 router.put('/pets/:id', guard.check('USER'), petController.update);
 router.delete('/pets/:id', guard.check('USER'), petController.destroy);
+
+// Rotas de Pets perdidos
+
+router.post('/pets_perdidos', guard.check('USER'), petPerdidoController.store);
 
 module.exports = router;
