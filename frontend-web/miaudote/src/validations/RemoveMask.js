@@ -53,6 +53,18 @@ export class RemoveMask {
         }
     }
 
+    trimSlash(input) {
+        var strValidated = input
+        var strLength = input.length
+        let i
+
+        for (i = input; strLength >= i.length; i++) {
+            if (i.match("_")) {
+                strValidated = i.split("_").join("")
+            }
+            return strValidated
+        }
+    }
 }
 
 export default RemoveMask

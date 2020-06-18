@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
+import Axios from 'axios'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import InputMask from 'react-input-mask'
 import Company from '../../../../api/company'
 import RemoveMask from '../../../../validations/RemoveMask';
-import Cep from '../../../../api/cep';
 
 const apiCompany = new Company()
 const rmvMask = new RemoveMask()
-const apiCep = new Cep()
 
 const Header = () => {
     return (
@@ -52,20 +51,18 @@ export default class CompanyAddress extends Component {
             permissions: state.permissions,
             senha: state.senha
         }
-
         console.log(company)
+        this.props.valInsert(company)
         if (apiCompany.createCompany(company)) {
             return (
                 alert("created with success!")
-        )
+            )
         } else {
             return (
-            alert("failed meanwhile creating")
+                alert("failed meanwhile creating")
             )
         }
-
     }
-
 
     // Going to the next step with all saved
     continue = e => {
@@ -73,23 +70,23 @@ export default class CompanyAddress extends Component {
         this.props.nextStep();
     }
 
-    SeachCep = (event) => {
-        const baseUrl = {
-            start: 'https://viacep.com.br/ws/',
-            midCep: '',
-            end: '/json/'
-        }
-        // stop at this issue
-        baseUrl.midCep = rmvMask.trimMaskCep(event.target.value)
-        baseUrl.midCep.length >= 8
-            ? apiCep.getAddress(baseUrl.start + baseUrl.midCep + baseUrl.end)
-            : console.log("Ins't on the if: " + baseUrl.midCep)
-    }
 
-    // Pick the cep require and display on address fields
-    showPlace = () => {
-        this.setState({
-        })
+    SeachCep = (event) => {
+        // stop at this issue
+        var cep = rmvMask.trimMaskCep(rmvMask.trimSlash(event.target.value))
+        if (cep.length >= 8) {
+            let startUrl = "https://viacep.com.br/ws/";
+            let endUrl = "/json/";
+            const midCep = cep;
+            const finalUrl = startUrl + midCep + endUrl
+            Axios.get(finalUrl)
+                .then(
+                    (res) => {
+                        const address = res.data
+                        this.setState({[this.props.state.bairro] : address.bairro})
+                        console.log("the address neighbourhood" + address.bairro + "the state neighbourhood " + this.props.state.bairro)
+                    })
+        }
     }
 
     render() {
@@ -110,8 +107,8 @@ export default class CompanyAddress extends Component {
                                 placeholder="cep"
                                 name="cep"
                                 defaultValue={state.cep}
-                                onChange={handleChange}
                                 onKeyUp={this.SeachCep}
+                                onChange={handleChange}
                             />
                         </Col>
                     </Row>
@@ -201,8 +198,6 @@ export default class CompanyAddress extends Component {
                     </Row>
                     <Row className="justify-content-md-left">
                         <Col xs={3}>
-                            <Button variant="outline-primary" onClick={this.SeachCep}>cep</Button>
-                            <Button variant="outline-primary" onClick={this.SeachCepStart}>cep start</Button>
                             <Button variant="outline-primary" onClick={this.props.prevStep}>Voltar</Button>
                         </Col>
                         <Col xs={3}>

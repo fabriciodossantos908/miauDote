@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import InputMask from 'react-input-mask'
-// import Services from '../../../../api/services'
-
-// const apiServices = new Services()
 
 const Header = () => {
     return (
@@ -32,19 +29,13 @@ export class companyPersonalInfo extends Component {
         this.props.nextStep();
     }
 
-
-// same async with seachtype
 companytype = () => {
     const service = this.seachType
     service()
-    // call the api service uri
 }
 
-
-
-
 render() {
-    const { state, handleChange, trimMask } = this.props;
+    const { state, handleChange } = this.props;
     return (
         <React.Fragment>
             <Header />
@@ -56,7 +47,6 @@ render() {
                     <Col xs={3}>
                         <InputMask
                             type="text"
-                            inputRef={trimMask}
                             mask="(99) 9 9999-9999"
                             maskChar="_"
                             defaultValue={state.celular_representante}
@@ -90,9 +80,7 @@ render() {
                     </Col>
                     <Col xs={3}>
                         <select>
-                            <option>Test 01</option>
-                            <option>Test 02</option>
-                            <option>Test 03</option>
+                            <option value={state.id_tipo_servico}>Test 01</option>
                         </select>
                     </Col>
                 </Row>

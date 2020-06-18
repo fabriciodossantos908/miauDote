@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
-
-import './registrer.css'
 import { Container, Row, Col, Button } from 'react-bootstrap'
+ 
 
 const Header = () => {
     return (
@@ -22,23 +20,19 @@ const Header = () => {
 }
 
 export class companyBaseInfo extends Component {
-
-
-    // Getting all services
-    servicesList = () => {
-        Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/empresas')
-            .then(
-                (res) => {
-                    const services = res.data;
-                    // this.setvalues({ services })
-                    console.log(JSON.stringify(services))
-                })
-    }
-
     // Create the service options element
     ServiceOpt = () => {
         const service = this.servicesList()
         console.log(JSON.stringify(service))
+    }
+
+    valPassword(event) {
+        const {senha} = this.props
+        if(!senha === event.target.value){
+            alert("are the same")
+        }else {
+            alert("that's aren't the same")
+        }
     }
 
     // Going to the next step with all saved
@@ -47,8 +41,9 @@ export class companyBaseInfo extends Component {
         this.props.nextStep();
     }
 
+
     render() {
-        const { state, handleChange, trimMask } = this.props
+        const { state, handleChange } = this.props
         return (
             <Container border="primary" className="mt-5 mr-1 baseModal" fluid="lg" >
                 <Row>
@@ -69,7 +64,6 @@ export class companyBaseInfo extends Component {
                                     name="nome_representante"
                                     id="nome_representante"
                                     onChange={handleChange}
-                                    onKeyUp={trimMask}
                                 />
                             </Col>
                         </Row>
@@ -121,6 +115,7 @@ export class companyBaseInfo extends Component {
                                     name="senha_confirmation"
                                     id="senha_confirmation"
                                     onChange={handleChange}
+                                    // onKeyUp={this.valPassword}
                                 />
                             </Col>
                         </Row>
