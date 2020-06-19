@@ -39,7 +39,6 @@ export class RemoveMask {
             return strValidated
         }
     }
-
     trimMaskCep(input) {
         var strValidated = input
         var strLength = input.length

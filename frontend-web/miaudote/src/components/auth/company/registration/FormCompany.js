@@ -5,6 +5,9 @@ import CompanyAddress from './companyAddress'
 import Home from '../../../../pages/home'
 import * as yup from 'yup';
 import { setLocale } from 'yup';
+import RemoveMask from '../../../../validations/RemoveMask';
+
+const rmvMask = new RemoveMask()
 
 export class FormCompany extends Component {
   constructor(props) {
@@ -53,26 +56,20 @@ export class FormCompany extends Component {
     });
   };
 
-  ValidateFields(company) {
+  valFormat(input) {
 
-    setLocale({
-      number: {
-        min: 'Deve ser maior que  ${min}',
-        max: 'Deve ser menor que  ${max}',
-      },
-    });
     let schema = yup.object().shape({
       nome_representante: yup
         .string()
-        .min(10)
-        .max(100),
+        .min(10, "Nome e sobrenome meu caro milorde")
+        .max(100, "Por favor, somente o primeiro nome e sobrenome"),
       email_representante: yup
         .string()
-        .email(),
+        .email("Coloque um email válido"),
       senha: yup
         .string()
-        .min(8)
-        .max(30),
+        .min(8, "Muito curta a senha")
+        .max(30, "Muita longa a senha"),
       razao_social: yup
         .string()
         .min(5)
@@ -86,7 +83,7 @@ export class FormCompany extends Component {
         .length(11),
       cnpj: yup
         .string()
-        .length(14),
+        .length(18),
       telefone: yup
         .string()
         .length(10),
@@ -116,20 +113,34 @@ export class FormCompany extends Component {
       uf: yup
         .string()
         .length(2)
-        // .required()
+      // .required()
     });
 
     schema
-      .isValid(company)
+      .isValid(input)
       .then(function (valid) {
         console.log("valid " + valid)
       })
 
-      schema.validate(company).catch(function (err) {
-        console.log(err.errors);
-      });
+    schema.validate(input).catch(function (err) {
+      console.log(err.errors)
+    });
+  }
 
+  valInsert(event) {
+    if (event.target.name === "celular_representante" || "telefone") {
 
+      const field = {
+        [event.target.name]: rmvMask.trimSlash(rmvMask.trimMaskCell(event.target.value))
+      }
+      this.valFormat(field)
+    }
+    else {
+      const field = {
+        [event.target.name]: event.target.value
+      }
+      this.valFormat(field)
+    }
   }
 
   handleChange(event) {
@@ -158,6 +169,7 @@ export class FormCompany extends Component {
             prevStep={this.prevStep}
             handleChange={this.handleChange}
             state={this.state}
+            valInsert={this.valInsert}
           />
         );
       case 3:
@@ -166,8 +178,8 @@ export class FormCompany extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
-            valInsert={this.valInsert}
             state={this.state}
+            valInsert={this.valInsert}
           />
         );
 
