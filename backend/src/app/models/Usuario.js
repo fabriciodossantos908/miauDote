@@ -207,5 +207,11 @@ module.exports = (sequelize, DataTypes) => {
     })
   };
 
+  Usuario.associate = function (models) {
+    Usuario.hasMany(models.PetPerdido, {
+      foreignKey: 'id_usuario'
+    })
+  };
+
   return Usuario;
 };

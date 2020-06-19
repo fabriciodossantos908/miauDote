@@ -11,7 +11,7 @@ module.exports = {
       return res.status(400).json({ erro: { campo: 'senha', mensagem: 'Este campo deve conter entre 8 e 30 caracteres' } })
     }
 
-    if(usuario.url_foto != "http://storage.googleapis.com/miaudote-c4d26.appspot.com/profile%2Fuser.png"){
+    if(usuario.url_foto != "http://storage.googleapis.com/miaudote-c4d26.appspot.com/profile%2Fuser.png" || usuario.url_foto == null){
       usuario.url_foto = "http://storage.googleapis.com/miaudote-c4d26.appspot.com/profile%2Fuser.png"
     }
 

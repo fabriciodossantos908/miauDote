@@ -25,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
                msg: 'Este campo não pode ser nulo.'
             },
             len: {
-               args: [2, 100],
-               msg: 'Este campo deve conter de 5 a 100 caracteres'
+               args: [1, 1],
+               msg: 'Este campo deve conter apenas 1 caracter'
             }
          }
       },
@@ -91,7 +91,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             len: {
                args: [1, 1],
-               msg: 'Tamanho de caracteres excedido'
+               msg: 'Este campo deve conter apenas um caracter.'
             }
          }
       },
@@ -189,9 +189,9 @@ module.exports = (sequelize, DataTypes) => {
    });
 
    Pet.associate = function (models) {
-      Pet.belongsTo(models.TipoServico, {
-         foreignKey: 'id',
-         as: 'tipo_servico'
+      Pet.belongsTo(models.Usuario, {
+         foreignKey: 'id_usuario',
+         as: 'doador'
       });
    };
 
