@@ -4,7 +4,6 @@ import CompanyPersonalInfo from './companyPersonalInfo'
 import CompanyAddress from './companyAddress'
 import Home from '../../../../pages/home'
 import * as yup from 'yup';
-import { setLocale } from 'yup';
 import RemoveMask from '../../../../validations/RemoveMask';
 
 const rmvMask = new RemoveMask()
@@ -34,7 +33,7 @@ export class FormCompany extends Component {
       permissions: "COMPANY",
       senha: "",
       senha_confirmation: "",
-      company_error: ""
+      errors: ""
     }
     this.nextStep = this.nextStep.bind(this)
     this.prevStep = this.prevStep.bind(this)
@@ -129,11 +128,11 @@ export class FormCompany extends Component {
 
   valInsert(event) {
     if (event.target.name === "celular_representante" || "telefone") {
-
       const field = {
         [event.target.name]: rmvMask.trimSlash(rmvMask.trimMaskCell(event.target.value))
       }
-      this.valFormat(field)
+       this.valFormat(field)
+       console.log(this.state.errors)
     }
     else {
       const field = {
