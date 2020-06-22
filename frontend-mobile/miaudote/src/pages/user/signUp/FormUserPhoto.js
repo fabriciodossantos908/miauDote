@@ -32,24 +32,25 @@ export default class FormUserPhoto extends Component {
 
 	constructor(props){
 		super(props)
-		const { params } = this.props.route.params
+		// const { params } = this.props.route.params
+		const { data } = this.props.route.params.params
 		this.state = {
-			email: params.email,
-			password : params.password,
-			name: params.name,
-			birthDate : params.birthDate,
-			gender: params.gender,
-			cpf: params.cpf,
-			ddd: params.ddd,
-			phone: params.phone,
-			cep: params.cep,
-			city: params.city,
-			address: params.address,
-			number: params.number,
-			complement: params.complement,
-			neighborhood: params.neighborhood,
-			state: params.state,
-			url: '',
+			email: data.email,
+			password : data.password,
+			name: data.name,
+			birthDate : data.birthDate,
+			gender: data.gender,
+			cpf: data.cpf,
+			ddd: data.ddd,
+			phone: data.phone,
+			cep: data.cep,
+			city: data.city,
+			address: data.address,
+			number: data.number,
+			complement: data.complement,
+			neighborhood: data.neighborhood,
+			state: data.state,
+			url: null,
 
 		}
 	}
@@ -60,7 +61,7 @@ export default class FormUserPhoto extends Component {
 
 	cadastrar = async e => {
 
-		const { email, password, name, birthDate, gender, cpf, ddd, phone, cep, city, address, number, complement, neighborhood, state } = this.state
+		const { email, password, name, birthDate, gender, cpf, phone, cep, city, address, number, complement, neighborhood, state } = this.state
 		
 		const params = {
 			method: 'POST',
@@ -82,7 +83,7 @@ export default class FormUserPhoto extends Component {
 				numero: number,
 				complemento: complement,
 				uf: state,
-				url_foto: '',
+				url_foto: null,
 				permissions: 'USER',
 				email_confirmado: false
 
@@ -98,27 +99,26 @@ export default class FormUserPhoto extends Component {
 			console.log(response)
 
 			// ok: status code =  200 - 299
-			if(!response.ok)
+			if(!response.ok){
 				return alert("Erro ao cadastrar")
-				return console.log(response.data)
+				// return console.log(response.data)
 
 				// .json() captura e tranforma o corpo em json
 
 				const user = await response.json()
 				console.log(user)
-			// else
-				Alert.alert('Cadastrado com Sucesso')
+			 } else {
+				alert('Cadastrado com Sucesso')
 
-				// ASYNCSTORAGE - armazenador
-				AsyncStorage.setItem( 'token', user.token )
-				// AsyncStorage
+				// AsyncStorage.setItem( 'token', user.token )
+
+				const data = this.state
 	
-				this.props.navigation.navigate('Teste', {
+				this.props.navigation.navigate('Home', {
 					screen: 'FormUserPhoto',
-					params: {
-						name: name
-					},
+					params: { data }
 				}); 
+			}
 			
 			
 
@@ -141,33 +141,21 @@ export default class FormUserPhoto extends Component {
 		return (
 			<Container style={{ backgroundColor:'#fff', padding:6, justifyContent: "center",alignItems: "center", flex:1}}>
 				<Header>
-						<Head style={{}}>
-							<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
-							<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
-						</Head>
+					<Head style={{}}>
+						<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
+						<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
+					</Head>
 
-						<DivProgressBar style={{justifyContent:'space-evenly'}}>
-							<DesabledStepIconColor/>
-							<DesabledStepIconColor/>
-							<DesabledStepIconColor/>
-							<ActiveStepIconColor/>
-						</DivProgressBar>
+					<DivProgressBar style={{justifyContent:'space-evenly'}}>
+						<DesabledStepIconColor/>
+						<DesabledStepIconColor/>
+						<DesabledStepIconColor/>
+						<ActiveStepIconColor/>
+					</DivProgressBar>
 
-					</Header>
-				{/* <Header>
-					<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
-					<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
 				</Header>
 
-				<DivProgressBar style={{justifyContent:'space-evenly'}}>
-					<DesabledStepIconColor/>
-					<DesabledStepIconColor/>
-					<DesabledStepIconColor/>
-					<ActiveStepIconColor/>
-				</DivProgressBar> */}
-
 				<View style={styles.main}>
-
 					<Image
 						source={require('../../../assets/avatar.png')}
 						style={styles.avatar}
@@ -181,29 +169,7 @@ export default class FormUserPhoto extends Component {
 						<Text style={styles.buttonText}>Enviar imagem</Text>
 					</TouchableOpacity>
 
-				</View>
-
-					{/* <TextInput style={styles.input} /> */}
-
-
-
-					{/* <DivForm>
-						<Form>
-							<Text>Formulário</Text>
-						</Form>
-					</DivForm>
-
-					<Div>
-						<ButtonSmallNext onPress={this.cadastrar}>
-							<BtnText>Confirmar</BtnText>
-						</ButtonSmallNext>
-					</Div>
-
-					<Div>
-						<Text>Opções de cadastro</Text>
-					</Div> */}
-
-				
+				</View>				
 			</Container>
 		);
 	}

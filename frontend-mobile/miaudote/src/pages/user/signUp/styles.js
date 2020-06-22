@@ -72,8 +72,7 @@ export const ActiveStepIconColor = styled.View `
     height:15;
     width:15;
     backgroundColor:#FC6B6E;
-    borderRadius:1000;
-    
+    borderRadius:1000;    
 `
 
 
@@ -99,7 +98,7 @@ export const Form = styled.View `
 export const DivForm = styled.View `
     flex: 2;
     padding:8px;
-    marginTop:20
+    marginTop:20px
    
 
 `
@@ -118,7 +117,7 @@ export const DivProgressBar = styled.View `
 
 export const BtnText = styled.Text `
     color: #fff;
-    fontSize:18
+    fontSize:18px
 `
 
 export const DivSignOpions = styled.View `
@@ -278,9 +277,9 @@ export const ButtonSmallPrevious = styled.TouchableOpacity `
 
 export const ButtonSmallNext = styled.TouchableOpacity `
     position: absolute; 
-    height: 45;
-	width: 130;
-    right: 10;
+    height: 45px;
+	width: 130px;
+    right: 10px;
     justifyContent:center;
     alignItems:center;
     backgroundColor:#1bc7cb;

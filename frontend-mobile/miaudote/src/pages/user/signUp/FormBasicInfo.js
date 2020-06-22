@@ -82,40 +82,67 @@ export default class FormBasicInfo extends Component {
 		return true
 	}
 
+
+	// ***** Teste *****
+	// _params = ( props ) => {
+
+    //     // A variavel recebe os valosres do estado
+    //     const  _string  = this.state
+
+    //     // alert(_string)
+    //     console.log(_string)
+
+    //     // this.props.navigation.navigate('HomeTeste', {
+	// 	// 	screen: 'Teste',
+	// 	// 	params: { _string }, //passando os valores do state para a próxima pagina
+    //     //     }); 
+           
+        
+    // }
+
+	// nextPage = ( props ) => {
+	// 	if (!this.validate()) return
+	// 	// else if (validar email)
+	// 	else if (!this.validatePassword()) return
+
+	// 	console.log(this.state)
+
+	// 	const { email, password } = this.state
+
+	// 	this.props.navigation.navigate('FormPersonalData', {
+	// 		screen: 'FormBasicInfo',
+	// 		params: { email: email, password: password },
+	// 		}); 
+
+	// }
+
 	nextPage = ( props ) => {
 		if (!this.validate()) return
+		// else if (validar email)
 		else if (!this.validatePassword()) return
 
-		console.log(this.state)
+		const data = this.state
 
-		const { email, password } = this.state
-
+		console.log(data)
+ 
 		this.props.navigation.navigate('FormPersonalData', {
 			screen: 'FormBasicInfo',
-			params: { email: email, password: password },
-			}); 
+			params: { data }, 
+		    }); 	
 
 	}
 
-	// teste = () => {
-	// 	console.log('eu sou um TESTEEEEEE!!!!')
 
-	// 	console.log(this.state)
-	// }
-
-	
 
 	render() {
-		// const { teste } = this.props;
-		console.log(this.state)
-
 
 		return (
 			// <KeyboardAvoidingView
 			// 	behavior={Platform.OS == "ios" ? "padding" : "height"}
 			// 	style={styles.container}
 			// >
-			<KeyboardAvoidingView style={{flex:1}}  behavior={Platform.OS == "ios" ? "padding" : "height"}>
+			//  behavior={Platform.OS == "ios" ? "padding" : "height}"
+			<KeyboardAvoidingView style={{flex:1}}>
 			
 			{/* <Container style={{backgroundColor:'#ccc7', padding:5}}> */}
 			
@@ -226,111 +253,9 @@ export default class FormBasicInfo extends Component {
 					
 
 					
-{/* 
-					
 
-					<SubtittleContainer>
-						<SecundaryTittle style={{fontWeight:'bold', color:'#5A6978'}}>Informações Básicas:</SecundaryTittle>
-					</SubtittleContainer> */}
 
-					{/* <DivForm style={{backgroundColor: '#cc78'}}>
-						<Form style={{backgroundColor: '#ccc8'}}> */}
-							{/* <TextInput
-								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch'}}
-								label='Email'
-								keyboardType='email-address'
-								mode={'outlined'}
-								value={this.state.email || ''}
-								onChangeText={txt => this.setState({email: txt})}
-								theme={{
-									// roundness: 50,
-									colors: {
-									primary:'#1bc7cb',
-									underlineColor:'transparent',
-									}
-							}}/>
-
-							<TextInput
-								// maxLength={3}
-								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch'}}
-								label='Senha' 
-								returnKeyType='go'
-								mode={'outlined'}
-								secureTextEntry={true}
-								value={this.state.password || ''}
-								onChangeText={txt => this.setState({ password: txt })}
-								theme={{
-									// roundness: 50,
-									colors: {
-									primary:'#1bc7cb',
-									underlineColor:'transparent',
-									}
-							}}/>
-
-							<TextInput
-								// maxLength={3}
-								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch'}}
-								label='Confirme sua senha' 
-								returnKeyType='go'
-								mode={'outlined'}
-								secureTextEntry={true}
-								value={this.state.confirmPassword || ''}
-								onChangeText={txt => this.setState({ confirmPassword: txt })}
-								theme={{
-									// roundness: 50,
-									colors: {
-									primary:'#1bc7cb',
-									underlineColor:'transparent',
-									}
-							}}/>							 */}
-							{/* <DivInput> 
-								<FormLabel>E-mail:</FormLabel>
-								<ContainerTxtInput>
-									<MaterialIcons style={{marginRight:15}} name={'email'} size={20} color={'#000'}/>
-								<FormTextInput
-									autoCorrect={false}
-									onChangeText={txt => this.setState({ email: txt })}
-									// placeholder="ex: email@gmail.com"
-									// keyboardType={'email-address'}
-									// textContentType={'emailAddress'}
-									/>
-								</ContainerTxtInput> 
-							</DivInput> */}
-
-							{/* <DivInput> 
-								<FormLabel>senha:</FormLabel>
-								<ContainerTxtInput>
-									<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-								<FormTextInput
-									autoCorrect={false}
-									placeholder=""
-									onChangeText={txt => this.setState({ password: txt })}
-									/>
-								</ContainerTxtInput> 
-							</DivInput> */}
-
-							{/* <DivInput> 
-								<FormLabel>Confirme sua senha:</FormLabel>
-								<ContainerTxtInput>
-									<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-								<FormTextInput
-									autoCorrect={false}
-									placeholder=""
-									keyboardType={'email-address'}
-									onChangeText={txt => this.setState({ confirmPassword: txt })}
-									/>
-								</ContainerTxtInput> 
-							</DivInput> */}
-						{/* </Form>
-					</DivForm> */}
-
-					{/* <Div style={{flex:0.4}}>
-						<ButtonSmallNext onPress={this.nextPage}>
-							<BtnText>Próximo</BtnText>
-						</ButtonSmallNext>
-					</Div>
-
-					<DivSignOpions>
+					{/*<DivSignOpions>
 						<ContainerLine>
 							<HorizontalLine/>
 								<Text>ou inscreva-se com</Text>
