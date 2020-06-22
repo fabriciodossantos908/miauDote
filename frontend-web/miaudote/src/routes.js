@@ -6,6 +6,8 @@ import FormCompany from './components/auth/company/registration/FormCompany'
 import FormUser from './components/auth/user/register/FormUser'
 import Test from './pages/test'
 import Navbar from './components/baseComponent/Navbar'
+import Footer from './components/baseComponent/Footer'
+
 
 function Routes() {
     return (
@@ -32,9 +34,11 @@ function Routes() {
                     <Test />
                 </Route>
             </Switch>
-
+            <Footer />
         </Router>
     )
+
 }
+
 
 export default Routes;
