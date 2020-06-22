@@ -24,6 +24,9 @@ router.delete('/pets/:id', guard.check('USER'), petController.destroy);
 
 // Rotas de Pets perdidos
 
-router.post('/pets_perdidos', guard.check('USER'), petPerdidoController.store);
+router.post('/pets_perdidos', petPerdidoController.store);
+router.put('/pets_perdidos/:id', guard.check('USER'), petPerdidoController.update);
+router.delete('/pets_perdidos/:id', guard.check('USER'), petPerdidoController.destroy);
+
 
 module.exports = router;

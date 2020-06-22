@@ -20,15 +20,12 @@ class PetFilter {
             count = await Pet.count({
                where: {
                   uf,
-                  id: {
-                     [Op.gt]: offset
-                  }
                }
             });
 
             pets = await Pet.findAll({
                where: {
-                  uf,                  
+                  uf,               
                },
                offset,
                limit: parseInt(limite)

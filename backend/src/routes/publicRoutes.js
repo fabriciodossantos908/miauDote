@@ -26,6 +26,7 @@ const petPerdidoController = require('../app/controllers/PetPerdidoController');
 const usuarioFilter = require('../app/controllers/filters/UsuarioFilter');
 const empresaFilter = require('../app/controllers/filters/EmpresaFilter');
 const petFilter = require('../app/controllers/filters/PetFilter');
+const petPerdidoFilter = require('../app/controllers/filters/PetPerdidoFilter');
 
 const router = Router();
 
@@ -62,6 +63,9 @@ router.get('/pets/localizacao/latitude/:latitude/longitude/:longitude', petFilte
 
 // Rotas de Pets perdidos
 router.get('/pets_perdidos', petPerdidoController.index);
+router.get('/pets_perdidos/localizacao', petPerdidoFilter.indexByProximity);
+router.get('/pets_perdidos/:id', petPerdidoController.show);
+router.get('/pets_perdidos/uf/:uf', petPerdidoFilter.indexByLocal);
 
 
 

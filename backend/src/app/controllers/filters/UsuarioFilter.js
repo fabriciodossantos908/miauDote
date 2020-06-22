@@ -108,12 +108,14 @@ class UsuarioFilter {
   async uploadProfilePhoto(req, res) {
     try {
       let file = req;
-
       const usuario = await Usuario.findByPk(req.params.id);
+
 
       if(!usuario){
         return res.status(400).json({erro: 'Usuário inexistente'});
       }
+
+      console.log(file);
 
       if (usuario.url_foto != 'http://storage.googleapis.com/miaudote-c4d26.appspot.com/profile%2Fuser.png') {
         const fileName = usuario.url_foto.substring(67);

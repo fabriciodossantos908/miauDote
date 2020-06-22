@@ -31,6 +31,19 @@ module.exports = (sequelize, DataTypes) => {
 
          }
       },
+      raca: {
+         type: DataTypes.STRING,
+         allowNull: false,
+         validate: {
+            notEmpty: {
+               msg: 'Este campo não pode ser nulo.'
+            },
+            len: {
+               args: [1, 30],
+               msg: 'Este campo deve conter de 1 a 30 caracteres'
+            }
+         }
+      },
       sexo: {
          allowNull: false,
          type: DataTypes.STRING,
@@ -54,6 +67,43 @@ module.exports = (sequelize, DataTypes) => {
             len: {
                args: [1, 1],
                msg: 'Este campo deve conter apenas um caracter.'
+            }
+         }
+      },
+      uf: {
+         type: DataTypes.STRING,
+         allowNull: false,
+         validate: {
+            notEmpty: {
+               msg: 'Este campo não pode ser nulo.'
+            },
+            len: {
+               args: [2, 2],
+               msg: 'UF inválida'
+            }
+         }
+      }, uf: {
+         type: DataTypes.STRING,
+         allowNull: false,
+         validate: {
+            notEmpty: {
+               msg: 'Este campo não pode ser nulo.'
+            },
+            len: {
+               args: [2, 2],
+               msg: 'UF inválida'
+            }
+         }
+      }, cidade: {
+         type: DataTypes.STRING,
+         allowNull: false,
+         validate: {
+            notEmpty: {
+               msg: 'Este campo não pode ser nulo.'
+            },
+            len: {
+               args: [2, 100],
+               msg: 'Este campo deve conter de 2 a 100 caracteres'
             }
          }
       },

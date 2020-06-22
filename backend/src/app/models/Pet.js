@@ -26,7 +26,20 @@ module.exports = (sequelize, DataTypes) => {
             },
             len: {
                args: [1, 1],
-               msg: 'Este campo deve conter apenas 1 caracter'
+               msg: 'Este campo deve conter apenas 1 caracter.'
+            }
+         }
+      },
+      raca:{
+         type: DataTypes.STRING,
+         allowNull: false,
+         validate: {
+            notEmpty: {
+               msg: 'Este campo não pode ser nulo.'
+            },
+            len: {
+               args: [1, 30],
+               msg: 'Este campo deve conter de 1 a 30 caracteres'
             }
          }
       },

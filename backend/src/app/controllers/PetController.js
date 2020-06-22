@@ -73,7 +73,7 @@ class PetController {
       return res.status(201).json(pet);
 
     } catch (err) {
-      return res.status(400).json({ erro: { campo: error.errors[0].path, mensagem: error.errors[0].message } });
+      return res.status(400).json({ erro: { campo: err.errors[0].path, mensagem: err.errors[0].message } });
     }
   }
 
@@ -81,10 +81,11 @@ class PetController {
     try {
       const pet = await Pet.findByPk(req.params.id);
       if (!pet)
-        return res.status(404).json({ erro: 'o Usuário a ser editado não existe.' })
+        return res.status(404).json({ erro: 'o Pet a ser editado não existe.' })
 
+
+      
       await pet.update(req.body);
-      pet.senha = undefined;
 
       return res.json({ pet });
     } catch (err) {
