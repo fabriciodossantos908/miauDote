@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity, Button, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Picker } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Button, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Picker, ScrollView } from 'react-native';
 
 
 import { HelperText, TextInput } from 'react-native-paper';
@@ -117,7 +117,7 @@ export default class FormPersonalData extends Component {
 
 	nextPage = ( props ) => {
 		this.dateConvert()
-		if (!this.validate()) return
+		// if (!this.validate()) return
 
 		const data = this.state
 
@@ -144,9 +144,11 @@ export default class FormPersonalData extends Component {
 		//   behavior={Platform.OS == "ios" ? "padding" : "height"}
 		return (
 			<BlueContainer>
-				<KeyboardAvoidingView style={{flex:1}}>
+				<KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{flex:1}}>
+				
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 				<MainContainer>
+				{/* <ScrollView> */}
 				<Header>
 						<Head style={{}}>
 							<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
@@ -167,7 +169,7 @@ export default class FormPersonalData extends Component {
 					</SubtittleContainer>
 
 					<DivForm style={{marginTop:0, bottom:10}}>
-						<Form>
+						{/* <Form> */}
 							<TextInput
 									// maxLength={3}
 									// maxLength={8}
@@ -176,6 +178,7 @@ export default class FormPersonalData extends Component {
 									returnKeyType='go'
 									mode={'outlined'}
 									value={this.state.name || ''}
+									maxLength={130}
 									onChangeText={txt => this.setState({ name: txt })}
 									theme={{
 										// roundness: 50,
@@ -189,9 +192,10 @@ export default class FormPersonalData extends Component {
 							 {/* <DivInputRow > */}
 							 <TextInput
 								style={{ backgroundColor: '#ffff',  height: 40, alignSelf: 'stretch', top:40}}
-								label="datanasc"
+								label="Data de Nascimento"
+								// maxLength={1}
 								mode={'outlined'}
-								keyboardType={"numbers-and-punctuation"}
+								keyboardType={"numeric"}
 								returnKeyType='go'
 								value={this.state.birthDate || ''}
 								ref={(ref) => this.birthDateField = ref}
@@ -205,21 +209,21 @@ export default class FormPersonalData extends Component {
 									primary:'#1bc7cb',
 									underlineColor:'transparent',
 								}}}
-								// render={props =>
-								// 	<TextInputMask
-								// 	{...props}
-								// 	type={'datetime'}
-								// 	value={this.state.birthDate}
-								// 	onChangeText={text => {
-								// 		this.setState({
-								// 		birthDate: text
-								// 		})
-								// 	}}
-								// 	options={{
-								// 		format: 'YYYY/MM/DD'
-								// 	}}
-								// />
-								// }
+								render={props =>
+									<TextInputMask
+									{...props}
+									type={'datetime'}
+									value={this.state.birthDate}
+									onChangeText={text => {
+										this.setState({
+										birthDate: text
+										})
+									}}
+									options={{
+										format: 'DD/MM/YYYY'
+									}}
+								/>
+								}
 							/>
 
 							{/* <TextInput
@@ -245,7 +249,7 @@ export default class FormPersonalData extends Component {
 								onValueChange={(itemValue, itemPosition) =>  
 								this.setState({gender: itemValue, choosenIndex: itemPosition})}
 							>  
-								<Picker.Item label="Selecione o sexo" value="O" />  
+								<Picker.Item label="Selecione o sexo" value="NAN" />  
 								<Picker.Item label="Feminino" value="F" />  
 								<Picker.Item label="Masculino" value="M" />  
 								<Picker.Item label="Prefiro não informar" value="O" />  
@@ -273,22 +277,22 @@ export default class FormPersonalData extends Component {
 									underlineColor:'transparent',
 								}
 								}}
-								// render={props =>
-								// 	<TextInputMask
-								// 	{...props}
-								// 	type={'cpf'}
-								// 	value={this.state.cpf}
-								// 	onChangeText={text => {
-								// 		this.setState({
-								// 		cpf: text
-								// 		})
-								// 	}}
-								// 	options={{
-								// 		format: '999.999.999-99'
-								// 	}}
-								// 	ref={(ref) => this.cpfField = ref}
-								//  />
-								// }
+								render={props =>
+									<TextInputMask
+									{...props}
+									type={'cpf'}
+									value={this.state.cpf}
+									onChangeText={text => {
+										this.setState({
+										cpf: text
+										})
+									}}
+									options={{
+										format: '999.999.999-99'
+									}}
+									ref={(ref) => this.cpfField = ref}
+								 />
+								}
 								
 							/>
 
@@ -333,23 +337,23 @@ export default class FormPersonalData extends Component {
 										underlineColor:'transparent',
 										}
 									}}
-									// render={props =>
-									// 	<TextInputMask
-									// 	{...props}
-									// 	type={'cel-phone'}
-									// 	value={this.state.phone}
-									// 	onChangeText={text => {
-									// 		this.setState({
-									// 		phone: text
-									// 		})
-									// 	}}
-									// 	options={{
-									// 		maskType: 'BRL',
-									// 		withDDD: false,
-									// 		// format: '999.999.999-99'
-									// 	}}
-									//  />
-									// }
+									render={props =>
+										<TextInputMask
+										{...props}
+										type={'cel-phone'}
+										value={this.state.phone}
+										onChangeText={text => {
+											this.setState({
+											phone: text
+											})
+										}}
+										options={{
+											maskType: 'BRL',
+											withDDD: false,
+											// format: '999.999.999-99'
+										}}
+									 />
+									}
 								
 								/>
 
@@ -394,7 +398,7 @@ export default class FormPersonalData extends Component {
 									</ContainerTxtInput> 
 								</DivInputMedium>
 							</DivInputRow> */}
-						</Form>
+						{/* </Form> */}
 					</DivForm>
 
 					<DivButtons style={{justifyContent:"space-between"}}>
@@ -406,9 +410,10 @@ export default class FormPersonalData extends Component {
 							<BtnText>Anterior</BtnText>
 						</ButtonSmallPrevious>
 					</DivButtons>
-
+					{/* </ScrollView> */}
 				</MainContainer>
 				</TouchableWithoutFeedback>
+				
 				</KeyboardAvoidingView>
 			</BlueContainer>
 		);

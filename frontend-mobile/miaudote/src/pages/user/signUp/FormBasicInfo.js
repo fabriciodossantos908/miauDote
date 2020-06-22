@@ -117,9 +117,9 @@ export default class FormBasicInfo extends Component {
 	// }
 
 	nextPage = ( props ) => {
-		if (!this.validate()) return
+		// if (!this.validate()) return
 		// else if (validar email)
-		else if (!this.validatePassword()) return
+		if (!this.validatePassword()) return
 
 		const data = this.state
 
@@ -137,12 +137,11 @@ export default class FormBasicInfo extends Component {
 	render() {
 
 		return (
-			// <KeyboardAvoidingView
-			// 	behavior={Platform.OS == "ios" ? "padding" : "height"}
-			// 	style={styles.container}
-			// >
-			//  behavior={Platform.OS == "ios" ? "padding" : "height}"
-			<KeyboardAvoidingView style={{flex:1}}>
+			<KeyboardAvoidingView
+				behavior={Platform.OS == "ios" ? "padding" : "height"}
+				style={styles.container}
+			>
+			{/* <KeyboardAvoidingView style={{flex:1}}> */}
 			
 			{/* <Container style={{backgroundColor:'#ccc7', padding:5}}> */}
 			

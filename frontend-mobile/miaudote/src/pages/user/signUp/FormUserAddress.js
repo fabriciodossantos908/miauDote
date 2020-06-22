@@ -235,7 +235,7 @@ export default class FormUserAddress extends Component {
 						<View style={styles.OvalShapeView}></View>
 				</HeaderDecoration> */}
 				{/*   behavior={Platform.OS == "ios" ? "padding" : "height"} */}
-				<KeyboardAvoidingView style={{flex:1}}>
+				<KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{flex:1}}>
 				<MainContainer>
 					<Header style={{top:30}}>
 						<Head style={{}}>
@@ -260,14 +260,14 @@ export default class FormUserAddress extends Component {
 						<Form  style={{top:20}}>
 							{/* <DivInputRow style={{ backgroundColor: '#c78'}}> */}
 								<TextInput
-									maxLength={8}
+									maxLength={9}
 									onBlur={this.findCep}
 									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch'}}
 									label='CEP' 
 									returnKeyType='go'
 									keyboardType="numeric"
 									mode={'outlined'}
-									value={this.state.cep || ''}
+									// value={this.state.cep || ''}
 									ref={(ref) => this.cepField = ref}
 									onChangeText={txt => this.setState({ cep: txt })}
 									theme={{
@@ -276,7 +276,23 @@ export default class FormUserAddress extends Component {
 										primary:'#1bc7cb',
 										underlineColor:'transparent',
 										}
-								}}/>
+									}}
+									render={props =>
+										<TextInputMask
+										{...props}
+										type={'custom'}
+										value={this.state.cep}
+										onChangeText={text => {
+											this.setState({
+											cep: text
+											})
+										}}
+										options={{
+											mask: 'SSSSS-SSS'
+										}}
+									/>
+									}
+								/>
 
 							<DivInputRow>
 								<TextInput
