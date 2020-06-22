@@ -6,9 +6,9 @@ export default class HomeTeste extends Component {
 
     constructor(props) {
         super(props)
-        const { params } = this.props.route.params //capturando os valores passados por parametro 
+        const { data } = this.props.route.params.params //capturando os valores passados por parametro 
 		this.state = {
-            name: 'joanna'
+            name: data.name
 			
         }
        
@@ -16,8 +16,8 @@ export default class HomeTeste extends Component {
 
     render () {
         return (
-            <View>
-                <Text>Olá: {this.state.name}</Text>
+            <View style={{flex:1, justifyContent: "center", alignItems: "center"}}>
+                <Text>Olá {this.state.name}!</Text>
             </View>
         );
     }
