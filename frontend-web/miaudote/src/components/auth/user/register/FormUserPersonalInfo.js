@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col, Container, Button } from 'react-bootstrap'
+import InputMask from 'react-input-mask'
 
 export default class pesonalData extends Component {
     render() {
@@ -17,12 +18,27 @@ export default class pesonalData extends Component {
                     <label>Celular</label>
                 </Row>
                 <Row>
-                    <input
+                    <InputMask
                         type="text"
+                        mask="(99) 9 9999-9999"
+                        maskChar="_"
                         name="celular"
-                        placeholder="celular"
+                        placeholder="(11) 9999-9999"
                         onChange={handleChange}
                         defaultValue={state.celular}
+                    />
+                </Row>
+
+                <Row>
+                    <label>nome</label>
+                </Row>
+                <Row>
+                    <InputMask
+                        type="text"
+                        name="nome"
+                        placeholder="joao vitor"
+                        onChange={handleChange}
+                        defaultValue={state.nome}
                     />
                 </Row>
 
@@ -31,12 +47,13 @@ export default class pesonalData extends Component {
                 </Row>
 
                 <Row>
-
-                    <input
-                        type="date"
+                    <InputMask
+                        type="text"
+                        mask="99/99/9999"
+                        maskChar="_"
                         name="dt_nasc"
-                        placeholder="data de nascimento"
-                        value={state.data_nascimento}
+                        placeholder="07/08/2001"
+                        defaultValue={state.data_nascimento}
                         onChange={handleChange}
                     />
                 </Row>
@@ -47,10 +64,10 @@ export default class pesonalData extends Component {
 
                 <Row>
 
-                    <input
+                    <InputMask
                         type="text"
                         name="sexo"
-                        placeholder="sexo"
+                        placeholder="Sexo"
                         value={state.sexo}
                         onChange={handleChange}
                     />
@@ -62,10 +79,12 @@ export default class pesonalData extends Component {
 
                 <Row>
 
-                    <input
+                    <InputMask
                         type="text"
+                        mask="999.999.999.99"
+                        maskChar="_"
                         name="cpf"
-                        placeholder="cpf"
+                        placeholder="999.999.999.99"
                         value={state.cpf}
                         onChange={handleChange}
                     />

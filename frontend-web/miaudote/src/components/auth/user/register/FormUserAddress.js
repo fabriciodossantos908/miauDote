@@ -6,29 +6,47 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const CepApi = new Cep()
 
+
 export default class UserAddress extends Component {
 
+
     createUser = () => {
-        if(this.SendCompany){
+        const values = {
+            nome: this.props.nome, email: this.props.email, celular: this.props.celular,
+            senha: this.props.senha,
+            data_nascimento: this.props.data_nascimento,
+            sexo: this.props.sexo,
+            cpf: this.props.cpf,
+            cep: this.props.cep,
+            cidade: this.props.cidade,
+            bairro: this.props.bairro,
+            logradouro: this.props.logradouro,
+            uf: this.props.uf,
+            url_foto: this.props.url_foto,
+            permissions: "USER"
+        }
+        console.log(values)
+        if (this.SendCompany(values)) {
             console.log("usuário cadastrado!.")
+
         }
 
         return alert("Verifique se todos os campos estão preenchidos!.")
-        
+
     }
 
-    SendCompany = () => {
-        const { values } = this.props
 
-        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuario/registrar',
-        values)
+    SendCompany = (values) => {
+        
+
+        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/registrar',
+            values)
             .then(
                 (res) => {
                     console.log("created!" + res.data)
                 });
 
     }
-
     consultCep(event) {
         const address = CepApi.getAddress()
 
