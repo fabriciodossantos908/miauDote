@@ -51,8 +51,6 @@ export default class CompanyAddress extends Component {
             permissions: state.permissions,
             senha: state.senha
         }
-        console.log(company)
-        this.props.valInsert(company)
         if (apiCompany.createCompany(company)) {
             return (
                 alert("created with success!")
@@ -91,6 +89,7 @@ export default class CompanyAddress extends Component {
 
     render() {
         const { handleChange, state } = this.props;
+        console.log(state)
         return (
             <div>
                 <Header />
@@ -122,6 +121,7 @@ export default class CompanyAddress extends Component {
                                 placeholder="cidade"
                                 name="cidade"
                                 defaultValue={state.cidade}
+                                onKeyUp={this.props.valInsert}
                                 onChange={handleChange}
                             />
                         </Col>
@@ -136,6 +136,7 @@ export default class CompanyAddress extends Component {
                                 name="bairro"
                                 placeholder="jardim boas novas"
                                 defaultValue={state.bairro}
+                                onKeyUp={this.props.valInsert}
                                 onChange={handleChange}
                             />
                         </Col>
@@ -150,6 +151,7 @@ export default class CompanyAddress extends Component {
                                 name="logradouro"
                                 placeholder="alameda trakinas"
                                 defaultValue={state.logradouro}
+                                onKeyUp={this.props.valInsert}
                                 onChange={handleChange}
                             />
                         </Col>
@@ -163,7 +165,8 @@ export default class CompanyAddress extends Component {
                                 type="text"
                                 name="numero"
                                 placeholder="500"
-                                defaultValue={state.numero}
+                                defaultValue={state.numero}                                
+                                onKeyUp={this.props.valInsert}                                
                                 onChange={handleChange}
                             />
                         </Col>
@@ -178,6 +181,7 @@ export default class CompanyAddress extends Component {
                                 name="complemento"
                                 placeholder="complemento"
                                 defaultValue={state.complemento}
+                                onKeyUp={this.props.valInsert}                                
                                 onChange={handleChange}
                             />
                         </Col>
@@ -192,6 +196,7 @@ export default class CompanyAddress extends Component {
                                 name="uf"
                                 placeholder="uf"
                                 defaultValue={state.uf}
+                                onKeyUp={this.props.valInsert}                                
                                 onChange={handleChange}
                             />
                         </Col>

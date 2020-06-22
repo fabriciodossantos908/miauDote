@@ -36,6 +36,8 @@ companytype = () => {
 
 render() {
     const { state, handleChange } = this.props;
+    console.log(state)
+
     return (
         <React.Fragment>
             <Header />
@@ -53,6 +55,7 @@ render() {
                             placeholder="(11) 9 9999-9999"
                             name="celular_representante"
                             id="celular_representante"
+                            onKeyUp={this.props.valInsert}
                             onChange={handleChange}
                         />
                     </Col>
@@ -70,6 +73,7 @@ render() {
                             placeholder="(11) 9999-9999"
                             name="telefone"
                             id="telefone"
+                            onKeyUp={this.props.valInsert}
                             onChange={handleChange}
                         />
                     </Col>
@@ -95,6 +99,7 @@ render() {
                             placeholder="miaudote s.a"
                             name="razao_social"
                             id="razao_social"
+                            onKeyUp={this.props.valInsert}
                             onChange={handleChange}
                         />
                     </Col>
@@ -110,6 +115,7 @@ render() {
                             placeholder="Miaudote"
                             name="nome_empresa"
                             id="nome_empresa"
+                            onKeyUp={this.props.valInsert}
                             onChange={handleChange}
                         />
                     </Col>
@@ -128,6 +134,7 @@ render() {
                             placeholder="99.999.999/9999-99"
                             name="cnpj"
                             id="cnpj"
+                            onKeyUp={this.props.valInsert}
                             onChange={handleChange}
                         />
                     </Col>

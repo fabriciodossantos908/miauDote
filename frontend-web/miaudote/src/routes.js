@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/home'
 import FormCompany from './components/auth/company/registration/FormCompany'
-import LoginCompany from './components/auth/company/login/LoginCompany'
 import FormUser from './components/auth/user/register/FormUser'
 import Test from './pages/test'
 import Navbar from './components/baseComponent/Navbar'
@@ -20,10 +19,6 @@ function Routes() {
 
                 <Route path='/formCompany' exact >
                     <FormCompany />
-                </Route>
-
-                <Route path='/loginCompany' exact >
-                    <LoginCompany />
                 </Route>
 
                 <Route path='/formUser' exact >

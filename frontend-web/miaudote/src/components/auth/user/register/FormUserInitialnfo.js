@@ -9,7 +9,6 @@ export default class FormBaseInfo extends Component {
 
     render() {
         const { state, handleChange, nextStep } = this.props
-        // console.log(this.props.input)
         return (
             <Container>
                 <div className="mt-1 mr-5 al-center">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
+import '../../../../materialize/css/materialize.css'
  
 
 const Header = () => {
@@ -44,6 +45,7 @@ export class companyBaseInfo extends Component {
 
     render() {
         const { state, handleChange } = this.props
+        console.log(state)
         return (
             <Container border="primary" className="mt-5 mr-1 baseModal" fluid="lg" >
                 <Row>
@@ -63,6 +65,7 @@ export class companyBaseInfo extends Component {
                                     placeholder="pedro"
                                     name="nome_representante"
                                     id="nome_representante"
+                                    onKeyUp={this.props.valInsert}
                                     onChange={handleChange}
                                 />
                             </Col>
@@ -80,6 +83,7 @@ export class companyBaseInfo extends Component {
                                     placeholder="pedro@miaudote.com"
                                     name="email_representante"
                                     id="email_representante"
+                                    onKeyUp={this.props.valInsert}
                                     onChange={handleChange}
                                 />
                             </Col>
@@ -97,6 +101,7 @@ export class companyBaseInfo extends Component {
                                     placeholder="senha"
                                     name="senha"
                                     id="senha"
+                                    onKeyUp={this.props.valInsert}
                                     onChange={handleChange}
                                 />
                             </Col>
@@ -115,7 +120,6 @@ export class companyBaseInfo extends Component {
                                     name="senha_confirmation"
                                     id="senha_confirmation"
                                     onChange={handleChange}
-                                    // onKeyUp={this.valPassword}
                                 />
                             </Col>
                         </Row>
