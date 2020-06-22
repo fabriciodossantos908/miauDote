@@ -8,7 +8,7 @@ export default class FormBaseInfo extends Component {
     // continue = () => { this.props.nextStep() }
 
     render() {
-        const { state, handleChange, nextStep } = this.props
+        const { state, handleChange, nextStep, validInsert } = this.props
         return (
             <Container>
                 <div className="mt-1 mr-5 al-center">
@@ -31,6 +31,7 @@ export default class FormBaseInfo extends Component {
                             placeholder="ex:joao.11@miaudote.com"
                             onChange={handleChange}
                             defaultValue={state.senha}
+                            onKeyUp={validInsert}
                         />
                     </Row>
                     <Row>
@@ -43,6 +44,7 @@ export default class FormBaseInfo extends Component {
                             placeholder="senha"
                             onChange={handleChange}
                             defaultValue={state.senha}
+                            onKeyUp={validInsert}
                         />
                     </Row>
                     <Row>
