@@ -1,11 +1,14 @@
 import React from 'react';
 import Routes from './routes'
-import Footer from '../src/components/baseComponent/Footer'
+import Navbar from './components/baseComponent/Navbar'
+import Footer from './components/baseComponent/Footer'
 
 const App = () => {
     return (
         <div>
+            <Navbar />
             <Routes />
+            <Footer />
         </div>
     )
 }

@@ -33,6 +33,9 @@ export default class UserInfo extends Component {
             url_foto: "",
             permissions: "USER",
             senha_confirmation: "",
+            errors: {
+                errorsEmail : []
+            }
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -61,9 +64,10 @@ export default class UserInfo extends Component {
     };
 
     valFormat(input) {
+        let errors = this.state.errors
 
         let schema = yup.object().shape({
-            nome_representante: yup
+            nome: yup
                 .string()
                 .min(10, "Nome e sobrenome meu caro milorde")
                 .max(100, "Por favor, somente o primeiro nome e sobrenome"),
@@ -116,40 +120,57 @@ export default class UserInfo extends Component {
         schema
             .isValid(input)
             .then(function (valid) {
-                console.log("valid " + valid)
+                 return valid
             })
 
             schema.validate(input).catch(function (err) {
-            console.log(err.errors)
+                
+                console.log(err.errors)
+                console.log(errors)
+            this.setState({
+                errors : err.errors
+            })
         });
 
     }
 
     valInsert(event) {
-        if (event.target.name === "celular") {
-            const field = {
+        // if (event.target.name === "celular") {
+        //     const field = {
+        //         [event.target.name]: mask.trimSlash(mask.trimMaskCell(event.target.value))
+        //     }
+        //     const res = this.valFormat(field)
+
+
+        // }
+        // else if(event.target.name === "cpf"){
+        //     const field = {
+        //         [event.target.name]: mask.repEmptyCpf(event.target.value)
+        //     }
+        //     this.valFormat(field)
+        // }
+        // else if(event.target.name === "cep"){
+        //     const field = {
+        //         [event.target.name]: mask.trimSlash(mask.trimMaskCep(event.target.value))
+        //     }
+        //     this.valFormat(field)            
+
+
+                    const field = {
                 [event.target.name]: mask.trimSlash(mask.trimMaskCell(event.target.value))
             }
-            this.valFormat(field)
-        }
-        else if(event.target.name === "cpf"){
-            const field = {
-                [event.target.name]: mask.repEmptyCpf(event.target.value)
-            }
-            this.valFormat(field)
-        }
-        else if(event.target.name === "cep"){
-            const field = {
-                [event.target.name]: mask.trimSlash(mask.trimMaskCep(event.target.value))
-            }
-            this.valFormat(field)            
-        }
-        else {
-            const field = {
-                [event.target.name]: event.target.value
-            }
-            this.valFormat(field)
-        }
+
+
+         this.valFormat(field)
+
+        console.log("that's the res " + this.state.errors)
+        // }
+        // else {
+        //     const field = {
+        //         [event.target.name]: event.target.value
+        //     }
+        //     this.valFormat(field)
+        // }
     }
 
     handleChange(event) {

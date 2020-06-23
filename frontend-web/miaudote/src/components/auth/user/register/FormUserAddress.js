@@ -14,7 +14,6 @@ export default class UserAddress extends Component {
 
 
     createUser = () => {
-<<<<<<< HEAD
         this.SendCompany()
             // alert("usuário cadastrado!.")
     }
@@ -40,7 +39,6 @@ export default class UserAddress extends Component {
 
         Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuario/registrar',
             user)
-=======
         const values = {
             nome: this.props.nome, email: this.props.email, celular: this.props.celular,
             senha: this.props.senha,
@@ -71,7 +69,6 @@ export default class UserAddress extends Component {
 
         Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/registrar',
             values)
->>>>>>> a89d503ff27b2b6cb6f6682e5efa55b23ee2a9b8
             .then(
                 (res) => {
                     console.log("created!" + res.data)

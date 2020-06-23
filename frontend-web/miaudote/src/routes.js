@@ -3,16 +3,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/home'
 import FormCompany from './components/auth/company/registration/FormCompany'
+import CompanyLogin from './components/auth/login/CompanyLogin'
 import FormUser from './components/auth/user/register/FormUser'
+// import moduleName from './components/auth/login/userLogin'
 import Test from './pages/test'
-import Navbar from './components/baseComponent/Navbar'
-import Footer from './components/baseComponent/Footer'
-
 
 function Routes() {
     return (
+        <React.Fragment>
+
         <Router>
-            <Navbar />
 
             <Switch>
                 <Route path='/' exact >
@@ -30,12 +30,15 @@ function Routes() {
                 <Route path='/loginUser' exact >
                     <FormUser />
                 </Route>
+                <Route path='/loginCompany' exact >
+                    <CompanyLogin />
+                </Route>
                 <Route path='/test' exact >
                     <Test />
                 </Route>
             </Switch>
-            <Footer />
         </Router>
+        </React.Fragment>
     )
 
 }
