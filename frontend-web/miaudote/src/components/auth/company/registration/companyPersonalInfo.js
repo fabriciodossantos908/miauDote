@@ -8,7 +8,7 @@ const Header = () => {
             <Container fluid="md">
                 <Row className="justify-content-md-left" lg={8}>
                     <Col xs={6}>
-                        <h1>Informacões pessoais</h1>
+                        <h1 className="font-italic">Informacões pessoais</h1>
                     </Col>
                 </Row>
                 <Row className="justify-content-md-left" lg={8}>
@@ -46,7 +46,7 @@ render() {
                     <Col xs={3}>
                         <label htmlFor="celular_representante">Celular do representante</label>
                     </Col>
-                    <Col xs={3}>
+                    <Col xs={3} >
                         <InputMask
                             type="text"
                             mask="(99) 9 9999-9999"
@@ -67,7 +67,7 @@ render() {
                     <Col xs={3}>
                         <InputMask
                             type="text"
-                            mask="(11) 9999-9999"
+                            mask="(99) 9999-9999"
                             maskChar="_"
                             defaultValue={state.telefone}
                             placeholder="(11) 9999-9999"

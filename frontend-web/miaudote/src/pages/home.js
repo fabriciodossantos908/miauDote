@@ -18,12 +18,11 @@ export class Home extends Component {
             <div>
                 <header>Home page</header>
                 <div>
-                <div className="one"></div>
-                <div className="two"></div>
 
                     <h1>Home page</h1>
                     <alertBtn/>
                 </div>
+                
             </div>
         )
     }

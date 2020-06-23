@@ -7,13 +7,13 @@ const Header = () => {
     return (
         <React.Fragment>
             <Row className="justify-content-md-left" xs={4} lg={8}>
-                <Col xs={5}>
-                    <h1>Cadastro de Empresa</h1>
+                <Col xs={10} lg={10}>
+                    <h1 className="font-italic">Cadastro de Empresa</h1>
                 </Col>
             </Row>
             <Row className="justify-content-md-left" xs={4} lg={8}>
-                <Col xs={5}>
-                    <h3>Informções básicas de sua empresa</h3>
+                <Col xs={8}>
+                    <h3 className="font-italic">Informções básicas de sua empresa</h3>
                 </Col>
             </Row>
         </React.Fragment>

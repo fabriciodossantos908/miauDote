@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity, Button, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Button, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Picker, ScrollView } from 'react-native';
 
 
 import { HelperText, TextInput } from 'react-native-paper';
@@ -50,6 +50,7 @@ import {
 	ButtonSmallPrevious,
 	Head
 } from './styles'
+import { blue } from 'colorette';
 
 
 
@@ -57,15 +58,15 @@ export default class FormPersonalData extends Component {
 
 	constructor(props){
 		super(props)
-		const { params } = this.props.route.params
+		// const { params } = this.props.route.params
+		const { data } = this.props.route.params.params
 		this.state = {
-			email: params.email,
-			password : params.password,
+			email: data.email,
+			password : data.password,
 			name: '',
 			birthDate : '',
 			gender: '',
 			cpf: '',
-			// ddd: '',
 			phone: '' 
 		}
 	}
@@ -79,25 +80,50 @@ export default class FormPersonalData extends Component {
 		return true
 	}
 
+	// nextPage = ( props ) => {
+	// 	if (!this.validate()) return
+
+	// 	const { email, password, name, birthDate, gender, cpf, phone } = this.state
+
+	// 	console.log(this.state)
+
+	// 	this.props.navigation.navigate('FormUserAddress', {
+	// 		screen: 'FormPersonalData',
+	// 		params: { 
+	// 			email: email,
+	// 			password: password,
+	// 			name: name,
+	// 			birthDate: birthDate,
+	// 			gender: gender,
+	// 			cpf: cpf,
+	// 			phone: phone
+
+	// 		},
+	// 	}); 
+
+	// }
+
+	dateConvert = () => {
+
+        const { birthDate } = this.state
+
+        let date = birthDate.split('/').reverse().join('-');
+
+        this.setState({birthDate: date})
+
+        console.log(this.state)
+
+	}
+
 	nextPage = ( props ) => {
-		if (!this.validate()) return
+		this.dateConvert()
+		// if (!this.validate()) return
 
-		const { email, password, name, birthDate, gender, cpf, phone } = this.state
-
-		console.log(this.state)
+		const data = this.state
 
 		this.props.navigation.navigate('FormUserAddress', {
 			screen: 'FormPersonalData',
-			params: { 
-				email: email,
-				password: password,
-				name: name,
-				birthDate: birthDate,
-				gender: gender,
-				cpf: cpf,
-				phone: phone
-
-			},
+			params: { data },
 		}); 
 
 	}
@@ -112,16 +138,17 @@ export default class FormPersonalData extends Component {
 	}
 
 	render() {
+		console.log(this.state)
 		// console.log(this.props.route.params.params.email)
 		// console.log(this.state)
+		//   behavior={Platform.OS == "ios" ? "padding" : "height"}
 		return (
 			<BlueContainer>
-				<KeyboardAvoidingView style={{flex:1}}  behavior={Platform.OS == "ios" ? "padding" : "height"}>
-				{/* <HeaderDecoration>
-						<View style={styles.OvalShapeView}></View>
-				</HeaderDecoration> */}
+				<KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{flex:1}}>
+				
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 				<MainContainer>
+				{/* <ScrollView> */}
 				<Header>
 						<Head style={{}}>
 							<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
@@ -136,24 +163,13 @@ export default class FormPersonalData extends Component {
 						</DivProgressBar>
 
 					</Header>
-					{/* <Header>
-						<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
-						<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
-					</Header>
-
-					<DivProgressBar style={{justifyContent:'space-evenly'}}>
-						<DesabledStepIconColor/>
-						<ActiveStepIconColor/>
-						<DesabledStepIconColor/>
-						<DesabledStepIconColor/>
-					</DivProgressBar> */}
 
 					<SubtittleContainer>
 						<SecundaryTittle style={{fontWeight:'bold', color:'#5A6978'}}>Diga mais sobre você:</SecundaryTittle>
 					</SubtittleContainer>
 
 					<DivForm style={{marginTop:0, bottom:10}}>
-						<Form>
+						{/* <Form> */}
 							<TextInput
 									// maxLength={3}
 									// maxLength={8}
@@ -162,6 +178,7 @@ export default class FormPersonalData extends Component {
 									returnKeyType='go'
 									mode={'outlined'}
 									value={this.state.name || ''}
+									maxLength={130}
 									onChangeText={txt => this.setState({ name: txt })}
 									theme={{
 										// roundness: 50,
@@ -175,8 +192,10 @@ export default class FormPersonalData extends Component {
 							 {/* <DivInputRow > */}
 							 <TextInput
 								style={{ backgroundColor: '#ffff',  height: 40, alignSelf: 'stretch', top:40}}
-								label="datanasc"
+								label="Data de Nascimento"
+								// maxLength={1}
 								mode={'outlined'}
+								keyboardType={"numeric"}
 								returnKeyType='go'
 								value={this.state.birthDate || ''}
 								ref={(ref) => this.birthDateField = ref}
@@ -190,24 +209,24 @@ export default class FormPersonalData extends Component {
 									primary:'#1bc7cb',
 									underlineColor:'transparent',
 								}}}
-								// render={props =>
-								// 	<TextInputMask
-								// 	{...props}
-								// 	type={'datetime'}
-								// 	value={this.state.birthDate}
-								// 	onChangeText={text => {
-								// 		this.setState({
-								// 		birthDate: text
-								// 		})
-								// 	}}
-								// 	options={{
-								// 		format: 'YYYY/MM/DD'
-								// 	}}
-								// />
-								// }
+								render={props =>
+									<TextInputMask
+									{...props}
+									type={'datetime'}
+									value={this.state.birthDate}
+									onChangeText={text => {
+										this.setState({
+										birthDate: text
+										})
+									}}
+									options={{
+										format: 'DD/MM/YYYY'
+									}}
+								/>
+								}
 							/>
 
-							<TextInput
+							{/* <TextInput
 								// maxLength={3}
 								style={{ backgroundColor: '#ffff',  height: 40, alignSelf: 'stretch', top:40}}
 								label='Sexo' 
@@ -222,38 +241,28 @@ export default class FormPersonalData extends Component {
 									underlineColor:'transparent',
 									}
 								}}
-							/>
+							/> */}
 
-								{/*<DivInputMedium>
-									<FormLabel>Data de Nascimento:</FormLabel>
-									<ContainerTxtInput>
-										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-										<FormTextInputMedium
-											autoCorrect={false}
-											placeholder=""
-											onChangeText={txt => this.setState({birthDate: txt})}
-										/>
-									</ContainerTxtInput> 
-								</DivInputMedium>
+							<Picker 
+								style={{height:50, marginTop:48}}  
+								selectedValue={this.state.gender}  
+								onValueChange={(itemValue, itemPosition) =>  
+								this.setState({gender: itemValue, choosenIndex: itemPosition})}
+							>  
+								<Picker.Item label="Selecione o sexo" value="NAN" />  
+								<Picker.Item label="Feminino" value="F" />  
+								<Picker.Item label="Masculino" value="M" />  
+								<Picker.Item label="Prefiro não informar" value="O" />  
+							</Picker>  
 
-								<DivInputMedium>
-									<FormLabel>Sexo:</FormLabel>
-									<ContainerTxtInput>
-										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-										<FormTextInputMedium
-											autoCorrect={false}
-											placeholder=""
-											onChangeText={txt => this.setState({gender: txt})}
-										/>
-									</ContainerTxtInput> 
-								</DivInputMedium> */}
-							{/* </DivInputRow> */}
+								
 							<TextInput
 								// maxLength={3}
 								maxLength={11}
-								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:40}}
+								style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:0}}
 								label='CPF' 
 								returnKeyType='go'
+								keyboardType="numeric"
 								mode={'outlined'}
 								value={this.state.cpf || ''}
 								ref={(ref) => this.cpfField = ref}
@@ -268,22 +277,22 @@ export default class FormPersonalData extends Component {
 									underlineColor:'transparent',
 								}
 								}}
-								// render={props =>
-								// 	<TextInputMask
-								// 	{...props}
-								// 	type={'cpf'}
-								// 	value={this.state.cpf}
-								// 	onChangeText={text => {
-								// 		this.setState({
-								// 		cpf: text
-								// 		})
-								// 	}}
-								// 	options={{
-								// 		format: '999.999.999-99'
-								// 	}}
-								// 	ref={(ref) => this.cpfField = ref}
-								//  />
-								// }
+								render={props =>
+									<TextInputMask
+									{...props}
+									type={'cpf'}
+									value={this.state.cpf}
+									onChangeText={text => {
+										this.setState({
+										cpf: text
+										})
+									}}
+									options={{
+										format: '999.999.999-99'
+									}}
+									ref={(ref) => this.cpfField = ref}
+								 />
+								}
 								
 							/>
 
@@ -309,9 +318,10 @@ export default class FormPersonalData extends Component {
 										// maxLength={3}
 										// ,width:'70%'
 									maxLength={11}
-									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:40}}
+									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:1}}
 									label='Celular' 
 									returnKeyType='go'
+									keyboardType="numeric"
 									mode={'outlined'}
 									value={this.state.phone || ''}
 									onChangeText={text => {
@@ -327,23 +337,23 @@ export default class FormPersonalData extends Component {
 										underlineColor:'transparent',
 										}
 									}}
-									// render={props =>
-									// 	<TextInputMask
-									// 	{...props}
-									// 	type={'cel-phone'}
-									// 	value={this.state.phone}
-									// 	onChangeText={text => {
-									// 		this.setState({
-									// 		phone: text
-									// 		})
-									// 	}}
-									// 	options={{
-									// 		maskType: 'BRL',
-									// 		withDDD: false,
-									// 		// format: '999.999.999-99'
-									// 	}}
-									//  />
-									// }
+									render={props =>
+										<TextInputMask
+										{...props}
+										type={'cel-phone'}
+										value={this.state.phone}
+										onChangeText={text => {
+											this.setState({
+											phone: text
+											})
+										}}
+										options={{
+											maskType: 'BRL',
+											withDDD: false,
+											// format: '999.999.999-99'
+										}}
+									 />
+									}
 								
 								/>
 
@@ -388,7 +398,7 @@ export default class FormPersonalData extends Component {
 									</ContainerTxtInput> 
 								</DivInputMedium>
 							</DivInputRow> */}
-						</Form>
+						{/* </Form> */}
 					</DivForm>
 
 					<DivButtons style={{justifyContent:"space-between"}}>
@@ -400,9 +410,10 @@ export default class FormPersonalData extends Component {
 							<BtnText>Anterior</BtnText>
 						</ButtonSmallPrevious>
 					</DivButtons>
-
+					{/* </ScrollView> */}
 				</MainContainer>
 				</TouchableWithoutFeedback>
+				
 				</KeyboardAvoidingView>
 			</BlueContainer>
 		);

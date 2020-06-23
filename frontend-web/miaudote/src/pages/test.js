@@ -33,7 +33,7 @@ export class test extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container blue">
                 
             </div>
         )
