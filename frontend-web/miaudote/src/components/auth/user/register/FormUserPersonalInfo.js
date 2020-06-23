@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col, Container, Button } from 'react-bootstrap'
-<<<<<<< HEAD
 import InputMask from 'react-input-mask';
-=======
-import InputMask from 'react-input-mask'
->>>>>>> a89d503ff27b2b6cb6f6682e5efa55b23ee2a9b8
-
 export default class pesonalData extends Component {
     render() {
         const { state, handleChange, nextStep, prevStep, validInsert } = this.props;
@@ -51,25 +46,16 @@ export default class pesonalData extends Component {
                     <label>Data nascimento</label>
                 </Row>
 
-<<<<<<< HEAD
-=======
-                <Row>
->>>>>>> a89d503ff27b2b6cb6f6682e5efa55b23ee2a9b8
                     <InputMask
                         type="text"
                         mask="99/99/9999"
                         maskChar="_"
                         name="dt_nasc"
-<<<<<<< HEAD
                         placeholder="data de nascimento"
-=======
-                        placeholder="07/08/2001"
->>>>>>> a89d503ff27b2b6cb6f6682e5efa55b23ee2a9b8
                         defaultValue={state.data_nascimento}
                         onChange={handleChange}
                         onKeyUp={validInsert}
                     />
-                </Row>
 
                 <Row>
                     <label>Sexo</label>
@@ -81,13 +67,8 @@ export default class pesonalData extends Component {
                         type="text"
                         mask="a"
                         name="sexo"
-<<<<<<< HEAD
                         placeholder="sexo"
                         defaultValue={state.sexo}
-=======
-                        placeholder="Sexo"
-                        value={state.sexo}
->>>>>>> a89d503ff27b2b6cb6f6682e5efa55b23ee2a9b8
                         onChange={handleChange}
                         onKeyUp={validInsert}
                     />
@@ -101,11 +82,7 @@ export default class pesonalData extends Component {
 
                     <InputMask
                         type="text"
-<<<<<<< HEAD
                         mask="999.999.999-99"
-=======
-                        mask="999.999.999.99"
->>>>>>> a89d503ff27b2b6cb6f6682e5efa55b23ee2a9b8
                         maskChar="_"
                         name="cpf"
                         placeholder="999.999.999.99"
