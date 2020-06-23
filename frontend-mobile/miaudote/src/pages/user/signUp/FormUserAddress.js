@@ -43,10 +43,6 @@ import {
 	FormTextInput,
 	FormLabel,
 	DivInputRow,
-	DivInputMedium,
-	FormTextInputMedium,
-	DivInputSmall,
-	FormTextInputSmall,
 	DivButtons,
 	ButtonSmallPrevious, 
 	Head
@@ -61,16 +57,18 @@ export default class FormUserAddress extends Component {
 
 	constructor(props){
 		super(props)
-		const { params } = this.props.route.params
+		// const { params } = this.props.route.params
+		
+		const { data } = this.props.route.params.params
 		this.state = {
-			email: params.email,
-			password : params.password,
-			name: params.name,
-			birthDate : params.birthDate,
-			gender: params.gender,
-			cpf: params.cpf,
-			ddd: params.ddd,
-			phone: params.phone,
+			email: data.email,
+			password : data.password,
+			name: data.name,
+			birthDate : data.birthDate,
+			gender: data.gender,
+			cpf: data.cpf,
+			ddd: data.ddd,
+			phone: data.phone,
 			cep: '',
 			city: '',
 			address: '',
@@ -90,42 +88,56 @@ export default class FormUserAddress extends Component {
 		return true
 	}
 
+	// nextPage = ( props ) => {
+	// 	if (!this.validate()) return
+
+	// 	const { 
+	// 		email, 
+	// 		password, 
+	// 		name, 
+	// 		birthDate, 
+	// 		gender, 
+	// 		cpf, 
+	// 		ddd, 
+	// 		phone, 
+	// 		cep, city, address, number, complement, neighborhood, state } = this.state
+
+	// 	console.log(this.state)
+
+	// 	this.props.navigation.navigate('FormUserPhoto', {
+	// 		screen: 'FormUserAddress',
+	// 		params: { 
+	// 			email: email,
+	// 			password: password,
+	// 			name: name,
+	// 			birthDate: birthDate,
+	// 			gender: gender,
+	// 			cpf: cpf,
+	// 			ddd: ddd,
+	// 			phone: phone,
+	// 			cep: cep,
+	// 			city: city,
+	// 			address: address,
+	// 			number: number,
+	// 			complement: complement,
+	// 			neighborhood: neighborhood,
+	// 			state: state
+
+	// 		},
+	// 	}); 
+
+	// }
+
 	nextPage = ( props ) => {
 		if (!this.validate()) return
 
-		const { 
-			email, 
-			password, 
-			name, 
-			birthDate, 
-			gender, 
-			cpf, 
-			ddd, 
-			phone, 
-			cep, city, address, number, complement, neighborhood, state } = this.state
+		const data = this.state
 
-		console.log(this.state)
+
 
 		this.props.navigation.navigate('FormUserPhoto', {
 			screen: 'FormUserAddress',
-			params: { 
-				email: email,
-				password: password,
-				name: name,
-				birthDate: birthDate,
-				gender: gender,
-				cpf: cpf,
-				ddd: ddd,
-				phone: phone,
-				cep: cep,
-				city: city,
-				address: address,
-				number: number,
-				complement: complement,
-				neighborhood: neighborhood,
-				state: state
-
-			},
+			params: { data },
 		}); 
 
 	}
@@ -133,6 +145,13 @@ export default class FormUserAddress extends Component {
 	previousPage = ( e ) => {
 		this.props.navigation.navigate('FormPersonalData')
 	}
+
+	// findCep = () => {
+	// 	const { cep } = this.state
+
+	// 	// viaCep
+
+	// }
 
 	findCep = () => {
 		console.log("ATENÇÃO, CEP CLICADO")
@@ -209,12 +228,14 @@ export default class FormUserAddress extends Component {
 	}
 
 	render() {
+		// console.log(this.state)
 		return (
 			<BlueContainer>
 				{/* <HeaderDecoration>
 						<View style={styles.OvalShapeView}></View>
 				</HeaderDecoration> */}
-				<KeyboardAvoidingView style={{flex:1}}  behavior={Platform.OS == "ios" ? "padding" : "height"}>
+				{/*   behavior={Platform.OS == "ios" ? "padding" : "height"} */}
+				<KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{flex:1}}>
 				<MainContainer>
 					<Header style={{top:30}}>
 						<Head style={{}}>
@@ -230,17 +251,6 @@ export default class FormUserAddress extends Component {
 						</DivProgressBar>
 
 					</Header>
-					{/* <Header>
-						<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
-						<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
-					</Header>
-
-					<DivProgressBar style={{justifyContent:'space-evenly'}}>
-						<DesabledStepIconColor/>
-						<DesabledStepIconColor/>
-						<ActiveStepIconColor/>
-						<DesabledStepIconColor/>
-					</DivProgressBar> */}
 
 					<SubtittleContainer>
 						<SecundaryTittle style={{fontWeight:'bold', color:'#5A6978'}}>Informações de Endereço:</SecundaryTittle>
@@ -250,13 +260,14 @@ export default class FormUserAddress extends Component {
 						<Form  style={{top:20}}>
 							{/* <DivInputRow style={{ backgroundColor: '#c78'}}> */}
 								<TextInput
-									maxLength={8}
+									maxLength={9}
 									onBlur={this.findCep}
 									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch'}}
 									label='CEP' 
 									returnKeyType='go'
+									keyboardType="numeric"
 									mode={'outlined'}
-									value={this.state.cep || ''}
+									// value={this.state.cep || ''}
 									ref={(ref) => this.cepField = ref}
 									onChangeText={txt => this.setState({ cep: txt })}
 									theme={{
@@ -265,7 +276,23 @@ export default class FormUserAddress extends Component {
 										primary:'#1bc7cb',
 										underlineColor:'transparent',
 										}
-								}}/>
+									}}
+									render={props =>
+										<TextInputMask
+										{...props}
+										type={'custom'}
+										value={this.state.cep}
+										onChangeText={text => {
+											this.setState({
+											cep: text
+											})
+										}}
+										options={{
+											mask: 'SSSSS-SSS'
+										}}
+									/>
+									}
+								/>
 
 							<DivInputRow>
 								<TextInput
@@ -301,33 +328,6 @@ export default class FormUserAddress extends Component {
 								}}/>
 
 							</DivInputRow>
-								
-
-								
-								{/* <DivInputMedium>
-									<FormLabel>CEP:</FormLabel>
-									<ContainerTxtInput>
-										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-										<FormTextInputMedium
-											autoCorrect={false}
-											placeholder=""
-											onChangeText={txt => this.setState({cep: txt})}
-										/>
-									</ContainerTxtInput> 
-								</DivInputMedium> */}
-
-								{/* <DivInputMedium>
-									<FormLabel>Cidade:</FormLabel>
-									<ContainerTxtInput>
-										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-										<FormTextInputMedium
-											autoCorrect={false}
-											placeholder=""
-											onChangeText={txt => this.setState({city: txt})}
-										/>
-									</ContainerTxtInput> 
-								</DivInputMedium> */}
-							{/* </DivInputRow> */}
 
 							<DivInputRow>
 								<TextInput
@@ -351,6 +351,7 @@ export default class FormUserAddress extends Component {
 									style={{ backgroundColor: '#ffff', width:'20%', height: 40, alignSelf: 'stretch', top:25}}
 									label='N°' 
 									returnKeyType='go'
+									keyboardType="numeric"
 									mode={'outlined'}
 									value={this.state.number || ''}
 									onChangeText={txt => this.setState({ number: txt })}
@@ -362,44 +363,10 @@ export default class FormUserAddress extends Component {
 										}
 								}}/>
 							</DivInputRow>
-							{/* <DivInput style={{marginTop:35, marginBottom:45}}>
-							<FormLabel>Enderço:</FormLabel>
-								<ContainerTxtInput>
-									<MaterialIcons style={{marginRight:15}} name={'email'} size={20} color={'#000'}/>
-									<FormTextInput
-										autoCorrect={false}
-										placeholder=""
-										onChangeText={txt => this.setState({address: txt})}
-									/>
-								</ContainerTxtInput>
-							</DivInput> */}
- {/* nova add */}
-							<DivInputRow>
-								{/* <DivInputMedium>
-									<FormLabel>Número:</FormLabel>
-									<ContainerTxtInput>
-										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-										<FormTextInputMedium
-											autoCorrect={false}
-											placeholder=""
-											onChangeText={txt => this.setState({number: txt})}
-										/>
-									</ContainerTxtInput> 
-								</DivInputMedium>
 
-								<DivInputMedium>
-									<FormLabel>Complemento:</FormLabel>
-									<ContainerTxtInput>
-										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-										<FormTextInputMedium
-											// style={{backgroundColor:'#d54'}}
-											autoCorrect={false}
-											placeholder=""
-											onChangeText={txt => this.setState({complement: txt})}
-										/>
-									</ContainerTxtInput> 
-								</DivInputMedium> */}
-							</DivInputRow>
+							{/* <DivInputRow>
+								
+							</DivInputRow> */}
 
 							<DivInputRow>
 								<TextInput
@@ -435,32 +402,7 @@ export default class FormUserAddress extends Component {
 								}}/>
 							</DivInputRow>
 
-							{/*<DivInputRow> */}
-								{/* <DivInputMedium>
-									<FormLabel>Bairro:</FormLabel>
-									<ContainerTxtInput>
-										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-										<FormTextInputMedium
-											autoCorrect={false}
-											placeholder=""
-											onChangeText={txt => this.setState({neighborhood: txt})}
-										/>
-									</ContainerTxtInput> 
-								</DivInputMedium>
-
-								<DivInputMedium>
-									<FormLabel>Estado:</FormLabel>
-									<ContainerTxtInput>
-										<MaterialIcons style={{marginRight:15}} name={'vpn-key'} size={20} color={'#000'}/>
-										<FormTextInputMedium
-											// style={{backgroundColor:'#d54'}}
-											autoCorrect={false}
-											placeholder=""
-											onChangeText={txt => this.setState({state: txt})}
-										/>
-									</ContainerTxtInput> 
-								</DivInputMedium> */}
-							{/* </DivInputRow> */}
+							
 						</Form>
 					</DivForm>
 

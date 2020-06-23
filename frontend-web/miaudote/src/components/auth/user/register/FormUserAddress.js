@@ -15,7 +15,7 @@ export default class UserAddress extends Component {
 
     createUser = () => {
         this.SendCompany()
-            // alert("usuário cadastrado!.")
+        // alert("usuário cadastrado!.")
     }
 
     SendCompany = () => {
@@ -38,42 +38,44 @@ export default class UserAddress extends Component {
         }
 
         Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuario/registrar',
-            user)
-        const values = {
-            nome: this.props.nome, email: this.props.email, celular: this.props.celular,
-            senha: this.props.senha,
-            data_nascimento: this.props.data_nascimento,
-            sexo: this.props.sexo,
-            cpf: this.props.cpf,
-            cep: this.props.cep,
-            cidade: this.props.cidade,
-            bairro: this.props.bairro,
-            logradouro: this.props.logradouro,
-            uf: this.props.uf,
-            url_foto: this.props.url_foto,
-            permissions: "USER"
-        }
-        console.log(values)
-        if (this.SendCompany(values)) {
-            console.log("usuário cadastrado!.")
-
-        }
-
-        return alert("Verifique se todos os campos estão preenchidos!.")
-
-    }
-
-
-    SendCompany = (values) => {
-        
-
-        Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/registrar',
-            values)
-            .then(
+            user).then(
                 (res) => {
                     console.log("created!" + res.data)
                 });
-        
+
+        // <<<<<<< HEAD
+        //         const values = {
+        //             nome: this.props.nome, email: this.props.email, celular: this.props.celular,
+        //             senha: this.props.senha,
+        //             data_nascimento: this.props.data_nascimento,
+        //             sexo: this.props.sexo,
+        //             cpf: this.props.cpf,
+        //             cep: this.props.cep,
+        //             cidade: this.props.cidade,
+        //             bairro: this.props.bairro,
+        //             logradouro: this.props.logradouro,
+        //             uf: this.props.uf,
+        //             url_foto: this.props.url_foto,
+        //             permissions: "USER"
+        //         }
+        //         console.log(values)
+        //         if (this.SendCompany(values)) {
+        //             console.log("usuário cadastrado!.")
+
+        //         }
+
+        //         return alert("Verifique se todos os campos estão preenchidos!.")
+
+        //     }
+
+
+        //     SendCompany = (values) => {
+
+
+        //         Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/registrar',
+        //             values)
+
+
     }
     consultCep(event) {
         const address = CepApi.getAddress()
