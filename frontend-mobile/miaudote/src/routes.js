@@ -10,12 +10,17 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './pages/HomeScreen'
 import Login from './pages/user/login/Login'
-// import SignUp from './pages/user/signUp/SignUp'
 import FormBasicInfo from './pages/user/signUp/FormBasicInfo'
 import FormPersonalData from './pages/user/signUp/FormPersonalData'
 import FormUserAddress from './pages/user/signUp/FormUserAddress'
 import FormUserPhoto from './pages/user/signUp/FormUserPhoto'
 import Teste from './pages/user/signUp/Teste'
+import HomeTeste from './pages/user/Home/HomeTeste'
+import Home from './pages/user/Home/Home'
+import KeyboardAvoidingComponent from './pages/user/signUp/KeyboardAvoidingComponent'
+import FormBasicInfoTeste from './pages/user/signUp/FormBasicInfoTeste'
+
+
 
 
 const Stack = createStackNavigator();
@@ -39,25 +44,25 @@ export default function MyStack() {
                 <Stack.Screen
                     name="FormBasicInfo"
 					component={FormBasicInfo}
-					options = {{title: 'Cadastro'}}
+					options = {{headerShown: false}}
                 />
 
                 <Stack.Screen
                     name="FormPersonalData"
 					component={FormPersonalData}
-					options = {{title: 'Segundo passo'}}
+					options = {{headerShown: false}}
                 />
 
                 <Stack.Screen
                     name="FormUserAddress"
 					component={FormUserAddress}
-					options = {{title: 'Terceiro passo'}}
+					options = {{headerShown: false}}
                 />
 
                 <Stack.Screen
                     name="FormUserPhoto"
 					component={FormUserPhoto}
-					options = {{title: 'Quase lá...'}}
+					options = {{headerShown: false}}
                 />
 
                 <Stack.Screen
@@ -65,6 +70,31 @@ export default function MyStack() {
 					component={Teste}
 					options = {{headerShown: false}}
                 />
+
+                <Stack.Screen
+                    name="HomeTeste"
+					component={HomeTeste}
+					options = {{headerShown: false}}
+                />
+
+                <Stack.Screen
+                    name="Home"
+					component={Home}
+					options = {{headerShown: false}}
+                />
+
+                <Stack.Screen
+                    name="KeyboardAvoidingComponent"
+					component={KeyboardAvoidingComponent}
+					options = {{headerShown: false}}
+                />
+
+                <Stack.Screen
+                    name="FormBasicInfoTeste"
+					component={FormBasicInfoTeste}
+					options = {{headerShown: false}}
+                />
+
 
             </Stack.Navigator>
         </NavigationContainer>
