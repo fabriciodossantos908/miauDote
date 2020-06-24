@@ -101,11 +101,7 @@ export const DivForm = styled.View `
     flex: 2;
     padding:8px;
     marginTop:20px
-   
-
 `
-
-    // backgroundColor: #fff;
 
 export const DivProgressBar = styled.View `
     flex: 0.3;
@@ -155,7 +151,7 @@ export const HorizontalLine = styled.View `
 
 
 export const SignOptions = styled.View `
-height:50
+    height:50;
     width: 100%;
     justifyContent: center;
     alignItems: center;

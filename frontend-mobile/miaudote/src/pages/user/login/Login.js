@@ -20,6 +20,7 @@ import {
 	ContainerSingInOptions,
 	IconSingInOptions
 } from './styles'
+import { Alert } from 'react-native';
 
 
 
@@ -41,17 +42,23 @@ export default class Login extends Component {
 			method: 'POST',
 			body: JSON.stringify(data),
 		}).then(res => {
-			if(!res.ok){
-				alert('My message');
-			}
+			res.json().then(data=>({ status: res.status, body: data }))
+			.then(obj=> {
+				Alert.alert(
+					'Login realizado com sucesso!',
+					'Suas informações são válidas, clique em OK para prosseguir.'
+				[
+					{ text: 'OK', onPress: this.perfilPage() }
+				])
+			});
 		}).catch(error => {
 			console.log(error);
 		})
 	}
 
-	// formatText = (text) => {
-	// 	return text.replace(/[^+\d]/g, '');
-	// };
+	perfilPage = (e) =>{
+		this.props.navigation.navigate('Perfil');
+	}
 
 	validateEmail = (text) => {
 

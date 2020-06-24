@@ -260,7 +260,7 @@ export default class FormUserAddress extends Component {
 								<TextInput
 									maxLength={9}
 									onBlur={this.findCep}
-									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch'}}
+									style={{ backgroundColor: '#fff', height: 40, alignSelf: 'stretch'}}
 									label='CEP' 
 									returnKeyType='go'
 									keyboardType="numeric"
@@ -294,7 +294,7 @@ export default class FormUserAddress extends Component {
 
 								<TextInput
 									// maxLength={3}
-									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:15}}
+									style={{ backgroundColor: '#fff', height: 40, alignSelf: 'stretch', top:15}}
 									label='Cidade' 
 									returnKeyType='go'
 									mode={'outlined'}
@@ -310,7 +310,7 @@ export default class FormUserAddress extends Component {
 
 								<TextInput
 									// maxLength={3}
-									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:15}}
+									style={{ backgroundColor: '#fff', height: 40, alignSelf: 'stretch', top:15}}
 									label='Estado' 
 									returnKeyType='go'
 									mode={'outlined'}
@@ -326,7 +326,7 @@ export default class FormUserAddress extends Component {
 
 								<TextInput
 									// maxLength={3}
-									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:25}}
+									style={{ backgroundColor: '#fff', height: 40, alignSelf: 'stretch', top:25}}
 									label='Endereço' 
 									returnKeyType='go'
 									mode={'outlined'}
@@ -342,7 +342,7 @@ export default class FormUserAddress extends Component {
 
 								<TextInput
 									// maxLength={3}
-									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch', top:25}}
+									style={{ backgroundColor: '#fff', height: 40, alignSelf: 'stretch', top:25}}
 									label='N°' 
 									returnKeyType='go'
 									keyboardType="numeric"
@@ -359,7 +359,7 @@ export default class FormUserAddress extends Component {
 
 								<TextInput
 									// maxLength={3}
-									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch',top:35}}
+									style={{ backgroundColor: '#fff', height: 40, alignSelf: 'stretch',top:35}}
 									label='Complemento' 
 									returnKeyType='go'
 									mode={'outlined'}
@@ -375,7 +375,7 @@ export default class FormUserAddress extends Component {
 
 								<TextInput
 									// maxLength={3}
-									style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch',top:35}}
+									style={{ backgroundColor: '#fff', height: 40, alignSelf: 'stretch',top:35}}
 									label='Bairro' 
 									returnKeyType='go'
 									mode={'outlined'}
@@ -447,7 +447,7 @@ export default class FormUserAddress extends Component {
 			// 					<TextInput
 			// 						maxLength={9}
 			// 						onBlur={this.findCep}
-			// 						style={{ backgroundColor: '#ffff', height: 40, alignSelf: 'stretch'}}
+			// 						style={{ backgroundColor: '#fff', height: 40, alignSelf: 'stretch'}}
 			// 						label='CEP' 
 			// 						returnKeyType='go'
 			// 						keyboardType="numeric"
@@ -482,7 +482,7 @@ export default class FormUserAddress extends Component {
 			// 				<DivInputRow>
 			// 					<TextInput
 			// 						// maxLength={3}
-			// 						style={{ backgroundColor: '#ffff', width:'60%', height: 40, alignSelf: 'stretch', top:15}}
+			// 						style={{ backgroundColor: '#fff', width:'60%', height: 40, alignSelf: 'stretch', top:15}}
 			// 						label='Cidade' 
 			// 						returnKeyType='go'
 			// 						mode={'outlined'}
@@ -498,7 +498,7 @@ export default class FormUserAddress extends Component {
 
 			// 					<TextInput
 			// 						// maxLength={3}
-			// 						style={{ backgroundColor: '#ffff', width:'40%', height: 40, alignSelf: 'stretch', top:15}}
+			// 						style={{ backgroundColor: '#fff', width:'40%', height: 40, alignSelf: 'stretch', top:15}}
 			// 						label='Estado' 
 			// 						returnKeyType='go'
 			// 						mode={'outlined'}
@@ -517,7 +517,7 @@ export default class FormUserAddress extends Component {
 			// 				<DivInputRow>
 			// 					<TextInput
 			// 						// maxLength={3}
-			// 						style={{ backgroundColor: '#ffff', width:'80%', height: 40, alignSelf: 'stretch', top:25}}
+			// 						style={{ backgroundColor: '#fff', width:'80%', height: 40, alignSelf: 'stretch', top:25}}
 			// 						label='Endereço' 
 			// 						returnKeyType='go'
 			// 						mode={'outlined'}
@@ -533,7 +533,7 @@ export default class FormUserAddress extends Component {
 
 			// 					<TextInput
 			// 						// maxLength={3}
-			// 						style={{ backgroundColor: '#ffff', width:'20%', height: 40, alignSelf: 'stretch', top:25}}
+			// 						style={{ backgroundColor: '#fff', width:'20%', height: 40, alignSelf: 'stretch', top:25}}
 			// 						label='N°' 
 			// 						returnKeyType='go'
 			// 						keyboardType="numeric"
@@ -556,7 +556,7 @@ export default class FormUserAddress extends Component {
 			// 				<DivInputRow>
 			// 					<TextInput
 			// 						// maxLength={3}
-			// 						style={{ backgroundColor: '#ffff', width:'30%', height: 40, alignSelf: 'stretch',top:35}}
+			// 						style={{ backgroundColor: '#fff', width:'30%', height: 40, alignSelf: 'stretch',top:35}}
 			// 						label='Complemento' 
 			// 						returnKeyType='go'
 			// 						mode={'outlined'}
@@ -572,7 +572,7 @@ export default class FormUserAddress extends Component {
 
 			// 					<TextInput
 			// 						// maxLength={3}
-			// 						style={{ backgroundColor: '#ffff', width:'70%', height: 40, alignSelf: 'stretch',top:35}}
+			// 						style={{ backgroundColor: '#fff', width:'70%', height: 40, alignSelf: 'stretch',top:35}}
 			// 						label='Bairro' 
 			// 						returnKeyType='go'
 			// 						mode={'outlined'}

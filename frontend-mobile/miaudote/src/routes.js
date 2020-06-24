@@ -15,10 +15,11 @@ import FormPersonalData from './pages/user/signUp/FormPersonalData'
 import FormUserAddress from './pages/user/signUp/FormUserAddress'
 import FormUserPhoto from './pages/user/signUp/FormUserPhoto'
 import Teste from './pages/user/signUp/Teste'
-import HomeTeste from './pages/user/Home/HomeTeste'
-import Home from './pages/user/Home/Home'
-import KeyboardAvoidingComponent from './pages/user/signUp/KeyboardAvoidingComponent'
-import FormBasicInfoTeste from './pages/user/signUp/FormBasicInfoTeste'
+import HomeTeste from './pages/user/home/HomeTeste'
+import Home from './pages/user/home/Home'
+// import KeyboardAvoidingComponent from './pages/user/signUp/KeyboardAvoidingComponent'
+// import FormBasicInfoTeste from './pages/user/signUp/FormBasicInfoTeste'
+import PerfilScreen from './pages/user/perfil/PerfilScreen';
 
 
 
@@ -26,73 +27,79 @@ import FormBasicInfoTeste from './pages/user/signUp/FormBasicInfoTeste'
 const Stack = createStackNavigator();
 
 export default function MyStack() {
-	return (
-		<NavigationContainer>
-			<Stack.Navigator>
-				<Stack.Screen
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen
                     name="HomeScreen"
-					component={HomeScreen}
-					options={{ headerShown: false }}
+                    component={HomeScreen}
+                    options={{ headerShown: false }}
                 />
 
                 <Stack.Screen
                     name="Login"
-					component={Login}
-					options = {{title: 'Faça seu login'}}
+                    component={Login}
+                    options={{ title: 'Faça seu login' }}
                 />
 
                 <Stack.Screen
                     name="FormBasicInfo"
-					component={FormBasicInfo}
-					options = {{headerShown: false}}
+                    component={FormBasicInfo}
+                    options={{ headerShown: false }}
                 />
 
                 <Stack.Screen
                     name="FormPersonalData"
-					component={FormPersonalData}
-					options = {{headerShown: false}}
+                    component={FormPersonalData}
+                    options={{ headerShown: false }}
                 />
 
                 <Stack.Screen
                     name="FormUserAddress"
-					component={FormUserAddress}
-					options = {{headerShown: false}}
+                    component={FormUserAddress}
+                    options={{ headerShown: false }}
                 />
 
                 <Stack.Screen
                     name="FormUserPhoto"
-					component={FormUserPhoto}
-					options = {{headerShown: false}}
+                    component={FormUserPhoto}
+                    options={{ headerShown: false }}
                 />
 
                 <Stack.Screen
                     name="Teste"
-					component={Teste}
-					options = {{headerShown: false}}
+                    component={Teste}
+                    options={{ headerShown: false }}
                 />
 
                 <Stack.Screen
                     name="HomeTeste"
-					component={HomeTeste}
-					options = {{headerShown: false}}
+                    component={HomeTeste}
+                    options={{ headerShown: false }}
                 />
 
                 <Stack.Screen
                     name="Home"
-					component={Home}
-					options = {{headerShown: false}}
+                    component={Home}
+                    options={{ headerShown: false }}
                 />
 
-                <Stack.Screen
+                {/* <Stack.Screen
                     name="KeyboardAvoidingComponent"
-					component={KeyboardAvoidingComponent}
-					options = {{headerShown: false}}
-                />
+                    component={KeyboardAvoidingComponent}
+                    options={{ headerShown: false }}
+                /> */}
 
-                <Stack.Screen
+               {/* <Stack.Screen
                     name="FormBasicInfoTeste"
-					component={FormBasicInfoTeste}
-					options = {{headerShown: false}}
+                    component={FormBasicInfoTeste}
+                    options={{ headerShown: false }}
+                /> */}
+ 
+                <Stack.Screen
+                    name="Perfil"
+                    component={PerfilScreen}
+                    options={{ headerShown: false }}
                 />
 
 
