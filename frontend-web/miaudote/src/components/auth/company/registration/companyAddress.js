@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
-import { Container, Row, Col, Button } from 'react-bootstrap'
 import InputMask from 'react-input-mask'
 import Company from '../../../../api/company'
 import RemoveMask from '../../../../validations/RemoveMask';
@@ -11,18 +10,18 @@ const rmvMask = new RemoveMask()
 const Header = () => {
     return (
         <React.Fragment>
-            <Container fluid="md">
-                <Row className="justify-content-md-left" lg={8}>
-                    <Col xs={6}>
+            <div fluid="md">
+                <div className="justify-content-md-left" lg={8}>
+                    <div xs={6}>
                         <h1>Endereço</h1>
-                    </Col>
-                </Row>
-                <Row className="justify-content-md-left" lg={8}>
-                    <Col xs={6}>
+                    </div>
+                </div>
+                <div className="justify-content-md-left" lg={8}>
+                    <div xs={6}>
                         <h2>Como os seus clientes podem lhe encontrar</h2>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </React.Fragment>
     )
 }
@@ -52,15 +51,10 @@ export default class CompanyAddress extends Component {
             senha: state.senha
         }
 
-        console.log(company)
         if (apiCompany.createCompany(company)) {
-            return (
                 alert("created with success!")
-            )
         } else {
-            return (
                 alert("failed meanwhile creating")
-            )
         }
     }
 
@@ -83,8 +77,8 @@ export default class CompanyAddress extends Component {
                 .then(
                     (res) => {
                         const address = res.data
-                        this.setState({[this.props.state.bairro] : address.bairro})
-                        console.log("the address neighbourhood" + address.bairro + "the state neighbourhood " + this.props.state.bairro)
+                        console.log(address)
+                        return address
                     })
         }
     }
@@ -95,12 +89,12 @@ export default class CompanyAddress extends Component {
         return (
             <div>
                 <Header />
-                <Container variant='primary'>
-                    <Row className="justify-content-md-left">
-                        <Col xs={3}>
+                <div variant='primary'>
+                    <div className="justify-content-md-left">
+                        <div xs={3}>
                             <label htmlFor="">Cep</label>
-                        </Col>
-                        <Col xs={3}>
+                        </div>
+                        <div xs={3}>
                             <InputMask
                                 type="text"
                                 mask="99999-999"
@@ -111,13 +105,13 @@ export default class CompanyAddress extends Component {
                                 onKeyUp={this.SeachCep}
                                 onChange={handleChange}
                             />
-                        </Col>
-                    </Row>
-                    <Row className="justify-content-md-left">
-                        <Col xs={3}>
+                        </div>
+                    </div>
+                    <div className="justify-content-md-left">
+                        <div xs={3}>
                             <label htmlFor="">Cidade</label>
-                        </Col>
-                        <Col xs={3}>
+                        </div>
+                        <div xs={3}>
                             <input
                                 type="text"
                                 placeholder="cidade"
@@ -126,13 +120,13 @@ export default class CompanyAddress extends Component {
                                 onKeyUp={this.props.valInsert}
                                 onChange={handleChange}
                             />
-                        </Col>
-                    </Row>
-                    <Row className="justify-content-md-left">
-                        <Col xs={3}>
+                        </div>
+                    </div>
+                    <div className="justify-content-md-left">
+                        <div xs={3}>
                             <label htmlFor="">Bairro</label>
-                        </Col>
-                        <Col xs={3}>
+                        </div>
+                        <div xs={3}>
                             <input
                                 type="text"
                                 name="bairro"
@@ -141,13 +135,13 @@ export default class CompanyAddress extends Component {
                                 onKeyUp={this.props.valInsert}
                                 onChange={handleChange}
                             />
-                        </Col>
-                    </Row>
-                    <Row className="justify-content-md-left">
-                        <Col xs={3}>
+                        </div>
+                    </div>
+                    <div className="justify-content-md-left">
+                        <div xs={3}>
                             <label htmlFor="">Logradouro</label>
-                        </Col>
-                        <Col xs={3}>
+                        </div>
+                        <div xs={3}>
                             <input
                                 type="text"
                                 name="logradouro"
@@ -156,13 +150,13 @@ export default class CompanyAddress extends Component {
                                 onKeyUp={this.props.valInsert}
                                 onChange={handleChange}
                             />
-                        </Col>
-                    </Row>
-                    <Row className="justify-content-md-left">
-                        <Col xs={3}>
+                        </div>
+                    </div>
+                    <div className="justify-content-md-left">
+                        <div xs={3}>
                             <label htmlFor="">Número</label>
-                        </Col>
-                        <Col xs={3}>
+                        </div>
+                        <div xs={3}>
                             <input
                                 type="text"
                                 name="numero"
@@ -171,13 +165,13 @@ export default class CompanyAddress extends Component {
                                 onKeyUp={this.props.valInsert}                                
                                 onChange={handleChange}
                             />
-                        </Col>
-                    </Row>
-                    <Row className="justify-content-md-left">
-                        <Col xs={3}>
+                        </div>
+                    </div>
+                    <div className="justify-content-md-left">
+                        <div xs={3}>
                             <label htmlFor="">Complemento</label>
-                        </Col>
-                        <Col xs={3}>
+                        </div>
+                        <div xs={3}>
                             <input
                                 type="text"
                                 name="complemento"
@@ -186,13 +180,13 @@ export default class CompanyAddress extends Component {
                                 onKeyUp={this.props.valInsert}                                
                                 onChange={handleChange}
                             />
-                        </Col>
-                    </Row>
-                    <Row className="justify-content-md-left">
-                        <Col xs={3}>
+                        </div>
+                    </div>
+                    <div className="justify-content-md-left">
+                        <div xs={3}>
                             <label htmlFor="">Uf</label>
-                        </Col>
-                        <Col xs={3}>
+                        </div>
+                        <div xs={3}>
                             <input
                                 type="text"
                                 name="uf"
@@ -201,17 +195,17 @@ export default class CompanyAddress extends Component {
                                 onKeyUp={this.props.valInsert}                                
                                 onChange={handleChange}
                             />
-                        </Col>
-                    </Row>
-                    <Row className="justify-content-md-left">
-                        <Col xs={3}>
-                            <Button variant="outline-primary" onClick={this.props.prevStep}>Voltar</Button>
-                        </Col>
-                        <Col xs={3}>
-                            <Button variant="outline-primary" onClick={this.createCompany}>Criar</Button>
-                        </Col>
-                    </Row>
-                </Container>
+                        </div>
+                    </div>
+                    <div className="justify-content-md-left">
+                        <div xs={3}>
+                            <button variant="outline-primary" onClick={this.props.prevStep}>Voltar</button>
+                        </div>
+                        <div xs={3}>
+                            <button variant="outline-primary" onClick={this.createCompany}>Criar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

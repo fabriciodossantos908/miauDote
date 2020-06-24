@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Cep from '../../../../api/cep'
 import Axios from 'axios'
-import { Container, Row, Col, Button } from 'react-bootstrap';
 import InputMask from 'react-input-mask';
 import RemoveMask from '../../../../validations/RemoveMask'
 
@@ -86,118 +85,8 @@ export default class UserAddress extends Component {
     }
 
     render() {
-        const { state, handleChange, validInsert } = this.props
         return (
-            <Container>
-                <Row>
-                    <Col>
-                        <Row>
-                            <h1>
-                                Seu endereco
-                        </h1>
-                        </Row>
-                        <Row>
-                            <h3>Etapa:{state.step}</h3>
-                        </Row>
-                    </Col>
-                    <Col>
-                        <Row>
-                            <label>Cep</label>
-                        </Row>
-                        <Row>
-                            <InputMask
-                                type="text"
-                                mask="99999-999"
-                                maskChar="_"
-                                name="cep"
-                                placeholder="cep"
-                                value={state.cep}
-                                onChange={handleChange}
-                                onKeyUp={validInsert}
-                            />
-                        </Row>
-                        <Row xs={5}>
-                            <Col>
-                                <Row>
-                                    <label>Cidade</label>
-                                </Row>
-                                <Row>
-                                    <input
-                                        type="text"
-                                        name="cidade"
-                                        placeholder="Osasco"
-                                        value={state.cidade}
-                                        onChange={handleChange}
-                                        onKeyUp={validInsert}
-                                    />
-                                </Row>
-                            </Col>
-                            <Col>
-                                <Row>
-                                    <label>Bairro</label>
-                                </Row>
-                                <Row>
-                                    <input
-                                        type="text"
-                                        name="bairro"
-                                        placeholder="jardins das macieiras"
-                                        value={state.bairro}
-                                        onChange={handleChange}
-                                        onKeyUp={validInsert}
-                                    />
-                                </Row>
-                            </Col>
-                        </Row>
-                        <Row xs={5}>
-                            <Col>
-                                <Row>
-                                    <label>Logradouro</label>
-                                </Row>
-                                <Row>
-                                    <input
-                                        type="text"
-                                        name="logradouro"
-                                        placeholder="logradouro"
-                                        value={state.logradouro}
-                                        onChange={handleChange}
-                                        onKeyUp={validInsert}
-                                    />
-                                </Row>
-                            </Col>
-                            <Col>
-                                <Row>
-                                    <label>Numero da residência</label>
-                                </Row>
-                                <Row>
-                                    <input
-                                        type="text"
-                                        name="numero"
-                                        placeholder="500"
-                                        value={state.numero}
-                                        onChange={handleChange}
-                                        onKeyUp={validInsert}
-                                    />
-                                </Row>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <label>Estado</label>
-                        </Row>
-                        <Row xs={3}>
-                            <input
-                                type="text"
-                                name="uf"
-                                placeholder="SP"
-                                defaultValue={state.uf}
-                                onChange={handleChange}
-                                onKeyUp={validInsert}
-                            />
-                        </Row>
-                        <Button variant="outline-primary" onClick={this.createUser} > Criar</Button>
-
-                    </Col>
-                </Row>
-            </Container>
+            <h1>Tá zerado</h1>
         )
     }
 }
