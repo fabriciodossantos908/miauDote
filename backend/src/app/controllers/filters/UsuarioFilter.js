@@ -18,6 +18,8 @@ class UsuarioFilter {
       });
       if (usuario != null) {
         usuario.senha = undefined;
+        usuario.email_confirmado = undefined;
+        usuario.permissions = undefined;
         return res.json(usuario);
       }
 
@@ -36,6 +38,8 @@ class UsuarioFilter {
       });
       if (usuario != null) {
         usuario.senha = undefined;
+        usuario.email_confirmado = undefined;
+        usuario.permissions = undefined;
         return res.json(usuario);
       }
 
@@ -59,6 +63,8 @@ class UsuarioFilter {
       if (usuarios.length > 0) {
         usuarios = usuarios.map(usuario => {
           usuario.senha = undefined;
+          usuario.email_confirmado = undefined;
+          usuario.permissions = undefined;
           return usuario;
         })
         return res.json(usuarios);
@@ -84,7 +90,7 @@ class UsuarioFilter {
       }
 
       if (usuario.email_confirmado) {
-        return res.sendFile( path.resolve(__dirname + '../../../../helpers/emailConfirmated.html'));
+        return res.sendFile(path.resolve(__dirname + '../../../../helpers/emailConfirmated.html'));
       }
 
       usuario.email_confirmado = true;
@@ -99,7 +105,7 @@ class UsuarioFilter {
       usuario.permissions = undefined;
 
       // return res.json({ mensagem: "Usuário confirmado com sucesso", usuario, token });
-      return res.sendFile( path.resolve(__dirname + '../../../../helpers/emailConfirmated.html'));
+      return res.sendFile(path.resolve(__dirname + '../../../../helpers/emailConfirmated.html'));
     } catch (err) {
       return res.status(400).json({ erro: err.message })
     }
@@ -108,12 +114,14 @@ class UsuarioFilter {
   async uploadProfilePhoto(req, res) {
     try {
       let file = req;
-
       const usuario = await Usuario.findByPk(req.params.id);
 
-      if(!usuario){
-        return res.status(400).json({erro: 'Usuário inexistente'});
+
+      if (!usuario) {
+        return res.status(400).json({ erro: 'Usuário inexistente' });
       }
+
+      console.log(file);
 
       if (usuario.url_foto != 'http://storage.googleapis.com/miaudote-c4d26.appspot.com/profile%2Fuser.png') {
         const fileName = usuario.url_foto.substring(67);
@@ -125,9 +133,15 @@ class UsuarioFilter {
       usuario.url_foto = url_foto;
       usuario.save({ fields: ['url_foto'] });
 
-      await fs.unlink(`./src/app/tmp/${file.file.filename}`, (err) => {
-        if (err) {
-          return res.status(400).json(err);
+      const directory = './src/app/tmp';
+
+      fs.readdir(directory, (err, files) => {
+        if (err) throw err;
+
+        for (const file of files) {
+          fs.unlink(path.join(directory, file), err => {
+            if (err) throw err;
+          });
         }
       });
 
@@ -141,6 +155,11 @@ class UsuarioFilter {
   async forgotPassword(req, res) {
     try {
       const usuario = await Usuario.findOne({ where: { email: req.params.email } });
+
+      if (!usuario) {
+        return res.status(400).json({ erro: 'Não há usuários cadastrados com este email.' });
+      }
+
 
       if (!usuario.email_confirmado) {
         return res.status(400).json({ aviso: 'Este endereço de e-mail ainda não foi confirmado!' });

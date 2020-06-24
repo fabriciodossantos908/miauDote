@@ -63,7 +63,7 @@ export const TxtInputLogin = styled.TextInput `
     borderRadius: 10;
     borderColor: #a0a0a0;
     borderWidth: 1;
-    marginBottom: 40;
+    marginBottom: 0;
 `;
 
 // **********global

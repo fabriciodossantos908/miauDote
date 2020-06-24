@@ -1,7 +1,7 @@
 const express = require('express');
 const jwt = require('express-jwt');
-const authMid = require('./app/middlewares/auth');
 const authConfig = require('./config/auth');
+const authMid = require('./app/middlewares/auth');
 const cors = require('cors');
 
 const authRoutes = require('./routes/authRoutes');
@@ -10,7 +10,8 @@ const privateRoutes = require('./routes/privateRoutes');
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json({type: ['application/json', 'text/plain']}));
+app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
 

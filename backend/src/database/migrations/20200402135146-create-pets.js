@@ -16,6 +16,10 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING
     },
+    raca:{
+      allowNull: false,
+      type: Sequelize.STRING
+    },
     sexo: {
       allowNull: false,
       type: Sequelize.STRING,

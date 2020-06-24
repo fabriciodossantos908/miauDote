@@ -53,6 +53,7 @@ module.exports = {
 
 
       usuario.senha = undefined;
+      usuario.permissions = undefined;
       res.status(201).json({
         id_usuario: usuario.id,
         mensagem: 'Usuario registrado com sucesso, confirme seu email para prosseguirmos'
@@ -64,6 +65,8 @@ module.exports = {
   },
 
   async autentica(req, res) {
+
+    console.log(req.body);
     const { senha, email } = req.body;
 
     let usuario = await Usuario.findOne({

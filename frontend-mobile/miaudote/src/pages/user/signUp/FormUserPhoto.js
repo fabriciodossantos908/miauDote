@@ -25,7 +25,8 @@ import {
 	BtnText,
 	ActiveStepIconColor,
 	DesabledStepIconColor,
-	Head
+	Head,
+	Title
 } from './styles'
 
 export default class FormUserPhoto extends Component {
@@ -59,6 +60,15 @@ export default class FormUserPhoto extends Component {
 	// 	this.props.navigation.navigate('Teste')
 	// }
 
+	skipToHome = ( e ) => {
+		const data = this.state
+	
+				this.props.navigation.navigate('Home', {
+					screen: 'FormUserPhoto',
+					params: { data }
+				}); 	
+	}
+
 	cadastrar = async e => {
 
 		const { email, password, name, birthDate, gender, cpf, phone, cep, city, address, number, complement, neighborhood, state } = this.state
@@ -83,9 +93,7 @@ export default class FormUserPhoto extends Component {
 				numero: number,
 				complemento: complement,
 				uf: state,
-				url_foto: null,
 				permissions: 'USER',
-				email_confirmado: false
 
 			})
 		
@@ -134,30 +142,27 @@ export default class FormUserPhoto extends Component {
 
 	render() {
 
-		this.props.route.params
-
 		console.log(this.state)
 		
 		return (
 			<Container style={{ backgroundColor:'#fff', padding:6, justifyContent: "center",alignItems: "center", flex:1}}>
 				<Header>
-					<Head style={{}}>
-						<TittleBlack style={{marginRight:20}}>Crie sua conta</TittleBlack>	
-						<Image style={{height:40,width:40, bottom:3}} source={require('../../../assets/user-account.png')}></Image>
-					</Head>
+					<Title style={{textAlign:"center", flexDirection:"column"}}>Ola, {this.state.name.split(" ")[0]}!</Title>
+					{/* <ImageIcon source={require('../../../assets/user-account.png')}></ImageIcon> */}
 
-					<DivProgressBar style={{justifyContent:'space-evenly'}}>
+					{/*<DivProgressBar style={{justifyContent:'space-evenly'}}>
 						<DesabledStepIconColor/>
 						<DesabledStepIconColor/>
 						<DesabledStepIconColor/>
 						<ActiveStepIconColor/>
-					</DivProgressBar>
-
+					</DivProgressBar> */}
+					{/* <Text>Ola {this.state.name}</Text> */}
 				</Header>
 
 				<View style={styles.main}>
+				
 					<Image
-						source={require('../../../assets/avatar.png')}
+						source={require('../../../assets/user-icon.png')}
 						style={styles.avatar}
 					/>
 					{/* onPress={imagePickerCall} */}
@@ -169,6 +174,12 @@ export default class FormUserPhoto extends Component {
 						<Text style={styles.buttonText}>Enviar imagem</Text>
 					</TouchableOpacity>
 
+					<TouchableOpacity style={styles.skipButton} onPress = {this.skipToHome}>
+						<Text style = {styles.txtSkip}>
+							Agora não
+						</Text>
+					</TouchableOpacity>
+
 				</View>				
 			</Container>
 		);
@@ -177,7 +188,7 @@ export default class FormUserPhoto extends Component {
 
 const styles = StyleSheet.create({
 	main: {
-		flex: 2,
+		flex: 1,
 		justifyContent: "center",
 		alignItems: "center"
 	},
@@ -211,4 +222,26 @@ const styles = StyleSheet.create({
 		borderColor: '#b0bec5',
 		borderWidth: 1,
 	},
+
+	txtSkip: {
+		color: '#1bc7cb',
+		fontSize: 20,
+		// alignSelf:"flex-end",
+		// position: 'absolute',
+		bottom:5,
+		// right:1
+		//   marginBottom: 12
+	},
+
+	skipButton: {
+		height:40,
+		width:100,
+		alignSelf:"flex-end",
+		position: 'absolute',
+		bottom:10,
+		marginLeft:80,
+		left:80,
+		justifyContent:"center",
+		alignItems:"center"
+	}
 })

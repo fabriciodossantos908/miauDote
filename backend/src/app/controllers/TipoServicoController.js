@@ -47,7 +47,7 @@ class UsuarioController {
 
       await tipoServico.update(req.body);
 
-      return res.json({tipoServico});
+      return res.json(tipoServico);
     } catch (err) {
       return res.status(400).json({ erro: { campo: err.errors[0].path, mensagem: err.errors[0].message } });
     }

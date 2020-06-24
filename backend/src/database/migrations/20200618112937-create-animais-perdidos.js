@@ -11,9 +11,13 @@ module.exports = {
       },
       nome:{
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       especie:{
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      raca:{
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -22,6 +26,14 @@ module.exports = {
         type: Sequelize.STRING
       },
       porte:{
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      uf:{
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      cidade:{
         allowNull: false,
         type: Sequelize.STRING
       },

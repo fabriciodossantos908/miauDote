@@ -83,7 +83,7 @@ module.exports = {
     },
     permissions: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 'COMPANY'
     },
     url_logo: {

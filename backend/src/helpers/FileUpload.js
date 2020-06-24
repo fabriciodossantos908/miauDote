@@ -45,7 +45,6 @@ module.exports = {
                console.log(err);
                return;
             }
-            console.log('Arquivo deletado');
             return true;
          })
       } catch (error) {
