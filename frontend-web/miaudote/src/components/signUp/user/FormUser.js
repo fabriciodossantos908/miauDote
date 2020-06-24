@@ -3,11 +3,9 @@ import FormUserInitialInfo from './FormUserInitialnfo'
 import FormPersonalInfo from './FormUserPersonalInfo'
 import FormUserAddress from './FormUserAddress'
 import Confirm from './Confirm'
-import Home from '../../../../pages/home'
-import '../../../../api/cep'
-import Cep from '../../../../api/cep';
-import * as yup from 'yup';
-import RemoveMask from '../../../../validations/RemoveMask';
+import Home from '../../../pages/home'
+// import * as yup from 'yup';
+import RemoveMask from '../../../validations/RemoveMask';
 
 
 const mask = new RemoveMask()
@@ -63,76 +61,76 @@ export default class UserInfo extends Component {
         return console.log("Should make you go back")
     };
 
-    valFormat(input) {
-        let errors = this.state.errors
+    // valFormat(input) {
+    //     let errors = this.state.errors
 
-        let schema = yup.object().shape({
-            nome: yup
-                .string()
-                .min(10, "Nome e sobrenome meu caro milorde")
-                .max(100, "Por favor, somente o primeiro nome e sobrenome"),
-            email: yup
-                .string()
-                .email("Coloque um email válido"),
-            senha: yup
-                .string()
-                .min(8, "Muito curta a senha")
-                .max(30, "Muita longa a senha"),
-            celular: yup
-                .string()
-                .length(11),
-            cep: yup
-                .string()
-                .length(8),
-            cidade: yup
-                .string()
-                .min(3)
-                .max(10),
-            bairro: yup
-                .string()
-                .min(2)
-                .max(100),
-            logradouro: yup
-                .string()
-                .min(3)
-                .max(100),
-            numero: yup
-                .string()
-                .min(1)
-                .max(50),
-            complemento: yup
-                .string()
-                .min(5)
-                .max(50),
-            uf: yup
-                .string()
-                .length(2),
-            dt_nasc: yup
-                .date(),
-            sexo: yup
-                .string()
-                .length(1, "Defina o sexo com um caractére"),
-            cpf: yup
-            .string()
-            .length(14, "Por favor, complete o seu cpf")
-        });
+    //     let schema = yup.object().shape({
+    //         nome: yup
+    //             .string()
+    //             .min(10, "Nome e sobrenome meu caro milorde")
+    //             .max(100, "Por favor, somente o primeiro nome e sobrenome"),
+    //         email: yup
+    //             .string()
+    //             .email("Coloque um email válido"),
+    //         senha: yup
+    //             .string()
+    //             .min(8, "Muito curta a senha")
+    //             .max(30, "Muita longa a senha"),
+    //         celular: yup
+    //             .string()
+    //             .length(11),
+    //         cep: yup
+    //             .string()
+    //             .length(8),
+    //         cidade: yup
+    //             .string()
+    //             .min(3)
+    //             .max(10),
+    //         bairro: yup
+    //             .string()
+    //             .min(2)
+    //             .max(100),
+    //         logradouro: yup
+    //             .string()
+    //             .min(3)
+    //             .max(100),
+    //         numero: yup
+    //             .string()
+    //             .min(1)
+    //             .max(50),
+    //         complemento: yup
+    //             .string()
+    //             .min(5)
+    //             .max(50),
+    //         uf: yup
+    //             .string()
+    //             .length(2),
+    //         dt_nasc: yup
+    //             .date(),
+    //         sexo: yup
+    //             .string()
+    //             .length(1, "Defina o sexo com um caractére"),
+    //         cpf: yup
+    //         .string()
+    //         .length(14, "Por favor, complete o seu cpf")
+    //     });
 
-        schema
-            .isValid(input)
-            .then(function (valid) {
-                 return valid
-            })
+    //     schema
+    //         .isValid(input)
+    //         .then(function (valid) {
+    //              return valid
+    //         })
 
-            schema.validate(input).catch(function (err) {
+    //         schema.validate(input).catch(function (err) {
                 
-                console.log(err.errors)
-                console.log(errors)
-            // this.setState({
-            //     errors : err.errors
-            // })
-        });
+    //             console.log(err.errors)
+    //             console.log(errors)
+    //         // this.setState({
+    //         //     errors : err.errors
+    //         // })
+    //     });
 
-    }
+    // }
 
     valInsert(event) {
         // if (event.target.name === "celular") {
@@ -186,7 +184,6 @@ export default class UserInfo extends Component {
         switch (step) {
             case 1: return (
                 < FormUserInitialInfo
-                    seachCep={Cep}
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
                     handleChange={this.handleChange}

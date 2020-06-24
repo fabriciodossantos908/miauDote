@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
-import InputMask from 'react-input-mask'
-import Company from '../../../../api/company'
-import RemoveMask from '../../../../validations/RemoveMask';
+import Company from '../../../api/company'
+import RemoveMask from '../../../validations/RemoveMask';
 
 const apiCompany = new Company()
 const rmvMask = new RemoveMask()
@@ -95,7 +94,7 @@ export default class CompanyAddress extends Component {
                             <label htmlFor="">Cep</label>
                         </div>
                         <div xs={3}>
-                            <InputMask
+                            <input
                                 type="text"
                                 mask="99999-999"
                                 maskChar="_"

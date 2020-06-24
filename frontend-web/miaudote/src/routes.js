@@ -2,10 +2,9 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/home'
-import FormCompany from './components/auth/company/registration/FormCompany'
-import Login from './components/auth/login/Login'
-import FormUser from './components/auth/user/register/FormUser'
-// import moduleName from './components/auth/login/userLogin'
+import FormCompany from './components/signUp/company/Formcompany'
+import Login from './components/SignIn/Login'
+import FormUser from './components/signUp/user/FormUser'
 import Test from './pages/test'
 
 function Routes() {

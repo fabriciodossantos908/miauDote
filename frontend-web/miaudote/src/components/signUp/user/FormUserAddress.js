@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import Cep from '../../../../api/cep'
+import Cep from '../../../api/cep'
 import Axios from 'axios'
-import InputMask from 'react-input-mask';
-import RemoveMask from '../../../../validations/RemoveMask'
+import RemoveMask from '../../../validations/RemoveMask'
 
 const rmvMask = new RemoveMask()
 

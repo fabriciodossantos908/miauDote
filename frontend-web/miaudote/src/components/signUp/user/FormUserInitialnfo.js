@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../../../../materialize/css/materialize.css'
 
 export default class FormBaseInfo extends Component {
     

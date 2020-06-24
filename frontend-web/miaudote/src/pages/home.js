@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../styles/style.css'
 // function alertBtn() {
 //     const [alert, setAlert] = useState(true)
 //     return (

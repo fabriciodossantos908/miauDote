@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import InputMask from 'react-input-mask';
 
 export default class pesonalData extends Component {
     render() {
