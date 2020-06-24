@@ -127,9 +127,9 @@ export default class UserInfo extends Component {
                 
                 console.log(err.errors)
                 console.log(errors)
-            this.setState({
-                errors : err.errors
-            })
+            // this.setState({
+            //     errors : err.errors
+            // })
         });
 
     }

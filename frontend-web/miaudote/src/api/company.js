@@ -19,7 +19,6 @@ export class Company {
             .then(
                 (res) => {
                     console.log("It's really works, finnaly a new company!", res.data)
-                    res.status(201)
                 });
     }
 

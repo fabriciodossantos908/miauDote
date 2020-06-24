@@ -51,6 +51,8 @@ export default class CompanyAddress extends Component {
             permissions: state.permissions,
             senha: state.senha
         }
+
+        console.log(company)
         if (apiCompany.createCompany(company)) {
             return (
                 alert("created with success!")

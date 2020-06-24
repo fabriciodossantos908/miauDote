@@ -30,13 +30,13 @@ export default class UserAddress extends Component {
             bairro: state.bairro,
             logradouro: state.logradouro,
             numero: state.numero,
-            complemento: state.complemento,
             uf: state.uf,
-            url_logo: state.url_logo,
+            url_foto: state.url_foto,
             permissions: state.permissions,
             senha: state.senha
         }
 
+        console.log(user)
         Axios.post('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuario/registrar',
             user).then(
                 (res) => {
