@@ -1,36 +1,32 @@
-import React, { Component } from 'react'
-import '../../../../materialize/css/materialize.css'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    margin: 'auto',
+    maxWidth: 600,
+    minHeight: 500
+  },
+}));
 
-export class companyBaseInfo extends Component {
-    // Create the service options element
-    ServiceOpt = () => {
-        const service = this.servicesList()
-        console.log(JSON.stringify(service))
-    }
+export default function ComplexGrid() {
+  const classes = useStyles();
 
-    valPassword(event) {
-        const { senha } = this.props
-        if (!senha === event.target.value) {
-            alert("are the same")
-        } else {
-            alert("that's aren't the same")
-        }
-    }
-
-    // Going to the next step with all saved
-    continue = e => {
-        e.preventDefault();
-        this.props.nextStep();
-    }
-
-
-    render() {
-        return (
-            <h1>Tá zerado</h1>
-        )
-
-    }
+  return (
+    <div className={classes.root}>
+      <Paper className={classes.paper}>
+        <Grid bgcolor="primary.main" container spacing={2}>
+          
+          <Grid item xs={12} sm container>
+          </Grid>
+        </Grid>
+      </Paper>
+    </div>
+  );
 }
-
-export default companyBaseInfo
