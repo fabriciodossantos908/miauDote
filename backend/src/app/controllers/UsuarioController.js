@@ -9,6 +9,7 @@ class UsuarioController {
         usuarios = usuarios.map(usuario => {
           usuario.senha = undefined;
           usuario.email_confirmado = undefined;
+          usuario.permissions = undefined;
 
           return usuario;
         })
@@ -27,6 +28,7 @@ class UsuarioController {
       if (usuario != null) {
         usuario.senha = undefined;
         usuario.email_confirmado = undefined;
+        usuario.permissions = undefined;
 
         return res.json(usuario);
       }
@@ -58,6 +60,7 @@ class UsuarioController {
       await usuario.update(req.body);
       usuario.senha = undefined;
       usuario.email_confirmado = undefined;
+      usuario.permissions = undefined;
 
 
       return res.json({ usuario });

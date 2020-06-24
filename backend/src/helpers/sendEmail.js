@@ -180,7 +180,7 @@ module.exports = {
          from: 'Miaudote <no-reply@miaudote.com>',
          to: userEmail,
          subject: 'Esqueceu sua senha?',
-         html: `<a href='urldeumapaginafeitapelofront'></a?`
+         html: `<a href='urldeumapaginafeitapelofront'>Redefinir Senha</a?>`
       }
 
       transporter.sendMail(mailOptions, (error, info) => {

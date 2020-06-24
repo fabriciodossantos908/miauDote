@@ -222,7 +222,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     permissions: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     }
   }, {
     tableName: 'tbl_empresas'

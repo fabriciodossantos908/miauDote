@@ -157,7 +157,7 @@ export default class FormUserPhoto extends Component {
 
 				<View style={styles.main}>
 					<Image
-						source={require('../../../assets/avatar.png')}
+						source={require('../../../assets/google.png')}
 						style={styles.avatar}
 					/>
 					{/* onPress={imagePickerCall} */}

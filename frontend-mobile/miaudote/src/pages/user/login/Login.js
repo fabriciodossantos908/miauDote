@@ -4,21 +4,22 @@ import { StyleSheet, View, TextInput, TouchableOpacity, Text, Image } from 'reac
 // import Icon from 'react-native-vector-icons/FontAwesome';
 // import { Input } from 'react-native-elements';
 
-import { 
+import {
 	Tittle,
-	Container, 
-	Div, 
-	CuteLine, 
-	IconPaw, 
-	LoginForm, 
-	TxtInputLogin, 
-	LargeButton, 
-	TxtButon, 
-	ContainerLine, 
-	HorizontalLine, 
+	Container,
+	Div,
+	CuteLine,
+	IconPaw,
+	LoginForm,
+	TxtInputLogin,
+	LargeButton,
+	TxtButon,
+	ContainerLine,
+	HorizontalLine,
 	SecondaryText,
-	ContainerSingInOptions, 
-	IconSingInOptions } from './styles'
+	ContainerSingInOptions,
+	IconSingInOptions
+} from './styles'
 
 
 
@@ -32,12 +33,28 @@ export default class Login extends Component {
 		}
 	}
 
+	signIn = () => {
+
+		const data = this.state;
+
+		fetch('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/autenticar', {
+			method: 'POST',
+			body: JSON.stringify(data),
+		}).then(res => {
+			if(!res.ok){
+				alert('My message');
+			}
+		}).catch(error => {
+			console.log(error);
+		})
+	}
+
 	// formatText = (text) => {
 	// 	return text.replace(/[^+\d]/g, '');
 	// };
 
 	validateEmail = (text) => {
-		
+
 	};
 
 	render() {
@@ -55,19 +72,25 @@ export default class Login extends Component {
 				<LoginForm>
 					<TxtInputLogin
 						placeholder="Digite seu e-mail"
-						keyboardType='email-address'>
-						{/* // formatText={this.validateEmail} */}
+						keyboardType='email-address'
+						value={this.state.email}
+						onChangeText={txt => { this.setState({ email: txt }) }}
+					>
 					</TxtInputLogin>
 
 					<TxtInputLogin
 						placeholder="Digite sua senha"
-						keyboardType='email-address'>
+						keyboardType='email-address'
+						value={this.state.senha}
+						onChangeText={txt => { this.setState({ senha: txt }) }}
+					>
 					</TxtInputLogin>
 
-					<LargeButton>
+					<LargeButton
+						onPress={this.signIn}>
 						<TxtButon>CONFIRMAR</TxtButon>
 					</LargeButton>
-					
+
 				</LoginForm>
 				<Div>
 					<ContainerLine>
@@ -75,12 +98,12 @@ export default class Login extends Component {
 						<SecondaryText>ou</SecondaryText>
 						<HorizontalLine />
 					</ContainerLine>
-				
+
 					<ContainerSingInOptions >
 						<IconSingInOptions source={require('../../../assets/facebook.png')} ></IconSingInOptions>
 						<IconSingInOptions source={require('../../../assets/google.png')} ></IconSingInOptions>
 					</ContainerSingInOptions>
-					
+
 				</Div>
 			</Container>
 		)

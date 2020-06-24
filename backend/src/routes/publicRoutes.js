@@ -57,9 +57,9 @@ router.delete('/servicos/:id', tipoServicoController.destroy);
 
 // Rotas de Pets
 router.get('/pets', petController.index);
+router.get('/pets/localizacao', petFilter.indexByProximity);
 router.get('/pets/:id', petController.show);
 router.get('/pets/uf/:uf', petFilter.indexBylocal);
-router.get('/pets/localizacao/latitude/:latitude/longitude/:longitude', petFilter.indexByProximity);
 
 // Rotas de Pets perdidos
 router.get('/pets_perdidos', petPerdidoController.index);

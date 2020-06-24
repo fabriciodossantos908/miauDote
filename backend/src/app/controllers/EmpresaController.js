@@ -18,8 +18,10 @@ class EmpresaController {
       if (empresas.length > 0) {
         empresas = empresas.map(empresa => {
           empresa.senha = undefined;
+          empresa.id_tipo_servico = undefined;
           return empresa;
         })
+
         return res.json(empresas);
       }
 
@@ -55,10 +57,6 @@ class EmpresaController {
     }
 
   }
-
-  
-
-  
 
   async store(req, res) {
 
