@@ -43,7 +43,7 @@ export default class FormBaseInfo extends Component {
                                 <h1>Cadastro de usuário</h1>
                             </Row>
                             <Row>
-                                <h1>Etapa:{state.step}</h1>
+                                <h3>Etapa:{state.step}</h3>
                             </Row>
                         </Col>
                     </Col>
@@ -58,7 +58,7 @@ export default class FormBaseInfo extends Component {
                                         return ('<h1> this.props.errors.email<h1>')
                                     }
                                 } */}
-                            }</label>
+                            </label>
                         </Row>
                         <Row>
                             <input

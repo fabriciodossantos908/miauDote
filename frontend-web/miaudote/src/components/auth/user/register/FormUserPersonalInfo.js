@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { Row, Col, Container, Button } from 'react-bootstrap'
 import InputMask from 'react-input-mask';
-<<<<<<< HEAD
 
-=======
->>>>>>> e250bbe71c8e32eadffe946ccf2b7e13c4cca741
 export default class pesonalData extends Component {
     render() {
         const { state, handleChange, nextStep, prevStep, validInsert } = this.props;
@@ -12,100 +9,106 @@ export default class pesonalData extends Component {
         return (
             <Container>
                 <Row>
-                    <h1>Dados pessoais</h1>
-                </Row>
-                <Row>
-                    <h2>Etapa:{state.step}</h2>
-                </Row>
-                    <Row>
-                        <label for="celular">Celular</label>
+                    <Col>
+                        <Row>
+                            <h1>Dados pessoais</h1>
+                        </Row>
+                        <Row>
+                            <h3>Etapa:{state.step}</h3>
+                        </Row>
+                    </Col>
+                    <Col>
+                        <Row>
+                            <label for="celular">Celular</label>
+                            <InputMask
+                                type="text"
+                                mask="(99) 9 9999-9999"
+                                maskChar="_"
+                                name="celular"
+                                id="celular"
+                                class="validate"
+                                placeholder="(11) 9999-9999"
+                                onChange={handleChange}
+                                defaultValue={state.celular}
+                                onKeyUp={validInsert}
+                            />
+                        </Row>
+
+                        <Row>
+                            <label>nome</label>
+                        </Row>
+                        <Row>
+                            <InputMask
+                                type="text"
+                                name="nome"
+                                placeholder="joao vitor"
+                                onChange={handleChange}
+                                defaultValue={state.nome}
+                            />
+                        </Row>
+
+                        <Row>
+                            <label>Data nascimento</label>
+                        </Row>
+
                         <InputMask
                             type="text"
-                            mask="(99) 9 9999-9999"
+                            mask="99/99/9999"
                             maskChar="_"
-                            name="celular"
-                            id="celular"
-                            class="validate"
-                            placeholder="(11) 9999-9999"
+                            name="dt_nasc"
+                            placeholder="data de nascimento"
+                            defaultValue={state.data_nascimento}
                             onChange={handleChange}
-                            defaultValue={state.celular}
                             onKeyUp={validInsert}
                         />
-                    </Row>
 
-                    <Row>
-                        <label>nome</label>
-                    </Row>
-                    <Row>
-                        <InputMask
-                            type="text"
-                            name="nome"
-                            placeholder="joao vitor"
-                            onChange={handleChange}
-                            defaultValue={state.nome}
-                        />
-                    </Row>
+                        <Row>
+                            <label>Sexo</label>
+                        </Row>
 
-                    <Row>
-                        <label>Data nascimento</label>
-                    </Row>
+                        <Row>
 
-                    <InputMask
-                        type="text"
-                        mask="99/99/9999"
-                        maskChar="_"
-                        name="dt_nasc"
-                        placeholder="data de nascimento"
-                        defaultValue={state.data_nascimento}
-                        onChange={handleChange}
-                        onKeyUp={validInsert}
-                    />
+                            <InputMask
+                                type="text"
+                                mask="a"
+                                name="sexo"
+                                placeholder="sexo"
+                                defaultValue={state.sexo}
+                                onChange={handleChange}
+                                onKeyUp={validInsert}
+                            />
+                        </Row>
 
-                    <Row>
-                        <label>Sexo</label>
-                    </Row>
+                        <Row>
+                            <label>CPF</label>
+                        </Row>
 
-                    <Row>
+                        <Row>
 
-                    <InputMask
-                        type="text"
-                        mask="a"
-                        name="sexo"
-                        placeholder="sexo"
-                        defaultValue={state.sexo}
-                        onChange={handleChange}
-                        onKeyUp={validInsert}
-                    />
+                            <InputMask
+                                type="text"
+                                mask="999.999.999-99"
+                                maskChar="_"
+                                name="cpf"
+                                placeholder="999.999.999.99"
+                                value={state.cpf}
+                                onChange={handleChange}
+                                onKeyUp={validInsert}
+                            />
+                        </Row>
+
+                        <Row className="justify-content-md-left mt-2">
+                            <Col xs={2}>
+                                <Button variant="outline-primary" onClick={prevStep}>Anterior</Button>
+                            </Col>
+                            <Col xs={2}>
+                                <Button variant="outline-primary" onClick={nextStep}>Próximo</Button>
+                            </Col>
+                        </Row>
+
+                    </Col>
                 </Row>
-
-                    <Row>
-                        <label>CPF</label>
-                    </Row>
-
-                    <Row>
-
-                    <InputMask
-                        type="text"
-                        mask="999.999.999-99"
-                        maskChar="_"
-                        name="cpf"
-                        placeholder="999.999.999.99"
-                        value={state.cpf}
-                        onChange={handleChange}
-                        onKeyUp={validInsert}
-                    />
-                </Row>
-
-                    <Row className="justify-content-md-left mt-2">
-                        <Col xs={2}>
-                            <Button variant="outline-primary" onClick={prevStep}>Anterior</Button>
-                        </Col>
-                        <Col xs={2}>
-                            <Button variant="outline-primary" onClick={nextStep}>Próximo</Button>
-                        </Col>
-                    </Row>
-
             </Container>
-                )
-            }
-        }
+        )
+    }
+}

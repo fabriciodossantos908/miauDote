@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/home'
 import FormCompany from './components/auth/company/registration/FormCompany'
-import CompanyLogin from './components/auth/login/CompanyLogin'
+import Login from './components/auth/login/Login'
 import FormUser from './components/auth/user/register/FormUser'
 // import moduleName from './components/auth/login/userLogin'
 import Test from './pages/test'
@@ -27,16 +27,13 @@ function Routes() {
                     <FormUser />
                 </Route>
 
-                <Route path='/loginUser' exact >
-                    <FormUser />
-                </Route>
-                <Route path='/loginCompany' exact >
-                    <CompanyLogin />
+                <Route path='/login' exact >
+                    <Login/>
                 </Route>
                 <Route path='/test' exact >
                     <Test />
                 </Route>
-            </Switch>
+           </Switch>
         </Router>
         </React.Fragment>
     )

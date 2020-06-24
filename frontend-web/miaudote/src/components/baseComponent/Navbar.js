@@ -14,13 +14,9 @@ const Links = () => {
             <Nav className="mr-auto">
                 <NavDropdown title="Empresa" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/formCompany">SignUp Empresa</NavDropdown.Item>
-                    <NavDropdown.Item href="/loginCompany">SignIn Empresa</NavDropdown.Item>
+                    <NavDropdown.Item href="/formUser">SignUp Usuário</NavDropdown.Item>
                 </NavDropdown>
 
-                <NavDropdown title="Usuario" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/formUser">SignUp Usuário</NavDropdown.Item>
-                    <NavDropdown.Item href="/loginUser">SignIn Usuário</NavDropdown.Item>
-                </NavDropdown>
             </Nav>
         </React.Fragment>
     )
@@ -30,7 +26,7 @@ const Header = () => {
     return (
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="/">MiauDote</Navbar.Brand>
-            <Navbar.Brand href="/test">teste</Navbar.Brand>
+            <Navbar.Brand href="/login">Login</Navbar.Brand>
             <Links />
             <Form inline>
                 <FormControl type="text" placeholder="procurar" className="mr-sm-2" />
