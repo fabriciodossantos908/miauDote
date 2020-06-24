@@ -177,7 +177,7 @@ export const ButtonIcon = styled.TouchableOpacity `
 export const SubtittleContainer = styled.View `
     
     padding:8px;
-    top:15;
+    top:15px;
 `
 
 

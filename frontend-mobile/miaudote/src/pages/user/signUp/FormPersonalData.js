@@ -142,12 +142,12 @@ export default class FormPersonalData extends Component {
 
 
 	render() {
-		console.log(this.state)
+		// console.log(this.state)
 
 		return (
 			<KeyboardAvoidingView
-				// behavior={Platform.OS == "ios" ? "padding" : "height"}
-				behavior={"height"}
+				behavior={Platform.OS == "ios" ? "padding" : "height"}
+				// behavior={"height"}
 				style={styles.container}
 			>
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>

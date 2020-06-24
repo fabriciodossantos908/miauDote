@@ -54,11 +54,11 @@ export default class FormUserAddress extends Component {
 			email: data.email,
 			password: data.password,
 			name: data.name,
-			birthDate: data.birthDate,
+			birthDate: data.birthDate.split('/').reverse().join('-'),
 			gender: data.gender,
-			cpf: data.cpf,
+			cpf: data.cpf.replace(/[^A-Z0-9]+/ig, ""),
 			ddd: data.ddd,
-			phone: data.phone,
+			phone: data.phone.replace(/[^A-Z0-9]+/ig, ""),
 			cep: '',
 			city: '',
 			address: '',
@@ -117,18 +117,6 @@ export default class FormUserAddress extends Component {
 	// 	}); 
 
 	// }
-
-	unmask = () => {
-
-		const unmaskedCep = this.cepField.getRawValue()
-
-		let result = unmaskedCep.replace(/[^A-Z0-9]+/ig, "");
-		console.log(result)
-
-		this.setState({cep: unmaskedCep})
-		console.log(this.state)
-	}
-
 
 	nextPage = (props) => {
 		if (!this.validate()) return
@@ -227,15 +215,83 @@ export default class FormUserAddress extends Component {
 
 	}
 
+
+	cadastrar = async e => {
+
+		const { email, password, name, birthDate, gender, cpf, phone, cep, city, address, number, complement, neighborhood, state } = this.state
+		const _cep = cep.replace(/[^A-Z0-9]+/ig, "")
+		const params = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				nome: name,
+				email: email,
+				senha: password,
+				data_nascimento: birthDate,
+				sexo: gender,
+				cpf: cpf,
+				celular: phone,
+				cep: _cep,
+				cidade: city,
+				bairro: neighborhood,
+				logradouro: address,
+				numero: number,
+				complemento: complement,
+				uf: state,
+				permissions: 'USER',
+
+			})
+		
+		}
+
+
+		try {
+			let response =  await fetch('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/registrar',params)
+			console.log(JSON.stringify(response))
+
+			console.log(response)
+
+			// ok: status code =  200 - 299
+			if(!response.ok){
+				return alert("Erro ao cadastrar")
+				// return console.log(response.data)
+
+				// .json() captura e tranforma o corpo em json
+
+				const user = await response.json()
+				console.log(user)
+			 } else {
+				alert('Cadastrado com Sucesso')
+
+				// AsyncStorage.setItem( 'token', user.token )
+
+				const data = this.state
+	
+				this.props.navigation.navigate('FormUserPhoto', {
+					screen: 'FormUserAddress',
+					params: { data }
+				}); 
+			}
+			
+			
+
+		} catch (e) {
+			console.log(e)
+		}
+		
+	}
+
 	
 
 	render() {
-		console.log(this.state)
+		// console.log(this.state)
 		return (
 
 			<KeyboardAvoidingView
-				// behavior={Platform.OS == "ios" ? "padding" : "height"}
-				behavior={"height"}
+				behavior={Platform.OS == "ios" ? "padding" : "height"}
+				// behavior={"height"}
 				style={styles.container}
 			>
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -401,7 +457,7 @@ export default class FormUserAddress extends Component {
 									<BtnText>Voltar</BtnText>
 								</ButtonPrevious>
 
-								<ButtonNext onPress={this.nextPage}>
+								<ButtonNext onPress={this.cadastrar}>
 									<BtnText>Próximo</BtnText>
 								</ButtonNext>
 
