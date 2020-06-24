@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback, ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-native';
-
+import { View, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback, ScrollView, StyleSheet, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import {
 	SecundaryTittle,
@@ -63,7 +63,7 @@ export default class FormBasicInfo extends Component {
 
 
 	nextPage = (props) => {
-		// if (!this.validate()) return
+		if (!this.validate()) return
 		// else if (validar email)
 		if (!this.validatePassword()) return
 
@@ -82,7 +82,8 @@ export default class FormBasicInfo extends Component {
 
 		return (
 			<KeyboardAvoidingView
-				behavior={Platform.OS == "ios" ? "padding" : "height"}
+				// behavior={Platform.OS == "ios" ? "padding" : "height"}
+				behavior={"height"}
 				style={{flex: 1}}
 			>
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -152,6 +153,7 @@ export default class FormBasicInfo extends Component {
 										underlineColor:'transparent',
 										}
 								}}/>
+								
 
 							</View>
 

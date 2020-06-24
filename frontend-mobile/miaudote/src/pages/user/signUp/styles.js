@@ -1,26 +1,28 @@
 import styled from 'styled-components/native'
+import { Dimensions } from 'react-native';
+import { exp } from 'react-native-reanimated';
 
 
 // backgroundColor:#42a9aa;
 // padding:8px;
-export const BlueContainer = styled.View`
+export const BlueContainer = styled.View `
     flex: 1;
 `;
 
 // justifyContent: center;
-// alignItems: center
-export const MainContainer = styled.View`
+    // alignItems: center
+export const MainContainer = styled.View `
     flex: 1;
     backgroundColor:#fff;
     padding:16px;
     
 `
 
-export const Header = styled.View`
-    flex: 1;
-`
+// export const Header = styled.View `
+//     flex: 1;
+// `
 
-export const Body = styled.View`
+export const Body = styled.View `
     flex: 3;
     
 `
@@ -29,11 +31,11 @@ export const Body = styled.View`
 // borderWidth: 1;
 // borderColor:#5A6978;
 
-export const Footer = styled.View`
+export const Footer = styled.View `
     flex: 1;
 `
 
-export const OvalView = styled.View`
+export const OvalView = styled.View `
     marginTop: 20;
     width: 100%;
     height: 30;
@@ -44,7 +46,7 @@ export const OvalView = styled.View`
     }
 `
 
-export const Div = styled.View`
+ export const Div = styled.View `
     flex:1;
     justifyContent: center;
     alignItems: center;
@@ -52,8 +54,8 @@ export const Div = styled.View`
 // height:50
 
 // borderWidth: 1;
-// borderColor:#000;
-export const Head = styled.View`
+    // borderColor:#000;
+export const Head = styled.View `
     flex: 0.5;
     justifyContent: center;
     alignItems: center;
@@ -61,14 +63,14 @@ export const Head = styled.View`
 `
 
 // flex: 0.3;
-export const HeaderDecoration = styled.View`
+export const HeaderDecoration = styled.View `
     
     backgroundColor:#fff;
     justifyContent: center;
     alignItems: center
 `
 
-export const ActiveStepIconColor = styled.View`
+export const ActiveStepIconColor = styled.View `
     height:15;
     width:15;
     backgroundColor:#FC6B6E;
@@ -76,7 +78,7 @@ export const ActiveStepIconColor = styled.View`
 `
 
 
-export const DesabledStepIconColor = styled.View`
+export const DesabledStepIconColor = styled.View `
     height:15;
     width:15;
     backgroundColor:#cccccc;
@@ -85,17 +87,17 @@ export const DesabledStepIconColor = styled.View`
 
 
 // borderColor: #000;
-// borderWidth:1;
-export const Form = styled.View`
+    // borderWidth:1;
+export const Form = styled.View `
     flex:1;
     justifyContent:center;
     marginBottom:50;
    
 `
 
-// borderColor: #000;
-// borderWidth:1;
-export const DivForm = styled.View`
+ // borderColor: #000;
+    // borderWidth:1;
+export const DivForm = styled.View `
     flex: 2;
     padding:8px;
     marginTop:20px
@@ -103,9 +105,9 @@ export const DivForm = styled.View`
 
 `
 
-// backgroundColor: #fff;
+    // backgroundColor: #fff;
 
-export const DivProgressBar = styled.View`
+export const DivProgressBar = styled.View `
     flex: 0.3;
     padding:8px;
     flexDirection:row;
@@ -115,12 +117,12 @@ export const DivProgressBar = styled.View`
 
 
 
-export const BtnText = styled.Text`
+export const BtnText = styled.Text `
     color: #fff;
     fontSize:18px
 `
 
-export const DivSignOpions = styled.View`
+export const DivSignOpions = styled.View `
     flex: 1;
     width: 100%;
     justifyContent: center;
@@ -129,7 +131,7 @@ export const DivSignOpions = styled.View`
 
 `
 
-export const ContainerLine = styled.View`
+export const ContainerLine = styled.View `
     flex:1;
     width: 100%;
     justifyContent: center;
@@ -141,7 +143,7 @@ export const ContainerLine = styled.View`
 
 
 // top:3;
-export const HorizontalLine = styled.View`
+export const HorizontalLine = styled.View `
     borderWidth: 0.5;
     borderColor:#5A6978;
     margin:10px;
@@ -152,20 +154,20 @@ export const HorizontalLine = styled.View`
 
 
 
-export const SignOptions = styled.View`
-    height:50;
+export const SignOptions = styled.View `
+height:50
     width: 100%;
     justifyContent: center;
     alignItems: center;
     flexDirection:row;
-`
+    `
 
-export const IconSignUpOptions = styled.Image`
+export const IconSignUpOptions = styled.Image `
     height: 60;
     width: 60;
 `
 
-export const ButtonIcon = styled.TouchableOpacity`
+export const ButtonIcon = styled.TouchableOpacity `
     marginTop:0;
     height: 60;
     width: 60;
@@ -173,33 +175,33 @@ export const ButtonIcon = styled.TouchableOpacity`
     marginRight:15;
 `
 
-// backgroundColor:#f88c;
-// marginBottom:10
+    // backgroundColor:#f88c;
+    // marginBottom:10
 
-export const SubtittleContainer = styled.View`
+export const SubtittleContainer = styled.View `
     
     padding:8px;
     top:15;
 `
 
 
-// borderWidth: 0.5;
-// borderColor:#5A6978;
+    // borderWidth: 0.5;
+    // borderColor:#5A6978;
 
-export const DivInput = styled.View`
+export const DivInput = styled.View `
     flex:0.3;
     paddingHorizontal:3;
     backgroundColor:#fff;
 `
 
 // fontFamily:Arial;
-export const FormLabel = styled.Text`
+export const FormLabel = styled.Text `
     
     color: #369696;
     fontWeight:bold
 `
 
-export const ContainerTxtInput = styled.Text`
+export const ContainerTxtInput = styled.Text `
     flexDirection: row;
     borderBottomWidth: 1.2;
     borderColor: #B6B6B6;
@@ -207,7 +209,7 @@ export const ContainerTxtInput = styled.Text`
     alignItems:center;
 `
 
-export const FormTextInput = styled.TextInput`
+export const FormTextInput = styled.TextInput `
     flex: 1;
     width:80%;
     minHeight: 40;
@@ -220,21 +222,21 @@ export const FormTextInput = styled.TextInput`
 // ****** Form Personal Data
 
 
-// borderWidth: 0.5;
-// borderColor:#5A6978;
+    // borderWidth: 0.5;
+    // borderColor:#5A6978;
 
-export const DivInputRow = styled.View`
+export const DivInputRow = styled.View `
     width:100%;
     flexDirection:row;
     
 `
 
-export const DivInputMedium = styled.View`
+export const DivInputMedium = styled.View `
     flex:1;
     paddingHorizontal:3;
     marginRight:10;
 `
-export const FormTextInputMedium = styled.TextInput`
+export const FormTextInputMedium = styled.TextInput `
     flex: 1;
     width:70%;
     minHeight: 40;
@@ -243,13 +245,13 @@ export const FormTextInputMedium = styled.TextInput`
     fontSize: 18;
 `
 
-export const DivInputSmall = styled.View`
+export const DivInputSmall = styled.View `
     flex:0.5;
     paddingHorizontal:3;
     marginRight:10;
 `
 
-export const FormTextInputSmall = styled.TextInput`
+export const FormTextInputSmall = styled.TextInput `
     flex: 0.5;
     width:60%;
     minHeight: 40;
@@ -258,7 +260,7 @@ export const FormTextInputSmall = styled.TextInput`
     fontSize: 18;
 `
 
-export const DivButtons = styled.View`
+export const DivButtons = styled.View `
     flex:0.4;
     flexDirection:row;
     padding:8px;
@@ -266,7 +268,7 @@ export const DivButtons = styled.View`
 `
 
 
-export const ButtonSmallPrevious = styled.TouchableOpacity`
+export const ButtonSmallPrevious = styled.TouchableOpacity `
     position: absolute; 
     height: 45px;
     width: 130px;
@@ -275,7 +277,7 @@ export const ButtonSmallPrevious = styled.TouchableOpacity`
     backgroundColor:#fc6b6e;
 `
 
-export const ButtonSmallNext = styled.TouchableOpacity`
+export const ButtonSmallNext = styled.TouchableOpacity `
     position: absolute; 
     height: 45px;
 	width: 130px;
@@ -286,6 +288,109 @@ export const ButtonSmallNext = styled.TouchableOpacity`
     
 `
 
+
+// FORM BASIC INFO
+
+const { width } = Dimensions.get('window')
+
+export const Inner = styled.View `
+    padding:20px;
+    flex: 1;
+    justifyContent:space-around;
+    backgroundColor:#ffffff
+`
+
+export const Header = styled.View `
+    marginTop: 70px;
+    bottom:20px; 
+    flexDirection:row; 
+    justifyContent:center;
+`
+
+export const Title = styled.Text `
+    fontSize: 32px;
+    marginBottom: 15px;
+`
+
+export const ImageIcon = styled.Image `
+    height:40px;
+    width:40px;
+    top: 5px; 
+    left:10px
+`
+
+export const ProgressBar = styled.View `
+    justifyContent: space-evenly;
+    flexDirection: row;
+    marginTop:-20px
+
+`
+
+export const ActiveIcon = styled.View `
+    height:15px;
+    width:15px;
+    backgroundColor:#FC6B6E;
+    borderRadius:100px;
+
+`
+
+export const DisableIcon = styled.View `
+    height:15px;
+    width:15px;
+    backgroundColor:#ccc;
+    borderRadius:100px;
+`
+
+export const SubTitle = styled.Text `
+    fontSize: 17px;
+    top:30px
+`
+// export const Form = styled.Text `
+// top:40 ,flex:1, paddingTop:10
+// `
+
+
+export const ButtonNext = styled.TouchableOpacity `
+    height: 45px;
+    width: 130px;
+    justifyContent:center;
+    alignItems:center;
+    backgroundColor:#1bc7cb;
+`
+
+export const ContainerButton = styled.View `
+    marginTop: 60px;
+    marginLeft:auto;
+    marginRight:0;
+
+`
+
+export const ButtonContainer = styled.View `
+    marginTop: 60px;
+    flexDirection:row;
+    alignItems: center;
+    justifyContent:space-between
+
+`
+
+export const ButtonPrevious = styled.TouchableOpacity `
+    height: 45px;
+    width: 130px;
+    justifyContent:center;
+    alignItems:center;
+    backgroundColor:#fc6b6e;
+`
+
+
+// export const Title = styled.Text ``
+// export const Title = styled.Text ``
+// export const Title = styled.Text ``
+// export const Title = styled.Text ``
+// export const Title = styled.Text ``
+
+
+// 
+//    
 
 
 

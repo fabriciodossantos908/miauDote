@@ -38,12 +38,12 @@ export default class FormUserPhoto extends Component {
 			email: data.email,
 			password : data.password,
 			name: data.name,
-			birthDate : data.birthDate,
+			birthDate : data.birthDate.split('/').reverse().join('-'),
 			gender: data.gender,
-			cpf: data.cpf,
+			cpf: data.cpf.replace(/[^A-Z0-9]+/ig, ""),
 			ddd: data.ddd,
-			phone: data.phone,
-			cep: data.cep,
+			phone: data.phone.replace(/[^A-Z0-9]+/ig, ""),
+			cep: data.cep.replace(/[^A-Z0-9]+/ig, ""),
 			city: data.city,
 			address: data.address,
 			number: data.number,
@@ -83,9 +83,7 @@ export default class FormUserPhoto extends Component {
 				numero: number,
 				complemento: complement,
 				uf: state,
-				url_foto: null,
 				permissions: 'USER',
-				email_confirmado: false
 
 			})
 		
@@ -157,7 +155,7 @@ export default class FormUserPhoto extends Component {
 
 				<View style={styles.main}>
 					<Image
-						source={require('../../../assets/google.png')}
+						source={require('../../../assets/avatar.png')}
 						style={styles.avatar}
 					/>
 					{/* onPress={imagePickerCall} */}
