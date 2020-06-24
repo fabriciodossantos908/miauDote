@@ -41,6 +41,54 @@ export class FormCompany extends Component {
     this.valInsert = this.valInsert.bind(this)
   }
 
+  createCompany = () => {
+    const { state } = this.props
+    const company = {
+        nome_representante: state.nome_representante,
+        email_representante: state.email_representante,
+        celular_representante: rmvMask.trimMaskCell(state.celular_representante),
+        razao_social: state.razao_social,
+        nome_empresa: state.nome_empresa,
+        cnpj: rmvMask.trimMaskCnpj(state.cnpj),
+        telefone: rmvMask.trimMaskCell(state.telefone),
+        cep: rmvMask.trimMaskCep(state.cep),
+        cidade: state.cidade,
+        bairro: state.bairro,
+        logradouro: state.logradouro,
+        numero: state.numero,
+        complemento: state.complemento,
+        uf: state.uf,
+        id_tipo_servico: state.id_tipo_servico,
+        url_logo: state.url_logo,
+        permissions: state.permissions,
+        senha: state.senha
+    }
+
+    if (apiCompany.createCompany(company)) {
+            alert("created with success!")
+    } else {
+            alert("failed meanwhile creating")
+    }
+}
+
+SeachCep = (event) => {
+  // stop at this issue
+  var cep = rmvMask.trimMaskCep(rmvMask.trimSlash(event.target.value))
+  if (cep.length >= 8) {
+      let startUrl = "https://viacep.com.br/ws/";
+      let endUrl = "/json/";
+      const midCep = cep;
+      const finalUrl = startUrl + midCep + endUrl
+      Axios.get(finalUrl)
+          .then(
+              (res) => {
+                  const address = res.data
+                  console.log(address)
+                  return address
+              })
+  }
+}
+
   nextStep() {
     const { step } = this.state
     this.setState({
