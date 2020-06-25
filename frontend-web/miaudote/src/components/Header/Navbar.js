@@ -1,8 +1,9 @@
 import React from 'react';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import { makeStyles, AppBar, Toolbar, Typography, Button, List,
-ListItem, ListItemText, Collapse } from '@material-ui/core'
+ListItem, ListItemText, Collapse, Link } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,10 +12,19 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+
+  button:{
+    textDecoration: "none"
+  },
+
   title: {
     flexGrow: 1,
   },
   paddingLeft: theme.spacing(4),
+
+  appBar: {
+    boxShadow: "none"
+  }
 }));
 
 export default function ButtonAppBar() {
@@ -28,10 +38,10 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appBar}>  
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <a href="#">LOGO</a>
+              Miaudote
           </Typography>
             <Button color="inherit" primary="Login">Login</Button>  
           <List>
@@ -39,13 +49,13 @@ export default function ButtonAppBar() {
                 <ListItemText color="inherit" primary="Cadastrar" />
                   {open ? <ExpandLess /> : <ExpandMore />}  
                 </ListItem>
-              <Collapse in={open} timeout="auto" unmountOnExit>
+              <Collapse in={!open} unmountOnExit>
                 <List component="div" disablePadding>
                   <ListItem button className={classes.nested}>
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit">Usuario</Button>
                   </ListItem>
                   <ListItem button className={classes.nested}>
-                    <Button color="inherit">Empresa</Button>
+                    <Button color="inherit"><a>Empresa</a></Button>
                   </ListItem>
                 </List>
               </Collapse>
