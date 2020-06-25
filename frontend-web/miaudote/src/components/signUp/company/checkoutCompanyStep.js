@@ -5,10 +5,11 @@ import CompanyAddress from './companyAddress'
 import Home from '../../../pages/home'
 // import * as yup from 'yup';
 import RemoveMask from '../../../validations/RemoveMask';
+import { makeStyles } from '@material-ui/core';
 
 const rmvMask = new RemoveMask()
 
-export class FormCompany extends Component {
+export class CheckoutCompanyStep extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -148,7 +149,25 @@ export class FormCompany extends Component {
     }
   }
 
+   
   render() {
+    const useStyles = makeStyles((theme) => ({
+      root: {
+        flexGrow: 1,
+        '& .MuiTextField-root': {
+          margin: theme.spacing(1),
+          width: '25ch',
+        }
+      },
+      paper: {
+        padding: theme.spacing(2),
+        margin: 'auto',
+        marginTop: 100,
+        maxWidth: 800,
+        minHeight: 500
+      },
+    }))
+
     const { step } = this.state
     switch (step) {
       case 1:
@@ -158,7 +177,7 @@ export class FormCompany extends Component {
             prevStep={this.prevStep}
             handleChange={this.handleChange}
             state={this.state}
-            valInsert={this.valInsert}
+            useStyles={useStyles}
           />
         );
       case 2:
@@ -187,4 +206,4 @@ export class FormCompany extends Component {
   }
 }
 
-export default FormCompany
+export default CheckoutCompanyStep
