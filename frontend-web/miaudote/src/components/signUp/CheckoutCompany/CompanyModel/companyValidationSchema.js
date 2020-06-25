@@ -1,6 +1,6 @@
-import * as Yup from '../../../../../../../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/yup';
+import * as Yup from 'yup';
 import moment from 'moment';
-import checkoutFormModel from './checkoutFormModel';
+import checkoutCompanyModel from './checkoutCompanyModel';
 const {
   formField: {
     firstName,
@@ -14,7 +14,7 @@ const {
     expiryDate,
     cvv
   }
-} = checkoutFormModel;
+} = checkoutCompanyModel;
 
 const visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
 

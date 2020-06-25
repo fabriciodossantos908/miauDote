@@ -9,39 +9,37 @@ import {
 } from '@material-ui/core';
 import { Formik, Form } from 'formik';
 
-import CompanyBaseInfo from './FormCompany/companyBaseInfo';
-import CompanyPersonalInfo from './FormCompany/companyPersonalInfo';
-import CompanyAddress from './FormCompany/companyAddress';
-import Confirm from './FormCompany/Confirm';
+import FormUserInitialnfo from './FormUser/FormUserInitialnfo';
+import FormUserPersonalInfo from './FormUser/FormUserPersonalInfo';
+import FormUserAddress from './FormUser/FormUserAddress';
+import ConfimEmail from './ConfirmEmail/ConfirmEmail';
 
-import validationSchema from '../CheckoutCompany/FormModel/CompanyModel';
-import validationSchema from '../CheckoutCompany';
-import validationSchema from '../CheckoutCompany';
-import checkoutFormModel from './FormModel/checkoutFormModel';
-import formInitialValues from './FormModel/formInitialValues';
+import companyValidationSchema from '../CheckoutCompany/CompanyModel/companyValidationSchema';
+import checkoutCompanyFormModel from '../CheckoutCompany/CompanyModel/checkoutCompanyModel';
+import companyInitialValues from '../CheckoutCompany/CompanyModel/companyInitialValues';
 
-import useStyles from './FormCompany/styles';
+import { useStyle } from '../../Layout/styles';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
-const { formId, formField } = checkoutFormModel;
+const { formId, formField } = checkoutCompanyFormModel;
 
 function _renderStepContent(step) {
   switch (step) {
     case 0:
-      return <CompanyBaseInfo formField={formField} />;
+      return <FormUserInitialnfo formField={formField} />;
     case 1:
-      return <CompanyPersonalInfo formField={formField} />;
+      return <FormUserPersonalInfo formField={formField} />;
     case 2:
-      return <CompanyAddress />;
+      return <FormUserAddress />;
     default:
       return <div>Not Found</div>;
   }
 }
 
 export default function CheckoutCompanyStep() {
-  const classes = useStyles();
+  const classes = useStyle();
   const [activeStep, setActiveStep] = useState(0);
-  const currentValidationSchema = validationSchema[activeStep];
+  const currentcompanyValidationSchema = companyValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
   function _sleep(ms) {
@@ -84,11 +82,11 @@ export default function CheckoutCompanyStep() {
       </Stepper>
       <React.Fragment>
         {activeStep === steps.length ? (
-          <Confirm />
+          <ConfimEmail />
         ) : (
           <Formik
-            initialValues={formInitialValues}
-            validationSchema={currentValidationSchema}
+            initialValues={companyInitialValues}
+            companyValidationSchema={currentcompanyValidationSchema}
             onSubmit={_handleSubmit}
           >
             {({ isSubmitting }) => (

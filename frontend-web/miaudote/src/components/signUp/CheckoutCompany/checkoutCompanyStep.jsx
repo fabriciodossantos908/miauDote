@@ -12,18 +12,16 @@ import { Formik, Form } from 'formik';
 import CompanyBaseInfo from './FormCompany/companyBaseInfo';
 import CompanyPersonalInfo from './FormCompany/companyPersonalInfo';
 import CompanyAddress from './FormCompany/companyAddress';
-import Confirm from './FormCompany/Confirm';
+import ConfirmEmail from './ConfirmEmail/ConfirmEmail';
 
-import validationSchema from '../CheckoutCompany/FormModel/CompanyModel';
-import validationSchema from '../CheckoutCompany';
-import validationSchema from '../CheckoutCompany';
-import checkoutFormModel from './FormModel/checkoutFormModel';
-import formInitialValues from './FormModel/formInitialValues';
+import companyvalidationSchema from './CompanyModel/companyValidationSchema';
+import checkoutCompanyModel from './CompanyModel/checkoutCompanyModel';
+import companyInitialValues from './CompanyModel/companyInitialValues';
 
-import useStyles from './FormCompany/styles';
+import {useStyle} from '../../Layout/styles'
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
-const { formId, formField } = checkoutFormModel;
+const { formId, formField } = checkoutCompanyModel;
 
 function _renderStepContent(step) {
   switch (step) {
@@ -39,9 +37,9 @@ function _renderStepContent(step) {
 }
 
 export default function CheckoutCompanyStep() {
-  const classes = useStyles();
+  const classes = useStyle();
   const [activeStep, setActiveStep] = useState(0);
-  const currentValidationSchema = validationSchema[activeStep];
+  const companycurrentValidationSchema = companyvalidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
   function _sleep(ms) {
@@ -84,11 +82,11 @@ export default function CheckoutCompanyStep() {
       </Stepper>
       <React.Fragment>
         {activeStep === steps.length ? (
-          <Confirm />
+          <ConfirmEmail />
         ) : (
           <Formik
-            initialValues={formInitialValues}
-            validationSchema={currentValidationSchema}
+            initialValues={companyInitialValues}
+            companyvalidationSchema={companycurrentValidationSchema}
             onSubmit={_handleSubmit}
           >
             {({ isSubmitting }) => (

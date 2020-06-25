@@ -1,4 +1,4 @@
-import checkoutFormModel from './checkoutFormModel';
+import checkoutCompanyModel from './checkoutCompanyModel';
 const {
   formField: {
     firstName,
@@ -13,7 +13,7 @@ const {
     expiryDate,
     cvv
   }
-} = checkoutFormModel;
+} = checkoutCompanyModel;
 
 export default {
   [firstName.name]: '',

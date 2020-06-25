@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/home'
 // import CheckoutCompanyStep1 from './components/signUp/company/checkoutCompanyStep1'
-import CheckoutCompanyStep from './components/signUp/company/checkoutCompanyStep.jsx'
+import CheckoutCompanyStep from './components/signUp/CheckoutCompany/checkoutCompanyStep'
+import CheckoutUserStep from './components/signUp/CheckoutUser/checkoutUserStep'
 import Login from './components/SignIn/Login'
-import FormUser from './components/signUp/user/FormUser'
 import Test from './pages/test'
 
 function Routes() {
@@ -24,7 +24,7 @@ function Routes() {
                 </Route>
 
                 <Route path='/formUser' exact >
-                    <FormUser />
+                    <CheckoutUserStep />
                 </Route>
 
                 <Route path='/login' exact >

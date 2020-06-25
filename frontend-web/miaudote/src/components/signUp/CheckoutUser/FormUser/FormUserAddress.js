@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Cep from '../../../api/cep'
+import Cep from '../../../../api/cep'
 import Axios from 'axios'
-import RemoveMask from '../../../validations/RemoveMask'
+import RemoveMask from '../../../../validations/RemoveMask'
 import { makeStyles, TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
 
 const rmvMask = new RemoveMask()
