@@ -1,21 +1,23 @@
 import React from 'react';
-import { makeStyles, TextField, Paper, Grid, InputLabel } from '@material-ui/core';
+import { makeStyles, TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  colors : {
-    baseBlue : '#2222222'
-  },
   root: {
     flexGrow: 1,
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    }
   },
   paper: {
     padding: theme.spacing(2),
     margin: 'auto',
     marginTop: 100,
-    maxWidth: 1000,
+    maxWidth: 800,
     minHeight: 500
   },
 }));
+
 
 export default function ComplexGrid() {
   const classes = useStyles();
@@ -23,14 +25,31 @@ export default function ComplexGrid() {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Grid  container spacing={2}>
-          <Grid item xs={12} sm container>
-            <Grid bgcolor="primary.main" item xs={6} sm container>
-            <InputLabel bgcolor="primary.main">Teste</InputLabel>
+        <Grid container spacing={2}>
+          <Grid
+          xs={4}
+            container
+            direction="column"
+            justify="center"
+            alignItems="flex-start"
+          >            <Box item xs={3} sm container color="" >
+              <InputLabel>Teste</InputLabel>
+            </Box>
           </Grid>
-          </Grid>
-          <Grid item xs={6} sm container>
-            <InputLabel bgcolor="colors.baseBlue">Teste</InputLabel>
+          <Grid
+            xs
+            container
+            direction="column"
+            justify="flex-end"
+            alignItems="center"
+          >          
+
+              <TextField label="Outlined" variant="outlined" />
+              <TextField label="Outlined" variant="outlined" />
+              <TextField label="Outlined" variant="outlined" />
+              <TextField label="Outlined" variant="outlined" />
+
+              <Button variant="contained" color="primary">Avançar</Button>
           </Grid>
         </Grid>
       </Paper>
