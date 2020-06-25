@@ -55,6 +55,12 @@ export class FormCompany extends Component {
     });
   };
 
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
   // valFormat(input) {
 
   //   let schema = yup.object().shape({
@@ -142,12 +148,6 @@ export class FormCompany extends Component {
     }
   }
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
-
   render() {
     const { step } = this.state
     switch (step) {
@@ -182,7 +182,7 @@ export class FormCompany extends Component {
           />
         );
 
-      default: return <Home />
+      default: return <Home/>
     }
   }
 }
