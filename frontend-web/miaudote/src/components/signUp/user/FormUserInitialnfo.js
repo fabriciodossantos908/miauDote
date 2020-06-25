@@ -1,38 +1,10 @@
 import React, { Component } from 'react'
-import { makeStyles, TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
+import { TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
 
-export default class FormBaseInfo extends Component {
-    state = {
-        styles: {}
-    }
-
-    useStyles () {  makeStyles((theme) => ({
-        root: {
-          flexGrow: 1,
-          '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-          }
-        },
-        paper: {
-          padding: theme.spacing(2),
-          margin: 'auto',
-          marginTop: 100,
-          maxWidth: 800,
-          minHeight: 500
-        },
-      }));
-    }
-
-    componentWillMount() {
-        const styles = this.useStyles()
-        this.setState({
-            [this.state.styles] : styles
-        })
-    }
-
+export default class FormUserInitialInfo extends Component {
     render() {
-        const classes = this.useStyles()
+          console.log(this.props.useStyles())
+          const classes = this.props.useStyles
         return (
             <div className={classes.root}>
             <Paper className={classes.paper}>
@@ -49,7 +21,7 @@ export default class FormBaseInfo extends Component {
                 </Grid>
                 <Grid
                   xs
-                  container
+                  container="true"
                   direction="column"
                   justify="flex-end"
                   alignItems="center"
@@ -65,6 +37,6 @@ export default class FormBaseInfo extends Component {
               </Grid>
             </Paper>
           </div>
-                         )
+              )
     }
 }

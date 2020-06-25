@@ -6,6 +6,7 @@ import Confirm from './Confirm'
 import Home from '../../../pages/home'
 // import * as yup from 'yup';
 import RemoveMask from '../../../validations/RemoveMask';
+import { makeStyles } from '@material-ui/core';
 
 
 const mask = new RemoveMask()
@@ -177,6 +178,24 @@ export default class UserInfo extends Component {
         });
     }
 
+    useStyles () {  makeStyles((theme) => ({
+        root: {
+          flexGrow: 1,
+          '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '25ch',
+          }
+        },
+        paper: {
+          padding: theme.spacing(2),
+          margin: 'auto',
+          marginTop: 100,
+          maxWidth: 800,
+          minHeight: 500
+        },
+      }));
+    }
+    
     render() {
         const { step } = this.state
         const state = this.state
@@ -187,8 +206,8 @@ export default class UserInfo extends Component {
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
                     handleChange={this.handleChange}
-                    validInsert={this.valInsert}
                     state={state}
+                    useStyles={this.useStyles}
                 />
             );
             case 2: {

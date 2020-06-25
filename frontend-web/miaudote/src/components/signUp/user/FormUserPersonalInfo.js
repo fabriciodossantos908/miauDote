@@ -22,7 +22,6 @@ export default class pesonalData extends Component {
 
           const classes = useStyles()
 
-        const { state, handleChange, nextStep, prevStep } = this.props;
         return (
             <div className={classes.root}>
             <Paper className={classes.paper}>
