@@ -2,75 +2,36 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
 
-const cities = [
-  {
-    value: undefined,
-    label: 'None'
-  },
-  {
-    value: '1',
-    label: 'New York'
-  },
-  {
-    value: '2',
-    label: 'Chicago'
-  },
-  {
-    value: '3',
-    label: 'Saigon'
-  }
-];
-
 const states = [
   {
     value: undefined,
     label: 'None'
   },
   {
-    value: '11',
-    label: 'Florida'
+    value: 'SP',
+    label: 'SP São Paulo'
   },
   {
-    value: '22',
-    label: 'Michigan'
+    value: 'RJ',
+    label: 'Rio de Janeiro'
   },
   {
-    value: '33',
-    label: 'Texas'
+    value: 'MG',
+    label: 'Minas Gerais'
   }
 ];
 
-const countries = [
-  {
-    value: null,
-    label: 'None'
-  },
-  {
-    value: '111',
-    label: 'United States'
-  },
-  {
-    value: '222',
-    label: 'Italy'
-  },
-  {
-    value: '333',
-    label: 'Vietnam'
-  }
-];
 
 export default function CompanyAddress(props) {
   const {
     formField: {
-      firstName,
-      lastName,
-      address1,
-      address2,
-      city,
-      state,
-      zipcode,
-      country,
-      useAddressForPaymentDetails
+      complemento,
+      uf,  
+      cep,
+      cidade,
+      bairro,
+      logradouro,
+      numero,
     }
   } = props;
   return (
@@ -80,48 +41,30 @@ export default function CompanyAddress(props) {
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <InputField name={firstName.name} label={firstName.label} fullWidth />
+          <InputField name={cep.name} label={cep.label} fullWidth />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <InputField name={lastName.name} label={lastName.label} fullWidth />
+          <InputField name={cidade.name} label={cidade.label} fullWidth />
         </Grid>
         <Grid item xs={12}>
-          <InputField name={address1.name} label={address1.label} fullWidth />
+          <InputField name={bairro.name} label={bairro.label} fullWidth />
         </Grid>
         <Grid item xs={12}>
-          <InputField name={address2.name} label={address2.label} fullWidth />
+          <InputField name={logradouro.name} label={logradouro.label} fullWidth />
         </Grid>
+        <Grid item xs={12}>
+          <InputField name={complemento.name} label={complemento.label} fullWidth />
+        </Grid>
+        <Grid item xs={12}>
+          <InputField name={numero.name} label={uf.label} fullWidth />
+        </Grid>
+
         <Grid item xs={12} sm={6}>
           <SelectField
-            name={city.name}
-            label={city.label}
-            data={cities}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <SelectField
-            name={state.name}
-            label={state.label}
+            name={uf.name}
+            label={uf.label}
             data={states}
             fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <InputField name={zipcode.name} label={zipcode.label} fullWidth />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <SelectField
-            name={country.name}
-            label={country.label}
-            data={countries}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <CheckboxField
-            name={useAddressForPaymentDetails.name}
-            label={useAddressForPaymentDetails.label}
           />
         </Grid>
       </Grid>

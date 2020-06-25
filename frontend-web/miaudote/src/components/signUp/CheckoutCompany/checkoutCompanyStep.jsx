@@ -18,9 +18,9 @@ import companyvalidationSchema from './CompanyModel/companyValidationSchema';
 import checkoutCompanyModel from './CompanyModel/checkoutCompanyModel';
 import companyInitialValues from './CompanyModel/companyInitialValues';
 
-import {useStyle} from '../../Layout/styles'
+import { useStyle } from '../../Layout/styles'
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Iniciando seu cadastro', 'Detalhes da empresa', 'Endereço'];
 const { formId, formField } = checkoutCompanyModel;
 
 function _renderStepContent(step) {
@@ -30,7 +30,7 @@ function _renderStepContent(step) {
     case 1:
       return <CompanyPersonalInfo formField={formField} />;
     case 2:
-      return <CompanyAddress />;
+      return <CompanyAddress formField={formField} />;
     default:
       return <div>Not Found</div>;
   }
@@ -71,12 +71,12 @@ export default function CheckoutCompanyStep() {
   return (
     <React.Fragment>
       <Typography component="h1" variant="h4" align="center">
-        Checkout
+        Sign up Empresa
       </Typography>
       <Stepper activeStep={activeStep} className={classes.stepper}>
         {steps.map(label => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StepLabel></StepLabel>
           </Step>
         ))}
       </Stepper>
@@ -84,43 +84,48 @@ export default function CheckoutCompanyStep() {
         {activeStep === steps.length ? (
           <ConfirmEmail />
         ) : (
-          <Formik
-            initialValues={companyInitialValues}
-            companyvalidationSchema={companycurrentValidationSchema}
-            onSubmit={_handleSubmit}
-          >
-            {({ isSubmitting }) => (
-              <Form id={formId}>
-                {_renderStepContent(activeStep)}
+            <Formik
+              initialValues={companyInitialValues}
+              companyvalidationSchema={companycurrentValidationSchema}
+              onSubmit={_handleSubmit}
+            >
+              {({ isSubmitting }) => (
+                <Form id={formId}>
+                  {_renderStepContent(activeStep)}
 
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={_handleBack} className={classes.button}>
-                      Back
+                  <div className={classes.buttons}>
+                    {activeStep !== 0 && (
+                      <Button
+                        onClick={_handleBack}
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
+                      >
+                        Voltar
                     </Button>
-                  )}
-                  <div className={classes.wrapper}>
-                    <Button
-                      disabled={isSubmitting}
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      className={classes.button}
-                    >
-                      {isLastStep ? 'Place order' : 'Next'}
-                    </Button>
-                    {isSubmitting && (
-                      <CircularProgress
-                        size={24}
-                        className={classes.buttonProgress}
-                      />
                     )}
+                    <div className={classes.wrapper}>
+                      <Button
+                        disabled={isSubmitting}
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                      >
+                        {isLastStep ? 'Place order' : 'Próximo'}
+                      </Button>
+                      {isSubmitting && (
+                        <CircularProgress
+                          size={24}
+                          className={classes.buttonProgress}
+                        />
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Form>
-            )}
-          </Formik>
-        )}
+                </Form>
+              )}
+            </Formik>
+          )}
       </React.Fragment>
     </React.Fragment>
   );

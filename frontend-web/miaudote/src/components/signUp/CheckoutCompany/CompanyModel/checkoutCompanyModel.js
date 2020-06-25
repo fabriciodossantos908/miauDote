@@ -1,72 +1,106 @@
 export default {
     formId: 'checkoutForm',
     formField: {
-      firstName: {
-        name: 'firstName',
-        label: 'First name*',
-        requiredErrorMsg: 'First name is required'
+      nome_representante: {
+        name: 'nome',
+        label: 'Nome e sobrenome*',
+        requiredErrorMsg: 'Nome e sobrenome são obrigatórios!'
       },
-      lastName: {
-        name: 'lastName',
-        label: 'Last name*',
-        requiredErrorMsg: 'Last name is required'
+      email_representante: {
+        name: 'email',
+        label: 'email*',
+        requiredErrorMsg: 'email é obrigatório!'
       },
-      address1: {
-        name: 'address1',
-        label: 'Address Line 1*',
-        requiredErrorMsg: 'Address Line 1 is required'
+      senha: {
+        name: 'senha',
+        label: 'Senha*',
+        requiredErrorMsg: 'Senha é obrigatório!'
       },
-      address2: {
-        name: 'address2',
-        label: 'Address Line 2'
+      senha_confirm: {
+        name: 'senha_confirm',
+        label: 'Confirmação senha*',
+        requiredErrorMsg: 'Confirmação de senha é obrigatório!'
       },
-      city: {
-        name: 'city',
-        label: 'City*',
-        requiredErrorMsg: 'City is required'
+      celular_representante: {
+        name: 'celular',
+        label: 'Celular*',
+        requiredErrorMsg: 'Celular do representante é obrigatório!'
       },
-      state: {
-        name: 'state',
-        label: 'State/Province/Region'
+      razao_social: {
+        name: 'razao_social',
+        label: 'Razao Social*',
+        requiredErrorMsg: 'email é obrigatório!'
       },
-      zipcode: {
-        name: 'zipcode',
-        label: 'Zipcode*',
-        requiredErrorMsg: 'Zipcode is required',
-        invalidErrorMsg: 'Zipcode is not valid (e.g. 70000)'
+      nome_empresa: {
+        name: 'nome_empresa',
+        label: 'Nome da empresa*',
+        requiredErrorMsg: 'Nome da empresa é obrigatório!'
       },
-      country: {
-        name: 'country',
-        label: 'Country*',
-        requiredErrorMsg: 'Country is required'
+      cnpj: {
+        name: 'cnpj',
+        label: 'Cnpj*',
+        requiredErrorMsg: 'Cnpj é obrigatório!'
       },
-      useAddressForPaymentDetails: {
-        name: 'useAddressForPaymentDetails',
-        label: 'Use this address for payment details'
+      nome_empresa: {
+        name: 'nome_empresa',
+        label: 'Nome da empresa*',
+        requiredErrorMsg: 'Nome da empresa é obrigatório!'
       },
-      nameOnCard: {
-        name: 'nameOnCard',
-        label: 'Name on card*',
-        requiredErrorMsg: 'Name on card is required'
+      cnpj: {
+        name: 'cnpj',
+        label: 'Cnpj*',
+        requiredErrorMsg: 'Cnpj é obrigatório!'
       },
-      cardNumber: {
-        name: 'cardNumber',
-        label: 'Card number*',
-        requiredErrorMsg: 'Card number is required',
-        invalidErrorMsg: 'Card number is not valid (e.g. 4111111111111)'
+      telefone: {
+        name: 'telefone',
+        label: 'Telefone*',
+        requiredErrorMsg: 'Telefone é obrigatório!'
       },
-      expiryDate: {
-        name: 'expiryDate',
-        label: 'Expiry date*',
-        requiredErrorMsg: 'Expiry date is required',
-        invalidErrorMsg: 'Expiry date is not valid'
+      cep: {
+        name: 'cep',
+        label: 'Cep*',
+        requiredErrorMsg: 'Cep é obrigatório!'
       },
-      cvv: {
-        name: 'cvv',
-        label: 'CVV*',
-        requiredErrorMsg: 'CVV is required',
-        invalidErrorMsg: 'CVV is invalid (e.g. 357)'
-      }
+      cidade: {
+        name: 'cidade',
+        label: 'Cidade',
+        requiredErrorMsg: 'Cidade é obrigatório!'
+      },
+      bairro: {
+        name: 'bairro',
+        label: 'Bairro*',
+        requiredErrorMsg: 'Bairro é obrigatório!'
+      },
+      logradouro: {
+        name: 'logradouro',
+        label: 'Logradouro*',
+        requiredErrorMsg: 'Logradouro é obrigatório!'
+      },
+      numero: {
+        name: 'numero',
+        label: 'Numero*',
+        requiredErrorMsg: 'Numero é obrigatório!'
+      },
+      complemento: {
+        name: 'complemento',
+        label: 'Complemento',
+        invalidErrorMsg: 'Esse campo deve ter entre 2 a 50 caractéres // Verificar essa mensagem'
+      },
+      uf: {
+        name: 'uf',
+        label: 'uf*',
+        requiredErrorMsg: 'uf é obrigatório!'
+      },
+      id_tipo_servico: {
+        name: 'id_tipo_servico',
+        label: 'Tipo de serviço*',
+        requiredErrorMsg: 'Tipo de serviço é obrigatório!'
+      },
+      url_logo: {
+        name: 'url_logo',
+        label: 'Logo da empresa*',
+        invalidErrorMsg: 'A imagem deve estar entre 5mb // Verificar essa mensagem'
+      },      
     }
   };
   
