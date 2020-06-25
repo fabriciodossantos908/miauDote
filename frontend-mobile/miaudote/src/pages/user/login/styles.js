@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 
 export const Tittle = styled.Text `
     color:#fc6b6e;
-    fontSize:45;
+    fontSize:45px;
     fontWeight: bold
 `;
 
@@ -11,7 +11,7 @@ export const Container = styled.View `
     flex: 1;
     backgroundColor: #FFF;
     justifyContent: center;
-    borderWidth: 1;
+    borderWidth: 1px;
     borderColor:#000;
 
 `;
@@ -26,63 +26,62 @@ export const Div = styled.View `
 
 // *********global
 export const CuteLine = styled.View `
-    height: 40;
+    height: 40px;
     width: 100%;
     flexDirection: row;
     justifyContent: center;
-    marginTop:20
+    marginTop:20px
 `;
 
 
 export const IconPaw = styled.Image `
-    height:20;
-    width:20;
-    marginLeft:10;
-    marginRight:10;
+    height:20px;
+    width:20px;
+    marginLeft:10px;
+    marginRight:10px;
 
 `;
 
 
 export const LoginForm = styled.View `
-    height: 40%;
+    flex:1;
     margin:10px;
     padding:8px;
-    borderRadius: 10;
+    borderRadius: 10px;
     alignItems: center;
     backgroundColor:#f7f7f7;
     paddingTop:15px;
 `;
 
 export const TxtInputLogin = styled.TextInput `
-    height: 50;
-    marginTop: 10;
+    height: 50px;
+    marginTop: 10px;
     padding: 8px;
     alignSelf: stretch;
     backgroundColor: white;
-    fontSize: 16;
-    borderRadius: 10;
+    borderRadius: 10px;
     borderColor: #a0a0a0;
-    borderWidth: 1;
-    marginBottom: 0;
+    borderWidth: 1px;
+    marginBottom: 10px;
 `;
 
 // **********global
 export const LargeButton = styled.TouchableOpacity `
     alignItems: center;
-    height:50;
-    width:300;
+    height:50px;
+    width:300px;
     borderColor:#fc6b6e;
     backgroundColor:#fc6b6e;
-    borderWidth: 1.5;
+    borderWidth: 1.5px;
     padding: 14px;
-    marginTop:35;
-    borderRadius:21;
+    marginTop:35px;
+    borderRadius:21px;
     alignSelf:center;  
 `;
 
 export const TxtButon = styled.Text `
     fontWeight: bold;
-    color: #000;
+    color: #fff;
 `;
 
 export const ContainerLine = styled.View `

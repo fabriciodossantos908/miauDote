@@ -68,7 +68,8 @@ export default class Login extends Component {
 		return (
 			<Container>
 				<Div>
-					<Tittle>Login</Tittle>
+					{/* <Image source={require('../../../assets/login.png')}></Image> */}
+					<Image source={require('../../../assets/login2.png')}></Image>
 					<CuteLine>
 						<IconPaw source={require('../../../assets/icon-pegada.png')}></IconPaw>
 						<IconPaw source={require('../../../assets/icon-pegada.png')}></IconPaw>
@@ -87,7 +88,8 @@ export default class Login extends Component {
 
 					<TxtInputLogin
 						placeholder="Digite sua senha"
-						keyboardType='email-address'
+						keyboardType='default'
+						secureTextEntry={true}
 						value={this.state.senha}
 						onChangeText={txt => { this.setState({ senha: txt }) }}
 					>
@@ -99,7 +101,7 @@ export default class Login extends Component {
 					</LargeButton>
 
 				</LoginForm>
-				<Div>
+				{/* <Div>
 					<ContainerLine>
 						<HorizontalLine />
 						<SecondaryText>ou</SecondaryText>
@@ -111,7 +113,7 @@ export default class Login extends Component {
 						<IconSingInOptions source={require('../../../assets/google.png')} ></IconSingInOptions>
 					</ContainerSingInOptions>
 
-				</Div>
+				</Div> */}
 			</Container>
 		)
 	}
