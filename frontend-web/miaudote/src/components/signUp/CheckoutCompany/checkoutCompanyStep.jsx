@@ -7,6 +7,7 @@ import {
   Typography,
   CircularProgress
 } from '@material-ui/core';
+import PetsIcon from '@material-ui/icons/Pets';
 import { Formik, Form } from 'formik';
 
 import CompanyBaseInfo from './FormCompany/companyBaseInfo';
@@ -26,11 +27,11 @@ const { formId, formField } = checkoutCompanyModel;
 function _renderStepContent(step) {
   switch (step) {
     case 0:
-      return <CompanyBaseInfo formField={formField} />;
+      return <CompanyBaseInfo formField={formField} useStyle={useStyle} />;
     case 1:
-      return <CompanyPersonalInfo formField={formField} />;
+      return <CompanyPersonalInfo formField={formField} useStyle={useStyle} />;
     case 2:
-      return <CompanyAddress formField={formField} />;
+      return <CompanyAddress formField={formField} useStyle={useStyle} />;
     default:
       return <div>Not Found</div>;
   }
@@ -49,9 +50,9 @@ export default function CheckoutCompanyStep() {
   async function _submitForm(values, actions) {
     await _sleep(1000);
     alert(JSON.stringify(values, null, 2));
-    actions.setSubmitting(false);
+    // actions.setSubmitting(false);
 
-    setActiveStep(activeStep + 1);
+    // setActiveStep(activeStep + 1);
   }
 
   function _handleSubmit(values, actions) {
@@ -75,8 +76,10 @@ export default function CheckoutCompanyStep() {
       </Typography>
       <Stepper activeStep={activeStep} className={classes.stepper}>
         {steps.map(label => (
-          <Step key={label}>
-            <StepLabel></StepLabel>
+          <Step key={label} >
+            <StepLabel>
+              <PetsIcon/>
+            </StepLabel>
           </Step>
         ))}
       </Stepper>
@@ -112,7 +115,7 @@ export default function CheckoutCompanyStep() {
                         color="primary"
                         className={classes.button}
                       >
-                        {isLastStep ? 'Place order' : 'Próximo'}
+                        {isLastStep ? 'Criar' : 'Próximo'}
                       </Button>
                       {isSubmitting && (
                         <CircularProgress

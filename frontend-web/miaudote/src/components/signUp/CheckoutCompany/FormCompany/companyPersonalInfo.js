@@ -1,65 +1,9 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Paper } from '@material-ui/core';
 import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
 
-const cities = [
-  {
-    value: undefined,
-    label: 'None'
-  },
-  {
-    value: '1',
-    label: 'New York'
-  },
-  {
-    value: '2',
-    label: 'Chicago'
-  },
-  {
-    value: '3',
-    label: 'Saigon'
-  }
-];
-
-const states = [
-  {
-    value: undefined,
-    label: 'None'
-  },
-  {
-    value: '11',
-    label: 'Florida'
-  },
-  {
-    value: '22',
-    label: 'Michigan'
-  },
-  {
-    value: '33',
-    label: 'Texas'
-  }
-];
-
-const countries = [
-  {
-    value: null,
-    label: 'None'
-  },
-  {
-    value: '111',
-    label: 'United States'
-  },
-  {
-    value: '222',
-    label: 'Italy'
-  },
-  {
-    value: '333',
-    label: 'Vietnam'
-  }
-];
-
 export default function companyPersonalInfo(props) {
+  const classes = props.useStyle()
   const {
     formField: {
       telefone,
@@ -68,32 +12,22 @@ export default function companyPersonalInfo(props) {
       razao_social,
       nome_empresa,
       cnpj,
-      }
+    }
   } = props;
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Informações da empresa
       </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <InputField name={celular_representante.name} label={celular_representante.label} />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <InputField name={razao_social.name} label={razao_social.label} />
-        </Grid>
-        <Grid item xs={12}>
-          <InputField name={nome_empresa.name} label={nome_empresa.label} />
-        </Grid>
-        <Grid item xs={12}>
-          <InputField name={cnpj.name} label={cnpj.label} />
-        </Grid>
-        <Grid item xs={12}>
-          <InputField name={telefone.name} label={telefone.label} />
-        </Grid>
-        <Grid item xs={12}>
-          <InputField name={id_tipo_servico.name} label={id_tipo_servico.label} />
-        </Grid>
+      <Grid container spacing={3} justify="flex-end">
+        <Paper item xs={6} sm={6} className={classes.inputPaper}>
+            <InputField name={celular_representante.name} label={celular_representante.label} />
+            <InputField name={razao_social.name} label={razao_social.label} />
+            <InputField name={nome_empresa.name} label={nome_empresa.label} />
+            <InputField name={cnpj.name} label={cnpj.label} />
+            <InputField name={telefone.name} label={telefone.label} />
+            <InputField name={id_tipo_servico.name} label={id_tipo_servico.label} />
+        </Paper>
       </Grid>
     </React.Fragment>
   );
@@ -135,7 +69,7 @@ export default function companyPersonalInfo(props) {
 //           }));
 
 //           const classes = useStyles()
-          
+
 //         return (
 //             <div className={classes.root}>
 //             <Paper className={classes.paper}>
@@ -157,12 +91,12 @@ export default function companyPersonalInfo(props) {
 //                   justify="flex-end"
 //                   alignItems="center"
 //                 >          
-      
+
 //                     <TextField label="Outlined" variant="outlined" />
 //                     <TextField label="Outlined" variant="outlined" />
 //                     <TextField label="Outlined" variant="outlined" />
 //                     <TextField label="Outlined" variant="outlined" />
-      
+
 //                     <Button variant="contained" color="primary">Avançar</Button>
 //                 </Grid>
 //               </Grid>
