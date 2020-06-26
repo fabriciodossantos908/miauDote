@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {
   Stepper,
-  Step,
   StepLabel,
   Button,
   Typography,
   CircularProgress
 } from '@material-ui/core';
+import PetsIcon from '@material-ui/icons/Pets';
 import { Formik, Form } from 'formik';
 
 import FormUserInitialnfo from './FormUser/FormUserInitialnfo';
@@ -14,23 +14,23 @@ import FormUserPersonalInfo from './FormUser/FormUserPersonalInfo';
 import FormUserAddress from './FormUser/FormUserAddress';
 import ConfimEmail from './ConfirmEmail/ConfirmEmail';
 
-import companyValidationSchema from '../CheckoutCompany/CompanyModel/companyValidationSchema';
-import checkoutCompanyFormModel from '../CheckoutCompany/CompanyModel/checkoutCompanyModel';
-import companyInitialValues from '../CheckoutCompany/CompanyModel/companyInitialValues';
+import userValidationSchema from '../CheckoutUser/UserModel/userValidationSchema';
+import userInitialValues from '../CheckoutUser/UserModel/userInitialValues';
+import checkoutUserModel from '../CheckoutUser/UserModel/checkoutUserModel';
 
 import { useStyle } from '../../Layout/styles';
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
-const { formId, formField } = checkoutCompanyFormModel;
+const steps = ['BaseInfo', 'PersonalInfo', 'Address'];
+const { formId, formField } = checkoutUserModel;
 
 function _renderStepContent(step) {
   switch (step) {
     case 0:
-      return <FormUserInitialnfo formField={formField} />;
+      return <FormUserInitialnfo formField={formField} useStyle={useStyle} />;
     case 1:
-      return <FormUserPersonalInfo formField={formField} />;
+      return <FormUserPersonalInfo formField={formField} useStyle={useStyle} />;
     case 2:
-      return <FormUserAddress />;
+      return <FormUserAddress formField={formField} useStyle={useStyle} />;
     default:
       return <div>Not Found</div>;
   }
@@ -39,15 +39,16 @@ function _renderStepContent(step) {
 export default function CheckoutCompanyStep() {
   const classes = useStyle();
   const [activeStep, setActiveStep] = useState(0);
-  const currentcompanyValidationSchema = companyValidationSchema[activeStep];
+  const currentUserValidationSchema = userValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
-  function _sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  // function _sleep(ms) {
+  //   return new Promise(resolve => setTimeout(resolve, ms));
+  // }
 
   async function _submitForm(values, actions) {
-    await _sleep(1000);
+    await 
+    // _sleep(1000);
     alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
 
@@ -75,18 +76,18 @@ export default function CheckoutCompanyStep() {
       </Typography>
       <Stepper activeStep={activeStep} className={classes.stepper}>
         {steps.map(label => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
+            <StepLabel key={label}>
+            <PetsIcon/>
+          </StepLabel>
+      ))}
       </Stepper>
       <React.Fragment>
         {activeStep === steps.length ? (
           <ConfimEmail />
         ) : (
           <Formik
-            initialValues={companyInitialValues}
-            companyValidationSchema={currentcompanyValidationSchema}
+            initialValues={userInitialValues}
+            companyValidationSchema={currentUserValidationSchema}
             onSubmit={_handleSubmit}
           >
             {({ isSubmitting }) => (
@@ -96,7 +97,7 @@ export default function CheckoutCompanyStep() {
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
                     <Button onClick={_handleBack} className={classes.button}>
-                      Back
+                      Anterior
                     </Button>
                   )}
                   <div className={classes.wrapper}>
@@ -107,7 +108,7 @@ export default function CheckoutCompanyStep() {
                       color="primary"
                       className={classes.button}
                     >
-                      {isLastStep ? 'Place order' : 'Next'}
+                      {isLastStep ? 'Criar' : 'Próximo'}
                     </Button>
                     {isSubmitting && (
                       <CircularProgress

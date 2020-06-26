@@ -1,42 +1,31 @@
-import React, { Component } from 'react'
-import { TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
+import React from 'react';
+import { Grid, Typography, Paper } from '@material-ui/core';
+import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
 
-export default class FormUserInitialInfo extends Component {
-    render() {
-          console.log(this.props.useStyles())
-          const classes = this.props.useStyles
-        return (
-            <div className={classes.root}>
-            <Paper className={classes.paper}>
-              <Grid container spacing={2}>
-                <Grid
-                xs={4}
-                  container
-                  direction="column"
-                  justify="center"
-                  alignItems="flex-start"
-                >            <Box item xs={3} sm container color="" >
-                    <InputLabel>Teste</InputLabel>
-                  </Box>
-                </Grid>
-                <Grid
-                  xs
-                  container="true"
-                  direction="column"
-                  justify="flex-end"
-                  alignItems="center"
-                >          
-      
-                    <TextField label="Outlined" variant="outlined" />
-                    <TextField label="Outlined" variant="outlined" />
-                    <TextField label="Outlined" variant="outlined" />
-                    <TextField label="Outlined" variant="outlined" />
-      
-                    <Button variant="contained" color="primary">Avançar</Button>
-                </Grid>
-              </Grid>
-            </Paper>
-          </div>
-              )
-    }
+export default function FormUserInitialInfo(props) {
+  const classes = props.useStyle();
+
+  const {
+    formField: {
+      nome,
+      email,
+      senha,
+      senha_confirm,
+      }
+  } = props;
+  return (
+    <React.Fragment>
+      <Typography variant="h5" gutterBottom>
+        Dados Iniciais
+      </Typography>
+      <Grid container spacing={3}  justify="flex-end">
+        <Paper item xs={6} sm={6} className={classes.inputPaper}>
+          <InputField name={nome.name} label={nome.label} fullWidth />
+          <InputField name={email.name} label={email.label} fullWidth />
+          <InputField name={senha.name} label={senha.label} fullWidth />
+          <InputField name={senha_confirm.name} label={senha_confirm.label} fullWidth />
+        </Paper>
+      </Grid>
+    </React.Fragment>
+  );
 }

@@ -48,7 +48,8 @@ export default function CompanyAddress(props) {
             <InputField name={logradouro.name} label={logradouro.label} fullWidth />
             <InputField name={complemento.name} label={complemento.label} fullWidth />
             <InputField name={numero.name} label={numero.label} fullWidth />
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6
+          }>
             <SelectField
               name={uf.name}
               label={uf.label}

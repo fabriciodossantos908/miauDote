@@ -1,59 +1,32 @@
-import React, { Component } from 'react'
-import { makeStyles, TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
+import React from 'react';
+import { Grid, Typography, Paper } from '@material-ui/core';
+import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
 
-export default class pesonalData extends Component {
-    render() {
-        const useStyles = makeStyles((theme) => ({
-            root: {
-              flexGrow: 1,
-              '& .MuiTextField-root': {
-                margin: theme.spacing(1),
-                width: '25ch',
-              }
-            },
-            paper: {
-              padding: theme.spacing(2),
-              margin: 'auto',
-              marginTop: 100,
-              maxWidth: 800,
-              minHeight: 500
-            },
-          }));
-
-          const classes = useStyles()
-
-        return (
-            <div className={classes.root}>
-            <Paper className={classes.paper}>
-              <Grid container spacing={2}>
-                <Grid
-                xs={4}
-                  container
-                  direction="column"
-                  justify="center"
-                  alignItems="flex-start"
-                >            <Box item xs={3} sm container color="" >
-                    <InputLabel>Teste</InputLabel>
-                  </Box>
-                </Grid>
-                <Grid
-                  xs
-                  container
-                  direction="column"
-                  justify="flex-end"
-                  alignItems="center"
-                >          
-      
-                    <TextField label="Outlined" variant="outlined" />
-                    <TextField label="Outlined" variant="outlined" />
-                    <TextField label="Outlined" variant="outlined" />
-                    <TextField label="Outlined" variant="outlined" />
-      
-                    <Button variant="contained" color="primary">Avançar</Button>
-                </Grid>
-              </Grid>
-            </Paper>
-          </div>
-              )
+export default function FormUserPersonalInfo(props) {
+  const classes = props.useStyle()
+  const {
+    formField: {
+      celular,
+      sexo,
+      dt_nasc,
+      url_foto
     }
+  } = props;
+  return (
+    <React.Fragment>
+      <Typography variant="h6" gutterBottom>
+        Dados Pessoais
+      </Typography>
+      <Grid container spacing={3} justify="flex-end">
+        <Paper item xs={6} sm={6} className={classes.inputPaper}>
+            <InputField name={celular.name} label={celular.label} fullWidth />
+            <InputField name={dt_nasc.name} label={dt_nasc.label} fullWidth />
+            <InputField name={sexo.name} label={sexo.label} fullWidth />
+            <Typography>
+              The photo upload come here
+              </Typography>
+        </Paper>
+      </Grid>
+    </React.Fragment>
+  );
 }

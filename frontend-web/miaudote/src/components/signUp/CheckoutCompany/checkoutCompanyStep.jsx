@@ -15,13 +15,13 @@ import CompanyPersonalInfo from './FormCompany/companyPersonalInfo';
 import CompanyAddress from './FormCompany/companyAddress';
 import ConfirmEmail from './ConfirmEmail/ConfirmEmail';
 
-import companyvalidationSchema from './CompanyModel/companyValidationSchema';
+import companyValidationSchema from './CompanyModel/companyValidationSchema';
 import checkoutCompanyModel from './CompanyModel/checkoutCompanyModel';
 import companyInitialValues from './CompanyModel/companyInitialValues';
 
 import { useStyle } from '../../Layout/styles'
 
-const steps = ['Iniciando seu cadastro', 'Detalhes da empresa', 'Endereço'];
+const steps = ['BaseInfo', 'PersonalData', 'Address'];
 const { formId, formField } = checkoutCompanyModel;
 
 function _renderStepContent(step) {
@@ -40,7 +40,7 @@ function _renderStepContent(step) {
 export default function CheckoutCompanyStep() {
   const classes = useStyle();
   const [activeStep, setActiveStep] = useState(0);
-  const companycurrentValidationSchema = companyvalidationSchema[activeStep];
+  const currentValidationSchema = companyValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
   function _sleep(ms) {
@@ -50,13 +50,14 @@ export default function CheckoutCompanyStep() {
   async function _submitForm(values, actions) {
     await _sleep(1000);
     alert(JSON.stringify(values, null, 2));
-    // actions.setSubmitting(false);
+    actions.setSubmitting(false);
 
-    // setActiveStep(activeStep + 1);
+    setActiveStep(activeStep + 1);
   }
 
   function _handleSubmit(values, actions) {
     if (isLastStep) {
+      
       _submitForm(values, actions);
     } else {
       setActiveStep(activeStep + 1);
@@ -76,11 +77,9 @@ export default function CheckoutCompanyStep() {
       </Typography>
       <Stepper activeStep={activeStep} className={classes.stepper}>
         {steps.map(label => (
-          <Step key={label} >
-            <StepLabel>
+            <StepLabel key={label}>
               <PetsIcon/>
             </StepLabel>
-          </Step>
         ))}
       </Stepper>
       <React.Fragment>
@@ -89,7 +88,7 @@ export default function CheckoutCompanyStep() {
         ) : (
             <Formik
               initialValues={companyInitialValues}
-              companyvalidationSchema={companycurrentValidationSchema}
+              companyValidationSchema={currentValidationSchema}
               onSubmit={_handleSubmit}
             >
               {({ isSubmitting }) => (

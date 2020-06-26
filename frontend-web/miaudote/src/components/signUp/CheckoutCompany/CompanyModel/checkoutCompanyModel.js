@@ -1,5 +1,5 @@
 export default {
-    formId: 'checkoutForm',
+    formId: 'checkoutCompanyForm',
     formField: {
       nome_representante: {
         name: 'nome',

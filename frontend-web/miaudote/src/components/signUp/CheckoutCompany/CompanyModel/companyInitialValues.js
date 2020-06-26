@@ -40,6 +40,6 @@ export default {
   [complemento] : '',
   [uf] : '',
   [id_tipo_servico] : '',
-  [url_logo] : '',
+  [url_logo] : 'url/teste/sem/imagem.png',
   
 };
