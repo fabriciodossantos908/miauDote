@@ -40,7 +40,7 @@ export default function Footer() {
       </Grid>
       </Grid>
       <Grid item xs={12} className={classes.base}>
-          <Typography className={classes.title}>
+          <Typography className={classes.copy}>
              2019 © - Todos direitos reservados.
           </Typography>
       </Grid>

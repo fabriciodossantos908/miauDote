@@ -67,4 +67,4 @@ const useStyle = makeStyles(() => ({
   },
 }));
 
-export { theme, useStyle };
+export {theme, useStyle}

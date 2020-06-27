@@ -38,6 +38,10 @@ avatar: {
     marginTop: 50,
     
   },
+},
+
+copy: {
+  alignItems: "center",
 }
 }));
 
