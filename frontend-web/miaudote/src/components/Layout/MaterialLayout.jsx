@@ -18,7 +18,7 @@ export default function MaterialLayout(props) {
       <div className={classes.root}>
         <Paper className={classes.paper}>{children}</Paper>
       </div>
-      <Footer />
+      <Footer useStyle={useStyle}/>
     </ThemeProvider>
   );
 }

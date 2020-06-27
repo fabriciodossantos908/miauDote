@@ -4,21 +4,12 @@ import checkoutUserModel from './checkoutUserModel';
 const {
   formField: {
     nome,
-    email ,
+    email,
     senha,
     senha_confirm,
     celular,
-    telefone,
     sexo,
     dt_nasc,
-    cep,
-    cidade,
-    bairro,
-    logradouro,
-    numero,
-    complemento,
-    uf,
-    url_foto,
   }
 } = checkoutUserModel;
 
@@ -31,7 +22,6 @@ export default [
   }),
   Yup.object().shape({
     [celular.name]: Yup.string().required(`${celular.requiredErrorMsg}`),
-    [telefone.name]: Yup.string().required(`${telefone.requiredErrorMsg}`),
     [sexo.name]: Yup.string().required(`${sexo.requiredErrorMsg}`),
     [dt_nasc.name]: Yup.string().required(`${dt_nasc.requiredErrorMsg}`),
   }),

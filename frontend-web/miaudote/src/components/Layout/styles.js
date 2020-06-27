@@ -58,7 +58,7 @@ import {
       height: 50,
       marginLeft: "auto",
       display: "flex",
-  }
+  },
   }));
   
 export { theme, useStyle };
