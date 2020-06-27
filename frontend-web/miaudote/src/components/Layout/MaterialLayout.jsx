@@ -14,7 +14,7 @@ export default function MaterialLayout(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header />
+      <Header useStyle={useStyle} />
       <div className={classes.root}>
         <Paper className={classes.paper}>{children}</Paper>
       </div>
