@@ -4,21 +4,12 @@ import checkoutUserModel from './checkoutUserModel';
 const {
   formField: {
     nome,
-    email ,
+    email,
     senha,
     senha_confirm,
     celular,
-    telefone,
     sexo,
     dt_nasc,
-    cep,
-    cidade,
-    bairro,
-    logradouro,
-    numero,
-    complemento,
-    uf,
-    url_foto,
   }
 } = checkoutUserModel;
 
