@@ -1,43 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Link from '@material-ui/core/Link';
 
-
-export class test extends Component {
-
-    trimMask(input) {
-        let regE = /\(([^)]+)\)/
-        var strValidated = input
-        var strLength = input.length
-        let i
-
-        for (i = input; strLength >= i.length; i++) {
-            if (i.match("/")) {
-                strValidated = i.split("/").join("")
-                if (i.match("")) {
-                    strValidated = strValidated.split(".").join("")
-                    if (strValidated.match("-")) {
-                        strValidated = strValidated.split("-").join("")
-                        if (strValidated.match(regE)) {
-                            strValidated = strValidated.split(regE).join("")
-                        }
-                    }
-                }
-            }
-            return strValidated
-        }
-    }
-
-    componentWillMount() {
-        const value = "(11)tes-te/again.teste-tested(11)"
-        console.log("true trim value " + this.trimMask(value))
-    }
-
-    render() {
-        return (
-            <div className="container blue">
-                
-            </div>
-        )
-    }
+function handleClick(event) {
+  event.preventDefault();
+  console.info('You clicked a breadcrumb.');
 }
 
-export default test
+export default function SimpleBreadcrumbs() {
+  return (
+    <Breadcrumbs aria-label="breadcrumb">
+      <Link color="inherit" href="/" onClick={handleClick}>
+        Material-UI
+      </Link>
+      <Link color="inherit" href="/getting-started/installation/" onClick={handleClick}>
+        Core
+      </Link>
+      <Typography color="textPrimary">Breadcrumb</Typography>
+    </Breadcrumbs>
+  );
+}

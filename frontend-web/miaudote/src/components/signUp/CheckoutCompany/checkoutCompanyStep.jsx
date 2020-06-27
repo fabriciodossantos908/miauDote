@@ -5,7 +5,8 @@ import {
   StepLabel,
   Button,
   Typography,
-  CircularProgress
+  CircularProgress,
+  Grid
 } from '@material-ui/core';
 import PetsIcon from '@material-ui/icons/Pets';
 import { Formik, Form } from 'formik';
@@ -57,7 +58,7 @@ export default function CheckoutCompanyStep() {
 
   function _handleSubmit(values, actions) {
     if (isLastStep) {
-      
+
       _submitForm(values, actions);
     } else {
       setActiveStep(activeStep + 1);
@@ -72,30 +73,33 @@ export default function CheckoutCompanyStep() {
 
   return (
     <React.Fragment>
-      <Typography component="h1" variant="h4" align="center">
-        Sign up Empresa
-      </Typography>
-      <Stepper activeStep={activeStep} className={classes.stepper}>
-        {steps.map(label => (
-            <StepLabel key={label}>
-              <PetsIcon/>
-            </StepLabel>
-        ))}
-      </Stepper>
-      <React.Fragment>
-        {activeStep === steps.length ? (
-          <ConfirmEmail />
-        ) : (
-            <Formik
-              initialValues={companyInitialValues}
-              companyValidationSchema={currentValidationSchema}
-              onSubmit={_handleSubmit}
-            >
-              {({ isSubmitting }) => (
-                <Form id={formId}>
+      {activeStep === steps.length ? (
+        <ConfirmEmail />
+      ) : (
+          <Formik
+            initialValues={companyInitialValues}
+            companyValidationSchema={currentValidationSchema}
+            onSubmit={_handleSubmit}
+          >
+            {({ isSubmitting }) => (
+              <Form id={formId} container>
+                <Grid item xs={6} className={classes.imgSide}></Grid>
+                <Grid item xs={6}>
+                  <Typography component="h1" variant="h4" className={classes.titleForm}>
+                    Sign up Empresa
+                </Typography>
+                  <Stepper activeStep={activeStep} className={classes.stepper}>
+                    {steps.map(label => (
+                      <StepLabel key={label}>
+                        <PetsIcon />
+                      </StepLabel>
+                    ))}
+                  </Stepper>
+
                   {_renderStepContent(activeStep)}
 
                   <div className={classes.buttons}>
+
                     {activeStep !== 0 && (
                       <Button
                         onClick={_handleBack}
@@ -104,7 +108,7 @@ export default function CheckoutCompanyStep() {
                         color="primary"
                       >
                         Voltar
-                    </Button>
+                      </Button>
                     )}
                     <div className={classes.wrapper}>
                       <Button
@@ -124,11 +128,11 @@ export default function CheckoutCompanyStep() {
                       )}
                     </div>
                   </div>
-                </Form>
-              )}
-            </Formik>
-          )}
-      </React.Fragment>
+                </Grid>
+              </Form>
+            )}
+          </Formik>
+        )}
     </React.Fragment>
   );
 }

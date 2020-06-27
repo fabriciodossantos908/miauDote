@@ -31,7 +31,6 @@ export default [
   }),
   Yup.object().shape({
     [celular.name]: Yup.string().required(`${celular.requiredErrorMsg}`),
-    [telefone.name]: Yup.string().required(`${telefone.requiredErrorMsg}`),
     [sexo.name]: Yup.string().required(`${sexo.requiredErrorMsg}`),
     [dt_nasc.name]: Yup.string().required(`${dt_nasc.requiredErrorMsg}`),
   }),
