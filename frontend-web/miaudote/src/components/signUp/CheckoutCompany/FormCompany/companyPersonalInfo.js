@@ -16,9 +16,6 @@ export default function companyPersonalInfo(props) {
   } = props;
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Informações da empresa
-      </Typography>
       <Grid container spacing={3} justify="flex-end">
         <Paper item xs={6} sm={6} className={classes.inputPaper}>
             <InputField name={celular_representante.name} label={celular_representante.label} />

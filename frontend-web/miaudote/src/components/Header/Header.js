@@ -2,10 +2,10 @@ import React from 'react';
 import {ExpandLess, ExpandMore} from '@material-ui/icons';
 import { AppBar, Toolbar, Typography, Button, List,
 ListItem, ListItemText, Collapse} from '@material-ui/core'
-import {useStyles} from './styles.js'
 
-export default function Header() {
-  const classes = useStyles();
+export default function Header(props) {
+  const classes = props.header();
+  
 
   const [open, setOpen] = React.useState(true);
 
@@ -15,9 +15,9 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static"  className={classes.appBar}>  
+      <AppBar position="static" color="primary" className={classes.appBar}>  
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" color="secondary" className={classes.title}>
               Miaudote
           </Typography>
             <Button primary="Login" color="inherit">Login</Button>  

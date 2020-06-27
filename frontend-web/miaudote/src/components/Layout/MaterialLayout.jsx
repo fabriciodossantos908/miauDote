@@ -5,7 +5,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-import { theme, useStyle } from './styles';
+import { theme, useStyle, header} from './styles';
 
 export default function MaterialLayout(props) {
   const { children } = props;
@@ -14,7 +14,7 @@ export default function MaterialLayout(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header useStyle={useStyle} />
+      <Header header={header} />
       <div className={classes.root}>
         <Paper className={classes.paper}>{children}</Paper>
       </div>

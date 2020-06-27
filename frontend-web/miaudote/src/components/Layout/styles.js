@@ -8,15 +8,15 @@ let theme = createMuiTheme({
   palette: {
     type: "light",
     primary: {
-      light: '#ffff',
+      light: '#FFF6E6',
       main: '#3f50b5',
       dark: '#369696',
       contrastText: '#FC6B6E',
     },
     secondary: {
-      light: '#0073c1',
-      main: '#002ac0',
-      dark: '#ba000d',
+      light: '#FFF6E6',
+      main: '#00d26',
+      dark: '#2186C4',
       contrastText: '#00bcc1',
     },
   },
@@ -35,7 +35,7 @@ const useStyle = makeStyles(() => ({
       marginRight: 'auto'
     },
     backgroundColor: theme.palette.background.default,
-    color: theme.palette.secondary.light
+    color: theme.palette.primary.light
   },
 
   paper: {
@@ -67,4 +67,32 @@ const useStyle = makeStyles(() => ({
   },
 }));
 
-export {theme, useStyle}
+const header = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    backgroundColor: theme.palette.primary.light,
+    marginRight: theme.spacing(2),
+  },
+
+  button:{
+    textDecoration: "none"
+  },
+
+  title: {
+    flexGrow: 1,
+  },  
+  appBar: {
+    backgroundColor: theme.palette.primary.light,
+
+    boxShadow: "none"
+  },
+  
+  nested: {
+      paddingLeft: theme.spacing(4),
+    },
+}));
+
+
+export {theme, useStyle, header}

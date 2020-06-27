@@ -37,9 +37,6 @@ export default function FormUserAddress(props) {
   } = props;
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Seu endereço
-      </Typography>
       <Grid container spacing={3} justify="flex-end">
         <Paper item xs={6} sm={6} className={classes.inputPaper}>
             <InputField name={cep.name} label={cep.label} fullWidth />

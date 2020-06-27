@@ -15,9 +15,6 @@ export default function FormUserInitialInfo(props) {
   } = props;
   return (
     <React.Fragment>
-      <Typography variant="h5" gutterBottom>
-        Dados Iniciais
-      </Typography>
       <Grid container spacing={3}  justify="flex-end">
         <Paper item xs={6} sm={6} className={classes.inputPaper}>
           <InputField name={nome.name} label={nome.label} fullWidth />

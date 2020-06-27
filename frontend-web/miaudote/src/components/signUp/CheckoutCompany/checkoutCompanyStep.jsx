@@ -83,51 +83,57 @@ export default function CheckoutCompanyStep() {
           >
             {({ isSubmitting }) => (
               <Form id={formId} container>
-                <Grid item xs={6} className={classes.imgSide}></Grid>
-                <Grid item xs={6}>
-                  <Typography component="h1" variant="h4" className={classes.titleForm}>
-                    Sign up Empresa
-                </Typography>
-                  <Stepper activeStep={activeStep} className={classes.stepper}>
-                    {steps.map(label => (
-                      <StepLabel key={label}>
-                        <PetsIcon />
-                      </StepLabel>
-                    ))}
-                  </Stepper>
+                <Grid container direction="row">
+                  <Grid item xs={6} className={classes.imgSide}></Grid>
+                  <Grid item xs={6}>
+                      <Typography
+                        component="h1"
+                        variant="h4"
+                        className={classes.titleForm}
+                        value={steps[activeStep]}>
+                        {steps[activeStep]}
+                      </Typography>
+                    <Stepper activeStep={activeStep} className={classes.stepper}>
+                      {steps.map(label => (
+                        <StepLabel key={label}>
+                          <PetsIcon />
+                        </StepLabel>
+                      ))}
+                    </Stepper>
 
-                  {_renderStepContent(activeStep)}
+                    {_renderStepContent(activeStep)}
 
-                  <div className={classes.buttons}>
+                    <div className={classes.buttons}>
 
-                    {activeStep !== 0 && (
-                      <Button
-                        onClick={_handleBack}
-                        className={classes.button}
-                        variant="contained"
-                        color="primary"
-                      >
-                        Voltar
-                      </Button>
-                    )}
-                    <div className={classes.wrapper}>
-                      <Button
-                        disabled={isSubmitting}
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        className={classes.button}
-                      >
-                        {isLastStep ? 'Criar' : 'Próximo'}
-                      </Button>
-                      {isSubmitting && (
-                        <CircularProgress
-                          size={24}
-                          className={classes.buttonProgress}
-                        />
+                      {activeStep !== 0 && (
+                        <Button
+                          onClick={_handleBack}
+                          className={classes.button}
+                          variant="contained"
+                          color="primary"
+                        >
+                          Voltar
+                        </Button>
                       )}
+                      <div className={classes.wrapper}>
+                        <Button
+                          disabled={isSubmitting}
+                          type="submit"
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                        >
+                          {isLastStep ? 'Criar' : 'Próximo'}
+                        </Button>
+                        {isSubmitting && (
+                          <CircularProgress
+                            size={24}
+                            className={classes.buttonProgress}
+                          />
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </Grid>
                 </Grid>
               </Form>
             )}
