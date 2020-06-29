@@ -10,28 +10,31 @@ export default function Footer() {
 
   return (
     <Grid container className={classes.root}>
-      <Grid item container xs={12} direction="row" className={classes.base}>
+      <Grid item container xs={12} className={classes.container}
+      direction="row">
+        <Grid item xs={3} className={classes.logo}>
+          <Grid item xs={10} className={classes.imgLogo}>
+
+          </Grid>
+        </Grid>
+        <Grid item xs={2} className={classes.base}>
+          <h1 className={classes.title}>Inicio</h1>
+          <h2 className={classes.subTitle}>Home</h2>
+          <h2 className={classes.subTitle}>Pets</h2>
+          <h2 className={classes.subTitle}>Download App</h2>
+        </Grid>
         <Grid item xs={3} className={classes.base}>
-          <Typography className={classes.title}>
-            LOGO
-          </Typography>
+          <h1 className={classes.title}>Sobre-nós</h1>
+          <h2 className={classes.subTitle}>Informações da empresa</h2>
+          <h2 className={classes.subTitle}>Contato</h2>
         </Grid>
         <Grid item xs={2} className={classes.base}>
-          <h5>Test</h5>
-          <h5>Test</h5>
-          <h5>Test</h5>
+          <h1 className={classes.title}>Suporte</h1>
+          <h2 className={classes.subTitle}>FAQ</h2>
+          <h2 className={classes.subTitle}>Telefones</h2>
+          <h2 className={classes.subTitle}>Chat</h2>
         </Grid>
-        <Grid item xs={2} className={classes.base}>
-          <h5>Test</h5>
-          <h5>Test</h5>
-          <h5>Test</h5>
-        </Grid>
-        <Grid item xs={2} className={classes.base}>
-          <h5>Test</h5>
-          <h5>Test</h5>
-          <h5>Test</h5>
-        </Grid>
-        <Grid item xs={3} className={classes.base} direction="row">
+        <Grid item xs={2} className={classes.base} direction="row">
         <div className={classes.avatar}>
           <Avatar alt="Remy Sharp" />
           <Avatar alt="Travis Howard"/>
@@ -39,9 +42,9 @@ export default function Footer() {
         </div>
       </Grid>
       </Grid>
-      <Grid item xs={12} className={classes.base}>
+      <Grid item xs={12} className={classes.footer}>
           <Typography className={classes.copy}>
-             2019 © - Todos direitos reservados.
+             <p>2019 © - Todos direitos reservados.</p>
           </Typography>
       </Grid>
     </Grid>
