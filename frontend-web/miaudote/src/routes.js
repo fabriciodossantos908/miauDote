@@ -5,8 +5,10 @@ import Home from './pages/home'
 // import CheckoutCompanyStep1 from './components/signUp/company/checkoutCompanyStep1'
 import CheckoutCompanyStep from './components/signUp/CheckoutCompany/checkoutCompanyStep'
 import CheckoutUserStep from './components/signUp/CheckoutUser/checkoutUserStep'
+import CheckoutPet from './components/PetSignUp/CheckoutPet'
 import Login from './components/SignIn/Login'
 import Test from './pages/test'
+import { MainChunks } from './pages/chuncks'
 
 function Routes() {
     return (
@@ -25,6 +27,9 @@ function Routes() {
 
                 <Route path='/formUser' exact >
                     <CheckoutUserStep />
+                </Route>
+                <Route path='/formPet' exact >
+                    <CheckoutPet />
                 </Route>
 
                 <Route path='/login' exact >

@@ -3,6 +3,8 @@ import {
   responsiveFontSizes,
   makeStyles
 } from '@material-ui/core/styles';
+import { withStyles } from '../../../node_modules/@material-ui/styles';
+import StepConnector from '@material-ui/core/StepConnector';
 
 let theme = createMuiTheme({
   palette: {
@@ -35,39 +37,48 @@ const useStyle = makeStyles(() => ({
       marginRight: 'auto'
     },
     backgroundColor: theme.palette.background.default,
-    color: theme.palette.primary.light
+    color: theme.palette.primary.light,
   },
 
   paper: {
     width: 800,
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
     backgroundColor: theme.palette.piroquinha,
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
-      padding: theme.spacing(3)
     }
   },
   inputPaper: {
     maxWidth: 300,
     minHeight: 300,
-    margin: theme.spacing(2),
+    margin: theme.spacing(5),
     padding: theme.spacing(2),
   },
   stepper: {
-    backgroundColor: theme.palette.primary.main
+    width: 100,
+    marginLeft: "auto",
+    marginRight: "auto",
+    backgroundColor: "transparent"
   },
-  buttons: {
+  groupButtons: {
     width: 200,
     height: 50,
     marginLeft: "auto",
+    marginRight: "auto",
     display: "flex",
   },
+  buttons: {
+    width: 100,
+    height: 40,
+    color: theme.palette.primary.light,
+    backgroundColor: theme.palette.primary.contrastText,
+  },
+
 }));
 
-const header = makeStyles((theme) => ({
+const header = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
@@ -94,5 +105,66 @@ const header = makeStyles((theme) => ({
     },
 }));
 
+const formBase = makeStyles(() => ({
+  formImage: {
+    width: "auto",
+    height: "100%",
+    borderRadius: 3, 
+    backgroundColor: theme.palette.primary.dark
+  },
+}))
 
-export {theme, useStyle, header}
+const ColorlibConnector = withStyles({
+  alternativeLabel: {
+    top: 22,
+  },
+  active: {
+    '& $line': {
+      backgroundColor: theme.palette.primary.light
+    },
+  },
+  completed: {
+    '& $line': {
+      backgroundColor: theme.palette.primary.light
+    },
+  },
+  line: {
+    width: 2,
+    marginLeft: "auto",
+    marginRight: "auto",
+    border: 0,
+    backgroundColor: theme.palette.primary.dark,
+    borderRadius: 1,
+  },
+})(StepConnector);
+
+const useColorlibStepIconStyles = makeStyles({
+  root: {
+    backgroundColor: '#ccc',
+    zIndex: 1,
+    color: '#fff',
+    width: 50,
+    height: 50,
+    display: 'flex',
+    borderRadius: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  active: {
+    backgroundColor: theme.palette.primary.dark,
+    boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
+  },
+  completed: {
+    backgroundColor: theme.palette.primary.dark
+  },
+});
+
+const formPet = makeStyles({
+  stepper: {
+    width: 100,
+    marginRight: "auto",
+    backgroundColor: "transparent"
+  }
+})
+
+export {theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet }

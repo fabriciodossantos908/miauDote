@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Paper } from '@material-ui/core';
+import { Grid, Typography, Container } from '@material-ui/core';
 import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
 
 export default function FormUserPersonalInfo(props) {
@@ -15,14 +15,14 @@ export default function FormUserPersonalInfo(props) {
   return (
     <React.Fragment>
       <Grid container spacing={3} justify="flex-end">
-        <Paper item xs={6} sm={6} className={classes.inputPaper}>
+        <Container item xs={6} sm={6} className={classes.inputPaper}>
             <InputField name={celular.name} label={celular.label} fullWidth />
             <InputField name={dt_nasc.name} label={dt_nasc.label} fullWidth />
             <InputField name={sexo.name} label={sexo.label} fullWidth />
             <Typography>
               The photo upload come here
               </Typography>
-        </Paper>
+        </Container>
       </Grid>
     </React.Fragment>
   );
