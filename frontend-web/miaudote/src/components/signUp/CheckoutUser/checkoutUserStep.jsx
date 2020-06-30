@@ -23,7 +23,9 @@ import checkoutUserModel from '../CheckoutUser/UserModel/checkoutUserModel';
 
 import { useStyle, formBase } from '../../Layout/styles';
 
-const steps = ['BaseInfo', 'PersonalInfo', 'Address'];
+const photoDog = require('../../../images/petImg/dog.jpg')
+
+const steps = ['Dados iniciais', 'Dados Pessoais', 'Endereço'];
 const { formId, formField } = checkoutUserModel;
 
 function _renderStepContent(step) {
@@ -80,13 +82,13 @@ export default function CheckoutCompanyStep() {
           <ConfimEmail />
         ) : (
           <Grid container >
-               <Grid item xs={6} className={classes.imgSide}>
+               <Grid item xs={4} className={classes.imgSide}>
                       <CardMedia
                         className={classesForm.formImage}
-                        image="../../images/Developer_Fabricio.jpg"
+                        image={photoDog}
                       />
                     </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={8}>
             <Formik
               initialValues={userInitialValues}
               currentUserValidationSchema={currentUserValidationSchema}

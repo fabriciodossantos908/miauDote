@@ -7,7 +7,8 @@ import {
   CircularProgress,
   Grid,
   Step,
-  Paper
+  Paper,
+  Container
 } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 import PetsIcon from '@material-ui/icons/Pets';
@@ -24,6 +25,13 @@ import companyInitialValues from './PetModel/companyInitialValues';
 import { useStyle, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet} from '../Layout/styles'
 import clsx from '../../../node_modules/clsx';
 
+const photo = require('../../images/Developer_Fabricio.jpg')
+const photoDog = require('../../images/petImg/dog.jpg')
+const photoCat = require('../../images/petImg/cat.jpg')
+const Logo = require('../../images/petImg/cat.jpg')
+
+
+const listPhoto = [photo, photoDog, photoCat]
 const steps = ['Informações do seu pet', 'Descrições do pet', 'Dados pessoais do pet'];
 const { formId, formField } = checkoutCompanyModel;
 
@@ -105,23 +113,19 @@ export default function CheckoutCompanyStep() {
         <Grid item xs={6} className={classes.imgSide}>
           <CardMedia
             className={classesBase.formImage}
-            image="../../images/Developer_Fabricio.jpg"
+            image={listPhoto[activeStep]}
           >
           <Grid container direction="row">
-          <Grid item xs={12}>
-            <Typography
-              component="h1"
-              variant="h4"
-              align="center"
-              value={steps[activeStep]}>
-              {steps[activeStep]}
-            </Typography>
+            <Grid item container xs={12} justify="center">
+            <Container>
+              <Logo />
+              </Container>
             </Grid>
             <Grid item xs={12}>
             <Stepper activeStep={activeStep} connector={<ColorlibConnector />} className={classesPet.stepper} orientation="vertical">
             {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+          <Step key={label} className={classesPet.stepper}>
+            <StepLabel color={classesBase.titleStep} StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
           </Step>
         ))}
             </Stepper>
@@ -140,6 +144,13 @@ export default function CheckoutCompanyStep() {
               <Form id={formId} container>
                 <Grid container direction="row">
                   <Grid item xs={12}>
+                  <Typography
+              variant="h4"
+              align="center"
+              value={steps[activeStep]}>
+              {steps[activeStep]}
+            </Typography>
+
                     {_renderStepContent(activeStep)}
 
                     <div className={classes.groupButtons}>
