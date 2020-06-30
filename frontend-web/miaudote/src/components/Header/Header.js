@@ -1,11 +1,14 @@
 import React from 'react';
 import {ExpandLess, ExpandMore} from '@material-ui/icons';
 import { AppBar, Toolbar, Typography, Button, List,
-ListItem, ListItemText, Collapse} from '@material-ui/core'
+ListItem, ListItemText, Collapse, Link} from '@material-ui/core'
 
 export default function Header(props) {
   const classes = props.header();
-  
+  const formUser = '/formUser'
+  const formCompany = '/formCompany'
+  const login = '/login'
+  const home = "/"
 
   const [open, setOpen] = React.useState(true);
 
@@ -15,27 +18,38 @@ export default function Header(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="primary" className={classes.appBar}>  
+      <AppBar position="static" color="color" className={classes.appBar}>  
         <Toolbar>
-          <Typography  color="secondary">
-              <h1 className={classes.firstName}>Miau</h1>
+          <Typography>
+            <Link href="/" disable>
+              Miaudote
+            </Link>
           </Typography>
-          <Typography color="secondary" className={classes.title}>
-              <h1 className={classes.twoName}>dote</h1>
-          </Typography>
-            <Button primary="Login" color="inherit">Login</Button>  
+          <Typography>
+              <Link href="/login" disable>
+                login
+              </Link>
+          </Typography>  
           <List>
               <ListItem button onClick={handleClick}>
-                <ListItemText color="inherit" primary="Cadastrar" />
+                <ListItemText primary="Cadastrar"/>
                   {open ? <ExpandLess /> : <ExpandMore />}  
                 </ListItem>
               <Collapse in={!open} unmountOnExit>
                 <List component="div" disablePadding>
                   <ListItem button className={classes.nested}>
-                    <Button color="inherit">Usuario</Button>
+                    <Typography>
+                      <Link href="/formUser" disable>
+                        Usuário
+                      </Link>
+                    </Typography>
                   </ListItem>
                   <ListItem button className={classes.nested}>
-                    <Button color="inherit"><a>Empresa</a></Button>
+                    <Typography>
+                      <Link href="/formCompany" disable>
+                        Empresa
+                      </Link>
+                    </Typography>
                   </ListItem>
                 </List>
               </Collapse>

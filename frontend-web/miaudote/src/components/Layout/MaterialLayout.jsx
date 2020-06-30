@@ -16,8 +16,8 @@ export default function MaterialLayout(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* <Header header={header} /> */}
-      <HeaderMain header={header}></HeaderMain>
+      <Header header={header} />
+      {/* <HeaderMain header={header}></HeaderMain> */}
       <Grid container className={classes.root}>
         <Container maxWidth="sm" className={classes.container}>{children}</Container>
       </Grid>

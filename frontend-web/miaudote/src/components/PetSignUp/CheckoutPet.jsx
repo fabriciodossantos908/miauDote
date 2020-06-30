@@ -25,7 +25,7 @@ import companyInitialValues from './PetModel/companyInitialValues';
 import { useStyle, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet} from '../Layout/styles'
 import clsx from '../../../node_modules/clsx';
 
-const photo = require('../../images/Developer_Fabricio.jpg')
+const photo = require('../../images/petImg/dog.jpg')
 const photoDog = require('../../images/petImg/dog.jpg')
 const photoCat = require('../../images/petImg/cat.jpg')
 const Logo = require('../../images/petImg/cat.jpg')
