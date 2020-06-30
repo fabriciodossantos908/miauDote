@@ -6,15 +6,6 @@ import {
 import { withStyles } from '../../../node_modules/@material-ui/styles';
 import StepConnector from '@material-ui/core/StepConnector';
 
-const logoS = require('../../images/logoS.jpg')
-const logoN = require('../../images/logoN.jpg')
-const homeInicio = require('../../images/homeInicio.jpg')
-const davi = require('../../images/davi.jpg')
-const fabricio = require('../../images/fabricio.jpg')
-const joanna = require('../../images/joanna.jpg')
-const joao = require('../../images/joao.jpg')
-
-
 let theme = createMuiTheme({
   palette: {
     type: "light",
@@ -123,22 +114,25 @@ const header = makeStyles(() => ({
   },
 
   logo: {
-    marginRight: theme.spacing(2),
     width: 80,
     height: 50,
-    backgroundColor: theme.palette.primary.dark
+    padding: theme.spacing(1)
   },
 
   firstName: {
     fontFamily: "italic",
     fontSize: 20,
-    color: "#d32f2f"
   },
 
   twoName: {
     fontFamily: "italic",
     fontSize: 20,
     color: "#42a5f5",
+  },
+
+  gradiente:{
+    fontFamily: "italic",
+    fontSize: 20,
   }
 }));
 
@@ -215,64 +209,4 @@ const formPet = makeStyles({
     backgroundColor: "transparent"
   }
 })
-
-const footer = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-
-  base: {
-    flexGrow: 1,
-    backgroundColor: "#2196f3",
-  },
-
-title:{
-  fontSize: 20,
-  fontFamily: "italic",
-  color: "#ffffff"
-},
-
-subTitle: {
-  fontSize: 12,
-  fontFamily: "roboto"
-},
-
-logo: {
-  minWidth: 50,
-  minHeight: 45,
-    backgroundColor: "#2196f3"
-},
-
-imgLogo:{
-  width: 200,
-  height: 100,
-  padding: 20,
-  marginTop: 20,
-  marginLeft: 20,
-  backgroundColor: "yellow"
-},
-
-avatar: {
-  display: 'flex',
-  '& > *': {
-    margin: theme.spacing(1),
-    alignItems: "center",
-    marginTop: 50
-  },
-  marginLeft: 10,
-},
-
-copy: {
-  fontFamily: "Roboto",
-  fontSize: 15,
-  alignItems: "center",
-  marginLeft: 500,
-  marginTop: 10
-},
-
-footer:{
-  backgroundColor: "#0069c0",
-}
-}));
-
-export { theme, useStyle, header, footer, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet }
+export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet }

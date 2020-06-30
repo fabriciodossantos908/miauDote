@@ -5,28 +5,27 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Grid } from '@material-ui/core';
-
+import { Grid, Avatar, Box } from '@material-ui/core';
+import CenteredTabs from '../chuncks/index'
 
 export default function Headermain(props) {
     const classes = props.header();
+    const logo = require('../../images/logoS.jpg')
 
     return (
         <div className={classes.root}>
             <AppBar position="static" className={classes.appbarmain}>
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <IconButton edge="start" className={classes.menuButton} color="dark" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
-                    <Grid item position="fixed" className={classes.logo}>
-
+                    <Grid item justify="center" position="fixed" className={classes.logo}>
+                        <Avatar alt="Remy Sharp" src={logo}/>
                     </Grid>
-                    <Typography color="secondary">
-                        <h1 className={classes.firstName}>Miau</h1>
+                    <Typography color="baseColor">
+                        Miaudote
                     </Typography>
-                    <Typography color="secondary" className={classes.title}>
-                        <h1 className={classes.twoName}>dote</h1>
-                    </Typography>
+                    <CenteredTabs />
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
