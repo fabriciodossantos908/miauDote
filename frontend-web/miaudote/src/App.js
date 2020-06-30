@@ -1,12 +1,12 @@
 import React from 'react';
 import Routes from './routes'
-import Navbar from './components/baseComponent/Navbar'
-    
+import MaterialLayout from './components/Layout/MaterialLayout';
 const App = () => {
     return (
         <div>
-            <Navbar />
+            <MaterialLayout>
             <Routes />
+            </MaterialLayout>
         </div>
     )
 }
