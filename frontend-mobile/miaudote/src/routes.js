@@ -1,26 +1,27 @@
-// import 'react-native-gesture-handler'
-// import * as React from 'react';
-// import {NavigationContainer} from '@react-navigation/native';
-// import {createStackNavigator} from '@react-navigation/stack';
-
 import 'react-native-gesture-handler'
-import React, { Component } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './pages/HomeScreen'
+
+// Importações para telas de usuários
 import Login from './pages/user/login/Login'
 import FormBasicInfo from './pages/user/signUp/FormBasicInfo'
 import FormPersonalData from './pages/user/signUp/FormPersonalData'
 import FormUserAddress from './pages/user/signUp/FormUserAddress'
 import FormUserPhoto from './pages/user/signUp/FormUserPhoto'
-import Teste from './pages/user/signUp/Teste'
-import HomeTeste from './pages/user/home/HomeTeste'
 import Home from './pages/user/home/Home'
-// import KeyboardAvoidingComponent from './pages/user/signUp/KeyboardAvoidingComponent'
-// import FormBasicInfoTeste from './pages/user/signUp/FormBasicInfoTeste'
 import PerfilScreen from './pages/user/perfil/PerfilScreen';
+import EmailConfirm from './pages/user/signUp/EmailConfirm';
 
+// Importações para telas de Sobre
+import AboutAdoption from './pages/user/about/AboutAdoption';
+import AboutDonation from './pages/user/about/AboutDonation';
+import AboutFindingPet from './pages/user/about/AboutFindingPet';
+
+// Importações para tela de pets
+import PetDetails from './pages/pets/details/PetDetails';
 
 
 
@@ -30,6 +31,15 @@ export default function MyStack() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+
+            <Stack.Screen
+                    name="Home"
+                    component={Home}
+                    options={{ headerShown: false }}
+                />
+
+                {/* Telas de Login e Cadastro */}
+
                 <Stack.Screen
                     name="HomeScreen"
                     component={HomeScreen}
@@ -66,42 +76,52 @@ export default function MyStack() {
                     options={{ headerShown: false }}
                 />
 
+
                 <Stack.Screen
-                    name="Teste"
-                    component={Teste}
+                    name="EmailConfirm"
+                    component={EmailConfirm}
                     options={{ headerShown: false }}
                 />
 
-                <Stack.Screen
-                    name="HomeTeste"
-                    component={HomeTeste}
-                    options={{ headerShown: false }}
-                />
+                {/* Telas mais relacionadas a usuário */}
 
-                <Stack.Screen
+                {/* <Stack.Screen
                     name="Home"
                     component={Home}
                     options={{ headerShown: false }}
-                />
-
-                {/* <Stack.Screen
-                    name="KeyboardAvoidingComponent"
-                    component={KeyboardAvoidingComponent}
-                    options={{ headerShown: false }}
                 /> */}
 
-               {/* <Stack.Screen
-                    name="FormBasicInfoTeste"
-                    component={FormBasicInfoTeste}
-                    options={{ headerShown: false }}
-                /> */}
- 
                 <Stack.Screen
                     name="Perfil"
                     component={PerfilScreen}
                     options={{ headerShown: false }}
                 />
 
+                {/* Telas mais relacionadas a Pets */}
+
+                <Stack.Screen
+                    name="PetDetails"
+                    component={PetDetails}
+                    options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                    name="AboutAdoption"
+                    component={AboutAdoption}
+                    options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                    name="AboutFindingPet"
+                    component={AboutFindingPet}
+                    options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                    name="AboutDonation"
+                    component={AboutDonation}
+                    options={{ headerShown: false }}
+                />
 
             </Stack.Navigator>
         </NavigationContainer>

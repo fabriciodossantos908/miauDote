@@ -18,7 +18,8 @@ import {
 	HorizontalLine,
 	SecondaryText,
 	ContainerSingInOptions,
-	IconSingInOptions
+	IconSingInOptions,
+	LoginImage
 } from './styles'
 import { Alert } from 'react-native';
 
@@ -68,8 +69,7 @@ export default class Login extends Component {
 		return (
 			<Container>
 				<Div>
-					{/* <Image source={require('../../../assets/login.png')}></Image> */}
-					<Image source={require('../../../assets/login2.png')}></Image>
+					<LoginImage source={require('../../../assets/login.png')}></LoginImage>
 					<CuteLine>
 						<IconPaw source={require('../../../assets/icon-pegada.png')}></IconPaw>
 						<IconPaw source={require('../../../assets/icon-pegada.png')}></IconPaw>
