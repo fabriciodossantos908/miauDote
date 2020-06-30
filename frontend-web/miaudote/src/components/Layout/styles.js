@@ -13,10 +13,10 @@ let theme = createMuiTheme({
       light: '#fff',
       main: '#3f50b5',
       dark: '#369696',
-      contrastText: '#FC6B6E',
+      contrastText: '#fff',
     },
     secondary: {
-      light: '#FFF6E6',
+      light: '#2186C4',
       main: '#00d26',
       dark: '#2186C4',
       contrastText: '#00bcc1',
@@ -40,11 +40,13 @@ const useStyle = makeStyles(() => ({
     color: theme.palette.primary.light,
   },
 
-  paper: {
+  container: {
     width: 800,
+    minHeight: 300,
+    height: "auto",
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
-    backgroundColor: theme.palette.piroquinha,
+    backgroundColor: theme.palette.primary.dark,
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
@@ -87,29 +89,53 @@ const header = makeStyles(() => ({
     marginRight: theme.spacing(2),
   },
 
-  button:{
-    textDecoration: "none"
-  },
-
   title: {
     flexGrow: 1,
-  },  
+  },
   appBar: {
     backgroundColor: theme.palette.primary.light,
-
     boxShadow: "none"
   },
-  
+
+  appbarmain: {
+    backgroundColor: theme.palette.secondary.light,
+    boxShadow: "none"
+  },
+
+  menuButton: {
+    marginRight: theme.spacing(2),
+
+  },
+
   nested: {
-      paddingLeft: theme.spacing(4),
-    },
+    paddingLeft: theme.spacing(4),
+  },
+
+  logo: {
+    marginRight: theme.spacing(2),
+    width: 80,
+    height: 50,
+    backgroundColor: theme.palette.primary.dark
+  },
+
+  firstName: {
+    fontFamily: "italic",
+    fontSize: 20,
+    color: "#d32f2f"
+  },
+
+  twoName: {
+    fontFamily: "italic",
+    fontSize: 20,
+    color: "#42a5f5",
+  }
 }));
 
 const formBase = makeStyles(() => ({
   formImage: {
     width: "auto",
     height: "100%",
-    borderRadius: 3, 
+    borderRadius: 3,
     backgroundColor: theme.palette.primary.dark
   },
 }))
@@ -167,4 +193,4 @@ const formPet = makeStyles({
   }
 })
 
-export {theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet }
+export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet }

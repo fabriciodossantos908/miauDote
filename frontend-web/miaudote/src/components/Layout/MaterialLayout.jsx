@@ -1,7 +1,8 @@
 import React from 'react';
 import { Paper, CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
-
+import Container from '@material-ui/core/Container';
+import HeaderMain from '../../pages/home/header'
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
@@ -14,9 +15,10 @@ export default function MaterialLayout(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header header={header} />
+      {/* <Header header={header} /> */}
+      <HeaderMain header={header}></HeaderMain>
       <div className={classes.root}>
-        <Paper className={classes.paper}>{children}</Paper>
+        <Container maxWidth="sm" className={classes.container}>{children}</Container>
       </div>
       <Footer useStyle={useStyle}/>
     </ThemeProvider>
