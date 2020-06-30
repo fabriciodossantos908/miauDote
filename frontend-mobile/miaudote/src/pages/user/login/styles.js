@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 export const Tittle = styled.Text `
     color:#fc6b6e;
     fontSize:45px;
-    fontWeight: bold
+    fontWeight: bold;
 `;
 
 export const Container = styled.View `
@@ -30,7 +30,7 @@ export const CuteLine = styled.View `
     width: 100%;
     flexDirection: row;
     justifyContent: center;
-    marginTop:20px
+    marginTop:20px;
 `;
 
 
@@ -99,7 +99,7 @@ export const HorizontalLine = styled.View `
     borderColor:#5A6978;
     margin:10px;
     top:3;
-    width:100
+    width:100;
 `;
 
 
@@ -108,7 +108,7 @@ export const SecondaryText = styled.Text `
 
     fontSize: 20px;
     color: #5A6978;
-    letterSpacing: 0.15
+    letterSpacing: 0.15;
 `;
 
 
@@ -117,7 +117,7 @@ export const ContainerSingInOptions = styled.View `
     justifyContent: center;
     alignItems: center;
     flexDirection:row;
-    padding:0
+    padding:0;
 `;
 
 export const IconSingInOptions = styled.Image `
@@ -125,5 +125,9 @@ export const IconSingInOptions = styled.Image `
     height: 70;
     width: 70;
     marginLeft:15;
-    marginRight:15
-`
+    marginRight:15;
+`;
+
+export const LoginImage = styled.ImageBackground`
+    height: 256;
+`;

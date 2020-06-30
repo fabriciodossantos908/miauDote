@@ -15,7 +15,6 @@ export const MainContainer = styled.View `
     flex: 1;
     backgroundColor:#fff;
     padding:16px;
-    
 `
 
 // export const Header = styled.View `
@@ -378,7 +377,32 @@ export const ButtonPrevious = styled.TouchableOpacity `
 `
 
 
-// export const Title = styled.Text ``
+export const ImageEmail = styled.ImageBackground `
+    flex: 3.5;
+    margin-top: 16;
+`
+
+export const TitleEmailConfirm = styled.Text`
+    font-size: 27;
+    flex: 1;
+    color: #369696;
+    text-align: center;
+`;
+
+export const TextEmailConfirm = styled.Text`
+    font-size: 16;
+    text-align: justify;
+    flex: 2;
+    color: #ccc;
+`;
+
+export const Container = styled.View`
+    flex: 1;
+    background-color: #fff;
+    padding: 32px
+`;
+
+
 // export const Title = styled.Text ``
 // export const Title = styled.Text ``
 // export const Title = styled.Text ``
