@@ -11,17 +11,21 @@ export default function FormUserInitialInfo(props) {
       email,
       senha,
       senha_confirm,
-      }
+    }
   } = props;
   return (
     <React.Fragment>
-      <Grid container spacing={3}  justify="flex-end">
-        <Container item xs={6} sm={6} className={classes.inputPaper}>
-          <InputField name={nome.name} label={nome.label} fullWidth />
-          <InputField name={email.name} label={email.label} fullWidth />
-          <InputField name={senha.name} label={senha.label} fullWidth />
-          <InputField name={senha_confirm.name} label={senha_confirm.label} fullWidth />
-        </Container>
+      <Grid container
+              xs={10}
+              direction="column"
+              justify="space-around"
+              alignItems="center"
+              className={classes.inputPaper}
+              >
+            <InputField name={nome.name} variant="outlined" label={nome.label} justify="flex-start" fullWidth />
+            <InputField name={email.name} variant="outlined" label={email.label} fullWidth />
+            <InputField name={senha.name} variant="outlined" label={senha.label} justify="flex-start" fullWidth />
+            <InputField name={senha_confirm.name} variant="outlined" label={senha_confirm.label} justify="flex-start" fullWidth />
       </Grid>
     </React.Fragment>
   );

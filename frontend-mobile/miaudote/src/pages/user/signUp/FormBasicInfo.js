@@ -82,8 +82,8 @@ export default class FormBasicInfo extends Component {
 
 		return (
 			<KeyboardAvoidingView
-				behavior={Platform.OS == "ios" ? "padding" : "height"}
-				// behavior={"height"}
+				// behavior={Platform.OS == "ios" ? "padding" : "height"}
+				behavior={"height"}
 				style={{flex: 1}}
 			>
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>

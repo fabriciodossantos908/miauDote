@@ -23,7 +23,9 @@ import companyInitialValues from './CompanyModel/companyInitialValues';
 
 import { useStyle, formBase } from '../../Layout/styles'
 
-const steps = ['BaseInfo', 'PersonalData', 'Address'];
+const photoCat = require('../../../images/petImg/cat.jpg')
+
+const steps = ['Dados Iniciais', 'Dados Pessoais', 'Endereço'];
 const { formId, formField } = checkoutCompanyModel;
 
 function _renderStepContent(step) {
@@ -80,13 +82,20 @@ export default function CheckoutCompanyStep() {
         <ConfirmEmail />
       ) : (
           <Grid container >
-            <Grid item xs={6} className={classes.imgSide}>
+            <Grid item xs={4} className={classes.imgSide}>
               <CardMedia
                 className={classesCompany.formImage}
-                image="../../images/Developer_Fabricio.jpg"
-              />
+                image={photoCat}
+                >
+                <Typography
+                variant="h4"
+                className={classesCompany.labelStep}
+                >
+                  Cadastro de empresa
+                </Typography>
+                </CardMedia>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={8}>
 
               <Formik
                 initialValues={companyInitialValues}

@@ -14,15 +14,16 @@ export default function FormUserPersonalInfo(props) {
   } = props;
   return (
     <React.Fragment>
-      <Grid container spacing={3} justify="flex-end">
-        <Container item xs={6} sm={6} className={classes.inputPaper}>
-            <InputField name={celular.name} label={celular.label} fullWidth />
-            <InputField name={dt_nasc.name} label={dt_nasc.label} fullWidth />
-            <InputField name={sexo.name} label={sexo.label} fullWidth />
-            <Typography>
-              The photo upload come here
-              </Typography>
-        </Container>
+      <Grid container
+        xs={10}
+        direction="column"
+        justify="space-around"
+        alignItems="center"
+        className={classes.inputPaper}
+      >
+        <InputField name={celular.name} variant="outlined" label={celular.label} fullWidth />
+        <InputField name={dt_nasc.name} variant="outlined" label={dt_nasc.label} fullWidth />
+        <InputField name={sexo.name} variant="outlined" label={sexo.label} fullWidth />
       </Grid>
     </React.Fragment>
   );

@@ -15,13 +15,18 @@ export default function CompanyBaseInfo(props) {
   } = props;
   return (
     <React.Fragment>
-      <Grid container spacing={3} justify="flex-end">
-        <Container item xs={6} sm={6} className={classes.inputPaper}>
-          <InputField name={nome_representante.name} label={nome_representante.label} fullWidth />
-          <InputField name={email_representante.name} label={email_representante.label} fullWidth />
-          <InputField name={senha.name} label={senha.label} fullWidth />
-          <InputField name={senha_confirm.name} label={senha_confirm.label} fullWidth />
-        </Container>
+      <Grid 
+       container
+            xs={10}
+            direction="column"
+            justify="space-around"
+            alignItems="center"
+            className={classes.inputPaper}
+      >
+          <InputField name={nome_representante.name} variant="outlined" label={nome_representante.label} fullWidth />
+          <InputField name={email_representante.name} variant="outlined" label={email_representante.label} fullWidth />
+          <InputField name={senha.name} variant="outlined" label={senha.label} fullWidth />
+          <InputField name={senha_confirm.name} variant="outlined" label={senha_confirm.label} fullWidth />
       </Grid>
     </React.Fragment>
   );

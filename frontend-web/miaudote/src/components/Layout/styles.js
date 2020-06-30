@@ -56,9 +56,8 @@ const useStyle = makeStyles(() => ({
     }
   },
   inputPaper: {
-    maxWidth: 300,
+    maxWidth: 400,
     minHeight: 300,
-    margin: theme.spacing(5),
     padding: theme.spacing(2),
   },
   stepper: {
@@ -141,12 +140,11 @@ const formBase = makeStyles(() => ({
     width: "auto",
     height: "100%",
     borderRadius: 3,
-    backgroundColor: theme.palette.primary.dark
+    color: theme.palette.baseColor.main,
   },
   FormPaper: {
     width: 800,
-    minHeight: 300, 
-    height: "auto",
+    maxHeight: 600,
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
     backgroundColor: theme.palette.background.default,
@@ -155,6 +153,10 @@ const formBase = makeStyles(() => ({
       marginBottom: theme.spacing(6),
     }
   },
+
+  labelStep: {
+    color: theme.palette.baseColor.main,
+  }
 }))
 
 const ColorlibConnector = withStyles({
@@ -173,7 +175,6 @@ const ColorlibConnector = withStyles({
   },
   line: {
     width: 2,
-    marginLeft: "auto",
     marginRight: "auto",
     border: 0,
     backgroundColor: theme.palette.primary.dark,
@@ -186,8 +187,8 @@ const useColorlibStepIconStyles = makeStyles({
     backgroundColor: '#ccc',
     zIndex: 1,
     color: '#fff',
-    width: 50,
-    height: 50,
+    width: 25,
+    height: 25,
     display: 'flex',
     borderRadius: '50%',
     justifyContent: 'center',
@@ -204,9 +205,15 @@ const useColorlibStepIconStyles = makeStyles({
 
 const formPet = makeStyles({
   stepper: {
-    width: 100,
+    width: 200,
     marginRight: "auto",
-    backgroundColor: "transparent"
+    color: "white",
+    backgroundColor: "transparent",
+  },
+
+  logo: {
+    width: 100,
+    heigh: 150,
   }
 })
 export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet }
