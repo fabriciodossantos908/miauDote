@@ -7,6 +7,7 @@ import {
   CircularProgress,
   Grid,
   Step,
+  Paper
 } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 import PetsIcon from '@material-ui/icons/Pets';
@@ -98,6 +99,8 @@ export default function CheckoutCompanyStep() {
   
   return (
     <React.Fragment>
+      <Paper elevation={3} className={classesBase.FormPaper}>
+
           <Grid container >
         <Grid item xs={6} className={classes.imgSide}>
           <CardMedia
@@ -174,6 +177,7 @@ export default function CheckoutCompanyStep() {
           </Formik>
         </Grid>
       </Grid>
+      </Paper>
     </React.Fragment>
   );
 }

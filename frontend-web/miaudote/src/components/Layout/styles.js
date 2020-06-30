@@ -10,14 +10,20 @@ let theme = createMuiTheme({
   palette: {
     type: "light",
     primary: {
-      light: '#fff',
-      main: '#3f50b5',
-      dark: '#369696',
-      contrastText: '#fff',
+      light: '#ff9d9c',
+      main: '#fc6b6ez',
+      dark: '#c43843',
+      contrastText: '#ffffff',
     },
     secondary: {
-      light: '#2186C4',
-      main: '#00d26',
+      light: '#69fafe',
+      main: '#1bc7cb',
+      dark: '#00969a',
+      contrastText: '#ffffff',
+    },
+    baseColor: {
+      light: '#fffff',
+      main: '#ffffff',
       dark: '#2186C4',
       contrastText: '#00bcc1',
     },
@@ -39,14 +45,11 @@ const useStyle = makeStyles(() => ({
     backgroundColor: theme.palette.background.default,
     color: theme.palette.primary.light,
   },
-
   container: {
-    width: 800,
-    minHeight: 300,
     height: "auto",
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.background.default,
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
@@ -74,10 +77,9 @@ const useStyle = makeStyles(() => ({
   buttons: {
     width: 100,
     height: 40,
-    color: theme.palette.primary.light,
-    backgroundColor: theme.palette.primary.contrastText,
+    color: theme.palette.baseColor.main,
+    backgroundColor: theme.palette.primary.light,
   },
-
 }));
 
 const header = makeStyles(() => ({
@@ -93,12 +95,12 @@ const header = makeStyles(() => ({
     flexGrow: 1,
   },
   appBar: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.baseColor.main,
     boxShadow: "none"
   },
 
   appbarmain: {
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: theme.palette.baseColor.light,
     boxShadow: "none"
   },
 
@@ -137,6 +139,18 @@ const formBase = makeStyles(() => ({
     height: "100%",
     borderRadius: 3,
     backgroundColor: theme.palette.primary.dark
+  },
+  FormPaper: {
+    width: 800,
+    minHeight: 300, 
+    height: "auto",
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    backgroundColor: theme.palette.background.default,
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginTop: theme.spacing(6),
+      marginBottom: theme.spacing(6),
+    }
   },
 }))
 

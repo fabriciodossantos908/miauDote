@@ -1,4 +1,5 @@
 import {makeStyles} from '@material-ui/core/styles';
+import { theme } from '../Layout/styles'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -6,24 +7,21 @@ const useStyles = makeStyles((theme) => ({
 
   base: {
     flexGrow: 1,
-    backgroundColor: "#2196f3",
+    backgroundColor: theme.palette.primary.main,
   },
 
 title:{
-  fontSize: 20,
-  fontFamily: "italic",
-  color: "#ffffff"
+  color: theme.palette.secondary.dark
 },
 
 subTitle: {
-  fontSize: 12,
-  fontFamily: "roboto"
+  marginTop: 2,
+  color: theme.palette.secondary.light
 },
 
 logo: {
   minWidth: 50,
   minHeight: 45,
-    backgroundColor: "#2196f3"
 },
 
 imgLogo:{
@@ -32,7 +30,7 @@ imgLogo:{
   padding: 20,
   marginTop: 20,
   marginLeft: 20,
-  backgroundColor: "yellow"
+  backgroundColor: theme.palette.baseColor.dark
 },
 
 avatar: {
@@ -54,7 +52,8 @@ copy: {
 },
 
 footer:{
-  backgroundColor: "#0069c0",
+  backgroundColor: theme.palette.primary.dark,
+  color: theme.palette.baseColor.main
 }
 }));
 

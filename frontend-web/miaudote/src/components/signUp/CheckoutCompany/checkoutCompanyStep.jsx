@@ -6,6 +6,7 @@ import {
   Typography,
   CircularProgress,
   Grid,
+  Paper
 } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 import PetsIcon from '@material-ui/icons/Pets';
@@ -74,6 +75,7 @@ export default function CheckoutCompanyStep() {
 
   return (
     <React.Fragment>
+      <Paper elevation={3} className={classesCompany.FormPaper}>
       {activeStep === steps.length ? (
         <ConfirmEmail />
       ) : (
@@ -99,6 +101,8 @@ export default function CheckoutCompanyStep() {
                           component="h1"
                           variant="h4"
                           align="center"
+                          color="primary"
+                          classname={classes.highLightColor}
                           value={steps[activeStep]}>
                           {steps[activeStep]}
                         </Typography>
@@ -148,6 +152,7 @@ export default function CheckoutCompanyStep() {
             </Grid>
           </Grid>
         )}
+        </Paper>
     </React.Fragment>
   );
 }
