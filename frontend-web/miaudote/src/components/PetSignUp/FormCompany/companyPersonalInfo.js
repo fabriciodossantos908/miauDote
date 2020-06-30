@@ -6,24 +6,18 @@ export default function companyPersonalInfo(props) {
   const classes = props.useStyle()
   const {
     formField: {
-      telefone,
-      id_tipo_servico,
-      celular_representante,
-      razao_social,
-      nome_empresa,
-      cnpj,
+      situacao,
+      descricao,
+      descricao_comportamento,
     }
   } = props;
   return (
     <React.Fragment>
       <Grid container spacing={3} justify="flex-end">
         <Container item xs={6} sm={6} className={classes.inputPaper}>
-            <InputField name={celular_representante.name} label={celular_representante.label} />
-            <InputField name={razao_social.name} label={razao_social.label} />
-            <InputField name={nome_empresa.name} label={nome_empresa.label} />
-            <InputField name={cnpj.name} label={cnpj.label} />
-            <InputField name={telefone.name} label={telefone.label} />
-            <InputField name={id_tipo_servico.name} label={id_tipo_servico.label} />
+            <InputField name={descricao_comportamento.name} label={descricao_comportamento.label} />
+            <InputField name={descricao.name} label={descricao.label} />
+            <InputField name={situacao.name} label={situacao.label} />
         </Container>
       </Grid>
     </React.Fragment>

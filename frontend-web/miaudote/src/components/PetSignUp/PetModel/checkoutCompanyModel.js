@@ -1,96 +1,64 @@
 export default {
-    formId: 'checkoutCompanyForm',
+    formId: 'checkoutPetForm',
     formField: {
-      nome_representante: {
+      nome: {
         name: 'nome',
-        label: 'Nome e sobrenome*',
-        requiredErrorMsg: 'Nome e sobrenome são obrigatórios!'
+        label: 'Nome*',
+        requiredErrorMsg: 'Nome são obrigatórios!'
       },
-      email_representante: {
-        name: 'email',
-        label: 'email*',
-        requiredErrorMsg: 'email é obrigatório!'
+      especie: {
+        name: 'especie',
+        label: 'Espécie*',
+        requiredErrorMsg: 'Espécie é obrigatório!'
       },
-      senha: {
-        name: 'senha',
-        label: 'Senha*',
-        requiredErrorMsg: 'Senha é obrigatório!'
+      sexo: {
+        name: 'sexo',
+        label: 'Sexo*',
+        requiredErrorMsg: 'Sexo é obrigatório!'
       },
-      senha_confirm: {
-        name: 'senha_confirm',
-        label: 'Confirmação senha*',
-        requiredErrorMsg: 'Confirmação de senha é obrigatório!'
+      situacao: {
+        name: 'situacao',
+        label: 'Situação*',
+        requiredErrorMsg: 'Situação é obrigatório!'
       },
-      celular_representante: {
-        name: 'celular',
-        label: 'Celular*',
-        requiredErrorMsg: 'Celular do representante é obrigatório!'
+      descricao: {
+        name: 'descricao',
+        label: 'Descrição*',
+        requiredErrorMsg: 'Descrição é obrigatório!'
       },
-      razao_social: {
-        name: 'razao_social',
-        label: 'Razao Social*',
-        requiredErrorMsg: 'email é obrigatório!'
+      descricao_comportamento: {
+        name: 'descricao_comportamento',
+        label: 'Descrição de comportamento*',
+        requiredErrorMsg: 'Descrição de comportamento é obrigatório!'
       },
-      nome_empresa: {
-        name: 'nome_empresa',
-        label: 'Nome da empresa*',
-        requiredErrorMsg: 'Nome da empresa é obrigatório!'
+      porte: {
+        name: 'porte',
+        label: 'Porte*',
+        requiredErrorMsg: 'Porte é obrigatório!'
       },
-      cnpj: {
-        name: 'cnpj',
-        label: 'Cnpj*',
-        requiredErrorMsg: 'Cnpj é obrigatório!'
+      idade: {
+        name: 'idade',
+        label: 'Idade*',
+        requiredErrorMsg: 'Idade é obrigatório!'
       },
-      telefone: {
-        name: 'telefone',
-        label: 'Telefone*',
-        requiredErrorMsg: 'Telefone é obrigatório!'
+      latitude: {
+        name: 'latitude',
+        label: 'Latitude*',
+        requiredErrorMsg: 'Latitude é obrigatório!'
       },
-      cep: {
-        name: 'cep',
-        label: 'Cep*',
-        requiredErrorMsg: 'Cep é obrigatório!'
+      longitude: {
+        name: 'longitude',
+        label: 'Longitude*',
+        requiredErrorMsg: 'Longitude é obrigatório!'
       },
-      cidade: {
-        name: 'cidade',
-        label: 'Cidade',
-        requiredErrorMsg: 'Cidade é obrigatório!'
+      url_foto: {
+        name: 'url_foto',
+        label: 'Foto*',
+        requiredErrorMsg: 'Foto é obrigatório!'
       },
-      bairro: {
-        name: 'bairro',
-        label: 'Bairro*',
-        requiredErrorMsg: 'Bairro é obrigatório!'
+      id_usuario: {
+        name: 'id_usuario',
       },
-      logradouro: {
-        name: 'logradouro',
-        label: 'Logradouro*',
-        requiredErrorMsg: 'Logradouro é obrigatório!'
-      },
-      numero: {
-        name: 'numero',
-        label: 'Numero*',
-        requiredErrorMsg: 'Numero é obrigatório!'
-      },
-      complemento: {
-        name: 'complemento',
-        label: 'Complemento',
-        invalidErrorMsg: 'Esse campo deve ter entre 2 a 50 caractéres // Verificar essa mensagem'
-      },
-      uf: {
-        name: 'uf',
-        label: 'uf*',
-        requiredErrorMsg: 'uf é obrigatório!'
-      },
-      id_tipo_servico: {
-        name: 'id_tipo_servico',
-        label: 'Tipo de serviço*',
-        requiredErrorMsg: 'Tipo de serviço é obrigatório!'
-      },
-      url_logo: {
-        name: 'url_logo',
-        label: 'Logo da empresa*',
-        invalidErrorMsg: 'A imagem deve estar entre 5mb // Verificar essa mensagem'
-      },      
     }
   };
   

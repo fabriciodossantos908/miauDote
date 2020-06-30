@@ -15,7 +15,6 @@ import { Formik, Form } from 'formik';
 import CompanyBaseInfo from './FormCompany/companyBaseInfo';
 import CompanyPersonalInfo from './FormCompany/companyPersonalInfo';
 import CompanyAddress from './FormCompany/companyAddress';
-import ConfirmEmail from './ConfirmEmail/ConfirmEmail';
 
 import companyValidationSchema from './PetModel/companyValidationSchema';
 import checkoutCompanyModel from './PetModel/checkoutCompanyModel';
@@ -24,7 +23,7 @@ import companyInitialValues from './PetModel/companyInitialValues';
 import { useStyle, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet} from '../Layout/styles'
 import clsx from '../../../node_modules/clsx';
 
-const steps = ['BaseInfo', 'PersonalData', 'Address'];
+const steps = ['Informações do seu pet', 'Descrições do pet', 'Dados pessoais do pet'];
 const { formId, formField } = checkoutCompanyModel;
 
 function _renderStepContent(step) {
@@ -103,7 +102,7 @@ export default function CheckoutCompanyStep() {
         <Grid item xs={6} className={classes.imgSide}>
           <CardMedia
             className={classesBase.formImage}
-            image="../"
+            image="../../images/Developer_Fabricio.jpg"
           >
           <Grid container direction="row">
           <Grid item xs={12}>
