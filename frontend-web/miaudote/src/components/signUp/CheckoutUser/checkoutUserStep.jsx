@@ -6,7 +6,8 @@ import {
   Button,
   Typography,
   CircularProgress,
-  CardMedia
+  CardMedia,
+  Paper
 } from '@material-ui/core';
 import PetsIcon from '@material-ui/icons/Pets';
 import { Formik, Form } from 'formik';
@@ -74,6 +75,7 @@ export default function CheckoutCompanyStep() {
 
   return (
       <React.Fragment>
+      <Paper elevation={3} className={classesForm.FormPaper}>
         {activeStep === steps.length ? (
           <ConfimEmail />
         ) : (
@@ -149,6 +151,7 @@ export default function CheckoutCompanyStep() {
             </Grid>
             </Grid>
           )}
+          </Paper>
       </React.Fragment>
   );
 }

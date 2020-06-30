@@ -17,22 +17,22 @@ export default function Footer(props) {
             {/* <img width={20} height={10} src={logoS} alt="Logo"/> */}
           </Grid>
         </Grid>
-        <Grid item xs={2} className={classes.base}>
-          <h1 className={classes.title}>Inicio</h1>
-          <h2 className={classes.subTitle}>Home</h2>
-          <h2 className={classes.subTitle}>Pets</h2>
-          <h2 className={classes.subTitle}>Download App</h2>
+        <Grid item container xs={2} className={classes.base} direction="column">
+          <Typography variant="h5" className={classes.title}>Inicio</Typography>
+          <Typography variant="h8" className={classes.subTitle}>Home</Typography>
+          <Typography variant="h8" className={classes.subTitle}>Pets</Typography>
+          <Typography variant="h8" className={classes.subTitle}>Download App</Typography>
         </Grid>
-        <Grid item xs={3} className={classes.base}>
-          <h1 className={classes.title}>Sobre-nós</h1>
-          <h2 className={classes.subTitle}>Informações da empresa</h2>
-          <h2 className={classes.subTitle}>Contato</h2>
+        <Grid item container xs={3} className={classes.base} direction="column">
+          <Typography variant="h5" className={classes.title}>Sobre-nós</Typography>
+          <Typography variant="h8" className={classes.subTitle}>Informações da empresa</Typography>
+          <Typography variant="h8" className={classes.subTitle}>Contato</Typography>
         </Grid>
-        <Grid item xs={2} className={classes.base}>
-          <h1 className={classes.title}>Suporte</h1>
-          <h2 className={classes.subTitle}>FAQ</h2>
-          <h2 className={classes.subTitle}>Telefones</h2>
-          <h2 className={classes.subTitle}>Chat</h2>
+        <Grid item container xs={2} className={classes.base} direction="column">
+          <Typography variant="h5" className={classes.title}>Suporte</Typography>
+          <Typography variant="h8" className={classes.subTitle}>FAQ</Typography>
+          <Typography variant="h8" className={classes.subTitle}>Telefones</Typography>
+          <Typography variant="h8" className={classes.subTitle}>Chat</Typography>
         </Grid>
         <Grid item xs={2} className={classes.base} direction="row">
         <div className={classes.avatar}>
@@ -43,7 +43,7 @@ export default function Footer(props) {
       </Grid>
       </Grid>
       <Grid item xs={12} className={classes.footer}>
-          <Typography className={classes.copy}>
+          <Typography variant="h5" className={classes.copy}>
              <p>2019 © - Todos direitos reservados.</p>
           </Typography>
       </Grid>
