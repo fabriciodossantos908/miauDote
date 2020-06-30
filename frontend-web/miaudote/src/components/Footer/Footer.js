@@ -1,12 +1,12 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import {useStyles} from './styles.js'
 import {Typography} from '@material-ui/core'
 import Avatar from '@material-ui/core/Avatar';
+import { theme } from '../Layout/styles';
 
 
-export default function Footer() {
-  const classes = useStyles();
+export default function Footer(props) {
+  const classes = props.footer(theme);
 
   return (
     <Grid container className={classes.root}>
@@ -14,7 +14,7 @@ export default function Footer() {
       direction="row">
         <Grid item xs={3} className={classes.logo}>
           <Grid item xs={10} className={classes.imgLogo}>
-
+            {/* <img width={20} height={10} src={logoS} alt="Logo"/> */}
           </Grid>
         </Grid>
         <Grid item xs={2} className={classes.base}>
