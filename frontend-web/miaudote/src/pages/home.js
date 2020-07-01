@@ -1,17 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Grid, Paper, makeStyles } from '@material-ui/core';
 
-export class Home extends Component {
-    render() {
-        return (
-            <div>
-                <header>Home page</header>
-                <div>
-                    <h1>Home page</h1>
-                </div>
-
-            </div>
-        )
+const useStyle = makeStyles(() => ({
+    paper: {
+        width : 600,
+        height : 600,
     }
-}
+}))
 
-export default Home;
+export default function Home() {
+    const classes = useStyle()
+
+    return (
+        <React.Fragment>
+                <Grid item container color="primary" direction="row">
+                    <Grid item xs={5} color="primary">
+                        <Paper className={classes.paper}></Paper>
+                    </Grid>
+                    <Grid item xs={5} color="primary">
+                        <Paper className={classes.paper}></Paper>
+                    </Grid>
+
+            </Grid>
+        </React.Fragment>
+    )
+}
