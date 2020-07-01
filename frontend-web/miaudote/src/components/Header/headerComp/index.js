@@ -1,3 +1,3 @@
-import { Links } from './links'
+import Links from './links'
 
-export { Links}
+export { Links }

@@ -1,22 +1,25 @@
 import {makeStyles} from '@material-ui/core/styles';
 import { theme } from '../Layout/styles'
-const useStyles = makeStyles((theme) => ({
+
+const themeMain = theme
+
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
 
   base: {
     flexGrow: 1,
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: themeMain.palette.background.default,
   },
 
 title:{
-  color: theme.palette.secondary.dark
+  color: themeMain.palette.primary.dark
 },
 
 subTitle: {
   marginTop: 2,
-  color: theme.palette.secondary.light
+  color: themeMain.palette.primary.main
 },
 
 logo: {
@@ -24,36 +27,32 @@ logo: {
   minHeight: 45,
 },
 
-imgLogo:{
-  width: 200,
-  height: 100,
-  padding: 20,
-  marginTop: 20,
-  marginLeft: 20,
-  backgroundColor: theme.palette.baseColor.dark
+logoTitle: {
+  color: themeMain.palette.primary.main
 },
 
-avatar: {
-  display: 'flex',
-  '& > *': {
-    margin: theme.spacing(1),
-    alignItems: "center",
-    marginTop: 50
-  },
-  marginLeft: 10,
+imgLogo:{
+  imageOrientation: "auto"
+},
+
+icon: {
+  width : 50,
+  height: 50,
+  backgroundColor: themeMain.palette.primary.main
 },
 
 copy: {
   fontFamily: "Roboto",
   fontSize: 15,
   alignItems: "center",
-  marginLeft: 500,
+  marginLeft: "auto",
+  marginRight: "auto",
   marginTop: 10
 },
 
 footer:{
-  backgroundColor: theme.palette.primary.dark,
-  color: theme.palette.baseColor.main
+  backgroundColor: themeMain.palette.background.default,
+  color: themeMain.palette.primary.contrastText
 }
 }));
 
