@@ -75,6 +75,11 @@ const useStyle = makeStyles(() => ({
     color: theme.palette.baseColor.main,
     backgroundColor: theme.palette.primary.light,
   },
+  paper: {
+    width: 500,
+    height: 400,
+    backgroundColor: theme.palette.primary.main
+  }
 }));
 
 const header = makeStyles(() => ({
