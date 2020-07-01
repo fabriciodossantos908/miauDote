@@ -3,6 +3,8 @@ import {ExpandLess, ExpandMore} from '@material-ui/icons';
 import { AppBar, Toolbar, Typography, Button, List,
 ListItem, ListItemText, Collapse, Link} from '@material-ui/core'
 
+import Links  from './headerComp/links'
+
 export default function Header(props) {
   const classes = props.header();
   const formUser = '/formUser'
@@ -20,16 +22,7 @@ export default function Header(props) {
     <div className={classes.root}>
       <AppBar position="static" color="color" className={classes.appBar}>  
         <Toolbar>
-          <Typography>
-            <Link href="/" disable>
-              Miaudote
-            </Link>
-          </Typography>
-          <Typography>
-              <Link href="/login" disable>
-                login
-              </Link>
-          </Typography>  
+          <Links />
           <List>
               <ListItem button onClick={handleClick}>
                 <ListItemText primary="Cadastrar"/>

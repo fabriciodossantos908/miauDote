@@ -82,13 +82,13 @@ export default function CheckoutCompanyStep() {
           <ConfimEmail />
         ) : (
           <Grid container >
-               <Grid item xs={4} className={classes.imgSide}>
+               <Grid item xs={5} className={classes.imgSide}>
                       <CardMedia
                         className={classesForm.formImage}
                         image={photoDog}
                       />
                     </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={7}>
             <Formik
               initialValues={userInitialValues}
               currentUserValidationSchema={currentUserValidationSchema}

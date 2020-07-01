@@ -14,13 +14,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import PetsIcon from '@material-ui/icons/Pets';
 import { Formik, Form } from 'formik';
 
-import CompanyBaseInfo from './FormCompany/companyBaseInfo';
-import CompanyPersonalInfo from './FormCompany/companyPersonalInfo';
-import CompanyAddress from './FormCompany/companyAddress';
+import PetInfo from './FormPet/PetInfo';
+import PetDesc from './FormPet/PetDesc';
+import PetAddress from './FormPet/PetAddress';
 
-import companyValidationSchema from './PetModel/companyValidationSchema';
-import checkoutCompanyModel from './PetModel/checkoutCompanyModel';
-import companyInitialValues from './PetModel/companyInitialValues';
+import petValidationSchema from './PetModel/PetValidationSchema';
+import checkoutPetModal from './PetModel/checkoutPetModel';
+import petInitialInfo from './PetModel/petInitialValues';
 
 import { useStyle, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet} from '../Layout/styles'
 import clsx from '../../../node_modules/clsx';
@@ -28,21 +28,19 @@ import clsx from '../../../node_modules/clsx';
 const photo = require('../../images/petImg/dog.jpg')
 const photoDog = require('../../images/petImg/dog.jpg')
 const photoCat = require('../../images/petImg/cat.jpg')
-const Logo = require('../../images/petImg/cat.jpg')
-
 
 const listPhoto = [photo, photoDog, photoCat]
 const steps = ['Informações do seu pet', 'Descrições do pet', 'Dados pessoais do pet'];
-const { formId, formField } = checkoutCompanyModel;
+const { formId, formField } = checkoutPetModal;
 
 function _renderStepContent(step) {
   switch (step) {
     case 0:
-      return <CompanyBaseInfo formField={formField} useStyle={useStyle} />;
+      return <PetInfo formField={formField} useStyle={useStyle} />;
     case 1:
-      return <CompanyPersonalInfo formField={formField} useStyle={useStyle} />;
+      return <PetDesc formField={formField} useStyle={useStyle} />;
     case 2:
-      return <CompanyAddress formField={formField} useStyle={useStyle} />;
+      return <PetAddress formField={formField} useStyle={useStyle} />;
     default:
       return <div>Not Found</div>;
   }
@@ -53,7 +51,7 @@ export default function CheckoutCompanyStep() {
   const classesBase = formBase();
   const classesPet = formPet();
   const [activeStep, setActiveStep] = useState(0);
-  const currentValidationSchema = companyValidationSchema[activeStep];
+  const currentValidationSchema = petValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
   // function _sleep(ms) {
@@ -117,9 +115,6 @@ export default function CheckoutCompanyStep() {
           >
           <Grid container direction="row">
             <Grid item container xs={12} justify="center">
-            <Container>
-              <Logo />
-              </Container>
             </Grid>
             <Grid item xs={12}>
             <Stepper activeStep={activeStep} connector={<ColorlibConnector />} className={classesPet.stepper} orientation="vertical">
@@ -136,8 +131,8 @@ export default function CheckoutCompanyStep() {
         <Grid item xs={6}>
 
           <Formik
-            initialValues={companyInitialValues}
-            companyValidationSchema={currentValidationSchema}
+            initialValues={petInitialInfo}
+            petValidationSchema={petValidationSchema}
             onSubmit={_handleSubmit}
           >
             {({ isSubmitting }) => (

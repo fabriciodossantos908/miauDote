@@ -5,7 +5,7 @@ import { InputField, CheckboxField, SelectField } from '../../FieldStyle';
 
 // Tell about this. Create the user option to define if the per was founded or are of himself
 
-export default function CompanyAddress(props) {
+export default function PetAddress(props) {
   const classes = props.useStyle()
   const {
     formField: {

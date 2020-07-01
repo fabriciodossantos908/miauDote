@@ -1,4 +1,4 @@
-import checkoutCompanyModel from './checkoutCompanyModel';
+import checkoutPetModel from './checkoutPetModel';
 const {
   formField: {
     nome,
@@ -14,7 +14,7 @@ const {
     url_foto,
     id_usuario,
   }
-} = checkoutCompanyModel;
+} = checkoutPetModel;
 
 export default {
   [nome.name]: '',

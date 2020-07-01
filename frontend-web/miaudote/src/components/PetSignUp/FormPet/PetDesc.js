@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography, Paper, Container } from '@material-ui/core';
 import { InputField, CheckboxField, SelectField } from '../../FieldStyle';
 
-export default function companyPersonalInfo(props) {
+export default function PetDesc(props) {
   const classes = props.useStyle()
   const {
     formField: {
@@ -13,12 +13,17 @@ export default function companyPersonalInfo(props) {
   } = props;
   return (
     <React.Fragment>
-      <Grid container spacing={3} justify="flex-end">
-        <Container item xs={6} sm={6} className={classes.inputPaper}>
-            <InputField name={descricao_comportamento.name} label={descricao_comportamento.label} />
-            <InputField name={descricao.name} label={descricao.label} />
-            <InputField name={situacao.name} label={situacao.label} />
-        </Container>
+      <Grid 
+       container
+            xs={10}
+            direction="column"
+            justify="space-around"
+            alignItems="center"
+            className={classes.inputPaper}
+      >
+            <InputField name={descricao_comportamento.name} variant="outlined" label={descricao_comportamento.label} />
+            <InputField name={descricao.name} variant="outlined" label={descricao.label} />
+            <InputField name={situacao.name} variant="outlined" label={situacao.label} />
       </Grid>
     </React.Fragment>
   );

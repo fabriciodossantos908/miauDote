@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import moment from 'moment';
-import checkoutCompanyModel from './checkoutCompanyModel';
+import checkoutPetModel from './checkoutPetModel';
 const {
   formField: {
     // nome_representante,
@@ -22,7 +22,7 @@ const {
     // id_tipo_servico,
     // url_logo,
   }
-} = checkoutCompanyModel;
+} = checkoutPetModel;
 
 export default [
   // Yup.object().shape({

@@ -82,7 +82,7 @@ export default function CheckoutCompanyStep() {
         <ConfirmEmail />
       ) : (
           <Grid container >
-            <Grid item xs={4} className={classes.imgSide}>
+            <Grid item xs={5} className={classes.imgSide}>
               <CardMedia
                 className={classesCompany.formImage}
                 image={photoCat}
@@ -95,7 +95,7 @@ export default function CheckoutCompanyStep() {
                 </Typography>
                 </CardMedia>
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={7}>
 
               <Formik
                 initialValues={companyInitialValues}
