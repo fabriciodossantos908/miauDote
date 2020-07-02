@@ -7,6 +7,8 @@ import HeaderMain from '../../pages/MainHome/header'
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
+import Routes from '../../routes'
+
 import { theme, useStyle, header} from './styles';
 
 export default function MaterialLayout(props) {
@@ -17,10 +19,8 @@ export default function MaterialLayout(props) {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       {/* <Header header={header} /> */}
-      <HeaderMain header={header}></HeaderMain>
-      <Grid container className={classes.root}>
-        <Container maxWidth="sm" className={classes.container}>{children}</Container>
-      </Grid>
+      {/* <HeaderMain header={header}></HeaderMain> */}
+        <Routes/>
       <Footer useStyle={useStyle}/>
     </ThemeProvider>
   );

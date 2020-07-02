@@ -146,6 +146,7 @@ const formBase = makeStyles(() => ({
   FormPaper: {
     width: 800,
     maxHeight: 600,
+    marginLeft: 250,
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
     backgroundColor: theme.palette.background.default,

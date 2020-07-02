@@ -38,7 +38,7 @@ imgLogo:{
 icon: {
   width : 50,
   height: 50,
-  backgroundColor: themeMain.palette.primary.main
+  color: themeMain.palette.primary.main
 },
 
 copy: {

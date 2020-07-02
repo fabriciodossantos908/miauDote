@@ -3,6 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import {Typography, Avatar, CardMedia} from '@material-ui/core'
 import { useStyles } from './styles';
 
+import { theme } from '../Layout/styles'
+
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 
@@ -64,8 +66,8 @@ export default function Footer() {
           <Typography variant="h8" className={classes.subTitle}>Chat</Typography>
         </Grid>
         <Grid item xs={2} className={classes.base} direction="row">
-          <FacebookIcon className={classes.icon} />
-          <InstagramIcon className={classes.icon} />
+          <FacebookIcon className={classes.icon} style={{ color: theme.palette.primary.light }} />
+          <InstagramIcon className={classes.icon} style={{ color: theme.palette.primary.light }} />
       </Grid>
       </Grid>
       <Grid item container xs={12} className={classes.footer} justify="center">
