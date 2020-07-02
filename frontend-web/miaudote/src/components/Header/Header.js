@@ -7,12 +7,12 @@ import {
 
 import { Link } from 'react-router-dom'
 
-import { theme } from '../Layout/styles'
+import { theme, header } from '../Layout/styles'
 
 const logo = require('../../images/logoS.jpg')
 
-export default function Header(props) {
-  const classes = props.header();
+export default function Header() {
+  const classes = header();
   
   return (
     <div className={classes.root}>

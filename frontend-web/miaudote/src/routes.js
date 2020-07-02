@@ -8,55 +8,14 @@ import CheckoutPet from './components/PetSignUp/CheckoutPet'
 import Login from './components/SignIn/Login'
 import Test from './pages/test'
 
-import { theme, header } from './components/Layout/styles'
-import { AppBar, Toolbar, Grid, Avatar } from '@material-ui/core'
-
-const logo = require('./images/logoS.jpg')
-
-
-const NavLog = () => {
-    const classes = header();
-
-    return (
-        <Grid xs={12} className={classes.root}>
-            <AppBar position="static" color="color" className={classes.appBar}>
-                <Toolbar>
-                    <Grid container direction="row" justify="center">
-                        <Grid item container xs={4} direction="row" justify="space-evenly">
-                            <Grid item>
-                                <Link to="/aboutUs">Sobre nós</Link>
-                            </Grid>
-                            <Grid item>
-                                <Link to="/">
-                                    <Avatar
-                                        alt="Miaudote"
-                                        src={logo}
-                                    />
-                                </Link>
-                            </Grid>
-                            <Grid item>
-
-                                <Link to="/Contact">Contatos</Link>
-                            </Grid>
-                            <Grid item>
-
-                                <Link to="/Mission">Missão</Link>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Toolbar>
-            </AppBar>
-        </Grid>
-    );
-}
-
+import HeaderMain from './pages/MainHome/header'
 
 function Routes() {
     return (
         <React.Fragment>
 
             <Router>
-                <NavLog />
+                <HeaderMain />
 
                 <Switch>
                     <Route path='/' exact >

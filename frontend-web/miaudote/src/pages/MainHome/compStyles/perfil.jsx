@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
@@ -7,13 +6,40 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Avatar, Grid, Container, Typography, Box } from '@material-ui/core';
+import { Avatar, Container, Typography } from '@material-ui/core';
 import { mainNav } from './style'
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PetsIcon from '@material-ui/icons/Pets';
 import SettingsIcon from '@material-ui/icons/Settings';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import { Link } from 'react-router-dom'
+
+const PerfilUser = () => {
+  return(
+  <Link to="/userProfile">
+    <AccountCircleIcon />
+  </Link>
+  )
+}
+
+const Pets = () => {
+  return (
+  <Link to="/formPet">
+    <PetsIcon />
+  </Link>
+  )
+}
+
+const Settings = () => {
+  return (
+  <Link to="/settings">
+    <MenuIcon />
+  </Link>
+  )
+}
+
 
 const userPhoto = require('../../../images/petImg/dog.jpg')
 
@@ -49,7 +75,7 @@ export default function Perfil() {
       <List>
         {['Perfil', 'Meus pets'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <AccountCircleIcon /> : <PetsIcon />}</ListItemIcon>
+            <ListItemIcon>{index % 2 === 0 ? <PerfilUser /> : <Pets />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -60,7 +86,7 @@ export default function Perfil() {
         {['Configurações'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
-              <SettingsIcon />
+              <Settings />
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
