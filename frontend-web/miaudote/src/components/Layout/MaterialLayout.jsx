@@ -18,8 +18,8 @@ export default function MaterialLayout(props) {
       <CssBaseline />
       {/* <Header header={header} /> */}
       <HeaderMain header={header}></HeaderMain>
-      <Grid container className={classes.root}>
-        <Container maxWidth="sm" className={classes.container}>{children}</Container>
+      <Grid className={classes.root}>
+        <Grid className={classes.container}>{children}</Grid>
       </Grid>
       <Footer useStyle={useStyle}/>
     </ThemeProvider>
