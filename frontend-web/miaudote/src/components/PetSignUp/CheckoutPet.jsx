@@ -114,13 +114,13 @@ export default function CheckoutCompanyStep() {
             image={listPhoto[activeStep]}
           >
           <Grid container direction="row">
-            <Grid item container xs={12} justify="center">
+            <Grid item container xs={12}  justify="center">
             </Grid>
             <Grid item xs={12}>
             <Stepper activeStep={activeStep} connector={<ColorlibConnector />} className={classesPet.stepper} orientation="vertical">
             {steps.map((label) => (
-          <Step key={label} className={classesPet.stepper}>
-            <StepLabel color={classesBase.titleStep} StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+          <Step key={label}>
+            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
           </Step>
         ))}
             </Stepper>

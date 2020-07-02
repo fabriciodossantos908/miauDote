@@ -40,11 +40,9 @@ const useStyle = makeStyles(() => ({
   },
   container: {
     height: "auto",
-    marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
     backgroundColor: theme.palette.background.default,
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
       margin: 0
     }
@@ -81,17 +79,11 @@ const useStyle = makeStyles(() => ({
 }));
 
 const header = makeStyles(() => ({
-  root: {
-    flexGrow: 1,
-  },
   menuButton: {
     backgroundColor: theme.palette.primary.light,
     marginRight: theme.spacing(2),
   },
 
-  title: {
-    flexGrow: 1,
-  },
   appBar: {
     backgroundColor: theme.palette.baseColor.main,
     boxShadow: "none"
@@ -106,45 +98,18 @@ const header = makeStyles(() => ({
     marginRight: theme.spacing(2),
 
   },
-
-  nested: {
-    paddingLeft: theme.spacing(4),
-  },
-
-  logo: {
-    width: 80,
-    height: 50,
-    padding: theme.spacing(1)
-  },
-
-  firstName: {
-    fontFamily: "italic",
-    fontSize: 20,
-  },
-
-  twoName: {
-    fontFamily: "italic",
-    fontSize: 20,
-    color: "#42a5f5",
-  },
-
-  gradiente:{
-    fontFamily: "italic",
-    fontSize: 20,
-  }
 }));
 
 const formBase = makeStyles(() => ({
   formImage: {
-    width: "auto",
     height: "100%",
     borderRadius: 3,
-    color: theme.palette.baseColor.main,
   },
   FormPaper: {
     width: 800,
     maxHeight: 600,
-    marginLeft: 250,
+    marginLeft: "auto",
+    marginRight: "auto",
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
     backgroundColor: theme.palette.background.default,
@@ -153,10 +118,6 @@ const formBase = makeStyles(() => ({
       marginBottom: theme.spacing(6),
     }
   },
-
-  labelStep: {
-    color: theme.palette.baseColor.main,
-  }
 }))
 
 const ColorlibConnector = withStyles({
@@ -210,10 +171,5 @@ const formPet = makeStyles({
     color: "white",
     backgroundColor: "transparent",
   },
-
-  logo: {
-    width: 100,
-    heigh: 150,
-  }
 })
 export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet }
