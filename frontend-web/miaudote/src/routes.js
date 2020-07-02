@@ -1,14 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-import Home from './pages/home'
-// import CheckoutCompanyStep1 from './components/signUp/company/checkoutCompanyStep1'
+import Home from './pages/MainHome/home'
 import CheckoutCompanyStep from './components/signUp/CheckoutCompany/checkoutCompanyStep'
 import CheckoutUserStep from './components/signUp/CheckoutUser/checkoutUserStep'
 import CheckoutPet from './components/PetSignUp/CheckoutPet'
 import Login from './components/SignIn/Login'
 import Test from './pages/test'
-import { MainChunks } from './pages/chuncks'
 
 import { theme, header } from './components/Layout/styles'
 import { AppBar, Toolbar, Grid, Avatar } from '@material-ui/core'

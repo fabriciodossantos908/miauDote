@@ -19,8 +19,10 @@ export default function MaterialLayout(props) {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       {/* <Header header={header} /> */}
-      {/* <HeaderMain header={header}></HeaderMain> */}
-        <Routes/>
+      <HeaderMain header={header}></HeaderMain>
+      <Grid className={classes.root}>
+        <Grid className={classes.container}>{children}</Grid>
+      </Grid>
       <Footer useStyle={useStyle}/>
     </ThemeProvider>
   );

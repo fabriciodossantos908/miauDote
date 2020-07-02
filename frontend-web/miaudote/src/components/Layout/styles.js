@@ -35,8 +35,6 @@ theme = responsiveFontSizes(theme);
 const useStyle = makeStyles(() => ({
   root: {
     width: 'auto',
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
     backgroundColor: theme.palette.background.default,
     color: theme.palette.primary.light,
   },
@@ -76,7 +74,7 @@ const useStyle = makeStyles(() => ({
     backgroundColor: theme.palette.primary.light,
   },
   paper: {
-    width: 500,
+    width: "100%",
     height: 400,
     backgroundColor: theme.palette.primary.main
   }
