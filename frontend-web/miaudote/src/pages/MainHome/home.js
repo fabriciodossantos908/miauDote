@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, makeStyles } from '@material-ui/core';
+import { Grid, Paper, makeStyles, Typography } from '@material-ui/core';
 import { useStyle } from '../../components/Layout/styles'
 import {CardPets, Avatar} from '../MainHome/compStyles'
 
@@ -33,6 +33,19 @@ export default function Home() {
                     <Grid item xs={10} direction="row" style={{marginLeft: "auto", marginRight: "auto"}}> 
                        <Avatar />
                     </Grid>     
+                </Grid>
+                <Grid item xs={12} justify="center" spacing={3} direction="row" style={{display: "flex"}}>
+                    <Grid>
+                        <Typography variant="h5">
+                            Dá só uma olhadinha nas mais
+                        </Typography>
+                        <Typography variant="h5">
+                            novas fofurinhas do pedaço!!    
+                        </Typography>
+                    </Grid>
+                    <Grid>
+
+                    </Grid>
                 </Grid>
                 <Grid item xs={12} justify="center" spacing={3} direction="row" style={{display: "flex"}} className={classesM.paper}>
                     <CardPets />                   

@@ -16,6 +16,8 @@ const test = require("../../../images/petImg/cat.jpg")
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
+        bottom: 20,
+        margin: theme.spacing(1)
     },
     modal: {
         display: 'flex',
@@ -67,9 +69,9 @@ export default function ImgMediaCard() {
                     Pesquisar
                 </Button>
                 <div>
-                    <button type="button" onClick={handleOpen}>
+                    <Button size="small" onClick={handleOpen}>
                         Saber mais
-                    </button>
+                    </Button>
                     <Modal
                         aria-labelledby="transition-modal-title"
                         aria-describedby="transition-modal-description"
