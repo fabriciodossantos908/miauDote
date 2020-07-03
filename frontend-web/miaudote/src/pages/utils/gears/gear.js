@@ -1,13 +1,24 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { useStyle } from '../../../components/Layout/styles'
 
-import './styles.css'
+import './style.css'
+
+import SettingsIcon from '@material-ui/icons/Settings';
+import { Typography, Button } from '@material-ui/core';
 
 export default function Gear() {
+    const classes = useStyle()
     return (
         <div class="gears">
-            <image src="https://goo.gl/fpC7Oh" alt="gear" class="big" />
-            <image src="https://goo.gl/qL1pnV" alt="gear" class="small" />
-            <h1>LOADING</h1>
+            <SettingsIcon alt="gear" className="big" />
+            <SettingsIcon alt="gear" className="small" />
+            <Typography variant="h4">Ops! estamos trabalhando nessa tela Pet Lover.</Typography>
+            <Link to="/" className={classes.links} >
+                <Button>
+                    Volte aqui
+                </Button>
+                </Link>
         </div>
     )
 }

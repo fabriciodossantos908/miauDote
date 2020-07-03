@@ -61,7 +61,7 @@ export default function Perfil() {
           </ListItem>
         </Link>
 
-        <Link to="/formUser" className={classesHeader.links}>
+        <Link to="/making" className={classesHeader.links}>
           <ListItem button>
             <ListItemIcon>
               <PetsIcon />
@@ -74,7 +74,7 @@ export default function Perfil() {
       <Divider />
 
       <List>
-        <Link to="/formUser" className={classesHeader.links}>
+        <Link to="/making" className={classesHeader.links}>
           <ListItem button>
             <ListItemIcon>
               <SettingsIcon />

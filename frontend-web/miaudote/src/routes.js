@@ -2,11 +2,14 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/MainHome/home'
+
 import CheckoutCompanyStep from './components/signUp/CheckoutCompany/checkoutCompanyStep'
 import CheckoutUserStep from './components/signUp/CheckoutUser/checkoutUserStep'
 import CheckoutPet from './components/PetSignUp/CheckoutPet'
 import Login from './components/SignIn/Login'
 import Test from './pages/test'
+import Gear from './pages/utils/gears/gear'
+import MainHome from './pages/home/MainHome'
 
 import HeaderMain from './pages/MainHome/header'
 
@@ -19,7 +22,10 @@ function Routes() {
 
                 <Switch>
                     <Route path='/' exact >
-                        <Home />
+                        <MainHome />
+                    </Route>
+                    <Route path='/mainHome' exact >
+                    <Home />
                     </Route>
 
                     <Route path='/formCompany' exact >
@@ -38,6 +44,9 @@ function Routes() {
                     </Route>
                     <Route path='/test' exact >
                         <Test />
+                    </Route>
+                    <Route path='/making'>
+                        <Gear />
                     </Route>
                 </Switch>
             </Router>
