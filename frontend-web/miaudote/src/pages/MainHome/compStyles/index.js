@@ -1,3 +1,4 @@
 import Perfil from './perfil'
+import Links from './links'
 
-export { Perfil }
+export { Perfil, Links }

@@ -87,12 +87,6 @@ export default function CheckoutCompanyStep() {
                 className={classesCompany.formImage}
                 image={photoCat}
                 >
-                <Typography
-                variant="h4"
-                className={classesCompany.labelStep}
-                >
-                  Cadastro de empresa
-                </Typography>
                 </CardMedia>
             </Grid>
             <Grid item xs={7}>

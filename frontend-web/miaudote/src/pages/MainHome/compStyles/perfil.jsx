@@ -8,43 +8,20 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Avatar, Container, Typography } from '@material-ui/core';
 import { mainNav } from './style'
+import { header } from '../../../components/Layout/styles'
 
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PetsIcon from '@material-ui/icons/Pets';
 import SettingsIcon from '@material-ui/icons/Settings';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { Link } from 'react-router-dom'
 
-const PerfilUser = () => {
-  return(
-  <Link to="/userProfile">
-    <AccountCircleIcon />
-  </Link>
-  )
-}
-
-const Pets = () => {
-  return (
-  <Link to="/formPet">
-    <PetsIcon />
-  </Link>
-  )
-}
-
-const Settings = () => {
-  return (
-  <Link to="/settings">
-    <MenuIcon />
-  </Link>
-  )
-}
-
 
 const userPhoto = require('../../../images/petImg/dog.jpg')
 
 export default function Perfil() {
   const classesMain = mainNav()
+  const classesHeader = header()
   const [state, setState] = React.useState({
     left: false,
   });
@@ -72,27 +49,41 @@ export default function Perfil() {
         </Typography>
       </Container>
       <Divider />
-      <List>
-        {['Perfil', 'Meus pets'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <PerfilUser /> : <Pets />}</ListItemIcon>
-            <ListItemText primary={text} />
+      <List component="nav" aria-label="main mailbox folders">
+
+        <Link to="/formPet" className={classesHeader.links}>
+
+          <ListItem button>
+            <ListItemIcon>
+              <PetsIcon />
+            </ListItemIcon>
+            <ListItemText primary="Pets" />
           </ListItem>
-        ))}
+        </Link>
+
+        <Link to="/formUser" className={classesHeader.links}>
+          <ListItem button>
+            <ListItemIcon>
+              <PetsIcon />
+            </ListItemIcon>
+            <ListItemText primary="perfil" />
+          </ListItem>
+        </Link>
+
       </List>
       <Divider />
 
       <List>
-        {['Configurações'].map((text, index) => (
-          <ListItem button key={text}>
+        <Link to="/formUser" className={classesHeader.links}>
+          <ListItem button>
             <ListItemIcon>
-              <Settings />
+              <PetsIcon />
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary="Configurações" />
           </ListItem>
-        ))}
+        </Link>
       </List>
-    </div>
+    </div >
   );
 
   return (

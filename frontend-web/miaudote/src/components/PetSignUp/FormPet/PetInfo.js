@@ -1,6 +1,19 @@
 import React from 'react';
-import { Grid, Container } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { InputField } from '../../FieldStyle';
+import { SelectField } from '../../FieldStyle'
+
+const sex = [
+  {
+    value: "F",
+    label: 'Feminino'
+  },
+  {
+    value: "M",
+    label: 'Masculino'
+  }
+]
+
 
 export default function PetInfo(props) {
   const classes = props.useStyle();
@@ -8,27 +21,30 @@ export default function PetInfo(props) {
   const {
     formField: {
       nome,
-      especie,
       idade,
-      porte,
       sexo,
-      }
+      url_foto
+    }
   } = props;
   return (
     <React.Fragment>
-            <Grid 
-       container
-            xs={10}
-            direction="column"
-            justify="space-around"
-            alignItems="center"
-            className={classes.inputPaper}
+      <Grid
+        container
+        xs={10}
+        direction="column"
+        justify="space-around"
+        alignItems="center"
+        className={classes.inputPaper}
       >
-          <InputField name={nome.name} variant="outlined" label={nome.label} fullWidth />
-          <InputField name={especie.name} variant="outlined" label={especie.label} fullWidth />
-          <InputField name={idade.name} variant="outlined" label={idade.label} fullWidth />
-          <InputField name={porte.name} variant="outlined" label={porte.label} fullWidth />
-          <InputField name={sexo.name} variant="outlined" label={sexo.label} fullWidth />
+        <InputField name={nome.name} variant="outlined" label={nome.label} fullWidth />
+        <InputField name={idade.name} variant="outlined" label={idade.label} fullWidth />
+        <SelectField
+          name={sexo.name}
+          variant="outlined"
+          label={sexo.label}
+          data={sex}
+          fullWidth
+        />
       </Grid>
     </React.Fragment>
   );

@@ -29,7 +29,7 @@ const photoDog = require('../../images/petImg/dog.jpg')
 const photoCat = require('../../images/petImg/cat.jpg')
 
 const listPhoto = [photoCat, photoDog, photoCat, photoDog]
-const steps = ['Informações do seu pet', 'Tipo do pet', 'Descrições do pet', 'Endereço'];
+const steps = ['Informações do seu pet', 'Tipo do pet', 'Descrições do pet', 'Dados pessoais do pet'];
 const { formId, formField } = checkoutPetModal;
 
 function _renderStepContent(step) {
@@ -115,7 +115,7 @@ export default function CheckoutCompanyStep() {
               className={classesBase.formImage}
               image={listPhoto[activeStep]}
             >
-              <Grid container direction="row" style={{height: "inherit" ,backgroundColor: 'rgba(0,0,0,0.5)'}} >
+              <Grid container direction="row" style={{backgroundColor: 'rgba(0,0,0,0.5)'}} >
                 <Grid item container xs={12} justify="center">
                 </Grid>
                 <Grid item xs={12}>

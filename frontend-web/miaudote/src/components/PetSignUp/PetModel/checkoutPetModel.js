@@ -51,6 +51,11 @@ export default {
         label: 'Longitude*',
         requiredErrorMsg: 'Longitude é obrigatório!'
       },
+      cep: {
+        name: 'cep',
+        label: 'Cep',
+        requiredErrorMsg: 'Somente números!'
+      },
       url_foto: {
         name: 'url_foto',
         label: 'Foto*',

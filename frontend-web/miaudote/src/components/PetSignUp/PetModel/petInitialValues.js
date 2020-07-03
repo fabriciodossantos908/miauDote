@@ -11,6 +11,7 @@ const {
     idade,
     latitude,
     longitude,
+    cep,
     url_foto,
     id_usuario,
   }
@@ -27,6 +28,7 @@ export default {
   [idade] : '',
   [latitude] : '',
   [longitude] : '',
+  [cep] : '',
   [url_foto] : '',
   [id_usuario] : '',  
 };

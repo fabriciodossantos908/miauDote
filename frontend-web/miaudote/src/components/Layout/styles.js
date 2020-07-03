@@ -8,7 +8,7 @@ import StepConnector from '@material-ui/core/StepConnector';
 
 let theme = createMuiTheme({
   palette: {
-    type: "light",
+    type: "dark",
     primary: {
       light: '#ff9d9c',
       main: '#fc6b6ez',
@@ -21,10 +21,13 @@ let theme = createMuiTheme({
       dark: '#00969a',
       contrastText: '#ffffff',
     },
+    thirdy : {
+      main: "#F28E13"
+    },
     baseColor: {
       light: '#fffff',
       main: '#ffffff',
-      dark: '#2186C4',
+      dark: '#000000',
       contrastText: '#00bcc1',
     },
   },
@@ -85,7 +88,6 @@ const header = makeStyles(() => ({
   },
 
   appBar: {
-    backgroundColor: theme.palette.baseColor.main,
     boxShadow: "none"
   },
 
@@ -98,6 +100,14 @@ const header = makeStyles(() => ({
     marginRight: theme.spacing(2),
 
   },
+
+  links: {
+    color: theme.palette.primary.light,
+    textDecorationLine: "none",
+    "active": {
+      color: theme.palette.primary.dark
+    }
+  }
 }));
 
 const formBase = makeStyles(() => ({
@@ -138,16 +148,16 @@ const ColorlibConnector = withStyles({
     width: 2,
     marginRight: "auto",
     border: 0,
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.secondary.main,
     borderRadius: 1,
   },
 })(StepConnector);
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
-    backgroundColor: '#ccc',
+    backgroundColor: theme.palette.secondary.main,
     zIndex: 1,
-    color: '#fff',
+    color: theme.palette.secondary.dark,
     width: 25,
     height: 25,
     display: 'flex',
@@ -156,11 +166,13 @@ const useColorlibStepIconStyles = makeStyles({
     alignItems: 'center',
   },
   active: {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.thirdy.main,
+    color: theme.palette.baseColor.main,
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
   },
   completed: {
-    backgroundColor: theme.palette.primary.dark
+    color: theme.palette.primary.dark,
+    backgroundColor: theme.palette.primary.light
   },
 });
 
@@ -168,8 +180,11 @@ const formPet = makeStyles({
   stepper: {
     width: 200,
     marginRight: "auto",
-    color: "white",
     backgroundColor: "transparent",
   },
+  labelStep : {
+    color: theme.palette.baseColor.main
+  }
 })
+
 export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet }

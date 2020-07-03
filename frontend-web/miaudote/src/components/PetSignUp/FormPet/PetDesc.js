@@ -13,17 +13,22 @@ export default function PetDesc(props) {
   } = props;
   return (
     <React.Fragment>
-      <Grid 
-       container
-            xs={10}
-            direction="column"
-            justify="space-around"
-            alignItems="center"
-            className={classes.inputPaper}
+      <Grid
+        container
+        xs={10}
+        direction="column"
+        justify="space-around"
+        alignItems="center"
+        className={classes.inputPaper}
       >
-            <InputField name={descricao_comportamento.name} variant="outlined" label={descricao_comportamento.label} />
-            <InputField name={descricao.name} variant="outlined" label={descricao.label} />
-            <InputField name={situacao.name} variant="outlined" label={situacao.label} />
+        <InputField
+          name={descricao_comportamento.name}
+          variant="outlined"
+          label={descricao_comportamento.label}
+          fullWidth
+        />
+        <InputField name={descricao.name} variant="outlined" label={descricao.label} fullWidth />
+        <InputField name={situacao.name} variant="outlined" label={situacao.label} fullWidth />
       </Grid>
     </React.Fragment>
   );
