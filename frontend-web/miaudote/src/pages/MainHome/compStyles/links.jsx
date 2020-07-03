@@ -9,8 +9,6 @@ import { theme, header } from '../../../components/Layout/styles'
 
 const logo = require('../../../images/logoS.jpg')
 
-const themeMain = theme
-
 export default function Links(props) {
     const classes = header()
     const [value, setValue] = React.useState(2);

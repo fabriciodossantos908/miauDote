@@ -21,7 +21,7 @@ let theme = createMuiTheme({
       dark: '#00969a',
       contrastText: '#ffffff',
     },
-    thirdy : {
+    thirdy: {
       main: "#F28E13"
     },
     baseColor: {
@@ -78,7 +78,19 @@ const useStyle = makeStyles(() => ({
     width: "100%",
     height: 400,
     backgroundColor: theme.palette.primary.main
+  },
+  fadeBack: {
+    height: "inherit",
+    backgroundColor: 'rgba(0,0,0,0.5)'
+  },
+  links: {
+    color: theme.palette.primary.light,
+    textDecorationLine: "none",
+    "active": {
+      color: theme.palette.primary.dark
+    }
   }
+
 }));
 
 const header = makeStyles(() => ({
@@ -182,25 +194,33 @@ const formPet = makeStyles({
     marginRight: "auto",
     backgroundColor: "transparent",
   },
-  labelStep : {
+  labelStep: {
     color: theme.palette.baseColor.main
   }
 })
 
 const login = makeStyles({
-  paperMain:  {
-    width: 600,
-    height: 400
+  paperMain: {
+    width: 500,
+    height: 400,
+    marginTop: theme.spacing(1),
+    marginLeft: "auto",
+    marginRight: "auto"
   },
 
-  titleForm : {
+  titleForm: {
     height: 50
   },
 
-  paperForm : {
-    width: 400,
-    height: 350,
-    borderRadius: "10 10 5 5"
+  paperForm: {
+    width: "auto",
+    borderTopLeftRadius: 100,
+    borderTopRightRadius: 100
+  },
+  submitBtn: {
+    width: 100,
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.primary.contrastText
   }
 })
 

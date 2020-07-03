@@ -115,7 +115,7 @@ export default function CheckoutCompanyStep() {
               className={classesBase.formImage}
               image={listPhoto[activeStep]}
             >
-              <Grid container direction="row" style={{height: "inherit" ,backgroundColor: 'rgba(0,0,0,0.5)'}} >
+              <Grid container direction="row" className={classes.fadeBack} >
                 <Grid item container xs={12} justify="center">
                 </Grid>
                 <Grid item xs={12}>
