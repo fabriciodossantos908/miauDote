@@ -11,25 +11,25 @@ export default {
         label: 'Espécie*',
         requiredErrorMsg: 'Espécie é obrigatório!'
       },
+      raca: {
+        name: 'raca',
+        label: 'raça*',
+        requiredErrorMsg: 'Defina a raça de seu pet!'
+      },
       sexo: {
         name: 'sexo',
         label: 'Sexo*',
         requiredErrorMsg: 'Sexo é obrigatório!'
-      },
-      situacao: {
-        name: 'situacao',
-        label: 'Situação*',
-        requiredErrorMsg: 'Situação é obrigatório!'
       },
       descricao: {
         name: 'descricao',
         label: 'Descrição*',
         requiredErrorMsg: 'Descrição é obrigatório!'
       },
-      descricao_comportamento: {
-        name: 'descricao_comportamento',
-        label: 'Descrição de comportamento*',
-        requiredErrorMsg: 'Descrição de comportamento é obrigatório!'
+      cor: {
+        name: 'cor',
+        label: 'Cor*',
+        requiredErrorMsg: 'Informe a cor de seu pet!'
       },
       porte: {
         name: 'porte',
@@ -41,20 +41,45 @@ export default {
         label: 'Idade*',
         requiredErrorMsg: 'Idade é obrigatório!'
       },
+
+
+      cuidados_veterinarios: {
+        name: 'cuidados_veterinarios',
+        label: 'Cuidados veterinários',
+      },
+      vermifungado: {
+        name: 'verminfungado',
+        label: 'Verminfugado*',
+      },
+      castrado: {
+        name: 'castrado',
+        label: 'Castrado',
+      },
+      vacinado: {
+        name: 'vacinado',
+        label: 'Vacinado',
+      },
+      cep: {
+        name: 'cep',
+        label: 'Cep',
+      },
       latitude: {
         name: 'latitude',
         label: 'Latitude*',
         requiredErrorMsg: 'Latitude é obrigatório!'
       },
+      uf: {
+        name: 'uf',
+        label: 'uf*',
+      },
+      cidade: {
+        name: 'cidade',
+        label: 'Cidade',
+      },
       longitude: {
         name: 'longitude',
         label: 'Longitude*',
         requiredErrorMsg: 'Longitude é obrigatório!'
-      },
-      cep: {
-        name: 'cep',
-        label: 'Cep',
-        requiredErrorMsg: 'Somente números!'
       },
       url_foto: {
         name: 'url_foto',

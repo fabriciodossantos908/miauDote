@@ -1,34 +1,12 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import {Typography, Avatar, CardMedia} from '@material-ui/core'
+import {Typography } from '@material-ui/core'
 import { useStyles } from './styles';
 
 import { theme } from '../Layout/styles'
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
-
-const devs = {
-  davi: {
-    LinkedIn: "",
-    GitHub: "",
-  }, 
-  fabricio: {
-    LinkedIn: "",
-    GitHub: "",
-  }, 
-  joanna: {
-    LinkedIn: "",
-    GitHub: "",
-  }, 
-  joao: {
-    LinkedIn: "",
-    GitHub: "",
-  } 
-}
-
-const logoS = require('../../images/logoS.jpg')
-
 
 export default function Footer() {
   const classes = useStyles();

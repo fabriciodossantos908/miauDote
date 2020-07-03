@@ -1,16 +1,26 @@
 import React from 'react';
-import { Grid, Typography, Paper, Container } from '@material-ui/core';
-import { InputField, CheckboxField, SelectField } from '../../FieldStyle';
+import { Grid } from '@material-ui/core';
+import { InputField } from '../../FieldStyle';
+
+import { BtnSituation } from '../FieldStyle'
 
 export default function PetDesc(props) {
   const classes = props.useStyle()
   const {
     formField: {
-      situacao,
       descricao,
-      descricao_comportamento,
+      cuidados_veterinarios,
+      vermifungado,
+      castrado
     }
   } = props;
+  
+  const situation =  {
+      cuidados_veterinarios,
+      vermifungado,
+      castrado
+    }
+
   return (
     <React.Fragment>
       <Grid
@@ -21,14 +31,8 @@ export default function PetDesc(props) {
         alignItems="center"
         className={classes.inputPaper}
       >
-        <InputField
-          name={descricao_comportamento.name}
-          variant="outlined"
-          label={descricao_comportamento.label}
-          fullWidth
-        />
+        <BtnSituation situation={situation} />
         <InputField name={descricao.name} variant="outlined" label={descricao.label} fullWidth />
-        <InputField name={situacao.name} variant="outlined" label={situacao.label} fullWidth />
       </Grid>
     </React.Fragment>
   );

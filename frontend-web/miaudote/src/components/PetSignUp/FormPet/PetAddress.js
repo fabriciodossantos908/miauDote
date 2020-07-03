@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Typography, Paper, Container, Checkbox } from '@material-ui/core';
-import { InputField, CheckboxField, SelectField } from '../../FieldStyle';
+import { Grid } from '@material-ui/core';
+import { InputField } from '../../FieldStyle';
 
 
 // Tell about this. Create the user option to define if the per was founded or are of himself
@@ -8,17 +8,11 @@ import { InputField, CheckboxField, SelectField } from '../../FieldStyle';
 export default function PetAddress(props) {
   const classes = props.useStyle()
 
-  const [checked, setChecked] = React.useState(true);
-
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
-
   const {
     formField: {
       cep,
-      longitude,
-      latitude
+      uf,
+      cidade
     }
   } = props;
   return (
@@ -31,14 +25,10 @@ export default function PetAddress(props) {
         alignItems="center"
         className={classes.inputPaper}
       >
-        {/* <Checkbox
-          checked={checked}
-          onChange={handleChange}
-          inputProps={{ 'aria-label': 'primary checkbox' }}
-        /> */}
-        <InputField name={cep.name} variant="outlined" label={cep.label} disable="true" fullWidth />
-        {/* <InputField name={longitude.name} variant="outlined" label={longitude.label} fullWidth /> */}
-        {/* <InputField name={latitude.name} variant="outlined" label={latitude.label} fullWidth /> */}
+        <InputField name={cep.name} variant="outlined" label={cep.label}  fullWidth />
+        <InputField name={uf.name} variant="outlined" label={uf.label}  fullWidth />
+        <InputField name={cidade.name} variant="outlined" label={cidade.label}  fullWidth />
+         {/* <InputField name={longitude.name} variant="outlined" label={longitude.label} fullWidth /> */}
       </Grid>
     </React.Fragment>
   );

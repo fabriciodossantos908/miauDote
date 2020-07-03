@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Typography, Container } from '@material-ui/core';
-import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
+import { Grid } from '@material-ui/core';
+import { InputField } from '../../../FieldStyle';
 
 export default function FormUserPersonalInfo(props) {
   const classes = props.useStyle()
@@ -9,7 +9,6 @@ export default function FormUserPersonalInfo(props) {
       celular,
       sexo,
       dt_nasc,
-      url_foto
     }
   } = props;
   return (

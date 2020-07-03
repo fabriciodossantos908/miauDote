@@ -37,6 +37,7 @@ export default function PetInfo(props) {
     formField: {
       especie,
       porte,
+      cor
     }
   } = props;
   return (
@@ -56,6 +57,7 @@ export default function PetInfo(props) {
               icon={<PetsIcon fontSize="small" />} />}
             className={classesPet.fontBase}
             label="Pequeno"
+            name={porte}
             labelPlacement="bottom"
           />
           <FormControlLabel value="medio"
@@ -63,6 +65,7 @@ export default function PetInfo(props) {
               icon={<PetsIcon />} />}
             className={classesPet.fontBase}
             label="Médio"
+            name={porte}
             labelPlacement="bottom"
           />
 
@@ -71,12 +74,14 @@ export default function PetInfo(props) {
               icon={<PetsIcon fontSize="large" />} />}
             className={classesPet.fontBase}
             label="Grande"
+            name={porte}
             labelPlacement="bottom"
           />
         </RadioGroup>
         <SelectIconField
         name={especie.name} label={especie.label} data={specie} fullWidth
         ></SelectIconField>
+        <InputField variant="outlined" name={cor.name} label={cor.label} fullWidth />        
       </Grid>
     </React.Fragment>
   );

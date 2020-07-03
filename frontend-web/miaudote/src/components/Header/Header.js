@@ -1,8 +1,6 @@
 import React from 'react';
-import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import {
-  AppBar, Toolbar, Typography, Button, List,
-  ListItem, ListItemText, Collapse, Grid, Avatar
+  AppBar, Toolbar, Grid, Avatar
 } from '@material-ui/core'
 
 import { Link } from 'react-router-dom'

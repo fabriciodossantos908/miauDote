@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import moment from 'moment';
+// import moment from 'moment';
 import checkoutCompanyModel from './checkoutCompanyModel';
 const {
   formField: {
@@ -20,7 +20,6 @@ const {
     complemento,
     uf,
     id_tipo_servico,
-    url_logo,
   }
 } = checkoutCompanyModel;
 

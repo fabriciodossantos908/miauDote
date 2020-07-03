@@ -1,10 +1,9 @@
 import * as Yup from 'yup';
-import moment from 'moment';
+// import moment from 'moment';
 import checkoutUserModel from './checkoutUserModel';
 const {
   formField: {
     nome,
-    email,
     senha,
     senha_confirm,
     celular,
@@ -16,7 +15,6 @@ const {
 export default [
   Yup.object().shape({
     [nome.name]: Yup.string().required(`${nome.requiredErrorMsg}`),
-    [email.name]: Yup.string().required(`${email .requiredErrorMsg}`),
     [senha.name]: Yup.string().required(`${senha.requiredErrorMsg}`),
     [senha_confirm.name]: Yup.string().required(`${senha_confirm.requiredErrorMsg}`),
   }),

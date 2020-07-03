@@ -108,11 +108,6 @@ const header = makeStyles(() => ({
     boxShadow: "none"
   },
 
-  menuButton: {
-    marginRight: theme.spacing(2),
-
-  },
-
   links: {
     color: theme.palette.primary.light,
     textDecorationLine: "none",

@@ -77,7 +77,7 @@ export default function Perfil() {
         <Link to="/formUser" className={classesHeader.links}>
           <ListItem button>
             <ListItemIcon>
-              <PetsIcon />
+              <SettingsIcon />
             </ListItemIcon>
             <ListItemText primary="Configurações" />
           </ListItem>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Typography, Paper, Container } from '@material-ui/core';
-import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
+import { Grid } from '@material-ui/core';
+import { InputField } from '../../../FieldStyle';
 
 export default function companyPersonalInfo(props) {
   const classes = props.useStyle()

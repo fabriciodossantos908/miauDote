@@ -23,7 +23,6 @@ export default function PetInfo(props) {
       nome,
       idade,
       sexo,
-      url_foto
     }
   } = props;
   return (

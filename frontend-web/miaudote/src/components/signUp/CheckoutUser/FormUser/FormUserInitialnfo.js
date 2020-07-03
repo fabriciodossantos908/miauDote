@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Typography, Container } from '@material-ui/core';
-import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
+import { Grid } from '@material-ui/core';
+import { InputField } from '../../../FieldStyle';
 
 export default function FormUserInitialInfo(props) {
   const classes = props.useStyle();

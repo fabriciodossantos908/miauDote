@@ -22,7 +22,7 @@ import petValidationSchema from './PetModel/PetValidationSchema';
 import checkoutPetModal from './PetModel/checkoutPetModel';
 import petInitialInfo from './PetModel/petInitialValues';
 
-import { theme, useStyle, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet } from '../Layout/styles'
+import { useStyle, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet } from '../Layout/styles'
 import clsx from '../../../node_modules/clsx';
 
 const photoDog = require('../../images/petImg/dog.jpg')

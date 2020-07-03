@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Typography, Container } from '@material-ui/core';
-import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
+import { Grid } from '@material-ui/core';
+import { InputField, SelectField } from '../../../FieldStyle';
 
 const states = [
     {

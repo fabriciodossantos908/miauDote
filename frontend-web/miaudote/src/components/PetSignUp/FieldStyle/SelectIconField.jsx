@@ -13,12 +13,13 @@ import {
   ListItemIcon
 } from '@material-ui/core';
 
-function SelectIconField(props) {
+export default function SelectIconField(props) {
   const { label, data, ...rest } = props;
   const [field, meta] = useField(props);
   const { value: selectedValue } = field;
   const [touched, error] = at(meta, 'touched', 'error');
   const isError = touched && error && true;
+  
   function _renderHelperText() {
     if (isError) {
       return <FormHelperText>{error}</FormHelperText>;
@@ -52,5 +53,3 @@ SelectIconField.defaultProps = {
 SelectIconField.propTypes = {
   data: PropTypes.array.isRequired
 };
-
-export default SelectIconField;

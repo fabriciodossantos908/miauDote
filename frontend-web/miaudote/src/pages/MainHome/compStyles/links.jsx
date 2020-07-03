@@ -5,7 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@material-ui/core';
 
-import { theme, header } from '../../../components/Layout/styles'
+import { header } from '../../../components/Layout/styles'
 
 const logo = require('../../../images/logoS.jpg')
 
