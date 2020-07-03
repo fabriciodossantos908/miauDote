@@ -187,4 +187,21 @@ const formPet = makeStyles({
   }
 })
 
-export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet }
+const login = makeStyles({
+  paperMain:  {
+    width: 600,
+    height: 400
+  },
+
+  titleForm : {
+    height: 50
+  },
+
+  paperForm : {
+    width: 400,
+    height: 350,
+    borderRadius: "10 10 5 5"
+  }
+})
+
+export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet, login }
