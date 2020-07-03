@@ -2,17 +2,23 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 
+const cat = require('../../../images/petImg/cat.jpg')
+const dog = require('../../../images/petImg/dog.jpg')
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     '& > *': {
-      marginLeft: theme.spacing(30),
+      marginLeft: theme.spacing(60),
     },
   },
   large: {
     width: theme.spacing(7),
     height: theme.spacing(7),
   },
+  margin:{
+    margin: 0
+  }
 }));
 
 export default function ImageAvatars() {
@@ -20,9 +26,11 @@ export default function ImageAvatars() {
 
   return (
     <div className={classes.root}>
-      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.large} />
-      <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" className={classes.large} />
-      <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" className={classes.large} />
+    <div className={classes.margin}>
+      <Avatar alt="Remy Sharp" src={cat} className={classes.large} />
+    </div>
+      <Avatar alt="Travis Howard" src={dog} className={classes.large} />
+      <Avatar alt="Cindy Baker" src={cat} className={classes.large} />
     </div>
   );
 }
