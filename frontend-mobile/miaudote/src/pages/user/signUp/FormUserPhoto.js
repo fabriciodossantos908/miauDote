@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity, Button, Alert, AsyncStorage } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity, Button, Alert, AsyncStorage, Dimensions } from 'react-native';
 
 
 import { 
@@ -28,14 +28,18 @@ import {
 	Head,
 	Title
 } from './styles'
+import { bold } from 'colorette';
 
 export default class FormUserPhoto extends Component {
 
 	constructor(props){
+		
 		super(props)
 		// const { params } = this.props.route.params
+
 		const { data } = this.props.route.params.params
 		this.state = {
+			// name: 'joanna regina'
 			email: data.email,
 			password : data.password,
 			name: data.name,
@@ -55,7 +59,6 @@ export default class FormUserPhoto extends Component {
 
 		}
 	}
-
 	// nextPage = ( e ) => {
 	// 	this.props.navigation.navigate('Teste')
 	// }
@@ -145,42 +148,41 @@ export default class FormUserPhoto extends Component {
 		console.log(this.state)
 		
 		return (
-			<Container style={{ backgroundColor:'#fff', padding:6, justifyContent: "center",alignItems: "center", flex:1}}>
-				<Header>
-					<Title style={{textAlign:"center", flexDirection:"column"}}>Ola, {this.state.name.split(" ")[0]}!</Title>
-					{/* <ImageIcon source={require('../../../assets/user-account.png')}></ImageIcon> */}
-
-					{/*<DivProgressBar style={{justifyContent:'space-evenly'}}>
-						<DesabledStepIconColor/>
-						<DesabledStepIconColor/>
-						<DesabledStepIconColor/>
-						<ActiveStepIconColor/>
-					</DivProgressBar> */}
-					{/* <Text>Ola {this.state.name}</Text> */}
+			<Container style={{ padding:15, justifyContent: "center",alignItems: "center"}}>
+				<Header style={{ justifyContent:"flex-start", width:"100%"}}>
+					{/* <Title style={{textAlign:"center", flexDirection:"column"}}>Ola, {this.state.name.split(" ")[0]}!</Title> */}
+					<Title style={{fontWeight:"600"}}>Foto de perfil</Title>
+					<View style={styles.line}></View>
 				</Header>
 
+				<View style={{ width:'100%', justifyContent:"flex-start"}}> 
+					<Text style={{textAlign:"left", width:'80%', fontSize:15, lineHeight: 23,}}>
+						Olá {this.state.name.split(" ")[0]}, seu cadastro já foi concluído! 
+						Agora precisamos que envie uma foto para seu perfil no app.
+					</Text>
+				</View>
+
 				<View style={styles.main}>
-				
 					<Image
-						source={require('../../../assets/user-icon.png')}
+						// source={require('../../../assets/user-icon.png')}
 						style={styles.avatar}
 					/>
-					{/* onPress={imagePickerCall} */}
+
 					<TouchableOpacity style={styles.button}>
 						<Text style={styles.buttonText}>Escolher imagem</Text>
 					</TouchableOpacity>
-					{/* onPress={uploadImage} */}
-					<TouchableOpacity style={styles.button} onPress={this.cadastrar}>
-						<Text style={styles.buttonText}>Enviar imagem</Text>
+
+					<TouchableOpacity style={styles.buttonFinalize}>
+						<Text style={styles.buttonTextFinalize}>Enviar imagem</Text>
 					</TouchableOpacity>
 
-					<TouchableOpacity style={styles.skipButton} onPress = {this.skipToHome}>
+					
+				</View>	
+				<TouchableOpacity style={styles.skipButton} onPress = {this.skipToHome}>
 						<Text style = {styles.txtSkip}>
 							Agora não
 						</Text>
-					</TouchableOpacity>
-
-				</View>				
+					</TouchableOpacity>			
 			</Container>
 		);
 	}
@@ -190,58 +192,67 @@ const styles = StyleSheet.create({
 	main: {
 		flex: 1,
 		justifyContent: "center",
-		alignItems: "center"
+		alignItems: "center",
 	},
 	button: {
-		width: 190,
-		height: 50,
+		width: 240,
+		height: 45,
 		borderRadius: 3,
-		backgroundColor: "#369696",
+		backgroundColor: '#fff',
 		justifyContent: "center",
 		alignItems: "center",
-		marginTop: 20
+		marginTop: 20,
+		borderWidth: 1,
+		borderColor:'#fc6b6e'
+	},
+	buttonFinalize: {
+		width: 240,
+		height: 45,
+		borderRadius: 3,
+		backgroundColor: "#1bc7cb",
+		justifyContent: "center",
+		alignItems: "center",
+		marginTop: 20,
+		borderWidth: 1,
+		borderColor:'#1bc7cb',
 	},
 	buttonText: {
-		color: "#fff"
+		color: "#fc6b6e",
+		fontSize:15,
+		fontWeight:"500"
+	},
+	buttonTextFinalize: {
+		color: "#ffffff",
+		fontSize:15,
+		fontWeight:"500"
 	},
 	avatar: {
-		backgroundColor: "#cccccc",
-		width: 130,
-		height: 130,
-		borderRadius: 70,
-		bottom:50
-	},
-
-	input: {
-		marginTop: 8,
-		padding: 8,
-		alignSelf: 'stretch',
-		backgroundColor: 'white',
-		fontSize: 16,
-		borderRadius: 8,
-		borderColor: '#b0bec5',
-		borderWidth: 1,
+		backgroundColor: "#f4f2f2",
+		width: 220,
+		height: 220,
+		borderRadius: 150,
+		bottom:50,
+		top:20,
+		marginBottom:30
 	},
 
 	txtSkip: {
-		color: '#1bc7cb',
+		color: '#afafaf',
 		fontSize: 20,
-		// alignSelf:"flex-end",
-		// position: 'absolute',
 		bottom:5,
-		// right:1
-		//   marginBottom: 12
 	},
 
 	skipButton: {
 		height:40,
 		width:100,
 		alignSelf:"flex-end",
-		position: 'absolute',
-		bottom:10,
-		marginLeft:80,
-		left:80,
 		justifyContent:"center",
-		alignItems:"center"
+		alignItems:"center",
+		marginTop:20
+	},
+	line: {
+		borderBottomColor:'#1bc7cb',
+		borderBottomWidth:1,
+		width:'80%'
 	}
 })
