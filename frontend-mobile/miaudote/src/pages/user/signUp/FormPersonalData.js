@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Picker, ScrollView, Text } from 'react-native';
 
-
-import { HelperText, TextInput } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 
 import { TextInputMask } from 'react-native-masked-text'
 
@@ -156,7 +155,7 @@ export default class FormPersonalData extends Component {
 						<Inner>
 
 							<Header>
-								<Title>Informações pessoais</Title>
+								<Title style={{fontSize:32}}>Informações pessoais</Title>
 								{/* <ImageIcon source={require('../../../assets/user-account.png')}></ImageIcon> */}
 							</Header>
 

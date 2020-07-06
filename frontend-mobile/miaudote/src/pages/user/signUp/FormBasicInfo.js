@@ -6,7 +6,6 @@ import {
 	SecundaryTittle,
 } from '../../../components/styles';
 
-
 import {
 	BtnText,
 	Inner,
@@ -82,8 +81,8 @@ export default class FormBasicInfo extends Component {
 
 		return (
 			<KeyboardAvoidingView
-				// behavior={Platform.OS == "ios" ? "padding" : "height"}
-				behavior={"height"}
+				behavior={Platform.OS == "ios" ? "padding" : "height"}
+				// behavior={"height"}
 				style={{flex: 1}}
 			>
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -91,7 +90,7 @@ export default class FormBasicInfo extends Component {
 						<Inner>
 							<Header>
 								<Title>Crie sua conta</Title>
-								<ImageIcon source={require('../../../assets/user-account.png')}></ImageIcon>
+								<ImageIcon source={require('../../../assets/user-account1.png')}></ImageIcon>
 							</Header>
 							<ProgressBar>
 								<ActiveIcon></ActiveIcon>
@@ -179,6 +178,7 @@ const styles = StyleSheet.create({
 	  	justifyContent:"center",
 	  	alignItems:"center",
 	  	backgroundColor:'#1bc7cb',
+		borderRadius:5
 	},
 	btnContainer: {
 		// backgroundColor: "white",

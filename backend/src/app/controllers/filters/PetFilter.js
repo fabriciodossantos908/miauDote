@@ -11,7 +11,7 @@ class PetFilter {
       let pets = null;
       let count = null;
 
-      const { limite = 5, pag = 1, cidade } = req.query;
+      const { limite = 5, pag = 1, cidade, sexo, porte } = req.query;
       const offset = (pag - 1) * limite;
 
       try {
@@ -72,7 +72,8 @@ class PetFilter {
          limite = 5,
          especie = "",
          porte = "",
-         sexo = ""
+         sexo = "",
+         raca = ""
       } = req.query;
 
       if (!latitude || !longitude)
@@ -94,6 +95,12 @@ class PetFilter {
          sexo = `AND sexo = "${sexo}"`
       }
 
+      if(!especie && raca != "" && !porte && !sexo ){
+         raca = `WHERE raca = "${raca}"`
+      }else if(raca){
+         raca = `AND raca = "${raca}"`
+      }
+
       const offset = (pag - 1) * limite;
 
 
@@ -113,7 +120,7 @@ class PetFilter {
             )
             ) * 1.609344) as distancia
           FROM tbl_pets pets
-          ${especie} ${porte} ${sexo}
+          ${especie} ${porte} ${sexo} ${raca}
           having distancia < ${distancia}
           ORDER BY distancia
           LIMIT ${limite} OFFSET ${offset};

@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
             }
          }
       },
-      raca:{
+      raca: {
          type: DataTypes.STRING,
          allowNull: false,
          validate: {
@@ -56,19 +56,6 @@ module.exports = (sequelize, DataTypes) => {
             }
          }
       },
-      situacao: {
-         type: DataTypes.STRING,
-         allowNull: false,
-         validate: {
-            notEmpty: {
-               msg: 'Este campo não pode ser nulo.'
-            },
-            len: {
-               args: [1, 255],
-               msg: 'Tamanho de caracteres excedido'
-            }
-         }
-      },
       descricao: {
          type: DataTypes.STRING,
          allowNull: false,
@@ -82,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
             }
          }
       },
-      descricao_comportamento: {
+      cor: {
          type: DataTypes.STRING,
          allowNull: false,
          validate: {
@@ -90,8 +77,8 @@ module.exports = (sequelize, DataTypes) => {
                msg: 'Este campo não pode ser nulo.'
             },
             len: {
-               args: [1, 255],
-               msg: 'Tamanho de caracteres excedido'
+               args: [1, 30],
+               msg: 'Este campo deve conter de 1 a 30 caracteres'
             }
          }
       },
@@ -110,7 +97,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       idade: {
          type: DataTypes.STRING,
-         allowNUll: false,
+         allowNull: false,
          validate: {
             notEmpty: {
                msg: 'Este campo não pode ser nulo.'
@@ -120,6 +107,22 @@ module.exports = (sequelize, DataTypes) => {
                msg: 'Tamanho de caracteres excedido'
             }
          }
+      },
+      cuidados_veterinarios: {
+         type: DataTypes.BOOLEAN,
+         allowNull: true,
+      },
+      vermifugado: {
+         type: DataTypes.BOOLEAN,
+         allowNull: true,
+      },
+      castrado: {
+         type: DataTypes.BOOLEAN,
+         allowNull: true,
+      },
+      vacinado: {
+         type: DataTypes.BOOLEAN,
+         allowNull: true,
       },
       uf: {
          type: DataTypes.STRING,
@@ -187,6 +190,10 @@ module.exports = (sequelize, DataTypes) => {
                msg: 'URL inválida'
             }
          }
+      },
+      visualizacoes: {
+         type: DataTypes.INTEGER,
+         allowNull: true,
       },
       id_usuario: {
          type: DataTypes.INTEGER,

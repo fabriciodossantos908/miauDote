@@ -25,7 +25,8 @@ class PetController {
         offset: offset,
         order: [
           ['id', 'DESC']
-        ]
+        ],
+        include: {model: Usuario, as: 'doador'}
       });
       if (pets.length > 0) {
         pets = pets.map(pet => {

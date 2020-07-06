@@ -3,17 +3,17 @@ import { Dimensions } from 'react-native';
 import { exp } from 'react-native-reanimated';
 
 
-// backgroundColor:#42a9aa;
+// background-color:#42a9aa;
 // padding:8px;
 export const BlueContainer = styled.View `
     flex: 1;
 `;
 
-// justifyContent: center;
-    // alignItems: center
+// justify-content: center;
+    // align-items: center
 export const MainContainer = styled.View `
     flex: 1;
-    backgroundColor:#fff;
+    background-color:#fff;
     padding:16px;
 `
 
@@ -26,124 +26,124 @@ export const Body = styled.View `
     
 `
 
-// backgroundColor: #ccc8;
-// borderWidth: 1;
-// borderColor:#5A6978;
+// background-color: #ccc8;
+// border-width: 1;
+// border-color:#5A6978;
 
 export const Footer = styled.View `
     flex: 1;
 `
 
 export const OvalView = styled.View `
-    marginTop: 20;
+    margin-top: 20;
     width: 100%;
     height: 30;
-    backgroundColor: #00BCD4;
-    borderRadius: 50;
+    background-color: #00BCD4;
+    border-radius: 50;
     transform: {
-    scaleX: 2
+    scaleX: 2;
     }
 `
 
  export const Div = styled.View `
     flex:1;
-    justifyContent: center;
-    alignItems: center;
+    justify-content: center;
+    align-items: center;
 `
 // height:50
 
-// borderWidth: 1;
-    // borderColor:#000;
+// border-width: 1;
+    // border-color:#000;
 export const Head = styled.View `
     flex: 0.5;
-    justifyContent: center;
-    alignItems: center;
-    flexDirection: row;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 `
 
 // flex: 0.3;
 export const HeaderDecoration = styled.View `
     
-    backgroundColor:#fff;
-    justifyContent: center;
-    alignItems: center
+    background-color:#fff;
+    justify-content: center;
+    align-items: center;
 `
 
 export const ActiveStepIconColor = styled.View `
     height:15;
     width:15;
-    backgroundColor:#FC6B6E;
-    borderRadius:1000;    
+    background-color:#FC6B6E;
+    border-radius:1000;   
 `
-
 
 export const DesabledStepIconColor = styled.View `
     height:15;
     width:15;
-    backgroundColor:#cccccc;
-    borderRadius:1000;
+    background-color:#cccccc;
+    border-radius:1000;
 `
 
 
-// borderColor: #000;
-    // borderWidth:1;
+/* // border-color: #000;
+    // border-width:1; */
 export const Form = styled.View `
     flex:1;
-    justifyContent:center;
-    marginBottom:50;
+    justify-content:center;
+    margin-bottom:50;
    
 `
 
- // borderColor: #000;
-    // borderWidth:1;
+ /* // border-color: #000; */
+    // border-width:1;
 export const DivForm = styled.View `
     flex: 2;
     padding:8px;
-    marginTop:20px
+    margin-top:20px;
 `
 
 export const DivProgressBar = styled.View `
     flex: 0.3;
     padding:8px;
-    flexDirection:row;
-    justifyContent: center;
-    alignItems: center;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
 `
 
 
 
 export const BtnText = styled.Text `
     color: #fff;
-    fontSize:18px
+    font-size:18px;
+    font-weight:bold;
 `
 
 export const DivSignOpions = styled.View `
     flex: 1;
     width: 100%;
-    justifyContent: center;
-    alignItems: center;
-    backgroundColor: #c78
+    justify-content: center;
+    align-items: center;
+    background-color: #c78;
 
 `
 
 export const ContainerLine = styled.View `
     flex:1;
     width: 100%;
-    justifyContent: center;
-    alignItems: center;
-    flexDirection:row;
+    justify-content: center;
+    align-items: center;
+    flex-direction:row;
 
 `;
 
 
 
-// top:3;
+/* // top:3; */
 export const HorizontalLine = styled.View `
-    borderWidth: 0.5;
-    borderColor:#5A6978;
+    border-width: 0.5;
+    border-color:#5A6978;
     margin:10px;
     width:80;
-    top:3
+    top:3;
 `;
 
 
@@ -152,10 +152,10 @@ export const HorizontalLine = styled.View `
 export const SignOptions = styled.View `
     height:50;
     width: 100%;
-    justifyContent: center;
-    alignItems: center;
-    flexDirection:row;
-    `
+    justify-content: center;
+    align-items: center;
+    flex-direction:row;
+    `;
 
 export const IconSignUpOptions = styled.Image `
     height: 60;
@@ -163,15 +163,15 @@ export const IconSignUpOptions = styled.Image `
 `
 
 export const ButtonIcon = styled.TouchableOpacity `
-    marginTop:0;
+    margin-top:0;
     height: 60;
     width: 60;
-    marginLeft:15;
-    marginRight:15;
+    margin-left:15;
+    margin-right:15;
 `
 
-    // backgroundColor:#f88c;
-    // marginBottom:10
+    /* // background-color:#f88c;
+    // margin-bottom:10 */
 
 export const SubtittleContainer = styled.View `
     
@@ -180,86 +180,86 @@ export const SubtittleContainer = styled.View `
 `
 
 
-    // borderWidth: 0.5;
-    // borderColor:#5A6978;
+    /* // border-width: 0.5;
+    // border-color:#5A6978; */
 
 export const DivInput = styled.View `
     flex:0.3;
     paddingHorizontal:3;
-    backgroundColor:#fff;
+    background-color:#fff;
 `
 
-// fontFamily:Arial;
+/* // fontFamily:Arial; */
 export const FormLabel = styled.Text `
     
     color: #369696;
-    fontWeight:bold
+    font-weight:bold;
 `
 
 export const ContainerTxtInput = styled.Text `
-    flexDirection: row;
-    borderBottomWidth: 1.2;
-    borderColor: #B6B6B6;
+    flex-direction: row;
+    border-bottom-width: 1.2;
+    border-color: #B6B6B6;
     paddingHorizontal:3;
-    alignItems:center;
+    align-items:center;
 `
 
 export const FormTextInput = styled.TextInput `
     flex: 1;
     width:80%;
-    minHeight: 40;
-    maxHeight:50;
-    alignSelf: center;
-    fontSize: 18;
+    min-height: 40;
+    max-height:50;
+    align-self: center;
+    font-size: 18;
 `
 
 
-// ****** Form Personal Data
+/* // ****** Form Personal Data */
 
 
-    // borderWidth: 0.5;
-    // borderColor:#5A6978;
+    /* // border-width: 0.5;
+    // border-color:#5A6978; */
 
 export const DivInputRow = styled.View `
     width:100%;
-    flexDirection:row;
+    flex-direction:row;
     
 `
 
 export const DivInputMedium = styled.View `
     flex:1;
     paddingHorizontal:3;
-    marginRight:10;
+    margin-right:10;
 `
 export const FormTextInputMedium = styled.TextInput `
     flex: 1;
     width:70%;
-    minHeight: 40;
-    maxHeight:50;
-    alignSelf: center;
-    fontSize: 18;
+    min-height: 40;
+    max-height:50;
+    align-self: center;
+    font-size: 18;
 `
 
 export const DivInputSmall = styled.View `
     flex:0.5;
     paddingHorizontal:3;
-    marginRight:10;
+    margin-right:10;
 `
 
 export const FormTextInputSmall = styled.TextInput `
     flex: 0.5;
     width:60%;
-    minHeight: 40;
-    maxHeight:50;
-    alignSelf: center;
-    fontSize: 18;
+    min-height: 40;
+    max-height:50;
+    align-self: center;
+    font-size: 18;
 `
 
 export const DivButtons = styled.View `
     flex:0.4;
-    flexDirection:row;
+    flex-direction:row;
     padding:8px;
-    alignItems: center;
+    align-items: center;
 `
 
 
@@ -267,9 +267,9 @@ export const ButtonSmallPrevious = styled.TouchableOpacity `
     position: absolute; 
     height: 45px;
     width: 130px;
-    justifyContent:center;
-    alignItems:center;
-    backgroundColor:#fc6b6e;
+    justify-content:center;
+    align-items:center;
+    background-color:#fc6b6e;
 `
 
 export const ButtonSmallNext = styled.TouchableOpacity `
@@ -277,9 +277,9 @@ export const ButtonSmallNext = styled.TouchableOpacity `
     height: 45px;
 	width: 130px;
     right: 10px;
-    justifyContent:center;
-    alignItems:center;
-    backgroundColor:#1bc7cb;
+    justify-content:center;
+    align-items:center;
+    background-color:#1bc7cb;
     
 `
 
@@ -291,89 +291,90 @@ const { width } = Dimensions.get('window')
 export const Inner = styled.View `
     padding:20px;
     flex: 1;
-    justifyContent:space-around;
-    backgroundColor:#ffffff
-`
+    justify-content:space-around;
+    background-color:#ffffff;
+`;
 
 export const Header = styled.View `
-    marginTop: 70px;
+    margin-top: 70px;
     bottom:20px; 
-    flexDirection:row; 
-    justifyContent:center;
-`
+    /* flex-direction:row;  */
+    justify-content:center;
+`;
 
 export const Title = styled.Text `
-    fontSize: 32px;
-    marginBottom: 15px;
-`
+    font-size: 40px;
+    margin-bottom: 15px;
+    color:#47525E;
+`;
 
 export const ImageIcon = styled.Image `
-    height:40px;
-    width:40px;
+    height:50px;
+    width:50px;
     top: 5px; 
-    left:10px
-`
+    left:10px;
+`;
 
 export const ProgressBar = styled.View `
-    justifyContent: space-evenly;
-    flexDirection: row;
-    marginTop:-20px
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top:-20px;
 
-`
+`;
 
 export const ActiveIcon = styled.View `
     height:15px;
     width:15px;
-    backgroundColor:#FC6B6E;
-    borderRadius:100px;
+    background-color:#FC6B6E;
+    border-radius:100px;
 
-`
+`;
 
 export const DisableIcon = styled.View `
     height:15px;
     width:15px;
-    backgroundColor:#ccc;
-    borderRadius:100px;
-`
+    background-color:#ccc;
+    border-radius:100px;
+`;
 
 export const SubTitle = styled.Text `
-    fontSize: 17px;
-    top:30px
-`
+    font-size: 17px;
+    top:30px;
+`;
 // export const Form = styled.Text `
-// top:40 ,flex:1, paddingTop:10
+// top:40 ,flex:1, paddingTop:10;
 // `
 
 
 export const ButtonNext = styled.TouchableOpacity `
     height: 45px;
     width: 130px;
-    justifyContent:center;
-    alignItems:center;
-    backgroundColor:#1bc7cb;
+    justify-content:center;
+    align-items:center;
+    background-color:#1bc7cb;
 `
 
 export const ContainerButton = styled.View `
-    marginTop: 60px;
-    marginLeft:auto;
-    marginRight:0;
+    margin-top: 60px;
+    margin-left:auto;
+    margin-right:0;
 
 `
 
 export const ButtonContainer = styled.View `
-    marginTop: 60px;
-    flexDirection:row;
-    alignItems: center;
-    justifyContent:space-between
+    margin-top: 60px;
+    flex-direction:row;
+    align-items: center;
+    justify-content:space-between;
 
 `
 
 export const ButtonPrevious = styled.TouchableOpacity `
     height: 45px;
     width: 130px;
-    justifyContent:center;
-    alignItems:center;
-    backgroundColor:#fc6b6e;
+    justify-content:center;
+    align-items:center;
+    background-color:#fc6b6e;
 `
 
 
@@ -399,16 +400,17 @@ export const TextEmailConfirm = styled.Text`
 export const Container = styled.View`
     flex: 1;
     background-color: #fff;
-    padding: 32px
+    padding: 32px;
 `;
 
 
-// export const Title = styled.Text ``
-// export const Title = styled.Text ``
-// export const Title = styled.Text ``
-// export const Title = styled.Text ``
+// export const Title = styled.Text `
 
+// `
 
+// export const Title = styled.Text ``
+// export const Title = styled.Text ``
+// export const Title = styled.Text ``
 // 
 //    
 

@@ -51,58 +51,86 @@ export default class Home extends Component {
         <Container >
           <LocalView>
             <Icon name="md-pin" size={25} color='#000' />
-            <LocalText> Jandira, SP </LocalText>
+            <LocalText> Itapevi, SP </LocalText>
           </LocalView>
           <SalutationView>
             <SalutationTitle>
-              Olá, Joanna
-                        </SalutationTitle>
+              Olá, Davi
+              </SalutationTitle>
             <SalutationText>
               Tá afim de encontrar o seu
-                        </SalutationText>
+              </SalutationText>
             <SalutationText>
               novo melhor amigo?
-                        </SalutationText>
+              </SalutationText>
           </SalutationView>
-          <MenuView>
-            <MenuOption>
-              <MenuOptionImage source={require('../../../assets/cat-icon.png')} />
-              <MenuOptionQuantity>
-                50
-                        </MenuOptionQuantity>
-              <MenuOptionName>
-                Gatos
-                        </MenuOptionName>
-            </MenuOption>
+
+          <MenuView horizontal={true} centerContent={true} showsHorizontalScrollIndicator={false}>
+
             <MenuOption>
               <MenuOptionImage source={require('../../../assets/dog-icon.png')} />
               <MenuOptionQuantity>
-                50
-                        </MenuOptionQuantity>
+                32
+                </MenuOptionQuantity>
               <MenuOptionName>
                 Cães
-                        </MenuOptionName>
+               </MenuOptionName>
             </MenuOption>
+
+            <MenuOption>
+              <MenuOptionImage source={require('../../../assets/cat-icon.png')} />
+              <MenuOptionQuantity>
+                40
+                </MenuOptionQuantity>
+              <MenuOptionName>
+                Gatos
+               </MenuOptionName>
+            </MenuOption>
+
             <MenuOption>
               <MenuOptionImage source={require('../../../assets/bird-icon.png')} />
               <MenuOptionQuantity>
-                50
-                        </MenuOptionQuantity>
+                13
+                </MenuOptionQuantity>
               <MenuOptionName>
                 Pássaros
-                        </MenuOptionName>
+               </MenuOptionName>
             </MenuOption>
+
+            <MenuOption>
+              <MenuOptionImage source={require('../../../assets/rabbit-icon.png')} />
+              <MenuOptionQuantity>
+                8
+                </MenuOptionQuantity>
+              <MenuOptionName>
+                Coelhos
+               </MenuOptionName>
+            </MenuOption>
+
+            <MenuOption style={{ marginRight: 0 }}>
+              <MenuOptionImage source={require('../../../assets/hamster-icon.png')} />
+              <MenuOptionQuantity>
+                2
+                </MenuOptionQuantity>
+              <MenuOptionName>
+                Roedores
+                </MenuOptionName>
+            </MenuOption>
+
           </MenuView>
+
           <DivisionView />
+
           <PetsAroundTitle>
-            Pets próximos de você
-                    </PetsAroundTitle>
+            Pets a procura de um dono pertinho de você!  ;)
+          </PetsAroundTitle>
+
           <CardPet style={styles.card}>
             <CardPhotoImage source={require('../../../assets/gato-image.jpg')} imageStyle={{ borderRadius: 15 }}></CardPhotoImage>
             <CardDescription>
               <CardLikeCount>
-                <Icon name="md-heart" size={25} color="#FC6B6E" />
-                <ViewText>126 gostaram</ViewText>
+                <Icon name="md-eye" size={25} color="#FC6B6E" style={{ marginTop: -4 }} />
+                <ViewText>126 Visualizaram</ViewText>
               </CardLikeCount>
               <CardInformations>
                 <CardDescriptionInformation>
@@ -112,7 +140,7 @@ export default class Home extends Component {
                 <CardDescriptionDistance>
                   <CardDistanceText>
                     4.5Km
-                                    </CardDistanceText>
+                  </CardDistanceText>
                 </CardDescriptionDistance>
               </CardInformations>
             </CardDescription>
@@ -127,8 +155,8 @@ export default class Home extends Component {
             <CardPhotoImage source={require('../../../assets/dog-image.jpeg')} imageStyle={{ borderRadius: 15 }}></CardPhotoImage>
             <CardDescription>
               <CardLikeCount>
-                <Icon name="md-heart" size={25} color="#FC6B6E" />
-                <ViewText>86 gostaram</ViewText>
+                <Icon name="md-eye" size={25} color="#FC6B6E" style={{ marginTop: -4 }} />
+                <ViewText>86 Visualizaram</ViewText>
               </CardLikeCount>
               <CardInformations>
                 <CardDescriptionInformation>
@@ -153,8 +181,8 @@ export default class Home extends Component {
             <CardPhotoImage source={require('../../../assets/bird-image.jpg')} imageStyle={{ borderRadius: 15 }}></CardPhotoImage>
             <CardDescription>
               <CardLikeCount>
-                <Icon name="md-heart" size={25} color="#FC6B6E" />
-                <ViewText>133 gostaram</ViewText>
+                <Icon name="md-eye" size={25} color="#FC6B6E" style={{ marginTop: -4 }} />
+                <ViewText>133 Visualizaram</ViewText>
               </CardLikeCount>
               <CardInformations>
                 <CardDescriptionInformation>
@@ -187,15 +215,6 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
   card: {
-    // shadowColor: "#000",
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 1,
-    // },
-    // shadowOpacity: 0.22,
-    // shadowRadius: 2.22,
-
-    // elevation: 3,
     borderRadius: 10,
     borderWidth: 1,
     borderTopColor: '#dedede',

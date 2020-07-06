@@ -1,11 +1,4 @@
-import styled from 'styled-components/native';
-
-export const Container = styled.ScrollView`
-   padding: 16px;
-   background-color: #fff;
-   padding-bottom: 16px;
-`;
-
+import styled from  'styled-components/native';
 
 // View com a informação de localização do usuário
 export const LocalView = styled.View`
@@ -19,79 +12,7 @@ export const LocalText = styled.Text`
    font-family: 'Poppins_400Regular';
 `;
 
-
-// View com uma saudação ao usuário
-export const SalutationView = styled.View`
-   margin-top: 48px;
-   margin-bottom: 16px;
-   justify-content: flex-start;
-`;
-
-export const SalutationTitle = styled.Text`
-   font-size: 24px;
-   font-family: 'Poppins_400Regular';
-`;
-
-export const SalutationText = styled.Text`
-   font-size: 17px;
-   font-family: 'Poppins_400Regular';
-   color: #ccc;
-`;
-
-
-// View com o menu de seleção de espécie
-export const MenuView = styled.ScrollView`
-   flex-direction: row;
-   height: 160px;
-   padding: 16px;
-   padding-left: 0;
-   margin-bottom: 56px;
-`;
-
-export const MenuOption = styled.TouchableOpacity`
-   width: 80px;
-   height: 132px;
-   margin-right: 20px;
-   justify-content: center;
-   align-items: center;
-`;
-
-export const MenuOptionImage = styled.Image`
-   width: 80px;
-   height: 80px;
-   border-radius: 40px;
-`;
-
-export const MenuOptionQuantity = styled.Text`
-   font-size: 20px;
-   font-weight: bold;
-   font-family: 'Poppins_400Regular';
-   color: #1bc7cb;
-`;
-
-export const MenuOptionName = styled.Text`
-   font-size: 16px;
-   font-family: 'Poppins_400Regular';
-   color: #000;
-`;
-
-export const DivisionView = styled.View`
-   width: 128px;
-   border-width: 2px;
-   border-color: #ccc;
-   align-self: center;
-   margin-bottom: 40px;
-`;
-
-export const PetsAroundTitle = styled.Text`
-   font-size: 20px;
-   color: #4d4f4f;
-   font-family: 'Poppins_400Regular';
-   margin-bottom: 16px;
-`;
-
-// View com a listagem dos pets mais próximos
-
+// Card dos pets
 export const CardPet = styled.View`
    width: 272px;
    height: 368px;
@@ -181,4 +102,58 @@ export const CardButtonText = styled.Text`
    color: #fff;
    font-weight: bold;
    font-family: 'Poppins_400Regular';
+`;
+
+// Filtros de listagem
+export const FilterTitle = styled.Text`
+   font-size: 22px;
+   color: #1bc7cb;
+   margin-top: 32px;
+   font-family: 'Poppins_400Regular';
+`;
+
+export const FiltersView = styled.View`
+   flex-direction: row;
+   justify-content: center;
+   padding: 16px;
+   border-width: 1px;
+   border-color: #ccc;
+   margin-bottom: 32px;
+`;
+
+export const FilterItem = styled.View`
+   flex-direction: column;
+   padding: 8px;
+   justify-content: center;
+   align-items: center;
+   /* background-color: green; */
+`;
+
+export const FilterSelect = styled.Picker`
+   width: 80px;
+   height: 32px;
+   text-align: center;
+   font-family: 'Poppins_400Regular';
+   border: none;
+`;
+
+
+export const PetsAroundTitle = styled.Text`
+   font-size: 20px;
+   color: #4d4f4f;
+   font-weight: bold;
+   font-family: 'Poppins_400Regular';
+   margin-bottom: 16px;
+`;
+
+export const DivisionView = styled.View`
+   width: 128px;
+   border-width: 2px;
+   border-color: #ccc;
+   align-self: center;
+   margin-bottom: 40px;
+`;
+
+
+export const DistanceTitle = styled.Text`
 `;

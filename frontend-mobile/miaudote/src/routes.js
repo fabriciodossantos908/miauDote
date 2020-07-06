@@ -22,6 +22,8 @@ import AboutFindingPet from './pages/user/about/AboutFindingPet';
 
 // Importações para tela de pets
 import PetDetails from './pages/pets/details/PetDetails';
+import PetList from './pages/pets/list/PetList';
+import PetRegisterBasicInfo from './pages/pets/register/basicInfo';
 
 
 
@@ -32,12 +34,11 @@ export default function MyStack() {
         <NavigationContainer>
             <Stack.Navigator>
 
-            <Stack.Screen
-                    name="Home"
-                    component={Home}
+                <Stack.Screen
+                    name="PetBasicInfo"
+                    component={PetRegisterBasicInfo}
                     options={{ headerShown: false }}
                 />
-
                 {/* Telas de Login e Cadastro */}
 
                 <Stack.Screen
@@ -85,11 +86,11 @@ export default function MyStack() {
 
                 {/* Telas mais relacionadas a usuário */}
 
-                {/* <Stack.Screen
+                <Stack.Screen
                     name="Home"
                     component={Home}
                     options={{ headerShown: false }}
-                /> */}
+                />
 
                 <Stack.Screen
                     name="Perfil"
@@ -120,6 +121,18 @@ export default function MyStack() {
                 <Stack.Screen
                     name="AboutDonation"
                     component={AboutDonation}
+                    options={{ headerShown: false }}
+                />
+
+                {/* <Stack.Screen
+                    name="PetBasicInfo"
+                    component={PetRegisterBasicInfo}
+                    options={{headerShown: false}}
+                /> */}
+
+                <Stack.Screen
+                    name="PetList"
+                    component={PetList}
                     options={{ headerShown: false }}
                 />
 

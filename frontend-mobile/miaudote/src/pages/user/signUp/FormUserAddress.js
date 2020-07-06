@@ -3,7 +3,7 @@ import { View, KeyboardAvoidingView, ScrollView, StyleSheet, Text, Platform, Tou
 
 import { MaterialIcons } from '@expo/vector-icons'
 
-import { HelperText, TextInput } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 
 import { TextInputMask } from 'react-native-masked-text'
 
@@ -249,9 +249,9 @@ export default class FormUserAddress extends Component {
 
 		try {
 			let response =  await fetch('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/registrar',params)
-			console.log(JSON.stringify(response))
+			// console.log(JSON.stringify(response))
 
-			console.log(response)
+			// console.log(response)
 
 			// ok: status code =  200 - 299
 			if(!response.ok){
@@ -261,9 +261,11 @@ export default class FormUserAddress extends Component {
 				// .json() captura e tranforma o corpo em json
 
 				const user = await response.json()
-				console.log(user)
+				// console.log(user)
 			 } else {
 				alert('Cadastrado com Sucesso')
+
+				// this.props.navigation.navigate('FormUserPhoto')
 
 				// AsyncStorage.setItem( 'token', user.token )
 
@@ -300,7 +302,7 @@ export default class FormUserAddress extends Component {
 						<Inner>
 
 							<Header>
-								<Title>Informe seu endereço</Title>
+								<Title  style={{fontSize:32}}>Informe seu endereço</Title>
 								{/* <ImageIcon source={require('../../../assets/user-account.png')}></ImageIcon> */}
 							</Header>
 

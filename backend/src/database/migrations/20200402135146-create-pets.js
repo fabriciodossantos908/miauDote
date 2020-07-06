@@ -16,7 +16,7 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING
     },
-    raca:{
+    raca: {
       allowNull: false,
       type: Sequelize.STRING
     },
@@ -24,15 +24,11 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING,
     },
-    situacao: {
-      allowNull: false,
-      type: Sequelize.STRING
-    },
     descricao: {
       allowNull: false,
       type: Sequelize.STRING,
     },
-    descricao_comportamento: {
+    cor: {
       allowNull: false,
       type: Sequelize.STRING,
     },
@@ -44,13 +40,33 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING,
     },
-    uf: {
-      type: Sequelize.STRING,
-      allowNull: false
+    cuidados_veterinarios: {
+      allowNull: true,
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
     },
-    cidade: {
-      type: Sequelize.STRING,
-      allowNull: false
+    vermifugado: {
+      allowNull: true,
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
+    },
+    vacinado: {
+      allowNull: true,
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
+    },
+    castrado: {
+      allowNull: true,
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
+    },
+    uf:{
+      allowNull: false,
+      type: Sequelize.STRING
+    },
+    cidade:{
+      allowNull: false,
+      type: Sequelize.STRING
     },
     latitude: {
       type: Sequelize.STRING,
@@ -63,6 +79,11 @@ module.exports = {
     url_foto: {
       allowNull: false,
       type: Sequelize.STRING
+    },
+    visualizacoes:{
+      allowNull: true,
+      type: Sequelize.INTEGER,
+      defaultValue: 0
     },
     id_usuario: {
       type: Sequelize.INTEGER,
