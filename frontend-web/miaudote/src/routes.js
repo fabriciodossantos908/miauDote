@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Home from './pages/MainHome/home'
+import Home from './pages/initialHome/InitialHome'
 
 import CheckoutCompanyStep from './components/signUp/CheckoutCompany/checkoutCompanyStep'
 import CheckoutUserStep from './components/signUp/CheckoutUser/checkoutUserStep'
@@ -9,7 +9,7 @@ import CheckoutPet from './components/PetSignUp/CheckoutPet'
 import Login from './components/SignIn/Login'
 import Test from './pages/test'
 import Gear from './pages/utils/gears/gear'
-import MainHome from './pages/home/MainHome'
+// import UserHome from './pages/home/UserHome'
 
 import HeaderMain from './pages/MainHome/header'
 
@@ -22,11 +22,11 @@ function Routes() {
 
                 <Switch>
                     <Route path='/' exact >
-                        <MainHome />
-                    </Route>
-                    <Route path='/mainHome' exact >
                     <Home />
                     </Route>
+                    {/* <Route path='/mainHome' exact >
+                    <UserHome />
+                    </Route> */}
 
                     <Route path='/formCompany' exact >
                         <CheckoutCompanyStep />

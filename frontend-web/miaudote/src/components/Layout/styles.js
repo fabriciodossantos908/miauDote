@@ -8,7 +8,7 @@ import StepConnector from '@material-ui/core/StepConnector';
 
 let theme = createMuiTheme({
   palette: {
-    type: "dark",
+    type: "light",
     primary: {
       light: '#ff9d9c',
       main: '#fc6b6ez',
