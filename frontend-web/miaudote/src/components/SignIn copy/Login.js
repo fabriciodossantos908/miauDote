@@ -1,8 +1,6 @@
 import React from 'react'
 import { Paper, CardMedia, Grid, Typography, Button, Menu, MenuItem } from '@material-ui/core';
 import { Formik, Form } from 'formik';
-import Axios from 'axios'
-
 
 import checkoutLoginModel from './loginModel/checkoutLoginModel'
 import loginValidationSchema from './loginModel/loginValidationSchema'
@@ -18,6 +16,11 @@ import { Facebook, Email } from '@material-ui/icons';
 const photo = require('../../images/petImg/dog.jpg')
 
 const { formId, formField } = checkoutLoginModel;
+
+// function _sleep(ms) {
+//   return new Promise(resolve => setTimeout(resolve, ms));
+// }
+
 
 const BtnsignUp = (props) => {
     const classes = props.useStyle()
@@ -56,47 +59,16 @@ const BtnsignUp = (props) => {
     )
 }
 
-const OtherLogin = () => {
-
-    return (
-        <React.Fragment>
-
-            <Button>
-                <Email />
-            </Button>
-
-            <Button>
-                <Facebook />
-            </Button>
-        </React.Fragment>
-    )
-
-}
-
-function _sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 async function _submitForm(values, actions) {
-    await _sleep(1000);
+    // await _sleep(1000);
     // alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
 
-    Axios.post("http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/autenticar", values)
-    .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
 }
 
 function _handleSubmit(values, actions) {
     _submitForm(values, actions);
 }
-
-console.log(loginValidationSchema)
-
 
 export default function Login() {
     const classes = useStyle();
@@ -118,7 +90,7 @@ export default function Login() {
 
                             <Formik
                                 initialValues={InitialValues}
-                                loginValidationSchema={loginValidationSchema}
+                                petValidationSchema={loginValidationSchema}
                                 onSubmit={_handleSubmit}
                             >
                                 {({ isSubmitting }) => (
@@ -132,21 +104,35 @@ export default function Login() {
                                                     alignItems="center"
                                                     className={classes.inputPaper}
                                                 >
+                                                    <Grid item container orientation="row" justify="center" alignContent="space-around">
+                                                        <Grid>
+                                                            <Typography variant="subtitle2">Entrar com:</Typography>
+                                                        </Grid>
+                                                        <Grid>
+
+                                                            <Button>
+                                                                <Email />
+                                                            </Button>
+
+                                                            <Button>
+                                                                <Facebook />
+                                                            </Button>
+                                                        </Grid>
+
+                                                    </Grid>
                                                     <InputField
                                                         name={formField.email.name}
-                                                        // variant="outlined"
+                                                        variant="outlined"
                                                         label={formField.email.label}
                                                         fullWidth
                                                     />
                                                     <InputField
                                                         name={formField.senha.name}
-                                                        type="password"
                                                         variant="outlined"
                                                         label={formField.senha.label}
                                                         fullWidth
                                                     />
-                                                    
-                                                    {/* <Grid item container orientation="row" justify="center">
+                                                    <Grid item container orientation="row" justify="center">
                                                         <Grid item xs={8}>
                                                             <Typography>
                                                                 Ainda não tem uma conta?
@@ -155,26 +141,13 @@ export default function Login() {
                                                         <Grid item xs={4}>
                                                             <BtnsignUp useStyle={useStyle} />
                                                         </Grid>
-                                                    </Grid> */}
-
-                                                    <Grid item container orientation="row" justify="center" alignContent="space-around">
-                                                        <Grid>
-                                                            <Typography variant="subtitle2">Entrar com:</Typography>
-                                                        </Grid>
-                                                        <OtherLogin/>
                                                     </Grid>
 
-                                                    {/* <Link to="/formCompany" className={classes.links} > */}
-                                                    <Button
-                                                        disabled={isSubmitting}
-                                                        type="submit"
-                                                        variant="contained"
-                                                        color="primary"
-                                                        className={classesLogin.submitBtn}
-                                                    >
-                                                        Entrar
-                                                            </Button>
-                                                    {/* </Link> */}
+                                                    <Link to="/formCompany" className={classes.links} >
+                                                        <Button type="submit" variant="contained" className={classesLogin.submitBtn}>
+                                                            Entrar
+                                                    </Button>
+                                                    </Link>
                                                 </Grid>
                                             </Grid>
                                         </Grid>
