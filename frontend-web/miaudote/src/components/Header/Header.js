@@ -14,7 +14,7 @@ export default function Header() {
   
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="color" className={classes.appBar}>
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <Grid container justify="space-between" direction="row">
             <Grid item container xs={4} direction="row">

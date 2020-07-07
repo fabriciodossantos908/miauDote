@@ -28,22 +28,22 @@ export default function Footer() {
         </Grid>
         <Grid item container xs={2} className={classes.base} direction="column">
           <Typography variant="h5" className={classes.title}>Inicio</Typography>
-          <Typography variant="h8" className={classes.subTitle}>Home</Typography>
-          <Typography variant="h8" className={classes.subTitle}>Pets</Typography>
-          <Typography variant="h8" className={classes.subTitle}>Download App</Typography>
+          <Typography variant="h6" className={classes.subTitle}>Home</Typography>
+          <Typography variant="h6" className={classes.subTitle}>Pets</Typography>
+          <Typography variant="h6" className={classes.subTitle}>Download App</Typography>
         </Grid>
         <Grid item container xs={3} className={classes.base} direction="column">
           <Typography variant="h5" className={classes.title}>Sobre-nós</Typography>
-          <Typography variant="h8" className={classes.subTitle}>Informações da empresa</Typography>
-          <Typography variant="h8" className={classes.subTitle}>Contato</Typography>
+          <Typography variant="h6" className={classes.subTitle}>Informações da empresa</Typography>
+          <Typography variant="h6" className={classes.subTitle}>Contato</Typography>
         </Grid>
         <Grid item container xs={2} className={classes.base} direction="column">
           <Typography variant="h5" className={classes.title}>Suporte</Typography>
-          <Typography variant="h8" className={classes.subTitle}>FAQ</Typography>
-          <Typography variant="h8" className={classes.subTitle}>Telefones</Typography>
-          <Typography variant="h8" className={classes.subTitle}>Chat</Typography>
+          <Typography variant="h6" className={classes.subTitle}>FAQ</Typography>
+          <Typography variant="h6" className={classes.subTitle}>Telefones</Typography>
+          <Typography variant="h6" className={classes.subTitle}>Chat</Typography>
         </Grid>
-        <Grid item xs={2} className={classes.base} direction="row">
+        <Grid item xs={2} className={classes.base}>
           <FacebookIcon className={classes.icon} style={{ color: theme.palette.primary.light }} />
           <InstagramIcon className={classes.icon} style={{ color: theme.palette.primary.light }} />
       </Grid>
