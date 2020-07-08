@@ -1,78 +1,148 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import React from 'react'
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import { Link } from 'react-router-dom';
+import { Avatar } from '@material-ui/core';
 
-import Home from '../../../pages/MainHome/home'
-import CheckoutCompanyStep from '../../signUp/CheckoutCompany/checkoutCompanyStep'
-import CheckoutUserStep from '../../signUp/CheckoutUser/checkoutUserStep'
+import { header } from '../../Layout/styles'
 
-import {
-  BrowserRouter as Router,
-  Link,
-  Switch,
-  Route
-} from "react-router-dom";
-import { useStyle } from './styles'
+const logo = require('../../../images/logoS.jpg')
 
+export default function LinksBase(props) {
+    const classes = header()
+    const [value, setValue] = React.useState(2);
 
-export default function Links() {
-  const classes = useStyle()
-  const [anchorEl, setAnchorEl] = React.useState(null);
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    return (
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  return (
-    <React.Fragment>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        SignUp
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <Router>
-          <MenuItem onClick={handleClose}>
-            <Link to="/test"
-              className={classes.links}
+        <Paper square elevation={0}>
+            <Tabs
+                value={value}
+                indicatorColor="black"
+                textColor="black"
+                onChange={handleChange}
             >
-              teste
-             </Link>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Link to="/formUser"
-              className={classes.link}
-            >
-              SignUp Usuário
-               </Link>
-          </MenuItem>
+                <Link to="/about" className={classes.links}>
+                    <Tab label="Sobre nós" />
+                </Link>
 
-          <Switch>
-            <Route path='/' exact >
-              <Home />
-            </Route>
+                <Link to="/contacts" className={classes.links}>
+                    <Tab label="Contatos" />
+                </Link>
 
-            <Route path='/formCompany' exact >
-              <CheckoutCompanyStep />
-            </Route>
+                <Link to="/">
+                    <Avatar
+                        alt="Miaudote"
+                        src={logo}
+                    />
+                </Link>
 
-            <Route path='/formUser' exact >
-              <CheckoutUserStep />
-            </Route>
+                <Link to="/marketing" className={classes.links}>
+                    <Tab label="Lojas" />
+                </Link>
+                <Link to="/community" className={classes.links}>
+                    <Tab label="Comunidade" />
+                </Link>
 
-          </Switch>
+            </Tabs>
+        </Paper>
+    );
 
-        </Router>
-      </Menu>
-    </React.Fragment>
-  );
 }
+
+// import React from 'react';
+// import PropTypes from 'prop-types';
+// import { makeStyles } from '@material-ui/core/styles';
+// import AppBar from '@material-ui/core/AppBar';
+// import Tabs from '@material-ui/core/Tabs';
+// import Tab from '@material-ui/core/Tab';
+// import Typography from '@material-ui/core/Typography';
+// import Box from '@material-ui/core/Box';
+
+// import { Link } from 'react-router-dom';
+
+
+// function TabPanel(props) {
+//     const { children, value, index, ...other } = props;
+
+//     return (
+//         <div
+//             role="tabpanel"
+//             hidden={value !== index}
+//             id={`simple-tabpanel-${index}`}
+//             aria-labelledby={`simple-tab-${index}`}
+//             {...other}
+//         >
+//             {value === index && (
+//                 <Box p={3}>
+//                     <Typography>{children}</Typography>
+//                 </Box>
+//             )}
+//         </div>
+//     );
+// }
+
+// TabPanel.propTypes = {
+//     children: PropTypes.node,
+//     index: PropTypes.any.isRequired,
+//     value: PropTypes.any.isRequired,
+// };
+
+// function a11yProps(index) {
+//     return {
+//         id: `simple-tab-${index}`,
+//         'aria-controls': `simple-tabpanel-${index}`,
+//     };
+// }
+
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//         flexGrow: 1,
+//         backgroundColor: theme.palette.background.paper,
+//     },
+// }));
+
+// export default function Links() {
+//     const classes = useStyles();
+//     const [value, setValue] = React.useState(0);
+
+//     const handleChange = (event, newValue) => {
+//         setValue(newValue);
+//     };
+
+//     function link() {
+//         return(
+//         <Link to="/formCompany" className={classes.links}></Link>
+//         )
+//     }
+//     return (
+//         <div className={classes.root}>
+//             <AppBar position="static">
+//                 <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+//                     {/* <Link to="/formCompany" className={classes.links}> */}
+//                     <Tab label="teste" onClick={link} />
+//                     {/* </Link> */}
+
+//                     <Tab label="Item One" />
+//                     <Tab label="Item Two" />
+//                     <Tab label="Item Three" />
+//                 </Tabs>
+//             </AppBar>
+//             <TabPanel value={value} index={0}>
+//                 Item One
+//       </TabPanel>
+//             <TabPanel value={value} index={1}>
+//                 Item Two
+//       </TabPanel>
+//             <TabPanel value={value} index={2}>
+//                 Item Three
+//       </TabPanel>
+//         </div>
+//     );
+// }
+
+

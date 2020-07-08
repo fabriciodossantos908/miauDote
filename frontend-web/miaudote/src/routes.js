@@ -8,7 +8,8 @@ import Login from './components/SignIn/Login'
 import Test from './pages/test'
 import Gear from './pages/utils/gears/gear'
 import UserHome from './pages/UserHome/home'
-import HeaderBase from './components/Header/Header'
+import HeaderBase from './components/Header/headerBase'
+import HeaderInitial from './components/Header/HeaderInitial'
 
 function Routes() {
     return (
@@ -22,26 +23,35 @@ function Routes() {
                     <Route path='/' exact >
                         <UserHome />
                     </Route>
-
+                    <Route path='/about' exact>
+                        <Gear/>
+                    </Route>
+                    <Route path='/contacts' exact>
+                        <Gear/>
+                    </Route>
+                    <Route path='/marketing' exact>
+                        <Gear/>
+                    </Route>
+                    <Route path='/community' exact>
+                        <Gear/>
+                    </Route> 
                     <Route path='/formCompany' exact >
                         <CheckoutCompanyStep />
                     </Route>
-
                     <Route path='/formUser' exact >
                         <CheckoutUserStep />
                     </Route>
                     <Route path='/formPet' exact >
                         <CheckoutPet />
                     </Route>
-
                     <Route path='/login' exact >
                         <Login />
                     </Route>
+                    <Route path='/profile' exact>
+                        <Gear/>
+                    </Route>
                     <Route path='/test' exact >
                         <Test />
-                    </Route>
-                    <Route path='/making'>
-                        <Gear />
                     </Route>
                 </Switch>
             </Router>
