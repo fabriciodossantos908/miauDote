@@ -5,7 +5,6 @@ import { Grid } from '@material-ui/core';
 
 import { theme, header } from '../Layout/styles'
 
-import { LinksBase } from './headerComp/'
 import { Perfil } from '../../pages/UserHome/compStyles'
 
 
@@ -21,7 +20,6 @@ export default function HeaderMain() {
                     </Grid>
                     <Grid item container>
                         <Grid item container xs={6} direction="row" justify="space-evenly" style={{ marginLeft: 150 }}>
-                            <LinksBase theme={theme} />
                         </Grid>
                     </Grid>
                 </Toolbar>
