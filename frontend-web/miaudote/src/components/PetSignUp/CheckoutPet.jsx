@@ -166,7 +166,6 @@ export default function CheckoutCompanyStep() {
                             Voltar
                           </Button>
                         )}
-                        <div className={classes.wrapper}>
                           <Button
                             disabled={isSubmitting}
                             type="submit"
@@ -181,7 +180,6 @@ export default function CheckoutCompanyStep() {
                               className={classes.buttonProgress}
                             />
                           )}
-                        </div>
                       </div>
                     </Grid>
                   </Grid>

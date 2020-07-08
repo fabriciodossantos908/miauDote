@@ -41,17 +41,22 @@ export default function Perfil() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <Container className={classesMain.perfilField}>
-        <Avatar alt="João andrade" src={userPhoto} className={classesMain.userPhoto} />
-        <Typography
-          variant="subtitle1"
-        >
-          João andrade
+        <Link to="/making">
+          <Avatar alt="João andrade" src={userPhoto} className={classesMain.userPhoto} />
+        </Link>
+        <Link to="/making" className={classesHeader.links}>
+
+          <Typography
+            variant="subtitle1"
+          >
+            João andrade
         </Typography>
+        </Link>
       </Container>
       <Divider />
       <List component="nav" aria-label="main mailbox folders">
 
-        <Link to="/formPet" className={classesHeader.links}>
+        <Link to="/making" className={classesHeader.links}>
 
           <ListItem button>
             <ListItemIcon>

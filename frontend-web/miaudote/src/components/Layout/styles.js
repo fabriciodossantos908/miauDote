@@ -95,7 +95,6 @@ const useStyle = makeStyles(() => ({
 
 const header = makeStyles(() => ({
   menuButton: {
-    backgroundColor: theme.palette.primary.light,
     marginRight: theme.spacing(2),
   },
 
@@ -162,7 +161,6 @@ const ColorlibConnector = withStyles({
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
-    backgroundColor: theme.palette.secondary.main,
     zIndex: 1,
     color: theme.palette.secondary.dark,
     width: 25,
@@ -189,9 +187,6 @@ const formPet = makeStyles({
     marginRight: "auto",
     backgroundColor: "transparent",
   },
-  labelStep: {
-    color: theme.palette.baseColor.main
-  }
 })
 
 const login = makeStyles({

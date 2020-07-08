@@ -1,38 +1,31 @@
 import React from 'react';
-import {
-  AppBar, Toolbar, Grid, Avatar
-} from '@material-ui/core'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import { Grid } from '@material-ui/core';
 
-import { Link } from 'react-router-dom'
+import { theme, header } from '../../components/Layout/styles'
 
-import { theme, header } from '../Layout/styles'
+import { Perfil } from '../../pages/UserHome/compStyles'
 
-const logo = require('../../images/logoS.jpg')
+import { Links } from './headerComp'
 
 export default function Header() {
-  const classes = header();
-  
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <Grid container justify="space-between" direction="row">
-            <Grid item container xs={4} direction="row">
-              <Avatar
-                alt="Miaudote"
-                src={logo}
-              />
-                <Link
-                  style={{ color: theme.palette.primary.light }}
-                  to="/">
-                  Miaudote
-                    </Link>
-            </Grid>
-            <Grid item xs={2}>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+    const classes = header();
+
+    return (
+        <Grid xs={12}>
+            <AppBar position="static" color="color" className={classes.appBar}>
+                <Toolbar>
+                    <Grid item xs={1}>
+                        <Perfil classHeader={header} />
+                    </Grid>
+                    <Grid item container>
+                        <Grid item container xs={8} direction="row" justify="space-evenly" style={{ marginLeft: 150 }}>
+                            <Links theme={theme} />
+                        </Grid>
+                    </Grid>
+                </Toolbar>
+            </AppBar>
+        </Grid>
+    );
 }

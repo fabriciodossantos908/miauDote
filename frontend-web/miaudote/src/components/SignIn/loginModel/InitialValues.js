@@ -8,5 +8,5 @@ const {
 
 export default {
   [email.name]: '',
-  [senha.name]: '',
+  [senha.name]: ''
 };

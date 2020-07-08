@@ -23,18 +23,18 @@ function Routes() {
                         <UserHome />
                     </Route>
 
-                    <Route path='/formCompany' exact >
+                    {/* <Route path='/formCompany' exact >
                         <CheckoutCompanyStep />
                     </Route>
 
                     <Route path='/formUser' exact >
                         <CheckoutUserStep />
-                    </Route>
+                    </Route> */}
                     <Route path='/formPet' exact >
                         <CheckoutPet />
                     </Route>
 
-                    <Route path='/login' exact >
+                    <Route path='/GetIn' exact >
                         <Login />
                     </Route>
                     <Route path='/test' exact >
