@@ -9,7 +9,7 @@ import { header } from '../../../components/Layout/styles'
 
 const logo = require('../../../images/logoS.jpg')
 
-export default function Links(props) {
+export default function LinksInitial(props) {
     const classes = header()
     const [value, setValue] = React.useState(2);
 
@@ -18,7 +18,6 @@ export default function Links(props) {
     };
 
     return (
-
         <Paper square elevation={0}>
             <Tabs
                 value={value}
@@ -34,18 +33,8 @@ export default function Links(props) {
                     <Tab label="Signup Usuário" />
                 </Link>
 
-                <Link to="/">
-                    <Avatar
-                        alt="Miaudote"
-                        src={logo}
-                    />
-                </Link>
-
                 <Link to="/login" className={classes.links}>
-                    <Tab label="Login" />
-                </Link>
-                <Link to="/formPet" className={classes.links}>
-                    <Tab label="Cadastrar pet" />
+                    <Tab label="Logar" />
                 </Link>
 
             </Tabs>
