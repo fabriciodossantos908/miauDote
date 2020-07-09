@@ -10,6 +10,7 @@ import Gear from './pages/utils/gears/gear'
 import UserHome from './pages/UserHome/home'
 import HeaderBase from './components/Header/headerBase'
 import HeaderInitial from './components/Header/HeaderInitial'
+import UserProfile from './pages/profile/userProfile/UserProfile'
 
 function Routes() {
     return (
@@ -48,7 +49,7 @@ function Routes() {
                         <Login />
                     </Route>
                     <Route path='/profile' exact>
-                        <Gear/>
+                        <UserProfile />
                     </Route>
                     <Route path='/test' exact >
                         <Test />
