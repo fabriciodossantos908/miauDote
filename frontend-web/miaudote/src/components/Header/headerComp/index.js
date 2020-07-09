@@ -1,3 +1,4 @@
+import LinksBase from './linksBase'
 import LinksInitial from './linksInitial'
 
-export { LinksInitial }
+export { LinksBase, LinksInitial }

@@ -17,7 +17,7 @@ function Routes() {
 
             <Router>
 
-                <HeaderInitial />
+                <HeaderBase />
 
                 <Switch>
                     <Route path='/' exact >

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Paper, Grid, Typography, Button, Menu, MenuItem } from '@material-ui/core';
+import React from 'react'
+import { Paper, CardMedia, Grid, Typography, Button, Menu, MenuItem } from '@material-ui/core';
 import { Formik, Form } from 'formik';
 import Axios from 'axios'
 
@@ -11,7 +11,7 @@ import InitialValues from './loginModel/InitialValues'
 import { useStyle, formBase, login } from '../Layout/styles'
 import { InputField } from '../FieldStyle';
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Facebook, Email } from '@material-ui/icons';
 
@@ -73,61 +73,49 @@ const OtherLogin = () => {
 
 }
 
+function _sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function _submitForm(values, actions) {
+    await _sleep(1000);
+    // alert(JSON.stringify(values, null, 2));
+    actions.setSubmitting(false);
+
+    Axios.post("http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/autenticar", values)
+    .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+}
+
+function _handleSubmit(values, actions) {
+    _submitForm(values, actions);
+}
+
 export default function Login() {
     const classes = useStyle();
+    const classesBase = formBase();
     const classesLogin = login();
-
-    const history = useHistory()
-
-    const [authRequestState, setauthRequestState] = useState(false)
-
-    function _sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    
-    async function _submitForm(values, actions) {
-        await _sleep(1000);
-        // alert(JSON.stringify(values, null, 2));
-        actions.setSubmitting(false);
-
-
-
-
-        Axios.post("http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/autenticar", values)
-        .then(function (response) {
-            console.log(response);
-
-        setauthRequestState(true)
-
-        history.push("/")
-
-          })
-          .catch(function (error) {
-
-              alert("Senha ou email incorretos")
-
-            console.log(error);
-          });
-
-    }
-    
-    function _handleSubmit(values, actions) {
-
-        _submitForm(values, actions)
-    }
-    
 
     return (
         <Paper elevation={2} className={classesLogin.paperMain}>
+            <CardMedia
+                className={classesBase.formImage}
+                image={photo}
+            >
                 <Grid container justify="center" alignContent="space-between" className={classes.fadeBack}>
                     <Grid item >
                         <Typography variant="h3">Login</Typography>
                     </Grid>
                     <Grid item xs={12}>
+                        <Paper elevation={3} className={classesLogin.paperForm}>
 
                             <Formik
                                 initialValues={InitialValues}
-                                TestvalidationSchema={loginValidationSchema}
+                                validationSchema={loginValidationSchema}
                                 onSubmit={_handleSubmit}
                             >
                                 {({ isSubmitting }) => (
@@ -143,7 +131,7 @@ export default function Login() {
                                                 >
                                                     <InputField
                                                         name={formField.email.name}
-                                                        variant="outlined"
+                                                        // variant="outlined"
                                                         label={formField.email.label}
                                                         fullWidth
                                                     />
@@ -190,8 +178,10 @@ export default function Login() {
                                     </Form>
                                 )}
                             </Formik>
+                        </Paper>
                     </Grid>
                 </Grid>
+            </CardMedia>
         </Paper>
     )
 }

@@ -202,6 +202,11 @@ const login = makeStyles({
     height: 50
   },
 
+  paperForm: {
+    width: "auto",
+    borderTopLeftRadius: 100,
+    borderTopRightRadius: 100
+  },
   submitBtn: {
     width: 100,
     backgroundColor: theme.palette.primary.light,
