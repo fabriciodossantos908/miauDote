@@ -95,6 +95,9 @@ function _handleSubmit(values, actions) {
     _submitForm(values, actions);
 }
 
+console.log(loginValidationSchema)
+
+
 export default function Login() {
     const classes = useStyle();
     const classesBase = formBase();
@@ -115,7 +118,7 @@ export default function Login() {
 
                             <Formik
                                 initialValues={InitialValues}
-                                validationSchema={loginValidationSchema}
+                                loginValidationSchema={loginValidationSchema}
                                 onSubmit={_handleSubmit}
                             >
                                 {({ isSubmitting }) => (

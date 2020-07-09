@@ -17,43 +17,33 @@ function Routes() {
 
             <Router>
 
-                <HeaderBase />
+                <HeaderInitial />
 
                 <Switch>
                     <Route path='/' exact >
                         <UserHome />
                     </Route>
-
                     <Route path='/about' exact>
                         <Gear/>
                     </Route>
-
                     <Route path='/contacts' exact>
                         <Gear/>
                     </Route>
-
                     <Route path='/marketing' exact>
                         <Gear/>
                     </Route>
-
                     <Route path='/community' exact>
                         <Gear/>
                     </Route> 
-
                     <Route path='/formCompany' exact >
                         <CheckoutCompanyStep />
                     </Route>
-
                     <Route path='/formUser' exact >
                         <CheckoutUserStep />
                     </Route>
-                    
                     <Route path='/formPet' exact >
                         <CheckoutPet />
                     </Route>
-
-                    {/* <Route path='/GetIn' exact > */}
-
                     <Route path='/login' exact >
                         <Login />
                     </Route>
