@@ -24,6 +24,7 @@ import petInitialInfo from './PetModel/petInitialValues';
 
 import { useStyle, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet } from '../Layout/styles'
 import clsx from '../../../node_modules/clsx';
+import { useHistory } from 'react-router-dom';
 
 const photoDog = require('../../images/petImg/dog.jpg')
 const photoCat = require('../../images/petImg/cat.jpg')
@@ -52,20 +53,22 @@ export default function CheckoutCompanyStep() {
   const classesBase = formBase();
   const classesPet = formPet();
   const [activeStep, setActiveStep] = useState(0);
+  const [createStatus, setCreacteStatus] = useState(false);
   // const currentValidationSchema = petValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
+  const history = useHistory()
+    // function _sleep(ms) {
+    //   return new Promise(resolve => setTimeout(resolve, ms));
+    // }
 
-  // function _sleep(ms) {
-  //   return new Promise(resolve => setTimeout(resolve, ms));
-  // }
+    async function _submitForm(values, actions) {
+      // await _sleep(1000);
+      alert(JSON.stringify(values, null, 2));
+      console.log(JSON.stringify(values, null, 2));
+      actions.setSubmitting(false);
 
-  async function _submitForm(values, actions) {
-    // await _sleep(1000);
-    // alert(JSON.stringify(values, null, 2));
-    actions.setSubmitting(false);
-
-    setActiveStep(activeStep + 1);
-  }
+      // history.push('/profile')
+    }
 
   function _handleSubmit(values, actions) {
     if (isLastStep) {

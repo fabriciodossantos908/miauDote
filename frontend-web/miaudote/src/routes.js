@@ -18,7 +18,8 @@ function Routes() {
 
             <Router>
 
-                <HeaderInitial />
+                {/* <HeaderInitial /> */}
+                <HeaderBase />
 
                 <Switch>
                     <Route path='/' exact >
