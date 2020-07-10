@@ -11,6 +11,7 @@ import UserHome from './pages/UserHome/home'
 import HeaderBase from './components/Header/headerBase'
 import HeaderInitial from './components/Header/HeaderInitial'
 import UserProfile from './pages/profile/userProfile/UserProfile'
+import PetList from './pages/petList/PetList'
 
 function Routes() {
     return (
@@ -25,6 +26,11 @@ function Routes() {
                     <Route path='/' exact >
                         <UserHome />
                     </Route>
+
+                    <Route path='/pet' exact>
+                        <PetList/>
+                    </Route>
+
                     <Route path='/about' exact>
                         <Gear/>
                     </Route>
@@ -37,6 +43,7 @@ function Routes() {
                     <Route path='/community' exact>
                         <Gear/>
                     </Route> 
+
                     <Route path='/formCompany' exact >
                         <CheckoutCompanyStep />
                     </Route>
