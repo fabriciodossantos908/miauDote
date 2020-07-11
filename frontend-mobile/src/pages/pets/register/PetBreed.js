@@ -81,7 +81,6 @@ export default class PetBreed extends Component {
                                     />
                                     {/* <BreedList /> */}
                                 </Form>
-
                                 <ContainerButton>
                                     <TouchableOpacity style={styles.btn} onPress={this.nextPage}>
                                         <BtnText>Próximo</BtnText>
