@@ -1,2 +1,7 @@
 node_modules/
+<<<<<<< HEAD
 src/config
+=======
+src/config/
+helpers/
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500

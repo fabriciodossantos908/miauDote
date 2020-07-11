@@ -1,6 +1,11 @@
 import React from 'react';
+<<<<<<< HEAD
 import { Grid, Typography, Paper, Container } from '@material-ui/core';
 import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
+=======
+import { Grid } from '@material-ui/core';
+import { InputField } from '../../../FieldStyle';
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 
 export default function companyPersonalInfo(props) {
   const classes = props.useStyle()
@@ -16,6 +21,7 @@ export default function companyPersonalInfo(props) {
   } = props;
   return (
     <React.Fragment>
+<<<<<<< HEAD
       <Grid container spacing={3} justify="flex-end">
         <Container item xs={6} sm={6} className={classes.inputPaper}>
             <InputField name={celular_representante.name} label={celular_representante.label} />
@@ -25,14 +31,56 @@ export default function companyPersonalInfo(props) {
             <InputField name={telefone.name} label={telefone.label} />
             <InputField name={id_tipo_servico.name} label={id_tipo_servico.label} />
         </Container>
+=======
+      <Grid
+        container
+        xs={10}
+        direction="column"
+        justify="space-around"
+        alignItems="center"
+        className={classes.inputPaper}
+      >
+        <Grid
+          container
+          xs={12}
+          direction="row"
+        >
+          <Grid item xs={6}>
+            <InputField name={celular_representante.name} variant="outlined" label={celular_representante.label} />
+          </Grid>
+          <Grid item xs={6}>
+            <InputField name={telefone.name} variant="outlined" label={telefone.label} />
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          xs={12}
+          direction="row"
+        >
+          <Grid item xs={6}>
+            <InputField name={razao_social.name} variant="outlined" label={razao_social.label} />
+          </Grid>
+          <Grid item xs={6}>
+            <InputField name={nome_empresa.name} variant="outlined" label={nome_empresa.label} />
+          </Grid>
+        </Grid>
+
+        <InputField name={cnpj.name} variant="outlined" label={cnpj.label} fullWidth />
+        <InputField name={id_tipo_servico.name} variant="outlined" label={id_tipo_servico.label} fullWidth />
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       </Grid>
     </React.Fragment>
   );
 }
 
 
+<<<<<<< HEAD
 // import React, { Component } from 'react'
 // import { makeStyles, TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
+=======
+// import React, {Component} from 'react'
+// import {makeStyles, TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 
 // export class companyPersonalInfo extends Component {
 
