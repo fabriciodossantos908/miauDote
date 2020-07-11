@@ -61,6 +61,11 @@ router.get('/pets/localizacao', petFilter.indexByProximity);
 router.get('/pets/:id', petController.show);
 router.get('/pets/uf/:uf', petFilter.indexBylocal);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+router.put('/pets/upload/foto/:id', upload.single('file'), petFilter.uploadPetPhoto);
+
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 =======
 router.put('/pets/upload/foto/:id', upload.single('file'), petFilter.uploadPetPhoto);
 

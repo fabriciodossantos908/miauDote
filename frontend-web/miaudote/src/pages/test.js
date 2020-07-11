@@ -1,5 +1,6 @@
 import React from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -170,6 +171,8 @@ export default function CustomizedSteppers() {
   );
 }
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 
@@ -196,5 +199,9 @@ export default function ImageAvatars() {
       <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" className={classes.large} />
     </div>
   );
+<<<<<<< HEAD
+}
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 }
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500

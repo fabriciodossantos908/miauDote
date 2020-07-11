@@ -1,7 +1,12 @@
 import React from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Grid, Typography, Paper, Container } from '@material-ui/core';
 import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
+=======
+import { Grid } from '@material-ui/core';
+import { InputField, SelectField } from '../../../FieldStyle';
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 =======
 import { Grid } from '@material-ui/core';
 import { InputField, SelectField } from '../../../FieldStyle';
@@ -43,6 +48,7 @@ export default function CompanyAddress(props) {
   return (
     <React.Fragment>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Grid container spacing={3} justify="flex-end">
         <Container item xs={6} sm={6} className={classes.inputPaper}>
             <InputField name={cep.name} label={cep.label} fullWidth />
@@ -64,6 +70,8 @@ export default function CompanyAddress(props) {
     </React.Fragment>
   );
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     <Grid
     container
     xs={10}
@@ -119,5 +127,8 @@ export default function CompanyAddress(props) {
     </Grid>
 </React.Fragment>
 );
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 }

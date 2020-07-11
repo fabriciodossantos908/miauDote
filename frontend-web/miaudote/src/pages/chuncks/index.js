@@ -1,8 +1,11 @@
 import MainChunks from './main';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 export { MainChunks }
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -42,5 +45,9 @@ export default function CenteredTabs() {
   );
 }
 
+<<<<<<< HEAD
+export { MainChunks, CenteredTabs }
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 export { MainChunks, CenteredTabs }
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500

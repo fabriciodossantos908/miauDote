@@ -1,6 +1,10 @@
 import * as Yup from 'yup';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import moment from 'moment';
+=======
+// import moment from 'moment';
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 =======
 // import moment from 'moment';
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
@@ -25,7 +29,10 @@ const {
     uf,
     id_tipo_servico,
 <<<<<<< HEAD
+<<<<<<< HEAD
     url_logo,
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 =======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
   }

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { Component } from 'react'
 
 export class CompanyLogin extends Component {
@@ -23,6 +24,8 @@ export class CompanyLogin extends Component {
 
 export default CompanyLogin
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 import React, { useState } from 'react'
 import { Paper, CardMedia, Grid, Typography, Button, Menu, MenuItem } from '@material-ui/core';
 import { Formik, Form } from 'formik';
@@ -221,5 +224,9 @@ export default function Login() {
             </CardMedia>
         </Paper>
     )
+<<<<<<< HEAD
+}
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 }
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500

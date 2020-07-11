@@ -1,5 +1,6 @@
 import React from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Grid, Typography, Container } from '@material-ui/core';
 import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
 
@@ -21,6 +22,8 @@ const states = [
     label: 'Minas Gerais'
   }
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 import { Grid } from '@material-ui/core';
 import { InputField, SelectField } from '../../../FieldStyle';
 
@@ -41,11 +44,15 @@ const states = [
         value: 'MG',
         label: 'Minas Gerais'
     }
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 ];
 
 
 export default function FormUserAddress(props) {
+<<<<<<< HEAD
 <<<<<<< HEAD
   const classes = props.useStyle()
   const {
@@ -82,6 +89,8 @@ export default function FormUserAddress(props) {
     </React.Fragment>
   );
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     const classes = props.useStyle()
     const {
         formField: {
@@ -151,6 +160,9 @@ export default function FormUserAddress(props) {
             </Grid>
         </React.Fragment>
     );
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 }
 

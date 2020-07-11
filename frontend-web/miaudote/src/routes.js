@@ -1,9 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import Home from './pages/home'
 // import CheckoutCompanyStep1 from './components/signUp/company/checkoutCompanyStep1'
+=======
+import Home from './pages/initialHome/InitialHome'
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 =======
 import Home from './pages/initialHome/InitialHome'
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
@@ -13,20 +17,27 @@ import CheckoutPet from './components/PetSignUp/CheckoutPet'
 import Login from './components/SignIn/Login'
 import Test from './pages/test'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { MainChunks } from './pages/chuncks'
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 import Gear from './pages/utils/gears/gear'
 import UserHome from './pages/UserHome/home'
 import HeaderBase from './components/Header/headerBase'
 import HeaderInitial from './components/Header/HeaderInitial'
 import UserProfile from './pages/profile/userProfile/UserProfile'
 import PetList from './pages/petList/PetList'
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 
 function Routes() {
     return (
         <React.Fragment>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         <Router>
 
@@ -55,6 +66,8 @@ function Routes() {
            </Switch>
         </Router>
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
             <Router>
 
                 {/* <HeaderInitial /> */}
@@ -102,6 +115,9 @@ function Routes() {
                     </Route>
                 </Switch>
             </Router>
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
         </React.Fragment>
     )

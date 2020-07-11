@@ -24,7 +24,13 @@ import companyInitialValues from './CompanyModel/companyInitialValues';
 import { useStyle, formBase } from '../../Layout/styles'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const steps = ['BaseInfo', 'PersonalData', 'Address'];
+=======
+const photoCat = require('../../../images/petImg/cat.jpg')
+
+const steps = ['Dados Iniciais', 'Dados Pessoais', 'Endereço'];
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 =======
 const photoCat = require('../../../images/petImg/cat.jpg')
 
@@ -82,6 +88,7 @@ export default function CheckoutCompanyStep() {
   return (
     <React.Fragment>
       <Paper elevation={3} className={classesCompany.FormPaper}>
+<<<<<<< HEAD
 <<<<<<< HEAD
       {activeStep === steps.length ? (
         <ConfirmEmail />
@@ -161,6 +168,8 @@ export default function CheckoutCompanyStep() {
         )}
         </Paper>
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
         {activeStep === steps.length ? (
           <ConfirmEmail />
         ) : (
@@ -239,6 +248,9 @@ export default function CheckoutCompanyStep() {
             </Grid>
           )}
       </Paper>
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     </React.Fragment>
   );

@@ -7,6 +7,7 @@ import { withStyles } from '../../../node_modules/@material-ui/styles';
 import StepConnector from '@material-ui/core/StepConnector';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const logoS = require('../../images/logoS.jpg')
 const logoN = require('../../images/logoN.jpg')
 const homeInicio = require('../../images/homeInicio.jpg')
@@ -24,12 +25,21 @@ let theme = createMuiTheme({
   palette: {
     type: "dark",
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+let theme = createMuiTheme({
+  palette: {
+    type: "dark",
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     primary: {
       light: '#ff9d9c',
       main: '#fc6b6ez',
       dark: '#c43843',
 <<<<<<< HEAD
+<<<<<<< HEAD
       contrastText: '#ffffff',
+=======
+      contrastText: '#000000',
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 =======
       contrastText: '#000000',
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
@@ -41,11 +51,14 @@ let theme = createMuiTheme({
       contrastText: '#ffffff',
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     baseColor: {
       light: '#fffff',
       main: '#ffffff',
       dark: '#2186C4',
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     thirdy: {
       main: "#F28E13"
     },
@@ -53,6 +66,9 @@ let theme = createMuiTheme({
       light: '#fffff',
       main: '#ffffff',
       dark: '#000000',
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       contrastText: '#00bcc1',
     },
@@ -65,6 +81,7 @@ const useStyle = makeStyles(() => ({
   root: {
     width: 'auto',
 <<<<<<< HEAD
+<<<<<<< HEAD
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
@@ -74,11 +91,14 @@ const useStyle = makeStyles(() => ({
     },
 =======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     backgroundColor: theme.palette.background.default,
     color: theme.palette.primary.light,
   },
   container: {
     height: "auto",
+<<<<<<< HEAD
 <<<<<<< HEAD
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
@@ -93,6 +113,8 @@ const useStyle = makeStyles(() => ({
     minHeight: 300,
     margin: theme.spacing(5),
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     marginBottom: theme.spacing(3),
     backgroundColor: theme.palette.background.default,
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
@@ -103,6 +125,9 @@ const useStyle = makeStyles(() => ({
   inputPaper: {
     maxWidth: 400,
     minHeight: 300,
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     padding: theme.spacing(2),
   },
@@ -126,6 +151,7 @@ const useStyle = makeStyles(() => ({
     backgroundColor: theme.palette.primary.light,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 }));
 
 const header = makeStyles(() => ({
@@ -133,6 +159,8 @@ const header = makeStyles(() => ({
     flexGrow: 1,
   },
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
   paper: {
     width: "100%",
     height: 400,
@@ -153,6 +181,9 @@ const header = makeStyles(() => ({
 }));
 
 const header = makeStyles(() => ({
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
   menuButton: {
     backgroundColor: theme.palette.primary.light,
@@ -160,11 +191,15 @@ const header = makeStyles(() => ({
   },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   title: {
     flexGrow: 1,
   },
   appBar: {
     backgroundColor: theme.palette.baseColor.main,
+=======
+  appBar: {
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 =======
   appBar: {
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
@@ -176,6 +211,7 @@ const header = makeStyles(() => ({
     boxShadow: "none"
   },
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   menuButton: {
     marginRight: theme.spacing(2),
@@ -204,18 +240,24 @@ const header = makeStyles(() => ({
     fontSize: 20,
     color: "#42a5f5",
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
   links: {
     color: theme.palette.primary.light,
     textDecorationLine: "none",
     "active": {
       color: theme.palette.primary.dark
     }
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
   }
 }));
 
 const formBase = makeStyles(() => ({
   formImage: {
+<<<<<<< HEAD
 <<<<<<< HEAD
     width: "auto",
     height: "100%",
@@ -227,6 +269,8 @@ const formBase = makeStyles(() => ({
     minHeight: 300, 
     height: "auto",
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     height: "100%",
     borderRadius: 3,
   },
@@ -235,6 +279,9 @@ const formBase = makeStyles(() => ({
     maxHeight: 600,
     marginLeft: "auto",
     marginRight: "auto",
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
@@ -263,10 +310,16 @@ const ColorlibConnector = withStyles({
   line: {
     width: 2,
 <<<<<<< HEAD
+<<<<<<< HEAD
     marginLeft: "auto",
     marginRight: "auto",
     border: 0,
     backgroundColor: theme.palette.primary.dark,
+=======
+    marginRight: "auto",
+    border: 0,
+    backgroundColor: theme.palette.secondary.main,
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 =======
     marginRight: "auto",
     border: 0,
@@ -279,17 +332,23 @@ const ColorlibConnector = withStyles({
 const useColorlibStepIconStyles = makeStyles({
   root: {
 <<<<<<< HEAD
+<<<<<<< HEAD
     backgroundColor: '#ccc',
     zIndex: 1,
     color: '#fff',
     width: 50,
     height: 50,
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     backgroundColor: theme.palette.secondary.main,
     zIndex: 1,
     color: theme.palette.secondary.dark,
     width: 25,
     height: 25,
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     display: 'flex',
     borderRadius: '50%',
@@ -298,12 +357,15 @@ const useColorlibStepIconStyles = makeStyles({
   },
   active: {
 <<<<<<< HEAD
+<<<<<<< HEAD
     backgroundColor: theme.palette.primary.dark,
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
   },
   completed: {
     backgroundColor: theme.palette.primary.dark
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     backgroundColor: theme.palette.thirdy.main,
     color: theme.palette.baseColor.main,
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
@@ -311,12 +373,16 @@ const useColorlibStepIconStyles = makeStyles({
   completed: {
     color: theme.palette.primary.dark,
     backgroundColor: theme.palette.primary.light
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
   },
 });
 
 const formPet = makeStyles({
   stepper: {
+<<<<<<< HEAD
 <<<<<<< HEAD
     width: 100,
     marginRight: "auto",
@@ -385,6 +451,8 @@ footer:{
 
 export { theme, useStyle, header, footer, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet }
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     width: 200,
     marginRight: "auto",
     backgroundColor: "transparent",
@@ -432,5 +500,9 @@ const profile = makeStyles({
   }
 })
 
+<<<<<<< HEAD
+export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet, login, profile }
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet, login, profile }
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500

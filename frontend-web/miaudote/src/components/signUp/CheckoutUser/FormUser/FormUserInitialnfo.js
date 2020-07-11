@@ -1,7 +1,12 @@
 import React from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Grid, Typography, Container } from '@material-ui/core';
 import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
+=======
+import { Grid } from '@material-ui/core';
+import { InputField } from '../../../FieldStyle';
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 =======
 import { Grid } from '@material-ui/core';
 import { InputField } from '../../../FieldStyle';
@@ -17,6 +22,7 @@ export default function FormUserInitialInfo(props) {
       senha,
       senha_confirm,
 <<<<<<< HEAD
+<<<<<<< HEAD
       }
   } = props;
   return (
@@ -29,6 +35,8 @@ export default function FormUserInitialInfo(props) {
           <InputField name={senha_confirm.name} label={senha_confirm.label} fullWidth />
         </Container>
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     }
   } = props;
   return (
@@ -44,6 +52,9 @@ export default function FormUserInitialInfo(props) {
             <InputField name={email.name} variant="outlined" label={email.label} fullWidth />
             <InputField name={senha.name} variant="outlined" label={senha.label} justify="flex-start" fullWidth />
             <InputField name={senha_confirm.name} variant="outlined" label={senha_confirm.label} justify="flex-start" fullWidth />
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       </Grid>
     </React.Fragment>

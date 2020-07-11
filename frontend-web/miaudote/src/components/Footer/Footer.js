@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {Typography} from '@material-ui/core'
 import Avatar from '@material-ui/core/Avatar';
 import { theme } from '../Layout/styles';
@@ -17,6 +18,8 @@ export default function Footer(props) {
           <Grid item xs={10} className={classes.imgLogo}>
             {/* <img width={20} height={10} src={logoS} alt="Logo"/> */}
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 import {Typography } from '@material-ui/core'
 import { useStyles } from './styles';
 
@@ -41,11 +44,15 @@ export default function Footer() {
               >
                 Miaudote
               </Typography>
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
           </Grid>
         </Grid>
         <Grid item container xs={2} className={classes.base} direction="column">
           <Typography variant="h5" className={classes.title}>Inicio</Typography>
+<<<<<<< HEAD
 <<<<<<< HEAD
           <Typography variant="h8" className={classes.subTitle}>Home</Typography>
           <Typography variant="h8" className={classes.subTitle}>Pets</Typography>
@@ -75,6 +82,8 @@ export default function Footer() {
              <p>2019 © - Todos direitos reservados.</p>
           </Typography>
 =======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
           <Typography variant="h6" className={classes.subTitle}>Home</Typography>
           <Typography variant="h6" className={classes.subTitle}>Pets</Typography>
           <Typography variant="h6" className={classes.subTitle}>Download App</Typography>
@@ -101,6 +110,9 @@ export default function Footer() {
              <p>2019 © - Todos direitos reservados.</p>
           </Typography>
           </Grid>
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
 >>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       </Grid>
     </Grid>
