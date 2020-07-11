@@ -25,6 +25,8 @@ import PetDetails from './pages/pets/details/PetDetails';
 import PetList from './pages/pets/list/PetList';
 import PetRegisterBasicInfo from './pages/pets/register/basicInfo';
 
+import Teste from './pages/pets/register/Teste';
+
 
 
 const Stack = createStackNavigator();
@@ -35,8 +37,8 @@ export default function MyStack() {
             <Stack.Navigator>
 
                 <Stack.Screen
-                    name="PetBasicInfo"
-                    component={PetRegisterBasicInfo}
+                    name="Home"
+                    component={Home}
                     options={{ headerShown: false }}
                 />
                 {/* Telas de Login e Cadastro */}
@@ -86,11 +88,11 @@ export default function MyStack() {
 
                 {/* Telas mais relacionadas a usuário */}
 
-                <Stack.Screen
+                {/* <Stack.Screen
                     name="Home"
                     component={Home}
                     options={{ headerShown: false }}
-                />
+                /> */}
 
                 <Stack.Screen
                     name="Perfil"
@@ -124,11 +126,11 @@ export default function MyStack() {
                     options={{ headerShown: false }}
                 />
 
-                {/* <Stack.Screen
+                <Stack.Screen
                     name="PetBasicInfo"
                     component={PetRegisterBasicInfo}
-                    options={{headerShown: false}}
-                /> */}
+                    options={{ headerShown: false }}
+                />
 
                 <Stack.Screen
                     name="PetList"

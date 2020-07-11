@@ -90,9 +90,15 @@ class EmpresaFilter {
       company.save({ fields: ['url_logo'] });
 
 
-      await fs.unlink(`./src/app/tmp/${file.file.filename}`, (err) => {
-        if (err) {
-          return res.status(400).json({ erro: "Erro ao apagar arquivo" });
+      const directory = './src/app/tmp';
+
+      fs.readdir(directory, (err, files) => {
+        if (err) throw err;
+
+        for (const file of files) {
+          fs.unlink(path.join(directory, file), err => {
+            if (err) throw err;
+          });
         }
       });
 

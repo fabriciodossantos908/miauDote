@@ -98,7 +98,7 @@ export const UnderlinetText = styled.Text`
 
 export const NextButton = styled.TouchableOpacity`
     align-self:flex-end;
-    color:#ccc; 
+    /* color:#ccc;  */
     background-color:#1bc7cb; 
     height:40px; 
     width:120px;

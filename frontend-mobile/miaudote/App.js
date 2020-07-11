@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { AppLoading } from 'expo';
 import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import { Roboto_400Regular } from '@expo-google-fonts/roboto';
+
+import { Bellota_700Bold } from '@expo-google-fonts/bellota';
+
 import { StatusBar } from 'react-native';
 import Routes from './src/routes'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
-    Roboto_400Regular
+    Roboto_400Regular,
+    Bellota_700Bold
   })
 
   if (!fontsLoaded) {

@@ -132,16 +132,14 @@ export const FilterItem = styled.View`
 export const FilterSelect = styled.Picker`
    width: 80px;
    height: 32px;
-   text-align: center;
    font-family: 'Poppins_400Regular';
    border: none;
 `;
 
 
 export const PetsAroundTitle = styled.Text`
-   font-size: 20px;
+   font-size: 19px;
    color: #4d4f4f;
-   font-weight: bold;
    font-family: 'Poppins_400Regular';
    margin-bottom: 16px;
 `;

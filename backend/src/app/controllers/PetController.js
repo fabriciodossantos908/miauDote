@@ -51,6 +51,9 @@ class PetController {
         pet.doador.senha = undefined;
         pet.doador.permissions = undefined;
         pet.doador.email_confirmado = undefined;
+
+        pet.visualizacoes += 1;
+        await pet.save();
         return res.json(pet);
       }
 

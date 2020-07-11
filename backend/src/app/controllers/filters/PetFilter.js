@@ -1,6 +1,12 @@
 const { Pet } = require('../../models');
 const { Op } = require('sequelize');
 const { sequelize } = require('../../models/index');
+const fs = require('fs');
+const path = require('path');
+
+
+const fileUpload = require('../../../helpers/FileUpload');
+
 
 
 class PetFilter {
@@ -95,9 +101,9 @@ class PetFilter {
          sexo = `AND sexo = "${sexo}"`
       }
 
-      if(!especie && raca != "" && !porte && !sexo ){
+      if (!especie && raca != "" && !porte && !sexo) {
          raca = `WHERE raca = "${raca}"`
-      }else if(raca){
+      } else if (raca) {
          raca = `AND raca = "${raca}"`
       }
 
@@ -149,6 +155,44 @@ class PetFilter {
 
    }
 
+   async uploadPetPhoto(req, res) {
+      try {
+         let file = req;
+
+         const pet = await Pet.findByPk(req.params.id);
+
+         if (!pet) {
+            return res.status(400).json({ erro: 'Pet inexistente.' });
+         }
+
+         if (pet.url_foto != 'http://storage.googleapis.com/miaudote-c4d26.appspot.com/profile%2Fuser.png' && pet.url_foto != null) {
+            const fileName = pet.url_foto.substring(63);
+            await fileUpload.delete('pet/' + fileName);
+         }
+
+         const url_foto = await fileUpload.upload(`./src/app/tmp/${file.file.filename}`, `pet/${file.file.filename}`);
+
+         pet.url_foto = url_foto;
+         await pet.save({ fields: ['url_foto'] });
+
+         const directory = './src/app/tmp';
+
+         fs.readdir(directory, (err, files) => {
+            if (err) throw err;
+
+            for (const file of files) {
+               fs.unlink(path.join(directory, file), err => {
+                  if (err) throw err;
+               });
+            }
+         });
+
+         return res.json({ mensagem: 'Foto atualizada com sucesso', url_foto })
+
+      } catch (error) {
+         return res.status(400).json(error);
+      }
+   }
 }
 
 module.exports = new PetFilter();
