@@ -58,6 +58,7 @@ export const ContainerIcon = styled.View `
     width: 60%;
 `;
 
+
 export const Form = styled.View `
 /* flex:1; */
     /* background-color:#ccc; */

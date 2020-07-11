@@ -58,7 +58,6 @@ export default class BreedList extends Component {
             </View>
         ) 
     }
- 
     renderFooter = () => {
         if (!this.state.loading) return null;
         return (

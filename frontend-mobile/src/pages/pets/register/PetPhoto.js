@@ -92,7 +92,7 @@ export default class PetPhoto extends Component {
                                             source={require('../../../assets/image2.png')}
                                             style={styles.avatar}
                                         />
-
+            
                                         <TouchableOpacity style={styles.button}>
                                             <Text style={styles.buttonText}>Escolher imagem</Text>
                                         </TouchableOpacity>

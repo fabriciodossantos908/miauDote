@@ -123,6 +123,7 @@ export default class PetBasicInfo extends Component {
 
 }
 
+
 const styles = StyleSheet.create({
 	btn: {
 		height: 45,

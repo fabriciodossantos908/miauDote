@@ -199,7 +199,6 @@ export default class PetHealth extends Component {
                                                 </View>
                                             </View>
 
-
                                             <View style={{ flexDirection: 'row'}}>
                                                 <Label style={{ top: 7, color:colors.pink }}>Não</Label>
                                                 <View style={{ marginBottom: 5 }}>

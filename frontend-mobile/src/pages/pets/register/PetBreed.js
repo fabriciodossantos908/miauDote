@@ -79,7 +79,9 @@ export default class PetBreed extends Component {
                                         placeholder="Type Here..."
                                         value={search}
                                     />
+                                    
                                     {/* <BreedList /> */}
+
                                 </Form>
                                 <ContainerButton>
                                     <TouchableOpacity style={styles.btn} onPress={this.nextPage}>

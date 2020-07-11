@@ -17,6 +17,7 @@ export default class PetType extends Component {
         }
     }
 
+    
     nextPage = () => {
 		// console.log(this.state)
 		this.props.navigation.navigate('Teste')
