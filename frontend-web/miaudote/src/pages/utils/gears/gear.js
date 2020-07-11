@@ -16,7 +16,7 @@ export default function Gear() {
             <Typography variant="h4">Ops! estamos trabalhando nessa tela Pet Lover.</Typography>
             <Link to="/" className={classes.links} >
                 <Button>
-                    Volte aqui
+                    Voltar para Home
                 </Button>
                 </Link>
         </div>

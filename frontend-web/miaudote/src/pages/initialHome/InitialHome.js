@@ -3,7 +3,7 @@ import { useStyle } from '../../components/Layout/styles'
 import { Grid, Paper } from '@material-ui/core'
 
 
-export default function MainHome() {
+export default function InitialHome() {
     // const classes = useStyle()
 
     return (

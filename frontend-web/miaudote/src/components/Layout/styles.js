@@ -214,9 +214,22 @@ const login = makeStyles({
   },
   submitBtn: {
     width: 100,
+    marginTop: theme.spacing(5),
     backgroundColor: theme.palette.primary.light,
     color: theme.palette.primary.contrastText
+  },
+  btnSocialLogin: {
+    backgroundColor: theme.palette.secondary.main,
+    color: theme.palette.text
   }
 })
 
-export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet, login }
+const profile = makeStyles({
+  UserDescription : {
+    paddingTop: theme.spacing(5),
+    width: "100%",
+    minHeight: theme.spacing(20)
+  }
+})
+
+export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet, login, profile }

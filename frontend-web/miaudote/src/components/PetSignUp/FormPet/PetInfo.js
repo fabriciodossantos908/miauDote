@@ -22,6 +22,7 @@ export default function PetInfo(props) {
     formField: {
       nome,
       idade,
+      raca,
       sexo,
     }
   } = props;
@@ -44,6 +45,8 @@ export default function PetInfo(props) {
           data={sex}
           fullWidth
         />
+        <InputField name={raca.name} variant="outlined" label={raca.label} fullWidth />
+
       </Grid>
     </React.Fragment>
   );

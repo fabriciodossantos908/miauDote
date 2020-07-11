@@ -86,9 +86,6 @@ export default {
         label: 'Foto*',
         requiredErrorMsg: 'Foto é obrigatório!'
       },
-      id_usuario: {
-        name: 'id_usuario',
-      },
     }
   };
   

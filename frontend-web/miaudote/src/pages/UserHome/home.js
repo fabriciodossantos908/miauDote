@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Paper, makeStyles, Typography } from '@material-ui/core';
 import { useStyle } from '../../components/Layout/styles'
-import {CardPets, Avatar} from '../MainHome/compStyles'
+import {CardPets, Avatar} from '../UserHome/compStyles'
 
 const style = makeStyles((theme) => ({
     root:{

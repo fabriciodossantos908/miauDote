@@ -17,7 +17,6 @@ export default function CompanyBaseInfo(props) {
     <React.Fragment>
       <Grid 
        container
-            xs={10}
             direction="column"
             justify="space-around"
             alignItems="center"
