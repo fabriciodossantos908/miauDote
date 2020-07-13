@@ -60,6 +60,8 @@ router.get('/pets', petController.index);
 router.get('/pets/localizacao', petFilter.indexByProximity);
 router.get('/pets/:id', petController.show);
 router.get('/pets/uf/:uf', petFilter.indexBylocal);
+router.put('/pets/upload/foto/:id', upload.single('file'), petFilter.uploadPetPhoto);
+
 
 // Rotas de Pets perdidos
 router.get('/pets_perdidos', petPerdidoController.index);

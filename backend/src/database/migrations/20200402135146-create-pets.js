@@ -77,7 +77,7 @@ module.exports = {
       allowNull: false
     },
     url_foto: {
-      allowNull: false,
+      allowNull: true,
       type: Sequelize.STRING
     },
     visualizacoes:{

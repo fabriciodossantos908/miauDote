@@ -176,7 +176,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       url_foto: {
          type: DataTypes.STRING,
-         allowNull: false,
+         allowNull: true,
          validate: {
             notEmpty: {
                msg: 'Este campo não pode ser nulo.'

@@ -60,7 +60,7 @@ export default class Step1 extends Component {
                     >
                         <ScrollView>
 
-                            <ImageBackground source={require('../../../assets/header-pet-register.png')} style={{ height: 163 }} imageStyle={{ resizeMode: 'cover' }} />
+                            <ImageBackground source={require('../../../assets/header-pet-register-2.png')} style={{ height: 163 }} imageStyle={{ resizeMode: 'cover' }} />
                             <Main>
                                 <ContainerCenter>
                                     <SubTittle>Que bom que você tomou essa decisão!</SubTittle>
