@@ -8,14 +8,17 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { TextInput } from 'react-native-paper';
 
 // import { Main, Header, Title, ContainerIcon, Form, ContainerCenter, IconView, IconImage } from './teste-styles'
-import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconView, IconImage } from './styles';
+import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconView, IconImage, List, ListContainer, ButtonNext } from './styles';
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
+
+import Constants from 'expo-constants';
 
 
 
 // import BreedList from './component/BreedList';
 import { SearchBar } from 'react-native-elements';
 import BreedList from './services/BreedList';
+import { HeaderDecoration, Head } from './services/header';
 
 
 
@@ -23,8 +26,13 @@ export default class PetBreed extends Component {
 
     constructor(props) {
         super(props)
+        // const { data } = this.props.route.params.params
         this.state = {
-            name: 'Tom',
+            // name: data.name,
+            // gender: data.gender,
+            // type: data.type,
+            // uf: data.uf,
+            // city: data.city,
             breed: '',
             search: ''
         }
@@ -34,8 +42,12 @@ export default class PetBreed extends Component {
         this.setState({ search });
     };
 
+    nextPage = () => {
+		this.props.navigation.navigate('PetDetailsInfo')
+	}
+
     render() {
-        console.log(this.state)
+        console.log(this.state, 'testee')
         const { search } = this.state;
         return (
             // <View style={{flex:1}}>
@@ -52,41 +64,35 @@ export default class PetBreed extends Component {
                 >
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                            <ImageBackground source={require('../../../assets/head.png')} style={{ height: 50 }} imageStyle={{ resizeMode: 'cover' }} />
+                        <HeaderDecoration />
                             <Main>
-                                <Header>
-                                    <Title>Cadastre seu pet</Title>
-                                </Header>
-                                <ContainerCenter>
-                                    <ContainerIcon>
-                                        <View style={{ borderBottomWidth: 1, borderBottomColor: '#1bc7cb', width: '100%' }}></View>
-                                    </ContainerIcon>
-                                </ContainerCenter>
+                                <Head />
 
                                 <Form style={{ alignItems: 'stretch' }}>
                                     <Label>Qual a raça do {this.state.name}?</Label>
 
-                                    <SearchBar
-                                        inputContainerStyle={{ backgroundColor: 'white' }}
+                                    {/* <SearchBar
+                                        inputContainerStyle={{ backgroundColor: 'white', borderWidth:2, borderColor:'#ccc'}}
                                         // inputStyle={{ backgroundColor: 'white' }}
-                                        containerStyle={{ backgroundColor: '#c78', borderRadius: 5 }}
+                                        containerStyle={{ backgroundColor: '#e2e2e2', borderRadius: 5 }}
                                         placeholderTextColor={'#g5g5g5'}
                                         lightTheme={true}
                                         round
-                                        searchIcon={{ size: 24, color:'#c78' }}
+                                        searchIcon={{ size: 24, color: colors.green }}
                                         onChangeText={text => this.setState({ search: text })}
                                         onClear={text => this.setState({ search: '' })}
-                                        placeholder="Type Here..."
+                                        placeholder="Buscar..."
                                         value={search}
-                                    />
-                                    
-                                    {/* <BreedList /> */}
+                                    /> */}
 
+                                    {/* <ListContainer> */}
+                                        <BreedList />
+                                    {/* </ListContainer> */}
                                 </Form>
                                 <ContainerButton>
-                                    <TouchableOpacity style={styles.btn} onPress={this.nextPage}>
+                                    <ButtonNext onPress={this.nextPage}>
                                         <BtnText>Próximo</BtnText>
-                                    </TouchableOpacity>
+                                    </ButtonNext>
                                 </ContainerButton>
                             </Main>
                         </ScrollView>
@@ -96,26 +102,6 @@ export default class PetBreed extends Component {
         )
     }
 }
-
-
-const styles = StyleSheet.create({
-    btn: {
-        height: 45,
-        width: 130,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: '#1bc7cb',
-        borderRadius: 5
-    },
-
-    input: {
-        backgroundColor: '#ffff',
-        height: 40,
-        alignSelf: 'stretch',
-        marginBottom: 60,
-        marginTop: 10
-    },
-})
 
 
 

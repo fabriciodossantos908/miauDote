@@ -1,5 +1,13 @@
 import styled from 'styled-components/native';
 
+import { Dimensions, PixelRatio } from 'react-native'
+
+const widthPercentageToDP = widthPercent => {
+   const screenWidth = Dimensions.get('window').width;
+   return PixelRatio.roundToNearestPixel(screenWidth * parseFloat(widthPercent) / 100);
+ };
+
+
 export const Container = styled.ScrollView`
    padding: 16px;
    background-color: #fff;
@@ -198,4 +206,64 @@ export const ButtonAdoptText = styled.Text`
    font-family: 'Poppins_400Regular';
    font-size: 20;
    font-weight: bold;
+<<<<<<< HEAD:frontend-mobile/src/pages/pets/details/styles.js
+=======
+`;
+
+export const PetHeader = styled.View`
+   flex-direction: row;
+`;
+
+export const ReturnButton = styled.TouchableOpacity`
+   align-self: flex-start;
+   margin-right: 32px;
+   margin-left: -8px;
+   margin-top: -12px;
+`;
+
+// Estilização do Modal
+
+export const ModalContainer = styled.View`
+   height: 360px;
+   width: ${widthPercentageToDP('92')}px;
+   background-color: #fff;
+   border-radius: 20px;
+   padding: 16px;
+`;
+
+export const ModalTitle = styled.Text`
+   font-family: 'Poppins_400Regular';
+   font-size: 24;
+   color: #1bc7cb;
+   text-align: center;
+`;
+
+export const ModalText = styled.Text`
+   font-family: 'Poppins_400Regular';
+   font-size: 14px;
+   color: #ccc;
+   text-align: justify;
+   margin-top: 8px;
+`;
+
+export const ContactInformationView = styled.View`
+   flex-direction: row;
+   margin-top: 16px;
+   align-items: center;
+   /* padding-left: 16px; */
+`;
+
+export const ContactInformationImage = styled.Image`
+   width: 55px;
+   height: 55px;
+   /* background-color: green; */
+`;
+
+
+export const ContactInformationText = styled.Text`
+   font-size: 16px;
+   color: #fc6b6e;
+   font-family: 'Poppins_400Regular';
+   margin-left: 16px;
+>>>>>>> b0275da1ea2ceb3ab41dc08a167afde3f532f7a3:frontend-mobile/miaudote/src/pages/pets/details/styles.js
 `;

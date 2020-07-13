@@ -43,18 +43,25 @@ export default function MyStack() {
         <NavigationContainer>
             <Stack.Navigator>
 
-                
-                <Stack.Screen
-                    name="PetBreed"
-                    component={PetBreed}
-                    options={{headerShown:false}}
-                />
+                 {/* <Stack.Screen
+                    name="PetDetailsInfo"
+                    component={PetDetailsInfo}
+                    options={{ headerShown: false }}
+                /> */}
 
                 {/* <Stack.Screen
+                    name="PetBreed"
+                    component={PetBreed}
+                    options={{ headerShown: false }}
+                /> */}
+
+
+                <Stack.Screen
                     name="PetBasicInfo"
                     component={PetBasicInfo}
-                    options={{headerShown:false}}
-                /> */}
+                    options={{ headerShown: false }}
+                />
+
 
                 {/* Telas de Login e Cadastro */}
 
@@ -149,11 +156,11 @@ export default function MyStack() {
 
                 {/* Cadastro de pet */}
 
-                <Stack.Screen
+                {/* <Stack.Screen
                     name="PetBasicInfo"
                     component={PetBasicInfo}
-                    options={{headerShown:false}}
-                />
+                    options={{ headerShown: false }}
+                /> */}
 
                 <Stack.Screen
                     name="PetType"
@@ -161,34 +168,34 @@ export default function MyStack() {
                     options={{headerShown:false}}
                 />
 
-                <Stack.Screen
+                 <Stack.Screen
                     name="BreedList"
                     component={BreedList}
-                    options={{headerShown:false}}
-                />
+                    options={{ headerShown: false }}
+                /> 
 
-                {/* <Stack.Screen
+                <Stack.Screen
                     name="PetBreed"
                     component={PetBreed}
                     options={{headerShown:false}}
-                /> */}
+                />
 
                 <Stack.Screen
                     name="PetDetailsInfo"
                     component={PetDetailsInfo}
-                    options={{headerShown:false}}
+                    options={{ headerShown: false }}
                 />
 
-                 <Stack.Screen
+                <Stack.Screen
                     name="PetHealth"
                     component={PetHealth}
-                    options={{headerShown:false}}
+                    options={{ headerShown: false }}
                 />
 
-                 <Stack.Screen
+                <Stack.Screen
                     name="PetPhoto"
                     component={PetPhoto}
-                    options={{headerShown:false}}
+                    options={{ headerShown: false }}
                 />
 
             </Stack.Navigator>

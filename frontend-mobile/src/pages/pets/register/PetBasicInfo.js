@@ -6,9 +6,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { TextInput } from 'react-native-paper';
 
-// import { Main, Header, Title, ContainerIcon, Form, ContainerCenter, IconView, IconImage } from './teste-styles'
-import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconView, IconImage } from './styles';
+import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Form, IconView, ButtonNext } from './styles';
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
+import { HeaderDecoration, Head } from './services/header';
+import { IconFemale, IconMale } from '../../../components/icons';
+import colors from '../../../components/colors';
 
 export default class PetBasicInfo extends Component {
 
@@ -17,34 +19,69 @@ export default class PetBasicInfo extends Component {
 		this.state = {
 			name: '',
 			gender: '',
-			buttonColor: '#60BDEF',
+			buttonFemale: '#F68E90',
+			buttonMale: '#60BDEF',
 		}
 	}
 
-	nextPage = () => {
-		// console.log(this.state)
-		this.props.navigation.navigate('PetType')
+	nextPage = (props) => {
+		// **** validações vão aqui ***** //
+		const data = this.state
+
+		this.props.navigation.navigate('PetType', {
+			screen: 'PetBasicInfo',
+			params: { data },
+		});
+	}
+
+	FontBold = () => {
+		const { gender } = this.state
+		gender === 'M' ? 'bold' : 'normal'
 	}
 
 	maleSelected = () => {
-		this.state.gender = 'M'
+		const { gender } = this.state
+
+		const text = 'M'
+		const blue = '#60BDEF'
+		const pink = '#F68E90'
+
+		if (gender != text) {
+			this.setState({ gender: text })
+			this.setState({ buttonFemale: '#ccc' })
+			this.setState({ buttonMale: blue })
+		} else {
+			this.setState({ gender: '' })
+			this.setState({ buttonFemale: pink })
+		}
 	}
 
 	femaleSelected = () => {
-		this.state.gender = 'F'
+		const text = 'F'
+		const pink = '#F68E90'
+
+		this.setState({ gender: text })
+		this.setState({ buttonMale: '#ccc' })
+		this.setState({ buttonFemale: pink })
 	}
 
-	// mudando a cor do botão ao clicar
-	// onButtonPress = () => {
-	// 	const text = 'M'
-	// 	const check = '../../../assets/check.png'
+	noneSelected = () => {
+		const text = 'N'
+		const grey = '#ccc'
 
-	//     this.state.gender = text
-	// 	this.setState({ buttonColor: '#ccc' })
-	// 	// this.setState({ icon: check})
-	// }
+		this.setState({ gender: text })
+		this.setState({ buttonMale: grey })
+		this.setState({ buttonFemale: grey })
+	}
 
 	render() {
+		console.log(this.state)
+		const { gender } = this.state
+
+		let colorFont = gender === 'N' ? colors.pink : colors.green
+		let maleFontWeight = gender === 'M' ? 'bold' : 'normal'
+		let femaleFontWeight = gender === 'F' ? 'bold' : 'normal'
+
 		return (
 			<React.Fragment>
 
@@ -56,16 +93,9 @@ export default class PetBasicInfo extends Component {
 				>
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 						<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-							<ImageBackground source={require('../../../assets/head.png')} style={{ height: 50 }} imageStyle={{ resizeMode: 'cover' }} />
+							<HeaderDecoration />
 							<Main>
-								<Header>
-									<Title>Cadastre seu pet</Title>
-								</Header>
-								<ContainerCenter>
-									<ContainerIcon>
-										<View style={{ borderBottomWidth: 1, borderBottomColor: '#1bc7cb', width: '100%' }}></View>
-									</ContainerIcon>
-								</ContainerCenter>
+								<Head />
 
 								<Form>
 									<Label>Informe o nome do seu pet:</Label>
@@ -75,43 +105,50 @@ export default class PetBasicInfo extends Component {
 										label='Nome'
 										mode={'outlined'}
 										value={this.state.name || ''}
-										onChangeText={() => { }}
+										onChangeText={txt => this.setState({name: txt})}
 										theme={{
-											// roundness: 50,
 											colors: {
 												primary: '#1bc7cb',
 												underlineColor: 'transparent',
 											}
 										}} />
 
-									<Label>Qual o sexo do pet?</Label>
+									<Label>Selecione o sexo do pet:
+										<Text
+											style={{ color: colorFont, fontWeight: 'bold' }}>
+											{gender === 'F' ? ' Fêmea'
+												: gender === 'M' ? ' Macho'
+													: gender === 'N' ? ' Não identificado'
+														: ''}
+										</Text>
+									</Label>
 
 									<ContainerRow>
 										<View>
-											<IconView onPress={this.maleSelected} style={{ backgroundColor: '#60BDEF' }}>
-												<IconImage source={require('../../../assets/male.png')} ></IconImage>
+											<IconView onPress={this.maleSelected} style={{ backgroundColor: this.state.buttonMale }}>
+												<IconMale />
 											</IconView>
-											<TextIcon>macho</TextIcon>
+											<TextIcon style={{ fontWeight: maleFontWeight }}>macho</TextIcon>
 										</View>
 
 										<View>
-											<IconView onPress={this.femaleSelected} style={{ backgroundColor: '#F68E90' }}>
-												<IconImage source={require('../../../assets/female.png')} ></IconImage>
+											<IconView onPress={this.femaleSelected} style={{ backgroundColor: this.state.buttonFemale }}>
+												<IconFemale />
 											</IconView>
-											<TextIcon>Fêmea</TextIcon>
+											<TextIcon style={{ fontWeight: femaleFontWeight }}>Fêmea</TextIcon>
 										</View>
 									</ContainerRow>
 
-									<TouchableOpacity style={{ alignSelf: 'flex-start', marginTop: 10 }}>
+									<TouchableOpacity style={{ alignSelf: 'flex-start', marginTop: 10 }} onPress={this.noneSelected}>
 										<UnderlinetText>Sexo não identificado</UnderlinetText>
 									</TouchableOpacity>
 
 								</Form>
 
 								<ContainerButton>
-									<TouchableOpacity style={styles.btn} onPress={this.nextPage}>
+									<ButtonNext onPress={this.nextPage}>
 										<BtnText>Próximo</BtnText>
-									</TouchableOpacity>
+									</ButtonNext>
 								</ContainerButton>
 							</Main>
 						</ScrollView>
@@ -125,15 +162,6 @@ export default class PetBasicInfo extends Component {
 
 
 const styles = StyleSheet.create({
-	btn: {
-		height: 45,
-		width: 130,
-		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: '#1bc7cb',
-		borderRadius: 5
-	},
-
 	input: {
 		backgroundColor: '#ffff',
 		height: 40,

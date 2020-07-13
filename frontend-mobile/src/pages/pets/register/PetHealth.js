@@ -7,11 +7,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { TextInput, RadioButton } from 'react-native-paper';
 
 // import { Main, Header, Title, ContainerIcon, Form, ContainerCenter, IconView, IconImage } from './teste-styles'
-import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconViewSmall, IconImage, IconViewMedium, IconViewBig } from './styles';
+import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconViewSmall, IconImage, IconViewMedium, IconViewBig, ContainerHealth, LabelHealth, DivRow, ContainerRadioButton, LabelGreen, LabelPink, ContainerQuestion, RowCenter, ButtonNext } from './styles';
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import { CheckBox } from "react-native-elements";
 import { green } from "colorette";
 import colors from "../../../components/colors";
+import { HeaderDecoration, Head } from "./services/header";
 
 
 
@@ -63,30 +64,21 @@ export default class PetHealth extends Component {
                 >
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                            <ImageBackground source={require('../../../assets/head.png')} style={{ height: 50 }} imageStyle={{ resizeMode: 'cover' }} />
+                        <HeaderDecoration />
                             <Main>
-                                <Header style={{ marginBottom: 8 }}>
-                                    <Title>Cadastre seu pet</Title>
-                                </Header>
-                                <ContainerCenter>
-                                    <ContainerIcon>
-                                        <View style={{ borderBottomWidth: 1, borderBottomColor: '#1bc7cb', width: '100%' }}></View>
-                                    </ContainerIcon>
-                                </ContainerCenter>
+                                <Head />
 
                                 <Form style={{ alignItems: 'stretch' }}>
-                                    {/* <Label style={{ fontWeight: 'bold', letterSpacing: 0.4 }}>Estamos quase finalizando!</Label> */}
-
-                                    <View style={{ flexDirection: "row", justifyContent: 'space-between' }}>
-                                        <View style={{}}>
-                                            <Label style={{ top: 7 }}>
-                                                Vacinado:
-                                            </Label>
+                                    <ContainerHealth>
+                                        <View>
+                                            <LabelHealth>
+                                                Vermifugado:
+                                            </LabelHealth>
                                         </View>
 
-                                        <View style={{ flexDirection: 'row' }}>
-                                            <Label style={{ top: 7, color:colors.green }}>Sim</Label>
-                                            <View style={{ marginBottom: 5 }}>
+                                        <DivRow>
+                                            <LabelGreen>Sim</LabelGreen>
+                                            <ContainerRadioButton>
                                                 <RadioButton
                                                     color={colors.green}
                                                     value="first"
@@ -94,12 +86,12 @@ export default class PetHealth extends Component {
                                                     onPress={() => { }}
                                                 >
                                                 </RadioButton>
-                                            </View>
-                                        </View>
+                                            </ContainerRadioButton>
+                                        </DivRow>
 
-                                        <View style={{ flexDirection: 'row'}}>
-                                            <Label style={{ top: 7, color:colors.pink }}>Não</Label>
-                                            <View style={{ marginBottom: 5 }}>
+                                        <DivRow>
+                                            <LabelPink>Não</LabelPink>
+                                            <ContainerRadioButton>
                                                 <RadioButton
                                                     color={colors.pink}
                                                     value=""
@@ -107,21 +99,21 @@ export default class PetHealth extends Component {
                                                     onPress={() => { }}
                                                 >
                                                 </RadioButton>
-                                            </View>
-                                        </View>
+                                            </ContainerRadioButton>
+                                        </DivRow>
 
-                                    </View>
+                                    </ContainerHealth>
 
-                                    <View style={{ flexDirection: "row", justifyContent: 'space-between', marginTop: '8%' }}>
-                                        <View style={{}}>
-                                            <Label style={{ top: 7 }}>
+                                    <ContainerHealth style={{ marginTop: '8%' }}>
+                                        <View>
+                                            <LabelHealth>
                                                 Vacinado:
-                                            </Label>
+                                            </LabelHealth>
                                         </View>
 
-                                        <View style={{ flexDirection: 'row'}}>
-                                            <Label style={{ top: 7, color:colors.green }}>Sim</Label>
-                                            <View style={{ marginBottom: 5 }}>
+                                        <DivRow style={{ left:13 }}>
+                                            <LabelGreen>Sim</LabelGreen>
+                                            <ContainerRadioButton>
                                                 <RadioButton
                                                     color={colors.green}
                                                     value=""
@@ -129,12 +121,12 @@ export default class PetHealth extends Component {
                                                     onPress={() => { }}
                                                 >
                                                 </RadioButton>
-                                            </View>
-                                        </View>
+                                            </ContainerRadioButton>
+                                        </DivRow>
 
-                                        <View style={{ flexDirection: 'row'}}>
-                                            <Label style={{ top: 7, color:colors.pink }}>Não</Label>
-                                            <View style={{ marginBottom: 5 }}>
+                                        <DivRow>
+                                            <LabelPink>Não</LabelPink>
+                                            <ContainerRadioButton>
                                                 <RadioButton
                                                     color={colors.pink}
                                                     value=""
@@ -142,21 +134,20 @@ export default class PetHealth extends Component {
                                                     onPress={() => { }}
                                                 >
                                                 </RadioButton>
-                                            </View>
+                                            </ContainerRadioButton>
+                                        </DivRow>
+                                    </ContainerHealth>
+
+                                    <ContainerHealth style={{ marginTop: '8%' }}>
+                                        <View>
+                                            <LabelHealth>
+                                                Castrado:
+                                            </LabelHealth>
                                         </View>
 
-                                    </View>
-
-                                    <View style={{ flexDirection: "row", justifyContent: 'space-between', marginTop: '8%' }}>
-                                        <View style={{}}>
-                                            <Label style={{ top: 7 }}>
-                                                Vacinado:
-                                            </Label>
-                                        </View>
-
-                                        <View style={{ flexDirection: 'row'}}>
-                                            <Label style={{ top: 7, color:colors.green }}>Sim</Label>
-                                            <View style={{ marginBottom: 5 }}>
+                                        <DivRow style={{ left:13 }}>
+                                            <LabelGreen>Sim</LabelGreen>
+                                            <ContainerRadioButton>
                                                 <RadioButton
                                                     color={colors.green}
                                                     value=""
@@ -164,12 +155,12 @@ export default class PetHealth extends Component {
                                                     onPress={() => { }}
                                                 >
                                                 </RadioButton>
-                                            </View>
-                                        </View>
+                                            </ContainerRadioButton>
+                                        </DivRow>
 
-                                        <View style={{ flexDirection: 'row'}}>
-                                            <Label style={{ top: 7, color:colors.pink }}>Não</Label>
-                                            <View style={{ marginBottom: 5 }}>
+                                        <DivRow>
+                                            <LabelPink>Não</LabelPink>
+                                            <ContainerRadioButton>
                                                 <RadioButton
                                                     color={colors.pink}
                                                     value=""
@@ -177,47 +168,47 @@ export default class PetHealth extends Component {
                                                     onPress={() => { }}
                                                 >
                                                 </RadioButton>
-                                            </View>
-                                        </View>
+                                            </ContainerRadioButton>
+                                        </DivRow>
 
-                                    </View>
+                                    </ContainerHealth>
 
 
-                                    <View style={{ marginTop: '20%' }}>
+                                    <ContainerQuestion>
                                         <Label>O Pet está precisando de cuidados veterinários?</Label>
 
-                                        <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: '1%' }}>
-                                            <View style={{ flexDirection: 'row'}}>
-                                                <Label style={{ top: 7, color:colors.green }}>Sim</Label>
-                                                <View style={{ marginBottom: 5 }}>
+                                        <RowCenter>
+                                            <DivRow>
+                                                <LabelGreen>Sim</LabelGreen>
+                                                <ContainerRadioButton>
                                                     <RadioButton
                                                         color={colors.green}
                                                         value=""
                                                         status={''}
                                                         onPress={() => { }}>
                                                     </RadioButton>
-                                                </View>
-                                            </View>
+                                                </ContainerRadioButton>
+                                            </DivRow>
 
-                                            <View style={{ flexDirection: 'row'}}>
-                                                <Label style={{ top: 7, color:colors.pink }}>Não</Label>
-                                                <View style={{ marginBottom: 5 }}>
+                                            <DivRow>
+                                                <LabelPink>Não</LabelPink>
+                                                <ContainerRadioButton>
                                                     <RadioButton
                                                         color={colors.pink}
                                                         value=""
                                                         status={''}
                                                         onPress={() => { }}>
                                                     </RadioButton>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
+                                                </ContainerRadioButton>
+                                            </DivRow>
+                                        </RowCenter>
+                                    </ContainerQuestion>
                                 </Form>
 
                                 <ContainerButton>
-                                    <TouchableOpacity style={styles.btn} onPress={this.nextPage}>
+                                    <ButtonNext onPress={this.nextPage}>
                                         <BtnText>Próximo</BtnText>
-                                    </TouchableOpacity>
+                                    </ButtonNext>
                                 </ContainerButton>
                             </Main>
                         </ScrollView>
@@ -227,38 +218,3 @@ export default class PetHealth extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    btn: {
-        height: 45,
-        width: 130,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: '#1bc7cb',
-        borderRadius: 5,
-        marginTop: -15
-    },
-
-    inputAge: {
-        backgroundColor: '#ffff',
-        height: 40,
-        alignSelf: 'stretch',
-        width: '100%'
-    },
-    input: {
-        backgroundColor: '#ffff',
-        height: 40,
-        alignSelf: 'stretch',
-        marginBottom: '13%',
-        marginTop: 10
-    },
-    inputLarge: {
-        backgroundColor: '#ffff',
-        // height: 40,
-        alignSelf: 'stretch',
-        marginTop: 10
-    },
-    checkbox: {
-        alignSelf: "center",
-    },
-})

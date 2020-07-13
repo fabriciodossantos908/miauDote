@@ -6,12 +6,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { TextInput } from 'react-native-paper';
 
-// import { Main, Header, Title, ContainerIcon, Form, ContainerCenter, IconView, IconImage } from './teste-styles'
-import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconViewSmall, IconImage, IconViewMedium, IconViewBig } from './styles';
+import { TextIcon, Label, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconViewSmall, IconViewMedium, IconViewBig, ContainerPetDetails, ContainerCheckbox, ButtonNext, ContainerPetAge, DivInputAge } from './styles';
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import { CheckBox } from "react-native-elements";
-import { green } from "colorette";
 import colors from "../../../components/colors";
+import { HeaderDecoration, Head } from "./services/header";
+import { IconPawSmall, IconPawMedium, IconPawBig, IconPawSmallDisable, IconPawMediumDisable, IconPawBigDisable } from "../../../components/icons";
 
 
 
@@ -22,7 +22,7 @@ export default class PetDetailsInfo extends Component {
         this.state = {
             name: 'Tom',
             age: '',
-            porte: '',
+            porte: null,
             yearSelected: false,
             monthSelected: false,
             description: ''
@@ -38,7 +38,8 @@ export default class PetDetailsInfo extends Component {
         const { yearSelected } = this.state
 
         yearSelected == false ?
-            this.setState({ yearSelected: true }) :
+            this.setState({ yearSelected: true }) +
+            this.setState({ monthSelected: false }) :
             this.setState({ yearSelected: false })
     }
 
@@ -46,11 +47,17 @@ export default class PetDetailsInfo extends Component {
         const { monthSelected } = this.state
 
         monthSelected == false ?
-            this.setState({ monthSelected: true }) :
+            this.setState({ monthSelected: true }) +
+            this.setState({ yearSelected: false }) :
             this.setState({ monthSelected: false })
     }
 
     render() {
+
+        console.log(this.state)
+
+        const { porte } = this.state
+
         return (
             <React.Fragment>
 
@@ -62,65 +69,66 @@ export default class PetDetailsInfo extends Component {
                 >
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                            <ImageBackground source={require('../../../assets/head.png')} style={{ height: 50 }} imageStyle={{ resizeMode: 'cover' }} />
+                            <HeaderDecoration />
                             <Main>
-                                <Header style={{marginBottom:8}}>
-                                    <Title>Cadastre seu pet</Title>
-                                </Header>
-                                <ContainerCenter>
-                                    <ContainerIcon>
-                                        <View style={{ borderBottomWidth: 1, borderBottomColor: '#1bc7cb', width: '100%' }}></View>
-                                    </ContainerIcon>
-                                </ContainerCenter>
+                                <Head />
 
                                 <Form style={{ alignItems: 'stretch' }}>
-                                    {/* <Label style={{ fontWeight: 'bold', letterSpacing: 0.4 }}>Estamos quase finalizando!</Label> */}
-
-                                    <View style={{ flexDirection: "row", justifyContent: 'space-between', marginTop: '8%' }}>
-                                        <View style={{}}>
+                                    <ContainerPetDetails>
+                                        <View>
                                             <Label style={{ top: 7 }}>
-                                                Porte:
+                                                Selecione o porte:
                                             </Label>
                                         </View>
-
                                         <View>
-                                            <IconViewSmall onPress={this.femaleSelected}>
-                                                <Icon name={'paw'} size={17} color={'#999999'}></Icon>
+                                            <IconViewSmall onPress={() => this.setState({ porte: 'p' })}>
+                                                {porte == null ||
+                                                    porte === 'p' ?
+                                                    <IconPawSmall /> :
+                                                    <IconPawSmallDisable />
+                                                }
                                             </IconViewSmall>
                                             <TextIcon>P</TextIcon>
                                         </View>
                                         <View>
-                                            <IconViewMedium onPress={this.femaleSelected} >
-                                                <Icon name={'paw'} size={24} color={'#999999'}></Icon>
+                                            <IconViewMedium onPress={() => this.setState({ porte: 'm' })} >
+                                                {porte == null ||
+                                                    porte === 'm' ?
+                                                    <IconPawMedium /> :
+                                                    <IconPawMediumDisable />
+                                                }
                                             </IconViewMedium>
                                             <TextIcon>M</TextIcon>
                                         </View>
                                         <View>
-                                            <IconViewBig onPress={this.femaleSelected}>
-                                                <Icon name={'paw'} size={31} color={'#999999'}></Icon>
+                                            <IconViewBig onPress={() => this.setState({ porte: 'g' })}>
+                                                {porte == null ||
+                                                    porte === 'g' ?
+                                                    <IconPawBig /> :
+                                                    <IconPawBigDisable />
+                                                }
                                             </IconViewBig>
                                             <TextIcon>G</TextIcon>
                                         </View>
-                                    </View>
+                                    </ContainerPetDetails>
 
-                                    <View style={{ flexDirection: "row", justifyContent: 'space-between', marginTop: '8%', marginBottom: '8%' }}>
-                                        <View style={{ width: '30%', marginRight: '5%' }}>
+                                    <ContainerPetAge>
+                                        <DivInputAge>
                                             <TextInput
                                                 style={styles.inputAge}
                                                 label='Idade'
                                                 mode={'outlined'}
                                                 keyboardType={'numeric'}
-                                                value={''}
-                                                onChangeText={() => { }}
+                                                value={this.state.age}
+                                                onChangeText={(txt) => this.setState({ age: txt })}
                                                 theme={{
-                                                    // roundness: 50,
                                                     colors: {
                                                         primary: '#1bc7cb',
                                                         underlineColor: 'transparent',
                                                     }
                                                 }} />
-                                        </View>
-                                        <View style={{ width: '70%', flexDirection: "row", justifyContent: 'flex-end' }}>
+                                        </DivInputAge>
+                                        <ContainerCheckbox>
                                             <CheckBox
                                                 title='Meses'
                                                 size={18}
@@ -139,8 +147,8 @@ export default class PetDetailsInfo extends Component {
                                                 checkedColor={colors.green}
                                                 onPress={this._onYearPress}
                                             />
-                                        </View>
-                                    </View>
+                                        </ContainerCheckbox>
+                                    </ContainerPetAge>
 
                                     <TextInput
                                         style={styles.input}
@@ -150,7 +158,6 @@ export default class PetDetailsInfo extends Component {
                                         value={''}
                                         onChangeText={() => { }}
                                         theme={{
-                                            // roundness: 50,
                                             colors: {
                                                 primary: '#1bc7cb',
                                                 underlineColor: 'transparent',
@@ -174,13 +181,13 @@ export default class PetDetailsInfo extends Component {
                                                 underlineColor: 'transparent',
                                             }
                                         }} />
-                                    
+
                                 </Form>
 
                                 <ContainerButton>
-                                    <TouchableOpacity style={styles.btn} onPress={this.nextPage}>
+                                    <ButtonNext style={{ marginTop: -17 }} onPress={this.nextPage}>
                                         <BtnText>Próximo</BtnText>
-                                    </TouchableOpacity>
+                                    </ButtonNext>
                                 </ContainerButton>
                             </Main>
                         </ScrollView>
@@ -192,16 +199,6 @@ export default class PetDetailsInfo extends Component {
 }
 
 const styles = StyleSheet.create({
-    btn: {
-        height: 45,
-        width: 130,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: '#1bc7cb',
-        borderRadius: 5,
-        marginTop:-15
-    },
-
     inputAge: {
         backgroundColor: '#ffff',
         height: 40,
@@ -217,7 +214,6 @@ const styles = StyleSheet.create({
     },
     inputLarge: {
         backgroundColor: '#ffff',
-        // height: 40,
         alignSelf: 'stretch',
         marginTop: 10
     },

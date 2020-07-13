@@ -1,27 +1,46 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, TouchableOpacity, ImageBackground, SafeAreaView, StatusBar } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, TouchableOpacity, ImageBackground, SafeAreaView, StatusBar, Text } from "react-native";
 import { TextInput } from 'react-native-paper';
-import { ContainerRow, TextIcon, Label, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconView, IconImage } from './styles';
+import { ContainerRow, TextIcon, Label, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconView, IconPetType, ContainerPetLocal, ButtonNext } from './styles';
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import colors from '../../../components/colors'
+import { HeaderDecoration, Head } from './services/header';
+import { IconPin, IconDog, IconCat, IconBird, IconRabbit, IconHamster, IconDogDisable, IconCatDisable, IconBirdDisable, IconRabbitDisable, IconHamsterDisable } from "../../../components/icons";
+import removerAcentos from '../../../services/Regex';
+
+
 
 export default class PetType extends Component {
 
     constructor(props) {
         super(props)
+        const { data } = this.props.route.params.params
         this.state = {
-            type: '',
+            name: data.name,
+            gender: data.gender,
+            type: null,
             uf: '',
             city: '',
+            font: 'bold'
         }
     }
 
-    
+
     nextPage = () => {
-		// console.log(this.state)
-		this.props.navigation.navigate('Teste')
-	}
+        const data = this.state
+
+		this.props.navigation.navigate('PetBreed', {
+			screen: 'PetType',
+			params: {data},
+		});
+    }
+
+    FontBold = () => {
+		const { type } = this.state
+		type === 'cão' ? 'bold' : 'normal'
+    }
+    
+
 
     // specieSelected = () => {
     // 	this.state.gender = 'M'
@@ -39,10 +58,40 @@ export default class PetType extends Component {
     // }
 
 
+    // função para remover acento
+    // teste = () => {
+    //     let txt = 'cão'
+    //     let result = removerAcentos(txt)
+    //     alert(result)
+        
+    // }
+
+    _removerAcentos = () => {
+        // let txt = 'cão'
+        const { type } = this.state
+        let txt = type
+
+        let result = removerAcentos(txt)
+        alert(result)
+    }
+
+
+
     render() {
+        console.log(this.state)
+        const{ type } = this.state
+
+        const bold = 'bold'
+        const normal = 'normal'
+
+        let FontDog = type === 'cão'  ? bold : normal
+        let FontCat = type === 'gato' ? bold : normal
+        let FontBird = type === 'pássaro'  ? bold : normal
+        let FontRabbit = type === 'coelho'  ? bold : normal
+        let FontRodent = type === 'roedor'  ? bold : normal
+
         return (
             <React.Fragment>
-
                 <StatusBar barStyle={'light-content'} backgroundColor={colors.pink} />
                 <KeyboardAvoidingView
                     // behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -51,69 +100,67 @@ export default class PetType extends Component {
                 >
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                            <ImageBackground source={require('../../../assets/head.png')} style={{ height: 50 }} imageStyle={{ resizeMode: 'cover' }} />
+                            {/* <ImageBackground source={require('../../../assets/head.png')} style={{ height: 50 }} imageStyle={{ resizeMode: 'cover' }} /> */}
+                            <HeaderDecoration />
                             <Main>
-                                <Header>
-                                    <Title>Cadastre seu pet</Title>
-                                </Header>
-                                <ContainerCenter>
-                                    <ContainerIcon style={{bottom: 25}}>
-                                        <View style={{ borderBottomWidth: 1, borderBottomColor: colors.green, width: '100%' }}></View>
-                                    </ContainerIcon>
-                                </ContainerCenter>
+                                <Head />
 
-                                <Form style={{top:20}}>
-                                    <Label>Qual o tipo do seu pet?</Label>
+                                <Form style={{ top: 20 }}>
+                                    <Label>Qual o tipo do seu pet?  
+                                        <Text style={{color:colors.green, fontWeight:'bold'}}> {type} </Text>
+                                    </Label>
 
                                     <ContainerRow style={{ justifyContent: "space-around" }}>
                                         <View>
-                                            <IconView onPress={this.maleSelected}>
-                                                <IconImage style={{ height: 70, width: 70 }} source={require('../../../assets/type-dog.png')} ></IconImage>
+                                            <IconView onPress={() => this.setState({type:'cão'})}>
+                                                {/* <IconDog /> */}
+                                                {type === null || type === 'cão' ? <IconDog /> : <IconDogDisable />}
                                             </IconView>
-                                            <TextIcon>Cão</TextIcon>
+                                            <TextIcon style={{fontWeight: FontDog}}>Cão</TextIcon>
                                         </View>
 
                                         <View>
-                                            <IconView onPress={this.femaleSelected}>
-                                                <IconImage style={{ height: 70, width: 70 }} source={require('../../../assets/type-cat.png')} ></IconImage>
+                                            <IconView onPress={() => this.setState({type:'gato'})}>
+                                                {/* <IconCat /> */}
+                                                {type === null || type === 'gato' ? <IconCat /> : <IconCatDisable />}
                                             </IconView>
-                                            <TextIcon>Gato</TextIcon>
+                                            <TextIcon style={{fontWeight: FontCat}}>Gato</TextIcon>
                                         </View>
 
                                         <View>
-                                            <IconView onPress={this.femaleSelected}>
-                                                <IconImage style={{ height: 70, width: 70 }} source={require('../../../assets/type-bird.png')} ></IconImage>
+                                            <IconView onPress={() => this.setState({type:'pássaro'})}>
+                                            {type === null || type === 'pássaro' ? <IconBird /> : <IconBirdDisable />}
                                             </IconView>
-                                            <TextIcon>Pássaro</TextIcon>
+                                            <TextIcon style={{fontWeight: FontBird}}>Pássaro</TextIcon>
                                         </View>
 
                                     </ContainerRow>
 
                                     <ContainerRow >
                                         <View>
-                                            <IconView onPress={this.femaleSelected}>
-                                                <IconImage style={{ height: 70, width: 70 }} source={require('../../../assets/type-rabbit.png')} ></IconImage>
+                                            <IconView onPress={() => this.setState({type:'coelho'})}>
+                                            {type === null || type === 'coelho' ? <IconRabbit /> : <IconRabbitDisable />}
                                             </IconView>
-                                            <TextIcon>Coelho</TextIcon>
+                                            <TextIcon style={{fontWeight: FontRabbit}}>Coelho</TextIcon>
                                         </View>
                                         <View>
-                                            <IconView onPress={this.femaleSelected}>
-                                                <IconImage style={{ height: 70, width: 70 }} source={require('../../../assets/type-hamster.png')} ></IconImage>
+                                            <IconView onPress={() => this.setState({type:'roedor'})}>
+                                            {type === null || type === 'roedor' ? <IconHamster /> : <IconHamsterDisable />}
                                             </IconView>
-                                            <TextIcon>Roedor</TextIcon>
+                                            <TextIcon style={{fontWeight: FontRodent}}>Roedor</TextIcon>
                                         </View>
                                     </ContainerRow>
 
-                                    <View style={{ marginTop: '15%', alignSelf: 'flex-start', width: '100%' }}>
-                                        <Label>Localização do pet <Icon name={'location-on'} color={'#F95F62'} size={24}></Icon></Label>
+                                    <ContainerPetLocal>
+                                        <Label>Localização do pet <IconPin /> </Label>
 
-                                        <View style={{flexDirection:'row'}}>
+                                        <View style={{ flexDirection: 'row' }}>
                                             <TextInput
                                                 style={styles.inputSmall}
                                                 label='Estado'
                                                 mode={'outlined'}
                                                 value={this.state.uf || ''}
-                                                onChangeText={txt => this.setState({uf: txt})}
+                                                onChangeText={txt => this.setState({ uf: txt })}
                                                 theme={{
                                                     colors: {
                                                         primary: colors.green,
@@ -126,7 +173,7 @@ export default class PetType extends Component {
                                                 label='Cidade'
                                                 mode={'outlined'}
                                                 value={this.state.city || ''}
-                                                onChangeText={txt => this.setState({city: txt})}
+                                                onChangeText={txt => this.setState({ city: txt })}
                                                 theme={{
                                                     colors: {
                                                         primary: colors.green,
@@ -134,17 +181,13 @@ export default class PetType extends Component {
                                                     }
                                                 }} />
                                         </View>
-
-
-
-                                    </View>
-
+                                    </ContainerPetLocal>
                                 </Form>
 
                                 <ContainerButton>
-                                    <TouchableOpacity style={styles.btn} onPress={this.nextPage}>
+                                    <ButtonNext onPress={this.nextPage}>
                                         <BtnText>Próximo</BtnText>
-                                    </TouchableOpacity>
+                                    </ButtonNext>
                                 </ContainerButton>
                             </Main>
                         </ScrollView>
@@ -157,29 +200,19 @@ export default class PetType extends Component {
 }
 
 const styles = StyleSheet.create({
-    btn: {
-        height: 45,
-        width: 130,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: '#1bc7cb',
-        borderRadius: 5,
-    },
-
     inputSmall: {
         backgroundColor: '#ffff',
         height: 40,
         alignSelf: 'stretch',
         marginTop: 10,
         width: '30%',
-        marginRight:10
+        marginRight: 10
     },
 
     input: {
         backgroundColor: '#ffff',
         height: 40,
         alignSelf: 'stretch',
-        // marginBottom: 60,
         marginTop: 10,
         width: '65%'
     },
