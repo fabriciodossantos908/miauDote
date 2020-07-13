@@ -8,7 +8,14 @@ const petStyle = makeStyles ({
     body : {
         borderTopLeftRadius: 50,
         borderTopRightRadius: 50,
-        backgroundColor: theme.palette.baseColor.main
+        backgroundColor: theme.palette.baseColor.dark
+    },
+    typografy: {
+        marginTop: 20,
+        marginBottom: 20,
+        fontFamily: "italic",
+        textJustify: "center",
+        color: theme.palette.secondary.contrastText
     }
 })
 
