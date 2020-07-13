@@ -1,29 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { Grid, Typography, Container } from '@material-ui/core';
-import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
-
-const states = [
-  {
-    value: undefined,
-    label: 'Vazio'
-  },
-  {
-    value: 'SP',
-    label: 'SP São Paulo'
-  },
-  {
-    value: 'RJ',
-    label: 'Rio de Janeiro'
-  },
-  {
-    value: 'MG',
-    label: 'Minas Gerais'
-  }
-=======
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 import { Grid } from '@material-ui/core';
 import { InputField, SelectField } from '../../../FieldStyle';
 
@@ -44,53 +19,10 @@ const states = [
         value: 'MG',
         label: 'Minas Gerais'
     }
-<<<<<<< HEAD
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 ];
 
 
 export default function FormUserAddress(props) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  const classes = props.useStyle()
-  const {
-    formField: {
-      complemento,
-      uf,
-      cep,
-      cidade,
-      bairro,
-      logradouro,
-      numero,
-    }
-  } = props;
-  return (
-    <React.Fragment>
-      <Grid container spacing={3} justify="flex-end">
-        <Container item xs={6} sm={6} className={classes.inputPaper}>
-            <InputField name={cep.name} label={cep.label} fullWidth />
-            <InputField name={cidade.name} label={cidade.label} fullWidth />
-            <InputField name={bairro.name} label={bairro.label} fullWidth />
-            <InputField name={logradouro.name} label={logradouro.label} fullWidth />
-            <InputField name={complemento.name} label={complemento.label} fullWidth />
-            <InputField name={numero.name} label={numero.label} fullWidth />
-          <Grid item xs={12} sm={6}>
-            <SelectField
-              name={uf.name}
-              label={uf.label}
-              data={states}
-              fullWidth
-            />
-          </Grid>
-        </Container>
-      </Grid>
-    </React.Fragment>
-  );
-=======
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     const classes = props.useStyle()
     const {
         formField: {
@@ -160,10 +92,6 @@ export default function FormUserAddress(props) {
             </Grid>
         </React.Fragment>
     );
-<<<<<<< HEAD
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 }
 
     // createUser = () => {

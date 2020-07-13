@@ -23,19 +23,9 @@ import checkoutUserModel from '../CheckoutUser/UserModel/checkoutUserModel';
 
 import { useStyle, formBase } from '../../Layout/styles';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-const steps = ['BaseInfo', 'PersonalInfo', 'Address'];
-=======
 const photoDog = require('../../../images/petImg/dog.jpg')
 
 const steps = ['Dados iniciais', 'Dados Pessoais', 'Endereço'];
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-=======
-const photoDog = require('../../../images/petImg/dog.jpg')
-
-const steps = ['Dados iniciais', 'Dados Pessoais', 'Endereço'];
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 const { formId, formField } = checkoutUserModel;
 
 function _renderStepContent(step) {
@@ -92,18 +82,6 @@ export default function CheckoutCompanyStep() {
           <ConfimEmail />
         ) : (
           <Grid container >
-<<<<<<< HEAD
-<<<<<<< HEAD
-               <Grid item xs={6} className={classes.imgSide}>
-                      <CardMedia
-                        className={classesForm.formImage}
-                        image="../../images/Developer_Fabricio.jpg"
-                      />
-                    </Grid>
-          <Grid item xs={6}>
-=======
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
                <Grid item xs={5} className={classes.imgSide}>
                       <CardMedia
                         className={classesForm.formImage}
@@ -111,10 +89,6 @@ export default function CheckoutCompanyStep() {
                       />
                     </Grid>
           <Grid item xs={7}>
-<<<<<<< HEAD
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
             <Formik
               initialValues={userInitialValues}
               currentUserValidationSchema={currentUserValidationSchema}
