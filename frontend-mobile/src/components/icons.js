@@ -2,9 +2,11 @@ import React, { Component } from "react";
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconMaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import IconIonicons from 'react-native-vector-icons/Ionicons';
 
 import colors from "./colors";
 import { IconPetType, IconImage } from "../pages/pets/register/styles";
+
 
 export function Heart (){
     return(
@@ -14,7 +16,7 @@ export function Heart (){
 
 export function IconPin () {
     return(
-        <IconMaterialIcons name={'location-on'} color={'#F95F62'} size={24}></IconMaterialIcons>
+        <IconMaterialIcons name={'location-on'} color={colors.pink} size={24}></IconMaterialIcons>
     )
 }
 
@@ -130,5 +132,11 @@ export function IconPawMediumDisable() {
 export function IconPawBigDisable() {
     return (
         <Icon name={'paw'} size={31} color={'#999999'}></Icon>
+    )
+}
+
+export function IconSearch() {
+    return (
+        <IconIonicons name={'ios-search'} size={25} color={colors.grey5} />
     )
 }

@@ -2,8 +2,10 @@
 import React, { Component } from 'react';
 
 import { View, Text, FlatList, StyleSheet, Alert, ActivityIndicator, ScrollView } from 'react-native';
-import { ListContainer } from '../styles';
-import { SearchBar, colors } from 'react-native-elements';
+import { ListContainer, SearchInput, ContainerSearch, ContainerSearchIcon } from '../styles';
+// import { SearchBar, colors } from 'react-native-elements';
+import colors from '../../../../components/colors';
+import { heart, Heart, IconSearch } from '../../../../components/icons'
 
 export default class BreedList extends Component {
     constructor(props) {
@@ -121,13 +123,24 @@ export default class BreedList extends Component {
         });
     }
 
+    retorno = () => {
+        return this.state.breed
+        // return raca;
+    }
+
 
     render() {
-        console.log(this.state.breed, this.state.search)
+        console.log(this.state.breed)
+
+        // const retorno = () => {
+        //     return this.state.breed
+        // }
+
+        this.retorno()
 
         return (
             <>
-                <SearchBar
+                {/* <SearchBar
                     inputContainerStyle={{ backgroundColor: 'white', borderWidth: 2, borderColor: '#ccc' }}
                     // inputStyle={{ backgroundColor: 'white' }}
                     containerStyle={{ backgroundColor: '#e2e2e2', borderRadius: 5 }}
@@ -139,7 +152,27 @@ export default class BreedList extends Component {
                     onClear={text => this.setState({ search: '' })}
                     placeholder="Buscar..."
                     value={this.state.search}
-                />
+                /> */}
+
+                <View style={{marginTop:10}}>
+                    <ContainerSearch>
+                        <ContainerSearchIcon>
+                            <IconSearch />
+                        </ContainerSearchIcon>
+                        <SearchInput
+                            placeholderTextColor={colors.grey4}
+                            placeholder={'Buscar...'}
+                            value={this.state.search}
+                            onChangeText={text => this.SearchFilterFunction(text)}
+                        />
+                    </ContainerSearch>
+                </View>
+                {/* <SearchInput
+                    placeholderTextColor={'#cccc'}
+                    placeholder={'Buscar...'}
+                    value={this.state.search}
+                    onChangeText={text => this.SearchFilterFunction(text)}
+                /> */}
 
                 <ListContainer>
                     <FlatList

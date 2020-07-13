@@ -33,6 +33,7 @@ export default class PetBreed extends Component {
             // type: data.type,
             // uf: data.uf,
             // city: data.city,
+            name:'Chico',
             breed: '',
             search: ''
         }
@@ -47,8 +48,9 @@ export default class PetBreed extends Component {
 	}
 
     render() {
-        console.log(this.state, 'testee')
+        console.log(this.state.breed, 'testeeeee')
         const { search } = this.state;
+        // retorn
         return (
             // <View style={{flex:1}}>
             // <Label>TESTEEEEEEEEEEEEEEEE</Label>
@@ -69,7 +71,9 @@ export default class PetBreed extends Component {
                                 <Head />
 
                                 <Form style={{ alignItems: 'stretch' }}>
-                                    <Label>Qual a raça do {this.state.name}?</Label>
+                                    <Label>Qual a raça do {this.state.name}? 
+                                        <Label style={{color:colors.green}}>{this.state.breed}</Label>
+                                    </Label>
 
                                     {/* <SearchBar
                                         inputContainerStyle={{ backgroundColor: 'white', borderWidth:2, borderColor:'#ccc'}}

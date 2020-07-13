@@ -170,6 +170,35 @@ export const ListContainer = styled.View`
 
 `
 
+export const SearchInput = styled.TextInput`
+    width :90%;
+    height: 40px;
+    border-radius:13px;
+    font-size:18px;
+    padding-left:8px;
+    color: ${colors.grey4};
+`
+
+export const ContainerSearch = styled.View`
+    width: 100%;
+    padding:2px;
+    flex-direction:row;
+    border-width:1px;
+    border-color:#ccc;
+    border-radius:13px;
+    justify-content:center;
+    align-items:center;
+`
+
+export const ContainerSearchIcon = styled.View`
+    margin-right:10px;
+    justify-content:center;
+    align-items:center;
+    left:10px;
+
+
+`
+
 // ****** Pet Type ****** //
 export const IconPetType = styled.Image`
     height: 70px;
