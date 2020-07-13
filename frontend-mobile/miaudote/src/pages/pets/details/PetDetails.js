@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { SafeAreaView, ActivityIndicator, View, Text, StyleSheet, Modal } from 'react-native';
+import { SafeAreaView, ActivityIndicator, View, Text, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -89,14 +89,7 @@ export default class PetDetails extends Component {
       } else {
          return (
             <React.Fragment>
-               <Modal
-                  animationType="slide"
-                  transparent={true}
-                  visible={false}
-               >
-                  <View style={{ height: 1200 }} ></View>
-               </Modal>
-
+               
                <SafeAreaView style={{ flex: 1 }}>
                   <Container>
 

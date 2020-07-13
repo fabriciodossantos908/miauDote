@@ -1,11 +1,6 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
 import { useIsFocused } from '@react-navigation/native'
-
 import { SafeAreaView, StyleSheet, ActivityIndicator, Text, View, AppState } from 'react-native';
-
-import Constants from 'expo-constants';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
@@ -53,15 +48,15 @@ export default class Home extends Component {
   }
 
   handlePetView = (id) => {
-    let petList = this.state.petList.map(pet=>{
-      if(pet.id == id){
+    let petList = this.state.petList.map(pet => {
+      if (pet.id == id) {
         pet.visualizacoes += 1;
       }
 
       return pet;
     });
 
-    this.setState({petList})
+    this.setState({ petList })
 
     this.props.navigation.navigate('PetDetails', {
       screen: 'Home',
@@ -82,20 +77,19 @@ export default class Home extends Component {
 
   render() {
 
-    if(useIsFocused == true){
+    if (useIsFocused == true) {
       console.log('Opaaaaaaa');
     }
 
     if (this.state.loading) {
       return (
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size='large'/>
+          <ActivityIndicator size='large' />
           <Text>Carregando...</Text>
         </View>
       )
     } else {
       return (
-
         <SafeAreaView style={{ flex: 1 }}>
           <Container >
             <LocalView>
@@ -207,7 +201,6 @@ export default class Home extends Component {
             }
 
 
-
           </Container>
         </SafeAreaView>
 
@@ -229,7 +222,7 @@ const styles = StyleSheet.create({
     borderLeftColor: '#dedede',
     borderBottomColor: '#b0b0b0',
   },
-  loadingContainer:{
+  loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
