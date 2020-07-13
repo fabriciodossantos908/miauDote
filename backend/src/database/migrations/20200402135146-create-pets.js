@@ -16,7 +16,15 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING
     },
+<<<<<<< HEAD
+<<<<<<< HEAD
+    raca:{
+=======
     raca: {
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+    raca: {
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       allowNull: false,
       type: Sequelize.STRING
     },
@@ -24,11 +32,29 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING,
     },
+<<<<<<< HEAD
+<<<<<<< HEAD
+    situacao: {
+      allowNull: false,
+      type: Sequelize.STRING
+    },
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     descricao: {
       allowNull: false,
       type: Sequelize.STRING,
     },
+<<<<<<< HEAD
+<<<<<<< HEAD
+    descricao_comportamento: {
+=======
     cor: {
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+    cor: {
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       allowNull: false,
       type: Sequelize.STRING,
     },
@@ -40,6 +66,18 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING,
     },
+<<<<<<< HEAD
+<<<<<<< HEAD
+    uf: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    cidade: {
+      type: Sequelize.STRING,
+      allowNull: false
+=======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     cuidados_veterinarios: {
       allowNull: true,
       type: Sequelize.BOOLEAN,
@@ -67,6 +105,10 @@ module.exports = {
     cidade:{
       allowNull: false,
       type: Sequelize.STRING
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     },
     latitude: {
       type: Sequelize.STRING,
@@ -77,6 +119,14 @@ module.exports = {
       allowNull: false
     },
     url_foto: {
+<<<<<<< HEAD
+<<<<<<< HEAD
+      allowNull: false,
+      type: Sequelize.STRING
+    },
+=======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       allowNull: true,
       type: Sequelize.STRING
     },
@@ -85,6 +135,10 @@ module.exports = {
       type: Sequelize.INTEGER,
       defaultValue: 0
     },
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     id_usuario: {
       type: Sequelize.INTEGER,
       allowNull: false,

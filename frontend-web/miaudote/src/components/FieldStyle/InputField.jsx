@@ -6,6 +6,14 @@ import { TextField } from '@material-ui/core';
 export default function InputField(props) {
   const { errorText, ...rest } = props;
   const [field, meta] = useField(props);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+  function _renderHelperText() {
+    const [touched, error] = at(meta, 'touched', 'error');
+=======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
   // console.log("that's the meta -->  " + JSON.stringify(meta))
  
 
@@ -13,6 +21,10 @@ export default function InputField(props) {
     function _renderHelperText() {
     const [touched, error] = at(meta, 'touched', 'error');
 
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     if (touched && error) {
       return error;
     }

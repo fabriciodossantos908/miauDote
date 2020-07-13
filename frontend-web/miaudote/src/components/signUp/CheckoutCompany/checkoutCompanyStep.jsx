@@ -23,9 +23,19 @@ import companyInitialValues from './CompanyModel/companyInitialValues';
 
 import { useStyle, formBase } from '../../Layout/styles'
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+const steps = ['BaseInfo', 'PersonalData', 'Address'];
+=======
 const photoCat = require('../../../images/petImg/cat.jpg')
 
 const steps = ['Dados Iniciais', 'Dados Pessoais', 'Endereço'];
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+const photoCat = require('../../../images/petImg/cat.jpg')
+
+const steps = ['Dados Iniciais', 'Dados Pessoais', 'Endereço'];
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 const { formId, formField } = checkoutCompanyModel;
 
 function _renderStepContent(step) {
@@ -78,6 +88,88 @@ export default function CheckoutCompanyStep() {
   return (
     <React.Fragment>
       <Paper elevation={3} className={classesCompany.FormPaper}>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      {activeStep === steps.length ? (
+        <ConfirmEmail />
+      ) : (
+          <Grid container >
+            <Grid item xs={6} className={classes.imgSide}>
+              <CardMedia
+                className={classesCompany.formImage}
+                image="../../images/Developer_Fabricio.jpg"
+              />
+            </Grid>
+            <Grid item xs={6}>
+
+              <Formik
+                initialValues={companyInitialValues}
+                companyValidationSchema={currentValidationSchema}
+                onSubmit={_handleSubmit}
+              >
+                {({ isSubmitting }) => (
+                  <Form id={formId} container>
+                    <Grid container direction="row">
+                      <Grid item xs={12}>
+                        <Typography
+                          component="h1"
+                          variant="h4"
+                          align="center"
+                          color="primary"
+                          classname={classes.highLightColor}
+                          value={steps[activeStep]}>
+                          {steps[activeStep]}
+                        </Typography>
+                        <Stepper activeStep={activeStep} className={classes.stepper}>
+                          {steps.map(label => (
+                            <StepLabel key={label}>
+                              <PetsIcon />
+                            </StepLabel>
+                          ))}
+                        </Stepper>
+
+                        {_renderStepContent(activeStep)}
+
+                        <div className={classes.groupButtons}>
+
+                          {activeStep !== 0 && (
+                            <Button
+                              onClick={_handleBack}
+                              className={classes.buttons}
+                              variant="contained"
+                            >
+                              Voltar
+                        </Button>
+                          )}
+                          <div className={classes.wrapper}>
+                            <Button
+                              disabled={isSubmitting}
+                              type="submit"
+                              variant="contained"
+                              className={classes.buttons}
+                            >
+                              {isLastStep ? 'Criar' : 'Próximo'}
+                            </Button>
+                            {isSubmitting && (
+                              <CircularProgress
+                                size={24}
+                                className={classes.buttonProgress}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      </Grid>
+                    </Grid>
+                  </Form>
+                )}
+              </Formik>
+            </Grid>
+          </Grid>
+        )}
+        </Paper>
+=======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
         {activeStep === steps.length ? (
           <ConfirmEmail />
         ) : (
@@ -156,6 +248,10 @@ export default function CheckoutCompanyStep() {
             </Grid>
           )}
       </Paper>
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     </React.Fragment>
   );
 }

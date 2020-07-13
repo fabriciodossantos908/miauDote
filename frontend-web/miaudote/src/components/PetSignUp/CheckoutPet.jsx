@@ -7,12 +7,38 @@ import {
   CircularProgress,
   Grid,
   Step,
+<<<<<<< HEAD
+<<<<<<< HEAD
+  Paper
+=======
   Paper,
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+  Paper,
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 import PetsIcon from '@material-ui/icons/Pets';
 import { Formik, Form } from 'formik';
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+import CompanyBaseInfo from './FormCompany/companyBaseInfo';
+import CompanyPersonalInfo from './FormCompany/companyPersonalInfo';
+import CompanyAddress from './FormCompany/companyAddress';
+
+import companyValidationSchema from './PetModel/companyValidationSchema';
+import checkoutCompanyModel from './PetModel/checkoutCompanyModel';
+import companyInitialValues from './PetModel/companyInitialValues';
+
+import { useStyle, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet} from '../Layout/styles'
+import clsx from '../../../node_modules/clsx';
+
+const steps = ['Informações do seu pet', 'Descrições do pet', 'Dados pessoais do pet'];
+const { formId, formField } = checkoutCompanyModel;
+=======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 import PetInfo from './FormPet/PetInfo';
 import PetType from './FormPet/PetType';
 import PetDesc from './FormPet/PetDesc';
@@ -32,10 +58,24 @@ const photoCat = require('../../images/petImg/cat.jpg')
 const listPhoto = [photoCat, photoDog, photoCat, photoDog]
 const steps = ['Informações do seu pet', 'Tipo do pet', 'Descrições do pet', 'Endereço'];
 const { formId, formField } = checkoutPetModal;
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 
 function _renderStepContent(step) {
   switch (step) {
     case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+      return <CompanyBaseInfo formField={formField} useStyle={useStyle} />;
+    case 1:
+      return <CompanyPersonalInfo formField={formField} useStyle={useStyle} />;
+    case 2:
+      return <CompanyAddress formField={formField} useStyle={useStyle} />;
+=======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       return <PetInfo formField={formField} useStyle={useStyle} />;
     case 1:
       return <PetType formField={formField} useStyle={useStyle} />;
@@ -43,6 +83,10 @@ function _renderStepContent(step) {
       return <PetDesc formField={formField} useStyle={useStyle} />;
     case 3:
       return <PetAddress formField={formField} useStyle={useStyle} />;
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     default:
       return <div>Not Found</div>;
   }
@@ -53,6 +97,25 @@ export default function CheckoutCompanyStep() {
   const classesBase = formBase();
   const classesPet = formPet();
   const [activeStep, setActiveStep] = useState(0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+  const currentValidationSchema = companyValidationSchema[activeStep];
+  const isLastStep = activeStep === steps.length - 1;
+
+  // function _sleep(ms) {
+  //   return new Promise(resolve => setTimeout(resolve, ms));
+  // }
+
+  async function _submitForm(values, actions) {
+    // await _sleep(1000);
+    // alert(JSON.stringify(values, null, 2));
+    actions.setSubmitting(false);
+
+    setActiveStep(activeStep + 1);
+  }
+=======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
   const [createStatus, setCreacteStatus] = useState(false);
   // const currentValidationSchema = petValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
@@ -69,6 +132,10 @@ export default function CheckoutCompanyStep() {
 
       // history.push('/profile')
     }
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 
   function _handleSubmit(values, actions) {
     if (isLastStep) {
@@ -88,14 +155,33 @@ export default function CheckoutCompanyStep() {
   function ColorlibStepIcon(props) {
     const classes = useColorlibStepIconStyles();
     const { active, completed } = props;
+<<<<<<< HEAD
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     const icons = {
       1: <PetsIcon />,
       2: <PetsIcon />,
       3: <PetsIcon />,
+<<<<<<< HEAD
+<<<<<<< HEAD
+    };
+  
+=======
       4: <PetsIcon />,
     };
 
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+      4: <PetsIcon />,
+    };
+
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
     return (
       <div
         className={clsx(classes.root, {
@@ -107,11 +193,100 @@ export default function CheckoutCompanyStep() {
       </div>
     );
   }
+<<<<<<< HEAD
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
   return (
     <React.Fragment>
       <Paper elevation={3} className={classesBase.FormPaper}>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+          <Grid container >
+        <Grid item xs={6} className={classes.imgSide}>
+          <CardMedia
+            className={classesBase.formImage}
+            image="../../images/Developer_Fabricio.jpg"
+          >
+          <Grid container direction="row">
+          <Grid item xs={12}>
+            <Typography
+              component="h1"
+              variant="h4"
+              align="center"
+              value={steps[activeStep]}>
+              {steps[activeStep]}
+            </Typography>
+            </Grid>
+            <Grid item xs={12}>
+            <Stepper activeStep={activeStep} connector={<ColorlibConnector />} className={classesPet.stepper} orientation="vertical">
+            {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+          </Step>
+        ))}
+            </Stepper>
+            </Grid>
+            </Grid>
+          </CardMedia>
+        </Grid>
+        <Grid item xs={6}>
+
+          <Formik
+            initialValues={companyInitialValues}
+            companyValidationSchema={currentValidationSchema}
+            onSubmit={_handleSubmit}
+          >
+            {({ isSubmitting }) => (
+              <Form id={formId} container>
+                <Grid container direction="row">
+                  <Grid item xs={12}>
+                    {_renderStepContent(activeStep)}
+
+                    <div className={classes.groupButtons}>
+
+                      {activeStep !== 0 && (
+                        <Button
+                          onClick={_handleBack}
+                          className={classes.buttons}
+                          variant="contained"
+                        >
+                          Voltar
+                        </Button>
+                      )}
+                      <div className={classes.wrapper}>
+                        <Button
+                          disabled={isSubmitting}
+                          type="submit"
+                          variant="contained"
+                          className={classes.buttons}
+                        >
+                          {isLastStep ? 'Criar' : 'Próximo'}
+                        </Button>
+                        {isSubmitting && (
+                          <CircularProgress
+                            size={24}
+                            className={classes.buttonProgress}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </Grid>
+                </Grid>
+              </Form>
+            )}
+          </Formik>
+        </Grid>
+      </Grid>
+=======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
         <Grid container >
           <Grid item xs={6} className={classes.imgSide}>
             <CardMedia
@@ -193,6 +368,10 @@ export default function CheckoutCompanyStep() {
             </Formik>
           </Grid>
         </Grid>
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       </Paper>
     </React.Fragment>
   );

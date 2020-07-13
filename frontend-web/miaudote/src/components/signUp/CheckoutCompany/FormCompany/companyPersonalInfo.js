@@ -1,6 +1,16 @@
 import React from 'react';
+<<<<<<< HEAD
+<<<<<<< HEAD
+import { Grid, Typography, Paper, Container } from '@material-ui/core';
+import { InputField, CheckboxField, SelectField } from '../../../FieldStyle';
+=======
 import { Grid } from '@material-ui/core';
 import { InputField } from '../../../FieldStyle';
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+import { Grid } from '@material-ui/core';
+import { InputField } from '../../../FieldStyle';
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 
 export default function companyPersonalInfo(props) {
   const classes = props.useStyle()
@@ -16,6 +26,20 @@ export default function companyPersonalInfo(props) {
   } = props;
   return (
     <React.Fragment>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <Grid container spacing={3} justify="flex-end">
+        <Container item xs={6} sm={6} className={classes.inputPaper}>
+            <InputField name={celular_representante.name} label={celular_representante.label} />
+            <InputField name={razao_social.name} label={razao_social.label} />
+            <InputField name={nome_empresa.name} label={nome_empresa.label} />
+            <InputField name={cnpj.name} label={cnpj.label} />
+            <InputField name={telefone.name} label={telefone.label} />
+            <InputField name={id_tipo_servico.name} label={id_tipo_servico.label} />
+        </Container>
+=======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       <Grid
         container
         xs={10}
@@ -51,14 +75,28 @@ export default function companyPersonalInfo(props) {
 
         <InputField name={cnpj.name} variant="outlined" label={cnpj.label} fullWidth />
         <InputField name={id_tipo_servico.name} variant="outlined" label={id_tipo_servico.label} fullWidth />
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       </Grid>
     </React.Fragment>
   );
 }
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+// import React, { Component } from 'react'
+// import { makeStyles, TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
+=======
 // import React, {Component} from 'react'
 // import {makeStyles, TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+// import React, {Component} from 'react'
+// import {makeStyles, TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 
 // export class companyPersonalInfo extends Component {
 
