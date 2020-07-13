@@ -19,7 +19,6 @@ function Routes() {
 
             <Router>
 
-                {/* <HeaderInitial /> */}
                 <HeaderBase />
 
                 <Switch>
