@@ -1,7 +1,7 @@
 import React from 'react'
 import { petStyle } from './styles'
-import { Grid, CardMedia } from '@material-ui/core'
-
+import { Grid, CardMedia, Typography } from '@material-ui/core'
+import { PetTab } from './petComp/'
 
 const background = require('../../images/background.jpg')
 
@@ -15,8 +15,10 @@ export default function PetList() {
                 {/* Introdução da página */}
                 <Grid container direction="column" justify="center" alignItems="center">
 
-                    <Grid item xs={4}>
-                        <h1> introduction will be here</h1>
+                    <Grid item xs={12}>
+                        <Typography variant="h3" className={classes.typografy}>
+                             Essas fofurinhas estão esperando por você !
+                        </Typography>
                     </Grid>
 
                     {/* Corpo da tela de filtragem */}
@@ -28,9 +30,8 @@ export default function PetList() {
                         </Grid>
 
                         {/* cards dos pets */}
-                        <Grid item>
-                            <h1> pet cards will be here</h1>
-
+                        <Grid item xs="12" style={{marginTop: 50}}>
+                            <PetTab/>                                            
                         </Grid>
                     </Grid>
                 </Grid>
