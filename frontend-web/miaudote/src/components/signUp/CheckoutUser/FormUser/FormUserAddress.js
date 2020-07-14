@@ -21,7 +21,6 @@ const states = [
     }
 ];
 
-
 export default function FormUserAddress(props) {
     const classes = props.useStyle()
     const {
@@ -38,56 +37,59 @@ export default function FormUserAddress(props) {
     return (
         <React.Fragment>
             <Grid
-            container
-            xs={10}
-                direction="column"
-                justify="space-around"
-                alignItems="center"
-                className={classes.inputPaper}>
-
-                <Grid
-                    container
-                    xs={12}
-                    direction="row"
-                >
+                item
+                container
+                xs={12}
+                direction="row"
+                className={classes.inputPaper}
+            >
                 <Grid item xs={6}>
-                <InputField name={cep.name} variant="outlined" label={cep.label} fullWidth />
+                    <InputField name={cep.name} variant="outlined" label={cep.label} fullWidth />
                 </Grid>
                 <Grid item xs={6}>
-                <InputField name={logradouro.name} variant="outlined" label={logradouro.label} fullWidth />
+                    <InputField name={logradouro.name} variant="outlined" label={logradouro.label} fullWidth />
                 </Grid>
-                </Grid>
-                <Grid
-                    container
-                    xs={12}
-                    direction="row"
-                >
-                    <Grid item xs={6}>
-                        <InputField name={cidade.name} variant="outlined" label={cidade.label} fullWidth />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <InputField name={bairro.name} variant="outlined" label={bairro.label} fullWidth />
-                    </Grid>
+            </Grid>
+            <Grid
+                item
+                container
+                xs={12}
+                direction="row"
+                className={classes.inputPaper}
 
+            >
+                <Grid item xs={6}>
+                    <InputField name={cidade.name} variant="outlined" label={cidade.label} fullWidth />
                 </Grid>
-                <InputField name={complemento.name} variant="outlined" label={complemento.label} fullWidth />
+                <Grid item xs={6}>
+                    <InputField name={bairro.name} variant="outlined" label={bairro.label} fullWidth />
+                </Grid>
+
+            </Grid>
+            <InputField name={complemento.name} variant="outlined" label={complemento.label} fullWidth />
+            <Grid
+                container
+                xs={12}
+                direction="row"
+                justify="space-between"
+                className={classes.inputPaper}
+
+            >
+                <Grid item xs={6} alignItems="center">
+                    <InputField name={numero.name} variant="outlined" label={numero.label} fullWidth />
+                </Grid>
+
                 <Grid
-                    container
-                    xs={12}
-                    direction="row"
-                    justify="space-between"
+                    item
+                    xs={5}
+                    className={classes.inputPaper}
                 >
-                    <Grid item xs={6} alignItems="center">
-                        <InputField name={numero.name} variant="outlined" label={numero.label} fullWidth />
-                    </Grid>
-                    <Grid item xs={5} >
-                        <SelectField
-                            name={uf.name}
-                            label={uf.label}
-                            data={states}
-                            fullWidth
-                        />
-                    </Grid>
+                    <SelectField
+                        name={uf.name}
+                        label={uf.label}
+                        data={states}
+                        fullWidth
+                    />
                 </Grid>
             </Grid>
         </React.Fragment>

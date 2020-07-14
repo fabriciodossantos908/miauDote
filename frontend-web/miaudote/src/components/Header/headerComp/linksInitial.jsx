@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
-import { Avatar } from '@material-ui/core';
+import { Avatar, Grid } from '@material-ui/core';
 
 import { header } from '../../../components/Layout/styles'
 
@@ -18,27 +18,32 @@ export default function LinksInitial(props) {
     };
 
     return (
-        <Paper square elevation={0}>
-            <Tabs
-                value={value}
-                indicatorColor="black"
-                textColor="black"
-                onChange={handleChange}
-            >
-                <Link to="/formCompany" className={classes.links}>
-                    <Tab label="Signup empresa" />
-                </Link>
-
-                <Link to="/formUser" className={classes.links}>
-                    <Tab label="Signup Usuário" />
-                </Link>
-
+        // <Tabs
+        //     value={value}
+        //     indicatorColor="black"
+        //     textColor="black"
+        //     onChange={handleChange}
+        // >
+        <Grid container justify="space-between">
+            <Grid item container xs={10} justify="flex-start" spacing={2} orientation="row">
+                <Grid item xs={2}>
+                    <Link to="/formCompany" className={classes.links}>
+                        <Tab label="Sobre" />
+                    </Link>
+                </Grid>
+                <Grid item xs={2}>
+                    <Link to="/formUser" className={classes.links}>
+                        <Tab label="Contato" />
+                    </Link>
+                </Grid>
+            </Grid>
+            <Grid item xs={2}>
                 <Link to="/login" className={classes.links}>
                     <Tab label="Logar" />
                 </Link>
-
-            </Tabs>
-        </Paper>
+            </Grid>
+        </Grid>
+        // </Tabs>
     );
 
 }

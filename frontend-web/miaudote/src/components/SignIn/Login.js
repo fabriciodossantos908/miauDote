@@ -15,46 +15,8 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { Facebook, Email } from '@material-ui/icons';
 
-const photo = require('../../images/petImg/dog.jpg')
-
 const { formId, formField } = checkoutLoginModel;
 
-const BtnsignUp = (props) => {
-    const classes = props.useStyle()
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    return (
-        <div>
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                Clique aqui
-        </Button>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-            >
-                <Link to="/formCompany" className={classes.links} >
-
-                    <MenuItem onClick={handleClose}>Criar empresa</MenuItem>
-                </Link>
-                <Link to="/formUser" className={classes.links} >
-
-                    <MenuItem onClick={handleClose}>Criar usuário</MenuItem>
-                </Link>
-            </Menu>
-        </div>
-    )
-}
 
 const OtherLogin = (props) => {
     const classes = props.classesLogin
@@ -72,10 +34,6 @@ const OtherLogin = (props) => {
     )
 
 }
-
-
-console.log(loginValidationSchema)
-
 
 export default function Login() {
     const classes = useStyle();
@@ -112,17 +70,11 @@ export default function Login() {
 
     return (
         <Paper elevation={2} className={classesLogin.paperMain}>
-            <CardMedia
-                className={classesBase.formImage}
-                image={photo}
-            >
-                <Grid container justify="center" alignContent="space-between" className={classes.fadeBack}>
-                    <Grid item >
+                <Grid container justify="center" alignContent="space-between" >
+                <Grid item className={classesLogin.titleForm}>
                         <Typography variant="h3">Login</Typography>
                     </Grid>
                     <Grid item xs={12}>
-                        <Paper elevation={3} className={classesLogin.paperForm}>
-
                             <Formik
                                 initialValues={InitialValues}
                                 loginValidationSchema={loginValidationSchema}
@@ -190,10 +142,8 @@ export default function Login() {
                                     </Form>
                                 )}
                             </Formik>
-                        </Paper>
                     </Grid>
                 </Grid>
-            </CardMedia>
         </Paper>
     )
 }

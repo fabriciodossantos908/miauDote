@@ -5,12 +5,13 @@ import {
   StepLabel,
   Button,
   Typography,
-  CircularProgress,
-  CardMedia,
-  Paper
+  Paper,
+  Step
 } from '@material-ui/core';
 import PetsIcon from '@material-ui/icons/Pets';
 import { Formik, Form } from 'formik';
+
+import clsx from 'clsx'
 
 import FormUserInitialnfo from './FormUser/FormUserInitialnfo';
 import FormUserPersonalInfo from './FormUser/FormUserPersonalInfo';
@@ -21,7 +22,7 @@ import userValidationSchema from '../CheckoutUser/UserModel/userValidationSchema
 import userInitialValues from '../CheckoutUser/UserModel/userInitialValues';
 import checkoutUserModel from '../CheckoutUser/UserModel/checkoutUserModel';
 
-import { useStyle, formBase } from '../../Layout/styles';
+import { useStyle, formBase, ColorlibConnector, useColorlibStepIconStyles, ColorlibConnectorHorizontal } from '../../Layout/styles';
 
 const photoDog = require('../../../images/petImg/dog.jpg')
 
@@ -48,6 +49,29 @@ export default function CheckoutCompanyStep() {
   const currentUserValidationSchema = userValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
+  function ColorlibStepIcon(props) {
+    const classes = useColorlibStepIconStyles();
+    const { active, completed } = props;
+
+    const icons = {
+      1: <PetsIcon />,
+      2: <PetsIcon />,
+      3: <PetsIcon />,
+      4: <PetsIcon />,
+    };
+
+    return (
+      <div
+        className={clsx(classes.root, {
+          [classes.active]: active,
+          [classes.completed]: completed,
+        })}
+      >
+        {icons[String(props.icon)]}
+      </div>
+    );
+  }
+
   // function _sleep(ms) {
   //   return new Promise(resolve => setTimeout(resolve, ms));
   // }
@@ -56,7 +80,7 @@ export default function CheckoutCompanyStep() {
     await
       // _sleep(1000);
       // alert(JSON.stringify(values, null, 2));
-    actions.setSubmitting(false);
+      actions.setSubmitting(false);
 
     setActiveStep(activeStep + 1);
   }
@@ -76,58 +100,78 @@ export default function CheckoutCompanyStep() {
   }
 
   return (
-      <React.Fragment>
+    <React.Fragment>
       <Paper elevation={3} className={classesForm.FormPaper}>
         {activeStep === steps.length ? (
           <ConfimEmail />
         ) : (
-          <Grid container >
-               <Grid item xs={5} className={classes.imgSide}>
-                      <CardMedia
-                        className={classesForm.formImage}
-                        image={photoDog}
-                      />
-                    </Grid>
-          <Grid item xs={7}>
-            <Formik
-              initialValues={userInitialValues}
-              currentUserValidationSchema={currentUserValidationSchema}
-              onSubmit={_handleSubmit}
-            >
-              {({ isSubmitting }) => (
-                <Form id={formId} container>
-                  <Grid container direction="row">
-                    <Grid item xs={12}>
-                      <Typography
-                        component="h1"
-                        variant="h4"
-                        align="center"
-                        value={steps[activeStep]}>
-                        {steps[activeStep]}
-                      </Typography>
-                      <Stepper activeStep={activeStep} className={classes.stepper}>
-                        {steps.map(label => (
-                          <StepLabel key={label}>
-                            <PetsIcon />
-                          </StepLabel>
-                        ))}
-                      </Stepper>
+            <Grid Container>
+              <Formik
+                initialValues={userInitialValues}
+                currentUserValidationSchema={currentUserValidationSchema}
+                onSubmit={_handleSubmit}
+              >
+                {({ isSubmitting }) => (
+                  <Form id={formId} container>
+                    <Grid container  orientation="column">
+                      <Grid item
+                        container
+                        xs={12}
+                        justify="center"
+                        alignItems="center"
+                        direction="column"
+                      >
+                        <Grid>
+                          <Typography
+                            variant="h4"
+                            align="center"
 
-                      {_renderStepContent(activeStep)}
+                          >
+                            Cadastre-se como usuário
+                        </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Stepper activeStep={activeStep} connector={<ColorlibConnectorHorizontal />}>
+                            {steps.map((label) => (
+                              <Step key={label}>
+                                <StepLabel StepIconComponent={ColorlibStepIcon} >
+                                </StepLabel>
+                              </Step>
+                            ))}
+                          </Stepper>
 
-                      <div className={classes.groupButtons}>
+                        </Grid>
+                      </Grid>
 
-                        {activeStep !== 0 && (
+                      <Grid item xs={10}>
+
+                        {_renderStepContent(activeStep)}
+                      </Grid>
+                      <Grid item container xs={12} justify="flex-end" spacing={1} className={classes.groupButtons}>
+                        <Grid item>
                           <Button
                             onClick={_handleBack}
                             className={classes.buttons}
                             variant="contained"
                             color="primary"
                           >
-                            Voltar
-                     </Button>
+                            Logar
+                          </Button>
+                        </Grid>
+
+                        {activeStep !== 0 && (
+                          <Grid item>
+                            <Button
+                              onClick={_handleBack}
+                              className={classes.buttons}
+                              variant="contained"
+                              color="primary"
+                            >
+                              Voltar
+                          </Button>
+                          </Grid>
                         )}
-                        <div className={classes.wrapper}>
+                        <Grid item>
                           <Button
                             disabled={isSubmitting}
                             type="submit"
@@ -137,23 +181,23 @@ export default function CheckoutCompanyStep() {
                           >
                             {isLastStep ? 'Criar' : 'Próximo'}
                           </Button>
+                          {/* 
+                          className={classes.wrapper}
                           {isSubmitting && (
                             <CircularProgress
                               size={24}
                               className={classes.buttonProgress}
                             />
-                          )}
-                        </div>
-                      </div>
+                          )} */}
+                        </Grid>
+                      </Grid>
                     </Grid>
-                  </Grid>
-                </Form>
-              )}
-            </Formik>
-            </Grid>
+                  </Form>
+                )}
+              </Formik>
             </Grid>
           )}
-          </Paper>
-      </React.Fragment>
+      </Paper>
+    </React.Fragment>
   );
 }
