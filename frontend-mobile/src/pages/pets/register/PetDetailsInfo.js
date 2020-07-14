@@ -36,6 +36,7 @@ export default class PetDetailsInfo extends Component {
             color: '',
             description: ''
         }
+        
     }
 
     nextPage = () => {
@@ -178,7 +179,7 @@ export default class PetDetailsInfo extends Component {
                                         label='Cor'
                                         mode={'outlined'}
                                         value={this.state.color}
-                                        maxLength={25}
+                                        maxLength={15}
                                         // error={!this._onlyLetters(this.state.color)}
                                         error={!_lettersAndChar(this.state.color)}
                                         onChangeText={txt => this.setState({ color: txt })}
@@ -199,7 +200,7 @@ export default class PetDetailsInfo extends Component {
                                             Ops: Apenas letras e (',' '-' '/') são permitidos
                                         </HelperText>
                                         <HelperText visible style={styles.counterHelper}>
-                                            {this.state.color.length} / {25}
+                                            {this.state.color.length} / {15}
                                         </HelperText>
                                     </View>
 
@@ -212,7 +213,7 @@ export default class PetDetailsInfo extends Component {
                                         numberOfLines={4}
                                         label='Descrição'
                                         mode={'outlined'}
-                                        maxLength={250}
+                                        maxLength={255}
                                         value={this.state.description || ''}
                                         onChangeText={txt => this.setState({ description: txt })}
                                         theme={{
@@ -224,7 +225,7 @@ export default class PetDetailsInfo extends Component {
                                     />
                                     <View>
                                         <HelperText visible style={styles.counterHelper}>
-                                            {this.state.description.length} / {100}
+                                            {this.state.description.length} / {255}
                                         </HelperText>
                                     </View>
 
