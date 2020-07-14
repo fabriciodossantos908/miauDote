@@ -19,3 +19,6 @@ function removerAcentos( newStringComAcento ) {
 }
 
 export default removerAcentos;
+
+
+export const _lettersAndChar = (text) => (/^[a-zA-Z,/-\s]*$/).test(text);
