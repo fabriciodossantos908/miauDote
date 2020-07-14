@@ -131,12 +131,9 @@ export default class BreedList extends Component {
 
     render() {
         console.log(this.state.breed)
+        // console.log(this.retorno.bind(this))
 
-        // const retorno = () => {
-        //     return this.state.breed
-        // }
-
-        this.retorno()
+    
 
         return (
             <>
@@ -176,6 +173,8 @@ export default class BreedList extends Component {
 
                 <ListContainer>
                     <FlatList
+                        changeA={() => this.retorno.bind(this)}
+                        // teste={this.retorno.bind(this)}
                         style={{ marginTop: 30 }}
                         contentContainerStyle={styles.list}
                         data={this.state.data}

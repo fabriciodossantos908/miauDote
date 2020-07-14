@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, TouchableOpacity, ImageBackground, StatusBar } from "react-native";
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, TouchableOpacity, ImageBackground, StatusBar, Alert } from "react-native";
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -11,9 +11,10 @@ import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import { CheckBox } from "react-native-elements";
 import colors from "../../../components/colors";
 import { HeaderDecoration, Head } from "./services/header";
-import { IconPawSmall, IconPawMedium, IconPawBig, IconPawSmallDisable, IconPawMediumDisable, IconPawBigDisable } from "../../../components/icons";
+import { IconPawSmall, IconPawMedium, IconPawBig, IconPawSmallDisable, IconPawMediumDisable, IconPawBigDisable, Heart, IconPin } from "../../../components/icons";
 
-
+import { showMessage, hideMessage } from "react-native-flash-message";
+import { showAlertMessage } from "../../../components/alert";
 
 export default class PetDetailsInfo extends Component {
 
@@ -22,9 +23,12 @@ export default class PetDetailsInfo extends Component {
         this.state = {
             name: 'Tom',
             age: '',
+            ageNumber: '',
+            month_year: null,
             porte: null,
             yearSelected: false,
             monthSelected: false,
+            color:'',
             description: ''
         }
     }
@@ -34,22 +38,52 @@ export default class PetDetailsInfo extends Component {
         this.props.navigation.navigate('PetHealth')
     }
 
-    _onYearPress = () => {
-        const { yearSelected } = this.state
+    // showMessage = () => ({
+    //     message: "Hello World",
+    //     description: "This is our second message",
+    //     type: "success",
+    // });
 
-        yearSelected == false ?
-            this.setState({ yearSelected: true }) +
-            this.setState({ monthSelected: false }) :
-            this.setState({ yearSelected: false })
+    showAlert = () => {
+        showAlertMessage('Ops! Preencha o campo', 'Preencha o campo de idade primero, e depois você poderá selecionar este campo. ☺')
+    }
+
+    
+    _onYearPress = () => {
+        const { yearSelected, age, ageNumber } = this.state
+
+        if (ageNumber != '') {
+            yearSelected == false ?
+                this.setState({ yearSelected: true, age: ageNumber + ' anos' }) +
+                this.setState({ monthSelected: false }) :
+                this.setState({ yearSelected: false, age: ageNumber + '' })
+        } else {
+            this.showAlert()
+        }
     }
 
     _onMonthPress = () => {
-        const { monthSelected } = this.state
+        const { monthSelected, ageNumber } = this.state
 
-        monthSelected == false ?
-            this.setState({ monthSelected: true }) +
-            this.setState({ yearSelected: false }) :
-            this.setState({ monthSelected: false })
+        if (ageNumber != '') {
+            monthSelected == false ?
+                this.setState({ monthSelected: true, age: ageNumber + ' meses' }) +
+                this.setState({ yearSelected: false }) :
+                this.setState({ monthSelected: false, age: ageNumber + '' })
+        }else{
+            this.showAlert()
+        }
+    }
+
+    petAge = () => {
+        const { monthSelected, yearSelected, age, ageNumber } = this.state
+
+        monthSelected === true ?
+            this.setState({ age: ageNumber + 'meses' }) :
+            yearSelected === true ?
+                this.setState({ age: ageNumber + 'anos' }) :
+                ''
+
     }
 
     render() {
@@ -119,8 +153,8 @@ export default class PetDetailsInfo extends Component {
                                                 label='Idade'
                                                 mode={'outlined'}
                                                 keyboardType={'numeric'}
-                                                value={this.state.age}
-                                                onChangeText={(txt) => this.setState({ age: txt })}
+                                                value={this.state.ageNumber}
+                                                onChangeText={(txt) => this.setState({ ageNumber: txt })}
                                                 theme={{
                                                     colors: {
                                                         primary: '#1bc7cb',
@@ -154,9 +188,8 @@ export default class PetDetailsInfo extends Component {
                                         style={styles.input}
                                         label='Cor'
                                         mode={'outlined'}
-                                        keyboardType={'numeric'}
-                                        value={''}
-                                        onChangeText={() => { }}
+                                        value={this.state.color}
+                                        onChangeText={txt => this.setState({color: txt})}
                                         theme={{
                                             colors: {
                                                 primary: '#1bc7cb',
@@ -164,7 +197,7 @@ export default class PetDetailsInfo extends Component {
                                             }
                                         }} />
 
-
+                                    {/* {this.state.color != '' ? <IconPin /> : null} */}
                                     <Label>Fale um pouco sobre o {this.state.name} para nós</Label>
 
                                     <TextInput
@@ -173,6 +206,7 @@ export default class PetDetailsInfo extends Component {
                                         numberOfLines={4}
                                         label='Descrição'
                                         mode={'outlined'}
+                                        maxLength={200}
                                         value={this.state.description || ''}
                                         onChangeText={txt => this.setState({ description: txt })}
                                         theme={{
