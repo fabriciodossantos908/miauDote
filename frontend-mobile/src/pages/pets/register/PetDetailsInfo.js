@@ -1,17 +1,24 @@
 import React, { Component } from "react";
 
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, TouchableOpacity, ImageBackground, StatusBar } from "react-native";
-
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-import { TextInput } from 'react-native-paper';
-
-import { TextIcon, Label, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconViewSmall, IconViewMedium, IconViewBig, ContainerPetDetails, ContainerCheckbox, ButtonNext, ContainerPetAge, DivInputAge } from './styles';
-import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import { CheckBox } from "react-native-elements";
 import colors from "../../../components/colors";
 import { HeaderDecoration, Head } from "./services/header";
-import { IconPawSmall, IconPawMedium, IconPawBig, IconPawSmallDisable, IconPawMediumDisable, IconPawBigDisable } from "../../../components/icons";
+import { _lettersAndChar } from "../../../services/regex";
+import { TextInput, HelperText } from 'react-native-paper';
+import { showAlertMessage } from "../../../components/alert";
+import { ContainerButton, BtnText } from '../../user/signUp/styles';
+
+import { KeyboardAvoidingView, TouchableWithoutFeedback, 
+        Keyboard, ScrollView, StyleSheet, 
+        View, StatusBar } from "react-native";
+
+import { TextIcon, Label, Main, Form, IconViewSmall, 
+        IconViewMedium, IconViewBig, ContainerPetDetails, 
+        ContainerCheckbox, ButtonNext, ContainerPetAge, DivInputAge } from './styles';
+
+import { IconPawSmall, IconPawMedium, IconPawBig, 
+        IconPawSmallDisable, IconPawMediumDisable, 
+        IconPawBigDisable } from "../../../components/icons";
 
 
 
@@ -22,11 +29,14 @@ export default class PetDetailsInfo extends Component {
         this.state = {
             name: 'Tom',
             age: '',
+            ageNumber: '',
             porte: null,
             yearSelected: false,
             monthSelected: false,
+            color: '',
             description: ''
         }
+        
     }
 
     nextPage = () => {
@@ -34,22 +44,36 @@ export default class PetDetailsInfo extends Component {
         this.props.navigation.navigate('PetHealth')
     }
 
-    _onYearPress = () => {
-        const { yearSelected } = this.state
 
-        yearSelected == false ?
-            this.setState({ yearSelected: true }) +
-            this.setState({ monthSelected: false }) :
-            this.setState({ yearSelected: false })
+    showAlert = () => {
+        showAlertMessage('Ops! Preencha o campo', 'Preencha o campo de idade primero, e depois você poderá selecionar este campo. ☺')
+    }
+
+
+    _onYearPress = () => {
+        const { yearSelected, ageNumber } = this.state
+
+        if (ageNumber != '') {
+            yearSelected == false ?
+                this.setState({ yearSelected: true, age: ageNumber + ' anos' }) +
+                this.setState({ monthSelected: false }) :
+                this.setState({ yearSelected: false, age: ageNumber + '' })
+        } else {
+            this.showAlert()
+        }
     }
 
     _onMonthPress = () => {
-        const { monthSelected } = this.state
+        const { monthSelected, ageNumber } = this.state
 
-        monthSelected == false ?
-            this.setState({ monthSelected: true }) +
-            this.setState({ yearSelected: false }) :
-            this.setState({ monthSelected: false })
+        if (ageNumber != '') {
+            monthSelected == false ?
+                this.setState({ monthSelected: true, age: ageNumber + ' meses' }) +
+                this.setState({ yearSelected: false }) :
+                this.setState({ monthSelected: false, age: ageNumber + '' })
+        } else {
+            this.showAlert()
+        }
     }
 
     render() {
@@ -119,8 +143,8 @@ export default class PetDetailsInfo extends Component {
                                                 label='Idade'
                                                 mode={'outlined'}
                                                 keyboardType={'numeric'}
-                                                value={this.state.age}
-                                                onChangeText={(txt) => this.setState({ age: txt })}
+                                                value={this.state.ageNumber}
+                                                onChangeText={(txt) => this.setState({ ageNumber: txt })}
                                                 theme={{
                                                     colors: {
                                                         primary: '#1bc7cb',
@@ -154,17 +178,33 @@ export default class PetDetailsInfo extends Component {
                                         style={styles.input}
                                         label='Cor'
                                         mode={'outlined'}
-                                        keyboardType={'numeric'}
-                                        value={''}
-                                        onChangeText={() => { }}
+                                        value={this.state.color}
+                                        maxLength={15}
+                                        // error={!this._onlyLetters(this.state.color)}
+                                        error={!_lettersAndChar(this.state.color)}
+                                        onChangeText={txt => this.setState({ color: txt })}
                                         theme={{
                                             colors: {
-                                                primary: '#1bc7cb',
+                                                primary: colors.green,
                                                 underlineColor: 'transparent',
                                             }
-                                        }} />
+                                        }}
+                                    />
+                                    <View style={styles.helpersWrapper}>
+                                        <HelperText
+                                            type="error"
+                                            // visible={!this._onlyLetters(this.state.color)}
+                                            visible={!_lettersAndChar(this.state.color)}
+                                            style={styles.helper}
+                                        >
+                                            Ops: Apenas letras e (',' '-' '/') são permitidos
+                                        </HelperText>
+                                        <HelperText visible style={styles.counterHelper}>
+                                            {this.state.color.length} / {15}
+                                        </HelperText>
+                                    </View>
 
-
+                                    {/* {this.state.color != '' ? <IconPin /> : null} */}
                                     <Label>Fale um pouco sobre o {this.state.name} para nós</Label>
 
                                     <TextInput
@@ -173,6 +213,7 @@ export default class PetDetailsInfo extends Component {
                                         numberOfLines={4}
                                         label='Descrição'
                                         mode={'outlined'}
+                                        maxLength={255}
                                         value={this.state.description || ''}
                                         onChangeText={txt => this.setState({ description: txt })}
                                         theme={{
@@ -180,7 +221,15 @@ export default class PetDetailsInfo extends Component {
                                                 primary: '#1bc7cb',
                                                 underlineColor: 'transparent',
                                             }
-                                        }} />
+                                        }}
+                                    />
+                                    <View>
+                                        <HelperText visible style={styles.counterHelper}>
+                                            {this.state.description.length} / {255}
+                                        </HelperText>
+                                    </View>
+
+                                    {/* <Text style={{ alignSelf: 'flex-end' }}>{this.state.description.length}/255</Text> */}
 
                                 </Form>
 
@@ -209,7 +258,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffff',
         height: 40,
         alignSelf: 'stretch',
-        marginBottom: '13%',
+        // marginBottom: '13%',
         marginTop: 10
     },
     inputLarge: {
@@ -220,4 +269,15 @@ const styles = StyleSheet.create({
     checkbox: {
         alignSelf: "center",
     },
+    helpersWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom:'13%'
+    },
+    counterHelper: {
+        textAlign: 'right',
+        width:100,
+        alignSelf:'flex-end'
+    },
+
 })

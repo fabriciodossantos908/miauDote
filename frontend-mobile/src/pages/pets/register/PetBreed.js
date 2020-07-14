@@ -39,25 +39,15 @@ export default class PetBreed extends Component {
         }
     }
 
-    updateSearch = (search) => {
-        this.setState({ search });
-    };
-
     nextPage = () => {
 		this.props.navigation.navigate('PetDetailsInfo')
-	}
+    }
+    
 
     render() {
-        console.log(this.state.breed, 'testeeeee')
         const { search } = this.state;
-        // retorn
         return (
-            // <View style={{flex:1}}>
-            // <Label>TESTEEEEEEEEEEEEEEEE</Label>
-            //     
-            // </View>
             <React.Fragment>
-
                 <StatusBar barStyle={'light-content'} backgroundColor='#FC6B6E' />
                 <KeyboardAvoidingView
                     // behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -74,24 +64,7 @@ export default class PetBreed extends Component {
                                     <Label>Qual a raça do {this.state.name}? 
                                         <Label style={{color:colors.green}}>{this.state.breed}</Label>
                                     </Label>
-
-                                    {/* <SearchBar
-                                        inputContainerStyle={{ backgroundColor: 'white', borderWidth:2, borderColor:'#ccc'}}
-                                        // inputStyle={{ backgroundColor: 'white' }}
-                                        containerStyle={{ backgroundColor: '#e2e2e2', borderRadius: 5 }}
-                                        placeholderTextColor={'#g5g5g5'}
-                                        lightTheme={true}
-                                        round
-                                        searchIcon={{ size: 24, color: colors.green }}
-                                        onChangeText={text => this.setState({ search: text })}
-                                        onClear={text => this.setState({ search: '' })}
-                                        placeholder="Buscar..."
-                                        value={search}
-                                    /> */}
-
-                                    {/* <ListContainer> */}
                                         <BreedList />
-                                    {/* </ListContainer> */}
                                 </Form>
                                 <ContainerButton>
                                     <ButtonNext onPress={this.nextPage}>
