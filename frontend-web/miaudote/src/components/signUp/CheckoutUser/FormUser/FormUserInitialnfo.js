@@ -15,17 +15,27 @@ export default function FormUserInitialInfo(props) {
   } = props;
   return (
     <React.Fragment>
-      <Grid container
-              xs={10}
-              direction="column"
-              justify="space-around"
-              alignItems="center"
-              className={classes.inputPaper}
-              >
-            <InputField name={nome.name} variant="outlined" label={nome.label} justify="flex-start" fullWidth />
-            <InputField name={email.name} variant="outlined" label={email.label} fullWidth />
-            <InputField name={senha.name} variant="outlined" label={senha.label} justify="flex-start" fullWidth />
-            <InputField name={senha_confirm.name} variant="outlined" label={senha_confirm.label} justify="flex-start" fullWidth />
+      <Grid
+        item
+        xs={12}
+        className={classes.inputPaper}>
+        <InputField name={nome.name} variant="outlined" label={nome.label} justify="flex-start" fullWidth style={{ marginBottom: 10 }} />
+      </Grid>
+
+      <Grid
+        item
+        xs={12}
+        className={classes.inputPaper}>
+        <InputField name={email.name} variant="outlined" label={email.label} fullWidth style={{ marginBottom: 10 }} />
+      </Grid>
+
+      <Grid item className={classes.inputPaper}>
+        <InputField name={senha.name} variant="outlined" label={senha.label} justify="flex-start" fullWidth style={{ marginBottom: 10 }} />
+      </Grid>
+
+      <Grid item className={classes.inputPaper}>
+
+        <InputField name={senha_confirm.name} variant="outlined" label={senha_confirm.label} justify="flex-start" fullWidth />
       </Grid>
     </React.Fragment>
   );

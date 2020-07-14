@@ -18,7 +18,7 @@ export default function HeaderMain() {
                         Miaudote
                     </Typography>
                     <Grid item container>
-                        <Grid item container xs={6} direction="row" justify="space-evenly" style={{ marginLeft: "auto" }}>
+                        <Grid item container xs={8} direction="row" justify="space-evenly" style={{ marginLeft: "auto" }}>
                             <LinksInitial theme={theme} />
                         </Grid>
                     </Grid>

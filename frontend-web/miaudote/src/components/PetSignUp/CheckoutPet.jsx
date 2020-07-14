@@ -22,7 +22,7 @@ import petValidationSchema from './PetModel/PetValidationSchema';
 import checkoutPetModal from './PetModel/checkoutPetModel';
 import petInitialInfo from './PetModel/petInitialValues';
 
-import { useStyle, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet } from '../Layout/styles'
+import { useStyle, formBase, useColorlibStepIconStyles, formPet, ColorlibConnectorHorizontal } from '../Layout/styles'
 import clsx from '../../../node_modules/clsx';
 import { useHistory } from 'react-router-dom';
 
@@ -122,7 +122,7 @@ export default function CheckoutCompanyStep() {
                 <Grid item container xs={12} justify="center">
                 </Grid>
                 <Grid item xs={12}>
-                  <Stepper activeStep={activeStep} connector={<ColorlibConnector />} className={classesPet.stepper} orientation="vertical">
+                  <Stepper activeStep={activeStep} connector={<ColorlibConnectorHorizontal />} className={classesPet.stepper} orientation="vertical">
                     {steps.map((label) => (
                       <Step key={label}>
                         <StepLabel StepIconComponent={ColorlibStepIcon} >

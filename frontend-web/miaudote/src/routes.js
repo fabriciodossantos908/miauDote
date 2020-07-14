@@ -19,10 +19,13 @@ function Routes() {
 
             <Router>
 
-                {/* <HeaderInitial /> */}
-                <HeaderBase />
+                <HeaderInitial />
+                {/* <HeaderBase /> */}
 
                 <Switch>
+                    <Route path='/home' exact >
+                        <Home />
+                    </Route>
                     <Route path='/' exact >
                         <UserHome />
                     </Route>

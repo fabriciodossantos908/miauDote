@@ -3,7 +3,7 @@ import {
   responsiveFontSizes,
   makeStyles
 } from '@material-ui/core/styles';
-import { withStyles } from '../../../node_modules/@material-ui/styles';
+import { withStyles, ThemeProvider } from '../../../node_modules/@material-ui/styles';
 import StepConnector from '@material-ui/core/StepConnector';
 
 let theme = createMuiTheme({
@@ -51,10 +51,10 @@ const useStyle = makeStyles(() => ({
     }
   },
   inputPaper: {
-    maxWidth: 400,
-    minHeight: 300,
-    padding: theme.spacing(2),
+    width: "100%",
+    padding: theme.spacing(0.5),
   },
+
   stepper: {
     width: 100,
     marginLeft: "auto",
@@ -65,7 +65,6 @@ const useStyle = makeStyles(() => ({
     width: 200,
     height: 50,
     marginLeft: "auto",
-    marginRight: "auto",
     display: "flex",
   },
   buttons: {
@@ -123,17 +122,9 @@ const formBase = makeStyles(() => ({
     borderRadius: 3,
   },
   FormPaper: {
-    width: 800,
-    maxHeight: 600,
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
+    width: 500,
+    height: 500,
     backgroundColor: theme.palette.background.default,
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
-    }
   },
 }))
 
@@ -153,6 +144,30 @@ const ColorlibConnector = withStyles({
   },
   line: {
     width: 2,
+    marginRight: "auto",
+    border: 0,
+    backgroundColor: theme.palette.secondary.main,
+    borderRadius: 1,
+  },
+})(StepConnector);
+
+const ColorlibConnectorHorizontal = withStyles({
+  alternativeLabel: {
+    top: 22,
+  },
+  active: {
+    '& $line': {
+      backgroundColor: theme.palette.primary.light
+    },
+  },
+  completed: {
+    '& $line': {
+      backgroundColor: theme.palette.primary.light
+    },
+  },
+  line: {
+    width: 50,
+    height: 2,
     marginRight: "auto",
     border: 0,
     backgroundColor: theme.palette.secondary.main,
@@ -200,18 +215,15 @@ const login = makeStyles({
     height: 400,
     marginTop: theme.spacing(1),
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
+    borderRadius: 100,
   },
 
   titleForm: {
+    marginTop: theme.spacing(2),
     height: 50
   },
 
-  paperForm: {
-    width: "auto",
-    borderTopLeftRadius: 100,
-    borderTopRightRadius: 100
-  },
   submitBtn: {
     width: 100,
     marginTop: theme.spacing(5),
@@ -232,4 +244,27 @@ const profile = makeStyles({
   }
 })
 
-export { theme, useStyle, header, formBase, ColorlibConnector, useColorlibStepIconStyles, formPet, login, profile }
+const mainHome = makeStyles({
+  mainPaper : {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+    width: "100%",
+    minHeight: 300,
+    padding: theme.spacing(2),
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20,
+  },
+  descSide : {
+    width: theme.spacing(80),
+    height: 500,
+    borderRadius: 20
+
+  },
+  descContent : {
+     height:"100%",
+     backgroundColor: 'rgba(0,0,0,0.5)',
+     borderRadius: 20
+  }
+})
+
+export { theme, useStyle, header, formBase, ColorlibConnector, ColorlibConnectorHorizontal, useColorlibStepIconStyles, formPet, login, profile, mainHome }
