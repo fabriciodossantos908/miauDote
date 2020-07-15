@@ -8,17 +8,17 @@ import StepConnector from '@material-ui/core/StepConnector';
 
 let theme = createMuiTheme({
   palette: {
-    type: "dark",
+    type: "light",
     primary: {
-      light: '#ff9d9c',
-      main: '#fc6b6ez',
-      dark: '#c43843',
+      light: '#F69397',
+      main: '#F4666C',
+      dark: '#F03840',
       contrastText: '#000000',
     },
     secondary: {
-      light: '#69fafe',
-      main: '#1bc7cb',
-      dark: '#00969a',
+      light: '#5FB6D9',
+      main: '#048ABF',
+      dark: '#024873',
       contrastText: '#ffffff',
     },
     thirdy: {
@@ -99,11 +99,11 @@ const header = makeStyles(() => ({
   },
 
   appBar: {
-    boxShadow: "none"
+    boxShadow: "none",
+    backgroundColor: theme.palette.primary.light
   },
-
   appbarmain: {
-    backgroundColor: theme.palette.baseColor.light,
+    backgroundColor: theme.palette.primary.light,
     boxShadow: "none"
   },
 

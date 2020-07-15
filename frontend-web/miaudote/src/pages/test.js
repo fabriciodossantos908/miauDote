@@ -1,28 +1,32 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
+import Paper from '@material-ui/core/Paper';
+
+import { theme } from '../components/Layout/styles'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    flexWrap: 'wrap',
     '& > *': {
-      marginLeft: theme.spacing(30),
+      margin: theme.spacing(1),
+      width: theme.spacing(16),
+      height: theme.spacing(16),
     },
-  },
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
   },
 }));
 
-export default function ImageAvatars() {
+export default function Test() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.large} />
-      <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" className={classes.large} />
-      <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" className={classes.large} />
+      <Paper style={{backgroundColor: theme.palette.primary.main}} elevation={3} >primaria main</Paper>
+      <Paper style={{backgroundColor: theme.palette.primary.light}} elevation={3} >primaria light</Paper>
+      <Paper style={{backgroundColor: theme.palette.primary.dark}} elevation={3} >primaria dark</Paper>
+      <Paper style={{backgroundColor: theme.palette.secondary.main}} elevation={3} >Secundaria main</Paper>
+      <Paper style={{backgroundColor: theme.palette.secondary.light}} elevation={3} >Secundaria light</Paper>
+      <Paper style={{backgroundColor: theme.palette.secondary.dark}} elevation={3} >Secundaria dark</Paper>
     </div>
   );
 }
