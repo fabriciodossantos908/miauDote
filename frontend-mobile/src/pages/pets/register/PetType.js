@@ -159,7 +159,7 @@ export default class PetType extends Component {
                                                 style={styles.inputSmall}
                                                 label='Estado'
                                                 mode={'outlined'}
-                                                value={this.state.uf || ''}
+                                                value={this.state.uf}
                                                 onChangeText={txt => this.setState({ uf: txt })}
                                                 theme={{
                                                     colors: {

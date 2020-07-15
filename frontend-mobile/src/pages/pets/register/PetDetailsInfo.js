@@ -205,10 +205,10 @@ export default class PetDetailsInfo extends Component {
                                     </View>
 
                                     {/* {this.state.color != '' ? <IconPin /> : null} */}
-                                    <Label>Fale um pouco sobre o {this.state.name} para nós</Label>
+                                    <Label style={{top:25}}>Fale um pouco sobre o {this.state.name} para nós</Label>
 
                                     <TextInput
-                                        style={styles.inputLarge}
+                                        style={styles.textArea}
                                         multiline={true}
                                         numberOfLines={4}
                                         label='Descrição'
@@ -234,7 +234,7 @@ export default class PetDetailsInfo extends Component {
                                 </Form>
 
                                 <ContainerButton>
-                                    <ButtonNext style={{ marginTop: -17 }} onPress={this.nextPage}>
+                                    <ButtonNext style={{ marginTop:-40}} onPress={this.nextPage}>
                                         <BtnText>Próximo</BtnText>
                                     </ButtonNext>
                                 </ContainerButton>
@@ -258,13 +258,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffff',
         height: 40,
         alignSelf: 'stretch',
-        // marginBottom: '13%',
         marginTop: 10
     },
-    inputLarge: {
+    textArea: {
         backgroundColor: '#ffff',
         alignSelf: 'stretch',
-        marginTop: 10
+        marginTop: 20
     },
     checkbox: {
         alignSelf: "center",
@@ -272,12 +271,9 @@ const styles = StyleSheet.create({
     helpersWrapper: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom:'13%'
     },
     counterHelper: {
-        textAlign: 'right',
-        width:100,
-        alignSelf:'flex-end'
+        textAlign:'right'
     },
 
 })

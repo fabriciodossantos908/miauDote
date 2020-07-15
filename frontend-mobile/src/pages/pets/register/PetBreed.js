@@ -33,7 +33,7 @@ export default class PetBreed extends Component {
             // type: data.type,
             // uf: data.uf,
             // city: data.city,
-            name:'Chico',
+            name:'Tom',
             breed: '',
             search: ''
         }
