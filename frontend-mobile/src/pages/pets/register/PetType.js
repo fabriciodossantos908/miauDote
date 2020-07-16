@@ -6,7 +6,7 @@ import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import colors from '../../../components/colors'
 import { HeaderDecoration, Head } from './services/header';
 import { IconPin, IconDog, IconCat, IconBird, IconRabbit, IconHamster, IconDogDisable, IconCatDisable, IconBirdDisable, IconRabbitDisable, IconHamsterDisable } from "../../../components/icons";
-import removerAcentos from '../../../services/Regex';
+// import removerAcentos from '../../../services/Regex';
 
 
 

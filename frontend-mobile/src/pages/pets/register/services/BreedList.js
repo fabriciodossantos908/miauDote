@@ -1,11 +1,9 @@
-// *********** CLASS ROCKETSEATR ****************//
 import React, { Component } from 'react';
 
-import { View, Text, FlatList, StyleSheet, Alert, ActivityIndicator, ScrollView } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Alert, ActivityIndicator} from 'react-native';
 import { ListContainer, SearchInput, ContainerSearch, ContainerSearchIcon } from '../styles';
-// import { SearchBar, colors } from 'react-native-elements';
 import colors from '../../../../components/colors';
-import { heart, Heart, IconSearch } from '../../../../components/icons'
+import {  IconSearch } from '../../../../components/icons'
 
 export default class BreedList extends Component {
     constructor(props) {
@@ -98,18 +96,6 @@ export default class BreedList extends Component {
         );
     };
 
-    // filterSearch(text) {
-    //     const newData = this.arrayholder.filter((item) => {
-    //         const itemData = item.full_name.first.toUpperCase()
-    //         const textData = text.toUpperCase()
-    //         return itemData.indexOf(textData) > -1
-    //     });
-    //     this.setState({
-    //         text: text,
-    //         users: newData // after filter we are setting users to new array
-    //     });
-    // }
-
     SearchFilterFunction(text) {
         const newData = this.arrayholder.filter(function (item) {
             const itemData = item.full_name ? item.full_name.toUpperCase() : ''.toUpperCase();
@@ -125,33 +111,19 @@ export default class BreedList extends Component {
 
     retorno = () => {
         return this.state.breed
-        // return raca;
+    }
+
+    nextPage = () => {
+        this.navigation.navigate('Testi')
     }
 
 
     render() {
         console.log(this.state.breed)
-        // console.log(this.retorno.bind(this))
-
-    
 
         return (
             <>
-                {/* <SearchBar
-                    inputContainerStyle={{ backgroundColor: 'white', borderWidth: 2, borderColor: '#ccc' }}
-                    // inputStyle={{ backgroundColor: 'white' }}
-                    containerStyle={{ backgroundColor: '#e2e2e2', borderRadius: 5 }}
-                    placeholderTextColor={'#g5g5g5'}
-                    lightTheme={true}
-                    round
-                    searchIcon={{ size: 24, color: colors.grey3 }}
-                    onChangeText={text => this.SearchFilterFunction(text)}
-                    onClear={text => this.setState({ search: '' })}
-                    placeholder="Buscar..."
-                    value={this.state.search}
-                /> */}
-
-                <View style={{marginTop:10}}>
+                {/* <View style={{ marginTop: 10 }}>
                     <ContainerSearch>
                         <ContainerSearchIcon>
                             <IconSearch />
@@ -164,17 +136,11 @@ export default class BreedList extends Component {
                         />
                     </ContainerSearch>
                 </View>
-                {/* <SearchInput
-                    placeholderTextColor={'#cccc'}
-                    placeholder={'Buscar...'}
-                    value={this.state.search}
-                    onChangeText={text => this.SearchFilterFunction(text)}
-                /> */}
 
                 <ListContainer>
                     <FlatList
-                        changeA={() => this.retorno.bind(this)}
-                        // teste={this.retorno.bind(this)}
+                        // changeA={() => this.retorno.bind(this)}
+                        teste={this.state}
                         style={{ marginTop: 30 }}
                         contentContainerStyle={styles.list}
                         data={this.state.data}
@@ -185,7 +151,8 @@ export default class BreedList extends Component {
                         ListFooterComponent={this.renderFooter}
                         nestedScrollEnabled={true}
                     />
-                </ListContainer>
+                </ListContainer> */}
+
             </>
         );
     }
