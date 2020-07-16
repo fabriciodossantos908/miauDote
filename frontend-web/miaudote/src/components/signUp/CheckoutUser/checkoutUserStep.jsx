@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Grid,
   Stepper,
@@ -6,7 +6,8 @@ import {
   Button,
   Typography,
   Paper,
-  Step
+  Step,
+  Slide
 } from '@material-ui/core';
 import PetsIcon from '@material-ui/icons/Pets';
 import { Formik, Form } from 'formik';
@@ -42,7 +43,7 @@ function _renderStepContent(step) {
   }
 }
 
-export default function CheckoutCompanyStep() {
+export default function CheckoutUSerStep() {
   const classes = useStyle();
   const classesForm = formBase();
   const [activeStep, setActiveStep] = useState(0);
@@ -99,13 +100,24 @@ export default function CheckoutCompanyStep() {
     setActiveStep(activeStep - 1);
   }
 
+  const [checked, setChecked] = React.useState(false);
+    
+  useEffect(() => {
+      window.addEventListener("load", setChecked((prev) => !prev))
+      return () => {
+        window.addEventListener("load", setChecked((prev) => !prev))
+        // window.addEventListener("load", console.log("this is useEffect return"))
+      }
+    })
+
+
   return (
+    // <Slide timeout={1500} direction="left" in={checked} mountOnEnter unmountOnExit>
     <React.Fragment>
       <Paper elevation={3} className={classesForm.FormPaper}>
         {activeStep === steps.length ? (
           <ConfimEmail />
         ) : (
-            <Grid Container>
               <Formik
                 initialValues={userInitialValues}
                 currentUserValidationSchema={currentUserValidationSchema}
@@ -142,11 +154,12 @@ export default function CheckoutCompanyStep() {
 
                         </Grid>
                       </Grid>
-
-                      <Grid item xs={10}>
+                    {/* Content grid */}
+                      <Grid item xs={10} className={classesForm.content}>
 
                         {_renderStepContent(activeStep)}
                       </Grid>
+                    {/* Button grid */}
                       <Grid item container xs={12} justify="flex-end" spacing={1} className={classes.groupButtons}>
                         <Grid item>
                           <Button
@@ -195,9 +208,8 @@ export default function CheckoutCompanyStep() {
                   </Form>
                 )}
               </Formik>
-            </Grid>
           )}
       </Paper>
-    </React.Fragment>
+      </React.Fragment>
   );
 }

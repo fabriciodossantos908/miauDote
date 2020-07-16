@@ -11,9 +11,9 @@ export default function HeaderMain() {
     const classes = header();
 
     return (
-        <Grid xs={12}>
-            <AppBar position="static" color="color" className={classes.appBar}>
-                <Toolbar>
+        <Grid item>
+            <AppBar position="static" color="color">
+                <Toolbar className={classes.appBar}>
                     <Typography variant="h5">
                         Miaudote
                     </Typography>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Divider, Paper, Typography, MenuItem, Button } from '@material-ui/core';
 import { TabsProfile, IconPerfil } from './compModel'
-import { profile } from '../../../components/Layout/styles'
+import { profile, theme } from '../../../components/Layout/styles'
 
 const profilePhoto = require('../../../images/fabricio.jpg')
 
@@ -11,10 +11,8 @@ export default function UserProfile() {
 
     return (
         <React.Fragment>
-            <Divider />
-
             <Grid container>
-                <Paper className={classesProfile.UserDescription} square >
+                <Paper className={classesProfile.UserDescription} style={{backgroundColor: theme.palette.primary.light}} square >
                     <Grid container spacing={3} justify="center" direction="row">
                         <Grid item xs={2}>
                             <IconPerfil profilePhoto={profilePhoto} />
