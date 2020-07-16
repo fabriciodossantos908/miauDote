@@ -37,16 +37,14 @@ theme = responsiveFontSizes(theme);
 
 const useStyle = makeStyles(() => ({
   root: {
-    width: 'auto',
-    backgroundColor: theme.palette.background.default,
-    color: theme.palette.primary.light,
+    flexGrow: 1,
   },
   container: {
     height: "auto",
     marginBottom: theme.spacing(3),
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: "#f3f3f3",
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginBottom: theme.spacing(6),
+      // marginBottom: theme.spacing(6),
       margin: 0
     }
   },
@@ -73,22 +71,24 @@ const useStyle = makeStyles(() => ({
     color: theme.palette.baseColor.main,
     backgroundColor: theme.palette.primary.light,
   },
-  paper: {
-    width: "100%",
-    height: 400,
-    backgroundColor: theme.palette.primary.main
-  },
-  fadeBack: {
-    height: "inherit",
-    backgroundColor: 'rgba(0,0,0,0.5)'
-  },
   links: {
     color: theme.palette.primary.light,
     textDecorationLine: "none",
     "active": {
       color: theme.palette.primary.dark
     }
-  }
+  },
+
+  grid:{
+    backgroundColor: theme.palette.secondary.light,
+    height: 400,
+},
+
+media:{
+  minWidth: "100%",
+  minHeight: 350,
+  borderRadius: 20
+}
 
 }));
 
@@ -97,21 +97,23 @@ const header = makeStyles(() => ({
     backgroundColor: theme.palette.primary.light,
     marginRight: theme.spacing(2),
   },
-
-  appBar: {
-    boxShadow: "none",
-    backgroundColor: theme.palette.primary.light
-  },
   appbarmain: {
     backgroundColor: theme.palette.primary.light,
     boxShadow: "none"
   },
 
   links: {
-    color: theme.palette.primary.light,
+    color: theme.palette.secondary.contrastText,
     textDecorationLine: "none",
     "active": {
-      color: theme.palette.primary.dark
+      color: theme.palette.primary.contrastText
+    }
+  },
+
+  linksPerfil: {
+    color: theme.palette.primary.contrastText,
+    textDecorationLine: "none",
+    "active": {
     }
   }
 }));

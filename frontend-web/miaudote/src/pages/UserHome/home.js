@@ -1,53 +1,47 @@
 import React from 'react';
-import { Grid, Paper, makeStyles, Typography } from '@material-ui/core';
-import { useStyle } from '../../components/Layout/styles'
-import {CardPets, Avatar} from '../UserHome/compStyles'
+import { Grid, CardMedia, Typography } from '@material-ui/core';
+import { useStyle, theme } from '../../components/Layout/styles'
+import {CardPets} from '../UserHome/compStyles'
 
-const style = makeStyles((theme) => ({
-    root:{
-        flexGrow: 1,
-    },
-}));
+const imageDog = require("../../images/petImg/dog/dog_boxer.jpg")
+
 
 export default function Home() {
     const classes = useStyle()
-    const classesM = style()
 
     return (
-        <div className={classesM.root}>
+        <div className={classes.root}>
             <Grid container color="primary" direction="column">
-                <Grid item xs={12} justify="center" spacing={3} direction="row" style={{display: "flex"}}>
+                <Grid item xs={12} justify="center" spacing={3} direction="row" style={{display: "flex", marginTop: 20, marginBottom: 40}}>
                     <Grid item xs={6}>
-                        <Grid item xs={12} style={{backgroundColor: "black", height: 400}}>
+                        <Grid item container justify="center" direction="row" style={{borderTopLeftRadius: 40, borderBottomLeftRadius: 40}} className={classes.grid}>
+                            <Grid item xs={12} style={{ color: theme.palette.primary.contrastText}}>
+                                <Typography variant="h4" style={{fontWeight: "bold"}}>
+                                    O que você deve saber
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={12} style={{color: theme.palette.primary.dark}}>
+                                <Typography variant="h4" style={{fontWeight: "bold"}}>
+                                    antes de adotar um animal
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={12} style={{marginTop: 30}}>
 
+                            </Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs={6}>
-                        <Paper className={classes.paper} />
+                        <Grid item container justify="center" alignItems="center" direction="row" style={{borderTopRightRadius: 40, borderBottomRightRadius: 40}} className={classes.grid}>
+                            <Grid item xs={6} >
+                                <CardMedia
+                                    className={classes.media} 
+                                    image={imageDog}
+                                />
+                            </Grid>
+                        </Grid> 
                     </Grid>
                 </Grid>
                 <Grid item xs={12} justify="center" spacing={3} direction="row" style={{display: "flex"}}>
-                    
-                </Grid>
-                <Grid item xs={12} justify="center" spacing={3} direction="row" style={{display: "flex"}}>
-                    <Grid item xs={10} direction="row" style={{marginLeft: "auto", marginRight: "auto"}}> 
-                       <Avatar />
-                    </Grid>     
-                </Grid>
-                <Grid item xs={12} justify="center" spacing={3} direction="row" style={{display: "flex"}}>
-                    <Grid>
-                        <Typography variant="h5">
-                            Dá só uma olhadinha nas mais
-                        </Typography>
-                        <Typography variant="h5">
-                            novas fofurinhas do pedaço!!    
-                        </Typography>
-                    </Grid>
-                    <Grid>
-
-                    </Grid>
-                </Grid>
-                <Grid item xs={12} justify="center" spacing={3} direction="row" style={{display: "flex"}} className={classesM.paper}>
                     <CardPets />                   
                     <CardPets />                   
                     <CardPets />                   

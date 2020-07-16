@@ -1,58 +1,38 @@
 import {makeStyles} from '@material-ui/core/styles';
-import { theme } from '../Layout/styles'
 
-const themeMain = theme
+import { theme } from '../Layout/styles'
 
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
 
-  base: {
-    flexGrow: 1,
-    backgroundColor: themeMain.palette.background.default,
-  },
-
-title:{
-  color: themeMain.palette.primary.dark
-},
-
-subTitle: {
-  marginTop: 2,
-  color: themeMain.palette.primary.main
-},
-
-logo: {
-  minWidth: 50,
-  minHeight: 45,
-},
-
-logoTitle: {
-  color: themeMain.palette.primary.main
-},
-
-imgLogo:{
-  imageOrientation: "auto"
-},
-
 icon: {
   width : 50,
   height: 50,
-  color: themeMain.palette.primary.main
+  color: theme.palette.secondary.main
 },
 
-copy: {
-  fontFamily: "Roboto",
-  fontSize: 15,
-  alignItems: "center",
-  marginLeft: "auto",
-  marginRight: "auto",
-  marginTop: 10
+text: {
+  fontFamily: "Arboria-book, sans-serif",
+  fontVariant: "h6",
+  marginTop: 2,
+  fontWeight: "bold",
+  color: theme.palette.secondary.main
 },
 
-footer:{
-  backgroundColor: themeMain.palette.background.default,
-  color: themeMain.palette.primary.contrastText
+fontCopy: {
+  fontFamily: "Arboria-book, sans-serif",
+  fontVariant: "h6",
+  fontSize: "1.1em",
+  marginTop: 5,
+  fontWeight: "bold",
+  color: theme.palette.secondary.contrastText
+},
+
+media:{
+  width: 220,
+  height: 150
 }
 }));
 
