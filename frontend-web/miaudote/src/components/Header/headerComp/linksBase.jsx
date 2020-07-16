@@ -4,9 +4,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
 
-import { header, theme } from '../../Layout/styles'
-
-const logo = require('../../../images/logoS.jpg')
+import { header } from '../../Layout/styles'
+import { palette } from '../../Layout/theme'
 
 export default function LinksBase(props) {
     const classes = header()
@@ -18,7 +17,7 @@ export default function LinksBase(props) {
 
     return (
 
-        <Paper square elevation={0} style={{backgroundColor: theme.palette.primary.light,}}>
+        <Paper square elevation={0} style={{backgroundColor: palette.primary.light,}}>
             <Tabs
                 value={value}
                 onChange={handleChange}

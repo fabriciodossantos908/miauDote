@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import {Typography, CardMedia } from '@material-ui/core'
 import { useStyles } from './styles';
 
-import { theme, useStyle} from '../Layout/styles'
+import { theme } from '../Layout/styles'
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { mainHome, theme } from '../../components/Layout/styles'
-import { Grid, CardMedia, Typography, Slide, Fade } from '@material-ui/core'
+import { Grid, CardMedia, Typography, Fade } from '@material-ui/core'
 
 import CheckoutUserStep from '../../components/signUp/CheckoutUser/checkoutUserStep'
 
@@ -8,7 +8,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
-import { Dog_boxer, Cachorro, Cachorro2, Cachorro3 } from '../../images/petImg/dog/index'
+import { Dog_boxer } from '../../images/petImg/dog/index'
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -47,7 +47,6 @@ function SocialIcon() {
     );
 }
 
-
 export default function InitialHome() {
     const classes = mainHome()
     const [checked, setChecked] = React.useState(false);
@@ -58,11 +57,11 @@ export default function InitialHome() {
             window.addEventListener("load", setChecked((prev) => !prev))
             // window.addEventListener("load", console.log("this is useEffect return"))
         }
-    })
+    },[])
 
 
     return (
-        <Grid container className={classes.mainPaper}>
+        <Grid item container xs={12} className={classes.mainPaper}>
             <Grid item container direction="row">
                 <Grid item xs={6} style={{marginBottom: 50}}>
                     <Grid item xs={6}>
@@ -111,7 +110,7 @@ export default function InitialHome() {
                     <CheckoutUserStep />
                 </Grid>
             </Grid>
-            <Grid item container justify="center" spacing={5}>
+            <Grid item container justify="center" >
                 <Grid item>
                     <Typography
                         variant="h4"

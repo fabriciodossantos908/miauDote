@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Divider, Paper, Typography, MenuItem, Button } from '@material-ui/core';
+import { Grid, Divider, Paper, Typography, Button } from '@material-ui/core';
 import { TabsProfile, IconPerfil } from './compModel'
 import { profile, theme } from '../../../components/Layout/styles'
 

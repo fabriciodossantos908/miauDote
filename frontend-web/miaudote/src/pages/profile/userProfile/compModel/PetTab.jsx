@@ -34,8 +34,6 @@ const useStyles = makeStyles(() => ({
 
 );
 
-const photo = require('../../../../images/petImg/dog/Cachorro.jpg')
-
 const pets = [
     {
         id: 0,

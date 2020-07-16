@@ -1,51 +1,12 @@
 import {
-  createMuiTheme,
   responsiveFontSizes,
   makeStyles
 } from '@material-ui/core/styles';
-import { withStyles, ThemeProvider } from '../../../node_modules/@material-ui/styles';
+import { withStyles } from '../../../node_modules/@material-ui/styles';
 import StepConnector from '@material-ui/core/StepConnector';
+import { themeMain, palette } from './theme'
 
-let theme = createMuiTheme({
-  palette: {
-    type: "light",
-    primary: {
-      light: '#F69397',
-      main: '#F4666C',
-      dark: '#F03840',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#5FB6D9',
-      main: '#048ABF',
-      dark: '#024873',
-      contrastText: '#ffffff',
-    },
-    thirdy: {
-      main: "#F28E13"
-    },
-    baseColor: {
-      light: '#fffff',
-      main: '#ffffff',
-      dark: '#000000',
-      contrastText: '#00bcc1',
-    },
-  },
-  shape: {
-    borderRadius: 0
-  },
-  overrides: {
-    MuiButton: {
-      root: {
-        textTransform: 'none',
-        backgroundColor: '#F4666C',
-        color: '#F4666C',
-      },
-      
-    }
-  }
-
-});
+let  theme = themeMain
 
 theme = responsiveFontSizes(theme);
 
@@ -85,15 +46,15 @@ const useStyle = makeStyles(() => ({
     height: 40,
   },
   links: {
-    color: theme.palette.primary.contrastText,
+    color: palette.primary.contrastText,
     textDecorationLine: "none",
     "active": {
-      color: theme.palette.primary.contrastText
+      color: palette.primary.contrastText
     }
   },
 
   grid:{
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: palette.secondary.light,
     height: 400,
 },
 
@@ -107,24 +68,24 @@ media:{
 
 const header = makeStyles(() => ({
   menuButton: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: palette.primary.light,
     marginRight: theme.spacing(2),
   },
   appbarmain: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: palette.primary.light,
     boxShadow: "none"
   },
 
   links: {
-    color: theme.palette.secondary.contrastText,
+    color: palette.secondary.contrastText,
     textDecorationLine: "none",
     "active": {
-      color: theme.palette.primary.contrastText
+      color: palette.primary.contrastText
     }
   },
 
   linksPerfil: {
-    color: theme.palette.primary.contrastText,
+    color: palette.primary.contrastText,
     textDecorationLine: "none",
     "active": {
     }
@@ -140,7 +101,7 @@ const formBase = makeStyles(() => ({
     width: 500,
     height: 500,
     marginLeft: 50,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: palette.background.default,
     [theme.breakpoints.down(600 + theme.spacing(3) * 2)]: {
       width: 300,
     }
@@ -156,22 +117,8 @@ const ColorlibConnector = withStyles({
   alternativeLabel: {
     top: 22,
   },
-  active: {
-    '& $line': {
-      backgroundColor: theme.palette.primary.light
-    },
-  },
-  completed: {
-    '& $line': {
-      backgroundColor: theme.palette.primary.light
-    },
-  },
   line: {
     width: 2,
-    marginRight: "auto",
-    border: 0,
-    backgroundColor: theme.palette.secondary.main,
-    borderRadius: 1,
   },
 })(StepConnector);
 
@@ -179,31 +126,17 @@ const ColorlibConnectorHorizontal = withStyles({
   alternativeLabel: {
     top: 22,
   },
-  active: {
-    '& $line': {
-      backgroundColor: theme.palette.secondary.main
-    },
-  },
-  completed: {
-    '& $line': {
-      backgroundColor: theme.palette.primary.light
-    },
-  },
   line: {
     width: 50,
     height: 2,
-    marginRight: "auto",
-    border: 0,
-    backgroundColor: theme.palette.background.default,
-    borderRadius: 1,
   },
 })(StepConnector);
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: palette.background.default,
     zIndex: 1,
-    color: theme.palette.primary.light,
+    color: palette.primary.light,
     width: 27,
     height: 27,
     display: 'flex',
@@ -212,13 +145,13 @@ const useColorlibStepIconStyles = makeStyles({
     alignItems: 'center',
   },
   active: {
-    backgroundColor: theme.palette.secondary.light,
-    color: theme.palette.background.default,
+    backgroundColor: palette.secondary.light,
+    color: palette.background.default,
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
   },
   completed: {
-    color: theme.palette.primary.dark,
-    backgroundColor: theme.palette.primary.light
+    color: palette.primary.dark,
+    backgroundColor: palette.primary.light
   },
 });
 
@@ -229,7 +162,7 @@ const formPet = makeStyles({
     backgroundColor: "transparent",
   },
   labelStep: {
-    color: theme.palette.baseColor.main
+    color: "white"
   }
 })
 
@@ -251,12 +184,12 @@ const login = makeStyles({
   submitBtn: {
     width: 100,
     marginTop: theme.spacing(5),
-    backgroundColor: theme.palette.primary.light,
-    color: theme.palette.primary.contrastText
+    backgroundColor: palette.primary.light,
+    color: palette.primary.contrastText
   },
   btnSocialLogin: {
-    backgroundColor: theme.palette.secondary.main,
-    color: theme.palette.text
+    backgroundColor: palette.secondary.main,
+    color: palette.text
   }
 })
 
@@ -271,9 +204,7 @@ const profile = makeStyles({
 
 const mainHome = makeStyles({
   mainPaper: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    width: "90%",
+    backgroundColor: palette.background.paper,
     minHeight: 300,
     padding: theme.spacing(2),
     borderBottomRightRadius: 20,
@@ -293,7 +224,7 @@ const mainHome = makeStyles({
   icon: {
     width: 50,
     height: 50,
-    color: theme.palette.primary.main
+    color: palette.primary.main
   },
 })
 

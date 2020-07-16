@@ -1,13 +1,13 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { Grid, Avatar } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
 
 import { theme, header } from '../Layout/styles'
 
-import { LinksBase } from './headerComp/'
+import { LinksBase } from './headerComp'
 import { Perfil } from '../../pages/UserHome/compStyles'
 import BadgeAvatars from './headerComp/IconProfileUser';
 

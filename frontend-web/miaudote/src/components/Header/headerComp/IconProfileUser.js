@@ -35,7 +35,6 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 export default function BadgeAvatars() {
-  const classes = withStyles()
   return (
     <div>
       <StyledBadge

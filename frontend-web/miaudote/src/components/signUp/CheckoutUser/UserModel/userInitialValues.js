@@ -27,12 +27,12 @@ export default {
   [celular.name] : '',
   [sexo.name]: '',
   [dt_nasc.name]: '',
-  [cep] : '',
-  [cidade] : '',
-  [bairro] : '',
-  [logradouro] : '',
-  [numero] : '',
-  [complemento] : '',
-  [uf] : '',
-  [url_foto] : ''
+  [cep.name] : '',
+  [cidade.name] : '',
+  [bairro.name] : '',
+  [logradouro.name] : '',
+  [numero.name] : '',
+  [complemento.name] : '',
+  [uf.name] : '',
+  // [url_foto.name] : ''
 };
