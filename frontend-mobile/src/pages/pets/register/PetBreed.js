@@ -1,13 +1,15 @@
 import colors from '../../../components/colors';
 import React, { Component } from 'react';
 
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StatusBar, View, FlatList, StyleSheet, Text } from "react-native";
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, 
+        ScrollView, StatusBar, View, FlatList, StyleSheet, Text } 
+        from "react-native";
 
-import { Label, Main, Form, ButtonNext, ContainerSearch, ContainerSearchIcon, SearchInput, ListContainer } from './styles';
+import { Label, Main, Form, ButtonNext, ContainerSearch, ContainerSearchIcon, 
+        SearchInput, ListContainer } 
+        from './styles';
+
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
-
-
-// import BreedList from './component/BreedList';
 import BreedList from './services/BreedList';
 import { HeaderDecoration, Head } from './services/header';
 import { IconSearch } from '../../../components/icons';
@@ -26,7 +28,6 @@ export default class PetBreed extends Component {
             // uf: data.uf,
             // city: data.city,
             name: 'Tom',
-            breed: '',
 
             // data: [],
             data: [
@@ -108,9 +109,15 @@ export default class PetBreed extends Component {
         return this.state.breed
     }
 
-    nextPage = () => {
-        this.navigation.navigate('PetDetailsInfo')
-    }
+    nextPage = (props) => {
+
+        const data = this.state
+
+		this.props.navigation.navigate('PetDetailsInfo', {
+			screen: 'PetBreed',
+			params: { data },
+		});
+	}
 
 
     render(props) {
