@@ -11,18 +11,28 @@ import { Grid } from '@material-ui/core';
 
 import { Cachorro, Cachorro2, Cachorro3 } from '../../../../images/petImg/dog'
 
-const dogs = [ Cachorro, Cachorro2, Cachorro3 ]
+const dogs = [Cachorro, Cachorro2, Cachorro3]
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(() => ({
     root: {
         maxWidth: 345,
     },
     media: {
-        minHeight: 300,
+        height: 300,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
     },
-});
+    contentCard: {
+        width: "inherit",
+        height: "inherit",
+        backgroundColor: "rgba(0,0,0,0.5)",
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+    }
+
+})
+
+);
 
 const photo = require('../../../../images/petImg/dog/Cachorro.jpg')
 
@@ -62,7 +72,7 @@ export default function PetTab() {
                             image={dogs[index]}
                             title={petData.nome}
                         >
-                            <CardActionArea>
+                            <CardActionArea className={classes.contentCard}>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
                                         {petData.nome}
@@ -74,20 +84,20 @@ export default function PetTab() {
                             </CardActionArea>
                         </CardMedia>
 
-                            <CardActions style={{ marginTop: 10 }}>
-                                <Grid container justify="space-evenly">
-                                    <Grid>
-                                <Button size="small" color="primary">
-                                    Rotina
+                        <CardActions style={{ marginTop: 10 }}>
+                            <Grid container justify="space-evenly">
+                                <Grid>
+                                    <Button size="small" color="primary">
+                                        Rotina
                                 </Button>
                                 </Grid>
                                 <Grid>
-                                <Button size="small" color="primary">
-                                    Ver mais
+                                    <Button size="small" color="primary">
+                                        Ver mais
                                 </Button>
                                 </Grid>
-                                </Grid>
-                            </CardActions>
+                            </Grid>
+                        </CardActions>
                     </Card>
                 </Grid>
             ))}

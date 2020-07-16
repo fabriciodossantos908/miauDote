@@ -13,7 +13,7 @@ let theme = createMuiTheme({
       light: '#F69397',
       main: '#F4666C',
       dark: '#F03840',
-      contrastText: '#000000',
+      contrastText: '#fff',
     },
     secondary: {
       light: '#5FB6D9',
@@ -31,6 +31,20 @@ let theme = createMuiTheme({
       contrastText: '#00bcc1',
     },
   },
+  shape: {
+    borderRadius: 0
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        textTransform: 'none',
+        backgroundColor: '#F4666C',
+        color: '#F4666C',
+      },
+      
+    }
+  }
+
 });
 
 theme = responsiveFontSizes(theme);
@@ -39,7 +53,7 @@ const useStyle = makeStyles(() => ({
   root: {
     width: 'auto',
     backgroundColor: theme.palette.background.default,
-    color: theme.palette.primary.light,
+    color: theme.palette.primary.contrastText,
   },
   container: {
     height: "auto",
@@ -70,8 +84,6 @@ const useStyle = makeStyles(() => ({
   buttons: {
     width: 100,
     height: 40,
-    color: theme.palette.baseColor.main,
-    backgroundColor: theme.palette.primary.light,
   },
   paper: {
     width: "100%",
@@ -83,10 +95,10 @@ const useStyle = makeStyles(() => ({
     backgroundColor: 'rgba(0,0,0,0.5)'
   },
   links: {
-    color: theme.palette.primary.light,
+    color: theme.palette.primary.contrastText,
     textDecorationLine: "none",
     "active": {
-      color: theme.palette.primary.dark
+      color: theme.palette.primary.contrastText
     }
   }
 
@@ -108,10 +120,10 @@ const header = makeStyles(() => ({
   },
 
   links: {
-    color: theme.palette.primary.light,
+    color: theme.palette.primary.contrastText,
     textDecorationLine: "none",
     "active": {
-      color: theme.palette.primary.dark
+      color: theme.palette.primary.contrastText
     }
   }
 }));
@@ -124,8 +136,17 @@ const formBase = makeStyles(() => ({
   FormPaper: {
     width: 500,
     height: 500,
+    marginLeft: 50,
     backgroundColor: theme.palette.background.default,
+    [theme.breakpoints.down(600 + theme.spacing(3) * 2)]: {
+      width: 300,
+    }
+
   },
+  content: {
+    height: 340,
+    borderRadius: 20
+  }
 }))
 
 const ColorlibConnector = withStyles({
@@ -157,7 +178,7 @@ const ColorlibConnectorHorizontal = withStyles({
   },
   active: {
     '& $line': {
-      backgroundColor: theme.palette.primary.light
+      backgroundColor: theme.palette.secondary.main
     },
   },
   completed: {
@@ -170,26 +191,26 @@ const ColorlibConnectorHorizontal = withStyles({
     height: 2,
     marginRight: "auto",
     border: 0,
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.background.default,
     borderRadius: 1,
   },
 })(StepConnector);
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.background.default,
     zIndex: 1,
-    color: theme.palette.secondary.dark,
-    width: 25,
-    height: 25,
+    color: theme.palette.primary.light,
+    width: 27,
+    height: 27,
     display: 'flex',
     borderRadius: '50%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   active: {
-    backgroundColor: theme.palette.thirdy.main,
-    color: theme.palette.baseColor.main,
+    backgroundColor: theme.palette.secondary.light,
+    color: theme.palette.background.default,
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
   },
   completed: {
@@ -237,34 +258,40 @@ const login = makeStyles({
 })
 
 const profile = makeStyles({
-  UserDescription : {
+  UserDescription: {
     paddingTop: theme.spacing(5),
     width: "100%",
-    minHeight: theme.spacing(20)
+    minHeight: theme.spacing(20),
+    backgroundColor: "blue"
   }
 })
 
 const mainHome = makeStyles({
-  mainPaper : {
+  mainPaper: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    width: "100%",
+    width: "90%",
     minHeight: 300,
     padding: theme.spacing(2),
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
   },
-  descSide : {
-    width: theme.spacing(80),
+  descSide: {
+    width: theme.spacing(85),
     height: 500,
     borderRadius: 20
 
   },
-  descContent : {
-     height:"100%",
-     backgroundColor: 'rgba(0,0,0,0.5)',
-     borderRadius: 20
-  }
+  descContent: {
+    height: "100%",
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    borderRadius: 20
+  },
+  icon: {
+    width: 50,
+    height: 50,
+    color: theme.palette.primary.main
+  },
 })
 
 export { theme, useStyle, header, formBase, ColorlibConnector, ColorlibConnectorHorizontal, useColorlibStepIconStyles, formPet, login, profile, mainHome }
