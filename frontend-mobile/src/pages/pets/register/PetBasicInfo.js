@@ -140,7 +140,7 @@ export default class PetBasicInfo extends Component {
 									</ContainerRow>
 
 									<TouchableOpacity style={{ alignSelf: 'flex-start', marginTop: 10 }} onPress={this.noneSelected}>
-										<UnderlinetText>Sexo não identificado</UnderlinetText>
+										<UnderlinetText>Não sei qual o sexo do pet</UnderlinetText>
 									</TouchableOpacity>
 
 								</Form>
