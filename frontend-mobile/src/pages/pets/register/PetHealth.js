@@ -22,7 +22,19 @@ export default class PetHealth extends Component {
 
     constructor(props) {
         super(props)
+        const { data } = this.props.route.params.params
         this.state = {
+            name: data.name,
+            gender: data.gender,
+            type: data.type,
+            uf: data.uf,
+            city: data.city,
+            breed:data.breed,
+            age: data.age,
+            porte: data.porte,
+            color: data.color,
+            description: data.description,
+            // this page
             dewormed: null,
             vaccinated: null,
             castrated: null,
@@ -30,10 +42,20 @@ export default class PetHealth extends Component {
         }
     }
 
-    nextPage = () => {
-        // console.log(this.state)
-        this.props.navigation.navigate('PetPhoto')
-    }
+    // nextPage = () => {
+    //     // console.log(this.state)
+    //     this.props.navigation.navigate('PetPhoto')
+    // }
+
+    nextPage = (props) => {
+
+        const data = this.state
+
+		this.props.navigation.navigate('PetPhoto', {
+			screen: 'PetHealth',
+			params: { data },
+		});
+	}
 
     render() {
 

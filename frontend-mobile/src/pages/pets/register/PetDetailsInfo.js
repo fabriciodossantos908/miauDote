@@ -26,8 +26,17 @@ export default class PetDetailsInfo extends Component {
 
     constructor(props) {
         super(props)
+
+        const { data } = this.props.route.params.params
         this.state = {
-            name: 'Tom',
+            name: data.name,
+            gender: data.gender,
+            type: data.type,
+            uf: data.uf,
+            city: data.city,
+            breed:data.breed,
+
+            // this page
             age: '',
             ageNumber: '',
             porte: null,
@@ -39,10 +48,15 @@ export default class PetDetailsInfo extends Component {
         
     }
 
-    nextPage = () => {
-        // console.log(this.state)
-        this.props.navigation.navigate('PetHealth')
-    }
+    nextPage = (props) => {
+
+        const data = this.state
+
+		this.props.navigation.navigate('PetHealth', {
+			screen: 'PetDetailsInfo',
+			params: { data },
+		});
+	}
 
 
     showAlert = () => {
