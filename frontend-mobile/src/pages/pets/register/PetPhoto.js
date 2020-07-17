@@ -13,15 +13,19 @@ export default class PetPhoto extends Component {
 
     constructor(props) {
         super(props)
+        const { data } = this.props.route.params.params
         this.state = {
-            name: 'Tom',
-            gender:'M',
-            age: '',
-            porte: '',
-            yearSelected: false,
-            monthSelected: false,
-            description: '',
-            checked: ''
+            name: data.name,
+            gender: data.gender,
+            type: data.type,
+            uf: data.uf,
+            city: data.city,
+            breed:data.breed,
+            age: data.age,
+            porte: data.porte,
+            color: data.color,
+            description: data.description,
+            url_foto:null,
         }
     }
 
@@ -46,6 +50,9 @@ export default class PetPhoto extends Component {
     }
 
     render() {
+
+        console.log(this.state, 'aaaaaaaa')
+
         return (
             <React.Fragment>
 

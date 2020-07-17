@@ -2,7 +2,7 @@ import colors from '../../../components/colors';
 import React, { Component } from 'react';
 
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, 
-        ScrollView, StatusBar, View, FlatList, StyleSheet, Text } 
+        ScrollView, StatusBar, View, FlatList, StyleSheet, Text, ActivityIndicator } 
         from "react-native";
 
 import { Label, Main, Form, ButtonNext, ContainerSearch, ContainerSearchIcon, 
@@ -10,44 +10,46 @@ import { Label, Main, Form, ButtonNext, ContainerSearch, ContainerSearchIcon,
         from './styles';
 
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
-import BreedList from './services/BreedList';
+// import BreedList from './services/BreedList';
 import { HeaderDecoration, Head } from './services/header';
 import { IconSearch } from '../../../components/icons';
-
+import { catBreed, birdBreed } from './services/listBreed';
 
 
 export default class PetBreed extends Component {
 
     constructor(props) {
         super(props)
-        // const { data } = this.props.route.params.params
+        const { data } = this.props.route.params.params
         this.state = {
-            // name: data.name,
-            // gender: data.gender,
-            // type: data.type,
-            // uf: data.uf,
-            // city: data.city,
-            name: 'Tom',
+            name: data.name,
+            gender: data.gender,
+            type: data.type,
+            uf: data.uf,
+            city: data.city,
 
-            // data: [],
-            data: [
-                { id: 0, full_name: 'Persa' },
-                { id: 1, full_name: 'Siamês' },
-                { id: 2, full_name: 'Himalaia' },
-                { id: 4, full_name: 'Maine Coon' },
-                { id: 5, full_name: 'Angorá' },
-                { id: 6, full_name: 'Siamês' },
-                { id: 7, full_name: 'Himalaia' },
-                { id: 9, full_name: 'Maine Coon' },
-                { id: 10, full_name: 'Angorá' },
-                { id: 11, full_name: 'Siamês' },
-                { id: 12, full_name: 'Himalaia' },
-                { id: 14, full_name: 'Maine Coon' },
-                { id: 15, full_name: 'Angorá' },
-                { id: 16, full_name: 'Siamês' },
-                { id: 17, full_name: 'Repo 3' },
-                { id: 19, full_name: 'Maine Coon' },
-            ],
+            // name: 'Tom',
+            // gender:'pássaro',
+
+            data: '',
+            // data: [
+            //     { id: 0, petBreed: 'Persa' },
+            //     { id: 1, petBreed: 'Siamês' },
+            //     { id: 2, petBreed: 'Himalaia' },
+            //     { id: 4, petBreed: 'Maine Coon' },
+            //     { id: 5, petBreed: 'Angorá' },
+            //     { id: 6, petBreed: 'Siamês' },
+            //     { id: 7, petBreed: 'Himalaia' },
+            //     { id: 9, petBreed: 'Maine Coon' },
+            //     { id: 10, petBreed: 'Angorá' },
+            //     { id: 11, petBreed: 'Siamês' },
+            //     { id: 12, petBreed: 'Himalaia' },
+            //     { id: 14, petBreed: 'Maine Coon' },
+            //     { id: 15, petBreed: 'Angorá' },
+            //     { id: 16, petBreed: 'Siamês' },
+            //     { id: 17, petBreed: 'Repo 3' },
+            //     { id: 19, petBreed: 'Maine Coon' },
+            // ],
             page: 1,
             loading: false,
             breed: '',
@@ -57,18 +59,26 @@ export default class PetBreed extends Component {
     }
 
 
-    // Flatlist
+    // ****** Flatlist
+
+    componentDidMount = () =>{
+        this.state.type === 'gato'?
+        this.setState({data: catBreed}) : 
+        this.state.type === 'pássaro' ?
+        this.setState({data:birdBreed}): null
+    }
+
     getBreed = (item) => {
-        this.setState({ breed: item.full_name })
+        this.setState({ breed: item.petBreed })
     }
 
     getListViewItem = (item) => {
-        Alert.alert(item.full_name);
+        Alert.alert(item.petBreed);
     }
 
     renderItem = ({ item }) => {
-        const backgroundColor = item.full_name === this.state.breed ? "#aad9e2" : "#fff";
-        const color = item.full_name === this.state.breed ? "bold" : 'normal';
+        const backgroundColor = item.petBreed === this.state.breed ? "#aad9e2" : "#fff";
+        const color = item.petBreed === this.state.breed ? "bold" : 'normal';
 
         return (
             // <View style={{ backgroundColor, marginTop: 10, height: 30 }}>
@@ -79,7 +89,7 @@ export default class PetBreed extends Component {
                 justifyContent: 'center',
                 borderBottomWidth: 1, borderBottomColor: '#ccc'
             }}>
-                <Text style={{ marginLeft: 8, fontWeight: color, fontSize: 15 }} onPress={this.getBreed.bind(this, item)}>{item.full_name}</Text>
+                <Text style={{ marginLeft: 8, fontWeight: color, fontSize: 15 }} onPress={this.getBreed.bind(this, item)}>{item.petBreed}</Text>
             </View>
         )
     }
@@ -94,7 +104,7 @@ export default class PetBreed extends Component {
 
     SearchFilterFunction(text) {
         const newData = this.arrayholder.filter(function (item) {
-            const itemData = item.full_name ? item.full_name.toUpperCase() : ''.toUpperCase();
+            const itemData = item.petBreed ? item.petBreed.toUpperCase() : ''.toUpperCase();
             const textData = text.toUpperCase();
             return itemData.indexOf(textData) > -1;
         });
@@ -141,7 +151,7 @@ export default class PetBreed extends Component {
                                     <Label>Qual a raça do {this.state.name}?
                                         <Label style={{ color: colors.green }}>{this.props.breed}</Label>
                                     </Label>
-                                    <BreedList />
+                                    {/* <BreedList /> */}
 
 
                                     <View style={{ marginTop: 10 }}>
