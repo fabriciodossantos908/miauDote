@@ -27,6 +27,7 @@ let palette = createPalette({
 })
 
 let themeMain = createMuiTheme({
+    
     overrides: {
         MuiInputLabel: {
             focused: {
