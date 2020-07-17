@@ -1,21 +1,17 @@
 import React from 'react'
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
-import { Avatar, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { header } from '../../../components/Layout/styles'
 
-const logo = require('../../../images/logoS.jpg')
-
 export default function LinksInitial(props) {
     const classes = header()
-    const [value, setValue] = React.useState(2);
+    // const [value, setValue] = React.useState(2);
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    // const handleChange = (event, newValue) => {
+    //     setValue(newValue);
+    // };
 
     return (
         // <Tabs

@@ -19,14 +19,14 @@ function Routes() {
 
             <Router>
 
-                <HeaderInitial />
+                {/* <HeaderInitial /> */}
                 <HeaderBase />
 
                 <Switch>
                     <Route path='/home' exact >
                         <Home />
                     </Route>
-                    <Route path='/' exact >
+                    <Route path='/homeUser' exact >
                         <UserHome />
                     </Route>
 
@@ -56,11 +56,17 @@ function Routes() {
                     <Route path='/formPet' exact >
                         <CheckoutPet />
                     </Route>
+                    <Route path='/myPet' exact >
+                        <Gear />
+                    </Route>
                     <Route path='/login' exact >
                         <Login />
                     </Route>
                     <Route path='/profile' exact>
                         <UserProfile />
+                    </Route>
+                    <Route path='/config' exact>
+                        <Gear />
                     </Route>
                     <Route path='/test' exact >
                         <Test />

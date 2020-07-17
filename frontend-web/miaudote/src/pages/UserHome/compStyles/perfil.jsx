@@ -51,7 +51,7 @@ export default function Perfil() {
       <Divider />
       <List component="nav" aria-label="main mailbox folders">
 
-        <Link to="/formPet" className={classesHeader.links}>
+        <Link to="/myPet" className={classesHeader.linksPerfil}>
 
           <ListItem button>
             <ListItemIcon>
@@ -61,7 +61,7 @@ export default function Perfil() {
           </ListItem>
         </Link>
 
-        <Link to="/making" className={classesHeader.links}>
+        <Link to="/profile" className={classesHeader.linksPerfil}>
           <ListItem button>
             <ListItemIcon>
               <PetsIcon />
@@ -74,7 +74,7 @@ export default function Perfil() {
       <Divider />
 
       <List>
-        <Link to="/making" className={classesHeader.links}>
+        <Link to="/config" className={classesHeader.linksPerfil}>
           <ListItem button>
             <ListItemIcon>
               <SettingsIcon />

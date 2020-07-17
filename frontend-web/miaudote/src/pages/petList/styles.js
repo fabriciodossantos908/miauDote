@@ -1,5 +1,5 @@
-import { theme } from '../../components/Layout/styles'
 import { makeStyles } from '@material-ui/core'
+import { palette } from '../../components/Layout/theme'
 
 const petStyle = makeStyles ({
     root : {
@@ -8,14 +8,14 @@ const petStyle = makeStyles ({
     body : {
         borderTopLeftRadius: 50,
         borderTopRightRadius: 50,
-        backgroundColor: theme.palette.baseColor.dark
+        backgroundColor: "black"
     },
     typografy: {
         marginTop: 20,
         marginBottom: 20,
         fontFamily: "italic",
         textJustify: "center",
-        color: theme.palette.secondary.contrastText
+        color: palette.secondary.contrastText
     }
 })
 

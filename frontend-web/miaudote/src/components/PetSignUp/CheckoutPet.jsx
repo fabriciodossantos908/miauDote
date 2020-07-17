@@ -24,7 +24,7 @@ import petInitialInfo from './PetModel/petInitialValues';
 
 import { useStyle, formBase, useColorlibStepIconStyles, formPet, ColorlibConnectorHorizontal } from '../Layout/styles'
 import clsx from '../../../node_modules/clsx';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 const photoDog = require('../../images/petImg/dog.jpg')
 const photoCat = require('../../images/petImg/cat.jpg')
@@ -53,10 +53,10 @@ export default function CheckoutCompanyStep() {
   const classesBase = formBase();
   const classesPet = formPet();
   const [activeStep, setActiveStep] = useState(0);
-  const [createStatus, setCreacteStatus] = useState(false);
+  // const [createStatus, setCreacteStatus] = useState(false);
   // const currentValidationSchema = petValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
-  const history = useHistory()
+  // const history = useHistory()
     // function _sleep(ms) {
     //   return new Promise(resolve => setTimeout(resolve, ms));
     // }

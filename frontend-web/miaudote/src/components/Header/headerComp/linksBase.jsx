@@ -3,11 +3,9 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
-import { Avatar } from '@material-ui/core';
 
 import { header } from '../../Layout/styles'
-
-const logo = require('../../../images/logoS.jpg')
+import { palette } from '../../Layout/theme'
 
 export default function LinksBase(props) {
     const classes = header()
@@ -19,28 +17,17 @@ export default function LinksBase(props) {
 
     return (
 
-        <Paper square elevation={0}>
+        <Paper square elevation={0} style={{backgroundColor: palette.primary.light,}}>
             <Tabs
                 value={value}
-                indicatorColor="black"
-                textColor="black"
                 onChange={handleChange}
             >
                 <Link to="/about" className={classes.links}>
                     <Tab label="Sobre nós" />
                 </Link>
-
                 <Link to="/contacts" className={classes.links}>
                     <Tab label="Contatos" />
                 </Link>
-
-                <Link to="/">
-                    <Avatar
-                        alt="Miaudote"
-                        src={logo}
-                    />
-                </Link>
-
                 <Link to="/marketing" className={classes.links}>
                     <Tab label="Lojas" />
                 </Link>

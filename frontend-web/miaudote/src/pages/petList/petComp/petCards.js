@@ -2,10 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
+// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Grid, FormControlLabel, Checkbox } from '@material-ui/core';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
@@ -122,7 +122,7 @@ export default function PetTab() {
                             <CardContent style={{marginTop: 150}}>
                                 <Grid container justify="space-evenly" alignItems="center" direction="center">
                                     <Grid>
-                                        <img src={photo} width="30" height="30" title="test"/>
+                                        <img src={photo} alt={petData.nome} width="30" height="30" title="test"/>
                                     </Grid>
                                     <Grid item>
                                         <Typography gutterBottom variant="h5" component="h2" style={{ textAlign: "center" }}>
@@ -130,7 +130,7 @@ export default function PetTab() {
                                         </Typography>
                                     </Grid>
                                     <Grid>
-                                        <img src={photo} width="30" height="30" title="test"/>
+                                        <img src={photo} alt={petData.nome} width="30" height="30" title="test"/>
                                     </Grid>
                                     <Grid item>
                                         <Typography gutterBottom variant="h5" component="h2" style={{ textAlign: "center" }}>
