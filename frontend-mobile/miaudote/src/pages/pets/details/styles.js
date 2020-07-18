@@ -231,9 +231,10 @@ export const ModalContainer = styled.View`
 
 export const ModalTitle = styled.Text`
    font-family: 'Poppins_400Regular';
-   font-size: 24;
+   font-size: 24px;
    color: #1bc7cb;
    text-align: center;
+   margin-top: 24px;
 `;
 
 export const ModalText = styled.Text`

@@ -64,6 +64,13 @@ export default class Home extends Component {
     })
   }
 
+  openPetList = (especie) =>{
+    this.props.navigation.navigate('PetList', {
+      screen: 'Home',
+      data: especie
+    })
+  }
+
   componentDidMount() {
 
     api.get('http://192.168.0.195:3000/pets/localizacao?latitude=23.5249890&longitude=46.925571').then(response => {
@@ -90,7 +97,7 @@ export default class Home extends Component {
       )
     } else {
       return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
           <Container >
             <LocalView>
               <Icon name="md-pin" size={25} color='#000' />
@@ -110,7 +117,7 @@ export default class Home extends Component {
 
             <MenuView horizontal={true} centerContent={true} showsHorizontalScrollIndicator={false}>
 
-              <MenuOption>
+              <MenuOption onPress={()=> this.openPetList('cao')}>
                 <MenuOptionImage source={require('../../../assets/dog-icon.png')} />
                 <MenuOptionQuantity>
                   32
@@ -120,7 +127,7 @@ export default class Home extends Component {
                  </MenuOptionName>
               </MenuOption>
 
-              <MenuOption>
+              <MenuOption onPress={()=> this.openPetList('gato')}>
                 <MenuOptionImage source={require('../../../assets/cat-icon.png')} />
                 <MenuOptionQuantity>
                   40
@@ -130,7 +137,7 @@ export default class Home extends Component {
                  </MenuOptionName>
               </MenuOption>
 
-              <MenuOption>
+              <MenuOption onPress={()=> this.openPetList('passaro')}>
                 <MenuOptionImage source={require('../../../assets/bird-icon.png')} />
                 <MenuOptionQuantity>
                   13
@@ -140,7 +147,7 @@ export default class Home extends Component {
                  </MenuOptionName>
               </MenuOption>
 
-              <MenuOption>
+              <MenuOption onPress={()=> this.openPetList('coelho')}>
                 <MenuOptionImage source={require('../../../assets/rabbit-icon.png')} />
                 <MenuOptionQuantity>
                   8
@@ -150,7 +157,7 @@ export default class Home extends Component {
                  </MenuOptionName>
               </MenuOption>
 
-              <MenuOption style={{ marginRight: 0 }}>
+              <MenuOption style={{ marginRight: 0 }} onPress={()=> this.openPetList('roedor')}>
                 <MenuOptionImage source={require('../../../assets/hamster-icon.png')} />
                 <MenuOptionQuantity>
                   2

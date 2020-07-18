@@ -114,11 +114,11 @@ export const FilterTitle = styled.Text`
 
 export const FiltersView = styled.View`
    flex-direction: row;
-   justify-content: center;
+   justify-content: space-around;
    padding: 16px;
    border-width: 1px;
    border-color: #ccc;
-   margin-bottom: 32px;
+   margin-bottom: 16px;
 `;
 
 export const FilterItem = styled.View`

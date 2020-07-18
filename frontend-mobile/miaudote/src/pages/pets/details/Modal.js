@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, StyleSheet, Animated, Dimensions, PixelRatio, Modal } from 'react-native'
 
 import {
   ModalContainer,
@@ -10,22 +10,31 @@ import {
   ContactInformationText
 } from './styles.js'
 
-const Modal = () => {
+
+const ContactModal = ({ show, close }) => {
+
   return (
     <View style={styles.container}>
-      <ModalContainer>
+      <Modal style={styles.modal}
+        // animationType='slide'
+        // transparent={true}
+        visible={true}
+        // onRequestClose={() => {
+        //   console.log('Modal fechado.');
+
+      >
         <ModalTitle>
           Entre em Contato!
         </ModalTitle>
 
         <ModalText>
           Nós do miaudote estamos aqui para facilitar o encontro de pessoas que querem doar e adotar os pets,
-          por isso fornecemos as informacoes de contato do doador para que vocês possam entrar em acordo sobre a adoção do pet.
+          por isso fornecemos as informações de contato do doador para que vocês possam entrar em acordo sobre a adoção do pet.
         </ModalText>
 
         <ContactInformationView>
           <ContactInformationImage source={require('../../../assets/whatsapp-icon.png')} />
-          <ContactInformationText>+55 11 95331-7466</ContactInformationText>
+          <ContactInformationText onPress={close}>+55 11 95331-7466</ContactInformationText>
         </ContactInformationView>
 
         <ContactInformationView>
@@ -33,7 +42,7 @@ const Modal = () => {
           <ContactInformationText style={{ fontSize: 13 }}>davisoares4456@gmail.com</ContactInformationText>
         </ContactInformationView>
 
-      </ModalContainer>
+      </Modal>
     </View>
   )
 }
@@ -42,22 +51,21 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgb(0, 0, 0)',
     position: 'absolute',
-    padding: 16,
+    top: 0,
+    paddingBottom: 16,
     justifyContent: 'flex-end',
     alignItems: "center"
   },
   modal: {
-    bottom: 0,
-    position: 'absolute',
-    height: '50%',
+    height: 360,
+    width: 300,
     backgroundColor: '#fff',
-    width: '100%',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    paddingLeft: 25,
-    paddingRight: 25
+    borderRadius: 20,
+    padding: 16,
+    alignSelf: 'center',
+    borderWidth: 0
   },
   indicator: {
     width: 50,
@@ -82,4 +90,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Modal
+export default ContactModal

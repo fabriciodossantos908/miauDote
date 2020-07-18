@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
-import { SafeAreaView, ActivityIndicator, View, Text, StyleSheet } from 'react-native';
+import { SafeAreaView, ActivityIndicator, View, Text, StyleSheet, Button, Linking, Alert, TouchableOpacity, Image } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import axios from 'axios';
 import Constants from 'expo-constants';
 
-import axios from 'axios';
+import Modal from 'react-native-modal';
 
 import {
    PetTitle,
@@ -40,7 +40,12 @@ import {
    ButtonAdoptText,
    PetLocalizationView,
    PetHeader,
-   ReturnButton
+   ReturnButton,
+   ModalTitle,
+   ModalText,
+   ContactInformationView,
+   ContactInformationImage,
+   ContactInformationText
 } from './styles';
 
 
@@ -54,7 +59,8 @@ export default class PetDetails extends Component {
          pet: {},
          id: this.props.route.params.data,
          doador: {},
-         loading: true
+         loading: true,
+         isModalVisible: false
       }
 
    }
@@ -70,6 +76,30 @@ export default class PetDetails extends Component {
       }).catch(error => {
          console.log(error);
       })
+   }
+
+   toggleModal = () => {
+      this.setState({ isModalVisible: !this.state.isModalVisible })
+   }
+
+   whatsapp = () => {
+      this.toggleModal();
+      const text = `Olá, ví o perfil do ${this.state.pet.nome} no miaudote e fiquei interessado!`;
+
+      Linking.canOpenURL(`whatsapp://send?text=oi`).then(supported => {
+         if (supported) {
+            return Linking.openURL(
+               `whatsapp://send?text=${text}&phone=+55${this.state.doador.celular}`
+            );
+         } else {
+            Alert.alert('Falha ao abrir', "O dispositivo não possui o whatsapp instalado, você pode optar por mandar um email.")
+         }
+      });
+   }
+
+   email = () => {
+      this.toggleModal();
+      Linking.openURL(`mailto:${this.state.doador.email}?subject=Adoção do(a) ${this.state.pet.nome}&body=Olá, vi o perfil do ${this.state.pet.nome} no miaudote e estou interessado!`)
    }
 
    handleReturnPage = (e) => {
@@ -89,7 +119,31 @@ export default class PetDetails extends Component {
       } else {
          return (
             <React.Fragment>
-               
+               <Modal isVisible={this.state.isModalVisible}>
+                  <View style={styles.modal}>
+                     <TouchableOpacity style={styles.buttonModal} onPress={this.toggleModal}>
+                        <Image source={require('../../../assets/close-icon.png')} style={{ width: 36, height: 36 }} />
+                     </TouchableOpacity>
+                     <ModalTitle>
+                        Entre em Contato!
+                     </ModalTitle>
+
+                     <ModalText>
+                        Nós do miaudote estamos aqui para facilitar o encontro de pessoas que querem doar e adotar os pets,
+                        por isso fornecemos as informações de contato do doador para que vocês possam entrar em acordo sobre a adoção do pet.
+                     </ModalText>
+
+                     <ContactInformationView>
+                        <ContactInformationImage source={require('../../../assets/whatsapp-icon.png')} />
+                        <ContactInformationText onPress={this.whatsapp} >+55 11 95331-7466 </ContactInformationText>
+                     </ContactInformationView>
+
+                     <ContactInformationView>
+                        <ContactInformationImage source={require('../../../assets/email-icon.png')} />
+                        <ContactInformationText style={{ fontSize: 13 }} onPress={this.email} >davisoares4456@gmail.com</ContactInformationText>
+                     </ContactInformationView>
+                  </View>
+               </Modal>
                <SafeAreaView style={{ flex: 1 }}>
                   <Container>
 
@@ -253,14 +307,14 @@ export default class PetDetails extends Component {
 
                      <PetUfAndCountryText>
                         {this.state.doador.uf}, Brasil
-                  </PetUfAndCountryText>
+                     </PetUfAndCountryText>
 
                      <DivisionViewHealth />
 
-                     <ButtonAdoptThePet>
+                     <ButtonAdoptThePet onPress={this.toggleModal}>
                         <ButtonAdoptText>
                            Quero adotar!
-                     </ButtonAdoptText>
+                        </ButtonAdoptText>
                      </ButtonAdoptThePet>
 
                   </Container>
@@ -281,6 +335,20 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center'
+   },
+   modal: {
+      height: 400,
+      width: '100%',
+      backgroundColor: '#fff',
+      borderRadius: 20,
+      padding: 16,
+      alignSelf: 'center',
+      borderWidth: 0
+   },
+   buttonModal: {
+      position: 'absolute',
+      top: 4,
+      right: 4
    }
 })
 

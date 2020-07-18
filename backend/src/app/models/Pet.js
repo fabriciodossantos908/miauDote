@@ -25,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
                msg: 'Este campo não pode ser nulo.'
             },
             len: {
-               args: [1, 1],
-               msg: 'Este campo deve conter apenas 1 caracter.'
+               args: [1, 10],
+               msg: 'Este campo deve conter de 1 a 10 caracteres.'
             }
          }
       },

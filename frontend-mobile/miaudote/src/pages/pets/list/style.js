@@ -12,7 +12,7 @@ export const DistanceView = styled.View`
    /* background-color: #ccc; */
    align-items: flex-start;
    margin-bottom: 24px;
-   justify-content: space-around;
+   justify-content: space-evenly;
 `;
 
 export const DistanceQuantity = styled.Text`
@@ -23,3 +23,31 @@ export const DistanceQuantity = styled.Text`
    align-self: flex-end;
 `;
 
+export const ReturnButton = styled.TouchableOpacity`
+   align-self: flex-start;
+   margin-right: 32px;
+   margin-left: -8px;
+   margin-top: -12px;
+`;
+
+export const NotFoundTitle = styled.Text`
+   font-size: 19px;
+   color: #fc6b6e;
+   font-family: 'Poppins_400Regular';
+   text-align: center;
+`;
+
+export const NotFoundImage = styled.Image`
+   width: 200px;
+   height: 220px;
+   /* background-color: red; */
+   align-self: center;
+`;
+
+export const NotFoundText = styled.Text`
+   font-family: 'Poppins_400Regular';
+   font-size: 14px;
+   color: #403f3e;
+   text-align: center;
+   margin-bottom: 32px;
+`;
