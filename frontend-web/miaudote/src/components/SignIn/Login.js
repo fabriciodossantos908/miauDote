@@ -68,9 +68,7 @@ export default function Login() {
 
     return (
         <Grid container justify="center" alignContent="space-between" >
-            <Grid item className={classesLogin.titleForm}>
-                <Typography variant="h3">Login</Typography>
-            </Grid>
+          
             <Grid item xs={12}>
                 <Formik
                     initialValues={InitialValues}

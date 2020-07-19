@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Grid,
   Stepper,
@@ -25,6 +25,7 @@ import userInitialValues from '../CheckoutUser/UserModel/userInitialValues';
 import checkoutUserModel from '../CheckoutUser/UserModel/checkoutUserModel';
 
 import { useStyle, formBase, useColorlibStepIconStyles, ColorlibConnectorHorizontal } from '../../Layout/styles';
+import Axios from 'axios';
 
 const steps = ['Dados iniciais', 'Dados Pessoais', 'Endereço'];
 const { formId, formField } = checkoutUserModel;
@@ -86,6 +87,25 @@ export default function CheckoutUSerStep() {
     setActiveStep(activeStep + 1);
   }
 
+
+  async function _LoginSubmit(values, actions) {
+    // await _sleep(1000);
+    // alert(JSON.stringify(values, null, 2));
+    actions.setSubmitting(false);
+
+    Axios.post("http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/autenticar", values)
+        .then(function (response) {
+          alert("Are loged")
+            // setauthRequesStatus(true)
+            // history.push("/", console.log(response))
+        })
+        .catch(function (error) {
+            alert("ops! Usuário e ou senha estão errados")
+            console.log(error)
+            // setauthRequesStatus(false)
+        });
+}
+
   function _handleSubmit(values, actions) {
     if (isLastStep) {
       _submitForm(values, actions);
@@ -115,8 +135,8 @@ export default function CheckoutUSerStep() {
         ) : (
             <Formik
               initialValues={userInitialValues}
-              currentUserValidationSchema={currentUserValidationSchema}
-              onSubmit={_handleSubmit}
+              currentValidationSchema={currentUserValidationSchema}
+              onSubmit={isLogin === false ? _handleSubmit : _LoginSubmit}
             >
               {({ isSubmitting }) => (
                 <Form id={formId} container>
@@ -134,22 +154,22 @@ export default function CheckoutUSerStep() {
                           align="center"
 
                         >
-                          Cadastre-se como usuário
+                          {isLogin === false ? "Cadastre-se como usuário" : "Logar"}
                         </Typography>
                       </Grid>
                       {isLogin === false && (
-                      <Grid item xs={6}>
-                        <Stepper activeStep={activeStep} connector={<ColorlibConnectorHorizontal />}>
-                          {steps.map((label) => (
-                            <Step key={label}>
-                              <StepLabel StepIconComponent={ColorlibStepIcon} >
-                              </StepLabel>
-                            </Step>
-                          ))}
-                        </Stepper>
+                        <Grid item xs={6}>
+                          <Stepper activeStep={activeStep} connector={<ColorlibConnectorHorizontal />}>
+                            {steps.map((label) => (
+                              <Step key={label}>
+                                <StepLabel StepIconComponent={ColorlibStepIcon} >
+                                </StepLabel>
+                              </Step>
+                            ))}
+                          </Stepper>
 
-                      </Grid>
-                    
+                        </Grid>
+
                       )}
                     </Grid>
                     {/* Content grid */}
@@ -158,30 +178,30 @@ export default function CheckoutUSerStep() {
                       {isLogin === false ? _renderStepContent(activeStep) : <Login />}
                     </Grid>
                     {/* Button grid */}
-                      <Grid item container xs={12} justify="flex-end" spacing={1} className={classes.groupButtons}>
+                    <Grid item container xs={12} justify="flex-end" spacing={1} className={classes.groupButtons}>
+                      <Grid item>
+                        <Button
+                          onClick={handleBackLogin}
+                          className={classes.buttons}
+                          variant="contained"
+                        >
+                          {isLogin === true ? 'Volta' : 'Logar'}
+                        </Button>
+                      </Grid>
+
+                      {activeStep !== 0 && (
                         <Grid item>
                           <Button
-                            onClick={handleBackLogin}
+                            onClick={_handleBack}
                             className={classes.buttons}
                             variant="contained"
                           >
-                            {isLogin === true ? 'Volta' : 'Logar'}
+                            Voltar
                           </Button>
                         </Grid>
+                      )}
 
-                        {activeStep !== 0 && (
-                          <Grid item>
-                            <Button
-                              onClick={_handleBack}
-                              className={classes.buttons}
-                              variant="contained"
-                            >
-                              Voltar
-                          </Button>
-                          </Grid>
-                        )}
-
-                        {isLogin === false ? (
+                      {isLogin === false ? (
                         <Grid item>
                           <Button
                             disabled={isSubmitting}
@@ -200,18 +220,18 @@ export default function CheckoutUSerStep() {
                             />
                           )} */}
                         </Grid>
-                        ) :
-                        
+                      ) :
+
                         <Grid item>
-                        <Button
-                          disabled={isSubmitting}
-                          type="submit"
-                          variant="contained"
-                          className={classes.buttons}
-                        >
-                          Logar
+                          <Button
+                            disabled={isSubmitting}
+                            type="submit"
+                            variant="contained"
+                            className={classes.buttons}
+                          >
+                            Logar
                         </Button>
-                        {/* 
+                          {/* 
                         className={classes.wrapper}
                         {isSubmitting && (
                           <CircularProgress
@@ -219,10 +239,10 @@ export default function CheckoutUSerStep() {
                             className={classes.buttonProgress}
                           />
                         )} */}
-                      </Grid>
+                        </Grid>
 
-                        }
-                      </Grid>
+                      }
+                    </Grid>
 
                   </Grid>
                 </Form>
