@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, TouchableOpacity, ImageBackground, SafeAreaView, StatusBar, Text } from "react-native";
+import { Picker, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, StatusBar, Text } from "react-native";
 import { TextInput } from 'react-native-paper';
-import { ContainerRow, TextIcon, Label, Main, Header, Title, ContainerCenter, ContainerIcon, Form, IconView, IconPetType, ContainerPetLocal, ButtonNext } from './styles';
-import { ContainerButton, BtnText } from '../../user/signUp/styles';
+import { ContainerRow, TextIcon, Label, Main, Form, IconView, ContainerPetLocal, ButtonNext, ContainerButton, ButtonPrevious } from './styles';
+import { BtnText } from '../../user/signUp/styles';
 import colors from '../../../components/colors'
 import { HeaderDecoration, Head } from './services/header';
 import { IconPin, IconDog, IconCat, IconBird, IconRabbit, IconHamster, IconDogDisable, IconCatDisable, IconBirdDisable, IconRabbitDisable, IconHamsterDisable } from "../../../components/icons";
+import Axios from 'axios';
+import RNPickerSelect from 'react-native-picker-select';
+import {showAlertMessage} from '../../../components/alert'
+
+
 // import removerAcentos from '../../../services/Regex';
 
 
@@ -19,43 +24,60 @@ export default class PetType extends Component {
             name: data.name,
             gender: data.gender,
             type: null,
-            uf: '',
-            city: '',
+            ufs: [],
+            selectedUf: '0',
+            selectedCity: '',
+            cities: [],
             font: 'bold'
         }
+    }
+
+    componentDidMount = () => {
+        Axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados/')
+            .then(response => {
+                const ufInitials = response.data.map(uf => uf.sigla)
+
+                this.setState({ ufs: ufInitials })
+            })
+
+    }
+
+    componentDidUpdate = () => {
+        if (this.state.selectedUf != '0'){
+            this.handleCities()
+        } 
+
+    }
+
+    handleCities = () => {
+        const { selectedUf } = this.state
+        Axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`)
+            .then(response => {
+                const citiesName = response.data.map(city => city.nome)
+
+                this.setState({cities: citiesName})
+            })
+
     }
 
 
     nextPage = () => {
         const data = this.state
 
-		this.props.navigation.navigate('PetBreed', {
-			screen: 'PetType',
-			params: {data},
-		});
+        this.props.navigation.navigate('PetBreed', {
+            screen: 'PetType',
+            params: { data },
+        });
+    }
+
+    previousPage = () => {
+        this.props.navigation.goBack(null)
     }
 
     FontBold = () => {
-		const { type } = this.state
-		type === 'cão' ? 'bold' : 'normal'
+        const { type } = this.state
+        type === 'cão' ? 'bold' : 'normal'
     }
-    
-
-
-    // specieSelected = () => {
-    // 	this.state.gender = 'M'
-    // }
-
-
-    // mudando a cor do botão ao clicar
-    // onButtonPress = () => {
-    // 	const text = 'M'
-    // 	const check = '../../../assets/check.png'
-
-    //     this.state.gender = text
-    // 	this.setState({ buttonColor: '#ccc' })
-    // 	// this.setState({ icon: check})
-    // }
 
 
     // função para remover acento
@@ -63,32 +85,25 @@ export default class PetType extends Component {
     //     let txt = 'cão'
     //     let result = removerAcentos(txt)
     //     alert(result)
-        
+
     // }
 
-    _removerAcentos = () => {
-        // let txt = 'cão'
-        const { type } = this.state
-        let txt = type
 
-        let result = removerAcentos(txt)
-        alert(result)
-    }
 
 
 
     render() {
         console.log(this.state)
-        const{ type } = this.state
+        const { type, ufs, cities } = this.state
 
         const bold = 'bold'
         const normal = 'normal'
 
-        let FontDog = type === 'cão'  ? bold : normal
+        let FontDog = type === 'cão' ? bold : normal
         let FontCat = type === 'gato' ? bold : normal
-        let FontBird = type === 'pássaro'  ? bold : normal
-        let FontRabbit = type === 'coelho'  ? bold : normal
-        let FontRodent = type === 'roedor'  ? bold : normal
+        let FontBird = type === 'pássaro' ? bold : normal
+        let FontRabbit = type === 'coelho' ? bold : normal
+        let FontRodent = type === 'roedor' ? bold : normal
 
         return (
             <React.Fragment>
@@ -106,48 +121,48 @@ export default class PetType extends Component {
                                 <Head />
 
                                 <Form style={{ top: 20 }}>
-                                    <Label>Qual o tipo do seu pet?  
-                                        <Text style={{color:colors.green, fontWeight:'bold'}}> {type} </Text>
+                                    <Label>Qual o tipo do seu pet?
+                                        <Text style={{ color: colors.green, fontWeight: 'bold' }}> {type} </Text>
                                     </Label>
 
                                     <ContainerRow style={{ justifyContent: "space-around" }}>
                                         <View>
-                                            <IconView onPress={() => this.setState({type:'cão'})}>
+                                            <IconView onPress={() => this.setState({ type: 'cão' })}>
                                                 {/* <IconDog /> */}
                                                 {type === null || type === 'cão' ? <IconDog /> : <IconDogDisable />}
                                             </IconView>
-                                            <TextIcon style={{fontWeight: FontDog}}>Cão</TextIcon>
+                                            <TextIcon style={{ fontWeight: FontDog }}>Cão</TextIcon>
                                         </View>
 
                                         <View>
-                                            <IconView onPress={() => this.setState({type:'gato'})}>
+                                            <IconView onPress={() => this.setState({ type: 'gato' })}>
                                                 {/* <IconCat /> */}
                                                 {type === null || type === 'gato' ? <IconCat /> : <IconCatDisable />}
                                             </IconView>
-                                            <TextIcon style={{fontWeight: FontCat}}>Gato</TextIcon>
+                                            <TextIcon style={{ fontWeight: FontCat }}>Gato</TextIcon>
                                         </View>
 
                                         <View>
-                                            <IconView onPress={() => this.setState({type:'pássaro'})}>
-                                            {type === null || type === 'pássaro' ? <IconBird /> : <IconBirdDisable />}
+                                            <IconView onPress={() => this.setState({ type: 'pássaro' })}>
+                                                {type === null || type === 'pássaro' ? <IconBird /> : <IconBirdDisable />}
                                             </IconView>
-                                            <TextIcon style={{fontWeight: FontBird}}>Pássaro</TextIcon>
+                                            <TextIcon style={{ fontWeight: FontBird }}>Pássaro</TextIcon>
                                         </View>
 
                                     </ContainerRow>
 
                                     <ContainerRow >
                                         <View>
-                                            <IconView onPress={() => this.setState({type:'coelho'})}>
-                                            {type === null || type === 'coelho' ? <IconRabbit /> : <IconRabbitDisable />}
+                                            <IconView onPress={() => this.setState({ type: 'coelho' })}>
+                                                {type === null || type === 'coelho' ? <IconRabbit /> : <IconRabbitDisable />}
                                             </IconView>
-                                            <TextIcon style={{fontWeight: FontRabbit}}>Coelho</TextIcon>
+                                            <TextIcon style={{ fontWeight: FontRabbit }}>Coelho</TextIcon>
                                         </View>
                                         <View>
-                                            <IconView onPress={() => this.setState({type:'roedor'})}>
-                                            {type === null || type === 'roedor' ? <IconHamster /> : <IconHamsterDisable />}
+                                            <IconView onPress={() => this.setState({ type: 'roedor' })}>
+                                                {type === null || type === 'roedor' ? <IconHamster /> : <IconHamsterDisable />}
                                             </IconView>
-                                            <TextIcon style={{fontWeight: FontRodent}}>Roedor</TextIcon>
+                                            <TextIcon style={{ fontWeight: FontRodent }}>Roedor</TextIcon>
                                         </View>
                                     </ContainerRow>
 
@@ -159,7 +174,6 @@ export default class PetType extends Component {
                                                 style={styles.inputSmall}
                                                 label='Estado'
                                                 mode={'outlined'}
-                                                value={this.state.uf}
                                                 onChangeText={txt => this.setState({ uf: txt })}
                                                 theme={{
                                                     colors: {
@@ -182,12 +196,66 @@ export default class PetType extends Component {
                                                 }} />
                                         </View>
                                     </ContainerPetLocal>
+
+                                    <View style={{ width: '40%', alignSelf: 'flex-start' }}>
+
+                                        {/* <RNPickerSelect
+                                            placeholder={{
+                                                label: 'Estado',
+                                                value: null,
+                                                color: colors.grey5
+                                            }}
+                                            onValueChange={(value) => console.log(value)}
+
+                                            items={
+                                                // {...ufs.map(uf => (
+                                                // { key:this.state.ufs, label: this.state.ufs, value: this.state.ufs }
+                                                // ))}
+
+                                                this.list()
+                                            }
+
+                                        /> */}
+
+                                        <Picker
+                                            style={{ height: 50 }}
+                                            selectedValue={this.state.selectedUf}
+                                            onValueChange={(itemValue, itemPosition) =>
+                                                this.setState({ selectedUf: itemValue, choosenIndex: itemPosition })}
+                                        >
+                                            <Picker.Item color='#ccc' label="Estado" value="0" />
+                                            {ufs.map(uf => (
+                                                <Picker.Item key={uf} label={uf} value={uf} />
+                                            ))}
+                                        </Picker>
+
+                                        <Picker
+                                            style={{ height: 50 }}
+                                            selectedValue={this.state.selectedCity}
+                                            onValueChange={(itemValue, itemPosition) =>
+                                                this.setState({ selectedCity: itemValue, choosenIndex: itemPosition })}
+                                        >
+                                            <Picker.Item color='#ccc' label="Cidade" value="0" />
+                                            {this.state.selectedUf == '0' ? 
+                                                <Picker.Item color={colors.pink} label="Nenhum estado selecionado." value="0" />
+                                            : 
+                                            cities.map(city => (
+                                                <Picker.Item key={city} label={city} value={city} />
+                                            ))}
+                                        </Picker>
+
+
+                                    </View>
                                 </Form>
 
                                 <ContainerButton>
                                     <ButtonNext onPress={this.nextPage}>
                                         <BtnText>Próximo</BtnText>
                                     </ButtonNext>
+
+                                    {/* <ButtonPrevious onPress={this.previousPage}>
+                                        <BtnText>Voltar</BtnText>
+                                    </ButtonPrevious> */}
                                 </ContainerButton>
                             </Main>
                         </ScrollView>

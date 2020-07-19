@@ -28,9 +28,6 @@ export default class PetBreed extends Component {
             uf: data.uf,
             city: data.city,
 
-            // name: 'Tom',
-            // gender:'pássaro',
-
             data: '',
             // data: [
             //     { id: 0, petBreed: 'Persa' },
@@ -170,7 +167,6 @@ export default class PetBreed extends Component {
 
                                     <ListContainer>
                                         <FlatList
-                                            // changeA={() => this.retorno.bind(this)}
                                             teste={this.state}
                                             style={{ marginTop: 30 }}
                                             contentContainerStyle={styles.list}
