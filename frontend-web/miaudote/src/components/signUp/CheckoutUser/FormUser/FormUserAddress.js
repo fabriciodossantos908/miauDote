@@ -25,7 +25,6 @@ export default function FormUserAddress(props) {
     const classes = props.useStyle()
     const {
         formField: {
-            complemento,
             uf,
             cep,
             cidade,
@@ -66,8 +65,8 @@ export default function FormUserAddress(props) {
                 </Grid>
 
             </Grid>
-            <InputField name={complemento.name} variant="outlined" label={complemento.label} fullWidth />
             <Grid
+                item
                 container
                 xs={12}
                 direction="row"

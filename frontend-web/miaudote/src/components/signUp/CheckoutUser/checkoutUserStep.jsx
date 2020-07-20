@@ -24,23 +24,43 @@ import userValidationSchema from '../CheckoutUser/UserModel/userValidationSchema
 import userInitialValues from '../CheckoutUser/UserModel/userInitialValues';
 import checkoutUserModel from '../CheckoutUser/UserModel/checkoutUserModel';
 
+import checkoutLoginModel from '../../SignIn/loginModel/checkoutLoginModel'
+import loginValidationSchema from '../../SignIn/loginModel/loginValidationSchema'
+import InitialValues from '../../SignIn/loginModel/InitialValues'
+
 import { useStyle, formBase, useColorlibStepIconStyles, ColorlibConnectorHorizontal } from '../../Layout/styles';
 import Axios from 'axios';
 
 const steps = ['Dados iniciais', 'Dados Pessoais', 'Endereço'];
-const { formId, formField } = checkoutUserModel;
+
+const formsFields = [
+  {
+    formId : checkoutUserModel.formId,
+    formField : checkoutUserModel.formField
+  },
+  {
+    formId : checkoutLoginModel.formId,
+    formField : checkoutLoginModel.formField
+  }
+]
 
 function _renderStepContent(step) {
   switch (step) {
     case 0:
-      return <FormUserInitialnfo formField={formField} useStyle={useStyle} />;
+      return <FormUserInitialnfo formField={formsFields[0].formField} useStyle={useStyle} />;
     case 1:
-      return <FormUserPersonalInfo formField={formField} useStyle={useStyle} />;
+      return <FormUserPersonalInfo formField={formsFields[0].formField} useStyle={useStyle} />;
     case 2:
-      return <FormUserAddress formField={formField} useStyle={useStyle} />;
+      return <FormUserAddress formField={formsFields[0].formField} useStyle={useStyle} />;
     default:
       return <div>Not Found</div>;
   }
+}
+
+function _renderLoginContent() {
+  return(
+    <Login formField={formsFields[1].formField} />
+  )
 }
 
 export default function CheckoutUSerStep() {
@@ -81,7 +101,7 @@ export default function CheckoutUSerStep() {
   async function _submitForm(values, actions) {
     await
       // _sleep(1000);
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
 
     setActiveStep(activeStep + 1);
@@ -94,17 +114,17 @@ export default function CheckoutUSerStep() {
     actions.setSubmitting(false);
 
     Axios.post("http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/autenticar", values)
-        .then(function (response) {
-          alert("Are loged")
-            // setauthRequesStatus(true)
-            // history.push("/", console.log(response))
-        })
-        .catch(function (error) {
-            alert("ops! Usuário e ou senha estão errados")
-            console.log(error)
-            // setauthRequesStatus(false)
-        });
-}
+      .then(function (response) {
+        alert("Are loged")
+        // setauthRequesStatus(true)
+        // history.push("/", console.log(response))
+      })
+      .catch(function (error) {
+        alert("ops! Usuário e ou senha estão errados")
+        console.log(error)
+        // setauthRequesStatus(false)
+      });
+  }
 
   function _handleSubmit(values, actions) {
     if (isLastStep) {
@@ -134,12 +154,12 @@ export default function CheckoutUSerStep() {
           <ConfimEmail />
         ) : (
             <Formik
-              initialValues={userInitialValues}
-              currentValidationSchema={currentUserValidationSchema}
+              initialValues={isLogin === false ? userInitialValues : InitialValues}
+              validationSchema={isLogin === false ? currentUserValidationSchema : ""}
               onSubmit={isLogin === false ? _handleSubmit : _LoginSubmit}
             >
               {({ isSubmitting }) => (
-                <Form id={formId} container>
+                <Form id={isLogin === false ? formsFields[0].formId : formsFields[0].formField} container>
                   <Grid container orientation="column">
                     <Grid item
                       container
@@ -174,8 +194,7 @@ export default function CheckoutUSerStep() {
                     </Grid>
                     {/* Content grid */}
                     <Grid item xs={10} className={classesForm.content}>
-
-                      {isLogin === false ? _renderStepContent(activeStep) : <Login />}
+                      {isLogin === false ? _renderStepContent(activeStep) : _renderLoginContent()}
                     </Grid>
                     {/* Button grid */}
                     <Grid item container xs={12} justify="flex-end" spacing={1} className={classes.groupButtons}>

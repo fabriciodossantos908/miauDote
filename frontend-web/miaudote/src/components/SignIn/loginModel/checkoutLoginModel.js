@@ -9,7 +9,7 @@ export default {
       senha: {
         name: 'senha',
         label: 'Senha',
-        requiredErrorMsg: 'Insira a senha cadastrada'
+        requiredErrorMsg: 'Insira a senha cadastrado'
       },
   }
   };

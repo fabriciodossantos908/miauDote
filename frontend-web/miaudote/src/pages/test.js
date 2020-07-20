@@ -7,7 +7,7 @@ import { Typography, Button } from '@material-ui/core';
 
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 
-import CheckoutPet from '../components/PetSignUp/CheckoutPet'
+import CheckoutPet from '../components/PetSignUp/typeRegister/CheckoutPet'
 
 const useStyles = makeStyles((theme) => ({
   modal: {

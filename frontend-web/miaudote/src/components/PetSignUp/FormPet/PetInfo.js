@@ -4,22 +4,6 @@ import { InputField } from '../../FieldStyle';
 
 import { SelectSexType } from '../FieldStyle/'
 
-
-const data = [
-  {
-    value: "F",
-    label: "Femino"
-},
-  {
-    value: "M",
-    label: "Masculino"
-},
-  {
-    value: "u",
-    label: "Não sei"
-},
-]
-
 export default function PetInfo(props) {
   const [checkedYear, setCheckedYear] = React.useState(true);
   const [checkedMonth, setCheckedMonth] = React.useState(true);

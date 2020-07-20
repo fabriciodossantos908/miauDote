@@ -1,12 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Grid, Typography, Button } from '@material-ui/core';
-import { Formik, Form } from 'formik';
 import Axios from 'axios'
-
-
-import checkoutLoginModel from './loginModel/checkoutLoginModel'
-import loginValidationSchema from './loginModel/loginValidationSchema'
-import InitialValues from './loginModel/InitialValues'
 
 import { useStyle, login } from '../Layout/styles'
 import { InputField } from '../FieldStyle';
@@ -14,9 +8,6 @@ import { InputField } from '../FieldStyle';
 import { Link, useHistory } from 'react-router-dom';
 
 import { Facebook, Email } from '@material-ui/icons';
-
-const { formId, formField } = checkoutLoginModel;
-
 
 const OtherLogin = (props) => {
     const classes = props.classesLogin
@@ -35,48 +26,49 @@ const OtherLogin = (props) => {
 
 }
 
-export default function Login() {
+export default function Login(props) {
     const classes = useStyle();
     const classesLogin = login();
     // const [authRequesStatus, setauthRequesStatus] = useState(false)
-    let history = useHistory()
+    const {
+        formField: {
+          email,
+          senha,
+        }
+      } = props;
+    
+    // let history = useHistory()
 
-    function _sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    // function _sleep(ms) {
+    //     return new Promise(resolve => setTimeout(resolve, ms));
+    // }
 
-    async function _submitForm(values, actions) {
-        await _sleep(1000);
-        // alert(JSON.stringify(values, null, 2));
-        actions.setSubmitting(false);
+    // async function _submitForm(values, actions) {
+    //     await _sleep(1000);
+    //     // alert(JSON.stringify(values, null, 2));
+    //     actions.setSubmitting(false);
 
-        Axios.post("http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/autenticar", values)
-            .then(function (response) {
-                // setauthRequesStatus(true)
-                history.push("/", console.log(response))
-            })
-            .catch(function (error) {
-                alert("ops! Usuário e ou senha estão errados")
-                console.log(error)
-                // setauthRequesStatus(false)
-            });
-    }
+    //     Axios.post("http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/autenticar", values)
+    //         .then(function (response) {
+    //             // setauthRequesStatus(true)
+    //             history.push("/", console.log(response))
+    //         })
+    //         .catch(function (error) {
+    //             alert("ops! Usuário e ou senha estão errados")
+    //             console.log(error)
+    //             // setauthRequesStatus(false)
+    //         });
+    // }
 
-    function _handleSubmit(values, actions) {
-        _submitForm(values, actions);
-    }
+    // function _handleSubmit(values, actions) {
+    //     _submitForm(values, actions);
+    // }
 
     return (
         <Grid container justify="center" alignContent="space-between" >
           
             <Grid item xs={12}>
-                <Formik
-                    initialValues={InitialValues}
-                    loginValidationSchema={loginValidationSchema}
-                    onSubmit={_handleSubmit}
-                >
-                    {({ isSubmitting }) => (
-                        <Form id={formId}>
+              
                             <Grid container justify="center">
                                 <Grid item xs={10}>
                                     <Grid
@@ -87,16 +79,16 @@ export default function Login() {
                                         className={classes.inputPaper}
                                     >
                                         <InputField
-                                            name={formField.email.name}
+                                            name={email.name}
                                             variant="outlined"
-                                            label={formField.email.label}
+                                            label={email.label}
                                             fullWidth
                                         />
                                         <InputField
-                                            name={formField.senha.name}
+                                            name={senha.name}
                                             type="password"
                                             variant="outlined"
-                                            label={formField.senha.label}
+                                            label={senha.label}
                                             fullWidth
                                         />
 
@@ -124,9 +116,6 @@ export default function Login() {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                        </Form>
-                    )}
-                </Formik>
             </Grid>
         </Grid>
     )

@@ -1,6 +1,30 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import { InputField } from '../../../FieldStyle';
+import { InputField, SelectField } from '../../../FieldStyle';
+
+const data = [
+  {
+    value: undefined,
+    label: 'Selecione'
+  },
+  {
+    value: "F",
+    label: "Femino"
+  },
+  {
+    value: "M",
+    label: "Masculino"
+  },
+  {
+    value: "H",
+    label: "Homossexual"
+  },
+  {
+    value: "T",
+    label: "Transexual"
+  },
+]
+
 
 export default function FormUserPersonalInfo(props) {
   const classes = props.useStyle()
@@ -9,6 +33,7 @@ export default function FormUserPersonalInfo(props) {
       celular,
       sexo,
       dt_nasc,
+      cpf,
     }
   } = props;
   return (
@@ -22,7 +47,11 @@ export default function FormUserPersonalInfo(props) {
       </Grid>
       <Grid item className={classes.inputPaper}>
 
-        <InputField name={sexo.name} variant="outlined" label={sexo.label} fullWidth />
+        <InputField name={cpf.name} variant="outlined" label={cpf.label} fullWidth />
+      </Grid>
+      <Grid item className={classes.inputPaper}>
+
+        <SelectField name={sexo.name} data={data} label={sexo.label} fullWidth />
       </Grid>
     </React.Fragment>
   );

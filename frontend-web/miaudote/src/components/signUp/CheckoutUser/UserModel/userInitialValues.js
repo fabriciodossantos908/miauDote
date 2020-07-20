@@ -13,7 +13,6 @@ const {
     bairro,
     logradouro,
     numero,
-    complemento,
     uf,
     url_foto
   }
@@ -32,7 +31,6 @@ export default {
   [bairro.name] : '',
   [logradouro.name] : '',
   [numero.name] : '',
-  [complemento.name] : '',
   [uf.name] : '',
-  // [url_foto.name] : ''
+  [url_foto.name] : 'teste/teste'
 };

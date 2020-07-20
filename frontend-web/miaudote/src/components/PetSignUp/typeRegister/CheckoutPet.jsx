@@ -11,18 +11,18 @@ import {
 import PetsIcon from '@material-ui/icons/Pets';
 import { Formik, Form } from 'formik';
 
-import PetInfo from './FormPet/PetInfo';
-import PetType from './FormPet/PetType';
-import PetDesc from './FormPet/PetDesc';
-import PetAddress from './FormPet/PetAddress';
-import TypePetRegister from './FormPet/TypePetRegister';
+import PetInfo from '../FormPet/PetInfo';
+import PetType from '../FormPet/PetType';
+import PetDesc from '../FormPet/PetDesc';
+import PetAddress from '../FormPet/PetAddress';
+import TypePetRegister from '../FormPet/TypePetRegister';
 
-// import petValidationSchema from './PetModel/PetValidationSchema';
-import checkoutPetModal from './PetModel/checkoutPetModel';
-import petInitialInfo from './PetModel/petInitialValues';
+// import petValidationSchema from '../PetModel/PetValidationSchema';
+import checkoutPetModal from '../PetModel/checkoutPetModel';
+import petInitialInfo from '../PetModel/petInitialValues';
 
-import { useStyle, formBase, useColorlibStepIconStyles } from '../Layout/styles'
-import clsx from '../../../node_modules/clsx';
+import { useStyle, formBase, useColorlibStepIconStyles } from '../../Layout/styles'
+import clsx from 'clsx'
 // import TestStepper from '../../pages/testStepper';
 // import { useHistory } from 'react-router-dom';
 
@@ -81,7 +81,7 @@ export default function CheckoutCompanyStep() {
   }
 
   function _handleBack() {
-    setActiveStep(activeStep - 1);
+    setActiveStep(activeStep - 1); 
   }
 
   function ColorlibStepIcon(props) {

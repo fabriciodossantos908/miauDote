@@ -1,4 +1,5 @@
 import checkoutLoginModel from './checkoutLoginModel';
+
 const {
   formField: {
     email,
