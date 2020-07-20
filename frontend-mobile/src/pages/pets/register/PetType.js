@@ -35,7 +35,18 @@ export default class PetType extends Component {
             .then(response => {
                 const ufInitials = response.data.map(uf => uf.sigla)
 
-                this.setState({ ufs: ufInitials }) 
+            
+                this.setState({ ufs: ufInitials })
+
+                try {
+                    if(this.state.selectedUf != '' || this.state.selectedUf != '0'){
+                        this.handleCities()
+                    }
+                } catch (error) {
+                  null  
+                }
+                
+                
             })
 
     }
@@ -49,9 +60,10 @@ export default class PetType extends Component {
     //     })
     // }
 
-    handleCities = () => {
-        const { selectedUf } = this.state
-        Axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`)
+    handleCities = (value) => {
+        // const { selectedUf } = this.state
+        const uf = value;
+        Axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`)
             .then(response => {
                 const citiesName = response.data.map(city => city.nome)
 
@@ -79,10 +91,6 @@ export default class PetType extends Component {
         type === 'cão' ? 'bold' : 'normal'
     }
 
-    test = () => {
-        alert('aaaaaaaaaaaaaaa')
-    }
-
     render() {
 
         // if(this.state.selectedUf != ''){
@@ -90,6 +98,7 @@ export default class PetType extends Component {
         // }
 
         console.log(this.state)
+        console.log(this.state.selectedUf)
 
         
         const { type, ufs, cities, selectedUf } = this.state
@@ -103,7 +112,7 @@ export default class PetType extends Component {
         let FontRabbit = type === 'coelho' ? bold : normal
         let FontRodent = type === 'roedor' ? bold : normal
 
-        
+       
 
         return (
             <React.Fragment>
@@ -174,7 +183,7 @@ export default class PetType extends Component {
                                                 style={{ height: 50, width: '30%' }}
                                                 selectedValue={this.state.selectedUf}
                                                 onValueChange={(value) =>
-                                                    this.setState({ selectedUf: value })}
+                                                    this.setState({ selectedUf: value }, this.handleCities(value))}
                                             >
                                                 <Picker.Item color='#ccc' label="UF" value="0" />
                                                 {ufs.map(uf => {
@@ -182,44 +191,46 @@ export default class PetType extends Component {
                                                 })}
                                             </Picker> 
 
-
                                             <Picker
                                                 style={{ height: 50, width: '70%' }}
-                                                onTouchStart={() => this.handleCities()}
+                                                // onTouchStart={() => this.handleCities()}
                                                 selectedValue={this.state.selectedCity}
                                                 onValueChange={(value) =>
                                                     this.setState({ selectedCity: value })}
                                             >
                                                 <Picker.Item color='#ccc' label="Cidade" value="0" />
-                                                {this.state.selectedUf == '0' ?
-                                                    <Picker.Item color={colors.pink} label="Nenhum estado selecionado." value="0" />
+                                                {/* {this.state.selectedUf == '' || this.state.selectedUf == '0' ?
+                                                     <Picker.Item color={colors.pink} label="Nenhum estado selecionado." value="0" />
                                                     :
-                                                    cities.map(city => (
-                                                        <Picker.Item key={city} label={city} value={city} />
-                                                    ))}
+                                                    cities.map(city => {
+                                                        return <Picker.Item key={city} label={city} value={city} />
+                                                })} */}
+                                                {cities.map(cities => {
+                                                   return <Picker.Item key={cities} label={cities} value={cities} />
+                                                })}
                                             </Picker>
                                         </View>
                                     </ContainerPetLocal>
 
-                                        {/* <RNPickerSelect
+                                         <RNPickerSelect
                                             placeholder={{
                                                 label: 'Cidade',
                                                 value: null,
                                                 color: colors.grey5
                                             }}
-
-                                            onValueChange={(value) => this.setState({selectedCity: value}, console.log(value))}
-                                            onOpen={selectedUf != '' ? this.handleCities() : null}
+                                            onValueChange={(value) => this.setState({selectedCity: value})}
+                                            // onOpen={()=>this.handleCities()}
+                                            // onUpArrow={() => this.handleCities()}
                                             items={
-                                                this.state.selectedUf == '0' ? 
+                                                this.state.selectedUf == '' ? 
                                                 { label: 'teste', value: 'teste' } :
                                                 cities.map(city => {
-                                                    return { label: `${city}`, value: `${city}` }
+                                                    return {  label: `${city}`, value: `${city}`,  }
                                                 })
                                             }
                                         />
 
-                                    <RNPickerSelect
+                                   {/* <RNPickerSelect
                                         placeholder={{
                                             label: 'Estado',
                                             value: null,
@@ -258,7 +269,7 @@ export default class PetType extends Component {
 
 const styles = StyleSheet.create({
     inputSmall: {
-        backgroundColor: '#ffff',
+        backgroundColor: colors.grey1,
         height: 40,
         alignSelf: 'stretch',
         marginTop: 10,
