@@ -9,7 +9,7 @@ import { TextInput } from 'react-native-paper';
 import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Form, IconView, ButtonNext } from './styles';
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import { HeaderDecoration, Head } from './services/header';
-import { IconFemale, IconMale } from '../../../components/icons';
+import { IconFemale, IconMale, IconArrow } from '../../../components/icons';
 import colors from '../../../components/colors';
 import { showAlertMessage } from '../../../components/alert';
 
@@ -30,6 +30,7 @@ export default class PetBasicInfo extends Component {
 
 		if (!name || !gender) {
 			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+			console.log('campos obrigatórios')
 			return false
 		}
 		return true
@@ -45,6 +46,10 @@ export default class PetBasicInfo extends Component {
 			params: { data },
 		});
 	}
+
+	previousPage = () => {
+        this.props.navigation.goBack(null)
+    }
 
 	FontBold = () => {
 		const { gender } = this.state
@@ -106,6 +111,11 @@ export default class PetBasicInfo extends Component {
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 						<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
 							<HeaderDecoration />
+							<View style={{ backgroundColor: '#fff' }}>
+                                <TouchableOpacity onPress={this.previousPage}>
+                                    <IconArrow />
+                                </TouchableOpacity>
+                            </View>
 							<Main>
 								<Head />
 
@@ -117,7 +127,7 @@ export default class PetBasicInfo extends Component {
 										label='Nome'
 										mode={'outlined'}
 										value={this.state.name || ''}
-										onChangeText={txt => this.setState({name: txt})}
+										onChangeText={txt => this.setState({ name: txt })}
 										theme={{
 											colors: {
 												primary: '#1bc7cb',

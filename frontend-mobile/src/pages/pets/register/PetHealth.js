@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, View, StatusBar } from "react-native";
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, View, StatusBar, TouchableOpacity } from "react-native";
 
 import { RadioButton } from 'react-native-paper';
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
@@ -14,6 +14,7 @@ import {
 }
     from './styles';
 import { showAlertMessage } from "../../../components/alert";
+import { IconArrow } from "../../../components/icons";
 
 
 
@@ -47,7 +48,7 @@ export default class PetHealth extends Component {
     validate = () => {
 		const { vaccinated, dewormed, castrated, needCare } = this.state
 
-		if (!vaccinated || !dewormed || !castrated || !needCare) {
+		if (vaccinated == null || dewormed == null  || castrated == null  || needCare == null ) {
 			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
 			return false
 		}
@@ -65,7 +66,11 @@ export default class PetHealth extends Component {
 			screen: 'PetHealth',
 			params: { data },
 		});
-	}
+    }
+    
+    previousPage = () => {
+        this.props.navigation.goBack(null)
+    }
 
     render() {
         const { dewormed, vaccinated, castrated, needCare } = this.state
@@ -84,9 +89,14 @@ export default class PetHealth extends Component {
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                             <HeaderDecoration />
+                            <View style={{ backgroundColor: '#fff' }}>
+                                <TouchableOpacity onPress={this.previousPage}>
+                                    <IconArrow />
+                                </TouchableOpacity>
+                            </View>
                             <Main>
                                 <Head />
-
+                                <Label>Nos informe sobre a saúde do seu pet</Label>
                                 <Form style={{ alignItems: 'stretch' }}>
                                     <ContainerHealth>
                                         <View>

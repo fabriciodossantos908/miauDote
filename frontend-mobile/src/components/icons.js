@@ -7,7 +7,6 @@ import IconIonicons from 'react-native-vector-icons/Ionicons';
 import colors from "./colors";
 import { IconPetType, IconImage } from "../pages/pets/register/styles";
 
-
 export function Heart (){
     return(
         <Icon name={'heart'} size={14} color={colors.pink} />
@@ -138,5 +137,11 @@ export function IconPawBigDisable() {
 export function IconSearch() {
     return (
         <IconIonicons name={'ios-search'} size={25} color={colors.grey5} />
+    )
+}
+
+export function IconArrow(){
+    return (
+        <IconIonicons style={{left:8}}  name={'md-arrow-back'} size={25} color={colors.green} />
     )
 }
