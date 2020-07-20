@@ -11,6 +11,7 @@ import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import { HeaderDecoration, Head } from './services/header';
 import { IconFemale, IconMale } from '../../../components/icons';
 import colors from '../../../components/colors';
+import { showAlertMessage } from '../../../components/alert';
 
 export default class PetBasicInfo extends Component {
 
@@ -24,8 +25,19 @@ export default class PetBasicInfo extends Component {
 		}
 	}
 
+	validate = () => {
+		const { name, gender } = this.state
+
+		if (!name || !gender) {
+			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+			return false
+		}
+		return true
+	}
+
 	nextPage = (props) => {
-		// **** validações vão aqui ***** //
+		if (!this.validate()) return
+
 		const data = this.state
 
 		this.props.navigation.navigate('PetType', {
@@ -163,7 +175,7 @@ export default class PetBasicInfo extends Component {
 
 const styles = StyleSheet.create({
 	input: {
-		backgroundColor: '#ffff',
+		backgroundColor: '#f7f7f7',
 		height: 40,
 		alignSelf: 'stretch',
 		marginBottom: 60,

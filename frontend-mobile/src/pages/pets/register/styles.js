@@ -210,13 +210,31 @@ export const ContainerPetLocal = styled.View `
     width: 100%;
 `
 
+export const ContainerButton = styled.View `
+    margin-top: 60px;
+    margin-left:auto;
+    margin-right:0;
+`
+
 export const ButtonNext = styled.TouchableOpacity `
     height: 45px;
     width: 130px;
     justify-content: center;
     align-items: center;
-    background-color: #1bc7cb;
+    background-color: ${colors.green};
     border-radius: 5px;
+
+`
+
+export const ButtonPrevious = styled.TouchableOpacity `
+    height: 45px;
+    width: 130px;
+    justify-content:center;
+    align-items:center;
+    background-color:${colors.pink};
+    border-radius: 5px;
+
+
 `
 
 // ****** Pet Health ****** //

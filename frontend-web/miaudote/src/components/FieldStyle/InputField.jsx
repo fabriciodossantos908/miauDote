@@ -4,15 +4,11 @@ import { useField } from 'formik';
 import { TextField } from '@material-ui/core';
 
 export default function InputField(props) {
-  const { errorText, ...rest } = props;
-  const [field, meta] = useField(props);
-  // console.log("that's the meta -->  " + JSON.stringify(meta))
- 
-
+  const { errorText, disabled, ...rest } = props;
+  const [field, meta] = useField(props); 
 
     function _renderHelperText() {
     const [touched, error] = at(meta, 'touched', 'error');
-
     if (touched && error) {
       return error;
     }
@@ -22,6 +18,7 @@ export default function InputField(props) {
     <TextField
       type="text"
       error={meta.touched && meta.error && true}
+      disabled={disabled === true ? true : false}
       helperText={_renderHelperText()}
       {...field}
       {...rest}
