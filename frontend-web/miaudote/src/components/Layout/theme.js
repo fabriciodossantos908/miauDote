@@ -27,50 +27,70 @@ let palette = createPalette({
 })
 
 let themeMain = createMuiTheme({
-    
     overrides: {
-        MuiInputLabel: {
-            focused: {
-                backgroundColor: "red",
-                color: "red",
-                outline: "red",
-            }
-        },
-        MuiButton: {
+        MuiFormLabel: {
             root: {
-                textTransform: 'none',
-                borderRadius: 5,
+                '& @active': {
+                    color: 'pink'
+                },
+                '& @focus': {
+                    color: 'blue'
+                }
+            },        
+        },
+        MuiTypography : {
+            body1: {
+                fontSize: '0.900rem',
             },
-            contained: {
-                backgroundColor: palette.primary.light,
-                color: palette.primary.contrastText
+
+            body2: {
+                fontSize: '0.750rem',
             }
         },
-        MuiStepper: {
-            line: {
-                width: 2,
-                marginRight: "auto",
-                border: 0,
-                backgroundColor: palette.secondary.main,
-                borderRadius: 1,
-            },
-            active: {
-                '& $line': {
-                    backgroundColor: palette.primary.light
+            MuiInputBase: {
+                root: {
+                    height: 40,
+                    marginBottom: 10,
                 },
             },
-            completed: {
-                '& $line': {
-                    backgroundColor: palette.primary.light
+            MuiInputLabel: {
+                root: {
+                    '&$focused': {
+                        color: palette.primary.main,
+                        outline: palette.primary.light,
+                    }
+                }
+            },
+            MuiButton: {
+                root: {
+                    textTransform: 'none',
+                    borderRadius: 5,
+                },
+                contained: {
+                    backgroundColor: palette.primary.light,
+                    color: palette.primary.contrastText
+                }
+            },
+            MuiStepper: {
+                line: {
+                    width: 2,
+                    marginRight: "auto",
+                    border: 0,
+                    backgroundColor: palette.secondary.main,
+                    borderRadius: 1,
+                },
+                active: {
+                    '& $line': {
+                        backgroundColor: palette.primary.light
+                    },
+                },
+                completed: {
+                    '& $line': {
+                        backgroundColor: palette.primary.light
+                    },
                 },
             },
-        },
-        MuiPaper: {
-            root: {
-                backgroundColor: "transparent"
-            }
         }
-    }
 
 });
 

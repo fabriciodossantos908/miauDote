@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Paper, Grid, Typography, Button } from '@material-ui/core';
+import { Grid, Typography, Button } from '@material-ui/core';
 import { Formik, Form } from 'formik';
 import Axios from 'axios'
 
@@ -38,7 +38,7 @@ const OtherLogin = (props) => {
 export default function Login() {
     const classes = useStyle();
     const classesLogin = login();
-    const [authRequesStatus, setauthRequesStatus] = useState(false)
+    // const [authRequesStatus, setauthRequesStatus] = useState(false)
     let history = useHistory()
 
     function _sleep(ms) {
@@ -52,13 +52,13 @@ export default function Login() {
 
         Axios.post("http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/autenticar", values)
             .then(function (response) {
-                setauthRequesStatus(true)
+                // setauthRequesStatus(true)
                 history.push("/", console.log(response))
             })
             .catch(function (error) {
                 alert("ops! Usuário e ou senha estão errados")
                 console.log(error)
-                setauthRequesStatus(false)
+                // setauthRequesStatus(false)
             });
     }
 

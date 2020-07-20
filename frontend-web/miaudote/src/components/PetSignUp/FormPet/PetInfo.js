@@ -1,53 +1,97 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, FormControlLabel, Checkbox } from '@material-ui/core';
 import { InputField } from '../../FieldStyle';
-import { SelectField } from '../../FieldStyle'
 
-const sex = [
+import { SelectSexType } from '../FieldStyle/'
+
+
+const data = [
   {
     value: "F",
-    label: 'Feminino'
-  },
+    label: "Femino"
+},
   {
     value: "M",
-    label: 'Masculino'
-  }
+    label: "Masculino"
+},
+  {
+    value: "u",
+    label: "Não sei"
+},
 ]
 
-
 export default function PetInfo(props) {
-  const classes = props.useStyle();
+  const [checkedYear, setCheckedYear] = React.useState(true);
+  const [checkedMonth, setCheckedMonth] = React.useState(true);
+
+  const handleChangeYear = () => {
+    setCheckedYear((prev) => !prev);
+  };
+
+  const handleChangeMonth = () => {
+    setCheckedMonth((prev) => !prev);
+  };
+
 
   const {
     formField: {
       nome,
-      idade,
-      raca,
+      // idade,
+      // raca,
       sexo,
+      anos,
+      meses
     }
   } = props;
   return (
     <React.Fragment>
-      <Grid
-        container
-        xs={10}
-        direction="column"
-        justify="space-around"
-        alignItems="center"
-        className={classes.inputPaper}
-      >
+      <Grid item xs={12}>
         <InputField name={nome.name} variant="outlined" label={nome.label} fullWidth />
-        <InputField name={idade.name} variant="outlined" label={idade.label} fullWidth />
-        <SelectField
-          name={sexo.name}
-          variant="outlined"
-          label={sexo.label}
-          data={sex}
-          fullWidth
-        />
-        <InputField name={raca.name} variant="outlined" label={raca.label} fullWidth />
+      </Grid>
+      <Grid item container orientation="row">
+        <Grid item container xs={6} direction="row" spacing={1}>
+          <Grid item xs={6}>
+            <InputField name={anos.name} disabled={checkedYear} variant="outlined" label={anos.label} fullWidth />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControlLabel
+            control={<Checkbox
+              disableFocusRipple
+              onChange={handleChangeYear}
+
+              />}
+              label="Anos"
+            />
+          </Grid>
+        </Grid>
+        <Grid item container xs={6} direction="row">
+          <Grid item xs={8}>
+            <InputField name={meses.name} disabled={checkedMonth} variant="outlined" label={meses.label} fullWidth />
+          </Grid>
+          <Grid item xs={4}>
+            <FormControlLabel
+            control={<Checkbox 
+              disableFocusRipple
+              onChange={handleChangeMonth}
+            />}
+              label="Meses"
+            />
+          </Grid>
+        </Grid>
 
       </Grid>
+      {/* <SelectField
+        name={sexo.name}
+        variant="outlined"
+        label={sexo.label}
+        data={sex}
+        fullWidth
+      /> */}
+
+      <SelectSexType
+      name={sexo.name}
+      label={sexo.label}
+      />
     </React.Fragment>
   );
 }
