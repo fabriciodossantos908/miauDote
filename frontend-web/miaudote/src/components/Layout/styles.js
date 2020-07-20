@@ -110,6 +110,9 @@ const formBase = makeStyles(() => ({
   content: {
     height: 340,
     borderRadius: 20
+  },
+  contentModal: {
+    height: 240,
   }
 }))
 
@@ -127,7 +130,7 @@ const ColorlibConnectorHorizontal = withStyles({
     top: 22,
   },
   line: {
-    width: 50,
+    width: 20,
     height: 2,
   },
 })(StepConnector);
@@ -156,11 +159,11 @@ const useColorlibStepIconStyles = makeStyles({
 });
 
 const formPet = makeStyles({
-  stepper: {
-    width: 200,
-    marginRight: "auto",
-    backgroundColor: "transparent",
-  },
+  // stepper: {
+  //   width: 200,
+  //   marginRight: "auto",
+  //   backgroundColor: "transparent",
+  // },
   labelStep: {
     color: "white"
   }

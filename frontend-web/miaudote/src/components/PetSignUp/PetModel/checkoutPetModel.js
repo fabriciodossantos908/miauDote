@@ -1,6 +1,14 @@
 export default {
     formId: 'checkoutPetModel',
     formField: {
+      adocao: {
+        name: 'adocao',
+        label: 'Adoção',
+      },
+      perdido: {
+        name: 'perdido',
+        label: 'Perdido',
+      },
       nome: {
         name: 'nome',
         label: 'Nome*',
@@ -41,7 +49,14 @@ export default {
         label: 'Idade*',
         requiredErrorMsg: 'Idade é obrigatório!'
       },
-
+      anos: {
+        name: 'anos',
+        label: 'anos',
+      },
+      meses: {
+        name: 'meses',
+        label: 'meses',
+      },
 
       cuidados_veterinarios: {
         name: 'cuidados_veterinarios',
@@ -86,6 +101,6 @@ export default {
         label: 'Foto*',
         requiredErrorMsg: 'Foto é obrigatório!'
       },
-    }
+    },
   };
   

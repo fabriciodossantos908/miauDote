@@ -12,7 +12,7 @@ export default function HeaderMain() {
 
     return (
         <Grid item>
-            <AppBar position="static" color="color">
+            <AppBar position="static">
                 <Toolbar className={classes.appBar}>
                     <Typography variant="h5">
                         Miaudote
