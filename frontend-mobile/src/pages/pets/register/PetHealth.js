@@ -89,9 +89,11 @@ export default class PetHealth extends Component {
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                             <HeaderDecoration />
-                            <TouchableOpacity onPress={this.previousPage}>
+                            <View style={{ backgroundColor: '#fff' }}>
+                                <TouchableOpacity onPress={this.previousPage}>
                                     <IconArrow />
                                 </TouchableOpacity>
+                            </View>
                             <Main>
                                 <Head />
                                 <Label>Nos informe sobre a saúde do seu pet</Label>

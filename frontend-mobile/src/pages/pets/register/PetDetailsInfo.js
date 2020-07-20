@@ -33,8 +33,8 @@ export default class PetDetailsInfo extends Component {
             name: data.name,
             gender: data.gender,
             type: data.type,
-            selectedUf: data.selectedUf,
-            selectedCity: data.selectedCity,
+            uf: data.uf,
+            city: data.city,
             breed:data.breed,
 
             // this page
@@ -129,7 +129,7 @@ export default class PetDetailsInfo extends Component {
                                 <TouchableOpacity onPress={this.previousPage}>
                                     <IconArrow />
                                 </TouchableOpacity>
-                            </View>F
+                            </View>
                             <Main>
                                 <Head />
 

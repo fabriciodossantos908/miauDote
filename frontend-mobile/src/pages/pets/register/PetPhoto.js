@@ -26,7 +26,12 @@ export default class PetPhoto extends Component {
             porte: data.porte,
             color: data.color,
             description: data.description,
+            dewormed: data.dewormed,
+            vaccinated: data.vaccinated,
+            castrated: data.castrated,
+            needCare: data.needCare,
             url_foto: null,
+            id_user:null,
         }
     }
 
