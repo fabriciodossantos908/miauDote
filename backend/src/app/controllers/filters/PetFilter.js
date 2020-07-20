@@ -1,22 +1,11 @@
 const { Pet } = require('../../models');
 const { Op } = require('sequelize');
 const { sequelize } = require('../../models/index');
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 const fs = require('fs');
 const path = require('path');
 
 
 const fileUpload = require('../../../helpers/FileUpload');
-
-<<<<<<< HEAD
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-
 
 class PetFilter {
 
@@ -26,15 +15,7 @@ class PetFilter {
       let pets = null;
       let count = null;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      const { limite = 5, pag = 1, cidade } = req.query;
-=======
       const { limite = 5, pag = 1, cidade, sexo, porte } = req.query;
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-=======
-      const { limite = 5, pag = 1, cidade, sexo, porte } = req.query;
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       const offset = (pag - 1) * limite;
 
       try {
@@ -95,17 +76,8 @@ class PetFilter {
          limite = 5,
          especie = "",
          porte = "",
-<<<<<<< HEAD
-<<<<<<< HEAD
-         sexo = ""
-=======
          sexo = "",
          raca = ""
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-=======
-         sexo = "",
-         raca = ""
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       } = req.query;
 
       if (!latitude || !longitude)
@@ -127,21 +99,12 @@ class PetFilter {
          sexo = `AND sexo = "${sexo}"`
       }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       if (!especie && raca != "" && !porte && !sexo) {
          raca = `WHERE raca = "${raca}"`
       } else if (raca) {
          raca = `AND raca = "${raca}"`
       }
 
-<<<<<<< HEAD
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       const offset = (pag - 1) * limite;
 
 
@@ -161,15 +124,7 @@ class PetFilter {
             )
             ) * 1.609344) as distancia
           FROM tbl_pets pets
-<<<<<<< HEAD
-<<<<<<< HEAD
-          ${especie} ${porte} ${sexo}
-=======
           ${especie} ${porte} ${sexo} ${raca}
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-=======
-          ${especie} ${porte} ${sexo} ${raca}
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
           having distancia < ${distancia}
           ORDER BY distancia
           LIMIT ${limite} OFFSET ${offset};
@@ -198,11 +153,6 @@ class PetFilter {
 
    }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
    async uploadPetPhoto(req, res) {
       try {
          let file = req;
@@ -241,10 +191,6 @@ class PetFilter {
          return res.status(400).json(error);
       }
    }
-<<<<<<< HEAD
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
-=======
->>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
 }
 
 module.exports = new PetFilter();

@@ -40,21 +40,22 @@ export const SalutationText = styled.Text`
 
 
 // View com o menu de seleção de espécie
-export const MenuView = styled.View`
-   margin-top: 24;
+export const MenuView = styled.ScrollView`
+   /* margin-top: 24; */
    flex-direction: row;
-   justify-content: space-between;
-   padding: 16px;
+   /* justify-content: space-between; */
+   /* padding: 16px; */
    margin-bottom: 56;
 `;
 
 export const MenuOption = styled.TouchableOpacity`
-   width: 80;
-   height: 80;
-   margin-top: 25;
+   width: 100px;
+   height: 146px;
+   margin-top: 25px;
+   /* margin-left: -8px; */
    justify-content: center;
    align-items: center;
-   border-radius: 40;
+   /* background-color: red; */
 `;
 
 export const MenuOptionImage = styled.Image`
@@ -64,7 +65,7 @@ export const MenuOptionImage = styled.Image`
 `;
 
 export const MenuOptionQuantity = styled.Text`
-   margin-top: 10;
+   /* margin-top: 10; */
    font-size: 20;
    font-weight: bold;
    font-family: 'Poppins_400Regular';

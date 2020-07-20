@@ -206,8 +206,6 @@ export const ButtonAdoptText = styled.Text`
    font-family: 'Poppins_400Regular';
    font-size: 20;
    font-weight: bold;
-<<<<<<< HEAD:frontend-mobile/src/pages/pets/details/styles.js
-=======
 `;
 
 export const PetHeader = styled.View`
@@ -235,6 +233,7 @@ export const ModalTitle = styled.Text`
    font-family: 'Poppins_400Regular';
    font-size: 24;
    color: #1bc7cb;
+   margin-top: 24px;
    text-align: center;
 `;
 
@@ -256,7 +255,6 @@ export const ContactInformationView = styled.View`
 export const ContactInformationImage = styled.Image`
    width: 55px;
    height: 55px;
-   /* background-color: green; */
 `;
 
 
@@ -265,5 +263,4 @@ export const ContactInformationText = styled.Text`
    color: #fc6b6e;
    font-family: 'Poppins_400Regular';
    margin-left: 16px;
->>>>>>> b0275da1ea2ceb3ab41dc08a167afde3f532f7a3:frontend-mobile/miaudote/src/pages/pets/details/styles.js
 `;
