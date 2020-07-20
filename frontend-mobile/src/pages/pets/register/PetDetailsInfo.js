@@ -32,8 +32,8 @@ export default class PetDetailsInfo extends Component {
             name: data.name,
             gender: data.gender,
             type: data.type,
-            uf: data.uf,
-            city: data.city,
+            selectedUf: data.selectedUf,
+            selectedCity: data.selectedCity,
             breed:data.breed,
 
             // this page
@@ -47,8 +47,20 @@ export default class PetDetailsInfo extends Component {
         }
         
     }
+    
+    validate = () => {
+		const { porte, age, color, description } = this.state
+
+		if (!porte || !age || !color ||!description) {
+			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+			return false
+		}
+        return true
+        
+	}
 
     nextPage = (props) => {
+        if(!this.validate()) return
 
         const data = this.state
 

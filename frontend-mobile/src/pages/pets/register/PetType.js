@@ -7,6 +7,8 @@ import { HeaderDecoration, Head } from './services/header';
 import { IconPin, IconDog, IconCat, IconBird, IconRabbit, IconHamster, IconDogDisable, IconCatDisable, IconBirdDisable, IconRabbitDisable, IconHamsterDisable } from "../../../components/icons";
 import Axios from 'axios';
 import RNPickerSelect from 'react-native-picker-select';
+import { showAlertMessage } from '../../../components/alert';
+
 
 
 // import removerAcentos from '../../../services/Regex';
@@ -51,14 +53,6 @@ export default class PetType extends Component {
 
     }
 
-    // handleUfs = () => {
-    //     Axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados/')
-    //     .then(response => {
-    //         const ufInitials = response.data.map(uf => uf.sigla)
-
-    //         this.setState({ ufs: ufInitials }) 
-    //     })
-    // }
 
     handleCities = (value) => {
         // const { selectedUf } = this.state
@@ -72,8 +66,21 @@ export default class PetType extends Component {
 
     }
 
+    validate = () => {
+		const { type, selectedUf, selectedCity } = this.state
+
+		if (!type || !selectedUf || !selectedCity) {
+			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+			return false
+		}
+        return true
+        
+	}
 
     nextPage = () => {
+
+        if(!this.validate()) return
+
         const data = this.state
 
         this.props.navigation.navigate('PetBreed', {
@@ -212,7 +219,7 @@ export default class PetType extends Component {
                                         </View>
                                     </ContainerPetLocal>
 
-                                         <RNPickerSelect
+                                         {/* <RNPickerSelect
                                             placeholder={{
                                                 label: 'Cidade',
                                                 value: null,
@@ -228,7 +235,7 @@ export default class PetType extends Component {
                                                     return {  label: `${city}`, value: `${city}`,  }
                                                 })
                                             }
-                                        />
+                                        /> */}
 
                                    {/* <RNPickerSelect
                                         placeholder={{
