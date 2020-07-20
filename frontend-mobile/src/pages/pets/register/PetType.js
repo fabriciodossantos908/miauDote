@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Picker, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, StatusBar, Text } from "react-native";
-import { TextInput } from 'react-native-paper';
 import { ContainerRow, TextIcon, Label, Main, Form, IconView, ContainerPetLocal, ButtonNext, ContainerButton, ButtonPrevious } from './styles';
 import { BtnText } from '../../user/signUp/styles';
 import colors from '../../../components/colors'
@@ -8,7 +7,6 @@ import { HeaderDecoration, Head } from './services/header';
 import { IconPin, IconDog, IconCat, IconBird, IconRabbit, IconHamster, IconDogDisable, IconCatDisable, IconBirdDisable, IconRabbitDisable, IconHamsterDisable } from "../../../components/icons";
 import Axios from 'axios';
 import RNPickerSelect from 'react-native-picker-select';
-import {showAlertMessage} from '../../../components/alert'
 
 
 // import removerAcentos from '../../../services/Regex';
@@ -25,7 +23,7 @@ export default class PetType extends Component {
             gender: data.gender,
             type: null,
             ufs: [],
-            selectedUf: '0',
+            selectedUf: '',
             selectedCity: '',
             cities: [],
             font: 'bold'
@@ -37,17 +35,19 @@ export default class PetType extends Component {
             .then(response => {
                 const ufInitials = response.data.map(uf => uf.sigla)
 
-                this.setState({ ufs: ufInitials })
+                this.setState({ ufs: ufInitials }) 
             })
 
     }
 
-    componentDidUpdate = () => {
-        if (this.state.selectedUf != '0'){
-            this.handleCities()
-        } 
+    // handleUfs = () => {
+    //     Axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados/')
+    //     .then(response => {
+    //         const ufInitials = response.data.map(uf => uf.sigla)
 
-    }
+    //         this.setState({ ufs: ufInitials }) 
+    //     })
+    // }
 
     handleCities = () => {
         const { selectedUf } = this.state
@@ -55,7 +55,7 @@ export default class PetType extends Component {
             .then(response => {
                 const citiesName = response.data.map(city => city.nome)
 
-                this.setState({cities: citiesName})
+                this.setState({ cities: citiesName })
             })
 
     }
@@ -79,22 +79,20 @@ export default class PetType extends Component {
         type === 'cão' ? 'bold' : 'normal'
     }
 
-
-    // função para remover acento
-    // teste = () => {
-    //     let txt = 'cão'
-    //     let result = removerAcentos(txt)
-    //     alert(result)
-
-    // }
-
-
-
-
+    test = () => {
+        alert('aaaaaaaaaaaaaaa')
+    }
 
     render() {
+
+        // if(this.state.selectedUf != ''){
+        //     this.handleUfs()
+        // }
+
         console.log(this.state)
-        const { type, ufs, cities } = this.state
+
+        
+        const { type, ufs, cities, selectedUf } = this.state
 
         const bold = 'bold'
         const normal = 'normal'
@@ -104,6 +102,8 @@ export default class PetType extends Component {
         let FontBird = type === 'pássaro' ? bold : normal
         let FontRabbit = type === 'coelho' ? bold : normal
         let FontRodent = type === 'roedor' ? bold : normal
+
+        
 
         return (
             <React.Fragment>
@@ -170,83 +170,72 @@ export default class PetType extends Component {
                                         <Label>Localização do pet <IconPin /> </Label>
 
                                         <View style={{ flexDirection: 'row' }}>
-                                            <TextInput
-                                                style={styles.inputSmall}
-                                                label='Estado'
-                                                mode={'outlined'}
-                                                onChangeText={txt => this.setState({ uf: txt })}
-                                                theme={{
-                                                    colors: {
-                                                        primary: colors.green,
-                                                        underlineColor: 'transparent',
-                                                    }
-                                                }} />
+                                             <Picker
+                                                style={{ height: 50, width: '30%' }}
+                                                selectedValue={this.state.selectedUf}
+                                                onValueChange={(value) =>
+                                                    this.setState({ selectedUf: value })}
+                                            >
+                                                <Picker.Item color='#ccc' label="UF" value="0" />
+                                                {ufs.map(uf => {
+                                                   return <Picker.Item key={uf} label={uf} value={uf} />
+                                                })}
+                                            </Picker> 
 
-                                            <TextInput
-                                                style={styles.input}
-                                                label='Cidade'
-                                                mode={'outlined'}
-                                                value={this.state.city || ''}
-                                                onChangeText={txt => this.setState({ city: txt })}
-                                                theme={{
-                                                    colors: {
-                                                        primary: colors.green,
-                                                        underlineColor: 'transparent',
-                                                    }
-                                                }} />
+
+                                            <Picker
+                                                style={{ height: 50, width: '70%' }}
+                                                onTouchStart={() => this.handleCities()}
+                                                selectedValue={this.state.selectedCity}
+                                                onValueChange={(value) =>
+                                                    this.setState({ selectedCity: value })}
+                                            >
+                                                <Picker.Item color='#ccc' label="Cidade" value="0" />
+                                                {this.state.selectedUf == '0' ?
+                                                    <Picker.Item color={colors.pink} label="Nenhum estado selecionado." value="0" />
+                                                    :
+                                                    cities.map(city => (
+                                                        <Picker.Item key={city} label={city} value={city} />
+                                                    ))}
+                                            </Picker>
                                         </View>
                                     </ContainerPetLocal>
 
-                                    <View style={{ width: '40%', alignSelf: 'flex-start' }}>
-
                                         {/* <RNPickerSelect
                                             placeholder={{
-                                                label: 'Estado',
+                                                label: 'Cidade',
                                                 value: null,
                                                 color: colors.grey5
                                             }}
-                                            onValueChange={(value) => console.log(value)}
 
+                                            onValueChange={(value) => this.setState({selectedCity: value}, console.log(value))}
+                                            onOpen={selectedUf != '' ? this.handleCities() : null}
                                             items={
-                                                // {...ufs.map(uf => (
-                                                // { key:this.state.ufs, label: this.state.ufs, value: this.state.ufs }
-                                                // ))}
-
-                                                this.list()
+                                                this.state.selectedUf == '0' ? 
+                                                { label: 'teste', value: 'teste' } :
+                                                cities.map(city => {
+                                                    return { label: `${city}`, value: `${city}` }
+                                                })
                                             }
+                                        />
 
-                                        /> */}
+                                    <RNPickerSelect
+                                        placeholder={{
+                                            label: 'Estado',
+                                            value: null,
+                                            color: colors.grey5
+                                        }}
 
-                                        <Picker
-                                            style={{ height: 50 }}
-                                            selectedValue={this.state.selectedUf}
-                                            onValueChange={(itemValue, itemPosition) =>
-                                                this.setState({ selectedUf: itemValue, choosenIndex: itemPosition })}
-                                        >
-                                            <Picker.Item color='#ccc' label="Estado" value="0" />
-                                            {ufs.map(uf => (
-                                                <Picker.Item key={uf} label={uf} value={uf} />
-                                            ))}
-                                        </Picker>
-
-                                        <Picker
-                                            style={{ height: 50 }}
-                                            selectedValue={this.state.selectedCity}
-                                            onValueChange={(itemValue, itemPosition) =>
-                                                this.setState({ selectedCity: itemValue, choosenIndex: itemPosition })}
-                                        >
-                                            <Picker.Item color='#ccc' label="Cidade" value="0" />
-                                            {this.state.selectedUf == '0' ? 
-                                                <Picker.Item color={colors.pink} label="Nenhum estado selecionado." value="0" />
-                                            : 
-                                            cities.map(city => (
-                                                <Picker.Item key={city} label={city} value={city} />
-                                            ))}
-                                        </Picker>
-
-
-                                    </View>
+                                        // onOpen={this.handleUfs()}
+                                        onValueChange={(value) => this.setState({selectedUf: value}, console.log(value))}
+                                        items={
+                                            ufs.map(uf => {
+                                                return {  label: `${uf}`, value: `${uf}` }
+                                            })
+                                        }
+                                    /> */}
                                 </Form>
+
 
                                 <ContainerButton>
                                     <ButtonNext onPress={this.nextPage}>
