@@ -10,7 +10,7 @@ import { ContainerButton, BtnText } from '../../user/signUp/styles';
 
 import { KeyboardAvoidingView, TouchableWithoutFeedback, 
         Keyboard, ScrollView, StyleSheet, 
-        View, StatusBar } from "react-native";
+        View, StatusBar, TouchableOpacity } from "react-native";
 
 import { TextIcon, Label, Main, Form, IconViewSmall, 
         IconViewMedium, IconViewBig, ContainerPetDetails, 
@@ -18,7 +18,8 @@ import { TextIcon, Label, Main, Form, IconViewSmall,
 
 import { IconPawSmall, IconPawMedium, IconPawBig, 
         IconPawSmallDisable, IconPawMediumDisable, 
-        IconPawBigDisable } from "../../../components/icons";
+        IconPawBigDisable, 
+        IconArrow} from "../../../components/icons";
 
 
 
@@ -68,7 +69,11 @@ export default class PetDetailsInfo extends Component {
 			screen: 'PetDetailsInfo',
 			params: { data },
 		});
-	}
+    }
+    
+    previousPage = () => {
+        this.props.navigation.goBack(null)
+    }
 
 
     showAlert = () => {
@@ -120,6 +125,11 @@ export default class PetDetailsInfo extends Component {
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                             <HeaderDecoration />
+                            <View style={{ backgroundColor: '#fff' }}>
+                                <TouchableOpacity onPress={this.previousPage}>
+                                    <IconArrow />
+                                </TouchableOpacity>
+                            </View>F
                             <Main>
                                 <Head />
 

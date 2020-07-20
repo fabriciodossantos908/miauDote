@@ -226,6 +226,25 @@ export const ButtonNext = styled.TouchableOpacity `
 
 `
 
+export const ButtonNextOutline = styled.TouchableOpacity `
+    height: 45px;
+    width: 130px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    border-width:2px;
+    border-color:${colors.green};
+
+`
+
+
+export const BtnTextOutline = styled.Text `
+    color: ${colors.green};
+    font-size:18px;
+    font-weight:bold;
+`
+
 export const ButtonPrevious = styled.TouchableOpacity `
     height: 45px;
     width: 130px;

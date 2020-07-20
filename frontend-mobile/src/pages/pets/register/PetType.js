@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Picker, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, StatusBar, Text } from "react-native";
-import { ContainerRow, TextIcon, Label, Main, Form, IconView, ContainerPetLocal, ButtonNext, ContainerButton, ButtonPrevious } from './styles';
+import { Picker, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, StatusBar, Text, TouchableOpacity } from "react-native";
+import { ContainerRow, TextIcon, Label, Main, Form, IconView, ContainerPetLocal, ButtonNext, ContainerButton, ButtonPrevious, ButtonNextOutline, BtnTextOutline } from './styles';
 import { BtnText } from '../../user/signUp/styles';
 import colors from '../../../components/colors'
 import { HeaderDecoration, Head } from './services/header';
-import { IconPin, IconDog, IconCat, IconBird, IconRabbit, IconHamster, IconDogDisable, IconCatDisable, IconBirdDisable, IconRabbitDisable, IconHamsterDisable } from "../../../components/icons";
+import { IconPin, IconDog, IconCat, IconBird, IconRabbit, IconHamster, IconDogDisable, IconCatDisable, IconBirdDisable, IconRabbitDisable, IconHamsterDisable, IconArrow } from "../../../components/icons";
 import Axios from 'axios';
 import RNPickerSelect from 'react-native-picker-select';
 import { showAlertMessage } from '../../../components/alert';
@@ -37,18 +37,18 @@ export default class PetType extends Component {
             .then(response => {
                 const ufInitials = response.data.map(uf => uf.sigla)
 
-            
+
                 this.setState({ ufs: ufInitials })
 
                 try {
-                    if(this.state.selectedUf != '' || this.state.selectedUf != '0'){
+                    if (this.state.selectedUf != '' || this.state.selectedUf != '0') {
                         this.handleCities()
                     }
                 } catch (error) {
-                  null  
+                    null
                 }
-                
-                
+
+
             })
 
     }
@@ -67,19 +67,19 @@ export default class PetType extends Component {
     }
 
     validate = () => {
-		const { type, selectedUf, selectedCity } = this.state
+        const { type, selectedUf, selectedCity } = this.state
 
-		if (!type || !selectedUf || !selectedCity) {
-			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
-			return false
-		}
+        if (!type || !selectedUf || !selectedCity) {
+            showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+            return false
+        }
         return true
-        
-	}
+
+    }
 
     nextPage = () => {
 
-        if(!this.validate()) return
+        if (!this.validate()) return
 
         const data = this.state
 
@@ -107,7 +107,7 @@ export default class PetType extends Component {
         console.log(this.state)
         console.log(this.state.selectedUf)
 
-        
+
         const { type, ufs, cities, selectedUf } = this.state
 
         const bold = 'bold'
@@ -119,7 +119,7 @@ export default class PetType extends Component {
         let FontRabbit = type === 'coelho' ? bold : normal
         let FontRodent = type === 'roedor' ? bold : normal
 
-       
+
 
         return (
             <React.Fragment>
@@ -133,6 +133,11 @@ export default class PetType extends Component {
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                             {/* <ImageBackground source={require('../../../assets/head.png')} style={{ height: 50 }} imageStyle={{ resizeMode: 'cover' }} /> */}
                             <HeaderDecoration />
+                            <View style={{ backgroundColor: '#fff' }}>
+                                <TouchableOpacity onPress={this.previousPage}>
+                                    <IconArrow />
+                                </TouchableOpacity>
+                            </View>
                             <Main>
                                 <Head />
 
@@ -186,7 +191,7 @@ export default class PetType extends Component {
                                         <Label>Localização do pet <IconPin /> </Label>
 
                                         <View style={{ flexDirection: 'row' }}>
-                                             <Picker
+                                            <Picker
                                                 style={{ height: 50, width: '30%' }}
                                                 selectedValue={this.state.selectedUf}
                                                 onValueChange={(value) =>
@@ -194,75 +199,34 @@ export default class PetType extends Component {
                                             >
                                                 <Picker.Item color='#ccc' label="UF" value="0" />
                                                 {ufs.map(uf => {
-                                                   return <Picker.Item key={uf} label={uf} value={uf} />
+                                                    return <Picker.Item key={uf} label={uf} value={uf} />
                                                 })}
-                                            </Picker> 
+                                            </Picker>
 
                                             <Picker
                                                 style={{ height: 50, width: '70%' }}
-                                                // onTouchStart={() => this.handleCities()}
                                                 selectedValue={this.state.selectedCity}
                                                 onValueChange={(value) =>
                                                     this.setState({ selectedCity: value })}
                                             >
                                                 <Picker.Item color='#ccc' label="Cidade" value="0" />
-                                                {/* {this.state.selectedUf == '' || this.state.selectedUf == '0' ?
-                                                     <Picker.Item color={colors.pink} label="Nenhum estado selecionado." value="0" />
+                                                {selectedUf == '' || selectedUf == '0' ?
+                                                    <Picker.Item color={colors.pink} label="Nenhum estado selecionado." value="0" />
                                                     :
-                                                    cities.map(city => {
-                                                        return <Picker.Item key={city} label={city} value={city} />
-                                                })} */}
-                                                {cities.map(cities => {
-                                                   return <Picker.Item key={cities} label={cities} value={cities} />
+                                                cities.map(cities => {
+                                                    return <Picker.Item key={cities} label={cities} value={cities} />
                                                 })}
                                             </Picker>
                                         </View>
                                     </ContainerPetLocal>
-
-                                         {/* <RNPickerSelect
-                                            placeholder={{
-                                                label: 'Cidade',
-                                                value: null,
-                                                color: colors.grey5
-                                            }}
-                                            onValueChange={(value) => this.setState({selectedCity: value})}
-                                            // onOpen={()=>this.handleCities()}
-                                            // onUpArrow={() => this.handleCities()}
-                                            items={
-                                                this.state.selectedUf == '' ? 
-                                                { label: 'teste', value: 'teste' } :
-                                                cities.map(city => {
-                                                    return {  label: `${city}`, value: `${city}`,  }
-                                                })
-                                            }
-                                        /> */}
-
-                                   {/* <RNPickerSelect
-                                        placeholder={{
-                                            label: 'Estado',
-                                            value: null,
-                                            color: colors.grey5
-                                        }}
-
-                                        // onOpen={this.handleUfs()}
-                                        onValueChange={(value) => this.setState({selectedUf: value}, console.log(value))}
-                                        items={
-                                            ufs.map(uf => {
-                                                return {  label: `${uf}`, value: `${uf}` }
-                                            })
-                                        }
-                                    /> */}
                                 </Form>
 
 
-                                <ContainerButton>
+                                <ContainerButton style={{ marginTop: '13%' }}>
                                     <ButtonNext onPress={this.nextPage}>
                                         <BtnText>Próximo</BtnText>
                                     </ButtonNext>
 
-                                    {/* <ButtonPrevious onPress={this.previousPage}>
-                                        <BtnText>Voltar</BtnText>
-                                    </ButtonPrevious> */}
                                 </ContainerButton>
                             </Main>
                         </ScrollView>

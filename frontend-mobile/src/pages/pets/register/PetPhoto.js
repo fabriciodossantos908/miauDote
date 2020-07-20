@@ -4,8 +4,9 @@ import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, S
 
 import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Header, Title, ContainerCenter, ContainerIcon, Form, ContainerText, LabelBold, JustifyText, ContainerPetImager, PetImage, ButtonNext, ButtonChooseImage, TxtButton } from './styles';
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
-import { Heart } from "../../../components/icons";
+import { Heart, IconArrow } from "../../../components/icons";
 import { HeaderDecoration, Head } from "./services/header";
+import colors from "../../../components/colors";
 
 
 
@@ -20,12 +21,12 @@ export default class PetPhoto extends Component {
             type: data.type,
             uf: data.uf,
             city: data.city,
-            breed:data.breed,
+            breed: data.breed,
             age: data.age,
             porte: data.porte,
             color: data.color,
             description: data.description,
-            url_foto:null,
+            url_foto: null,
         }
     }
 
@@ -64,7 +65,12 @@ export default class PetPhoto extends Component {
                 >
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                        <HeaderDecoration />
+                            <HeaderDecoration />
+                            <View style={{ backgroundColor: '#fff' }}>
+                                <TouchableOpacity onPress={this.previousPage}>
+                                    <IconArrow />
+                                </TouchableOpacity>
+                            </View>
                             <Main>
                                 <Head />
 
@@ -76,16 +82,16 @@ export default class PetPhoto extends Component {
 
                                         <JustifyText>
                                             Escolha a melhor foto
-                                            {this.state.gender == 'M'? ' do ' : ' da '} 
-                                            {this.state.name} e derreta corações <Heart/>
-					                    </JustifyText>
+                                            {this.state.gender == 'M' ? ' do ' : ' da '}
+                                            {this.state.name} e derreta corações <Heart />
+                                        </JustifyText>
                                     </ContainerText>
 
                                     <ContainerPetImager>
                                         <PetImage
                                             source={require('../../../assets/image2.png')}
                                         />
-            
+
                                         <ButtonChooseImage>
                                             <TxtButton>Escolher imagem</TxtButton>
                                         </ButtonChooseImage>
