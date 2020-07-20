@@ -78,84 +78,84 @@ export default function CheckoutCompanyStep() {
   return (
     <React.Fragment>
       <Paper elevation={3} className={classesCompany.FormPaper}>
-      {activeStep === steps.length ? (
-        <ConfirmEmail />
-      ) : (
-          <Grid container >
-            <Grid item xs={5} className={classes.imgSide}>
-              <CardMedia
-                className={classesCompany.formImage}
-                image={photoCat}
+        {activeStep === steps.length ? (
+          <ConfirmEmail />
+        ) : (
+            <Grid container >
+              <Grid item xs={5} className={classes.imgSide}>
+                <CardMedia
+                  className={classesCompany.formImage}
+                  image={photoCat}
                 >
                 </CardMedia>
-            </Grid>
-            <Grid item xs={7}>
+              </Grid>
+              <Grid item xs={7}>
 
-              <Formik
-                initialValues={companyInitialValues}
-                companyValidationSchema={currentValidationSchema}
-                onSubmit={_handleSubmit}
-              >
-                {({ isSubmitting }) => (
-                  <Form id={formId} container>
-                    <Grid container direction="row">
-                      <Grid item xs={12}>
-                        <Typography
-                          component="h1"
-                          variant="h4"
-                          align="center"
-                          color="primary"
-                          classname={classes.highLightColor}
-                          value={steps[activeStep]}>
-                          {steps[activeStep]}
-                        </Typography>
-                        <Stepper activeStep={activeStep} className={classes.stepper}>
-                          {steps.map(label => (
-                            <StepLabel key={label}>
-                              <PetsIcon />
-                            </StepLabel>
-                          ))}
-                        </Stepper>
+                <Formik
+                  initialValues={companyInitialValues}
+                  companyValidationSchema={currentValidationSchema}
+                  onSubmit={_handleSubmit}
+                >
+                  {({ isSubmitting }) => (
+                    <Form id={formId}>
+                      <Grid container direction="row">
+                        <Grid item xs={12}>
+                          <Typography
+                            component="h1"
+                            variant="h4"
+                            align="center"
+                            color="primary"
+                            className={classes.highLightColor}
+                            value={steps[activeStep]}>
+                            {steps[activeStep]}
+                          </Typography>
+                          <Stepper activeStep={activeStep} className={classes.stepper}>
+                            {steps.map(label => (
+                              <StepLabel key={label}>
+                                <PetsIcon />
+                              </StepLabel>
+                            ))}
+                          </Stepper>
 
-                        {_renderStepContent(activeStep)}
+                          {_renderStepContent(activeStep)}
 
-                        <div className={classes.groupButtons}>
+                          <div className={classes.groupButtons}>
 
-                          {activeStep !== 0 && (
-                            <Button
-                              onClick={_handleBack}
-                              className={classes.buttons}
-                              variant="contained"
-                            >
-                              Voltar
-                        </Button>
-                          )}
-                          <div className={classes.wrapper}>
-                            <Button
-                              disabled={isSubmitting}
-                              type="submit"
-                              variant="contained"
-                              className={classes.buttons}
-                            >
-                              {isLastStep ? 'Criar' : 'Próximo'}
-                            </Button>
-                            {isSubmitting && (
-                              <CircularProgress
-                                size={24}
-                                className={classes.buttonProgress}
-                              />
+                            {activeStep !== 0 && (
+                              <Button
+                                onClick={_handleBack}
+                                className={classes.buttons}
+                                variant="contained"
+                              >
+                                Voltar
+                              </Button>
                             )}
+                            <div className={classes.wrapper}>
+                              <Button
+                                disabled={isSubmitting}
+                                type="submit"
+                                variant="contained"
+                                className={classes.buttons}
+                              >
+                                {isLastStep ? 'Criar' : 'Próximo'}
+                              </Button>
+                              {isSubmitting && (
+                                <CircularProgress
+                                  size={24}
+                                  className={classes.buttonProgress}
+                                />
+                              )}
+                            </div>
                           </div>
-                        </div>
+                        </Grid>
                       </Grid>
-                    </Grid>
-                  </Form>
-                )}
-              </Formik>
+                    </Form>
+                  )}
+                </Formik>
+              </Grid>
             </Grid>
-          </Grid>
-        )}
-        </Paper>
+          )}
+      </Paper>
     </React.Fragment>
   );
 }

@@ -1,28 +1,54 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
+import Switch from '@material-ui/core/Switch';
+import Paper from '@material-ui/core/Paper';
+import Fade from '@material-ui/core/Fade';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    '& > *': {
-      marginLeft: theme.spacing(30),
-    },
+    height: 180,
   },
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+  container: {
+    display: 'flex',
+  },
+  paper: {
+    margin: theme.spacing(1),
+  },
+  svg: {
+    width: 100,
+    height: 100,
+  },
+  polygon: {
+    fill: theme.palette.common.white,
+    stroke: theme.palette.divider,
+    strokeWidth: 1,
   },
 }));
 
-export default function ImageAvatars() {
+export default function Test() {
   const classes = useStyles();
+  const [checked, setChecked] = React.useState(false);
+
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  };
 
   return (
     <div className={classes.root}>
-      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.large} />
-      <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" className={classes.large} />
-      <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" className={classes.large} />
+      <FormControlLabel
+        control={<Switch checked={checked} onChange={handleChange} />}
+        label="Show"
+      />
+      <div className={classes.container}>
+        <Fade in={checked} timeout={1200}>
+          <Paper elevation={4} className={classes.paper}>
+            <svg className={classes.svg}>
+              <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
+            </svg>
+          </Paper>
+        </Fade>
+      </div>
     </div>
   );
 }

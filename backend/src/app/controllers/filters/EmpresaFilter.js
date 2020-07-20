@@ -90,6 +90,14 @@ class EmpresaFilter {
       company.save({ fields: ['url_logo'] });
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+      await fs.unlink(`./src/app/tmp/${file.file.filename}`, (err) => {
+        if (err) {
+          return res.status(400).json({ erro: "Erro ao apagar arquivo" });
+=======
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       const directory = './src/app/tmp';
 
       fs.readdir(directory, (err, files) => {
@@ -99,6 +107,10 @@ class EmpresaFilter {
           fs.unlink(path.join(directory, file), err => {
             if (err) throw err;
           });
+<<<<<<< HEAD
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
         }
       });
 

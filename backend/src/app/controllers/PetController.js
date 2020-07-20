@@ -25,8 +25,17 @@ class PetController {
         offset: offset,
         order: [
           ['id', 'DESC']
+<<<<<<< HEAD
+<<<<<<< HEAD
+        ]
+=======
         ],
         include: {model: Usuario, as: 'doador'}
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+        ],
+        include: {model: Usuario, as: 'doador'}
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
       });
       if (pets.length > 0) {
         pets = pets.map(pet => {
@@ -51,9 +60,18 @@ class PetController {
         pet.doador.senha = undefined;
         pet.doador.permissions = undefined;
         pet.doador.email_confirmado = undefined;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
         pet.visualizacoes += 1;
         await pet.save();
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
+=======
+
+        pet.visualizacoes += 1;
+        await pet.save();
+>>>>>>> c397d56b4d67b669f274be5cec793d7aed95d500
         return res.json(pet);
       }
 

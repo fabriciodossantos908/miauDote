@@ -1,6 +1,6 @@
  .gears {
-    width: 350px;
-    margin: 100px auto;
+    min-width: 350px;
+    min-height: auto;
     display: block;
     text-align: center;
     font-weight: bold;
