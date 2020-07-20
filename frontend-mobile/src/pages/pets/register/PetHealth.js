@@ -13,6 +13,7 @@ import {
     ContainerQuestion, RowCenter, ButtonNext
 }
     from './styles';
+import { showAlertMessage } from "../../../components/alert";
 
 
 
@@ -42,13 +43,22 @@ export default class PetHealth extends Component {
         }
     }
 
-    // nextPage = () => {
-    //     // console.log(this.state)
-    //     this.props.navigation.navigate('PetPhoto')
-    // }
+    
+    validate = () => {
+		const { vaccinated, dewormed, castrated, needCare } = this.state
+
+		if (!vaccinated || !dewormed || !castrated || !needCare) {
+			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+			return false
+		}
+        return true
+        
+	}
+
 
     nextPage = (props) => {
-
+        if(!this.validate()) return
+        
         const data = this.state
 
 		this.props.navigation.navigate('PetPhoto', {
@@ -58,7 +68,6 @@ export default class PetHealth extends Component {
 	}
 
     render() {
-
         const { dewormed, vaccinated, castrated, needCare } = this.state
 
         console.log(this.state)

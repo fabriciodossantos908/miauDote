@@ -14,6 +14,7 @@ import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import { HeaderDecoration, Head } from './services/header';
 import { IconSearch } from '../../../components/icons';
 import { catBreed, birdBreed } from './services/listBreed';
+import { showAlertMessage } from '../../../components/alert';
 
 
 export default class PetBreed extends Component {
@@ -25,11 +26,8 @@ export default class PetBreed extends Component {
             name: data.name,
             gender: data.gender,
             type: data.type,
-            uf: data.uf,
-            city: data.city,
-
-            // name: 'Tom',
-            // gender:'pássaro',
+            selectedUf: data.selectedUf,
+            selectedCity: data.selectedCity,
 
             data: '',
             // data: [
@@ -119,8 +117,20 @@ export default class PetBreed extends Component {
         return this.state.breed
     }
 
-    nextPage = (props) => {
+    validate = () => {
+		const { breed } = this.state
 
+		if (!breed) {
+			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+			return false
+		}
+        return true
+
+	}
+
+    nextPage = (props) => {
+        if(!this.validate()) return
+        
         const data = this.state
 
 		this.props.navigation.navigate('PetDetailsInfo', {
@@ -129,9 +139,9 @@ export default class PetBreed extends Component {
 		});
 	}
 
-
     render(props) {
         console.log(this.state.breed)
+        console.log(this.state)
 
         return (
             <React.Fragment>
@@ -170,7 +180,6 @@ export default class PetBreed extends Component {
 
                                     <ListContainer>
                                         <FlatList
-                                            // changeA={() => this.retorno.bind(this)}
                                             teste={this.state}
                                             style={{ marginTop: 30 }}
                                             contentContainerStyle={styles.list}
