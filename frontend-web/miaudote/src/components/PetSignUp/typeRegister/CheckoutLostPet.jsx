@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core';
 import PetsIcon from '@material-ui/icons/Pets';
 import { Formik, Form } from 'formik';
+import clsx from 'clsx';
 
 import PetType from '../FormLostPet/PetType';
 import PetDesc from '../FormLostPet/PetDesc';
@@ -19,23 +20,30 @@ import PetAddress from '../FormLostPet/PetLostAddress';
 import checkoutPetModal from '../lostPetModel/checkoutPetModel';
 import petInitialInfo from '../lostPetModel/petInitialValues';
 
-import { useStyle, formBase, useColorlibStepIconStyles } from '../Layout/styles'
-import clsx from '../../../node_modules/clsx';
+import {
+  useStyle,
+  formBase,
+  useColorlibStepIconStyles,
+} from '../Layout/styles';
 // import TestStepper from '../../pages/testStepper';
 // import { useHistory } from 'react-router-dom';
 
 const steps = ['Localização', 'Descrição do pet', 'Tipo do seu pet'];
-const labels = ['Quando que você o viu pela ultima vez?', 'Pode descrever suas características?','Como era seu pet?'];
+const labels = [
+  'Quando que você o viu pela ultima vez?',
+  'Pode descrever suas características?',
+  'Como era seu pet?',
+];
 const { formId, formField } = checkoutPetModal;
 
-function _renderStepContent(step) {
+function renderStepContent(step) {
   switch (step) {
     case 0:
       return <PetAddress formField={formField} useStyle={useStyle} />;
-      case 1:
-        return <PetDesc formField={formField} useStyle={useStyle} />;
-        case 2:
-          return <PetType formField={formField} useStyle={useStyle} />;
+    case 1:
+      return <PetDesc formField={formField} useStyle={useStyle} />;
+    case 2:
+      return <PetType formField={formField} useStyle={useStyle} />;
     default:
       return <div>Not Found</div>;
   }
@@ -53,7 +61,7 @@ export default function CheckoutCompanyStep() {
   //   return new Promise(resolve => setTimeout(resolve, ms));
   // }
 
-  async function _submitForm(values, actions) {
+  async function submitForm(values, actions) {
     // await _sleep(1000);
     alert(JSON.stringify(values, null, 2));
     console.log(JSON.stringify(values, null, 2));
@@ -62,12 +70,11 @@ export default function CheckoutCompanyStep() {
     // history.push('/profile')
   }
 
-  function _handleSubmit(values, actions) {
+  function handleSubmit(values, actions) {
     if (isLastStep) {
-
-      _submitForm(values, actions);
+      submitForm(values, actions);
     } else {
-    alert(JSON.stringify(values, null, 2));
+      alert(JSON.stringify(values, null, 2));
 
       setActiveStep(activeStep + 1);
       actions.setTouched({});
@@ -75,12 +82,12 @@ export default function CheckoutCompanyStep() {
     }
   }
 
-  function _handleBack() {
+  function handleBack() {
     setActiveStep(activeStep - 1);
   }
 
   function ColorlibStepIcon(props) {
-    const classes = useColorlibStepIconStyles();
+    const lib = useColorlibStepIconStyles();
     const { active, completed } = props;
 
     const icons = {
@@ -93,9 +100,9 @@ export default function CheckoutCompanyStep() {
 
     return (
       <div
-        className={clsx(classes.root, {
-          [classes.active]: active,
-          [classes.completed]: completed,
+        className={clsx(lib.root, {
+          [lib.active]: active,
+          [lib.completed]: completed,
         })}
       >
         {icons[String(props.icon)]}
@@ -104,83 +111,81 @@ export default function CheckoutCompanyStep() {
   }
 
   return (
-    <React.Fragment>
-      <Formik
-        initialValues={petInitialInfo}
-        // validationSchema={petValidationSchema}
-        onSubmit={_handleSubmit}
-      >
-        {({ values, isSubmitting }) => (
-          <Form id={formId}>
-            <Grid container direction="column" justify="center">
-              <Grid item xs={12}>
-                <Typography
-                  variant="h4"
-                  align="center"
-                  value={labels[activeStep]}>
-                  {labels[activeStep]}
-                </Typography>
-              </Grid>
+    <Formik
+      initialValues={petInitialInfo}
+      // validationSchema={petValidationSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ values, isSubmitting }) => (
+        <Form id={formId}>
+          <Grid container direction="column" justify="center">
+            <Grid item xs={12}>
+              <Typography
+                variant="h4"
+                align="center"
+                value={labels[activeStep]}
+              >
+                {labels[activeStep]}
+              </Typography>
+            </Grid>
 
-              <Grid item xs={12}>
+            <Grid item xs={12}>
+              {/* <TestStepper /> */}
 
-                {/* <TestStepper /> */}
+              <Stepper alternativeLabel activeStep={activeStep}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel StepIconComponent={ColorlibStepIcon}>
+                      {label}
+                    </StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+            </Grid>
 
-                <Stepper alternativeLabel activeStep={activeStep}>
-                  {steps.map((label) => (
-                    <Step key={label}>
-                      <StepLabel StepIconComponent={ColorlibStepIcon} >
-                        {label}
-                      </StepLabel>
-                    </Step>
-                  ))}
-                </Stepper>
-              </Grid>
-
-              <Grid item className={classesForm.contentModal}>
-                {_renderStepContent(activeStep, values)}
-              </Grid>
-              <Grid
-                item
-                container
-                xs={12}
-                justify="flex-end"
-                spacing={1}
-                direction="row"
-                className={classes.groupButtons}
-                >
-                {activeStep !== 0 && (
-                  <Grid item>
+            <Grid item className={classesForm.contentModal}>
+              {renderStepContent(activeStep, values)}
+            </Grid>
+            <Grid
+              item
+              container
+              xs={12}
+              justify="flex-end"
+              spacing={1}
+              direction="row"
+              className={classes.groupButtons}
+            >
+              {activeStep !== 0 && (
+                <Grid item>
                   <Button
-                    onClick={_handleBack}
+                    onClick={handleBack}
                     className={classes.buttons}
                     variant="contained"
                   >
                     Voltar
                   </Button>
-                  </Grid>
-                )}
-                <Grid item className={classes.wrapper}>
-                  <Button
-                    disabled={isSubmitting}
-                    type="submit"
-                    variant="contained"
-                    className={classes.buttons}
-                  >
-                    {isLastStep ? 'Criar' : 'Próximo'}
-                  </Button>
-                  {isSubmitting && (
-                    <CircularProgress
-                      size={24}
-                      className={classes.buttonProgress}
-                    />
-                  )}
                 </Grid>
+              )}
+              <Grid item className={classes.wrapper}>
+                <Button
+                  disabled={isSubmitting}
+                  type="submit"
+                  variant="contained"
+                  className={classes.buttons}
+                >
+                  {isLastStep ? 'Criar' : 'Próximo'}
+                </Button>
+                {isSubmitting && (
+                  <CircularProgress
+                    size={24}
+                    className={classes.buttonProgress}
+                  />
+                )}
               </Grid>
             </Grid>
-          </Form>
-        )}
-      </Formik>
-    </React.Fragment>
+          </Grid>
+        </Form>
+      )}
+    </Formik>
   );
 }
