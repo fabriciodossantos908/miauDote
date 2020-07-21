@@ -1,22 +1,19 @@
-import Axios from 'axios'
+import Axios from 'axios';
 
 export default class Cep {
+  getAddress = this.getAddress.bind(this);
 
-    getAddress = this.getAddress.bind(this)
+  getAddress(cep) {
+    let startUrl = 'https://viacep.com.br/ws/';
+    let endUrl = '/json/';
+    const midCep = cep;
+    const finalUrl = startUrl + midCep + endUrl;
 
-    getAddress(cep) {
-        let startUrl = "https://viacep.com.br/ws/";
-        let endUrl = "/json/";
-        const midCep = cep;
-        const finalUrl = startUrl + midCep + endUrl
-        
-        Axios.get(finalUrl)
-            .then(
-                (res) => {
-                    const address = { address: res.data }
-                    return address
-                })
+    Axios.get(finalUrl).then((res) => {
+      const address = { address: res.data };
+      return address;
+    });
 
-        return true;
-    }
+    return true;
+  }
 }

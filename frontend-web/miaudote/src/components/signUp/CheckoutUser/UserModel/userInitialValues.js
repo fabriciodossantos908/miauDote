@@ -7,16 +7,15 @@ const {
     senha_confirm,
     celular,
     sexo,
-    dt_nasc,    
+    dt_nasc,
     cep,
     cidade,
     bairro,
     logradouro,
     numero,
-    complemento,
     uf,
-    url_foto
-  }
+    url_foto,
+  },
 } = checkoutUserModel;
 
 export default {
@@ -24,15 +23,14 @@ export default {
   [email.name]: '',
   [senha.name]: '',
   [senha_confirm.name]: '',
-  [celular.name] : '',
+  [celular.name]: '',
   [sexo.name]: '',
   [dt_nasc.name]: '',
-  [cep.name] : '',
-  [cidade.name] : '',
-  [bairro.name] : '',
-  [logradouro.name] : '',
-  [numero.name] : '',
-  [complemento.name] : '',
-  [uf.name] : '',
-  // [url_foto.name] : ''
+  [cep.name]: '',
+  [cidade.name]: '',
+  [bairro.name]: '',
+  [logradouro.name]: '',
+  [numero.name]: '',
+  [uf.name]: '',
+  [url_foto.name]: 'teste/teste',
 };

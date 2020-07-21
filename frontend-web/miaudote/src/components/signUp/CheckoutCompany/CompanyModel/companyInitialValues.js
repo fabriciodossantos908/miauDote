@@ -19,7 +19,7 @@ const {
     uf,
     id_tipo_servico,
     url_logo,
-  }
+  },
 } = checkoutCompanyModel;
 
 export default {
@@ -27,19 +27,18 @@ export default {
   [email_representante.name]: '',
   [senha.name]: '',
   [senha_confirm.name]: '',
-  [celular_representante] : '',
-  [razao_social] : '',
-  [nome_empresa] : '',
-  [cnpj] : '',
-  [telefone] : '',
-  [cep] : '',
-  [cidade] : '',
-  [bairro] : '',
-  [logradouro] : '',
-  [numero] : '',
-  [complemento] : '',
-  [uf] : '',
-  [id_tipo_servico] : '',
-  [url_logo] : 'url/teste/sem/imagem.png',
-  
+  [celular_representante]: '',
+  [razao_social]: '',
+  [nome_empresa]: '',
+  [cnpj]: '',
+  [telefone]: '',
+  [cep]: '',
+  [cidade]: '',
+  [bairro]: '',
+  [logradouro]: '',
+  [numero]: '',
+  [complemento]: '',
+  [uf]: '',
+  [id_tipo_servico]: '',
+  [url_logo]: 'url/teste/sem/imagem.png',
 };

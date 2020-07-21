@@ -16,7 +16,7 @@ export default function MaterialLayout(props) {
       <Grid className={classes.root}>
         <Grid className={classes.container}>{children}</Grid>
       </Grid>
-      <Footer useStyle={useStyle}/>
+      <Footer useStyle={useStyle} />
     </ThemeProvider>
   );
 }

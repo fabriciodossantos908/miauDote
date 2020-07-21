@@ -7,7 +7,7 @@ import { Typography, Button } from '@material-ui/core';
 
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 
-import CheckoutPet from '../components/PetSignUp/CheckoutPet'
+import CheckoutPet from '../components/PetSignUp/typeRegister/CheckoutPet';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Test() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -40,19 +40,13 @@ export default function Test() {
 
   return (
     <React.Fragment>
-      <Typography
-        variant="h4"
-      >
-        The  Pet register modal right under here.
-    </Typography>
+      <Typography variant="h4">
+        The Pet register modal right under here.
+      </Typography>
       <div>
-        <Button 
-        type="button" 
-        onClick={handleOpen}
-        variant="outlined"
-        >
+        <Button type="button" onClick={handleOpen} variant="outlined">
           Cadastrar pet
-      </Button>
+        </Button>
         <Modal
           // aria-labelledby="transition-modal-title"
           // aria-describedby="transition-modal-description"
@@ -70,7 +64,7 @@ export default function Test() {
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <Button onClick={handleClose} style={{marginLeft: 400}}>
+              <Button onClick={handleClose} style={{ marginLeft: 400 }}>
                 <CloseRoundedIcon />
               </Button>
               <CheckoutPet />
@@ -79,6 +73,5 @@ export default function Test() {
         </Modal>
       </div>
     </React.Fragment>
-
   );
 }

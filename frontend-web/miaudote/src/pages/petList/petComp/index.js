@@ -1,4 +1,3 @@
-import PetTab from './petCards'
+import PetTab from './petCards';
 
-
-export {PetTab}
+export { PetTab };

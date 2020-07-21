@@ -8,9 +8,8 @@ import Tab from '@material-ui/core/Tab';
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    boxShadow: "none"
+    boxShadow: 'none',
   },
-
 });
 
 export default function CenteredTabs() {
@@ -38,4 +37,4 @@ export default function CenteredTabs() {
   );
 }
 
-export { MainChunks, CenteredTabs }
+export { MainChunks, CenteredTabs };
