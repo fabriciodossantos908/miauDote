@@ -5,20 +5,11 @@ import { InputField } from '../../../FieldStyle';
 export default function FormUserInitialInfo(props) {
   const classes = props.useStyle();
   const {
-    formField: {
-      
-      nome,
-      email,
-      senha,
-      senha_confirm,
-    }
+    formField: { nome, email, senha, senha_confirm },
   } = props;
   return (
     <React.Fragment>
-      <Grid
-        item
-        xs={12}
-        className={classes.inputPaper}>
+      <Grid item xs={12} className={classes.inputPaper}>
         <InputField
           name={nome.name}
           variant="outlined"
@@ -26,14 +17,18 @@ export default function FormUserInitialInfo(props) {
           justify="flex-start"
           focus={true}
           fullWidth
-          style={{ marginBottom: 10 }} />
+          style={{ marginBottom: 10 }}
+        />
       </Grid>
 
-      <Grid
-        item
-        xs={12}
-        className={classes.inputPaper}>
-        <InputField name={email.name} variant="outlined" label={email.label} fullWidth style={{ marginBottom: 10 }} />
+      <Grid item xs={12} className={classes.inputPaper}>
+        <InputField
+          name={email.name}
+          variant="outlined"
+          label={email.label}
+          fullWidth
+          style={{ marginBottom: 10 }}
+        />
       </Grid>
 
       <Grid item className={classes.inputPaper}>
@@ -45,11 +40,11 @@ export default function FormUserInitialInfo(props) {
           justify="flex-start"
           fullWidth
           secureTextEntry
-          style={{ marginBottom: 10 }} />
+          style={{ marginBottom: 10 }}
+        />
       </Grid>
 
       <Grid item className={classes.inputPaper}>
-
         <InputField
           type="password"
           name={senha_confirm.name}
@@ -59,7 +54,6 @@ export default function FormUserInitialInfo(props) {
           fullWidth
           secureTextEntry
         />
-
       </Grid>
     </React.Fragment>
   );

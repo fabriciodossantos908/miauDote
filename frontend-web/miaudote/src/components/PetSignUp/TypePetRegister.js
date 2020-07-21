@@ -7,7 +7,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import { Typography } from '@material-ui/core';
 import { useField } from 'formik';
 
-import CheckoutPet from '../PetSignUp/typeRegister/CheckoutPet'
+import CheckoutPet from '../PetSignUp/typeRegister/CheckoutPet';
 import { isEmpty } from 'lodash';
 
 export default function TypePetRegister() {
@@ -20,21 +20,31 @@ export default function TypePetRegister() {
 
   return (
     <>
-      {value === 'perdido' ?
-        <CheckoutPet />
-
-        : console.log("false")}
+      {value === 'perdido' ? <CheckoutPet /> : console.log('false')}
       {selected === false ? (
         <FormControl component="fieldset">
-          <Typography
-            variant="h5"
-          >Ele está sendo cadastrado:</Typography>
-          <RadioGroup aria-label="typePet" name="typePet" value={value} onChange={handleChange}>
-            <FormControlLabel value="adocao" control={<Radio />} label="Adoção" />
-            <FormControlLabel value="perdido" control={<Radio />} label="Perdido" />
+          <Typography variant="h5">Ele está sendo cadastrado:</Typography>
+          <RadioGroup
+            aria-label="typePet"
+            name="typePet"
+            value={value}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value="adocao"
+              control={<Radio />}
+              label="Adoção"
+            />
+            <FormControlLabel
+              value="perdido"
+              control={<Radio />}
+              label="Perdido"
+            />
           </RadioGroup>
         </FormControl>
-      ) : <></>}
+      ) : (
+        <></>
+      )}
     </>
   );
 }

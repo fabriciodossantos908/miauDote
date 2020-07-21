@@ -1,44 +1,42 @@
-import React from 'react'
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
 
-import { header } from '../../Layout/styles'
-import { palette } from '../../Layout/theme'
+import { header } from '../../Layout/styles';
+import { palette } from '../../Layout/theme';
 
 export default function LinksBase(props) {
-    const classes = header()
-    const [value, setValue] = React.useState(2);
+  const classes = header();
+  const [value, setValue] = React.useState(2);
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
-    return (
-
-        <Paper square elevation={0} style={{backgroundColor: palette.primary.light,}}>
-            <Tabs
-                value={value}
-                onChange={handleChange}
-            >
-                <Link to="/about" className={classes.links}>
-                    <Tab label="Sobre nós" />
-                </Link>
-                <Link to="/contacts" className={classes.links}>
-                    <Tab label="Contatos" />
-                </Link>
-                <Link to="/marketing" className={classes.links}>
-                    <Tab label="Lojas" />
-                </Link>
-                <Link to="/community" className={classes.links}>
-                    <Tab label="Comunidade" />
-                </Link>
-
-            </Tabs>
-        </Paper>
-    );
-
+  return (
+    <Paper
+      square
+      elevation={0}
+      style={{ backgroundColor: palette.primary.light }}
+    >
+      <Tabs value={value} onChange={handleChange}>
+        <Link to="/about" className={classes.links}>
+          <Tab label="Sobre nós" />
+        </Link>
+        <Link to="/contacts" className={classes.links}>
+          <Tab label="Contatos" />
+        </Link>
+        <Link to="/marketing" className={classes.links}>
+          <Tab label="Lojas" />
+        </Link>
+        <Link to="/community" className={classes.links}>
+          <Tab label="Comunidade" />
+        </Link>
+      </Tabs>
+    </Paper>
+  );
 }
 
 // import React from 'react';
@@ -51,7 +49,6 @@ export default function LinksBase(props) {
 // import Box from '@material-ui/core/Box';
 
 // import { Link } from 'react-router-dom';
-
 
 // function TabPanel(props) {
 //     const { children, value, index, ...other } = props;
@@ -131,5 +128,3 @@ export default function LinksBase(props) {
 //         </div>
 //     );
 // }
-
-

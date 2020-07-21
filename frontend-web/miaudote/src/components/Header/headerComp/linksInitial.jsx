@@ -1,47 +1,53 @@
-import React from 'react'
+import React from 'react';
 import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 
-import { header } from '../../../components/Layout/styles'
+import { header } from '../../../components/Layout/styles';
 
 export default function LinksInitial(props) {
-    const classes = header()
-    // const [value, setValue] = React.useState(2);
+  const classes = header();
+  // const [value, setValue] = React.useState(2);
 
-    // const handleChange = (event, newValue) => {
-    //     setValue(newValue);
-    // };
+  // const handleChange = (event, newValue) => {
+  //     setValue(newValue);
+  // };
 
-    return (
-        // <Tabs
-        //     value={value}
-        //     indicatorColor="black"
-        //     textColor="black"
-        //     onChange={handleChange}
-        // >
-        <Grid container justify="space-between">
-            <Grid item container xs={10} justify="flex-start" spacing={2} orientation="row">
-                <Grid item xs={2}>
-                    <Link to="/formCompany" className={classes.links}>
-                        <Tab label="Sobre" />
-                    </Link>
-                </Grid>
-                <Grid item xs={2}>
-                    <Link to="/formUser" className={classes.links}>
-                        <Tab label="Contato" />
-                    </Link>
-                </Grid>
-            </Grid>
-            <Grid item xs={2}>
-                <Link to="/login" className={classes.links}>
-                    <Tab label="Logar" />
-                </Link>
-            </Grid>
+  return (
+    // <Tabs
+    //     value={value}
+    //     indicatorColor="black"
+    //     textColor="black"
+    //     onChange={handleChange}
+    // >
+    <Grid container justify="space-between">
+      <Grid
+        item
+        container
+        xs={10}
+        justify="flex-start"
+        spacing={2}
+        orientation="row"
+      >
+        <Grid item xs={2}>
+          <Link to="/formCompany" className={classes.links}>
+            <Tab label="Sobre" />
+          </Link>
         </Grid>
-        // </Tabs>
-    );
-
+        <Grid item xs={2}>
+          <Link to="/formUser" className={classes.links}>
+            <Tab label="Contato" />
+          </Link>
+        </Grid>
+      </Grid>
+      <Grid item xs={2}>
+        <Link to="/login" className={classes.links}>
+          <Tab label="Logar" />
+        </Link>
+      </Grid>
+    </Grid>
+    // </Tabs>
+  );
 }
 
 // import React from 'react';
@@ -54,7 +60,6 @@ export default function LinksInitial(props) {
 // import Box from '@material-ui/core/Box';
 
 // import { Link } from 'react-router-dom';
-
 
 // function TabPanel(props) {
 //     const { children, value, index, ...other } = props;
@@ -134,5 +139,3 @@ export default function LinksInitial(props) {
 //         </div>
 //     );
 // }
-
-

@@ -11,19 +11,19 @@ const {
     cidade,
     raca,
     uf,
-  }
+  },
 } = checkoutPetModel;
 
 export default {
   [nome.name]: '',
   [especie.name]: '',
   [sexo.name]: '',
-  [descricao.name] : '',
-  [porte.name] : '',
-  [latitude.name] : '',
-  [longitude.name] : '',
-  [cidade.name] : '',
-  [raca.name] : '',
-  [uf.name] : '',
-  id_usuario : 1,
+  [descricao.name]: '',
+  [porte.name]: '',
+  [latitude.name]: '',
+  [longitude.name]: '',
+  [cidade.name]: '',
+  [raca.name]: '',
+  [uf.name]: '',
+  id_usuario: 1,
 };

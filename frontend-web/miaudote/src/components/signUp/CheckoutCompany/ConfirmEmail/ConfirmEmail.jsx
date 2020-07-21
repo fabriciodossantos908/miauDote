@@ -8,9 +8,9 @@ function ConfirmEmail() {
         Confirmação de email
       </Typography>
       <Typography variant="subtitle1">
-      Estamos quase lá! só precisamos conferir seu email
-      Uma mensagem será enviada á j......@gmail.com com o link para confirmação.
-      Obrigado por se tornar parte dos Pet Lovers!
+        Estamos quase lá! só precisamos conferir seu email Uma mensagem será
+        enviada á j......@gmail.com com o link para confirmação. Obrigado por se
+        tornar parte dos Pet Lovers!
       </Typography>
     </React.Fragment>
   );

@@ -42,14 +42,13 @@ const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(15),
     height: theme.spacing(15),
-  }
-
+  },
 }));
 
 export default function BadgeAvatars(props) {
   const classes = useStyles();
 
-  const profilePhoto = props.profilePhoto
+  const profilePhoto = props.profilePhoto;
   return (
     <div className={classes.root}>
       <StyledBadge
@@ -60,7 +59,7 @@ export default function BadgeAvatars(props) {
         }}
         variant="dot"
       >
-<Avatar alt="Remy Sharp" src={profilePhoto} className={classes.large} />
+        <Avatar alt="Remy Sharp" src={profilePhoto} className={classes.large} />
       </StyledBadge>
     </div>
   );

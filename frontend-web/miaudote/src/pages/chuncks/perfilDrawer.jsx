@@ -25,7 +25,11 @@ export default function perfilDrawer() {
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
       return;
     }
 
@@ -41,7 +45,9 @@ export default function perfilDrawer() {
       <List>
         {['Perfil', 'Meus pets'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>
+              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -52,7 +58,7 @@ export default function perfilDrawer() {
           <ListItem button key={text}>
             <ListItemIcon>
               <MailIcon />
-              </ListItemIcon>
+            </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}

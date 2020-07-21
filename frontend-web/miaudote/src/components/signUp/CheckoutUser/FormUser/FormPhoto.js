@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-function FormUserPhoto () {
-
-        return (
-            <div>
-                <button>Próximo</button>
-            </div>
-        )
+function FormUserPhoto() {
+  return (
+    <div>
+      <button>Próximo</button>
+    </div>
+  );
 }
 
-export default FormUserPhoto
+export default FormUserPhoto;

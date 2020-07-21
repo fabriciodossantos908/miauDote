@@ -1,12 +1,20 @@
 import React from 'react';
-import { Grid, FormControl, Typography, RadioGroup, FormControlLabel, Radio, Checkbox } from '@material-ui/core';
+import {
+  Grid,
+  FormControl,
+  Typography,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  Checkbox,
+} from '@material-ui/core';
 import { InputField } from '../../FieldStyle';
 
-import { BtnSituation, SelectYesNo } from '../FieldStyle'
+import { BtnSituation, SelectYesNo } from '../FieldStyle';
 import { Field } from 'formik';
 
 export default function PetDesc(props) {
-  const classes = props.useStyle()
+  const classes = props.useStyle();
   const {
     formField: {
       descricao,
@@ -14,14 +22,14 @@ export default function PetDesc(props) {
       vacinado,
       vermifungado,
       cuidados_veterinarios,
-    }
+    },
   } = props;
 
   const situation = {
     cuidados_veterinarios,
     vermifungado,
-    castrado
-  }
+    castrado,
+  };
 
   return (
     <React.Fragment>
@@ -32,11 +40,7 @@ export default function PetDesc(props) {
         <Grid item container justify="flex-start" direction="column">
           <Grid item container direction="row">
             <Grid item xs={6}>
-              <Typography
-                variant="h8"
-              >
-                Está castrado ?
-            </Typography>
+              <Typography variant="h8">Está castrado ?</Typography>
             </Grid>
             <Grid item xs={6}>
               <Field name={castrado.name} type="checkbox" as={Checkbox} />
@@ -44,11 +48,7 @@ export default function PetDesc(props) {
           </Grid>
           <Grid item container direction="row">
             <Grid item xs={6}>
-              <Typography
-                variant="h8"
-              >
-                Está vacinado ?
-            </Typography>
+              <Typography variant="h8">Está vacinado ?</Typography>
             </Grid>
             <Grid item xs={6}>
               <Field name={vacinado.name} type="checkbox" as={Checkbox} />
@@ -56,11 +56,7 @@ export default function PetDesc(props) {
           </Grid>
           <Grid item container direction="row">
             <Grid item xs={6}>
-              <Typography
-                variant="h8"
-              >
-                Está vermifungado ?
-            </Typography>
+              <Typography variant="h8">Está vermifungado ?</Typography>
             </Grid>
             <Grid item xs={6}>
               <Field name={vermifungado.name} type="checkbox" as={Checkbox} />
@@ -68,14 +64,16 @@ export default function PetDesc(props) {
           </Grid>
           <Grid item container direction="row">
             <Grid item xs={6}>
-              <Typography
-                variant="h8"
-              >
+              <Typography variant="h8">
                 Precisa de cuidados veterinários ?
-            </Typography>
+              </Typography>
             </Grid>
             <Grid item xs={6}>
-              <Field name={cuidados_veterinarios.name} type="checkbox" as={Checkbox} />
+              <Field
+                name={cuidados_veterinarios.name}
+                type="checkbox"
+                as={Checkbox}
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -83,7 +81,6 @@ export default function PetDesc(props) {
     </React.Fragment>
   );
 }
-
 
 // import React, { Component } from 'react'
 // import { makeStyles, TextField, Paper, Grid, InputLabel, Box, Button } from '@material-ui/core';
@@ -141,7 +138,7 @@ export default function PetDesc(props) {
 //                   direction="column"
 //                   justify="flex-end"
 //                   alignItems="center"
-//                 >          
+//                 >
 
 //                     <TextField label="Outlined" variant="outlined" />
 //                     <TextField label="Outlined" variant="outlined" />
