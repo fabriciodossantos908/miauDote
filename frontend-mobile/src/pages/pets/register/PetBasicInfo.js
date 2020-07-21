@@ -22,51 +22,53 @@ export default class PetBasicInfo extends Component {
 			gender: '',
 			longitude:0,
 			latitude:0,
+			// latitude: -23.5517015,
+			// longitude: -46.9051666,
 			buttonFemale: '#F68E90',
 			buttonMale: '#60BDEF',
 		}
 	}
 
 	componentDidMount = () => {
-        Alert.alert(
-            "Precisamos de sua permissão.",
-            "Antes de tudo, precisamos de sua localização, para que possamos divulgar a sua doação para pessoas perto de você.",
-            [
-                { text: "OK", onPress: () => this._getLocation() }
-            ],
-            { cancelable: false }
-        );
+		Alert.alert(
+			"Precisamos de sua permissão.",
+			"Antes de tudo, precisamos de sua localização, para que possamos divulgar a sua doação para pessoas perto de você.",
+			[
+				{ text: "OK", onPress: () => this._getLocation() }
+			],
+			{ cancelable: false }
+		);
 
 
-    }
+	}
 
 	_getLocation = async () => {
-        this.setState({ longitude: longitude });
+		this.setState({ longitude: longitude });
 
-        const { status } = await Location.requestPermissionsAsync();
-        // Location.getPermissionsAsync()
+		const { status } = await Location.requestPermissionsAsync();
+		// Location.getPermissionsAsync()
 
-        if (status !== 'granted') {
-            alert('ops... Precisamos dessa permissão');
-            // this.setState({
-            //     // errorMessage: 'ops... Precisamos dessa permissão',
-            //     // });
-            return
-        }
+		if (status !== 'granted') {
+			alert('ops... Precisamos dessa permissão');
+			// this.setState({
+			//     // errorMessage: 'ops... Precisamos dessa permissão',
+			//     // });
+			return
+		}
 
-        let location = await Location.getCurrentPositionAsync();
+		let location = await Location.getCurrentPositionAsync();
 
-        const { latitude, longitude } = location.coords
+		const { latitude, longitude } = location.coords
 
 		console.log(latitude, longitude);
-        this.setState({ latitude: latitude, longitude: longitude })
+		this.setState({ latitude: latitude, longitude: longitude })
 
-    };
+	};
 
 	validate = () => {
-		const { name, gender } = this.state
+		const { name, gender, latitude, longitude } = this.state
 
-		if (!name || !gender) {
+		if (!name || !gender || latitude == 0 || longitude == 0) {
 			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
 			console.log('campos obrigatórios')
 			return false
@@ -86,8 +88,8 @@ export default class PetBasicInfo extends Component {
 	}
 
 	previousPage = () => {
-        this.props.navigation.goBack(null)
-    }
+		this.props.navigation.goBack(null)
+	}
 
 	FontBold = () => {
 		const { gender } = this.state
@@ -150,10 +152,10 @@ export default class PetBasicInfo extends Component {
 						<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
 							<HeaderDecoration />
 							<View style={{ backgroundColor: '#fff' }}>
-                                <TouchableOpacity onPress={this.previousPage}>
-                                    <IconArrow />
-                                </TouchableOpacity>
-                            </View>
+								<TouchableOpacity onPress={this.previousPage}>
+									<IconArrow />
+								</TouchableOpacity>
+							</View>
 							<Main>
 								<Head />
 

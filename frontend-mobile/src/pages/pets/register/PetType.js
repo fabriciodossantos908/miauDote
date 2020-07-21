@@ -23,6 +23,8 @@ export default class PetType extends Component {
         this.state = {
             name: data.name,
             gender: data.gender,
+            latitude:data.latitude,
+            longitude:data.longitude,
             type: null,
             ufs: [],
             selectedUf: '',

@@ -36,6 +36,8 @@ export default class PetDetailsInfo extends Component {
             uf: data.uf,
             city: data.city,
             breed:data.breed,
+            latitude:data.latitude,
+            longitude:data.longitude,
 
             // this page
             age: '',
