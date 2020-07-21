@@ -5,12 +5,12 @@ import {
   FormLabel,
   RadioGroup,
   Radio,
+  FormControlLabel,
 } from '@material-ui/core';
 import { InputField } from '../../FieldStyle';
 import Switch from '@material-ui/core/Switch';
 import Paper from '@material-ui/core/Paper';
 import Zoom from '@material-ui/core/Zoom';
-import FormControlLabel from "'@material-ui/core/FormControlLabel'";
 import { makeStyles } from '@material-ui/core/styles';
 
 // Tell about this. Create the user option to define if the per was founded or are of himself
