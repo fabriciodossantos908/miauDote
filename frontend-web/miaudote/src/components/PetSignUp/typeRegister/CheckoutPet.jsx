@@ -31,7 +31,6 @@ import {
 // import { useHistory } from 'react-router-dom';
 
 const steps = [
-  'tipo do pet',
   'Informações iniciais',
   'Descrição do pet',
   'Tipo do seu pet',
@@ -39,41 +38,15 @@ const steps = [
 ];
 const { formId, formField } = checkoutPetModal;
 
-const adoptionType = [
-  <PetInfo formField={formField} useStyle={useStyle} />,
-  <PetDesc formField={formField} useStyle={useStyle} />,
-
-  <PetType formField={formField} useStyle={useStyle} />,
-
-  <PetAddress formField={formField} useStyle={useStyle} />,
-];
-
-function renderStepContent(step, registerType, values) {
-  const test = true;
-  // registerType.map((item, index) => {
-  //   case index + 1
-  //   return item ;
-  // })
-
+function renderStepContent(step, values) {
   switch (step) {
     case 0:
-      return (
-        <TypePetRegister
-          formField={formField}
-          values={values}
-          useStyle={useStyle}
-        />
-      );
-    //       {true === true &&
-    // (        case 1:
-    //           return <PetInfo formField={formField} useStyle={useStyle} />;
-    // )
-    //       }
-    case 2:
+      return <PetInfo formField={formField} useStyle={useStyle} />;
+    case 1:
       return <PetDesc formField={formField} useStyle={useStyle} />;
-    case 3:
+    case 2:
       return <PetType formField={formField} useStyle={useStyle} />;
-    case 4:
+    case 3:
       return <PetAddress formField={formField} useStyle={useStyle} />;
     default:
       return <div>Not Found</div>;
@@ -105,8 +78,6 @@ export default function CheckoutCompanyStep() {
     if (isLastStep) {
       submitForm(values, actions);
     } else {
-      alert(JSON.stringify(values, null, 2));
-
       setActiveStep(activeStep + 1);
       actions.setTouched({});
       actions.setSubmitting(false);
@@ -126,7 +97,6 @@ export default function CheckoutCompanyStep() {
       2: <PetsIcon />,
       3: <PetsIcon />,
       4: <PetsIcon />,
-      5: <PetsIcon />,
     };
 
     return (
@@ -171,7 +141,7 @@ export default function CheckoutCompanyStep() {
             </Grid>
 
             <Grid item className={classesForm.contentModal}>
-              {renderStepContent(activeStep, adoptionType, values)}
+              {renderStepContent(activeStep, values)}
             </Grid>
             <Grid
               item

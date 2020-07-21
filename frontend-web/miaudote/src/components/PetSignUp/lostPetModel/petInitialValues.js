@@ -2,9 +2,9 @@ import checkoutPetModel from './checkoutPetModel';
 const {
   formField: {
     nome,
+    descricao,
     especie,
     sexo,
-    descricao,
     porte,
     latitude,
     longitude,
@@ -16,9 +16,9 @@ const {
 
 export default {
   [nome.name]: '',
+  [descricao.name]: '',
   [especie.name]: '',
   [sexo.name]: '',
-  [descricao.name]: '',
   [porte.name]: '',
   [latitude.name]: '',
   [longitude.name]: '',

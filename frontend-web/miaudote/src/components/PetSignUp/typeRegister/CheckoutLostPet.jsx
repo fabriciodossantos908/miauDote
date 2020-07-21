@@ -24,7 +24,7 @@ import {
   useStyle,
   formBase,
   useColorlibStepIconStyles,
-} from '../Layout/styles';
+} from '../../Layout/styles';
 // import TestStepper from '../../pages/testStepper';
 // import { useHistory } from 'react-router-dom';
 
@@ -74,8 +74,6 @@ export default function CheckoutCompanyStep() {
     if (isLastStep) {
       submitForm(values, actions);
     } else {
-      alert(JSON.stringify(values, null, 2));
-
       setActiveStep(activeStep + 1);
       actions.setTouched({});
       actions.setSubmitting(false);
@@ -143,7 +141,12 @@ export default function CheckoutCompanyStep() {
               </Stepper>
             </Grid>
 
-            <Grid item className={classesForm.contentModal}>
+            <Grid
+              item
+              container
+              justify="flex-start"
+              className={classesForm.contentModal}
+            >
               {renderStepContent(activeStep, values)}
             </Grid>
             <Grid

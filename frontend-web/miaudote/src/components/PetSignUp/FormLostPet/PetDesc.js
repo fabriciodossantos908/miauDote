@@ -1,84 +1,37 @@
 import React from 'react';
-import {
-  Grid,
-  FormControl,
-  Typography,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  Checkbox,
-} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { InputField } from '../../FieldStyle';
 
-import { BtnSituation, SelectYesNo } from '../FieldStyle';
 import { Field } from 'formik';
 
 export default function PetDesc(props) {
   const classes = props.useStyle();
   const {
-    formField: {
-      descricao,
-      castrado,
-      vacinado,
-      vermifungado,
-      cuidados_veterinarios,
-    },
+    formField: { nome, descricao, especie },
   } = props;
 
-  const situation = {
-    cuidados_veterinarios,
-    vermifungado,
-    castrado,
-  };
-
   return (
-    <React.Fragment>
-      <Grid>
-        <Grid>
-          <InputField name={descricao.name} label={descricao.name} />
+    <>
+      <Grid item container direction="row">
+        <Grid item xs={6}>
+          <InputField name={nome.name} variant="outlined" label={nome.name} />
         </Grid>
-        <Grid item container justify="flex-start" direction="column">
-          <Grid item container direction="row">
-            <Grid item xs={6}>
-              <Typography variant="h8">Está castrado ?</Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Field name={castrado.name} type="checkbox" as={Checkbox} />
-            </Grid>
-          </Grid>
-          <Grid item container direction="row">
-            <Grid item xs={6}>
-              <Typography variant="h8">Está vacinado ?</Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Field name={vacinado.name} type="checkbox" as={Checkbox} />
-            </Grid>
-          </Grid>
-          <Grid item container direction="row">
-            <Grid item xs={6}>
-              <Typography variant="h8">Está vermifungado ?</Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Field name={vermifungado.name} type="checkbox" as={Checkbox} />
-            </Grid>
-          </Grid>
-          <Grid item container direction="row">
-            <Grid item xs={6}>
-              <Typography variant="h8">
-                Precisa de cuidados veterinários ?
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Field
-                name={cuidados_veterinarios.name}
-                type="checkbox"
-                as={Checkbox}
-              />
-            </Grid>
-          </Grid>
+        <Grid item xs={6}>
+          <InputField
+            name={descricao.name}
+            variant="outlined"
+            label={descricao.name}
+          />
         </Grid>
       </Grid>
-    </React.Fragment>
+      <Grid item xs={12}>
+        <InputField
+          name={especie.name}
+          variant="outlined"
+          label={especie.name}
+        />
+      </Grid>
+    </>
   );
 }
 

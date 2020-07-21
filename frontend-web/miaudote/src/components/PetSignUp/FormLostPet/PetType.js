@@ -21,6 +21,10 @@ const useStyle = makeStyles({
 
 const specie = [
   {
+    value: undefined,
+    label: 'Selecione',
+  },
+  {
     value: 'dog',
     label: 'Cachorro',
     icon: <PetsIcon />,
@@ -102,7 +106,7 @@ export default function PetInfo(props) {
           </Typography>
           <ImageField />
         </Grid>
-        <Grid item>
+        <Grid item xs={6}>
           <Grid>
             <SelectIconField
               name={especie.name}
@@ -111,14 +115,14 @@ export default function PetInfo(props) {
               fullWidth
             ></SelectIconField>
           </Grid>
-          <Grid>
-            <InputField
+          {/* <Grid> */}
+          {/* <InputField
               variant="outlined"
               name={cor.name}
               label={cor.label}
               fullWidth
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Grid>
     </React.Fragment>

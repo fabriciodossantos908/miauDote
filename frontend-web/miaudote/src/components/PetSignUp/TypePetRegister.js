@@ -3,12 +3,9 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import { Typography } from '@material-ui/core';
-import { useField } from 'formik';
 
 import CheckoutPet from '../PetSignUp/typeRegister/CheckoutPet';
-import { isEmpty } from 'lodash';
 
 export default function TypePetRegister() {
   const [value, setValue] = React.useState();

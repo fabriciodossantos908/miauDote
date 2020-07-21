@@ -37,7 +37,22 @@ export default function PetInfo(props) {
         />
       </Grid>
       <Grid item container orientation="row">
-        <Grid item container xs={6} direction="row" spacing={1}>
+        <Grid
+          item
+          container
+          xs={6}
+          justify="center"
+          direction="row"
+          spacing={1}
+        >
+          <Grid item xs={4}>
+            <FormControlLabel
+              control={
+                <Checkbox disableFocusRipple onChange={handleChangeYear} />
+              }
+              label="Anos"
+            />
+          </Grid>
           <Grid item xs={6}>
             <InputField
               name={anos.name}
@@ -47,31 +62,30 @@ export default function PetInfo(props) {
               fullWidth
             />
           </Grid>
-          <Grid item xs={6}>
-            <FormControlLabel
-              control={
-                <Checkbox disableFocusRipple onChange={handleChangeYear} />
-              }
-              label="Anos"
-            />
-          </Grid>
         </Grid>
-        <Grid item container xs={6} direction="row">
-          <Grid item xs={8}>
-            <InputField
-              name={meses.name}
-              disabled={checkedMonth}
-              variant="outlined"
-              label={meses.label}
-              fullWidth
-            />
-          </Grid>
+        <Grid
+          item
+          container
+          xs={6}
+          justify="center"
+          direction="row"
+          spacing={1}
+        >
           <Grid item xs={4}>
             <FormControlLabel
               control={
                 <Checkbox disableFocusRipple onChange={handleChangeMonth} />
               }
               label="Meses"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <InputField
+              name={meses.name}
+              disabled={checkedMonth}
+              variant="outlined"
+              label={meses.label}
+              fullWidth
             />
           </Grid>
         </Grid>

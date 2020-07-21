@@ -1,13 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import { Typography, Button } from '@material-ui/core';
+import { Typography, Button, Menu, MenuItem } from '@material-ui/core';
 
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 
 import CheckoutPet from '../components/PetSignUp/typeRegister/CheckoutPet';
+import CheckoutLostPet from '../components/PetSignUp/typeRegister/CheckoutLostPet';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -26,11 +26,101 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function AdoptionPet(props) {
+  const classes = props.classes;
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = (event) => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button type="button" onClick={handleOpen} variant="text">
+        Quer doar um pet?
+      </Button>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        disablePortal
+        disableEnforceFocus
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        disableBackdropClick
+        closeAfterTransition
+        // BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <Button onClick={handleClose} style={{ marginLeft: 400 }}>
+              <CloseRoundedIcon />
+            </Button>
+            <CheckoutPet />
+          </div>
+        </Fade>
+      </Modal>
+    </div>
+  );
+}
+
+function LostPet(props) {
+  const classes = props.classes;
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button type="button" onClick={handleOpen} variant="text">
+        Perdeu seu pet?
+      </Button>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        disablePortal
+        disableEnforceFocus
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        disableBackdropClick
+        closeAfterTransition
+        // BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <Button onClick={handleClose} style={{ marginLeft: 400 }}>
+              <CloseRoundedIcon />
+            </Button>
+            <CheckoutLostPet />
+          </div>
+        </Fade>
+      </Modal>
+    </div>
+  );
+}
+
 export default function Test() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
-  const handleOpen = () => {
+  const handleOpen = (event) => {
     setOpen(true);
   };
 
@@ -43,35 +133,8 @@ export default function Test() {
       <Typography variant="h4">
         The Pet register modal right under here.
       </Typography>
-      <div>
-        <Button type="button" onClick={handleOpen} variant="outlined">
-          Cadastrar pet
-        </Button>
-        <Modal
-          // aria-labelledby="transition-modal-title"
-          // aria-describedby="transition-modal-description"
-          disablePortal
-          disableEnforceFocus
-          className={classes.modal}
-          open={open}
-          onClose={handleClose}
-          disableBackdropClick
-          closeAfterTransition
-          // BackdropComponent={Backdrop}
-          BackdropProps={{
-            timeout: 500,
-          }}
-        >
-          <Fade in={open}>
-            <div className={classes.paper}>
-              <Button onClick={handleClose} style={{ marginLeft: 400 }}>
-                <CloseRoundedIcon />
-              </Button>
-              <CheckoutPet />
-            </div>
-          </Fade>
-        </Modal>
-      </div>
+      <AdoptionPet classes={classes} />
+      <LostPet classes={classes} />
     </React.Fragment>
   );
 }

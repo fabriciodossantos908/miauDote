@@ -12,6 +12,7 @@ import PetsIcon from '@material-ui/icons/Pets';
 
 import { SelectIconField } from '../FieldStyle';
 import ImageField from '../../../pages/utils/fields/ImageField';
+import { ImagePickerExample } from '../../../pages/utils/fields';
 
 const useStyle = makeStyles({
   fontBase: {
