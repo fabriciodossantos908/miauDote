@@ -32,8 +32,8 @@ export default {
       label: 'Celular*',
       requiredErrorMsg: 'Celular do representante é obrigatório!',
     },
-    dt_nasc: {
-      name: 'dt_nasc',
+    data_nascimento: {
+      name: 'data_nascimento',
       label: 'Data de nascimento',
       requiredErrorMsg: 'Data de nascimento é obrigatório',
     },

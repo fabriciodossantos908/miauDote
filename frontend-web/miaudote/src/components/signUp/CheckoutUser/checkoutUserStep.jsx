@@ -112,21 +112,35 @@ export default function CheckoutUSerStep() {
     );
   }
 
-  // function _sleep(ms) {
-  //   return new Promise(resolve => setTimeout(resolve, ms));
-  // }
+  function _sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
   async function _submitForm(values, actions) {
-    await // _sleep(1000);
-    // alert(JSON.stringify(values, null, 2));
+    // await _sleep(1000);
+    delete values.senha_confirm;
+    console.log(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
+
+    Axios.post(
+      'http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/registrar',
+      values,
+    )
+      .then(function (response) {
+        alert('Cadastrado com sucesso!');
+        console.log(response);
+      })
+      .catch(function (error) {
+        alert('ops! erro ao cadastrar');
+        console.log(error);
+      });
 
     setActiveStep(activeStep + 1);
   }
 
   async function _LoginSubmit(values, actions) {
     // await _sleep(1000);
-    // alert(JSON.stringify(values, null, 2));
+    //alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
 
     Axios.post(
@@ -186,7 +200,7 @@ export default function CheckoutUSerStep() {
                 id={
                   isLogin === false
                     ? formsFields[0].formId
-                    : formsFields[0].formField
+                    : formsFields[1].formId
                 }
                 container
               >

@@ -24,7 +24,7 @@ const states = [
 export default function FormUserAddress(props) {
   const classes = props.useStyle();
   const {
-    formField: { uf, cep, cidade, bairro, logradouro, numero },
+    formField: { uf, cep, cidade, bairro, logradouro, numero, complemento },
   } = props;
   return (
     <React.Fragment>
@@ -84,7 +84,7 @@ export default function FormUserAddress(props) {
         justify="space-between"
         className={classes.inputPaper}
       >
-        <Grid item xs={6} alignItems="center">
+        <Grid item xs={5} alignItems="center">
           <InputField
             name={numero.name}
             variant="outlined"
@@ -93,11 +93,19 @@ export default function FormUserAddress(props) {
           />
         </Grid>
 
-        <Grid item xs={5} className={classes.inputPaper}>
+        <Grid item xs={3} className={classes.inputPaper}>
           <SelectField
             name={uf.name}
             label={uf.label}
             data={states}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={4} className={classes.inputPaper}>
+          <InputField
+            name={complemento.name}
+            variant="outlined"
+            label={complemento.label}
             fullWidth
           />
         </Grid>

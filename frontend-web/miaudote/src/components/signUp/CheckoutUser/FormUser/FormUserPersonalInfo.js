@@ -16,19 +16,19 @@ const data = [
     label: 'Masculino',
   },
   {
-    value: 'H',
-    label: 'Homossexual',
+    value: 'O',
+    label: 'Outros',
   },
   {
-    value: 'T',
-    label: 'Transexual',
+    value: 'N',
+    label: 'Não informar',
   },
 ];
 
 export default function FormUserPersonalInfo(props) {
   const classes = props.useStyle();
   const {
-    formField: { celular, sexo, dt_nasc, cpf },
+    formField: { celular, sexo, data_nascimento, cpf },
   } = props;
   return (
     <React.Fragment>
@@ -42,9 +42,9 @@ export default function FormUserPersonalInfo(props) {
       </Grid>
       <Grid item className={classes.inputPaper}>
         <InputField
-          name={dt_nasc.name}
+          name={data_nascimento.name}
           variant="outlined"
-          label={dt_nasc.label}
+          label={data_nascimento.label}
           fullWidth
         />
       </Grid>
