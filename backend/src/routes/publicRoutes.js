@@ -58,6 +58,7 @@ router.delete('/servicos/:id', tipoServicoController.destroy);
 // Rotas de Pets
 router.get('/pets', petController.index);
 router.get('/pets/localizacao', petFilter.indexByProximity);
+router.get('/pets/favoritos/:id', petFilter.findFavoritePets);
 router.get('/pets/:id', petController.show);
 router.get('/pets/uf/:uf', petFilter.indexBylocal);
 router.put('/pets/upload/foto/:id', upload.single('file'), petFilter.uploadPetPhoto);

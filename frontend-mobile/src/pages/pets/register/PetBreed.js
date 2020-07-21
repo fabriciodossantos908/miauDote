@@ -33,6 +33,8 @@ export default class PetBreed extends Component {
             type: data.type,
             uf: data.selectedUf,
             city: data.selectedCity,
+            latitude:data.latitude,
+            longitude:data.longitude,
             data: [],
             dataBackup: [],
             loading: false,

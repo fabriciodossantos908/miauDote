@@ -8,7 +8,7 @@ const {
     senha,
     senha_confirm,
     celular,
-    dt_nasc,
+    data_nascimento,
     cpf,
     sexo,
     cep,
@@ -43,8 +43,12 @@ export default [
       .required(`${senha_confirm.requiredErrorMsg}`),
   }),
   Yup.object().shape({
-    [celular.name]: Yup.string().required(`${celular.requiredErrorMsg}`),
-    [dt_nasc.name]: Yup.string().required(`${dt_nasc.requiredErrorMsg}`),
+    [celular.name]: Yup.string()
+      .length(11)
+      .required(`${celular.requiredErrorMsg}`),
+    [data_nascimento.name]: Yup.string()
+      .length(10)
+      .required(`${data_nascimento.requiredErrorMsg}`),
     [cpf.name]: Yup.string()
       .required(`${cpf.requiredErrorMsg}`)
       .length(11, `${cpf.lengthErrorMsg}`),
@@ -71,5 +75,6 @@ export default [
       .max(6, `${numero.maxErrorMsg}`)
       .required(`${numero.requiredErrorMsg}`),
     [uf.name]: Yup.string().required(`${uf.requiredErrorMsg}`),
+    [complemento.name]: Yup.string().required(`${uf.requiredErrorMsg}`),
   }),
 ];

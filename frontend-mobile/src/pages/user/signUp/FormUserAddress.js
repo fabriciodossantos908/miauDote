@@ -248,19 +248,16 @@ export default class FormUserAddress extends Component {
 
 
 		try {
-			let response =  await fetch('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/registrar',params)
-			// console.log(JSON.stringify(response))
-
-			// console.log(response)
-
-			// ok: status code =  200 - 299
+			console.log(params);
+			let response =  await fetch('http://192.168.0.195:3000/usuarios/registrar',params)
+		
 			if(!response.ok){
 				return alert("Erro ao cadastrar")
 				// return console.log(response.data)
 
 				// .json() captura e tranforma o corpo em json
 
-				const user = await response.json()
+				// const user = await response.json()
 				// console.log(user)
 			 } else {
 				alert('Cadastrado com Sucesso')

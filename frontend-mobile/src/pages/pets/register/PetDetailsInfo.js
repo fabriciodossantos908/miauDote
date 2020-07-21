@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { CheckBox } from "react-native-elements";
 import colors from "../../../components/colors";
 import { HeaderDecoration, Head } from "./services/header";
-import { _lettersAndChar } from "../../../services/regex";
+import { _lettersAndChar } from "../../../services/Regex";
 import { TextInput, HelperText } from 'react-native-paper';
 import { showAlertMessage } from "../../../components/alert";
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
@@ -36,6 +36,8 @@ export default class PetDetailsInfo extends Component {
             uf: data.uf,
             city: data.city,
             breed:data.breed,
+            latitude:data.latitude,
+            longitude:data.longitude,
 
             // this page
             age: '',
@@ -108,8 +110,6 @@ export default class PetDetailsInfo extends Component {
     }
 
     render() {
-
-        console.log(this.state)
 
         const { porte } = this.state
 

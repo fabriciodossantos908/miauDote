@@ -37,107 +37,107 @@ export default class FormUserPhoto extends Component {
 		super(props)
 		// const { params } = this.props.route.params
 
-		const { data } = this.props.route.params.params
-		this.state = {
-			// name: 'joanna regina'
-			email: data.email,
-			password : data.password,
-			name: data.name,
-			birthDate : data.birthDate,
-			gender: data.gender,
-			cpf: data.cpf,
-			ddd: data.ddd,
-			phone: data.phone,
-			cep: data.cep,
-			city: data.city,
-			address: data.address,
-			number: data.number,
-			complement: data.complement,
-			neighborhood: data.neighborhood,
-			state: data.state,
-			url: null,
+		// const { data } = this.props.route.params.params
+		// this.state = {
+		// 	// name: 'joanna regina'
+		// 	email: data.email,
+		// 	password : data.password,
+		// 	name: data.name,
+		// 	birthDate : data.birthDate,
+		// 	gender: data.gender,
+		// 	cpf: data.cpf,
+		// 	ddd: data.ddd,
+		// 	phone: data.phone,
+		// 	cep: data.cep,
+		// 	city: data.city,
+		// 	address: data.address,
+		// 	number: data.number,
+		// 	complement: data.complement,
+		// 	neighborhood: data.neighborhood,
+		// 	state: data.state,
+		// 	url: null,
 
-		}
+		// }
 	}
 	// nextPage = ( e ) => {
 	// 	this.props.navigation.navigate('Teste')
 	// }
 
-	skipToHome = ( e ) => {
-		const data = this.state
+	// skipToHome = ( e ) => {
+	// 	const data = this.state
 	
-				this.props.navigation.navigate('Home', {
-					screen: 'FormUserPhoto',
-					params: { data }
-				}); 	
-	}
+	// 			this.props.navigation.navigate('Home', {
+	// 				screen: 'FormUserPhoto',
+	// 				params: { data }
+	// 			}); 	
+	// }
 
-	cadastrar = async e => {
+	// cadastrar = async e => {
 
-		const { email, password, name, birthDate, gender, cpf, phone, cep, city, address, number, complement, neighborhood, state } = this.state
+	// 	const { email, password, name, birthDate, gender, cpf, phone, cep, city, address, number, complement, neighborhood, state } = this.state
 		
-		const params = {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				nome: name,
-				email: email,
-				senha: password,
-				data_nascimento: birthDate,
-				sexo: gender,
-				cpf: cpf,
-				celular: phone,
-				cep: cep,
-				cidade: city,
-				bairro: neighborhood,
-				logradouro: address,
-				numero: number,
-				complemento: complement,
-				uf: state,
-				permissions: 'USER',
+	// 	const params = {
+	// 		method: 'POST',
+	// 		headers: {
+	// 			'Content-Type': 'application/json'
+	// 		},
+	// 		body: JSON.stringify({
+	// 			nome: name,
+	// 			email: email,
+	// 			senha: password,
+	// 			data_nascimento: birthDate,
+	// 			sexo: gender,
+	// 			cpf: cpf,
+	// 			celular: phone,
+	// 			cep: cep,
+	// 			cidade: city,
+	// 			bairro: neighborhood,
+	// 			logradouro: address,
+	// 			numero: number,
+	// 			complemento: complement,
+	// 			uf: state,
+	// 			permissions: 'USER',
 
-			})
+	// 		})
 		
-		}
+	// 	}
 
 
-		try {
-			let response =  await fetch('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/registrar',params)
-			console.log(JSON.stringify(response))
+	// 	try {
+	// 		let response =  await fetch('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/registrar',params)
+	// 		console.log(JSON.stringify(response))
 
-			console.log(response)
+	// 		console.log(response)
 
-			// ok: status code =  200 - 299
-			if(!response.ok){
-				return alert("Erro ao cadastrar")
-				// return console.log(response.data)
+	// 		// ok: status code =  200 - 299
+	// 		if(!response.ok){
+	// 			return alert("Erro ao cadastrar")
+	// 			// return console.log(response.data)
 
-				// .json() captura e tranforma o corpo em json
+	// 			// .json() captura e tranforma o corpo em json
 
-				const user = await response.json()
-				console.log(user)
-			 } else {
-				alert('Cadastrado com Sucesso')
+	// 			const user = await response.json()
+	// 			console.log(user)
+	// 		 } else {
+	// 			alert('Cadastrado com Sucesso')
 
-				// AsyncStorage.setItem( 'token', user.token )
+	// 			// AsyncStorage.setItem( 'token', user.token )
 
-				const data = this.state
+	// 			const data = this.state
 	
-				this.props.navigation.navigate('Home', {
-					screen: 'FormUserPhoto',
-					params: { data }
-				}); 
-			}
+	// 			this.props.navigation.navigate('Home', {
+	// 				screen: 'FormUserPhoto',
+	// 				params: { data }
+	// 			}); 
+	// 		}
 			
 			
 
-		} catch (e) {
-			console.log(e)
-		}
+	// 	} catch (e) {
+	// 		console.log(e)
+	// 	}
 		
-	}
+	// }
 
 	previousPage = ( e ) => {
 		this.props.navigation.navigate('FormUserAddress')
@@ -157,7 +157,7 @@ export default class FormUserPhoto extends Component {
 
 				<View style={{ width:'100%', justifyContent:"flex-start"}}> 
 					<Text style={{textAlign:"left", width:'80%', fontSize:15, lineHeight: 23,}}>
-						Olá {this.state.name.split(" ")[0]}, seu cadastro já foi concluído! 
+						{/* Olá {this.state.name.split(" ")[0]}, seu cadastro já foi concluído!  */}
 						Agora precisamos que envie uma foto para seu perfil no app.
 					</Text>
 				</View>

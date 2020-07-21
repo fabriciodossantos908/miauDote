@@ -4,7 +4,7 @@ import Ionicos from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import { StyleSheet, Text, View, Image, Dimensions, PixelRatio } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, PixelRatio, AsyncStorage } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -52,9 +52,23 @@ function SettingsScreen() {
 const Tab = createBottomTabNavigator();
 
 export default class PerfilScreen extends Component {
-
    constructor(props) {
       super(props);
+
+      this.state = {
+         name: '',
+         userPhoto: ''
+      }
+   }
+
+   async componentDidMount(){
+      try {
+         let name = await AsyncStorage.getItem('@USER_NAME');
+         let userPhoto = await AsyncStorage.getItem('@USER_PHOTO');
+         this.setState({name, userPhoto});
+      } catch (error) {
+         console.log(error);
+      }
    }
 
    render() {
@@ -65,9 +79,9 @@ export default class PerfilScreen extends Component {
             {/* <PerfilName>Davi Soares</PerfilName> */}
             <PerfilPhoto>
                <Photo>
-                  <ImageBackground source={require('../../../../assets/user-icon.png')}></ImageBackground>
+                  <ImageBackground source={{uri: this.state.userPhoto}}></ImageBackground>
                </Photo>
-               <UserName>Username</UserName>
+            <UserName>{this.state.name}</UserName>
             </PerfilPhoto>
             <PerfilOptions>
                <PerfilOptionsLine>

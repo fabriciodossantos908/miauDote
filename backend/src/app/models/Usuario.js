@@ -186,6 +186,10 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    pets_favoritos:{
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     url_foto: {
       type: DataTypes.STRING,
       allowNull: true

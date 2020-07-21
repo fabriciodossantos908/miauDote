@@ -22,15 +22,17 @@ import AboutFindingPet from './pages/user/about/AboutFindingPet';
 
 // Importações para tela de pets
 import PetDetails from './pages/pets/details/PetDetails';
+import PetList from './pages/pets/list/PetList';
 
 // Importações para telas de cadastro de pets
 import PetBasicInfo from './pages/pets/register/PetBasicInfo'
 import PetType from './pages/pets/register/PetType'
-import BreedList from './pages/pets/register/services/BreedList'
+// import BreedList from './pages/pets/register/services/listBreed'
 import PetDetailsInfo from './pages/pets/register/PetDetailsInfo'
 import PetHealth from './pages/pets/register/PetHealth'
 import PetPhoto from './pages/pets/register/PetPhoto'
-import PetBreed from './pages/pets/register/PetBreed';
+import PetBreed from './pages/pets/register/PetBreed'
+
 
 
 
@@ -43,7 +45,13 @@ export default function MyStack() {
         <NavigationContainer>
             <Stack.Navigator>
 
-                 {/* <Stack.Screen
+                <Stack.Screen
+                    name="HomeScreen"
+                    component={HomeScreen}
+                    options={{ headerShown: false }}
+                />
+
+                {/* <Stack.Screen
                     name="PetDetailsInfo"
                     component={PetDetailsInfo}
                     options={{ headerShown: false }}
@@ -65,11 +73,11 @@ export default function MyStack() {
 
                 {/* Telas de Login e Cadastro */}
 
-                <Stack.Screen
+                {/* <Stack.Screen
                     name="HomeScreen"
                     component={HomeScreen}
                     options={{ headerShown: false }}
-                />
+                /> */}
 
                 <Stack.Screen
                     name="Login"
@@ -77,17 +85,17 @@ export default function MyStack() {
                     options={{ headerShown: false }}
                 />
 
-                <Stack.Screen
+                {/* <Stack.Screen
                     name="FormBasicInfo"
                     component={FormBasicInfo}
                     options={{ headerShown: false }}
-                />
+                /> */}
 
-                {/* <Stack.Screen
+                <Stack.Screen
                     name="FormPersonalData"
                     component={FormPersonalData}
                     options={{ headerShown: false }}
-                /> */}
+                />
 
                 <Stack.Screen
                     name="FormUserAddress"
@@ -108,19 +116,19 @@ export default function MyStack() {
                     options={{ headerShown: false }}
                 />
 
-                <Stack.Screen
-                    name="Home"
-                    component={Home}
-                    options={{ headerShown: false }}
-                />
-
-                {/* Telas mais relacionadas a usuário */}
-
                 {/* <Stack.Screen
                     name="Home"
                     component={Home}
                     options={{ headerShown: false }}
                 /> */}
+
+                {/* Telas mais relacionadas a usuário */}
+
+                <Stack.Screen
+                    name="Home"
+                    component={Home}
+                    options={{ headerShown: false }}
+                />
 
                 <Stack.Screen
                     name="Perfil"
@@ -165,19 +173,19 @@ export default function MyStack() {
                 <Stack.Screen
                     name="PetType"
                     component={PetType}
-                    options={{headerShown:false}}
+                    options={{ headerShown: false }}
                 />
 
-                 <Stack.Screen
+                {/* <Stack.Screen
                     name="BreedList"
                     component={BreedList}
                     options={{ headerShown: false }}
-                /> 
+                /> */}
 
                 <Stack.Screen
                     name="PetBreed"
                     component={PetBreed}
-                    options={{headerShown:false}}
+                    options={{ headerShown: false }}
                 />
 
                 <Stack.Screen
@@ -195,6 +203,12 @@ export default function MyStack() {
                 <Stack.Screen
                     name="PetPhoto"
                     component={PetPhoto}
+                    options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                    name="PetList"
+                    component={PetList}
                     options={{ headerShown: false }}
                 />
 

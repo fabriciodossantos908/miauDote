@@ -69,6 +69,10 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING
     },
+    pets_favoritos:{
+      allowNull: true,
+      type: Sequelize.STRING
+    },
     url_foto:{
       allowNull: true,
       type: Sequelize.STRING,

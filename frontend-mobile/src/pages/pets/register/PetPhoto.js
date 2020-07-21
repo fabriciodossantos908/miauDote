@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, Text, TouchableOpacity, ImageBackground, StatusBar, Image } from "react-native";
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, View, TouchableOpacity, StatusBar, Image, Alert } from "react-native";
 
-import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Header, Title, ContainerCenter, ContainerIcon, Form, ContainerText, LabelBold, JustifyText, ContainerPetImager, PetImage, ButtonNext, ButtonChooseImage, TxtButton } from './styles';
+import {  Form, ContainerText, LabelBold, JustifyText, ContainerPetImager, PetImage, ButtonNext, ButtonChooseImage, TxtButton, Main } from './styles';
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import { Heart, IconArrow } from "../../../components/icons";
 import { HeaderDecoration, Head } from "./services/header";
-import colors from "../../../components/colors";
+import * as ImagePicker from 'expo-image-picker';
+import Constants from 'expo-constants';
+import * as Permissions from 'expo-permissions';
+
 
 
 
@@ -14,23 +17,25 @@ export default class PetPhoto extends Component {
 
     constructor(props) {
         super(props)
-        const { data } = this.props.route.params.params
+        // const { data } = this.props.route.params.params
         this.state = {
-            name: data.name,
-            gender: data.gender,
-            type: data.type,
-            uf: data.uf,
-            city: data.city,
-            breed: data.breed,
-            age: data.age,
-            porte: data.porte,
-            color: data.color,
-            description: data.description,
-            dewormed: data.dewormed,
-            vaccinated: data.vaccinated,
-            castrated: data.castrated,
-            needCare: data.needCare,
-            url_foto: null,
+            // name: data.name,
+            // gender: data.gender,
+            // type: data.type,
+            // uf: data.uf,
+            // city: data.city,
+            // breed: data.breed,
+            // age: data.age,
+            // porte: data.porte,
+            // color: data.color,
+            // description: data.description,
+            // dewormed: data.dewormed,
+            // vaccinated: data.vaccinated,
+            // castrated: data.castrated,
+            // needCare: data.needCare,
+            // latitude:data.latitude,
+            // longitude:data.longitude,
+            image: null,
             id_user:null,
         }
     }
@@ -39,25 +44,64 @@ export default class PetPhoto extends Component {
         console.log(this.state)
     }
 
-    _onYearPress = () => {
-        const { yearSelected } = this.state
-
-        yearSelected == false ?
-            this.setState({ yearSelected: true }) :
-            this.setState({ yearSelected: false })
-    }
-
-    _onMonthPress = () => {
-        const { monthSelected } = this.state
-
-        monthSelected == false ?
-            this.setState({ monthSelected: true }) :
-            this.setState({ monthSelected: false })
-    }
+    componentDidMount() {
+        this.getPermissionAsync();
+      }
+    
+      getPermissionAsync = async () => {
+        if (Constants.platform.ios) {
+          const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+          if (status !== 'granted') {
+            alert('Sorry, we need camera roll permissions to make this work!');
+          }
+        }
+      };
+    
+      _pickImage = async () => {
+        try {
+          let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+          });
+          if (!result.cancelled) {
+            this.setState({ image: result.uri });
+          }
+    
+          // console.log(result);
+        } catch (E) {
+          console.log(E);
+        }
+      };
+    
+      uploadImage = async () => {
+        let { image } = this.state;
+        let filename = image.split('/').pop();
+    
+        let match = /\.(\w+)$/.exec(filename);
+        let type = match ? `image/${match[1]}` : `image`;
+        const formData = new FormData();
+    
+        formData.append('file', { uri: image, name: filename, type })
+    
+        fetch(`http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets/upload/foto/${13}`, {
+          method: 'PUT',
+          body: formData
+        }).then(response => {
+          // console.log(response);
+          response.json();
+        }).then(result => {
+          Alert.alert('Upload de imagem realizado com sucesso', 'Aleluuuuuuiaaaaaaaa');
+        }).catch(error => {
+          console.log(error);
+        })
+      }
 
     render() {
 
         console.log(this.state, 'aaaaaaaa')
+        let { image } = this.state;
 
         return (
             <React.Fragment>
@@ -93,11 +137,14 @@ export default class PetPhoto extends Component {
                                     </ContainerText>
 
                                     <ContainerPetImager>
+                                    {image == null ?
                                         <PetImage
                                             source={require('../../../assets/image2.png')}
-                                        />
+                                        /> :
+                                        image && <Image source={{ uri: image }} style={{ width: 200, height: 200, marginTop:'12%' }} />
+                                    }
 
-                                        <ButtonChooseImage>
+                                        <ButtonChooseImage onPress={this._pickImage}>
                                             <TxtButton>Escolher imagem</TxtButton>
                                         </ButtonChooseImage>
 
@@ -105,7 +152,7 @@ export default class PetPhoto extends Component {
                                 </Form>
 
                                 <ContainerButton>
-                                    <ButtonNext onPress={console.log(this.state)}>
+                                    <ButtonNext onPress={this.uploadImage}>
                                         <BtnText>Finalizar</BtnText>
                                     </ButtonNext>
                                 </ContainerButton>
