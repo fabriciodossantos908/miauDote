@@ -1,4 +1,4 @@
-const { Pet } = require('../../models');
+const { Pet, Usuario } = require('../../models');
 const { Op } = require('sequelize');
 const { sequelize } = require('../../models/index');
 const fs = require('fs');
@@ -188,6 +188,32 @@ class PetFilter {
          return res.json({ mensagem: 'Foto atualizada com sucesso', url_foto })
 
       } catch (error) {
+         return res.status(400).json(error);
+      }
+   }
+
+   async findFavoritePets(req, res) {
+
+      try {
+         const usuario = await Usuario.findByPk(req.params.id);
+         const petIds = usuario.pets_favoritos.split(',');
+
+         console.log(petIds);
+
+         let pets = await Pet.findAll({
+            where: {
+               id: {
+                  [Op.in]: petIds
+               }
+            }
+         })
+
+         if(!pet)
+            return res.status(404).json({aviso: 'Não há pets favoritados'});
+
+         return res.json(pets);
+      } catch (error) {
+         console.log(error);
          return res.status(400).json(error);
       }
    }

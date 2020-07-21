@@ -65,7 +65,8 @@ export default class PetList extends Component {
          loading: true,
          pickers: [],
          petsLoading: false,
-         distancia: 15
+         distancia: 15,
+         sliderDistance: 15,
       }
    }
 
@@ -105,14 +106,14 @@ export default class PetList extends Component {
       this.handleRequest();
    }
 
-   handleDistanceChange = async (distance) => {
-      await this.setState({ petsLoading: true });
+   handleDistanceChange = async () => {
+      await this.setState({ petsLoading: true, Sliderdistance: this.state.distancia });
       this.handleRequest();
    }
 
    handleRequest = () => {
 
-      let urlRequest = `http://192.168.0.195:3000/pets/localizacao?latitude=${this.state.latitude}&longitude=${this.state.longitude}&especie=${this.state.especie}`;
+      let urlRequest = `http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets/localizacao?latitude=${this.state.latitude}&longitude=${this.state.longitude}&especie=${this.state.especie}`;
       urlRequest = this.state.raca ? urlRequest + `&raca=${this.state.raca}` : urlRequest;
       urlRequest = this.state.genero ? urlRequest + `&sexo=${this.state.genero}` : urlRequest;
       urlRequest = this.state.porte ? urlRequest + `&porte=${this.state.porte}` : urlRequest;
@@ -276,7 +277,7 @@ export default class PetList extends Component {
                      style={{ width: 270, height: 20, marginLeft: -16 }}
                      step={1}
                      minimumTrackTintColor='#1bc7cb'
-                     value={this.state.distancia}
+                     value={this.state.sliderDistance}
                      minimumValue={1}
                      maximumValue={30}
                      thumbTintColor='#369696'
@@ -395,7 +396,7 @@ const pickerStyle = {
       paddingTop: 13,
       paddingHorizontal: 10,
       paddingBottom: 12,
-      width: 105,
+      width: 115,
       color: '#737475',
       fontSize: 13,
       textAlign: 'center',
@@ -403,7 +404,7 @@ const pickerStyle = {
    },
    placeholderColor: "#fc6",
    inputAndroid: {
-      width: 105,
+      width: 115,
       height: 25,
       textAlign: 'center',
       fontSize: 13,

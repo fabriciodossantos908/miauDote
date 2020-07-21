@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.ScrollView`
-   padding: 16px;
+   padding: 4px;
    background-color: #fff;
-   padding-bottom: 16;
+   padding-bottom: 16px;
 `;
 
 
@@ -14,26 +14,26 @@ export const LocalView = styled.View`
 `;
 
 export const LocalText = styled.Text`
-   font-size: 20;
-   margin-left: 10;
+   font-size: 20px;
+   margin-left: 10px;
    font-family: 'Poppins_400Regular';
 `;
 
 
 // View com uma saudação ao usuário
 export const SalutationView = styled.View`
-   margin-top: 48;
-   margin-bottom: 16;
+   margin-top: 48px;
+   margin-bottom: 16px;
    justify-content: flex-start;
 `;
 
 export const SalutationTitle = styled.Text`
-   font-size: 24;
+   font-size: 24px;
    font-family: 'Poppins_400Regular';
 `;
 
 export const SalutationText = styled.Text`
-   font-size: 17;
+   font-size: 17px;
    font-family: 'Poppins_400Regular';
    color: #ccc;
 `;
@@ -45,7 +45,7 @@ export const MenuView = styled.ScrollView`
    flex-direction: row;
    /* justify-content: space-between; */
    /* padding: 16px; */
-   margin-bottom: 56;
+   margin-bottom: 56px;
 `;
 
 export const MenuOption = styled.TouchableOpacity`
@@ -59,38 +59,38 @@ export const MenuOption = styled.TouchableOpacity`
 `;
 
 export const MenuOptionImage = styled.Image`
-   width: 80;
-   height: 80;
-   border-radius: 40;
+   width: 80px;
+   height: 80px;
+   border-radius: 40px;
 `;
 
 export const MenuOptionQuantity = styled.Text`
    /* margin-top: 10; */
-   font-size: 20;
+   font-size: 20px;
    font-weight: bold;
    font-family: 'Poppins_400Regular';
    color: #1bc7cb;
 `;
 
 export const MenuOptionName = styled.Text`
-   font-size: 16;
+   font-size: 16px;
    font-family: 'Poppins_400Regular';
    color: #000;
 `;
 
 export const DivisionView = styled.View`
-   width: 128;
+   width: 128px;
    border-width: 2px;
    border-color: #ccc;
    align-self: center;
-   margin-bottom: 40;
+   margin-bottom: 40px;
 `;
 
 export const PetsAroundTitle = styled.Text`
-   font-size: 20;
+   font-size: 20px;
    color: #4d4f4f;
    font-family: 'Poppins_400Regular';
-   margin-bottom: 16;
+   margin-bottom: 16px;
 `;
 
 // View com a listagem dos pets mais próximos
@@ -100,17 +100,17 @@ export const PetScrollView = styled.ScrollView`
 `;
 
 export const CardPet = styled.View`
-   width: 272;
-   height: 368;
+   width: 272px;
+   height: 368px;
    /* border-width: 2px; */
    padding: 16px;
    align-self: center;
-   margin-bottom: 32;
+   margin-bottom: 32px;
 `;
 
 export const CardPhotoImage = styled.ImageBackground`
    flex: 2;
-   border-radius: 15;
+   border-radius: 15px;
 `;
 
 export const CardDescription = styled.View`
@@ -127,15 +127,15 @@ export const CardButtonView = styled.View`
 `;
 
 export const CardDescriptionTitle = styled.Text`
-   font-size: 20;
+   font-size: 20px;
    font-family: 'Poppins_400Regular';
-   margin-top: 8;
+   margin-top: 8px;
 `;
 
 export const CardDescriptionText = styled.Text`
-   font-size: 15;
+   font-size: 15px;
    font-family: 'Poppins_400Regular';
-   margin-top: -8;
+   margin-top: -8px;
    color: #666563;
 `;
 
@@ -155,9 +155,9 @@ export const CardDescriptionInformation = styled.View`
 `;
 
 export const ViewText = styled.Text`
-   font-size: 12;
+   font-size: 12px;
    color: #666563;
-   margin-left: 8;
+   margin-left: 8px;
    font-family: 'Poppins_400Regular';
 `;
 
@@ -167,24 +167,24 @@ export const CardDescriptionDistance = styled.View`
 `;
 
 export const CardDistanceText = styled.Text`
-   font-size: 14;
+   font-size: 14px;
    font-family: 'Poppins_400Regular';
    align-self: flex-end;
    color: #575654;
 `;
 
 export const CardButton = styled.TouchableOpacity`
-   width: 224;
-   height: 24;
+   width: 224px;
+   height: 24px;
    background-color: #1bc7cb;
    justify-content: center;
    align-items: center;
-   margin-top: 8;
+   margin-top: 8px;
    border-radius: 3px;
 `;
 
 export const CardButtonText = styled.Text`
-   font-size: 16;
+   font-size: 16px;
    color: #fff;
    font-weight: bold;
    font-family: 'Poppins_400Regular';

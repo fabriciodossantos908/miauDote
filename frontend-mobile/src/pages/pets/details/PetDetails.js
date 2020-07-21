@@ -66,7 +66,7 @@ export default class PetDetails extends Component {
    }
 
    componentDidMount() {
-      axios.get('http://192.168.0.195:3000/pets/' + this.state.id).then(response => {
+      axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets/' + this.state.id).then(response => {
          let pet = response.data;
          let doador = pet.doador;
          pet.doador = undefined;
@@ -135,12 +135,12 @@ export default class PetDetails extends Component {
 
                      <ContactInformationView>
                         <ContactInformationImage source={require('../../../assets/whatsapp-icon.png')} />
-                        <ContactInformationText onPress={this.whatsapp} >+55 11 95331-7466 </ContactInformationText>
+                        <ContactInformationText onPress={this.whatsapp} >+55 {this.state.doador.celular} </ContactInformationText>
                      </ContactInformationView>
 
                      <ContactInformationView>
                         <ContactInformationImage source={require('../../../assets/email-icon.png')} />
-                        <ContactInformationText style={{ fontSize: 13 }} onPress={this.email} >davisoares4456@gmail.com</ContactInformationText>
+                        <ContactInformationText style={{ fontSize: 13 }} onPress={this.email} > {this.state.doador.email} </ContactInformationText>
                      </ContactInformationView>
                   </View>
                </Modal>

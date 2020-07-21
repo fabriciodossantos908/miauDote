@@ -11,8 +11,8 @@ export const Container = styled.View `
     flex: 1;
     backgroundColor: #FFF;
     justifyContent: center;
-    borderWidth: 1px;
-    borderColor:#000;
+    /* borderWidth: 1px; */
+    /* borderColor:#000; */
 
 `;
 

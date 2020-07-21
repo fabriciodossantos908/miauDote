@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { useIsFocused } from '@react-navigation/native'
-import { SafeAreaView, StyleSheet, ActivityIndicator, Text, View, AppState } from 'react-native';
+import { SafeAreaView, StyleSheet, ActivityIndicator, Text, View, AppState, AsyncStorage } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 
@@ -41,6 +41,8 @@ export default class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      userName: '',
+      userLocation: '',
       petList: [],
       loading: true
     }
@@ -70,9 +72,14 @@ export default class Home extends Component {
     })
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    
+    let userName = await AsyncStorage.getItem('@USER_NAME');
+    let userLocation = await AsyncStorage.getItem('@USER_LOCALIZATION');
 
-    axios.get('http://192.168.0.195:3000/pets/localizacao?latitude=23.5249890&longitude=46.925571').then(response => {
+    this.setState({userName, userLocation})
+
+    axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets/localizacao?latitude=23.5249890&longitude=46.925571&limite=5').then(response => {
       const petList = response.data;
       this.setState({ petList, loading: false });
     }).catch(error => {
@@ -95,11 +102,11 @@ export default class Home extends Component {
           <Container >
             <LocalView>
               <Icon name="md-pin" size={25} color='#000' />
-              <LocalText> Itapevi, SP </LocalText>
+              <LocalText> {this.state.userLocation} </LocalText>
             </LocalView>
             <SalutationView>
               <SalutationTitle>
-                Olá, Davi
+                Olá, {this.state.userName.split(' ')[0]}
                 </SalutationTitle>
               <SalutationText>
                 Tá afim de encontrar o seu

@@ -27,7 +27,7 @@ import PetList from './pages/pets/list/PetList';
 // Importações para telas de cadastro de pets
 import PetBasicInfo from './pages/pets/register/PetBasicInfo'
 import PetType from './pages/pets/register/PetType'
-// import BreedList from './pages/pets/register/services/BreedList'
+// import BreedList from './pages/pets/register/services/listBreed'
 import PetDetailsInfo from './pages/pets/register/PetDetailsInfo'
 import PetHealth from './pages/pets/register/PetHealth'
 import PetPhoto from './pages/pets/register/PetPhoto'
@@ -46,8 +46,8 @@ export default function MyStack() {
             <Stack.Navigator>
 
                 <Stack.Screen
-                    name="Home"
-                    component={Home}
+                    name="HomeScreen"
+                    component={HomeScreen}
                     options={{ headerShown: false }}
                 />
 
@@ -73,11 +73,11 @@ export default function MyStack() {
 
                 {/* Telas de Login e Cadastro */}
 
-                <Stack.Screen
+                {/* <Stack.Screen
                     name="HomeScreen"
                     component={HomeScreen}
                     options={{ headerShown: false }}
-                />
+                /> */}
 
                 <Stack.Screen
                     name="Login"
@@ -85,17 +85,17 @@ export default function MyStack() {
                     options={{ headerShown: false }}
                 />
 
-                <Stack.Screen
+                {/* <Stack.Screen
                     name="FormBasicInfo"
                     component={FormBasicInfo}
                     options={{ headerShown: false }}
-                />
+                /> */}
 
-                {/* <Stack.Screen
+                <Stack.Screen
                     name="FormPersonalData"
                     component={FormPersonalData}
                     options={{ headerShown: false }}
-                /> */}
+                />
 
                 <Stack.Screen
                     name="FormUserAddress"
@@ -124,11 +124,11 @@ export default function MyStack() {
 
                 {/* Telas mais relacionadas a usuário */}
 
-                {/* <Stack.Screen
+                <Stack.Screen
                     name="Home"
                     component={Home}
                     options={{ headerShown: false }}
-                /> */}
+                />
 
                 <Stack.Screen
                     name="Perfil"
