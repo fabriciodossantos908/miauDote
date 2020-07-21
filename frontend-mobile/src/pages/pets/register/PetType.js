@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Picker, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, StatusBar, Text } from "react-native";
-import { TextInput } from 'react-native-paper';
-import { ContainerRow, TextIcon, Label, Main, Form, IconView, ContainerPetLocal, ButtonNext, ContainerButton, ButtonPrevious } from './styles';
+import { Picker, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, View, StatusBar, Text, TouchableOpacity } from "react-native";
+import { ContainerRow, TextIcon, Label, Main, Form, IconView, ContainerPetLocal, ButtonNext, ContainerButton, ButtonPrevious, ButtonNextOutline, BtnTextOutline } from './styles';
 import { BtnText } from '../../user/signUp/styles';
 import colors from '../../../components/colors'
 import { HeaderDecoration, Head } from './services/header';
-import { IconPin, IconDog, IconCat, IconBird, IconRabbit, IconHamster, IconDogDisable, IconCatDisable, IconBirdDisable, IconRabbitDisable, IconHamsterDisable } from "../../../components/icons";
+import { IconPin, IconDog, IconCat, IconBird, IconRabbit, IconHamster, IconDogDisable, IconCatDisable, IconBirdDisable, IconRabbitDisable, IconHamsterDisable, IconArrow } from "../../../components/icons";
 import Axios from 'axios';
 import RNPickerSelect from 'react-native-picker-select';
-import {showAlertMessage} from '../../../components/alert'
+import { showAlertMessage } from '../../../components/alert';
+
 
 
 // import removerAcentos from '../../../services/Regex';
@@ -23,9 +23,11 @@ export default class PetType extends Component {
         this.state = {
             name: data.name,
             gender: data.gender,
+            latitude:data.latitude,
+            longitude:data.longitude,
             type: null,
             ufs: [],
-            selectedUf: '0',
+            selectedUf: '',
             selectedCity: '',
             cities: [],
             font: 'bold'
@@ -37,31 +39,50 @@ export default class PetType extends Component {
             .then(response => {
                 const ufInitials = response.data.map(uf => uf.sigla)
 
+
                 this.setState({ ufs: ufInitials })
+
+                try {
+                    if (this.state.selectedUf != '' || this.state.selectedUf != '0') {
+                        this.handleCities()
+                    }
+                } catch (error) {
+                    null
+                }
+
+
             })
 
     }
 
-    componentDidUpdate = () => {
-        if (this.state.selectedUf != '0'){
-            this.handleCities()
-        } 
 
-    }
-
-    handleCities = () => {
-        const { selectedUf } = this.state
-        Axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`)
+    handleCities = (value) => {
+        // const { selectedUf } = this.state
+        const uf = value;
+        Axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`)
             .then(response => {
                 const citiesName = response.data.map(city => city.nome)
 
-                this.setState({cities: citiesName})
+                this.setState({ cities: citiesName })
             })
 
     }
 
+    validate = () => {
+        const { type, selectedUf, selectedCity } = this.state
+
+        if (!type || !selectedUf || !selectedCity) {
+            showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+            return false
+        }
+        return true
+
+    }
 
     nextPage = () => {
+
+        if (!this.validate()) return
+
         const data = this.state
 
         this.props.navigation.navigate('PetBreed', {
@@ -79,22 +100,17 @@ export default class PetType extends Component {
         type === 'cão' ? 'bold' : 'normal'
     }
 
-
-    // função para remover acento
-    // teste = () => {
-    //     let txt = 'cão'
-    //     let result = removerAcentos(txt)
-    //     alert(result)
-
-    // }
-
-
-
-
-
     render() {
+
+        // if(this.state.selectedUf != ''){
+        //     this.handleUfs()
+        // }
+
         console.log(this.state)
-        const { type, ufs, cities } = this.state
+        console.log(this.state.selectedUf)
+
+
+        const { type, ufs, cities, selectedUf } = this.state
 
         const bold = 'bold'
         const normal = 'normal'
@@ -104,6 +120,8 @@ export default class PetType extends Component {
         let FontBird = type === 'pássaro' ? bold : normal
         let FontRabbit = type === 'coelho' ? bold : normal
         let FontRodent = type === 'roedor' ? bold : normal
+
+
 
         return (
             <React.Fragment>
@@ -117,6 +135,11 @@ export default class PetType extends Component {
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                             {/* <ImageBackground source={require('../../../assets/head.png')} style={{ height: 50 }} imageStyle={{ resizeMode: 'cover' }} /> */}
                             <HeaderDecoration />
+                            <View style={{ backgroundColor: '#fff' }}>
+                                <TouchableOpacity onPress={this.previousPage}>
+                                    <IconArrow />
+                                </TouchableOpacity>
+                            </View>
                             <Main>
                                 <Head />
 
@@ -170,92 +193,42 @@ export default class PetType extends Component {
                                         <Label>Localização do pet <IconPin /> </Label>
 
                                         <View style={{ flexDirection: 'row' }}>
-                                            <TextInput
-                                                style={styles.inputSmall}
-                                                label='Estado'
-                                                mode={'outlined'}
-                                                onChangeText={txt => this.setState({ uf: txt })}
-                                                theme={{
-                                                    colors: {
-                                                        primary: colors.green,
-                                                        underlineColor: 'transparent',
-                                                    }
-                                                }} />
+                                            <Picker
+                                                style={{ height: 50, width: '30%' }}
+                                                selectedValue={this.state.selectedUf}
+                                                onValueChange={(value) =>
+                                                    this.setState({ selectedUf: value }, this.handleCities(value))}
+                                            >
+                                                <Picker.Item color='#ccc' label="UF" value="0" />
+                                                {ufs.map(uf => {
+                                                    return <Picker.Item key={uf} label={uf} value={uf} />
+                                                })}
+                                            </Picker>
 
-                                            <TextInput
-                                                style={styles.input}
-                                                label='Cidade'
-                                                mode={'outlined'}
-                                                value={this.state.city || ''}
-                                                onChangeText={txt => this.setState({ city: txt })}
-                                                theme={{
-                                                    colors: {
-                                                        primary: colors.green,
-                                                        underlineColor: 'transparent',
-                                                    }
-                                                }} />
+                                            <Picker
+                                                style={{ height: 50, width: '70%' }}
+                                                selectedValue={this.state.selectedCity}
+                                                onValueChange={(value) =>
+                                                    this.setState({ selectedCity: value })}
+                                            >
+                                                <Picker.Item color='#ccc' label="Cidade" value="0" />
+                                                {selectedUf == '' || selectedUf == '0' ?
+                                                    <Picker.Item color={colors.pink} label="Nenhum estado selecionado." value="0" />
+                                                    :
+                                                cities.map(cities => {
+                                                    return <Picker.Item key={cities} label={cities} value={cities} />
+                                                })}
+                                            </Picker>
                                         </View>
                                     </ContainerPetLocal>
-
-                                    <View style={{ width: '40%', alignSelf: 'flex-start' }}>
-
-                                        {/* <RNPickerSelect
-                                            placeholder={{
-                                                label: 'Estado',
-                                                value: null,
-                                                color: colors.grey5
-                                            }}
-                                            onValueChange={(value) => console.log(value)}
-
-                                            items={
-                                                // {...ufs.map(uf => (
-                                                // { key:this.state.ufs, label: this.state.ufs, value: this.state.ufs }
-                                                // ))}
-
-                                                this.list()
-                                            }
-
-                                        /> */}
-
-                                        <Picker
-                                            style={{ height: 50 }}
-                                            selectedValue={this.state.selectedUf}
-                                            onValueChange={(itemValue, itemPosition) =>
-                                                this.setState({ selectedUf: itemValue, choosenIndex: itemPosition })}
-                                        >
-                                            <Picker.Item color='#ccc' label="Estado" value="0" />
-                                            {ufs.map(uf => (
-                                                <Picker.Item key={uf} label={uf} value={uf} />
-                                            ))}
-                                        </Picker>
-
-                                        <Picker
-                                            style={{ height: 50 }}
-                                            selectedValue={this.state.selectedCity}
-                                            onValueChange={(itemValue, itemPosition) =>
-                                                this.setState({ selectedCity: itemValue, choosenIndex: itemPosition })}
-                                        >
-                                            <Picker.Item color='#ccc' label="Cidade" value="0" />
-                                            {this.state.selectedUf == '0' ? 
-                                                <Picker.Item color={colors.pink} label="Nenhum estado selecionado." value="0" />
-                                            : 
-                                            cities.map(city => (
-                                                <Picker.Item key={city} label={city} value={city} />
-                                            ))}
-                                        </Picker>
-
-
-                                    </View>
                                 </Form>
 
-                                <ContainerButton>
+
+                                <ContainerButton style={{ marginTop: '13%' }}>
                                     <ButtonNext onPress={this.nextPage}>
                                         <BtnText>Próximo</BtnText>
                                     </ButtonNext>
 
-                                    {/* <ButtonPrevious onPress={this.previousPage}>
-                                        <BtnText>Voltar</BtnText>
-                                    </ButtonPrevious> */}
                                 </ContainerButton>
                             </Main>
                         </ScrollView>
@@ -269,7 +242,7 @@ export default class PetType extends Component {
 
 const styles = StyleSheet.create({
     inputSmall: {
-        backgroundColor: '#ffff',
+        backgroundColor: colors.grey1,
         height: 40,
         alignSelf: 'stretch',
         marginTop: 10,

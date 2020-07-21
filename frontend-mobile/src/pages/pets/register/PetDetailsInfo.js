@@ -10,7 +10,7 @@ import { ContainerButton, BtnText } from '../../user/signUp/styles';
 
 import { KeyboardAvoidingView, TouchableWithoutFeedback, 
         Keyboard, ScrollView, StyleSheet, 
-        View, StatusBar } from "react-native";
+        View, StatusBar, TouchableOpacity } from "react-native";
 
 import { TextIcon, Label, Main, Form, IconViewSmall, 
         IconViewMedium, IconViewBig, ContainerPetDetails, 
@@ -18,7 +18,8 @@ import { TextIcon, Label, Main, Form, IconViewSmall,
 
 import { IconPawSmall, IconPawMedium, IconPawBig, 
         IconPawSmallDisable, IconPawMediumDisable, 
-        IconPawBigDisable } from "../../../components/icons";
+        IconPawBigDisable, 
+        IconArrow} from "../../../components/icons";
 
 
 
@@ -35,6 +36,8 @@ export default class PetDetailsInfo extends Component {
             uf: data.uf,
             city: data.city,
             breed:data.breed,
+            latitude:data.latitude,
+            longitude:data.longitude,
 
             // this page
             age: '',
@@ -47,8 +50,20 @@ export default class PetDetailsInfo extends Component {
         }
         
     }
+    
+    validate = () => {
+		const { porte, age, color, description } = this.state
+
+		if (!porte || !age || !color ||!description) {
+			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+			return false
+		}
+        return true
+        
+	}
 
     nextPage = (props) => {
+        if(!this.validate()) return
 
         const data = this.state
 
@@ -56,7 +71,11 @@ export default class PetDetailsInfo extends Component {
 			screen: 'PetDetailsInfo',
 			params: { data },
 		});
-	}
+    }
+    
+    previousPage = () => {
+        this.props.navigation.goBack(null)
+    }
 
 
     showAlert = () => {
@@ -106,6 +125,11 @@ export default class PetDetailsInfo extends Component {
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                             <HeaderDecoration />
+                            <View style={{ backgroundColor: '#fff' }}>
+                                <TouchableOpacity onPress={this.previousPage}>
+                                    <IconArrow />
+                                </TouchableOpacity>
+                            </View>
                             <Main>
                                 <Head />
 

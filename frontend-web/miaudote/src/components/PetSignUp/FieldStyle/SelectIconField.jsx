@@ -10,7 +10,7 @@ import {
   FormHelperText,
   ListItem,
   ListItemText,
-  ListItemIcon
+  ListItemIcon,
 } from '@material-ui/core';
 
 export default function SelectIconField(props) {
@@ -19,7 +19,7 @@ export default function SelectIconField(props) {
   const { value: selectedValue } = field;
   const [touched, error] = at(meta, 'touched', 'error');
   const isError = touched && error && true;
-  
+
   function _renderHelperText() {
     if (isError) {
       return <FormHelperText>{error}</FormHelperText>;
@@ -33,9 +33,7 @@ export default function SelectIconField(props) {
         {data.map((item, index) => (
           <MenuItem key={index} value={item.value}>
             <ListItem>
-              <ListItemIcon>
-                {item.icon}
-              </ListItemIcon>
+              <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.label} />
             </ListItem>
           </MenuItem>
@@ -47,9 +45,9 @@ export default function SelectIconField(props) {
 }
 
 SelectIconField.defaultProps = {
-  data: []
+  data: [],
 };
 
 SelectIconField.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
 };

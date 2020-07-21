@@ -7,27 +7,30 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Avatar, Container, Typography } from '@material-ui/core';
-import { mainNav } from './style'
-import { header } from '../../../components/Layout/styles'
+import { mainNav } from './style';
+import { header } from '../../../components/Layout/styles';
 
 import PetsIcon from '@material-ui/icons/Pets';
 import SettingsIcon from '@material-ui/icons/Settings';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-
-const userPhoto = require('../../../images/petImg/dog.jpg')
+const userPhoto = require('../../../images/petImg/dog.jpg');
 
 export default function Perfil() {
-  const classesMain = mainNav()
-  const classesHeader = header()
+  const classesMain = mainNav();
+  const classesHeader = header();
   const [state, setState] = React.useState({
     left: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
       return;
     }
 
@@ -41,18 +44,16 @@ export default function Perfil() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <Container className={classesMain.perfilField}>
-        <Avatar alt="João andrade" src={userPhoto} className={classesMain.userPhoto} />
-        <Typography
-          variant="subtitle1"
-        >
-          João andrade
-        </Typography>
+        <Avatar
+          alt="João andrade"
+          src={userPhoto}
+          className={classesMain.userPhoto}
+        />
+        <Typography variant="subtitle1">João andrade</Typography>
       </Container>
       <Divider />
       <List component="nav" aria-label="main mailbox folders">
-
         <Link to="/myPet" className={classesHeader.linksPerfil}>
-
           <ListItem button>
             <ListItemIcon>
               <PetsIcon />
@@ -69,7 +70,6 @@ export default function Perfil() {
             <ListItemText primary="perfil" />
           </ListItem>
         </Link>
-
       </List>
       <Divider />
 
@@ -83,7 +83,7 @@ export default function Perfil() {
           </ListItem>
         </Link>
       </List>
-    </div >
+    </div>
   );
 
   return (
@@ -91,8 +91,8 @@ export default function Perfil() {
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon /></
-          Button>
+            <MenuIcon />
+          </Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}

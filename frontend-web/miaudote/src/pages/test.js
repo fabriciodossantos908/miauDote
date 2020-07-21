@@ -1,54 +1,77 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
-import Paper from '@material-ui/core/Paper';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Typography, Button } from '@material-ui/core';
+
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+
+import CheckoutPet from '../components/PetSignUp/typeRegister/CheckoutPet';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: 180,
-  },
-  container: {
+  modal: {
     display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 0,
   },
   paper: {
-    margin: theme.spacing(1),
-  },
-  svg: {
-    width: 100,
-    height: 100,
-  },
-  polygon: {
-    fill: theme.palette.common.white,
-    stroke: theme.palette.divider,
-    strokeWidth: 1,
+    width: 550,
+    height: 550,
+    borderRadius: 20,
+    backgroundColor: theme.palette.background.paper,
+    // boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
   },
 }));
 
 export default function Test() {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
-  const handleChange = () => {
-    setChecked((prev) => !prev);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
-    <div className={classes.root}>
-      <FormControlLabel
-        control={<Switch checked={checked} onChange={handleChange} />}
-        label="Show"
-      />
-      <div className={classes.container}>
-        <Fade in={checked} timeout={1200}>
-          <Paper elevation={4} className={classes.paper}>
-            <svg className={classes.svg}>
-              <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
-            </svg>
-          </Paper>
-        </Fade>
+    <React.Fragment>
+      <Typography variant="h4">
+        The Pet register modal right under here.
+      </Typography>
+      <div>
+        <Button type="button" onClick={handleOpen} variant="outlined">
+          Cadastrar pet
+        </Button>
+        <Modal
+          // aria-labelledby="transition-modal-title"
+          // aria-describedby="transition-modal-description"
+          disablePortal
+          disableEnforceFocus
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          disableBackdropClick
+          closeAfterTransition
+          // BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <Button onClick={handleClose} style={{ marginLeft: 400 }}>
+                <CloseRoundedIcon />
+              </Button>
+              <CheckoutPet />
+            </div>
+          </Fade>
+        </Modal>
       </div>
-    </div>
+    </React.Fragment>
   );
 }

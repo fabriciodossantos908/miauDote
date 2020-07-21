@@ -235,6 +235,7 @@ export const ModalTitle = styled.Text`
    color: #1bc7cb;
    margin-top: 24px;
    text-align: center;
+   margin-top: 24px;
 `;
 
 export const ModalText = styled.Text`

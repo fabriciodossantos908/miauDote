@@ -1,19 +1,25 @@
 import colors from '../../../components/colors';
 import React, { Component } from 'react';
 
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, 
-        ScrollView, StatusBar, View, FlatList, StyleSheet, Text, ActivityIndicator } 
-        from "react-native";
+import {
+    KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard,
+    ScrollView, StatusBar, View, FlatList, StyleSheet, Text, ActivityIndicator, TouchableOpacity
+}
+    from "react-native";
 
-import { Label, Main, Form, ButtonNext, ContainerSearch, ContainerSearchIcon, 
-        SearchInput, ListContainer } 
-        from './styles';
+import {
+    Label, Main, Form, ButtonNext, ContainerSearch, ContainerSearchIcon,
+    SearchInput, ListContainer, UnderlinetText
+}
+    from './styles';
 
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
 // import BreedList from './services/BreedList';
 import { HeaderDecoration, Head } from './services/header';
-import { IconSearch } from '../../../components/icons';
-import { catBreed, birdBreed } from './services/listBreed';
+import { IconSearch, IconArrow } from '../../../components/icons';
+import { catBreed, birdBreed, dogBreed, rodentBreed, rabbitBreed } from './services/listBreed';
+import { showAlertMessage } from '../../../components/alert';
+import { bold } from 'colorette';
 
 
 export default class PetBreed extends Component {
@@ -25,44 +31,37 @@ export default class PetBreed extends Component {
             name: data.name,
             gender: data.gender,
             type: data.type,
-            uf: data.uf,
-            city: data.city,
-
-            data: '',
-            // data: [
-            //     { id: 0, petBreed: 'Persa' },
-            //     { id: 1, petBreed: 'Siamês' },
-            //     { id: 2, petBreed: 'Himalaia' },
-            //     { id: 4, petBreed: 'Maine Coon' },
-            //     { id: 5, petBreed: 'Angorá' },
-            //     { id: 6, petBreed: 'Siamês' },
-            //     { id: 7, petBreed: 'Himalaia' },
-            //     { id: 9, petBreed: 'Maine Coon' },
-            //     { id: 10, petBreed: 'Angorá' },
-            //     { id: 11, petBreed: 'Siamês' },
-            //     { id: 12, petBreed: 'Himalaia' },
-            //     { id: 14, petBreed: 'Maine Coon' },
-            //     { id: 15, petBreed: 'Angorá' },
-            //     { id: 16, petBreed: 'Siamês' },
-            //     { id: 17, petBreed: 'Repo 3' },
-            //     { id: 19, petBreed: 'Maine Coon' },
-            // ],
-            page: 1,
+            uf: data.selectedUf,
+            city: data.selectedCity,
+            latitude:data.latitude,
+            longitude:data.longitude,
+            data: [],
+            dataBackup: [],
             loading: false,
             breed: '',
             search: '',
         };
-        this.arrayholder = this.state.data
+        this.arrayholder = []
     }
 
 
     // ****** Flatlist
 
-    componentDidMount = () =>{
-        this.state.type === 'gato'?
-        this.setState({data: catBreed}) : 
-        this.state.type === 'pássaro' ?
-        this.setState({data:birdBreed}): null
+    componentDidMount = () => {
+        const { type } = this.state
+        this.state.type === 'gato' ?
+            this.setState({ data: catBreed, dataBackup: catBreed }) :
+            this.state.type === 'pássaro' ?
+                this.setState({ data: birdBreed, dataBackup:birdBreed }) : 
+                type === 'cão' ?
+                this.setState({data: dogBreed, dataBackup: dogBreed}) :
+                type === 'roedor' ?
+                this.setState({data: rodentBreed, dataBackup: rodentBreed}) :
+                type === 'coelho' ? 
+                this.setState({data: rabbitBreed, dataBackup: rabbitBreed}) :
+                null
+
+        // this.arrayholder = this.state.data
     }
 
     getBreed = (item) => {
@@ -78,7 +77,6 @@ export default class PetBreed extends Component {
         const color = item.petBreed === this.state.breed ? "bold" : 'normal';
 
         return (
-            // <View style={{ backgroundColor, marginTop: 10, height: 30 }}>
             <View style={{
                 backgroundColor,
                 width: '100%',
@@ -100,7 +98,8 @@ export default class PetBreed extends Component {
     };
 
     SearchFilterFunction(text) {
-        const newData = this.arrayholder.filter(function (item) {
+        // const newData = this.state.dataBackup.fi
+        const newData = this.state.dataBackup.filter(function (item) {
             const itemData = item.petBreed ? item.petBreed.toUpperCase() : ''.toUpperCase();
             const textData = text.toUpperCase();
             return itemData.indexOf(textData) > -1;
@@ -112,23 +111,41 @@ export default class PetBreed extends Component {
         });
     }
 
-    retorno = () => {
-        return this.state.breed
+    validate = () => {
+        const { breed } = this.state
+
+        if (!breed) {
+            showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+            return false
+        }
+        return true
+
     }
 
+    noneSelected = () => {
+		const text = 'Não definido'
+
+		this.setState({ breed: text })
+	}
+
     nextPage = (props) => {
+        if (!this.validate()) return
 
         const data = this.state
 
-		this.props.navigation.navigate('PetDetailsInfo', {
-			screen: 'PetBreed',
-			params: { data },
-		});
-	}
+        this.props.navigation.navigate('PetDetailsInfo', {
+            screen: 'PetBreed',
+            params: { data },
+        });
+    }
 
+    previousPage = () => {
+        this.props.navigation.goBack(null)
+    }
 
     render(props) {
-        console.log(this.state.breed)
+        // console.log(this.state.breed)
+        console.log(this.state)
 
         return (
             <React.Fragment>
@@ -141,15 +158,18 @@ export default class PetBreed extends Component {
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                             <HeaderDecoration />
+                            <View style={{ backgroundColor: '#fff' }}>
+                                <TouchableOpacity onPress={this.previousPage}>
+                                    <IconArrow />
+                                </TouchableOpacity>
+                            </View>
                             <Main>
                                 <Head />
 
                                 <Form style={{ alignItems: 'stretch' }}>
                                     <Label>Qual a raça do {this.state.name}?
-                                        <Label style={{ color: colors.green }}>{this.props.breed}</Label>
+                                        <Label style={{ color: colors.green, marginLeft:5, fontWeight:"bold" }}>{this.state.breed}</Label>
                                     </Label>
-                                    {/* <BreedList /> */}
-
 
                                     <View style={{ marginTop: 10 }}>
                                         <ContainerSearch>
@@ -180,10 +200,12 @@ export default class PetBreed extends Component {
                                         />
                                     </ListContainer>
 
-
+                                    <TouchableOpacity style={{ alignSelf: 'flex-start' }} onPress={this.noneSelected}>
+                                        <UnderlinetText>Não sei a raça do meu pet.</UnderlinetText>
+                                    </TouchableOpacity>
 
                                 </Form>
-                                <ContainerButton>
+                                <ContainerButton style={{marginTop:'10%'}}>
                                     <ButtonNext onPress={this.nextPage}>
                                         <BtnText>Próximo</BtnText>
                                     </ButtonNext>

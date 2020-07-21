@@ -3,7 +3,7 @@ import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 
-const profile = require("../../../images/joao.jpg")
+const profile = require('../../../images/joao.jpg');
 
 const StyledBadge = withStyles((theme) => ({
   badge: {

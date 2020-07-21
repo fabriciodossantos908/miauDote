@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, Text, Image, View, TouchableOpacity, ImageBackground, SafeAreaView, StatusBar } from "react-native";
-
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, Text, View, TouchableOpacity, StatusBar, Alert } from "react-native";
 
 import { TextInput } from 'react-native-paper';
 
 import { ContainerRow, TextIcon, Label, UnderlinetText, Main, Form, IconView, ButtonNext } from './styles';
 import { ContainerButton, BtnText } from '../../user/signUp/styles';
 import { HeaderDecoration, Head } from './services/header';
-import { IconFemale, IconMale } from '../../../components/icons';
+import { IconFemale, IconMale, IconArrow } from '../../../components/icons';
 import colors from '../../../components/colors';
+import { showAlertMessage } from '../../../components/alert';
+
+import * as Location from 'expo-location';
 
 export default class PetBasicInfo extends Component {
 
@@ -19,19 +20,75 @@ export default class PetBasicInfo extends Component {
 		this.state = {
 			name: '',
 			gender: '',
+			longitude:0,
+			latitude:0,
+			// latitude: -23.5517015,
+			// longitude: -46.9051666,
 			buttonFemale: '#F68E90',
 			buttonMale: '#60BDEF',
 		}
 	}
 
+	componentDidMount = () => {
+		Alert.alert(
+			"Precisamos de sua permissão.",
+			"Antes de tudo, precisamos de sua localização, para que possamos divulgar a sua doação para pessoas perto de você.",
+			[
+				{ text: "OK", onPress: () => this._getLocation() }
+			],
+			{ cancelable: false }
+		);
+
+
+	}
+
+	_getLocation = async () => {
+		this.setState({ longitude: longitude });
+
+		const { status } = await Location.requestPermissionsAsync();
+		// Location.getPermissionsAsync()
+
+		if (status !== 'granted') {
+			alert('ops... Precisamos dessa permissão');
+			// this.setState({
+			//     // errorMessage: 'ops... Precisamos dessa permissão',
+			//     // });
+			return
+		}
+
+		let location = await Location.getCurrentPositionAsync();
+
+		const { latitude, longitude } = location.coords
+
+		console.log(latitude, longitude);
+		this.setState({ latitude: latitude, longitude: longitude })
+
+	};
+
+	validate = () => {
+		const { name, gender, latitude, longitude } = this.state
+
+		if (!name || !gender || latitude == 0 || longitude == 0) {
+			showAlertMessage('Ops...Parece que faltou algo!', 'Preencha todos os campos para prosseguir.')
+			console.log('campos obrigatórios')
+			return false
+		}
+		return true
+	}
+
 	nextPage = (props) => {
-		// **** validações vão aqui ***** //
+		if (!this.validate()) return
+
 		const data = this.state
 
 		this.props.navigation.navigate('PetType', {
 			screen: 'PetBasicInfo',
 			params: { data },
 		});
+	}
+
+	previousPage = () => {
+		this.props.navigation.goBack(null)
 	}
 
 	FontBold = () => {
@@ -94,6 +151,11 @@ export default class PetBasicInfo extends Component {
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 						<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
 							<HeaderDecoration />
+							<View style={{ backgroundColor: '#fff' }}>
+								<TouchableOpacity onPress={this.previousPage}>
+									<IconArrow />
+								</TouchableOpacity>
+							</View>
 							<Main>
 								<Head />
 
@@ -105,7 +167,7 @@ export default class PetBasicInfo extends Component {
 										label='Nome'
 										mode={'outlined'}
 										value={this.state.name || ''}
-										onChangeText={txt => this.setState({name: txt})}
+										onChangeText={txt => this.setState({ name: txt })}
 										theme={{
 											colors: {
 												primary: '#1bc7cb',
@@ -163,7 +225,7 @@ export default class PetBasicInfo extends Component {
 
 const styles = StyleSheet.create({
 	input: {
-		backgroundColor: '#ffff',
+		backgroundColor: '#f7f7f7',
 		height: 40,
 		alignSelf: 'stretch',
 		marginBottom: 60,
