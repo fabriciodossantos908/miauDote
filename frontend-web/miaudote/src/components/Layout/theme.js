@@ -76,6 +76,8 @@ let themeMain = createMuiTheme({
         color: palette.primary.contrastText,
       },
     },
+
+    MuiButtonBase: { root: { marginRight: 10 } },
     MuiStepper: {
       line: {
         width: 2,

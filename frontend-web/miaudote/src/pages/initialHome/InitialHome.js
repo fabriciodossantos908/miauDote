@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { mainHome, theme } from '../../components/Layout/styles';
-import { Grid, CardMedia, Typography, Fade } from '@material-ui/core';
+import { Grid, CardMedia, Typography, Fade, Slide } from '@material-ui/core';
 
 import CheckoutUserStep from '../../components/signUp/CheckoutUser/checkoutUserStep';
 
@@ -65,20 +65,27 @@ export default function InitialHome() {
 
   return (
     <Grid item container xs={12} className={classes.mainPaper}>
-      <Grid item container direction="row">
-        <Grid item xs={6} style={{ marginBottom: 50 }}>
-          <Grid item xs={6}>
-            <CardMedia
-              image={Dog_boxer}
-              alt="boxer dog"
-              className={classes.descSide}
-            >
-              <Fade in={checked} timeout={1200}>
-                <Grid
-                  container
-                  justify="center"
-                  orientation="column"
-                  className={classes.descContent}
+      <Grid item xs={12}>
+        <CardMedia
+          image={Dog_boxer}
+          alt="boxer dog"
+          style={{ width: '100%' }}
+          className={classes.descSide}
+        >
+          <Grid container direction="row">
+            <Grid item xs={6}>
+              <Grid
+                container
+                justify="center"
+                orientation="column"
+                className={classes.descContent}
+              >
+                <Slide
+                  direction="down"
+                  in={checked}
+                  timeout={2500}
+                  mountOnEnter
+                  unmountOnExit
                 >
                   <Grid item xs={8}>
                     <Typography
@@ -89,6 +96,15 @@ export default function InitialHome() {
                       Seja bem vindo(a)
                     </Typography>
                   </Grid>
+                </Slide>
+
+                <Slide
+                  direction="down"
+                  in={checked}
+                  timeout={2500}
+                  mountOnEnter
+                  unmountOnExit
+                >
                   <Grid item xs={8}>
                     <Typography
                       variant="h4"
@@ -98,6 +114,15 @@ export default function InitialHome() {
                       ao miaudote!!
                     </Typography>
                   </Grid>
+                </Slide>
+
+                <Slide
+                  direction="down"
+                  in={checked}
+                  timeout={2500}
+                  mountOnEnter
+                  unmountOnExit
+                >
                   <Grid item xs={8}>
                     <Typography
                       variant="h5"
@@ -105,18 +130,28 @@ export default function InitialHome() {
                       style={{ color: 'white' }}
                     >
                       cadastre-se ou faça o login, para ter acesso a todas as
-                      fofurinhas do nosso Brasil !!.
+                      fofurinhas do nosso Brasil !!
                     </Typography>
                   </Grid>
-                </Grid>
-              </Fade>
-            </CardMedia>
+                </Slide>
+              </Grid>
+            </Grid>
+
+            <Slide
+              direction="left"
+              in={checked}
+              timeout={2500}
+              mountOnEnter
+              unmountOnExit
+            >
+              <Grid item xs={6}>
+                <CheckoutUserStep />
+              </Grid>
+            </Slide>
           </Grid>
-        </Grid>
-        <Grid item xs={6}>
-          <CheckoutUserStep />
-        </Grid>
+        </CardMedia>
       </Grid>
+      {/* Social Area section */}
       <Grid item container justify="center">
         <Grid item>
           <Typography

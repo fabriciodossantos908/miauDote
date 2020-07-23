@@ -94,8 +94,8 @@ const formBase = makeStyles(() => ({
   FormPaper: {
     width: 500,
     height: 500,
+    marginTop: '5vh',
     marginLeft: 50,
-    backgroundColor: palette.background.default,
     [theme.breakpoints.down(600 + theme.spacing(3) * 2)]: {
       width: 300,
     },
@@ -202,18 +202,16 @@ const mainHome = makeStyles({
   mainPaper: {
     backgroundColor: palette.background.paper,
     minHeight: 300,
-    padding: theme.spacing(2),
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
   },
   descSide: {
-    width: theme.spacing(85),
     height: 500,
-    borderRadius: 20,
+    marginBottom: '7vh',
   },
   descContent: {
     height: '100%',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    marginTop: '2vh',
     borderRadius: 20,
   },
   icon: {

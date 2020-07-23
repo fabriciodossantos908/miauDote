@@ -21,7 +21,7 @@ export default function PetList() {
           {/* Corpo da tela de filtragem */}
           <Grid item container direction="column" className={classes.body}>
             {/* Barra de perquisa */}
-            <Grid item>
+            <Grid item container justify="center" alignContent="center">
               <SearchBar />
               {/* <SearchBar /> */}
             </Grid>

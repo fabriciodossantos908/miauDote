@@ -30,10 +30,10 @@ export default function FormUserPersonalInfo(props) {
   const {
     formField: { celular, sexo, data_nascimento, cpf },
   } = props;
-  const test = props;
+  const { active } = props;
   return (
     <React.Fragment>
-      <Fade timeout={500} in={test}>
+      <Fade timeout={500} in={active}>
         <Grid item className={classes.inputPaper}>
           <InputField
             name={celular.name}
@@ -43,7 +43,7 @@ export default function FormUserPersonalInfo(props) {
           />
         </Grid>
       </Fade>
-      <Fade timeout={600} in={test}>
+      <Fade timeout={600} in={active}>
         <Grid item className={classes.inputPaper}>
           <InputField
             name={data_nascimento.name}
@@ -53,7 +53,7 @@ export default function FormUserPersonalInfo(props) {
           />
         </Grid>
       </Fade>
-      <Fade timeout={700} in={test}>
+      <Fade timeout={700} in={active}>
         <Grid item className={classes.inputPaper}>
           <InputField
             name={cpf.name}
@@ -63,7 +63,7 @@ export default function FormUserPersonalInfo(props) {
           />
         </Grid>
       </Fade>
-      <Fade timeout={800} in={test}>
+      <Fade timeout={800} in={active}>
         <Grid item className={classes.inputPaper}>
           <SelectField
             name={sexo.name}

@@ -8,6 +8,8 @@ const profilePhoto = require('../../../images/fabricio.jpg');
 export default function UserProfile() {
   const classesProfile = profile();
 
+  const user = localStorage.getItem('user');
+
   return (
     <React.Fragment>
       <Grid container>
@@ -22,7 +24,7 @@ export default function UserProfile() {
             </Grid>
 
             <Grid item xs={4}>
-              <Typography variant="h3">Davi Soares</Typography>
+              <Typography variant="h3">Olá {user}</Typography>
 
               <Grid container spacing={3}>
                 <Grid item>

@@ -37,6 +37,12 @@ import {
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
+import { Field } from 'formik';
+import { TextField } from 'material-ui-formik-components/TextField';
+import { Select, RadioGroup } from 'material-ui-formik-components/Select';
+
+import { FormikRadioButton } from '../../FieldStyle';
+
 const steps = ['Dados iniciais', 'Dados Pessoais', 'Endereço'];
 
 const formsFields = [
@@ -50,7 +56,7 @@ const formsFields = [
   },
 ];
 
-function _renderStepContent(step, test) {
+function _renderStepContent(step, active) {
   switch (step) {
     case 0:
       return (
@@ -64,7 +70,7 @@ function _renderStepContent(step, test) {
         <FormUserPersonalInfo
           formField={formsFields[0].formField}
           useStyle={useStyle}
-          test={test}
+          active={active}
         />
       );
     case 2:
@@ -72,6 +78,7 @@ function _renderStepContent(step, test) {
         <FormUserAddress
           formField={formsFields[0].formField}
           useStyle={useStyle}
+          active={active}
         />
       );
     default:
@@ -92,7 +99,8 @@ export default function CheckoutUSerStep() {
   const isLastStep = activeStep === steps.length - 1;
   const [isLogin, setIsLogin] = useState(false);
   const [authRequesStatus, setauthRequesStatus] = useState(false);
-  const [test, seTtest] = useState(false);
+  const [active, setActive] = useState(false);
+
   function ColorlibStepIcon(props) {
     const classes = useColorlibStepIconStyles();
     const { active, completed } = props;
@@ -146,15 +154,15 @@ export default function CheckoutUSerStep() {
     // await _sleep(1000);
     //alert(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
-
     Axios.post(
       'http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/autenticar',
       values,
     )
       .then(function (response) {
-        console.log(JSON.stringify(response));
-        alert('Are loged');
         setauthRequesStatus(true);
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', response.data.usuario.nome);
+        localStorage.setItem('id', response.data.usuario.id);
       })
       .catch(function (error) {
         alert('ops! Usuário e ou senha estão errados');
@@ -170,7 +178,7 @@ export default function CheckoutUSerStep() {
     if (isLastStep) {
       _submitForm(values, actions);
     } else {
-      seTtest(true);
+      setActive(true);
       setActiveStep(activeStep + 1);
       actions.setTouched({});
       actions.setSubmitting(false);
@@ -181,6 +189,7 @@ export default function CheckoutUSerStep() {
     setActiveStep(activeStep - 1);
   }
 
+  //   use them as a trigger to change the formik params
   function handleLogin() {
     setIsLogin((isLogin) => !isLogin);
   }
@@ -248,7 +257,7 @@ export default function CheckoutUSerStep() {
                   {/* Content grid */}
                   <Grid item xs={10} className={classesForm.content}>
                     {isLogin === false
-                      ? _renderStepContent(activeStep)
+                      ? _renderStepContent(activeStep, active)
                       : _renderLoginContent()}
                   </Grid>
                   {/* Button grid */}

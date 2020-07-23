@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Fade } from '@material-ui/core';
 import { InputField, SelectField } from '../../../FieldStyle';
 
 const states = [
@@ -26,90 +26,101 @@ export default function FormUserAddress(props) {
   const {
     formField: { uf, cep, cidade, bairro, logradouro, numero, complemento },
   } = props;
+
+  const { active } = props;
+
   return (
     <React.Fragment>
-      <Grid
-        item
-        container
-        xs={12}
-        direction="row"
-        className={classes.inputPaper}
-      >
-        <Grid item xs={6}>
-          <InputField
-            name={cep.name}
-            variant="outlined"
-            label={cep.label}
-            fullWidth
-          />
+      <Fade timeout={500} in={active}>
+        <Grid
+          item
+          container
+          xs={12}
+          direction="row"
+          className={classes.inputPaper}
+        >
+          <Grid item xs={6}>
+            <InputField
+              name={cep.name}
+              variant="outlined"
+              label={cep.label}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <InputField
+              name={logradouro.name}
+              variant="outlined"
+              label={logradouro.label}
+              fullWidth
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <InputField
-            name={logradouro.name}
-            variant="outlined"
-            label={logradouro.label}
-            fullWidth
-          />
-        </Grid>
-      </Grid>
-      <Grid
-        item
-        container
-        xs={12}
-        direction="row"
-        className={classes.inputPaper}
-      >
-        <Grid item xs={6}>
-          <InputField
-            name={cidade.name}
-            variant="outlined"
-            label={cidade.label}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <InputField
-            name={bairro.name}
-            variant="outlined"
-            label={bairro.label}
-            fullWidth
-          />
-        </Grid>
-      </Grid>
-      <Grid
-        item
-        container
-        xs={12}
-        direction="row"
-        justify="space-between"
-        className={classes.inputPaper}
-      >
-        <Grid item xs={5} alignItems="center">
-          <InputField
-            name={numero.name}
-            variant="outlined"
-            label={numero.label}
-            fullWidth
-          />
-        </Grid>
+      </Fade>
 
-        <Grid item xs={3} className={classes.inputPaper}>
-          <SelectField
-            name={uf.name}
-            label={uf.label}
-            data={states}
-            fullWidth
-          />
+      <Fade timeout={600} in={active}>
+        <Grid
+          item
+          container
+          xs={12}
+          direction="row"
+          className={classes.inputPaper}
+        >
+          <Grid item xs={6}>
+            <InputField
+              name={cidade.name}
+              variant="outlined"
+              label={cidade.label}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <InputField
+              name={bairro.name}
+              variant="outlined"
+              label={bairro.label}
+              fullWidth
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={4} className={classes.inputPaper}>
-          <InputField
-            name={complemento.name}
-            variant="outlined"
-            label={complemento.label}
-            fullWidth
-          />
+      </Fade>
+
+      <Fade timeout={700} in={active}>
+        <Grid
+          item
+          container
+          xs={12}
+          direction="row"
+          justify="space-between"
+          className={classes.inputPaper}
+        >
+          <Grid item xs={5} alignItems="center">
+            <InputField
+              name={numero.name}
+              variant="outlined"
+              label={numero.label}
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={3} className={classes.inputPaper}>
+            <SelectField
+              name={uf.name}
+              label={uf.label}
+              data={states}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={4} className={classes.inputPaper}>
+            <InputField
+              name={complemento.name}
+              variant="outlined"
+              label={complemento.label}
+              fullWidth
+            />
+          </Grid>
         </Grid>
-      </Grid>
+      </Fade>
     </React.Fragment>
   );
 }

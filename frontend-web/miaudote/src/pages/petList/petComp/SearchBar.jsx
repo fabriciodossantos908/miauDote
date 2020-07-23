@@ -1,15 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Collapse from '@material-ui/core/Collapse';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {
-  InputBase,
   Divider,
   Grid,
   TextField,
   Checkbox,
-  withStyles,
   Typography,
 } from '@material-ui/core';
 
@@ -28,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: palette.primary.main,
   },
   dividerVertical: {
+    width: 2,
+    height: 100,
+    marginTop: 4,
+    marginRight: 4,
     backgroundColor: palette.primary.main,
   },
 }));
@@ -43,37 +44,37 @@ export default function SearchBar(props) {
 
   return (
     <React.Fragment>
-      <Grid item container justify="center" xs={4}>
-        <Grid item container direction="row" justify="flex-end">
-          <Grid>
-            <TextField
-              placeholder="Encontre seu novo pet"
-              inputProps={{ 'aria-label': 'Encontre seu novo pet' }}
-            />
-          </Grid>
-          <Grid>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={
-                    <FilterListIcon style={{ color: palette.primary.light }} />
-                  }
-                  checked={checked}
-                  onChange={handleChange}
-                  checkedIcon={
-                    <FilterListIcon style={{ color: palette.primary.dark }} />
-                  }
-                  name="checkedH"
-                />
-              }
-              label="Filtros"
-            />
-          </Grid>
+      {/* Search bar */}
+      <Grid item xs={6} container direction="row">
+        <Grid item>
+          <TextField
+            placeholder="Encontre seu novo pet"
+            inputProps={{ 'aria-label': 'Encontre seu novo pet' }}
+          />
+        </Grid>
+        <Grid item>
+          <FormControlLabel
+            control={
+              <Checkbox
+                icon={
+                  <FilterListIcon style={{ color: palette.primary.light }} />
+                }
+                checked={checked}
+                onChange={handleChange}
+                checkedIcon={
+                  <FilterListIcon style={{ color: palette.primary.dark }} />
+                }
+                name="checkedH"
+              />
+            }
+            label="Filtros"
+          />
         </Grid>
       </Grid>
-      <Divider className={classes.divider} orientation="horizontal" />
-      <Grid item>
+      {/* Tabs section */}
+      <Grid item xs={12}>
         <Collapse in={checked}>
+          <Divider className={classes.divider} orientation="horizontal" />
           <Grid
             item
             container
@@ -82,7 +83,9 @@ export default function SearchBar(props) {
             direction="row"
           >
             <Grid item xs={4}>
-              <Typography variant="h4">Tipo</Typography>
+              <Typography variant="h4" align="center">
+                Tipo
+              </Typography>
               <Grid>
                 <Tab name="Cachorro" />
                 <Tab name="Gato" />
@@ -92,20 +95,12 @@ export default function SearchBar(props) {
             <Divider className={classes.dividerVertical} />
 
             <Grid item xs={4}>
-              <Typography variant="h4">Tipo</Typography>
-              <Grid>
-                <Tab name="Cachorro" />
-                <Tab name="Gato" />
-                <Tab name="Pássaro" />
-              </Grid>
-            </Grid>
-            <Divider className={classes.dividerVertical} />
-            <Grid item xs={4}>
-              <Typography variant="h4">Tipo</Typography>
-              <Grid>
-                <Tab name="Cachorro" />
-                <Tab name="Gato" />
-                <Tab name="Pássaro" />
+              <Typography variant="h4" align="center">
+                Sexo
+              </Typography>
+              <Grid item style={{ marginLeft: 20 }}>
+                <Tab name="Macho" />
+                <Tab name="Fêmea" />
               </Grid>
             </Grid>
           </Grid>
