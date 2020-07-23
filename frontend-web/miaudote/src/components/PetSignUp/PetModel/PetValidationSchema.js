@@ -35,8 +35,8 @@ export default [
       .max(100, nome.maxErrorMsg)
       .required(nome.requiredErrorMsg),
     [sexo.name]: Yup.string().required(nome.requiredErrorMsg),
-    [anos.name]: Yup.string().required(nome.requiredErrorMsg),
-    [meses.name]: Yup.string().required(nome.requiredErrorMsg),
+    // [anos.name]: Yup.string().required(nome.requiredErrorMsg),
+    // [meses.name]: Yup.string().required(nome.requiredErrorMsg),
   }),
   Yup.object().shape({
     [especie.name]: Yup.string()

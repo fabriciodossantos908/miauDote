@@ -49,14 +49,14 @@ export default {
       label: 'Idade*',
       requiredErrorMsg: 'Idade é obrigatório!',
     },
-    anos: {
-      name: 'anos',
-      label: 'anos',
-    },
-    meses: {
-      name: 'meses',
-      label: 'meses',
-    },
+    // anos: {
+    //   name: 'anos',
+    //   label: 'anos',
+    // },
+    // meses: {
+    //   name: 'meses',
+    //   label: 'meses',
+    // },
 
     cuidados_veterinarios: {
       name: 'cuidados_veterinarios',
