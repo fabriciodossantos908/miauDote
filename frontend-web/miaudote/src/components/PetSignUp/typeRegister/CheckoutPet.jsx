@@ -16,9 +16,8 @@ import PetInfo from '../FormPet/PetInfo';
 import PetType from '../FormPet/PetType';
 import PetDesc from '../FormPet/PetDesc';
 import PetAddress from '../FormPet/PetAddress';
-import TypePetRegister from '../FormPet/TypePetRegister';
 
-// import petValidationSchema from '../PetModel/PetValidationSchema';
+import petValidationSchema from '../PetModel/PetValidationSchema';
 import checkoutPetModal from '../PetModel/checkoutPetModel';
 import petInitialInfo from '../PetModel/petInitialValues';
 
@@ -58,7 +57,7 @@ export default function CheckoutCompanyStep() {
   const classesForm = formBase();
   const [activeStep, setActiveStep] = useState(0);
   // const [createStatus, setCreacteStatus] = useState(false);
-  // const currentValidationSchema = petValidationSchema[activeStep];
+  //   const currentValidationSchema = petValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
   // const history = useHistory()
   // function _sleep(ms) {
@@ -114,7 +113,7 @@ export default function CheckoutCompanyStep() {
   return (
     <Formik
       initialValues={petInitialInfo}
-      // validationSchema={petValidationSchema}
+      //   validationSchema={petValidationSchema}
       onSubmit={handleSubmit}
     >
       {({ values, isSubmitting }) => (
