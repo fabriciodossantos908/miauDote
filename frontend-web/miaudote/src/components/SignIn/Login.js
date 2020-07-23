@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import Axios from 'axios';
 
+import Input from './Input';
+
 import { useStyle, login } from '../Layout/styles';
 import { InputField } from '../FieldStyle';
 
@@ -82,6 +84,23 @@ export default function Login(props) {
                 label={senha.label}
                 fullWidth
               />
+              {/* <Input
+                name="birthdate"
+                label={'birthdate'}
+                mask={[
+                  /\d/,
+                  /\d/,
+                  /\d/,
+                  '/',
+                  /\d/,
+                  /\d/,
+                  '/',
+                  /\d/,
+                  /\d/,
+                  /\d/,
+                  /\d/,
+                ]}
+              /> */}
 
               {/* <Grid item container orientation="row" justify="center">
                                                         <Grid item xs={8}>

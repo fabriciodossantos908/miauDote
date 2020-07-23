@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Paper, Slide, Fade } from '@material-ui/core';
 import { InputField, SelectField } from '../../../FieldStyle';
 
 const data = [
@@ -30,40 +30,49 @@ export default function FormUserPersonalInfo(props) {
   const {
     formField: { celular, sexo, data_nascimento, cpf },
   } = props;
+  const test = props;
   return (
     <React.Fragment>
-      <Grid item className={classes.inputPaper}>
-        <InputField
-          name={celular.name}
-          variant="outlined"
-          label={celular.label}
-          fullWidth
-        />
-      </Grid>
-      <Grid item className={classes.inputPaper}>
-        <InputField
-          name={data_nascimento.name}
-          variant="outlined"
-          label={data_nascimento.label}
-          fullWidth
-        />
-      </Grid>
-      <Grid item className={classes.inputPaper}>
-        <InputField
-          name={cpf.name}
-          variant="outlined"
-          label={cpf.label}
-          fullWidth
-        />
-      </Grid>
-      <Grid item className={classes.inputPaper}>
-        <SelectField
-          name={sexo.name}
-          data={data}
-          label={sexo.label}
-          fullWidth
-        />
-      </Grid>
+      <Fade timeout={500} in={test}>
+        <Grid item className={classes.inputPaper}>
+          <InputField
+            name={celular.name}
+            variant="outlined"
+            label={celular.label}
+            fullWidth
+          />
+        </Grid>
+      </Fade>
+      <Fade timeout={600} in={test}>
+        <Grid item className={classes.inputPaper}>
+          <InputField
+            name={data_nascimento.name}
+            variant="outlined"
+            label={data_nascimento.label}
+            fullWidth
+          />
+        </Grid>
+      </Fade>
+      <Fade timeout={700} in={test}>
+        <Grid item className={classes.inputPaper}>
+          <InputField
+            name={cpf.name}
+            variant="outlined"
+            label={cpf.label}
+            fullWidth
+          />
+        </Grid>
+      </Fade>
+      <Fade timeout={800} in={test}>
+        <Grid item className={classes.inputPaper}>
+          <SelectField
+            name={sexo.name}
+            data={data}
+            label={sexo.label}
+            fullWidth
+          />
+        </Grid>
+      </Fade>
     </React.Fragment>
   );
 }

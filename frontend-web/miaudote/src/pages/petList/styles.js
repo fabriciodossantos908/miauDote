@@ -8,7 +8,7 @@ const petStyle = makeStyles({
   body: {
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-    backgroundColor: 'black',
+    backgroundColor: palette.background.default,
   },
   typografy: {
     marginTop: 20,

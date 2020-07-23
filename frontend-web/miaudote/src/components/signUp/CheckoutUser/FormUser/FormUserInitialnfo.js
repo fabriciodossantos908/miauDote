@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Slide, Paper } from '@material-ui/core';
 import { InputField } from '../../../FieldStyle';
 
 export default function FormUserInitialInfo(props) {
@@ -7,6 +7,8 @@ export default function FormUserInitialInfo(props) {
   const {
     formField: { nome, email, senha, senha_confirm },
   } = props;
+
+  const { test } = props;
   return (
     <React.Fragment>
       <Grid item xs={12} className={classes.inputPaper}>

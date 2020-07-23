@@ -35,6 +35,7 @@ import {
   ColorlibConnectorHorizontal,
 } from '../../Layout/styles';
 import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const steps = ['Dados iniciais', 'Dados Pessoais', 'Endereço'];
 
@@ -49,7 +50,7 @@ const formsFields = [
   },
 ];
 
-function _renderStepContent(step) {
+function _renderStepContent(step, test) {
   switch (step) {
     case 0:
       return (
@@ -63,6 +64,7 @@ function _renderStepContent(step) {
         <FormUserPersonalInfo
           formField={formsFields[0].formField}
           useStyle={useStyle}
+          test={test}
         />
       );
     case 2:
@@ -84,11 +86,13 @@ function _renderLoginContent() {
 export default function CheckoutUSerStep() {
   const classes = useStyle();
   const classesForm = formBase();
+  const history = useHistory();
   const [activeStep, setActiveStep] = useState(0);
   const currentUserValidationSchema = userValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
   const [isLogin, setIsLogin] = useState(false);
-
+  const [authRequesStatus, setauthRequesStatus] = useState(false);
+  const [test, seTtest] = useState(false);
   function ColorlibStepIcon(props) {
     const classes = useColorlibStepIconStyles();
     const { active, completed } = props;
@@ -148,21 +152,25 @@ export default function CheckoutUSerStep() {
       values,
     )
       .then(function (response) {
+        console.log(JSON.stringify(response));
         alert('Are loged');
-        // setauthRequesStatus(true)
-        // history.push("/", console.log(response))
+        setauthRequesStatus(true);
       })
       .catch(function (error) {
         alert('ops! Usuário e ou senha estão errados');
         console.log(error);
-        // setauthRequesStatus(false)
+        setauthRequesStatus(false);
       });
+    if (authRequesStatus === true) {
+      history.push('/');
+    }
   }
 
   function _handleSubmit(values, actions) {
     if (isLastStep) {
       _submitForm(values, actions);
     } else {
+      seTtest(true);
       setActiveStep(activeStep + 1);
       actions.setTouched({});
       actions.setSubmitting(false);

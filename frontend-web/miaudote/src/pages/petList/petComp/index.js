@@ -1,3 +1,5 @@
 import PetTab from './petCards';
+import SearchBar from './SearchBar';
+import Tab from './Tab';
 
-export { PetTab };
+export { PetTab, SearchBar, Tab };

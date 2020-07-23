@@ -61,6 +61,11 @@ let themeMain = createMuiTheme({
         },
       },
     },
+    MuiCardContent: {
+      root: {
+        padding: '5px 2px',
+      },
+    },
     MuiButton: {
       root: {
         textTransform: 'none',

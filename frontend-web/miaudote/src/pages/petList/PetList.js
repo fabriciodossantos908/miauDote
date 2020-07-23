@@ -1,7 +1,7 @@
 import React from 'react';
 import { petStyle } from './styles';
 import { Grid, CardMedia, Typography } from '@material-ui/core';
-import { PetTab } from './petComp/';
+import { PetTab, SearchBar } from './petComp/';
 
 const background = require('../../images/background.jpg');
 
@@ -22,11 +22,18 @@ export default function PetList() {
           <Grid item container direction="column" className={classes.body}>
             {/* Barra de perquisa */}
             <Grid item>
-              <h1> search bar will be here</h1>
+              <SearchBar />
+              {/* <SearchBar /> */}
             </Grid>
 
             {/* cards dos pets */}
-            <Grid item xs="12" style={{ marginTop: 50 }}>
+            <Grid
+              item
+              container
+              xs={12}
+              justify="center"
+              style={{ marginTop: 50 }}
+            >
               <PetTab />
             </Grid>
           </Grid>
