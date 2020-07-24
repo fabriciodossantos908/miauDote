@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import Axios from 'axios';
 
-import Input from './Input';
+// import Input from './Input';
 
 import { useStyle, login } from '../Layout/styles';
 import { InputField } from '../FieldStyle';

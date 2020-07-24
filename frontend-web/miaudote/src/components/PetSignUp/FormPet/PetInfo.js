@@ -1,20 +1,39 @@
 import React from 'react';
 import { Grid, FormControlLabel, Checkbox } from '@material-ui/core';
-import { InputField } from '../../FieldStyle';
+import { InputField, SelectField } from '../../FieldStyle';
 
-import { SelectSexType } from '../FieldStyle/';
+// import { SelectSexType } from '../FieldStyle/';
 
 export default function PetInfo(props) {
-  const [checkedYear, setCheckedYear] = React.useState(true);
-  const [checkedMonth, setCheckedMonth] = React.useState(true);
+  //   const [checkedYear, setCheckedYear] = React.useState(true);
+  //   const [checkedMonth, setCheckedMonth] = React.useState(true);
 
-  const handleChangeYear = () => {
-    setCheckedYear((prev) => !prev);
-  };
+  //   const handleChangeYear = () => {
+  //     setCheckedYear((prev) => !prev);
+  //   };
 
-  const handleChangeMonth = () => {
-    setCheckedMonth((prev) => !prev);
-  };
+  //   const handleChangeMonth = () => {
+  //     setCheckedMonth((prev) => !prev);
+  //   };
+
+  const sex = [
+    {
+      value: undefined,
+      label: 'Selecione',
+    },
+    {
+      value: 'F',
+      label: 'Fêmea',
+    },
+    {
+      value: 'M',
+      label: 'Macho',
+    },
+    {
+      value: 'Onknown',
+      label: 'Não sei',
+    },
+  ];
 
   const {
     formField: {
@@ -43,15 +62,15 @@ export default function PetInfo(props) {
           fullWidth
         />
       </Grid>
-      {/* <SelectField
+      <SelectField
         name={sexo.name}
         variant="outlined"
         label={sexo.label}
         data={sex}
         fullWidth
-      /> */}
+      />
 
-      <SelectSexType name={sexo.name} label={sexo.label} />
+      {/* <SelectSexType name={sexo.name} label={sexo.label} /> */}
     </React.Fragment>
   );
 }

@@ -40,5 +40,5 @@ export default {
   [latitude.name]: '-23.548840',
   [longitude.name]: '-46.898081',
   [url_foto.name]: 'http://miau.com/foto.jpg',
-  id_usuario: 1,
+  id_usuario: 2,
 };
