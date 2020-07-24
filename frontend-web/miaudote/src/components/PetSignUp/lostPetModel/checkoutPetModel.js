@@ -9,7 +9,7 @@ export default {
     especie: {
       name: 'especie',
       label: 'Espécie*',
-      requiredErrorMsg: 'Espécie é obrigatório!',
+      requiredErrorMsg: 'Por favor, selecione uma especie!',
     },
     raca: {
       name: 'raca',
@@ -24,7 +24,7 @@ export default {
     descricao: {
       name: 'descricao',
       label: 'Descrição*',
-      requiredErrorMsg: 'Descrição é obrigatório!',
+      requiredErrorMsg: 'Descreva um pouco sobre o pet!',
     },
     porte: {
       name: 'porte',
@@ -44,10 +44,27 @@ export default {
     uf: {
       name: 'uf',
       label: 'uf*',
+      requiredErrorMsg: 'Por favor, selecione sua região!',
     },
     cidade: {
       name: 'cidade',
-      label: 'Cidade',
+      label: 'Cidade*',
+      requiredErrorMsg: 'Digite sua cidade!',
+    },
+    bairro: {
+      name: 'bairro',
+      label: 'Bairro*',
+      requiredErrorMsg: 'Digite seu bairro!',
+    },
+    data: {
+      name: 'data',
+      label: 'Data*',
+      requiredErrorMsg: 'Digite o dia que seu pet desapareceu!',
+    },
+    hora: {
+      name: 'hora',
+      label: 'Hora*',
+      requiredErrorMsg: 'Digite uma hora aproximada que seu pet desapareceu!',
     },
   },
 };

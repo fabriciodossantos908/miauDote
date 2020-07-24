@@ -66,15 +66,17 @@ export default function CheckoutCompanyStep() {
   // }
 
   async function submitForm(values, actions) {
-    const token = localStorage.getItem('auth-token');
-    // const AuthStr = 'Bearer '.concat(USER_TOKEN);
+    const USER_TOKEN = localStorage.getItem('token');
+    const USER_ID = localStorage.getItem('id');
+    const AuthStr = 'Bearer '.concat(USER_TOKEN);
     console.log(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
+    values.id_usuario = USER_ID;
 
     Axios.post(
       'http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets',
       values,
-      { headers: { Authorization: 'bearer ' + token } },
+      { headers: { Authorization: AuthStr } },
     )
       .then(function (response) {
         alert('Cadastrado com sucesso!');

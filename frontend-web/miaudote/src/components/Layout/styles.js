@@ -32,7 +32,7 @@ const useStyle = makeStyles(() => ({
     backgroundColor: 'transparent',
   },
   groupButtons: {
-    width: 200,
+    width: 400,
     height: 50,
     marginLeft: 'auto',
     display: 'flex',
@@ -103,9 +103,6 @@ const formBase = makeStyles(() => ({
   content: {
     height: 340,
     borderRadius: 20,
-  },
-  contentModal: {
-    height: 240,
   },
 }));
 
