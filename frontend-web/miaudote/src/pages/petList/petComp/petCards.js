@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -27,6 +27,7 @@ import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import PetsIcon from '@material-ui/icons/Pets';
 import ToysIcon from '@material-ui/icons/Toys';
 import { palette } from '../../../components/Layout/theme';
+import Axios from 'axios';
 
 // import FemaleIcon from '../../../images/icons/FemaleIcon.svg';
 
@@ -74,132 +75,149 @@ const useStyles = makeStyles({
 
 const photo = require('../../../images/petImg/dog/Cachorro.jpg');
 
-const pets = [
-  {
-    id: 0,
-    nome: 'Tormenta',
-    especie: 'Cachorro',
-    raca: 'Vira-lata',
-    cor: 'Pardo',
-    sexo: 'Macho',
-    idade: '2 anos',
-    uf: 'SP',
-    cidade: 'Osasco',
-    descricao:
-      'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-  },
-  {
-    id: 1,
-    nome: 'Buck',
-    especie: 'Cachorro',
-    raca: 'Golden',
-    cor: 'Pardo',
-    sexo: 'Macho',
-    idade: '2 anos',
-    uf: 'SP',
-    cidade: 'Osasco',
-    descricao:
-      'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-  },
-  {
-    id: 2,
-    nome: 'Dudy',
-    especie: 'Cachorro',
-    raca: 'Golden',
-    cor: 'Pardo',
-    sexo: 'Fêmea',
-    idade: '2 anos',
-    uf: 'SP',
-    cidade: 'Osasco',
-    descricao:
-      'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-  },
-  {
-    id: 3,
-    nome: 'Jhonny',
-    especie: 'Cachorro',
-    raca: 'Boxer',
-    cor: 'Pardo',
-    sexo: 'Macho',
-    idade: '2 anos',
-    uf: 'SP',
-    cidade: 'Osasco',
-    descricao:
-      'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-  },
-  {
-    id: 4,
-    nome: 'Teddy',
-    especie: 'Cachorro',
-    raca: 'York Shine',
-    cor: 'Pardo',
-    sexo: 'Macho',
-    idade: '2 anos',
-    uf: 'SP',
-    cidade: 'Osasco',
-    descricao:
-      'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-  },
-  {
-    id: 5,
-    nome: 'Pandora',
-    especie: 'Cachorro',
-    raca: 'Golden',
-    cor: 'Pardo',
-    sexo: 'Fêmea',
-    idade: '2 anos',
-    uf: 'SP',
-    cidade: 'Osasco',
-    descricao:
-      'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-  },
-  {
-    id: 6,
-    nome: 'Laica',
-    especie: 'Cachorro',
-    raca: 'Vira-lata',
-    cor: 'Pardo',
-    sexo: 'Fêmea',
-    idade: '2 anos',
-    uf: 'SP',
-    cidade: 'Osasco',
-    descricao:
-      'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-  },
-  {
-    id: 7,
-    nome: 'Thor',
-    especie: 'Cachorro',
-    raca: 'Vira-lata',
-    cor: 'Pardo',
-    sexo: 'Macho',
-    idade: '2 anos',
-    uf: 'SP',
-    cidade: 'Osasco',
-    descricao:
-      'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-  },
-  {
-    id: 8,
-    nome: 'Duda',
-    especie: 'Cachorro',
-    raca: 'Golden',
-    cor: 'Pardo',
-    sexo: 'Fêmea',
-    idade: '2 anos',
-    uf: 'SP',
-    cidade: 'Osasco',
-    descricao:
-      'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-  },
-];
+// const pets = [
+//   {
+//     id: 0,
+//     nome: 'Tormenta',
+//     especie: 'Cachorro',
+//     raca: 'Vira-lata',
+//     cor: 'Pardo',
+//     sexo: 'Macho',
+//     idade: '2 anos',
+//     uf: 'SP',
+//     cidade: 'Osasco',
+//     descricao:
+//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
+//   },
+//   {
+//     id: 1,
+//     nome: 'Buck',
+//     especie: 'Cachorro',
+//     raca: 'Golden',
+//     cor: 'Pardo',
+//     sexo: 'Macho',
+//     idade: '2 anos',
+//     uf: 'SP',
+//     cidade: 'Osasco',
+//     descricao:
+//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
+//   },
+//   {
+//     id: 2,
+//     nome: 'Dudy',
+//     especie: 'Cachorro',
+//     raca: 'Golden',
+//     cor: 'Pardo',
+//     sexo: 'Fêmea',
+//     idade: '2 anos',
+//     uf: 'SP',
+//     cidade: 'Osasco',
+//     descricao:
+//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
+//   },
+//   {
+//     id: 3,
+//     nome: 'Jhonny',
+//     especie: 'Cachorro',
+//     raca: 'Boxer',
+//     cor: 'Pardo',
+//     sexo: 'Macho',
+//     idade: '2 anos',
+//     uf: 'SP',
+//     cidade: 'Osasco',
+//     descricao:
+//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
+//   },
+//   {
+//     id: 4,
+//     nome: 'Teddy',
+//     especie: 'Cachorro',
+//     raca: 'York Shine',
+//     cor: 'Pardo',
+//     sexo: 'Macho',
+//     idade: '2 anos',
+//     uf: 'SP',
+//     cidade: 'Osasco',
+//     descricao:
+//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
+//   },
+//   {
+//     id: 5,
+//     nome: 'Pandora',
+//     especie: 'Cachorro',
+//     raca: 'Golden',
+//     cor: 'Pardo',
+//     sexo: 'Fêmea',
+//     idade: '2 anos',
+//     uf: 'SP',
+//     cidade: 'Osasco',
+//     descricao:
+//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
+//   },
+//   {
+//     id: 6,
+//     nome: 'Laica',
+//     especie: 'Cachorro',
+//     raca: 'Vira-lata',
+//     cor: 'Pardo',
+//     sexo: 'Fêmea',
+//     idade: '2 anos',
+//     uf: 'SP',
+//     cidade: 'Osasco',
+//     descricao:
+//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
+//   },
+//   {
+//     id: 7,
+//     nome: 'Thor',
+//     especie: 'Cachorro',
+//     raca: 'Vira-lata',
+//     cor: 'Pardo',
+//     sexo: 'Macho',
+//     idade: '2 anos',
+//     uf: 'SP',
+//     cidade: 'Osasco',
+//     descricao:
+//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
+//   },
+//   {
+//     id: 8,
+//     nome: 'Duda',
+//     especie: 'Cachorro',
+//     raca: 'Golden',
+//     cor: 'Pardo',
+//     sexo: 'Fêmea',
+//     idade: '2 anos',
+//     uf: 'SP',
+//     cidade: 'Osasco',
+//     descricao:
+//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
+//   },
+// ];
 
 export default function PetTab() {
   const classes = useStyles();
   const [open, setOpen] = React.useState();
+  const [pets, setPets] = useState([]);
+  useEffect(() => {
+    window.addEventListener(
+      'load',
+      Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets')
+        .then((result) => {
+          const petsData = result.data;
+          return setPets(petsData);
+        })
+        .catch((err) => {
+          console.log(err);
+        }),
+    );
+    return () => {
+      window.addEventListener('load', console.log('event of load'));
+      // window.addEventListener("load", console.log("this is useEffect return"))
+    };
+  }, []);
 
-  const focusedPet = pets[0].id;
-
+  console.log(pets);
   function handleModal(event) {
     // alert(event.target.id);
     setOpen(2);

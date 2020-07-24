@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid, Fade } from '@material-ui/core';
 import { InputField, SelectField } from '../../../FieldStyle';
+import Input from '../../../SignIn/Input';
+import { RemoveMask } from '../../../../validations/RemoveMask';
 
 const states = [
   {
@@ -27,7 +29,19 @@ export default function FormUserAddress(props) {
     formField: { uf, cep, cidade, bairro, logradouro, numero, complemento },
   } = props;
 
+  const { values } = props;
   const { active } = props;
+
+  const cep = values.cep;
+
+  if (cep > 8) {
+    const readyCep = RemoveMask(cep);
+    //   the axios get query to cep api
+
+    // the obj with the response data
+
+    // change the values data with the response obj
+  }
 
   return (
     <React.Fragment>
@@ -40,6 +54,11 @@ export default function FormUserAddress(props) {
           className={classes.inputPaper}
         >
           <Grid item xs={6}>
+            {/* <Input
+              name={cep.name}
+              label={cep.name}
+              mask={[/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]}
+            /> */}
             <InputField
               name={cep.name}
               variant="outlined"

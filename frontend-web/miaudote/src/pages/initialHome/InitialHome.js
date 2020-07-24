@@ -12,6 +12,8 @@ import { Dog_boxer } from '../../images/petImg/dog/index';
 
 import { makeStyles } from '@material-ui/core/styles';
 
+const baseHome = require('../../images/baseImg/baseHome.jpg');
+
 const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(10),
@@ -59,7 +61,6 @@ export default function InitialHome() {
         'load',
         setChecked((prev) => !prev),
       );
-      // window.addEventListener("load", console.log("this is useEffect return"))
     };
   }, []);
 
@@ -67,8 +68,8 @@ export default function InitialHome() {
     <Grid item container xs={12} className={classes.mainPaper}>
       <Grid item xs={12}>
         <CardMedia
-          image={Dog_boxer}
-          alt="boxer dog"
+          image={baseHome}
+          alt="Photo by Daria Shevtsova from Pexels"
           style={{ width: '100%' }}
           className={classes.descSide}
         >

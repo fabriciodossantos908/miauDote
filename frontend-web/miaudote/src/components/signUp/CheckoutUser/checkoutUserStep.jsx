@@ -36,12 +36,7 @@ import {
 } from '../../Layout/styles';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
-
-import { Field } from 'formik';
-import { TextField } from 'material-ui-formik-components/TextField';
-import { Select, RadioGroup } from 'material-ui-formik-components/Select';
-
-import { FormikRadioButton } from '../../FieldStyle';
+import { palette } from '../../Layout/theme';
 
 const steps = ['Dados iniciais', 'Dados Pessoais', 'Endereço'];
 
@@ -56,7 +51,7 @@ const formsFields = [
   },
 ];
 
-function _renderStepContent(step, active) {
+function _renderStepContent(step, active, values) {
   switch (step) {
     case 0:
       return (
@@ -79,6 +74,7 @@ function _renderStepContent(step, active) {
           formField={formsFields[0].formField}
           useStyle={useStyle}
           active={active}
+          values={values}
         />
       );
     default:
@@ -207,12 +203,12 @@ export default function CheckoutUSerStep() {
             initialValues={
               isLogin === false ? userInitialValues : InitialValues
             }
-            validationSchema={
-              isLogin === false ? currentUserValidationSchema : ''
-            }
+            // validationSchema={
+            //   isLogin === false ? currentUserValidationSchema : ''
+            // }
             onSubmit={isLogin === false ? _handleSubmit : _LoginSubmit}
           >
-            {({ isSubmitting }) => (
+            {({ isSubmitting, values }) => (
               <Form
                 id={
                   isLogin === false
@@ -257,7 +253,7 @@ export default function CheckoutUSerStep() {
                   {/* Content grid */}
                   <Grid item xs={10} className={classesForm.content}>
                     {isLogin === false
-                      ? _renderStepContent(activeStep, active)
+                      ? _renderStepContent(activeStep, active, values)
                       : _renderLoginContent()}
                   </Grid>
                   {/* Button grid */}
@@ -278,7 +274,6 @@ export default function CheckoutUSerStep() {
                         {isLogin === true ? 'Volta' : 'Logar'}
                       </Button>
                     </Grid>
-
                     {activeStep !== 0 && (
                       <Grid item>
                         <Button

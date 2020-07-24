@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { petStyle } from './styles';
 import { Grid, CardMedia, Typography } from '@material-ui/core';
 import { PetTab, SearchBar } from './petComp/';
+import Axios from 'axios';
 
 const background = require('../../images/background.jpg');
 
 export default function PetList() {
+  var pets = [];
   const classes = petStyle();
   return (
     <div className={classes.root}>
@@ -34,7 +36,7 @@ export default function PetList() {
               justify="center"
               style={{ marginTop: 50 }}
             >
-              <PetTab />
+              <PetTab pets={pets} />
             </Grid>
           </Grid>
         </Grid>

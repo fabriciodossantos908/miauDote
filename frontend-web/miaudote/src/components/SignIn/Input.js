@@ -28,9 +28,6 @@ const parseFormikData = (formik, name) => {
     const showError = fieldTouched && Boolean(fieldError);
 
     outputProps = {
-      // value: fieldValue,
-      // onChange: formik.handleChange,
-      // onBlur: formik.handleBlur,
       error: showError,
       helperText: showError ? fieldError : '',
     };
@@ -39,18 +36,10 @@ const parseFormikData = (formik, name) => {
 };
 
 const Input = ({ formik, mask = [], ...props }) => (
-  // <TextField
-  //   {...parseFormikData(formik, props.name)}
-  //   {...props}
-  //   InputProps={{
-  //     inputComponent: mask.length
-  //       ? getMaskedInput(mask)
-  //       : undefined,
-  //   }}
-  // />
   <MaskedInput
     mask={mask}
     name={props.name}
+    variant="outlined"
     value={formik.values[props.name]}
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
@@ -60,11 +49,6 @@ const Input = ({ formik, mask = [], ...props }) => (
         {...parseFormikData(formik, props.name)}
         {...innerProps}
         inputRef={ref}
-        // InputProps={{
-        //   inputComponent: mask.length
-        //     ? getMaskedInput(mask)
-        //     : undefined,
-        // }}
       />
     )}
   />

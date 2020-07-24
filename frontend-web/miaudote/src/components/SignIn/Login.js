@@ -19,7 +19,9 @@ const OtherLogin = (props) => {
         Email
       </Button>
 
-      <Button startIcon={<Facebook />}>Facebook</Button>
+      <Button startIcon={<Facebook />} className={classes.btnSocialLogin}>
+        Facebook
+      </Button>
     </React.Fragment>
   );
 };
@@ -60,31 +62,49 @@ export default function Login(props) {
   // }
 
   return (
-    <Grid container justify="center" alignContent="space-between">
-      <Grid item xs={12}>
-        <Grid container justify="center">
-          <Grid item xs={10}>
-            <Grid
-              container
-              direction="column"
-              justify="space-around"
-              alignItems="center"
-              className={classes.inputPaper}
-            >
-              <InputField
-                name={email.name}
-                variant="outlined"
-                label={email.label}
-                fullWidth
-              />
-              <InputField
-                name={senha.name}
-                type="password"
-                variant="outlined"
-                label={senha.label}
-                fullWidth
-              />
-              {/* <Input
+    <Grid
+      container
+      direction="column"
+      justify="space-around"
+      alignItems="center"
+      className={classesLogin.inputPaper}
+    >
+      <InputField
+        name={email.name}
+        variant="outlined"
+        label={email.label}
+        fullWidth
+      />
+      <InputField
+        name={senha.name}
+        type="password"
+        variant="outlined"
+        label={senha.label}
+        fullWidth
+      />
+      <Link to="/making" className={classes.links}>
+        Esqueceu sua senha? Clique aqui
+      </Link>
+
+      <Grid
+        item
+        container
+        orientation="row"
+        justify="center"
+        alignContent="space-around"
+      >
+        <Grid style={{ marginRight: 10 }}>
+          <Typography variant="subtitle2">Entrar com:</Typography>
+        </Grid>
+        <OtherLogin classesLogin={classesLogin} />
+      </Grid>
+      {/* <Link to="/formCompany" className={classes.links} > */}
+    </Grid>
+  );
+}
+
+{
+  /* <Input
                 name="birthdate"
                 label={'birthdate'}
                 mask={[
@@ -100,39 +120,5 @@ export default function Login(props) {
                   /\d/,
                   /\d/,
                 ]}
-              /> */}
-
-              {/* <Grid item container orientation="row" justify="center">
-                                                        <Grid item xs={8}>
-                                                            <Typography>
-                                                                Ainda não tem uma conta?
-                                                        </Typography>
-                                                        </Grid>
-                                                        <Grid item xs={4}>
-                                                            <BtnsignUp useStyle={useStyle} />
-                                                        </Grid>
-                                                    </Grid> */}
-              <Link to="/making" className={classes.links}>
-                Esqueceu sua senha? Clique aqui
-              </Link>
-
-              <Grid
-                item
-                container
-                orientation="row"
-                justify="center"
-                alignContent="space-around"
-              >
-                <Grid style={{ marginRight: 10 }}>
-                  <Typography variant="subtitle2">Entrar com:</Typography>
-                </Grid>
-                <OtherLogin classesLogin={classesLogin} />
-              </Grid>
-              {/* <Link to="/formCompany" className={classes.links} > */}
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
-  );
+              /> */
 }

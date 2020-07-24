@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/initialHome/InitialHome';
 import CheckoutCompanyStep from './components/signUp/CheckoutCompany/checkoutCompanyStep';
@@ -11,13 +11,24 @@ import HeaderBase from './components/Header/headerBase';
 import HeaderInitial from './components/Header/HeaderInitial';
 import UserProfile from './pages/profile/userProfile/UserProfile';
 import PetList from './pages/petList/PetList';
+import { isNil } from 'lodash';
 
 function Routes() {
+  const [token, setToken] = useState(false);
+  const checkToken = () => {
+    const token = localStorage.getItem('token');
+    isNil(token) ? setToken(false) : setToken(true);
+  };
+  useEffect(() => {
+    window.addEventListener('check', checkToken());
+    return () => {
+      window.addEventListener('check', checkToken());
+    };
+  }, []);
   return (
     <React.Fragment>
       <Router>
-        {/* <HeaderInitial /> */}
-        <HeaderBase />
+        {token === true ? <HeaderBase /> : <HeaderInitial />}
 
         <Switch>
           <Route path="/home" exact>

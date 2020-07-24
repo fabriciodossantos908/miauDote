@@ -42,8 +42,8 @@ const useStyle = makeStyles(() => ({
     height: 40,
   },
   links: {
-    color: palette.primary.contrastText,
     textDecorationLine: 'none',
+    color: palette.primary.main,
     active: {
       color: palette.primary.contrastText,
     },
@@ -184,8 +184,13 @@ const login = makeStyles({
     color: palette.primary.contrastText,
   },
   btnSocialLogin: {
-    backgroundColor: palette.secondary.main,
-    color: palette.text,
+    backgroundColor: palette.primary.main,
+    color: palette.primary.contrastText,
+  },
+  inputPaper: {
+    width: '100%',
+    height: 350,
+    padding: theme.spacing(0.5),
   },
 });
 
@@ -194,19 +199,19 @@ const profile = makeStyles({
     paddingTop: theme.spacing(5),
     width: '100%',
     minHeight: theme.spacing(20),
-    backgroundColor: 'blue',
+    backgroundColor: palette.primary.light,
   },
 });
 
 const mainHome = makeStyles({
   mainPaper: {
     backgroundColor: palette.background.paper,
-    minHeight: 300,
+    minHeight: 600,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
   },
   descSide: {
-    height: 500,
+    height: 700,
     marginBottom: '7vh',
   },
   descContent: {

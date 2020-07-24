@@ -1,33 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { Grid, Typography } from '@material-ui/core';
+import {
+  Grid,
+  Typography,
+  useScrollTrigger,
+  Slide,
+  Container,
+  makeStyles,
+} from '@material-ui/core';
 
 import { theme, header } from '../Layout/styles';
 import { LinksInitial } from './headerComp';
+import { palette } from '../Layout/theme';
+
+const classesHeader = makeStyles(() => ({
+  nav: {
+    marginBottom: -100,
+  },
+}));
 
 export default function HeaderMain() {
   const classes = header();
+  const [opacity, setOpacity] = useState(false);
+
+  function HideOnScroll(props) {
+    const { children, window } = props;
+    const trigger = useScrollTrigger({
+      target: window ? window() : undefined,
+      threshold: 500,
+    });
+
+    return (
+      <AppBar
+        elevation={0}
+        position="sticky"
+        style={
+          trigger !== true
+            ? { backgroundColor: palette.primary.light }
+            : { transition: '1s', backgroundColor: palette.primary.main }
+        }
+      >
+        {children}
+      </AppBar>
+    );
+  }
 
   return (
-    <Grid item>
-      <AppBar position="static">
-        <Toolbar className={classes.appBar}>
-          <Typography variant="h5">Miaudote</Typography>
-          <Grid item container>
-            <Grid
-              item
-              container
-              xs={8}
-              direction="row"
-              justify="space-evenly"
-              style={{ marginLeft: 'auto' }}
-            >
-              <LinksInitial theme={theme} />
-            </Grid>
+    <HideOnScroll>
+      <Toolbar className={classes.appBar}>
+        <Typography variant="h5">Miaudote</Typography>
+        <Grid item container>
+          <Grid
+            item
+            container
+            xs={8}
+            direction="row"
+            justify="space-evenly"
+            style={{ marginLeft: 'auto' }}
+          >
+            <LinksInitial theme={theme} />
           </Grid>
-        </Toolbar>
-      </AppBar>
-    </Grid>
+        </Grid>
+      </Toolbar>
+    </HideOnScroll>
   );
 }
