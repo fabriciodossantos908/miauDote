@@ -1,35 +1,41 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, TextareaAutosize, makeStyles } from '@material-ui/core';
 import { InputField } from '../../FieldStyle';
+import { TextInputFild } from '../../FieldStyle';
 
 import { Field } from 'formik';
+import { theme } from '../../Layout/styles';
+
+const useStyles = makeStyles((theme) => ({
+  textArea: {
+    maxWidth: 450,
+    margin: 0,
+  },
+}));
 
 export default function PetDesc(props) {
   const classes = props.useStyle();
   const {
-    formField: { nome, descricao, especie },
+    formField: { nome, descricao },
   } = props;
 
   return (
     <>
-      <Grid item container direction="row">
-        <Grid item xs={6}>
+      <Grid item container direction="row" style={{ height: 60, margin: 0 }}>
+        <Grid item xs={12}>
           <InputField name={nome.name} variant="outlined" label={nome.name} />
         </Grid>
-        <Grid item xs={6}>
-          <InputField
+      </Grid>
+      <Grid item container direction="row">
+        <Grid item xs={12}>
+          <TextInputFild
+            style={{ width: 450, margin: 0, height: 130 }}
             name={descricao.name}
             variant="outlined"
-            label={descricao.name}
+            rowsMin={4}
+            placeholder="Digite sua descrição"
           />
         </Grid>
-      </Grid>
-      <Grid item xs={12}>
-        <InputField
-          name={especie.name}
-          variant="outlined"
-          label={especie.name}
-        />
       </Grid>
     </>
   );

@@ -26,6 +26,7 @@ import {
   formBase,
   useColorlibStepIconStyles,
 } from '../../Layout/styles';
+import Axios from 'axios';
 // import TestStepper from '../../pages/testStepper';
 // import { useHistory } from 'react-router-dom';
 
@@ -65,12 +66,28 @@ export default function CheckoutCompanyStep() {
   // }
 
   async function submitForm(values, actions) {
-    // await _sleep(1000);
-    alert(JSON.stringify(values, null, 2));
+    const USER_TOKEN = localStorage.getItem('token');
+    const USER_ID = localStorage.getItem('id');
+    const AuthStr = 'Bearer '.concat(USER_TOKEN);
     console.log(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
+    values.id_usuario = USER_ID;
 
-    // history.push('/profile')
+    Axios.post(
+      'http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets',
+      values,
+      { headers: { Authorization: AuthStr } },
+    )
+      .then(function (response) {
+        alert('Cadastrado com sucesso!');
+        console.log(response);
+      })
+      .catch(function (error) {
+        alert('ops! erro ao cadastrar');
+        console.log(error);
+      });
+
+    setActiveStep(activeStep + 1);
   }
 
   function handleSubmit(values, actions) {

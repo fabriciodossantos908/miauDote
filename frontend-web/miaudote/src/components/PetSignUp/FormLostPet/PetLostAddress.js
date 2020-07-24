@@ -44,7 +44,7 @@ export default function PetAddress(props) {
   };
 
   const {
-    formField: { uf, cidade },
+    formField: { uf, cidade, bairro, data, hora },
   } = props;
   return (
     <>
@@ -80,7 +80,7 @@ export default function PetAddress(props) {
         </FormControl>
       </Grid>
       <Grid item container justify="flex-start" spacing={1} direction="row">
-        <Grid item xs={6}>
+        <Grid item xs={4}>
           <Zoom in={checked}>
             <InputField
               name={uf.name}
@@ -90,7 +90,7 @@ export default function PetAddress(props) {
             />
           </Zoom>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={4}>
           <Zoom
             in={checked}
             style={{ transitionDelay: checked ? '500ms' : '0ms' }}
@@ -103,10 +103,34 @@ export default function PetAddress(props) {
             />
           </Zoom>
         </Grid>
-        {/* <InputField name={cep.name} variant="outlined" label={cep.label}  fullWidth />
-        <InputField name={uf.name} variant="outlined" label={uf.label}  fullWidth />
-        <InputField name={cidade.name} variant="outlined" label={cidade.label}  fullWidth /> */}
-        {/* <InputField name={longitude.name} variant="outlined" label={longitude.label} fullWidth /> */}
+        <Grid item xs={4}>
+          <Zoom in={checked}>
+            <InputField
+              name={bairro.name}
+              variant="outlined"
+              label={bairro.label}
+              fullWidth
+            />
+          </Zoom>
+        </Grid>
+      </Grid>
+      <Grid item container justify="flex-start" spacing={1} direction="row">
+        <Grid item xs={6}>
+          <InputField
+            name={data.name}
+            variant="outlined"
+            label={data.label}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <InputField
+            name={hora.name}
+            variant="outlined"
+            label={hora.label}
+            fullWidth
+          />
+        </Grid>
       </Grid>
     </>
   );

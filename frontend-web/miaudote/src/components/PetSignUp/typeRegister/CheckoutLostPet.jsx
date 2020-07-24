@@ -25,6 +25,7 @@ import {
   formBase,
   useColorlibStepIconStyles,
 } from '../../Layout/styles';
+import Axios from 'axios';
 // import TestStepper from '../../pages/testStepper';
 // import { useHistory } from 'react-router-dom';
 
@@ -32,7 +33,7 @@ const steps = ['Localização', 'Descrição do pet', 'Tipo do seu pet'];
 const labels = [
   'Quando que você o viu pela ultima vez?',
   'Pode descrever suas características?',
-  'Como era seu pet?',
+  'Como é seu pet?',
 ];
 const { formId, formField } = checkoutPetModal;
 
@@ -62,12 +63,28 @@ export default function CheckoutCompanyStep() {
   // }
 
   async function submitForm(values, actions) {
-    // await _sleep(1000);
-    alert(JSON.stringify(values, null, 2));
+    const USER_TOKEN = localStorage.getItem('token');
+    const USER_ID = localStorage.getItem('id');
+    const AuthStr = 'Bearer '.concat(USER_TOKEN);
     console.log(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
+    values.id_usuario = USER_ID;
 
-    // history.push('/profile')
+    Axios.post(
+      'http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets_perdidos',
+      values,
+      { headers: { Authorization: AuthStr } },
+    )
+      .then(function (response) {
+        alert('Cadastrado com sucesso!');
+        console.log(response);
+      })
+      .catch(function (error) {
+        alert('ops! erro ao cadastrar');
+        console.log(error);
+      });
+
+    setActiveStep(activeStep + 1);
   }
 
   function handleSubmit(values, actions) {
@@ -141,12 +158,7 @@ export default function CheckoutCompanyStep() {
               </Stepper>
             </Grid>
 
-            <Grid
-              item
-              container
-              justify="flex-start"
-              className={classesForm.contentModal}
-            >
+            <Grid item container justify="flex-start">
               {renderStepContent(activeStep, values)}
             </Grid>
             <Grid
