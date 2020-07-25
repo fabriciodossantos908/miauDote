@@ -39,11 +39,39 @@ const useStyles = makeStyles((theme) => ({
 export default function PetAddress(props) {
   const classes = useStyles();
   const [checked, setChecked] = React.useState(false);
+  const { values } = props;
 
   const handleChange = () => {
     setChecked((prev) => !prev);
   };
 
+  if (checked === true) {
+    if (!('geolocation' in navigator)) {
+      alert('Navegador não tem suporte API Geolocation');
+    } else {
+      var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      };
+      function success(pos) {
+        var crd = pos.coords;
+        values.latitude = crd.latitude;
+        values.longitude = crd.longitude;
+
+        console.log('Sua posição atual é:');
+        console.log('Latitude : ' + crd.latitude);
+        console.log('Longitude: ' + crd.longitude);
+        console.log('Mais ou menos ' + crd.accuracy + ' metros.');
+      }
+
+      function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+      }
+
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    }
+  }
   const {
     formField: { cep, uf, cidade },
   } = props;
@@ -63,7 +91,7 @@ export default function PetAddress(props) {
             <Grid container jutify="flex-start" spacing={1} orientation="row">
               <Grid item xs={6}>
                 <FormControlLabel
-                  value={false}
+                  value={true}
                   control={<Radio />}
                   label="Sim"
                 />
@@ -71,7 +99,7 @@ export default function PetAddress(props) {
 
               <Grid item xs={6}>
                 <FormControlLabel
-                  value={true}
+                  value={false}
                   control={<Radio />}
                   label="Não"
                 />
@@ -82,7 +110,7 @@ export default function PetAddress(props) {
       </Grid>
       <Grid item container justify="flex-start" spacing={1} direction="row">
         <Grid item xs={6}>
-          <Zoom in={checked}>
+          <Zoom in={checked === true ? false : true}>
             <InputField
               name={uf.name}
               variant="outlined"
@@ -93,7 +121,7 @@ export default function PetAddress(props) {
         </Grid>
         <Grid item xs={6}>
           <Zoom
-            in={checked}
+            in={checked === true ? false : true}
             style={{ transitionDelay: checked ? '500ms' : '0ms' }}
           >
             <InputField

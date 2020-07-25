@@ -7,7 +7,7 @@ import {
   Typography,
   makeStyles,
 } from '@material-ui/core';
-import { InputField } from '../../FieldStyle';
+import { InputField, SelectField } from '../../FieldStyle';
 import PetsIcon from '@material-ui/icons/Pets';
 
 import { SelectIconField } from '../FieldStyle';
@@ -20,6 +20,25 @@ const useStyle = makeStyles({
     fontSize: 10,
   },
 });
+
+const sex = [
+  {
+    value: undefined,
+    label: 'Selecione',
+  },
+  {
+    value: 'F',
+    label: 'Fêmea',
+  },
+  {
+    value: 'M',
+    label: 'Macho',
+  },
+  {
+    value: 'O',
+    label: 'Não sei',
+  },
+];
 
 const specie = [
   {
@@ -80,7 +99,13 @@ export default function PetInfo(props) {
             ></SelectIconField>
           </Grid>
           <Grid xs={4}>
-            <InputField name={sexo.name} variant="outlined" label={sexo.name} />
+            <SelectField
+              name={sexo.name}
+              variant="outlined"
+              label={sexo.label}
+              data={sex}
+              fullWidth
+            />
           </Grid>
           <Grid xs={4}>
             <InputField name={raca.name} variant="outlined" label={raca.name} />

@@ -30,7 +30,7 @@ export default function PetInfo(props) {
       label: 'Macho',
     },
     {
-      value: 'Onknown',
+      value: 'O',
       label: 'Não sei',
     },
   ];
@@ -62,14 +62,15 @@ export default function PetInfo(props) {
           fullWidth
         />
       </Grid>
-      <SelectField
-        name={sexo.name}
-        variant="outlined"
-        label={sexo.label}
-        data={sex}
-        fullWidth
-      />
-
+      <Grid xs={5}>
+        <SelectField
+          name={sexo.name}
+          variant="outlined"
+          label={sexo.label}
+          data={sex}
+          fullWidth
+        />
+      </Grid>
       {/* <SelectSexType name={sexo.name} label={sexo.label} /> */}
     </React.Fragment>
   );

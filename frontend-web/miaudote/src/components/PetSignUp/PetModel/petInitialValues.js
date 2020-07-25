@@ -37,8 +37,8 @@ export default {
   [vacinado.name]: false,
   [uf.name]: '',
   [cidade.name]: '',
-  [latitude.name]: '-23.548840',
-  [longitude.name]: '-46.898081',
+  [latitude.name]: '',
+  [longitude.name]: '',
   [url_foto.name]: 'http://miau.com/foto.jpg',
   id_usuario: '',
 };

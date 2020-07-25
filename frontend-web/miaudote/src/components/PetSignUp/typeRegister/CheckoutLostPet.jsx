@@ -37,10 +37,12 @@ const labels = [
 ];
 const { formId, formField } = checkoutPetModal;
 
-function renderStepContent(step) {
+function renderStepContent(step, values) {
   switch (step) {
     case 0:
-      return <PetAddress formField={formField} useStyle={useStyle} />;
+      return (
+        <PetAddress formField={formField} values={values} useStyle={useStyle} />
+      );
     case 1:
       return <PetDesc formField={formField} useStyle={useStyle} />;
     case 2:

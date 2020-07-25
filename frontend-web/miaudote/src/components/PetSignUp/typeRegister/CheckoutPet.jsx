@@ -47,7 +47,9 @@ function renderStepContent(step, values) {
     case 2:
       return <PetType formField={formField} useStyle={useStyle} />;
     case 3:
-      return <PetAddress formField={formField} useStyle={useStyle} />;
+      return (
+        <PetAddress formField={formField} values={values} useStyle={useStyle} />
+      );
     default:
       return <div>Not Found</div>;
   }
