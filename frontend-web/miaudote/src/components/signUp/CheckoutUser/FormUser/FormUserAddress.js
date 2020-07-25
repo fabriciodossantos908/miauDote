@@ -3,6 +3,7 @@ import { Grid, Fade } from '@material-ui/core';
 import { InputField, SelectField } from '../../../FieldStyle';
 import Input from '../../../SignIn/Input';
 import { RemoveMask } from '../../../../validations/RemoveMask';
+import { isLength } from 'lodash';
 
 const states = [
   {
@@ -29,19 +30,98 @@ export default function FormUserAddress(props) {
     formField: { uf, cep, cidade, bairro, logradouro, numero, complemento },
   } = props;
 
-  const { values } = props;
+  const values = props.values.cep;
   const { active } = props;
+//  const cep = JSON.stringify(values)
+console.log(
+  toString(values)
+)
 
-  const cep = values.cep;
+  // values.isLength === 5 ? console.log("match") : console.log("test")
 
-  if (cep > 8) {
-    const readyCep = RemoveMask(cep);
-    //   the axios get query to cep api
+  const findCep = () => {
+		const { cep } = this.state
+		var _cep = cep.replace(/\D/g, '')
 
-    // the obj with the response data
+		//Verifica se campo cep possui valor informado.
+		if (_cep != "") {
 
-    // change the values data with the response obj
-  }
+			var cepValidate = /^[0-9]{8}$/;
+
+			if (cepValidate.test(_cep)) {
+				console.log("iguais")
+				//Preenche os campos com "..." enquanto consulta webservice.
+
+				this.setState({ address: "..." })
+				this.setState({ neighborhood: "..." })
+				this.setState({ state: "..." })
+				this.setState({ city: "..." })
+
+				// const cepp = '01001000'
+
+				const url = `https://viacep.com.br/ws/` + _cep + `/json/`;
+
+				let viacep = fetch(url)
+					.then(response => (response.json()))
+					// .then (response => console.log(response))
+					.then((json) => {
+						console.log(json)
+						if (json.erro != true) {
+							this.setState({ address: json.logradouro })
+							this.setState({ neighborhood: json.bairro })
+							this.setState({ state: json.uf })
+							this.setState({ city: json.localidade })
+						} else {
+							alert(
+								'Algo deu errado',
+								'Cep não encontrado. Por favor verifique',
+								[
+									{ text: 'OK', onPress: () => console.log('OK Pressed') }
+								],
+								{ cancelable: false }
+							);
+						}
+
+
+					})
+					.catch((json) => {
+						console.log(json.erro)
+						// if(json.erro == true){
+						//   console.log("Cep inválido")
+						// }
+					})
+
+
+			} else {
+				alert(
+					'Algo deu errado',
+					'Cep inválido. Por favor verifique',
+					[
+						{ text: 'OK', onPress: () => console.log('OK Pressed') }
+					],
+					{ cancelable: false }
+				);
+			}
+
+
+
+		}
+
+		console.log(cep)
+		console.log(_cep)
+
+	}
+
+  // const cep = values.cep;
+
+  // if (cep > 8) {
+  //   const readyCep = RemoveMask(cep);
+  //   //   the axios get query to cep api
+
+  //   // the obj with the response data
+
+  //   // change the values data with the response obj
+  // }
 
   return (
     <React.Fragment>

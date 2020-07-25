@@ -88,7 +88,7 @@ export default function RemoveMask(cep) {
   var strLength = cep.length;
   let i;
 
-  for (i = input; strLength >= i.length; i++) {
+  for (i = cep; strLength >= i.length; i++) {
     if (i.match('-')) {
       strValidated = i.split('-').join('');
     }

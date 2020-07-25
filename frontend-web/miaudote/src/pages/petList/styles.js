@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import { palette } from '../../components/Layout/theme';
+import { theme } from '../../components/Layout/styles';
 
 const petStyle = makeStyles({
   root: {
@@ -16,6 +17,11 @@ const petStyle = makeStyles({
     fontFamily: 'italic',
     textJustify: 'center',
     color: palette.secondary.contrastText,
+  },
+  fab: {
+    position: 'absolute',
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
   },
 });
 

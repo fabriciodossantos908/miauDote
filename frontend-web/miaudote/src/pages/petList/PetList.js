@@ -1,14 +1,35 @@
 import React, { useEffect } from 'react';
 import { petStyle } from './styles';
-import { Grid, CardMedia, Typography } from '@material-ui/core';
+import { Grid, CardMedia, Typography, Fab } from '@material-ui/core';
 import { PetTab, SearchBar } from './petComp/';
 import Axios from 'axios';
-
+import AddIcon from '@material-ui/icons/Add';
 const background = require('../../images/background.jpg');
 
 export default function PetList() {
   var pets = [];
   const classes = petStyle();
+  // const test = navegator.geolocation.getCurrentPosition(success, error, PositionOptions);
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+  function success(pos) {
+    var crd = pos.coords;
+  
+    console.log('Sua posição atual é:');
+    console.log('Latitude : ' + crd.latitude);
+    console.log('Longitude: ' + crd.longitude);
+    console.log('Mais ou menos ' + crd.accuracy + ' metros.');
+  };
+  
+  function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  };
+  
+  navigator.geolocation.getCurrentPosition(success, error, options)
+
   return (
     <div className={classes.root}>
       <CardMedia image={background}>
@@ -36,7 +57,15 @@ export default function PetList() {
               justify="center"
               style={{ marginTop: 50 }}
             >
-              <PetTab pets={pets} />
+              <Fab color="primary" aria-label="add" className={classes.fab}>
+  <AddIcon />
+</Fab>
+             <PetTab pets={pets} />
+
+              {/* <PetTab pets={pets} />
+              <Fab aria-label={fab.label} className={fab.className} color={fab.color}>
+            {fab.icon}
+          </Fab> */}
             </Grid>
           </Grid>
         </Grid>
