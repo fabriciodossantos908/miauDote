@@ -4,6 +4,7 @@ import { InputField, SelectField } from '../../../FieldStyle';
 import Input from '../../../SignIn/Input';
 import { RemoveMask } from '../../../../validations/RemoveMask';
 import { isLength } from 'lodash';
+import Axios from 'axios';
 
 const states = [
   {
@@ -30,87 +31,109 @@ export default function FormUserAddress(props) {
     formField: { uf, cep, cidade, bairro, logradouro, numero, complemento },
   } = props;
 
-  const values = props.values.cep;
+  const { values } = props;
+  var cepPure = props.values.cep;
+  var cepString = '';
+  cepString = cepPure;
   const { active } = props;
-//  const cep = JSON.stringify(values)
-console.log(
-  toString(values)
-)
 
-  // values.isLength === 5 ? console.log("match") : console.log("test")
+  const findCep = (cep) => {
+    const cepClear = cep.replace(/\D/g, '');
 
-  const findCep = () => {
-		const { cep } = this.state
-		var _cep = cep.replace(/\D/g, '')
+    Axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((response) => {
+        uf = response.uf ;
+        cidade = response.cidade;
+         bairro = response.bairro;
+        logradouro = response.logradouro;
+      })
+      .catch((error) => {
+        console.log(JSON.stringify(error));
+      });
+  };
 
-		//Verifica se campo cep possui valor informado.
-		if (_cep != "") {
+  const handlingAddress = (address, values) => {
+    alert(address)
+   
 
-			var cepValidate = /^[0-9]{8}$/;
+  }
+  if (cepString.length === 8) {
+    const address = findCep(cepString);
+    // handlingAddress(address, values)
+    // setAddress(true)
+  } else {
+    console.log("didn 't work");
+  }
+  // values.isLength === 5 ? console.log("match") : console.log("cepString")
 
-			if (cepValidate.test(_cep)) {
-				console.log("iguais")
-				//Preenche os campos com "..." enquanto consulta webservice.
+  // const findCep = () => {
+  // 	const { cep } = this.state
+  // 	var _cep = cep.replace(/\D/g, '')
 
-				this.setState({ address: "..." })
-				this.setState({ neighborhood: "..." })
-				this.setState({ state: "..." })
-				this.setState({ city: "..." })
+  // 	//Verifica se campo cep possui valor informado.
+  // 	if (_cep != "") {
 
-				// const cepp = '01001000'
+  // 		var cepValidate = /^[0-9]{8}$/;
 
-				const url = `https://viacep.com.br/ws/` + _cep + `/json/`;
+  // 		if (cepValidate.cepString(_cep)) {
+  // 			console.log("iguais")
+  // 			//Preenche os campos com "..." enquanto consulta webservice.
 
-				let viacep = fetch(url)
-					.then(response => (response.json()))
-					// .then (response => console.log(response))
-					.then((json) => {
-						console.log(json)
-						if (json.erro != true) {
-							this.setState({ address: json.logradouro })
-							this.setState({ neighborhood: json.bairro })
-							this.setState({ state: json.uf })
-							this.setState({ city: json.localidade })
-						} else {
-							alert(
-								'Algo deu errado',
-								'Cep não encontrado. Por favor verifique',
-								[
-									{ text: 'OK', onPress: () => console.log('OK Pressed') }
-								],
-								{ cancelable: false }
-							);
-						}
+  // 			this.setState({ address: "..." })
+  // 			this.setState({ neighborhood: "..." })
+  // 			this.setState({ state: "..." })
+  // 			this.setState({ city: "..." })
 
+  // 			// const cepp = '01001000'
 
-					})
-					.catch((json) => {
-						console.log(json.erro)
-						// if(json.erro == true){
-						//   console.log("Cep inválido")
-						// }
-					})
+  // 			const url = `https://viacep.com.br/ws/` + _cep + `/json/`;
 
+  // 			let viacep = fetch(url)
+  // 				.then(response => (response.json()))
+  // 				// .then (response => console.log(response))
+  // 				.then((json) => {
+  // 					console.log(json)
+  // 					if (json.erro != true) {
+  // 						this.setState({ address: json.logradouro })
+  // 						this.setState({ neighborhood: json.bairro })
+  // 						this.setState({ state: json.uf })
+  // 						this.setState({ city: json.localidade })
+  // 					} else {
+  // 						alert(
+  // 							'Algo deu errado',
+  // 							'Cep não encontrado. Por favor verifique',
+  // 							[
+  // 								{ text: 'OK', onPress: () => console.log('OK Pressed') }
+  // 							],
+  // 							{ cancelable: false }
+  // 						);
+  // 					}
 
-			} else {
-				alert(
-					'Algo deu errado',
-					'Cep inválido. Por favor verifique',
-					[
-						{ text: 'OK', onPress: () => console.log('OK Pressed') }
-					],
-					{ cancelable: false }
-				);
-			}
+  // 				})
+  // 				.catch((json) => {
+  // 					console.log(json.erro)
+  // 					// if(json.erro == true){
+  // 					//   console.log("Cep inválido")
+  // 					// }
+  // 				})
 
+  // 		} else {
+  // 			alert(
+  // 				'Algo deu errado',
+  // 				'Cep inválido. Por favor verifique',
+  // 				[
+  // 					{ text: 'OK', onPress: () => console.log('OK Pressed') }
+  // 				],
+  // 				{ cancelable: false }
+  // 			);
+  // 		}
 
+  // 	}
 
-		}
+  // 	console.log(cep)
+  // 	console.log(_cep)
 
-		console.log(cep)
-		console.log(_cep)
-
-	}
+  // }
 
   // const cep = values.cep;
 

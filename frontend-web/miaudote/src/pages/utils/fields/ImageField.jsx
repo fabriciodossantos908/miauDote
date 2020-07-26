@@ -17,16 +17,23 @@ const useStyles = makeStyles((theme) => ({
 
 const uploadImage = async (file) => {
   let image = file;
-  let filename = image.split('/').pop();
+  let filename = image[0].name.split('/').pop();
 
   let match = /\.(\w+)$/.exec(filename);
   let type = match ? `image/${match[1]}` : `image`;
   const formData = new FormData();
 
+  const id = localStorage.getItem('id')
+
   formData.append('file', { uri: image, name: filename, type });
 
+
+  console.log("image " + JSON.stringify(image[0], null, 2))
+  console.log("filename " + filename)
+  console.log("type " + type)
+
   fetch(
-    `http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/usuarios/upload/foto/${1}`,
+    `http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets/upload/foto/${id}`,
     {
       method: 'PUT',
       body: formData,
@@ -48,7 +55,7 @@ export default function ImageField() {
   const classes = useStyles();
 
   function handleImage(event) {
-    const file = event.target.files[0].name;
+    const file = event.target.files;
 
     uploadImage(file);
   }
