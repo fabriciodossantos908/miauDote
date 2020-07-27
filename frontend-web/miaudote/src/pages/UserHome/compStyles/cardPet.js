@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -10,6 +10,13 @@ import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Axios from 'axios';
+import {
+  Cachorro,
+  Cachorro2,
+  Cachorro3,
+  Dog_boxer,
+} from '../../../images/petImg/dog';
 
 const test = require('../../../images/petImg/cat.jpg');
 
@@ -32,9 +39,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ImgMediaCard() {
+const dogs = [
+  Cachorro,
+  Cachorro2,
+  Cachorro3,
+  Dog_boxer,
+  Cachorro2,
+  Cachorro3,
+  Cachorro,
+  Cachorro3,
+  Cachorro,
+];
+
+export default function ImgMediaCard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [pets, setPets] = useState([]);
+
+  useEffect(() => {
+    window.addEventListener(
+      'load',
+      Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets')
+        .then((result) => {
+          const petsData = result.data;
+          return setPets(petsData);
+        })
+        .catch((err) => {
+          console.log(err);
+        }),
+    );
+    return () => {
+      window.addEventListener('load', console.log('event of load'));
+      // window.addEventListener("load", console.log("this is useEffect return"))
+    };
+  }, []);
 
   const handleOpen = () => {
     setOpen(true);
@@ -45,56 +83,59 @@ export default function ImgMediaCard() {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image={test}
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Pesquisar
-        </Button>
-        <div>
-          <Button size="small" onClick={handleOpen}>
-            Saber mais
-          </Button>
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            className={classes.modal}
-            open={open}
-            onClose={handleClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-              timeout: 500,
-            }}
-          >
-            <Fade in={open}>
-              <div className={classes.paper}>
-                <h2 id="transition-modal-title">Transition modal</h2>
-                <p id="transition-modal-description">
-                  react-transition-group animates me.
-                </p>
-              </div>
-            </Fade>
-          </Modal>
-        </div>
-      </CardActions>
-    </Card>
+    <React.Fragment>
+      {pets.map((petData, index) => (
+        <Card className={classes.root}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt="Contemplative Reptile"
+              height="140"
+              image={dogs[index]}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {petData.nome}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {petData.descricao}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button size="small" color="primary">
+              Pesquisar
+            </Button>
+            <div>
+              <Button size="small" onClick={handleOpen}>
+                Saber mais
+              </Button>
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                <Fade in={open}>
+                  <div className={classes.paper}>
+                    <h2 id="transition-modal-title">Transition modal</h2>
+                    <p id="transition-modal-description">
+                      react-transition-group animates me.
+                    </p>
+                  </div>
+                </Fade>
+              </Modal>
+            </div>
+          </CardActions>
+        </Card>
+      ))}
+    </React.Fragment>
   );
 }

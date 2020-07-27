@@ -18,7 +18,7 @@ import Login from '../../SignIn/Login';
 import FormUserInitialnfo from './FormUser/FormUserInitialnfo';
 import FormUserPersonalInfo from './FormUser/FormUserPersonalInfo';
 import FormUserAddress from './FormUser/FormUserAddress';
-import ConfimEmail from './ConfirmEmail/ConfirmEmail';
+import ConfirmEmail from './ConfirmEmail/ConfirmEmail';
 
 import userValidationSchema from '../CheckoutUser/UserModel/userValidationSchema';
 import userInitialValues from '../CheckoutUser/UserModel/userInitialValues';
@@ -131,9 +131,15 @@ export default function CheckoutUSerStep() {
   }
 
   async function _submitForm(values, actions) {
-    // await _sleep(1000);
+    await _sleep(1000);
     delete values.senha_confirm;
-    console.log(JSON.stringify(values, null, 2));
+    values.data_nascimento = values.data_nascimento
+      .split('/')
+      .reverse()
+      .join('-');
+    values.cpf = values.cpf.replace(/[^A-Z0-9]+/gi, '');
+    values.celular = values.celular.replace(/[^0-9]+/g, '');
+    // console.log(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
 
     Axios.post(
@@ -142,6 +148,7 @@ export default function CheckoutUSerStep() {
     )
       .then(function (response) {
         alert('Cadastrado com sucesso!');
+        localStorage.setItem('email', response.data.usuario.email);
         console.log(response);
       })
       .catch(function (error) {
@@ -172,7 +179,7 @@ export default function CheckoutUSerStep() {
         setauthRequesStatus(false);
       });
     if (authRequesStatus === true) {
-      history.push('/');
+      history.push('/homeUser');
     }
   }
 
@@ -203,7 +210,7 @@ export default function CheckoutUSerStep() {
     <React.Fragment>
       <Paper elevation={3} className={classesForm.FormPaper}>
         {activeStep === steps.length ? (
-          <ConfimEmail />
+          <ConfirmEmail />
         ) : (
           <Formik
             initialValues={
@@ -298,6 +305,7 @@ export default function CheckoutUSerStep() {
                           disabled={isSubmitting}
                           type="submit"
                           variant="contained"
+                          style={{ backgroundColor: palette.secondary.light }}
                           className={classes.buttons}
                         >
                           {isLastStep ? 'Criar' : 'Próximo'}

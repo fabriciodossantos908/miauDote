@@ -14,17 +14,14 @@ import BadgeAvatars from './headerComp/IconProfileUser';
 export default function HeaderMain() {
   const classes = header();
 
+  const name = localStorage.getItem('user');
+
   return (
     <Grid xs={12}>
       <AppBar position="static">
         <Toolbar className={classes.appbarmain}>
           <Grid item xs={1}>
             <Perfil classHeader={header} />
-          </Grid>
-          <Grid item xs={1} style={{ marginRight: 'auto' }}>
-            <Link to="/homeUser" className={classes.links}>
-              <Tab label="Miaudote" />
-            </Link>
           </Grid>
           <Grid item container>
             <Grid
@@ -41,8 +38,8 @@ export default function HeaderMain() {
           <Grid item xs={2} style={{ marginLeft: 'auto' }}>
             <Link
               to="/profile"
-              title="Joao"
-              alt="foto"
+              title={name}
+              alt={name}
               className={classes.links}
             >
               <BadgeAvatars />

@@ -46,6 +46,8 @@ const Input = ({ formik, mask = [], ...props }) => (
     guide={false}
     render={(ref, innerProps) => (
       <TextField
+        label={props.label}
+        fullWidth={props.fullWidth}
         {...parseFormikData(formik, props.name)}
         {...innerProps}
         inputRef={ref}

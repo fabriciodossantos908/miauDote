@@ -34,6 +34,9 @@ function Routes() {
           <Route path="/home" exact>
             <Home />
           </Route>
+          <Route path="/" exact>
+            <Home />
+          </Route>
           <Route path="/homeUser" exact>
             <UserHome />
           </Route>

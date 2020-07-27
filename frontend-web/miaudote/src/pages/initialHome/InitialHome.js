@@ -70,7 +70,7 @@ export default function InitialHome() {
         <CardMedia
           image={baseHome}
           alt="Photo by Daria Shevtsova from Pexels"
-          style={{ width: '100%' }}
+          title="Photo by Daria Shevtsova from Pexels"
           className={classes.descSide}
         >
           <Grid container direction="row">

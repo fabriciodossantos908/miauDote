@@ -72,12 +72,6 @@ export default function PetInfo(props) {
         </Grid>
       </Grid>
       <Grid item container justify="space-between">
-        <Grid item xs={5}>
-          <Typography variant="h6" align="center">
-            Coloque uma foto de seu pet aqui
-          </Typography>
-          <ImageField />
-        </Grid>
         <Grid item>
           <Grid>
             <SelectIconField

@@ -27,6 +27,7 @@ import {
   useColorlibStepIconStyles,
 } from '../../Layout/styles';
 import Axios from 'axios';
+import PetPhoto from '../FormPet/PetPhoto';
 // import TestStepper from '../../pages/testStepper';
 // import { useHistory } from 'react-router-dom';
 
@@ -35,6 +36,7 @@ const steps = [
   'Descrição do pet',
   'Tipo do seu pet',
   'Localização do pet',
+  'Foto do pet',
 ];
 const { formId, formField } = checkoutPetModal;
 
@@ -50,6 +52,8 @@ function renderStepContent(step, values) {
       return (
         <PetAddress formField={formField} values={values} useStyle={useStyle} />
       );
+    case 4:
+      return <PetPhoto values={values} useStyle={useStyle} />;
     default:
       return <div>Not Found</div>;
   }
@@ -61,7 +65,8 @@ export default function CheckoutCompanyStep() {
   const [activeStep, setActiveStep] = useState(0);
   // const [createStatus, setCreacteStatus] = useState(false);
   //   const currentValidationSchema = petValidationSchema[activeStep];
-  const isLastStep = activeStep === steps.length - 1;
+  const isLastStep = activeStep === steps.length - 2;
+  const created = activeStep === steps.length - 1;
   // const history = useHistory()
   // function _sleep(ms) {
   //   return new Promise(resolve => setTimeout(resolve, ms));
@@ -81,8 +86,8 @@ export default function CheckoutCompanyStep() {
       { headers: { Authorization: AuthStr } },
     )
       .then(function (response) {
-        alert('Cadastrado com sucesso!');
-        console.log(response);
+          localStorage.setItem('pet-id', response.data.id)        
+        // console.log(response);
       })
       .catch(function (error) {
         alert('ops! erro ao cadastrar');
@@ -115,6 +120,7 @@ export default function CheckoutCompanyStep() {
       2: <PetsIcon />,
       3: <PetsIcon />,
       4: <PetsIcon />,
+      5: <PetsIcon />,
     };
 
     return (
@@ -188,7 +194,7 @@ export default function CheckoutCompanyStep() {
                   variant="contained"
                   className={classes.buttons}
                 >
-                  {isLastStep ? 'Criar' : 'Próximo'}
+                  {created ? 'criar' : 'Próximo'}
                 </Button>
                 {isSubmitting && (
                   <CircularProgress

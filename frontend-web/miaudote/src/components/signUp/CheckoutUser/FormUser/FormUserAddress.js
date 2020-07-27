@@ -34,118 +34,35 @@ export default function FormUserAddress(props) {
   const { values } = props;
   var cepPure = props.values.cep;
   var cepString = '';
+  console.log(cepString);
   cepString = cepPure;
   const { active } = props;
 
   const findCep = (cep) => {
     const cepClear = cep.replace(/\D/g, '');
 
-    Axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+    Axios.get(`https://viacep.com.br/ws/${cepClear}/json/`)
       .then((response) => {
-        uf = response.uf ;
-        cidade = response.cidade;
-         bairro = response.bairro;
-        logradouro = response.logradouro;
+        const address = response.data;
+        values.uf = address.uf;
+        values.cidade = address.localidade;
+        values.bairro = address.bairro;
+        values.logradouro = address.logradouro;
+        values.complemento = address.complemento;
       })
       .catch((error) => {
         console.log(JSON.stringify(error));
       });
   };
 
-  const handlingAddress = (address, values) => {
-    alert(address)
-   
-
-  }
-  if (cepString.length === 8) {
-    const address = findCep(cepString);
+  if (cepString.length === 9) {
+    findCep(cepString);
+    console.log('work');
     // handlingAddress(address, values)
     // setAddress(true)
   } else {
     console.log("didn 't work");
   }
-  // values.isLength === 5 ? console.log("match") : console.log("cepString")
-
-  // const findCep = () => {
-  // 	const { cep } = this.state
-  // 	var _cep = cep.replace(/\D/g, '')
-
-  // 	//Verifica se campo cep possui valor informado.
-  // 	if (_cep != "") {
-
-  // 		var cepValidate = /^[0-9]{8}$/;
-
-  // 		if (cepValidate.cepString(_cep)) {
-  // 			console.log("iguais")
-  // 			//Preenche os campos com "..." enquanto consulta webservice.
-
-  // 			this.setState({ address: "..." })
-  // 			this.setState({ neighborhood: "..." })
-  // 			this.setState({ state: "..." })
-  // 			this.setState({ city: "..." })
-
-  // 			// const cepp = '01001000'
-
-  // 			const url = `https://viacep.com.br/ws/` + _cep + `/json/`;
-
-  // 			let viacep = fetch(url)
-  // 				.then(response => (response.json()))
-  // 				// .then (response => console.log(response))
-  // 				.then((json) => {
-  // 					console.log(json)
-  // 					if (json.erro != true) {
-  // 						this.setState({ address: json.logradouro })
-  // 						this.setState({ neighborhood: json.bairro })
-  // 						this.setState({ state: json.uf })
-  // 						this.setState({ city: json.localidade })
-  // 					} else {
-  // 						alert(
-  // 							'Algo deu errado',
-  // 							'Cep não encontrado. Por favor verifique',
-  // 							[
-  // 								{ text: 'OK', onPress: () => console.log('OK Pressed') }
-  // 							],
-  // 							{ cancelable: false }
-  // 						);
-  // 					}
-
-  // 				})
-  // 				.catch((json) => {
-  // 					console.log(json.erro)
-  // 					// if(json.erro == true){
-  // 					//   console.log("Cep inválido")
-  // 					// }
-  // 				})
-
-  // 		} else {
-  // 			alert(
-  // 				'Algo deu errado',
-  // 				'Cep inválido. Por favor verifique',
-  // 				[
-  // 					{ text: 'OK', onPress: () => console.log('OK Pressed') }
-  // 				],
-  // 				{ cancelable: false }
-  // 			);
-  // 		}
-
-  // 	}
-
-  // 	console.log(cep)
-  // 	console.log(_cep)
-
-  // }
-
-  // const cep = values.cep;
-
-  // if (cep > 8) {
-  //   const readyCep = RemoveMask(cep);
-  //   //   the axios get query to cep api
-
-  //   // the obj with the response data
-
-  //   // change the values data with the response obj
-  // }
-
   return (
     <React.Fragment>
       <Fade timeout={500} in={active}>
@@ -157,17 +74,17 @@ export default function FormUserAddress(props) {
           className={classes.inputPaper}
         >
           <Grid item xs={6}>
-            {/* <Input
+            <Input
               name={cep.name}
               label={cep.name}
               mask={[/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]}
-            /> */}
-            <InputField
+            />
+            {/* <InputField
               name={cep.name}
               variant="outlined"
               label={cep.label}
               fullWidth
-            />
+            /> */}
           </Grid>
           <Grid item xs={6}>
             <InputField

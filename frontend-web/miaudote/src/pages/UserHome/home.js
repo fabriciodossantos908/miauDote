@@ -1,9 +1,10 @@
 import React from 'react';
-import { Grid, CardMedia, Typography } from '@material-ui/core';
-import { useStyle, theme } from '../../components/Layout/styles';
+import { Grid, CardMedia, Typography, Button } from '@material-ui/core';
+import { useStyle } from '../../components/Layout/styles';
 import { CardPets } from '../UserHome/compStyles';
+import { palette } from '../../components/Layout/theme';
 
-const imageDog = require('../../images/petImg/dog/dog_boxer.jpg');
+const imageDog = require('../../images/petImg/dog/child_dog.jpg');
 
 export default function Home() {
   const classes = useStyle();
@@ -31,18 +32,60 @@ export default function Home() {
               <Grid
                 item
                 xs={12}
-                style={{ color: theme.palette.primary.contrastText }}
+                style={{
+                  marginLeft: 10,
+                  color: palette.primary.contrastText,
+                }}
               >
-                <Typography variant="h4" style={{ fontWeight: 'bold' }}>
+                <Typography
+                  variant="h4"
+                  align="center"
+                  style={{ fontWeight: 'bold' }}
+                >
                   O que você deve saber
                 </Typography>
               </Grid>
-              <Grid item xs={12} style={{ color: theme.palette.primary.dark }}>
-                <Typography variant="h4" style={{ fontWeight: 'bold' }}>
+              <Grid item xs={12} style={{ color: palette.primary.dark }}>
+                <Typography
+                  variant="h4"
+                  align="center"
+                  style={{ fontWeight: 'bold' }}
+                >
                   antes de adotar um animal
                 </Typography>
               </Grid>
-              <Grid item xs={12} style={{ marginTop: 30 }}></Grid>
+              <Typography
+                variant="h6"
+                align="left"
+                style={{
+                  fontWeight: 'bold',
+                  color: palette.primary.contrastText,
+                }}
+              >
+                Verifique as informações do pet antes de adotar
+              </Typography>
+              <Typography
+                variant="h6"
+                style={{
+                  fontWeight: 'bold',
+                  color: palette.primary.contrastText,
+                }}
+              >
+                Antes de adotar, pense no pet
+              </Typography>
+              <Typography
+                variant="h6"
+                style={{
+                  fontWeight: 'bold',
+                  color: palette.primary.contrastText,
+                }}
+              >
+                que se sentiria bem no espaço de sua casa
+              </Typography>
+
+              <Grid item xs={12} style={{ marginTop: 30 }}>
+                <Button>Ver lista de pets</Button>
+              </Grid>
             </Grid>
           </Grid>
           <Grid item xs={6}>
@@ -69,8 +112,6 @@ export default function Home() {
           direction="row"
           style={{ display: 'flex' }}
         >
-          <CardPets />
-          <CardPets />
           <CardPets />
         </Grid>
       </Grid>

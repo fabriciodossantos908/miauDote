@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid, Paper, Slide, Fade } from '@material-ui/core';
-import { InputField, SelectField } from '../../../FieldStyle';
+import { Grid, Fade } from '@material-ui/core';
+import { SelectField } from '../../../FieldStyle';
+import Input from '../../../SignIn/Input';
 
 const data = [
   {
@@ -35,31 +36,61 @@ export default function FormUserPersonalInfo(props) {
     <React.Fragment>
       <Fade timeout={500} in={active}>
         <Grid item className={classes.inputPaper}>
-          <InputField
+          <Input
             name={celular.name}
-            variant="outlined"
             label={celular.label}
+            mask={[
+              '(',
+              /\d/,
+              /\d/,
+              ')',
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              '-',
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+            ]}
             fullWidth
           />
         </Grid>
       </Fade>
       <Fade timeout={600} in={active}>
         <Grid item className={classes.inputPaper}>
-          <InputField
+          <Input
             name={data_nascimento.name}
-            variant="outlined"
             label={data_nascimento.label}
-            fullWidth
+            mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+            fullWidth={true}
           />
         </Grid>
       </Fade>
       <Fade timeout={700} in={active}>
         <Grid item className={classes.inputPaper}>
-          <InputField
+          <Input
             name={cpf.name}
-            variant="outlined"
             label={cpf.label}
-            fullWidth
+            mask={[
+              /\d/,
+              /\d/,
+              /\d/,
+              '.',
+              /\d/,
+              /\d/,
+              /\d/,
+              '.',
+              /\d/,
+              /\d/,
+              /\d/,
+              '-',
+              /\d/,
+              /\d/,
+            ]}
+            fullWidth={true}
           />
         </Grid>
       </Fade>

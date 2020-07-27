@@ -53,33 +53,30 @@ export default function Perfil() {
       </Container>
       <Divider />
       <List component="nav" aria-label="main mailbox folders">
-        <Link to="/myPet" className={classesHeader.linksPerfil}>
+        <Link to="/pet" className={classesHeader.linksPerfil}>
           <ListItem button>
             <ListItemIcon>
               <PetsIcon />
             </ListItemIcon>
-            <ListItemText primary="Pets" />
+            <ListItemText primary="Adoção de pets" />
           </ListItem>
         </Link>
 
-        <Link to="/profile" className={classesHeader.linksPerfil}>
+        <Link to="/config" className={classesHeader.linksPerfil}>
           <ListItem button>
             <ListItemIcon>
               <PetsIcon />
             </ListItemIcon>
-            <ListItemText primary="perfil" />
+            <ListItemText primary="Procure o pet" />
           </ListItem>
         </Link>
       </List>
       <Divider />
 
       <List>
-        <Link to="/config" className={classesHeader.linksPerfil}>
+        <Link to="/profile" className={classesHeader.linksPerfil}>
           <ListItem button>
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Configurações" />
+            <ListItemText primary="Perfil" />
           </ListItem>
         </Link>
       </List>

@@ -72,7 +72,7 @@ const header = makeStyles(() => ({
   },
 
   links: {
-    color: palette.secondary.contrastText,
+    color: palette.common.black,
     textDecorationLine: 'none',
     active: {
       color: palette.primary.contrastText,
@@ -80,7 +80,7 @@ const header = makeStyles(() => ({
   },
 
   linksPerfil: {
-    color: palette.primary.contrastText,
+    color: palette.common.black,
     textDecorationLine: 'none',
     active: {},
   },
