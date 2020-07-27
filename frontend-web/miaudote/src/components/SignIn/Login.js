@@ -16,7 +16,7 @@ const OtherLogin = (props) => {
   return (
     <React.Fragment>
       <Button startIcon={<Email />} className={classes.btnSocialLogin}>
-        Email
+        Gmail
       </Button>
 
       <Button startIcon={<Facebook />} className={classes.btnSocialLogin}>
