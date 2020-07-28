@@ -15,7 +15,7 @@ const useStyle = makeStyles(() => ({
     height: 'auto',
     marginBottom: theme.spacing(3),
     backgroundColor: '#f3f3f3',
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+    [theme.breakpoints.down(600 + theme.spacing(3) * 2)]: {
       // marginBottom: theme.spacing(6),
       margin: 0,
     },
@@ -50,8 +50,7 @@ const useStyle = makeStyles(() => ({
   },
 
   grid: {
-    backgroundColor: palette.secondary.light,
-    height: 400,
+    height: 500,
   },
 
   media: {
@@ -63,11 +62,9 @@ const useStyle = makeStyles(() => ({
 
 const header = makeStyles(() => ({
   menuButton: {
-    backgroundColor: palette.primary.light,
     marginRight: theme.spacing(2),
   },
   appbarmain: {
-    backgroundColor: palette.primary.light,
     boxShadow: 'none',
   },
 

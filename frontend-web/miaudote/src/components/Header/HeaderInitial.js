@@ -37,7 +37,7 @@ export default function HeaderMain() {
         position="sticky"
         style={
           trigger !== true
-            ? { backgroundColor: palette.primary.light }
+            ? { transition: '1s', backgroundColor: palette.primary.light }
             : { transition: '1s', backgroundColor: palette.primary.main }
         }
       >

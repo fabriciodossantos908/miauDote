@@ -217,11 +217,11 @@ export default function PetTab() {
     };
   }, []);
 
-  console.log(pets);
-  function handleModal(event) {
-    // alert(event.target.id);
-    setOpen(2);
-  }
+  const handleModal = (id, value) => {
+    console.log(id);
+    console.log(value);
+    setOpen(8);
+  };
   function handleCloseModal(event) {
     setOpen(false);
   }
@@ -290,11 +290,14 @@ export default function PetTab() {
                 {/* {console.log(petData.id)} */}
                 <Button
                   key={petData.id}
-                  id={petData.id}
+                  id={index}
+                  defaultValue={petData.id}
                   name={'btn ' + index}
                   style={{ marginLeft: '65%' }}
                   variant="text"
-                  onClick={handleModal}
+                  onClick={() => {
+                    setOpen(petData.id);
+                  }}
                 >
                   Ver mais
                 </Button>
@@ -302,6 +305,7 @@ export default function PetTab() {
                   aria-labelledby="transition-modal-title"
                   aria-describedby="transition-modal-description"
                   disablePortal={true}
+                  id={petData.id}
                   className={classes.modal}
                   open={petData.id === open ? true : false}
                   onClose={handleCloseModal}

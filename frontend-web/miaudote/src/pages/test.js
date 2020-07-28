@@ -40,7 +40,12 @@ function AdoptionPet(props) {
 
   return (
     <div>
-      <Button type="button" onClick={handleOpen} variant="text">
+      <Button
+        type="button"
+        onClick={handleOpen}
+        variant="text"
+        style={{ marginLeft: 100, marginTop: 100 }}
+      >
         Quer doar um pet?
       </Button>
       <Modal

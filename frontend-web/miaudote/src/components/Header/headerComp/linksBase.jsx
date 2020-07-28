@@ -28,15 +28,13 @@ export default function LinksBase(props) {
   };
 
   return (
-    <Paper
-      square
-      elevation={0}
-      style={{ backgroundColor: palette.primary.light }}
-    >
+    <Paper square elevation={0} style={{ backgroundColor: 'transparent' }}>
       <Tabs
         value={value}
         onChange={handleChange}
-        style={{ color: palette.primary.contrastText }}
+        style={{
+          color: palette.primary.contrastText,
+        }}
       >
         {/* <Link to="/about" className={classes.links}> */}
         <Tab value={0} label="Miaudote" />

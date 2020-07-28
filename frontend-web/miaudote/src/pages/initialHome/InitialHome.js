@@ -68,6 +68,11 @@ export default function InitialHome() {
     <Grid item container xs={12} className={classes.mainPaper}>
       <Grid item xs={12}>
         <CardMedia
+          style={{
+            marginTop: -150,
+            paddingTop: 150,
+            imageOrientation: 'cover',
+          }}
           image={baseHome}
           alt="Photo by Daria Shevtsova from Pexels"
           title="Photo by Daria Shevtsova from Pexels"
