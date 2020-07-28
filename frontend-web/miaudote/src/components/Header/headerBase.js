@@ -21,7 +21,7 @@ export default function HeaderMain() {
     const { children, window } = props;
     const trigger = useScrollTrigger({
       target: window ? window() : undefined,
-      threshold: 200,
+      threshold: 100,
     });
 
     return (
@@ -31,8 +31,6 @@ export default function HeaderMain() {
         style={
           trigger !== true
             ? {
-                marginBottom: -100,
-                paddingBottom: 100,
                 transition: '1s',
                 backgroundColor: 'transparent',
               }

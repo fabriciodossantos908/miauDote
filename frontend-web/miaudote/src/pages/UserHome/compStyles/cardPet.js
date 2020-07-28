@@ -21,7 +21,14 @@ import {
 const test = require('../../../images/petImg/cat.jpg');
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    minWidth: 200,
+    maxWidth: 700,
+    minHeight: 300,
+    height: 'auto',
+  },
   root: {
+    minWidth: 200,
     maxWidth: 345,
     bottom: 20,
     margin: theme.spacing(1),
@@ -83,16 +90,16 @@ export default function ImgMediaCard(props) {
   };
 
   return (
-    <React.Fragment>
+    <React.Fragment className={classes.container}>
       {pets.map((petData, index) => (
         <Card className={classes.root}>
           <CardActionArea>
             <CardMedia
               component="img"
-              alt="Contemplative Reptile"
+              alt="Ops! não encotramos a imagem desse pet"
               height="140"
-              image={dogs[index]}
-              title="Contemplative Reptile"
+              image={petData.url_foto}
+              title="Ops! não encotramos a imagem desse pet"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">

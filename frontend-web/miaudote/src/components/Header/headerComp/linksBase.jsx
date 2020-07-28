@@ -37,8 +37,8 @@ export default function LinksBase(props) {
         }}
       >
         {/* <Link to="/about" className={classes.links}> */}
-        <Tab value={0} label="Miaudote" />
-        <Tab value={1} label="Sobre nós" />
+        <Tab style={{ color: 'white' }} value={0} label="Miaudote" />
+        <Tab style={{ color: 'white' }} value={1} label="Sobre nós" />
         {/* </Link> */}
         {/* <Link to="/contacts" className={classes.links}> */}
         <Tab value={2} label="Contatos" />

@@ -24,14 +24,11 @@ export default function PetPhoto(props) {
   const fileUploadHandler = (event) => {
     selectedFile = event.target.files;
     let image = selectedFile[0];
-    let filename = image.name.split('/').pop();
-    let match = /\.(\w+)$/.exec(filename);
-    let type = match ? `image/${match[1]}` : `image`;
     const formData = new FormData();
 
     let id = localStorage.getItem('pet-id');
 
-    formData.append('file', { uri: image, name: filename, type });
+    formData.append('file', image);
 
     Axios.put(
       `http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets/upload/foto/${id}`,
@@ -41,6 +38,7 @@ export default function PetPhoto(props) {
         alert(response);
       })
       .catch((error) => {
+        alert(error);
         console.log(error);
       });
   };

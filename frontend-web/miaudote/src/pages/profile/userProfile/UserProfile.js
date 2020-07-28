@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Divider, Paper, Typography, Button } from '@material-ui/core';
 import { TabsProfile, IconPerfil } from './compModel';
 import { profile, theme } from '../../../components/Layout/styles';
+import { palette } from '../../../components/Layout/theme';
 
 const profilePhoto = require('../../../images/fabricio.jpg');
 
@@ -15,7 +16,11 @@ export default function UserProfile() {
       <Grid container>
         <Paper
           className={classesProfile.UserDescription}
-          style={{ backgroundColor: theme.palette.primary.light }}
+          style={{
+            marginTop: -65,
+            paddingTop: 100,
+            backgroundColor: palette.primary.light,
+          }}
           square
         >
           <Grid container spacing={3} justify="center" direction="row">
@@ -23,10 +28,15 @@ export default function UserProfile() {
               <IconPerfil profilePhoto={profilePhoto} />
             </Grid>
 
-            <Grid item xs={4}>
-              <Typography variant="h3">Olá {user}</Typography>
+            <Grid item xs={6}>
+              <Typography
+                variant="h3"
+                style={{ color: palette.primary.contrastText }}
+              >
+                Olá {user}
+              </Typography>
 
-              <Grid container spacing={3}>
+              <Grid item container spacing={3}>
                 <Grid item>
                   <Typography>0 pets</Typography>
                 </Grid>

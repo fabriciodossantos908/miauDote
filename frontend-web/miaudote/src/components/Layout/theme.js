@@ -28,6 +28,11 @@ let palette = createPalette({
 
 let themeMain = createMuiTheme({
   overrides: {
+    MuiTab: {
+      root: {
+        color: palette.primary.contrastText,
+      },
+    },
     MuiFormLabel: {
       root: {
         '& @active': {

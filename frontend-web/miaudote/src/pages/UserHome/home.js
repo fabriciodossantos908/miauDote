@@ -3,6 +3,7 @@ import { Grid, CardMedia, Typography, Button } from '@material-ui/core';
 import { useStyle } from '../../components/Layout/styles';
 import { CardPets } from '../UserHome/compStyles';
 import { palette } from '../../components/Layout/theme';
+import { Link } from 'react-router-dom';
 
 const maskPet = require('../../images/mask_pet.jpg');
 
@@ -25,7 +26,10 @@ export default function Home() {
           direction="row"
           style={{ display: 'flex', marginBottom: 40 }}
         >
-          <CardMedia style={{ height: 500 }} image={maskPet}>
+          <CardMedia
+            style={{ height: 600, marginTop: -65, paddingTop: 100 }}
+            image={maskPet}
+          >
             <Grid item container xs={12} justify="flex-end">
               <Grid
                 item
@@ -69,7 +73,7 @@ export default function Home() {
                     color: palette.primary.contrastText,
                   }}
                 >
-                  Verifique as informações do pet antes de adotar
+                  Verifique as informações do pet antes de adotar;
                 </Typography>
                 <Typography
                   variant="h6"
@@ -87,23 +91,34 @@ export default function Home() {
                     color: palette.primary.contrastText,
                   }}
                 >
-                  que se sentiria bem no espaço de sua casa
+                  Veja se seu pet se adapta bem no espaço de sua casa.
                 </Typography>
 
                 <Grid item xs={12} style={{ marginTop: 30 }}>
-                  <Button>Ver lista de pets</Button>
+                  <Link to="/pet" className={classes.links}>
+                    <Button
+                      variant="outlined"
+                      style={{
+                        marginLeft: '50%',
+                        color: palette.primary.contrastText,
+                        backgroundColor: palette.primary.main,
+                      }}
+                    >
+                      Ver lista de pets
+                    </Button>
+                  </Link>
                 </Grid>
                 <a
                   href="https://www.freepik.com/photos/woman"
                   style={{
                     textDecoration: 'none',
                     marginTop: 50,
-                    marginLeft: 200,
+                    marginLeft: 500,
                     fontSize: 10,
                     color: palette.secondary.dark,
                   }}
                 >
-                  Woman photo created by user18526052 - www.freepik.com
+                  Woman photo created by user18526052
                 </a>
               </Grid>
             </Grid>
@@ -111,13 +126,21 @@ export default function Home() {
         </Grid>
         <Grid
           item
+          container
           xs={12}
           justify="center"
-          spacing={3}
-          direction="row"
-          style={{ display: 'flex' }}
+          spacing={2}
+          direction="column"
         >
-          <CardPets />
+          <Grid item>
+            <Typography variant="h4" align="center">
+              Da só uma olhada em quem chegou na área
+            </Typography>
+          </Grid>
+          <Grid item>
+            yrdyrfefheoç
+            <CardPets />
+          </Grid>
         </Grid>
       </Grid>
     </div>
