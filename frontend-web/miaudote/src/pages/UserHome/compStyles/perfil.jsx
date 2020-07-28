@@ -15,6 +15,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { Link } from 'react-router-dom';
+import { palette } from '../../../components/Layout/theme';
 
 const userPhoto = require('../../../images/petImg/dog.jpg');
 
@@ -24,6 +25,9 @@ export default function Perfil() {
   const [state, setState] = React.useState({
     left: false,
   });
+
+  const photo = localStorage.getItem('photo');
+  const user = localStorage.getItem('user');
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -45,11 +49,12 @@ export default function Perfil() {
     >
       <Container className={classesMain.perfilField}>
         <Avatar
-          alt="João andrade"
-          src={userPhoto}
+          alt={user}
+          src={photo}
+          style={{ marginBottom: 20 }}
           className={classesMain.userPhoto}
         />
-        <Typography variant="subtitle1">João andrade</Typography>
+        <Typography variant="subtitle1"> {user} </Typography>
       </Container>
       <Divider />
       <List component="nav" aria-label="main mailbox folders">
@@ -62,7 +67,7 @@ export default function Perfil() {
           </ListItem>
         </Link>
 
-        <Link to="/config" className={classesHeader.linksPerfil}>
+        <Link to="/pet_perdido" className={classesHeader.linksPerfil}>
           <ListItem button>
             <ListItemIcon>
               <PetsIcon />
@@ -88,7 +93,7 @@ export default function Perfil() {
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon />
+            <MenuIcon style={{ color: palette.common.white }} />
           </Button>
           <SwipeableDrawer
             anchor={anchor}

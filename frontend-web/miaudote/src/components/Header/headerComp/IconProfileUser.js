@@ -35,6 +35,8 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 export default function BadgeAvatars() {
+    const photo = localStorage.getItem('photo')
+    const user = localStorage.getItem('user')
   return (
     <div>
       <StyledBadge
@@ -45,7 +47,7 @@ export default function BadgeAvatars() {
         }}
         variant="dot"
       >
-        <Avatar alt="Remy Sharp" src={profile} />
+        <Avatar alt={user} src={photo} />
       </StyledBadge>
     </div>
   );

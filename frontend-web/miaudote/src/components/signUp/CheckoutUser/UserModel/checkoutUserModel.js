@@ -77,8 +77,7 @@ export default {
     complemento: {
       name: 'complemento',
       label: 'Complemento',
-      invalidErrorMsg:
-        'Esse campo deve ter entre 2 a 50 caractéres // Verificar essa mensagem',
+      requiredErrorMsg: 'Por descreva um complemento',
     },
     uf: {
       name: 'uf',

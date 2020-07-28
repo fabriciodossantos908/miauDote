@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -10,12 +10,14 @@ import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 
 import { Cachorro, Cachorro2, Cachorro3 } from '../../../../images/petImg/dog';
+import Axios from 'axios';
+import { palette } from '../../../../components/Layout/theme';
 
 const dogs = [Cachorro, Cachorro2, Cachorro3];
 
 const useStyles = makeStyles(() => ({
   root: {
-    maxWidth: 345,
+    width: 300,
   },
   media: {
     height: 300,
@@ -23,7 +25,7 @@ const useStyles = makeStyles(() => ({
     borderBottomRightRadius: 20,
   },
   contentCard: {
-    width: 'inherit',
+    width: 300,
     height: 'inherit',
     backgroundColor: 'rgba(0,0,0,0.5)',
     borderBottomLeftRadius: 20,
@@ -31,52 +33,53 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const pets = [
-  {
-    id: 0,
-    nome: 'Tormenta',
-    especie: 'cachorro',
-    raca: 'vira-lata',
-    descricao: 'Esse é brincalhão na medida certa, ou seja em excesso.',
-  },
-  {
-    id: 1,
-    nome: 'Buck',
-    especie: 'cachorro',
-    raca: 'golden',
-    descricao:
-      'Fofinho e gentil como as nuvens rarefeitas ao encontro das montanhas.',
-  },
-  {
-    id: 2,
-    nome: 'dudy',
-    especie: 'cachorro',
-    raca: 'golden',
-    descricao: 'Coisinha fofa que encontrei à espera de um melhor amigo.',
-  },
-];
-
 export default function PetTab() {
   const classes = useStyles();
+
+  const [pets, setPets] = useState([]);
+  useEffect(() => {
+    window.addEventListener(
+      'load',
+      Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets')
+        .then((result) => {
+          const petsData = result.data;
+          return setPets(petsData);
+        })
+        .catch((err) => {
+          console.log(err);
+        }),
+    );
+    return () => {
+      window.addEventListener('load', console.log('event of load'));
+      // window.addEventListener("load", console.log("this is useEffect return"))
+    };
+  }, []);
+
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} justify="space-around">
       {pets.map((petData, index) => (
         <Grid item>
           <Card className={classes.root}>
             <CardMedia
               className={classes.media}
-              image={dogs[index]}
+              image={petData.url_foto}
               title={petData.nome}
             >
               <CardActionArea className={classes.contentCard}>
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    style={{ color: palette.primary.contrastText }}
+                  >
                     {petData.nome}
                   </Typography>
                   <Typography
                     variant="body2"
-                    color="textSecondary"
-                    component="p"
+                    style={{
+                      marginTop: 50,
+                      color: palette.primary.contrastText,
+                    }}
                   >
                     {petData.descricao}
                   </Typography>

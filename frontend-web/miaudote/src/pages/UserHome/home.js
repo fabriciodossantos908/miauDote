@@ -94,20 +94,43 @@ export default function Home() {
                   Veja se seu pet se adapta bem no espaço de sua casa.
                 </Typography>
 
-                <Grid item xs={12} style={{ marginTop: 30 }}>
-                  <Link to="/pet" className={classes.links}>
-                    <Button
-                      variant="outlined"
-                      style={{
-                        marginLeft: '50%',
-                        color: palette.primary.contrastText,
-                        backgroundColor: palette.primary.main,
-                      }}
-                    >
-                      Ver lista de pets
-                    </Button>
-                  </Link>
+                <Grid
+                  item
+                  container
+                  xs={8}
+                  style={{ marginLeft: 40 }}
+                  justify="center"
+                  spacing={2}
+                  direction="row"
+                >
+                  <Grid item xs={6} style={{ marginTop: 30 }}>
+                    <Link to="/pet" className={classes.links}>
+                      <Button
+                        variant="outlined"
+                        style={{
+                          color: palette.primary.contrastText,
+                          backgroundColor: palette.primary.main,
+                        }}
+                      >
+                        Ver lista de pets
+                      </Button>
+                    </Link>
+                  </Grid>
+                  <Grid item xs={6} style={{ marginTop: 30 }}>
+                    <Link to="/pet_perdido" className={classes.links}>
+                      <Button
+                        variant="outlined"
+                        style={{
+                          color: palette.primary.contrastText,
+                          backgroundColor: palette.primary.main,
+                        }}
+                      >
+                        Procurar pet perdido
+                      </Button>
+                    </Link>
+                  </Grid>
                 </Grid>
+
                 <a
                   href="https://www.freepik.com/photos/woman"
                   style={{
@@ -137,8 +160,7 @@ export default function Home() {
               Da só uma olhada em quem chegou na área
             </Typography>
           </Grid>
-          <Grid item>
-            yrdyrfefheoç
+          <Grid item container justify="center" spacing={2} direction="row">
             <CardPets />
           </Grid>
         </Grid>

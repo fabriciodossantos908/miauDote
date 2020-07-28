@@ -20,9 +20,9 @@ function Routes() {
     isNil(token) ? setToken(false) : setToken(true);
   };
   useEffect(() => {
-    window.addEventListener('check', checkToken());
+    window.addEventListener('load', checkToken());
     return () => {
-      window.addEventListener('check', checkToken());
+      window.addEventListener('load', checkToken());
     };
   }, []);
   return (

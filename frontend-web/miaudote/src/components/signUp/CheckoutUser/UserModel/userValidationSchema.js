@@ -44,19 +44,19 @@ export default [
   }),
   Yup.object().shape({
     [celular.name]: Yup.string()
-      .length(11)
+      .length(14)
       .required(`${celular.requiredErrorMsg}`),
     [data_nascimento.name]: Yup.string()
       .length(10)
       .required(`${data_nascimento.requiredErrorMsg}`),
     [cpf.name]: Yup.string()
       .required(`${cpf.requiredErrorMsg}`)
-      .length(11, `${cpf.lengthErrorMsg}`),
+      .length(14, `${cpf.lengthErrorMsg}`),
     [sexo.name]: Yup.string().required(`${sexo.requiredErrorMsg}`),
   }),
   Yup.object().shape({
     [cep.name]: Yup.string()
-      .length(8, cep.lengthErrorMsg)
+      .length(9, cep.lengthErrorMsg)
       .required(`${cep.requiredErrorMsg}`),
     [logradouro.name]: Yup.string()
       .min(3, `${logradouro.minErrorMsg}`)
@@ -75,6 +75,8 @@ export default [
       .max(6, `${numero.maxErrorMsg}`)
       .required(`${numero.requiredErrorMsg}`),
     [uf.name]: Yup.string().required(`${uf.requiredErrorMsg}`),
-    [complemento.name]: Yup.string().required(`${uf.requiredErrorMsg}`),
+    // [complemento.name]: Yup.string().required(
+    //   `${complemento.requiredErrorMsg}`,
+    // ),
   }),
 ];

@@ -3,11 +3,13 @@ import { Grid, Divider, Paper, Typography, Button } from '@material-ui/core';
 import { TabsProfile, IconPerfil } from './compModel';
 import { profile, theme } from '../../../components/Layout/styles';
 import { palette } from '../../../components/Layout/theme';
-
-const profilePhoto = require('../../../images/fabricio.jpg');
+import FormUserPhoto from '../../../components/signUp/CheckoutUser/FormUser/FormUserPhoto';
+import { isNil } from 'lodash';
 
 export default function UserProfile() {
   const classesProfile = profile();
+
+  const profilePhoto = localStorage.getItem('photo');
 
   const user = localStorage.getItem('user');
 
@@ -19,13 +21,14 @@ export default function UserProfile() {
           style={{
             marginTop: -65,
             paddingTop: 100,
-            backgroundColor: palette.primary.light,
+            backgroundColor: palette.secondary.light,
           }}
           square
         >
           <Grid container spacing={3} justify="center" direction="row">
             <Grid item xs={2}>
               <IconPerfil profilePhoto={profilePhoto} />
+              <FormUserPhoto />
             </Grid>
 
             <Grid item xs={6}>

@@ -17,15 +17,15 @@ import {
   Cachorro3,
   Dog_boxer,
 } from '../../../images/petImg/dog';
+import { Grid } from '@material-ui/core';
 
 const test = require('../../../images/petImg/cat.jpg');
 
 const useStyles = makeStyles((theme) => ({
   container: {
     minWidth: 200,
-    maxWidth: 700,
-    minHeight: 300,
-    height: 'auto',
+    maxWidth: 400,
+    height: 300,
   },
   root: {
     minWidth: 200,
@@ -90,58 +90,60 @@ export default function ImgMediaCard(props) {
   };
 
   return (
-    <React.Fragment className={classes.container}>
+    <React.Fragment>
       {pets.map((petData, index) => (
-        <Card className={classes.root}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Ops! não encotramos a imagem desse pet"
-              height="140"
-              image={petData.url_foto}
-              title="Ops! não encotramos a imagem desse pet"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {petData.nome}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {petData.descricao}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button size="small" color="primary">
-              Pesquisar
-            </Button>
-            <div>
-              <Button size="small" onClick={handleOpen}>
-                Saber mais
+        <Grid item className={classes.container}>
+          <Card className={classes.root}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                alt="Ops! não encotramos a imagem desse pet"
+                height="140"
+                image={petData.url_foto}
+                title="Ops! não encotramos a imagem desse pet"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {petData.nome}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {petData.descricao}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small" color="primary">
+                Pesquisar
               </Button>
-              <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                className={classes.modal}
-                open={open}
-                onClose={handleClose}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                  timeout: 500,
-                }}
-              >
-                <Fade in={open}>
-                  <div className={classes.paper}>
-                    <h2 id="transition-modal-title">Transition modal</h2>
-                    <p id="transition-modal-description">
-                      react-transition-group animates me.
-                    </p>
-                  </div>
-                </Fade>
-              </Modal>
-            </div>
-          </CardActions>
-        </Card>
+              <div>
+                <Button size="small" onClick={handleOpen}>
+                  Saber mais
+                </Button>
+                <Modal
+                  aria-labelledby="transition-modal-title"
+                  aria-describedby="transition-modal-description"
+                  className={classes.modal}
+                  open={open}
+                  onClose={handleClose}
+                  closeAfterTransition
+                  BackdropComponent={Backdrop}
+                  BackdropProps={{
+                    timeout: 500,
+                  }}
+                >
+                  <Fade in={open}>
+                    <div className={classes.paper}>
+                      <h2 id="transition-modal-title">Transition modal</h2>
+                      <p id="transition-modal-description">
+                        react-transition-group animates me.
+                      </p>
+                    </div>
+                  </Fade>
+                </Modal>
+              </div>
+            </CardActions>
+          </Card>
+        </Grid>
       ))}
     </React.Fragment>
   );

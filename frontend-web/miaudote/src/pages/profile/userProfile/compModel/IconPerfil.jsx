@@ -49,6 +49,7 @@ export default function BadgeAvatars(props) {
   const classes = useStyles();
 
   const profilePhoto = props.profilePhoto;
+  console.log(profilePhoto);
   return (
     <div className={classes.root}>
       <StyledBadge

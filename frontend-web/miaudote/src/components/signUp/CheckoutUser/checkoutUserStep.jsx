@@ -139,7 +139,8 @@ export default function CheckoutUSerStep() {
       .join('-');
     values.cpf = values.cpf.replace(/[^A-Z0-9]+/gi, '');
     values.celular = values.celular.replace(/[^0-9]+/g, '');
-    // console.log(JSON.stringify(values, null, 2));
+    values.cep = values.cep.replace(/\D/g, '');
+    console.log(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
 
     Axios.post(
@@ -172,6 +173,7 @@ export default function CheckoutUSerStep() {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', response.data.usuario.nome);
         localStorage.setItem('id', response.data.usuario.id);
+        localStorage.setItem('photo', response.data.usuario.url_foto);
       })
       .catch(function (error) {
         alert('ops! Usuário e ou senha estão errados');
@@ -216,9 +218,9 @@ export default function CheckoutUSerStep() {
             initialValues={
               isLogin === false ? userInitialValues : InitialValues
             }
-            // validationSchema={
-            //   isLogin === false ? currentUserValidationSchema : ''
-            // }
+            validationSchema={
+              isLogin === false ? currentUserValidationSchema : ''
+            }
             onSubmit={isLogin === false ? _handleSubmit : _LoginSubmit}
           >
             {({ isSubmitting, values }) => (

@@ -32,7 +32,7 @@ export default function HeaderMain() {
           trigger !== true
             ? {
                 transition: '1s',
-                backgroundColor: 'transparent',
+                backgroundColor: 'rgba(0,0,0,0.3)',
               }
             : { transition: '1s', backgroundColor: palette.primary.main }
         }

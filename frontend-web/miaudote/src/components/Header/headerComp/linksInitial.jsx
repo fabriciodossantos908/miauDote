@@ -41,7 +41,7 @@ export default function LinksInitial(props) {
         </Grid>
       </Grid>
       <Grid item xs={2}>
-        <Link to="/login" className={classes.links}>
+        <Link to="/home" className={classes.links}>
           <Tab label="Logar" />
         </Link>
       </Grid>

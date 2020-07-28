@@ -48,7 +48,6 @@ export default function FormUserAddress(props) {
         values.cidade = address.localidade;
         values.bairro = address.bairro;
         values.logradouro = address.logradouro;
-        values.complemento = address.complemento;
       })
       .catch((error) => {
         console.log(JSON.stringify(error));

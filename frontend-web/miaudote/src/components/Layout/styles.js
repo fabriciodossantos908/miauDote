@@ -213,6 +213,12 @@ const mainHome = makeStyles({
     marginTop: '2vh',
     borderRadius: 20,
   },
+  sectionDescContent: {
+    height: 80,
+    marginBottom: 5,
+    borderBottomRightRadius: 40,
+    backgroundColor: palette.secondary.main,
+  },
   icon: {
     width: 50,
     height: 50,

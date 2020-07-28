@@ -34,7 +34,7 @@ export default {
   [bairro.name]: '',
   [logradouro.name]: '',
   [numero.name]: '',
-  [complemento.name]: '',
+  [complemento.name]: 'proximo de uma padaria',
   [uf.name]: '',
   [url_foto.name]: 'https://localhost.com/image.jpg',
   permissions: 'USER',
