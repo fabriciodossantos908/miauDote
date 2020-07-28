@@ -30,18 +30,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SocialIcon() {
+export function SocialIcon() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Grid item>
-        <InstagramIcon className={classes.icon} />
-      </Grid>
-      <Grid item>
-        <FacebookIcon className={classes.icon} />
-      </Grid>
-      <Grid item>
-        <LinkedInIcon className={classes.icon} />
+      <Grid item container justify="center">
+        <Grid item>
+          <Typography
+            variant="h4"
+            style={{ color: theme.palette.primary.main }}
+          >
+            Redes Sociais
+          </Typography>
+        </Grid>
+        <Grid item container justify="space-evenly">
+          <Grid item>
+            <InstagramIcon className={classes.icon} />
+          </Grid>
+          <Grid item>
+            <FacebookIcon className={classes.icon} />
+          </Grid>
+          <Grid item>
+            <LinkedInIcon className={classes.icon} />
+          </Grid>
+        </Grid>
       </Grid>
     </React.Fragment>
   );
@@ -158,19 +170,6 @@ export default function InitialHome() {
         </CardMedia>
       </Grid>
       {/* Social Area section */}
-      <Grid item container justify="center">
-        <Grid item>
-          <Typography
-            variant="h4"
-            style={{ color: theme.palette.primary.main }}
-          >
-            Redes Sociais
-          </Typography>
-        </Grid>
-        <Grid item container justify="space-evenly">
-          <SocialIcon />
-        </Grid>
-      </Grid>
     </Grid>
   );
 }

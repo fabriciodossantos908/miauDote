@@ -17,35 +17,11 @@ import {
 } from '@material-ui/core';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Favorite from '@material-ui/icons/Favorite';
-import {
-  Cachorro,
-  Cachorro2,
-  Cachorro3,
-  hamster,
-  calopsita,
-  gato,
-  coelho,
-} from '../../../images/petImg/dog';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import PetsIcon from '@material-ui/icons/Pets';
 import { palette } from '../../../components/Layout/theme';
 import Axios from 'axios';
-
-const dogs = [
-  hamster,
-  calopsita,
-  coelho,
-  gato,
-  Cachorro2,
-  Cachorro3,
-  Cachorro,
-  Cachorro2,
-  Cachorro3,
-  Cachorro,
-  Cachorro3,
-  Cachorro,
-  hamster,
-];
+import { CardPets } from '../petComp/';
 
 const useStyles = makeStyles({
   root: {
@@ -68,7 +44,7 @@ const useStyles = makeStyles({
     border: 0,
   },
   paper: {
-    width: 450,
+    width: 600,
     height: 450,
     borderRadius: 20,
     backgroundColor: palette.background.paper,
@@ -115,12 +91,12 @@ export default function PetTab() {
       justify="space-between"
       style={{ marginBottom: 20 }}
     >
-      {pets.map((petData, index, genero) => (
+      {pets.map((petData) => (
         <Grid item className={classes.root}>
           <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image={dogs[index]}
+              image={petData.url_foto}
               title={petData.nome}
             >
               <FormControlLabel
@@ -165,10 +141,11 @@ export default function PetTab() {
                 <Button
                   key={petData.id}
                   id={petData.id}
-                  name={'btn ' + index}
                   style={{ marginLeft: '65%' }}
                   variant="text"
-                  onClick={handleModal}
+                  onClick={() => {
+                    setOpen(petData.id);
+                  }}
                 >
                   Ver mais
                 </Button>
@@ -195,15 +172,6 @@ export default function PetTab() {
                             <CloseRoundedIcon />
                           </Button>
                         </Grid>
-
-                        <Grid item xs={12}>
-                          <Typography variant="h4" align="center">
-                            {petData.nome}
-                          </Typography>
-                        </Grid>
-                        <Divider
-                          style={{ width: '100%', marginBottom: '1vh' }}
-                        />
                         <Grid
                           item
                           container
@@ -215,9 +183,18 @@ export default function PetTab() {
                           <Grid item xs={4}>
                             <CardMedia
                               style={{ height: 250, borderRadius: 20 }}
-                              image={dogs[index]}
+                              image={petData.url_foto}
                               title={petData.nome}
                             ></CardMedia>
+                          </Grid>
+                          <Grid item xs={8} sm={6}>
+                            <Grid>
+                              <Typography variant="h6">Descrição</Typography>
+                            </Grid>
+
+                            <Typography variant="h8">
+                              {petData.descricao}
+                            </Typography>
                           </Grid>
                           <Grid
                             item
@@ -261,7 +238,7 @@ export default function PetTab() {
                             </Grid>
 
                             <Grid item container direction="row">
-                              <Grid item xs={12} sm={6}>
+                              <Grid item xs={4} sm={3}>
                                 <Grid>
                                   <Typography variant="h6">Estado</Typography>
                                 </Grid>
@@ -270,26 +247,18 @@ export default function PetTab() {
                                   {petData.uf}
                                 </Typography>
                               </Grid>
-                              <Grid item xs={12} sm={6}>
+                              <Grid item xs={4} sm={3}>
                                 <Grid>
                                   <Typography variant="h6">Cidade</Typography>
                                 </Grid>
-
                                 <Typography variant="h8">
                                   {petData.cidade}
                                 </Typography>
                               </Grid>
+                              <Grid item xs={4}>
+                                <CardPets />
+                              </Grid>
                             </Grid>
-                          </Grid>
-
-                          <Grid item xs={12} sm={6}>
-                            <Grid>
-                              <Typography variant="h6">Descrição</Typography>
-                            </Grid>
-
-                            <Typography variant="h8">
-                              {petData.descricao}
-                            </Typography>
                           </Grid>
                         </Grid>
                       </Grid>
