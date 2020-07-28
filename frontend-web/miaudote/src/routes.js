@@ -11,6 +11,7 @@ import HeaderBase from './components/Header/headerBase';
 import HeaderInitial from './components/Header/HeaderInitial';
 import UserProfile from './pages/profile/userProfile/UserProfile';
 import PetList from './pages/petList/PetList';
+import PetLost from './pages/petLostList/PetLost';
 import { isNil } from 'lodash';
 
 function Routes() {
@@ -42,6 +43,9 @@ function Routes() {
           </Route>
           <Route path="/pet" exact>
             <PetList />
+          </Route>
+          <Route path="/petLost" exact>
+            <PetLost />
           </Route>
           <Route path="/about" exact>
             <Gear />

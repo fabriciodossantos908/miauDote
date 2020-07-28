@@ -4,7 +4,10 @@ import { Grid, CardMedia, Typography, Fade, Slide } from '@material-ui/core';
 
 import CheckoutUserStep from '../../components/signUp/CheckoutUser/checkoutUserStep';
 
-import { Dog_boxer } from '../../images/petImg/dog/index';
+
+import InstagramIcon from '@material-ui/icons/Instagram'
+import FacebookIcon from '@material-ui/icons/Facebook'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
 
 import { makeStyles } from '@material-ui/core/styles';
 import { palette } from '../../components/Layout/theme';
@@ -26,6 +29,35 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
 }));
+
+export function SocialIcon() {
+  const classes = useStyles();
+  return (
+    <React.Fragment>
+      <Grid item container justify="center">
+        <Grid item>
+          <Typography
+            variant="h4"
+            style={{ color: theme.palette.primary.main }}
+          >
+            Redes Sociais
+          </Typography>
+        </Grid>
+        <Grid item container justify="space-evenly">
+          <Grid item>
+            <InstagramIcon className={classes.icon} />
+          </Grid>
+          <Grid item>
+            <FacebookIcon className={classes.icon} />
+          </Grid>
+          <Grid item>
+            <LinkedInIcon className={classes.icon} />
+          </Grid>
+        </Grid>
+      </Grid>
+    </React.Fragment>
+  );
+}
 
 export default function InitialHome() {
   const classes = mainHome();
@@ -161,6 +193,7 @@ export default function InitialHome() {
           </Grid>
         </CardMedia>
       </Grid>
+      {/* Social Area section */}
     </Grid>
   );
 }

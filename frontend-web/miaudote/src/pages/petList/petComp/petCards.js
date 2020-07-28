@@ -2,16 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-// import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {
   Grid,
   FormControlLabel,
   Checkbox,
-  ButtonBase,
   Button,
   Modal,
   Fade,
@@ -20,27 +17,14 @@ import {
 } from '@material-ui/core';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Favorite from '@material-ui/icons/Favorite';
-import { Cachorro, Cachorro2, Cachorro3 } from '../../../images/petImg/dog';
-
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
-
-import PetsIcon from '@material-ui/icons/Pets';
-import ToysIcon from '@material-ui/icons/Toys';
 import { palette } from '../../../components/Layout/theme';
 import Axios from 'axios';
+import { Male, Female } from '../../../images/iconSex';
 
-// import FemaleIcon from '../../../images/icons/FemaleIcon.svg';
-
-const dogs = [
-  Cachorro,
-  Cachorro2,
-  Cachorro3,
-  Cachorro,
-  Cachorro2,
-  Cachorro3,
-  Cachorro,
-  Cachorro3,
-  Cachorro,
+const sex = [
+  <img src={Male} width="20" height="20" />,
+  <img src={Female} width="20" height="20" />,
 ];
 
 const useStyles = makeStyles({
@@ -68,132 +52,8 @@ const useStyles = makeStyles({
     height: 450,
     borderRadius: 20,
     backgroundColor: palette.background.paper,
-    // boxShadow: theme.shadows[5],
-    // padding: theme.spacing(2, 4, 3),
   },
 });
-
-const photo = require('../../../images/petImg/dog/Cachorro.jpg');
-
-// const pets = [
-//   {
-//     id: 0,
-//     nome: 'Tormenta',
-//     especie: 'Cachorro',
-//     raca: 'Vira-lata',
-//     cor: 'Pardo',
-//     sexo: 'Macho',
-//     idade: '2 anos',
-//     uf: 'SP',
-//     cidade: 'Osasco',
-//     descricao:
-//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-//   },
-//   {
-//     id: 1,
-//     nome: 'Buck',
-//     especie: 'Cachorro',
-//     raca: 'Golden',
-//     cor: 'Pardo',
-//     sexo: 'Macho',
-//     idade: '2 anos',
-//     uf: 'SP',
-//     cidade: 'Osasco',
-//     descricao:
-//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-//   },
-//   {
-//     id: 2,
-//     nome: 'Dudy',
-//     especie: 'Cachorro',
-//     raca: 'Golden',
-//     cor: 'Pardo',
-//     sexo: 'Fêmea',
-//     idade: '2 anos',
-//     uf: 'SP',
-//     cidade: 'Osasco',
-//     descricao:
-//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-//   },
-//   {
-//     id: 3,
-//     nome: 'Jhonny',
-//     especie: 'Cachorro',
-//     raca: 'Boxer',
-//     cor: 'Pardo',
-//     sexo: 'Macho',
-//     idade: '2 anos',
-//     uf: 'SP',
-//     cidade: 'Osasco',
-//     descricao:
-//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-//   },
-//   {
-//     id: 4,
-//     nome: 'Teddy',
-//     especie: 'Cachorro',
-//     raca: 'York Shine',
-//     cor: 'Pardo',
-//     sexo: 'Macho',
-//     idade: '2 anos',
-//     uf: 'SP',
-//     cidade: 'Osasco',
-//     descricao:
-//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-//   },
-//   {
-//     id: 5,
-//     nome: 'Pandora',
-//     especie: 'Cachorro',
-//     raca: 'Golden',
-//     cor: 'Pardo',
-//     sexo: 'Fêmea',
-//     idade: '2 anos',
-//     uf: 'SP',
-//     cidade: 'Osasco',
-//     descricao:
-//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-//   },
-//   {
-//     id: 6,
-//     nome: 'Laica',
-//     especie: 'Cachorro',
-//     raca: 'Vira-lata',
-//     cor: 'Pardo',
-//     sexo: 'Fêmea',
-//     idade: '2 anos',
-//     uf: 'SP',
-//     cidade: 'Osasco',
-//     descricao:
-//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-//   },
-//   {
-//     id: 7,
-//     nome: 'Thor',
-//     especie: 'Cachorro',
-//     raca: 'Vira-lata',
-//     cor: 'Pardo',
-//     sexo: 'Macho',
-//     idade: '2 anos',
-//     uf: 'SP',
-//     cidade: 'Osasco',
-//     descricao:
-//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-//   },
-//   {
-//     id: 8,
-//     nome: 'Duda',
-//     especie: 'Cachorro',
-//     raca: 'Golden',
-//     cor: 'Pardo',
-//     sexo: 'Fêmea',
-//     idade: '2 anos',
-//     uf: 'SP',
-//     cidade: 'Osasco',
-//     descricao:
-//       'Ele sempre foi agitado mas amoroso consegue ser amosoro na mesma media, as vezes até demais.',
-//   },
-// ];
 
 export default function PetTab() {
   const classes = useStyles();
@@ -213,7 +73,7 @@ export default function PetTab() {
     );
     return () => {
       window.addEventListener('load', console.log('event of load'));
-      // window.addEventListener("load", console.log("this is useEffect return"))
+      window.addEventListener('load', console.log('this is useEffect return'));
     };
   }, []);
 
@@ -222,6 +82,7 @@ export default function PetTab() {
     console.log(value);
     setOpen(8);
   };
+
   function handleCloseModal(event) {
     setOpen(false);
   }
@@ -234,12 +95,12 @@ export default function PetTab() {
       justify="space-between"
       style={{ marginBottom: 20 }}
     >
-      {pets.map((petData, index) => (
+      {pets.map((petData) => (
         <Grid item className={classes.root}>
           <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image={dogs[index]}
+              image={petData.url_foto}
               title={petData.nome}
             >
               <FormControlLabel
@@ -254,7 +115,6 @@ export default function PetTab() {
               />
             </CardMedia>
             <CardContent>
-              {/* Section brief desc */}
               <Grid container justify="space-evenly" alignItems="center">
                 <Grid item xs={12}>
                   <CardActionArea>
@@ -268,31 +128,26 @@ export default function PetTab() {
                 <Grid item container xs={12} direction="row">
                   <Grid item container xs={6} direction="row">
                     <Grid item>
-                      <PetsIcon />
-                    </Grid>
-                    <Grid item>
                       <Typography gutterBottom variant="h8">
-                        {petData.raca}
+                        {petData.uf}
+                      </Typography>
+                      <Typography gutterBottom variant="h8">
+                        -
+                      </Typography>
+                      <Typography gutterBottom variant="h8">
+                        {petData.cidade}
                       </Typography>
                     </Grid>
-                  </Grid>
-                  <Grid item container xs={6} direction="row">
-                    <Grid item>{/* <FemaleIcon /> */}</Grid>
-                    <Grid item>
-                      <Typography gutterBottom variant="h8">
-                        {petData.sexo}
-                      </Typography>
+                    <Grid item container xs={12} direction="row">
+                      <Grid item>{petData.sexo === 'M' ? sex[0] : sex[1]}</Grid>
                     </Grid>
                   </Grid>
                 </Grid>
               </Grid>
               <Grid item xs={12}>
-                {/* {console.log(petData.id)} */}
                 <Button
                   key={petData.id}
-                  id={index}
                   defaultValue={petData.id}
-                  name={'btn ' + index}
                   style={{ marginLeft: '65%' }}
                   variant="text"
                   onClick={() => {
@@ -310,7 +165,6 @@ export default function PetTab() {
                   open={petData.id === open ? true : false}
                   onClose={handleCloseModal}
                   closeAfterTransition
-                  // BackdropComponent={Backdrop}
                   BackdropProps={{
                     timeout: 500,
                   }}
@@ -332,9 +186,6 @@ export default function PetTab() {
                             {petData.nome}
                           </Typography>
                         </Grid>
-                        <Divider
-                          style={{ width: '100%', marginBottom: '1vh' }}
-                        />
                         <Grid
                           item
                           container
@@ -346,7 +197,7 @@ export default function PetTab() {
                           <Grid item xs={4}>
                             <CardMedia
                               style={{ height: 250, borderRadius: 20 }}
-                              image={dogs[index]}
+                              image={petData.url_foto}
                               title={petData.nome}
                             ></CardMedia>
                           </Grid>
@@ -429,21 +280,6 @@ export default function PetTab() {
                 </Modal>
               </Grid>
             </CardContent>
-
-            {/* <CardActions style={{ marginTop: 10 }}>
-                                <Grid container justify="space-evenly">
-                                    <Grid>
-                                <Button size="small" color="primary">
-                                    Rotina
-                                </Button>
-                                </Grid>
-                                <Grid>
-                                <Button size="small" color="primary">
-                                    Ver mais
-                                </Button>
-                                </Grid>
-                                </Grid>
-                            </CardActions> */}
           </Card>
         </Grid>
       ))}
