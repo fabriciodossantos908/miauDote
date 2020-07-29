@@ -65,7 +65,6 @@ function Routes() {
           <Route path="/formUser" exact>
             <CheckoutUserStep />
           </Route>
-          +-{' '}
           <Route path="/myPet" exact>
             <Gear />
           </Route>

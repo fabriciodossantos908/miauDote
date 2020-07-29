@@ -35,7 +35,8 @@ export default function PetPhoto(props) {
       formData,
     )
       .then((response) => {
-        alert(response);
+        //   values.url_foto = response.data.url_foto
+        alert(response.data.url_foto);
       })
       .catch((error) => {
         alert(error);

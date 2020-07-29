@@ -1,10 +1,104 @@
 import React, { useEffect } from 'react';
 import { petStyle } from './styles';
-import { Grid, CardMedia, Typography, Fab } from '@material-ui/core';
+import {
+  Grid,
+  CardMedia,
+  Typography,
+  Fab,
+  Modal,
+  Button,
+  Fade,
+  makeStyles,
+} from '@material-ui/core';
 import { PetTab } from './petComp/';
 import Axios from 'axios';
 import AddIcon from '@material-ui/icons/Add';
+
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+
+import CheckoutPet from '../../components/PetSignUp/typeRegister/CheckoutPet';
+import { palette } from '../../components/Layout/theme';
+
 const background = require('../../images/background.jpg');
+
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 0,
+  },
+  paper: {
+    width: 550,
+    height: 550,
+    borderRadius: 20,
+    backgroundColor: theme.palette.background.paper,
+    // boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
+
+function AdoptionPet(props) {
+  const classes = petStyle();
+  const classesMain = useStyles();
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = (event) => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <React.Fragment>
+      <Fab
+        color="primary"
+        aria-label="add"
+        onClick={handleOpen}
+        className={classes.fab}
+        style={{
+          margin: 0,
+          top: 'auto',
+          right: 20,
+          bottom: 20,
+          left: 'auto',
+          position: 'fixed',
+          backgroundColor: palette.primary.main,
+        }}
+      >
+        <AddIcon />
+      </Fab>
+
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        disablePortal
+        disableEnforceFocus
+        className={classesMain.modal}
+        open={open}
+        onClose={handleClose}
+        disableBackdropClick
+        closeAfterTransition
+        // BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classesMain.paper}>
+            <Button onClick={handleClose} style={{ marginLeft: 400 }}>
+              <CloseRoundedIcon />
+            </Button>
+            <CheckoutPet />
+          </div>
+        </Fade>
+      </Modal>
+    </React.Fragment>
+  );
+}
 
 export default function PetList() {
   var pets = [];
@@ -18,10 +112,10 @@ export default function PetList() {
   function success(pos) {
     var crd = pos.coords;
 
-    console.log('Sua posição atual é:');
-    console.log('Latitude : ' + crd.latitude);
-    console.log('Longitude: ' + crd.longitude);
-    console.log('Mais ou menos ' + crd.accuracy + ' metros.');
+    // console.log('Sua posição atual é:');
+    // console.log('Latitude : ' + crd.latitude);
+    // console.log('Longitude: ' + crd.longitude);
+    // console.log('Mais ou menos ' + crd.accuracy + ' metros.');
   }
 
   function error(err) {
@@ -32,7 +126,10 @@ export default function PetList() {
 
   return (
     <div className={classes.root}>
-      <CardMedia image={background}>
+      <CardMedia
+        image={background}
+        style={{ marginTop: -100, paddingTop: 100 }}
+      >
         {/* Introdução da página */}
         <Grid container direction="column" justify="center" alignItems="center">
           <Grid item xs={12}>
@@ -54,9 +151,7 @@ export default function PetList() {
               justify="center"
               style={{ marginTop: 50 }}
             >
-              <Fab color="primary" aria-label="add" className={classes.fab}>
-                <AddIcon />
-              </Fab>
+              <AdoptionPet petStyle={classes} />
               <PetTab pets={pets} />
 
               {/* <PetTab pets={pets} />

@@ -28,6 +28,7 @@ import {
 } from '../../Layout/styles';
 import Axios from 'axios';
 import PetPhoto from '../FormPet/PetPhoto';
+import { useHistory } from 'react-router-dom';
 // import TestStepper from '../../pages/testStepper';
 // import { useHistory } from 'react-router-dom';
 
@@ -67,7 +68,9 @@ export default function CheckoutCompanyStep() {
   //   const currentValidationSchema = petValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 2;
   const created = activeStep === steps.length - 1;
-  // const history = useHistory()
+
+  const history = useHistory();
+
   // function _sleep(ms) {
   //   return new Promise(resolve => setTimeout(resolve, ms));
   // }
@@ -86,7 +89,7 @@ export default function CheckoutCompanyStep() {
       { headers: { Authorization: AuthStr } },
     )
       .then(function (response) {
-          localStorage.setItem('pet-id', response.data.id)        
+        localStorage.setItem('pet-id', response.data.id);
         // console.log(response);
       })
       .catch(function (error) {
@@ -192,9 +195,12 @@ export default function CheckoutCompanyStep() {
                   disabled={isSubmitting}
                   type="submit"
                   variant="contained"
+                  onClick={() => {
+                    created && history.push('/pet');
+                  }}
                   className={classes.buttons}
                 >
-                  {created ? 'criar' : 'Próximo'}
+                  {created ? 'finalizar' : 'Próximo'}
                 </Button>
                 {isSubmitting && (
                   <CircularProgress
