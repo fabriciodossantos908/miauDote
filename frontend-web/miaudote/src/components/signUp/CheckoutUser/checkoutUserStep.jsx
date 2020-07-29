@@ -149,7 +149,7 @@ export default function CheckoutUSerStep() {
     )
       .then(function (response) {
         alert('Cadastrado com sucesso!');
-        localStorage.setItem('email', response.data.usuario.email);
+        // localStorage.setItem('email', values.email);
         console.log(response);
       })
       .catch(function (error) {
@@ -282,11 +282,12 @@ export default function CheckoutUSerStep() {
                   >
                     <Grid item>
                       <Button
+                        style={{ width: 150 }}
                         onClick={handleBackLogin}
                         className={classes.buttons}
                         variant="contained"
                       >
-                        {isLogin === true ? 'Volta' : 'Logar'}
+                        {isLogin === true ? 'Cadastre-se' : 'Logar'}
                       </Button>
                     </Grid>
                     {activeStep !== 0 && (
@@ -324,6 +325,7 @@ export default function CheckoutUSerStep() {
                     ) : (
                       <Grid item>
                         <Button
+                          style={{ width: 150 }}
                           disabled={isSubmitting}
                           type="submit"
                           variant="contained"

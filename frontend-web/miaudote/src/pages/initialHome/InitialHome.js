@@ -4,10 +4,9 @@ import { Grid, CardMedia, Typography, Fade, Slide } from '@material-ui/core';
 
 import CheckoutUserStep from '../../components/signUp/CheckoutUser/checkoutUserStep';
 
-
-import InstagramIcon from '@material-ui/icons/Instagram'
-import FacebookIcon from '@material-ui/icons/Facebook'
-import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { palette } from '../../components/Layout/theme';
@@ -100,7 +99,7 @@ export default function InitialHome() {
                 <Slide
                   direction="right"
                   in={checked}
-                  timeout={2000}
+                  timeout={2500}
                   mountOnEnter
                   unmountOnExit
                 >
@@ -110,7 +109,7 @@ export default function InitialHome() {
                     className={classes.sectionDescContent}
                     style={{
                       marginTop: 80,
-                      backgroundColor: palette.secondary.dark,
+                      backgroundColor: palette.secondary.light,
                     }}
                   >
                     <Typography
@@ -126,7 +125,7 @@ export default function InitialHome() {
                 <Slide
                   direction="right"
                   in={checked}
-                  timeout={2500}
+                  timeout={2000}
                   mountOnEnter
                   unmountOnExit
                 >
@@ -136,13 +135,13 @@ export default function InitialHome() {
                     className={classes.sectionDescContent}
                     style={{
                       marginTop: -150,
-                      backgroundColor: palette.secondary.main,
+                      backgroundColor: palette.primary.main,
                     }}
                   >
                     <Typography
                       variant="h4"
                       align="center"
-                      style={{ color: palette.primary.contrastText }}
+                      style={{ color: palette.common.white }}
                     >
                       ao miaudote!!
                     </Typography>
@@ -169,7 +168,7 @@ export default function InitialHome() {
                     <Typography
                       variant="h5"
                       align="center"
-                      style={{ color: palette.common.black }}
+                      style={{ color: palette.common.white }}
                     >
                       cadastre-se ou faça o login, para ter acesso a todas as
                       fofurinhas do nosso Brasil !!

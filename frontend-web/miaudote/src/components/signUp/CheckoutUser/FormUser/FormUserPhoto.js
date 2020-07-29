@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid, Typography, Button, makeStyles } from '@material-ui/core';
 import Axios from 'axios';
+import { palette } from '../../../Layout/theme';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,10 +16,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function FormUserPhoto(props) {
-  //   const classes = props.useStyle();
   const classesPhoto = useStyles();
-
   var selectedFile = null;
+  const history = useHistory();
 
   const fileUploadHandler = (event) => {
     selectedFile = event.target.files;
@@ -33,18 +34,21 @@ export default function FormUserPhoto(props) {
       formData,
     )
       .then((response) => {
+        alert('Foto alterada com sucesso!');
         localStorage.setItem('photo', response.data.url_foto);
       })
       .catch((error) => {
         alert(error);
         console.log(error);
       });
+
+    history.push('/profile');
   };
 
   return (
     <React.Fragment>
       <Typography variant="h6" align="center">
-        Por favor, selecione uma foto.
+        Selecione uma foto.
       </Typography>
 
       <Grid item xs={12}>
@@ -57,7 +61,11 @@ export default function FormUserPhoto(props) {
           onChange={fileUploadHandler}
         />
         <label htmlFor="contained-button-file">
-          <Button variant="contained" color="primary" component="span">
+          <Button
+            variant="contained"
+            style={{ backgroundColor: palette.primary.light }}
+            component="span"
+          >
             Upload
           </Button>
         </label>

@@ -23,13 +23,13 @@ const test = require('../../../images/petImg/cat.jpg');
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    minWidth: 200,
-    maxWidth: 400,
-    height: 300,
+    width: 360,
+    height: 360,
+    marginBottom: 20,
   },
   root: {
-    minWidth: 200,
-    maxWidth: 345,
+    width: 300,
+    height: 300,
     bottom: 20,
     margin: theme.spacing(1),
   },
@@ -92,7 +92,7 @@ export default function ImgMediaCard(props) {
   return (
     <React.Fragment>
       {pets.map((petData, index) => (
-        <Grid item className={classes.container}>
+        <Grid item sm={3} className={classes.container}>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia

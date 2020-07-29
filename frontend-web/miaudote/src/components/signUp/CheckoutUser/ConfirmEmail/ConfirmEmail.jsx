@@ -5,13 +5,13 @@ import { palette } from '../../../Layout/theme';
 
 function ConfirmEmail(props) {
   const history = useHistory();
-  var email = localStorage.getItem('email');
+  //   var email = localStorage.getItem('email');
 
-  let hide = email.split('@')[0].length - 2;
+  //   let hide = email.split('@')[0].length - 2;
 
-  var r = new RegExp('.{' + hide + '}@', 'g');
+  //   var r = new RegExp('.{' + hide + '}@', 'g');
 
-  email = email.replace(r, '***@');
+  //   email = email.replace(r, '***@');
 
   const handleLogin = () => {
     history.go(0);
@@ -45,8 +45,8 @@ function ConfirmEmail(props) {
             Estamos quase lá! só precisamos conferir seu email.
           </Typography>
           <Typography variant="subtitle1" align="center">
-            Uma mensagem será enviada á {email} com o link para confirmação.
-            Obrigado por se tornar parte dos Pet Lovers!
+            Uma mensagem será enviada á miaudote.sds@gmail.com com o link para
+            confirmação. Obrigado por se tornar parte dos Pet Lovers!
           </Typography>
         </Grid>
         <Grid>
