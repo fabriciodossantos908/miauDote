@@ -20,16 +20,24 @@ import PetAddress from '../FormLostPet/PetLostAddress';
 import checkoutPetModal from '../lostPetModel/checkoutPetModel';
 import petInitialInfo from '../lostPetModel/petInitialValues';
 
+import PetPhoto from '../FormLostPet/PetPhoto';
+
 import {
   useStyle,
   formBase,
   useColorlibStepIconStyles,
 } from '../../Layout/styles';
 import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
 // import TestStepper from '../../pages/testStepper';
 // import { useHistory } from 'react-router-dom';
 
-const steps = ['Localização', 'Descrição do pet', 'Tipo do seu pet'];
+const steps = [
+  'Localização',
+  'Descrição do pet',
+  'Tipo do seu pet',
+  'Foto do seu pet',
+];
 const labels = [
   'Quando que você o viu pela ultima vez?',
   'Pode descrever suas características?',
@@ -47,6 +55,8 @@ function renderStepContent(step, values) {
       return <PetDesc formField={formField} useStyle={useStyle} />;
     case 2:
       return <PetType formField={formField} useStyle={useStyle} />;
+    case 3:
+      return <PetPhoto values={values} type={'adoption'} useStyle={useStyle} />;
     default:
       return <div>Not Found</div>;
   }
@@ -58,8 +68,10 @@ export default function CheckoutCompanyStep() {
   const [activeStep, setActiveStep] = useState(0);
   // const [createStatus, setCreacteStatus] = useState(false);
   // const currentValidationSchema = petValidationSchema[activeStep];
-  const isLastStep = activeStep === steps.length - 1;
-  // const history = useHistory()
+  const isLastStep = activeStep === steps.length - 2;
+  const created = activeStep === steps.length - 1;
+
+  const history = useHistory();
   // function _sleep(ms) {
   //   return new Promise(resolve => setTimeout(resolve, ms));
   // }
@@ -71,7 +83,8 @@ export default function CheckoutCompanyStep() {
     console.log(JSON.stringify(values, null, 2));
     actions.setSubmitting(false);
     values.id_usuario = USER_ID;
-
+    values.data = values.data.split('/').reverse().join('-');
+    values.hora = values.hora.split(':').reverse().join('-');
     Axios.post(
       'http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets_perdidos',
       values,
@@ -112,7 +125,6 @@ export default function CheckoutCompanyStep() {
       2: <PetsIcon />,
       3: <PetsIcon />,
       4: <PetsIcon />,
-      5: <PetsIcon />,
     };
 
     return (
@@ -189,8 +201,13 @@ export default function CheckoutCompanyStep() {
                   type="submit"
                   variant="contained"
                   className={classes.buttons}
+                  onClick={() => {
+                    created
+                      ? history.push('/petLost')
+                      : console.log('wait again');
+                  }}
                 >
-                  {isLastStep ? 'Criar' : 'Próximo'}
+                  {created ? 'Cadastrar' : 'Próximo'}
                 </Button>
                 {isSubmitting && (
                   <CircularProgress

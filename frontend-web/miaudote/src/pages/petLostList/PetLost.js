@@ -17,6 +17,7 @@ import CheckoutLostPet from '../../components/PetSignUp/typeRegister/CheckoutLos
 
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import { useStyle } from '../../components/Layout/styles';
+import { palette } from '../../components/Layout/theme';
 
 const background = require('../../images/background.jpg');
 
@@ -38,7 +39,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function LostPet(props) {
-  const classes = useStyle();
+  const classes = petStyle();
+  const classesMain = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -74,7 +76,7 @@ function LostPet(props) {
         aria-describedby="transition-modal-description"
         disablePortal
         disableEnforceFocus
-        className={classes.modal}
+        className={classesMain.modal}
         open={open}
         onClose={handleClose}
         disableBackdropClick
@@ -85,7 +87,7 @@ function LostPet(props) {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
+          <div className={classesMain.paper}>
             <Button onClick={handleClose} style={{ marginLeft: 400 }}>
               <CloseRoundedIcon />
             </Button>
@@ -107,7 +109,7 @@ export default function PetLost() {
         <Grid container direction="column" justify="center" alignItems="center">
           <Grid item xs={12}>
             <Typography variant="h3" className={classes.typografy}>
-              Essas fofurinhas estão esperando por você !
+              Encontre aqui o seu pet perdido !
             </Typography>
           </Grid>
 

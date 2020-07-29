@@ -117,7 +117,7 @@ export default function Home() {
                     </Link>
                   </Grid>
                   <Grid item xs={6} style={{ marginTop: 30 }}>
-                    <Link to="/pet_perdido" className={classes.links}>
+                    <Link to="/petLost" className={classes.links}>
                       <Button
                         variant="outlined"
                         style={{

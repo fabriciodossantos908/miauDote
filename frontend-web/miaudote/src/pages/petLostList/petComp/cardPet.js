@@ -41,26 +41,31 @@ const useStyles = makeStyles((theme) => ({
 export default function ImgMediaCard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [pets, setPets] = useState([]);
-  useEffect(() => {
-    window.addEventListener(
-      'load',
-      Axios.get(
-        'http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets_perdidos',
-      )
-        .then((result) => {
-          const petsData = result.data;
-          return setPets(petsData);
-        })
-        .catch((err) => {
-          console.log(err);
-        }),
-    );
-    return () => {
-      window.addEventListener('load', console.log('event of load'));
-      window.addEventListener('load', console.log('this is useEffect return'));
-    };
-  }, []);
+  //   const [pets, setPets] = useState([]);
+
+  const values = props.values;
+
+  console.log(JSON.stringify(values));
+
+  //   useEffect(() => {
+  //     window.addEventListener(
+  //       'load',
+  //       Axios.get(
+  //         'http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets_perdidos',
+  //       )
+  //         .then((result) => {
+  //           const petsData = result.data;
+  //           return setPets(petsData);
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         }),
+  //     );
+  //     return () => {
+  //       window.addEventListener('load', console.log('event of load'));
+  //       window.addEventListener('load', console.log('this is useEffect return'));
+  //     };
+  //   }, []);
 
   const handleOpen = () => {
     setOpen(true);
@@ -72,47 +77,45 @@ export default function ImgMediaCard(props) {
 
   return (
     <React.Fragment className={classes.container}>
-      {pets.map((petData) => (
-        <Card>
-          <CardActions>
-            <div>
-              <Button size="small" onClick={handleOpen}>
-                Quero adotar
-              </Button>
-              <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                className={classes.modal}
-                open={petData.id === open ? true : false}
-                onClose={handleClose}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                  timeout: 500,
-                }}
-              >
-                <Fade in={petData.id === open ? true : false}>
-                  <div className={classes.paper}>
-                    <h2 id="transition-modal-title">Entre em contato !</h2>
-                    <Button size="small" onClick={handleClose}>
-                      X
-                    </Button>
-                    <p id="transition-modal-description">
-                      <CardActionArea>
-                        <CardMedia
-                          style={{ height: 250, borderRadius: 20 }}
-                          component="img"
-                          image={petData.url_foto}
-                        />
-                      </CardActionArea>
-                    </p>
-                  </div>
-                </Fade>
-              </Modal>
-            </div>
-          </CardActions>
-        </Card>
-      ))}
+      <Card>
+        <CardActions>
+          <div>
+            <Button size="small" onClick={handleOpen}>
+              encontrei
+            </Button>
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              className={classes.modal}
+              open={open}
+              onClose={handleClose}
+              closeAfterTransition
+              BackdropComponent={Backdrop}
+              BackdropProps={{
+                timeout: 500,
+              }}
+            >
+              <Fade in={open}>
+                <div className={classes.paper}>
+                  <h2 id="transition-modal-title">Entre em contato !</h2>
+                  <Button size="small" onClick={handleClose}>
+                    X
+                  </Button>
+                  <p id="transition-modal-description">
+                    <CardActionArea>
+                      <CardMedia
+                        style={{ height: 250, borderRadius: 20 }}
+                        component="img"
+                        image={values.url_foto}
+                      />
+                    </CardActionArea>
+                  </p>
+                </div>
+              </Fade>
+            </Modal>
+          </div>
+        </CardActions>
+      </Card>
     </React.Fragment>
   );
 }

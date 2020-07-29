@@ -11,6 +11,7 @@ import Zoom from '@material-ui/core/Zoom';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import { InputField } from '../../FieldStyle';
+import Input from '../../SignIn/Input';
 
 // Tell about this. Create the user option to define if the per was founded or are of himself
 
@@ -78,9 +79,7 @@ export default function PetAddress(props) {
     <React.Fragment>
       <Grid>
         <FormControl component="fieldset">
-          <FormLabel component="legend">
-            Deseja usar a sua localização atual?
-          </FormLabel>
+          <FormLabel component="legend">Sua localização</FormLabel>
           <RadioGroup
             aria-label="gender"
             value={checked}
@@ -92,7 +91,7 @@ export default function PetAddress(props) {
                 <FormControlLabel
                   value={true}
                   control={<Radio />}
-                  label="Sim"
+                  label="atual*"
                 />
               </Grid>
 
@@ -100,7 +99,7 @@ export default function PetAddress(props) {
                 <FormControlLabel
                   value={false}
                   control={<Radio />}
-                  label="Não"
+                  label="Região da procura"
                 />
               </Grid>
             </Grid>
@@ -144,20 +143,33 @@ export default function PetAddress(props) {
       </Grid>
       <Grid item container justify="flex-start" spacing={1} direction="row">
         <Grid item xs={6}>
-          <InputField
+          <Input
+            name={data.name}
+            label={data.label}
+            mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+            fullWidth={true}
+          />
+          {/* <InputField
             name={data.name}
             variant="outlined"
             label={data.label}
             fullWidth
-          />
+          /> */}
         </Grid>
         <Grid item xs={6}>
-          <InputField
+          <Input
+            name={hora.name}
+            label={hora.label}
+            mask={[/\d/, /\d/, ':', /\d/, /\d/]}
+            fullWidth={true}
+          />
+
+          {/* <InputField
             name={hora.name}
             variant="outlined"
             label={hora.label}
             fullWidth
-          />
+          /> */}
         </Grid>
       </Grid>
     </React.Fragment>

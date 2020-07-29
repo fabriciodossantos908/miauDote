@@ -54,7 +54,7 @@ function renderStepContent(step, values) {
         <PetAddress formField={formField} values={values} useStyle={useStyle} />
       );
     case 4:
-      return <PetPhoto values={values} useStyle={useStyle} />;
+      return <PetPhoto values={values} type={'losted'} useStyle={useStyle} />;
     default:
       return <div>Not Found</div>;
   }
@@ -196,11 +196,11 @@ export default function CheckoutCompanyStep() {
                   type="submit"
                   variant="contained"
                   onClick={() => {
-                    created && history.push('/pet');
+                    created ? history.push('/pet') : console.log('wait a sec');
                   }}
                   className={classes.buttons}
                 >
-                  {created ? 'finalizar' : 'Próximo'}
+                  {created ? 'Cadastrar' : 'Próximo'}
                 </Button>
                 {isSubmitting && (
                   <CircularProgress

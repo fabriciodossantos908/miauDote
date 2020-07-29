@@ -14,6 +14,7 @@ import {
   Fade,
   Paper,
   Divider,
+  InputLabel,
 } from '@material-ui/core';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Favorite from '@material-ui/icons/Favorite';
@@ -22,6 +23,7 @@ import PetsIcon from '@material-ui/icons/Pets';
 import { palette } from '../../../components/Layout/theme';
 import Axios from 'axios';
 import { CardPets } from '../petComp/';
+import Backdrop from '@material-ui/core/Backdrop';
 
 const useStyles = makeStyles({
   root: {
@@ -55,6 +57,8 @@ export default function PetTab() {
   const classes = useStyles();
   const [open, setOpen] = React.useState();
   const [pets, setPets] = useState([]);
+  const [openDesc, setOpenDesc] = React.useState(false);
+
   useEffect(() => {
     window.addEventListener(
       'load',
@@ -82,6 +86,15 @@ export default function PetTab() {
   function handleCloseModal(event) {
     setOpen(false);
   }
+
+  const handleOpenDesc = () => {
+    setOpenDesc(true);
+  };
+
+  const handleCloseDesc = () => {
+    setOpenDesc(false);
+  };
+
   return (
     <Grid
       item
@@ -255,8 +268,67 @@ export default function PetTab() {
                                   {petData.cidade}
                                 </Typography>
                               </Grid>
+
                               <Grid item xs={4}>
-                                <CardPets />
+                                <div>
+                                  <Button
+                                    size="small"
+                                    variant="outlined"
+                                    onClick={handleOpenDesc}
+                                    style={{ marginLeft: 150 }}
+                                  >
+                                    encontrei
+                                  </Button>
+                                  <Modal
+                                    aria-labelledby="transition-modal-title"
+                                    aria-describedby="transition-modal-description"
+                                    className={classes.modal}
+                                    open={openDesc}
+                                    onClose={handleCloseDesc}
+                                    closeAfterTransition
+                                    BackdropComponent={Backdrop}
+                                    BackdropProps={{
+                                      timeout: 500,
+                                    }}
+                                  >
+                                    <Fade in={openDesc}>
+                                      <div className={classes.paper}>
+                                        <Button
+                                          size="small"
+                                          onClick={handleCloseDesc}
+                                          style={{ marginLeft: '85%' }}
+                                        >
+                                          <CloseRoundedIcon />
+                                        </Button>
+                                        <Typography
+                                          variant="h4"
+                                          style={{
+                                            color: palette.primary.main,
+                                          }}
+                                          id="transition-modal-title"
+                                        >
+                                          Entre em contato !
+                                        </Typography>
+                                        <p id="transition-modal-description">
+                                          <CardActionArea>
+                                            <CardMedia
+                                              style={{
+                                                height: 100,
+                                                width: 150,
+                                                borderRadius: 20,
+                                              }}
+                                              component="img"
+                                              image={petData.url_foto}
+                                            />
+                                            {/* <InputLabel label="Onde você o viu?" style={{marginTop: 10}} /> */}
+                                          </CardActionArea>
+                                        </p>
+                                      </div>
+                                    </Fade>
+                                  </Modal>
+                                </div>
+
+                                {/* <CardPets values={petData[0]} /> */}
                               </Grid>
                             </Grid>
                           </Grid>
