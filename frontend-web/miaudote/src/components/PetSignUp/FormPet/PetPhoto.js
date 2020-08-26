@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 import Axios from 'axios';
 // import { SelectSexType } from '../FieldStyle/';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PetPhoto(props) {
   const classes = useStyles();
-
+  const history = useHistory();
   const { values } = props;
 
   var selectedFile = null;
@@ -36,12 +37,15 @@ export default function PetPhoto(props) {
     )
       .then((response) => {
         //   values.url_foto = response.data.url_foto
-        alert(response.data.url_foto);
+        alert('cadastrado com sucesso!');
+        console.log(response);
       })
       .catch((error) => {
         alert(error);
         console.log(error);
       });
+
+    history.push('/pet');
   };
 
   return (
