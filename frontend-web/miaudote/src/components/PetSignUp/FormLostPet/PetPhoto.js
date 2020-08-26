@@ -26,7 +26,7 @@ export default function PetPhoto(props) {
     let image = selectedFile[0];
     const formData = new FormData();
 
-    let id = localStorage.getItem('pet-id');
+    let id = localStorage.getItem('id-losted');
 
     formData.append('file', image);
 
@@ -35,8 +35,7 @@ export default function PetPhoto(props) {
       formData,
     )
       .then((response) => {
-        //   values.url_foto = response.data.url_foto
-        alert(response.data.url_foto);
+        alert('Pet cadastrado com sucesso');
       })
       .catch((error) => {
         alert(error);

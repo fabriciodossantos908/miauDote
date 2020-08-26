@@ -24,6 +24,7 @@ import { palette } from '../../../components/Layout/theme';
 import Axios from 'axios';
 import { CardPets } from '../petComp/';
 import Backdrop from '@material-ui/core/Backdrop';
+import GearLoading from '../../utils/gears/gearLoading';
 
 const useStyles = makeStyles({
   root: {
@@ -79,7 +80,6 @@ export default function PetTab() {
     };
   }, []);
 
-  console.log(pets);
   function handleModal(event) {
     setOpen(2);
   }
@@ -242,11 +242,13 @@ export default function PetTab() {
 
                             <Grid item xs={12} sm={6}>
                               <Grid>
-                                <Typography variant="h6">Cor</Typography>
+                                <Typography variant="h6">Data</Typography>
                               </Grid>
 
                               <Typography variant="h8">
-                                {petData.cor}
+                                {petData.data.split('-').reverse().join('/')} às{' '}
+                                {'  '}
+                                {petData.hora.split(':').reverse().join('-')}
                               </Typography>
                             </Grid>
 
@@ -311,15 +313,7 @@ export default function PetTab() {
                                         </Typography>
                                         <p id="transition-modal-description">
                                           <CardActionArea>
-                                            <CardMedia
-                                              style={{
-                                                height: 100,
-                                                width: 150,
-                                                borderRadius: 20,
-                                              }}
-                                              component="img"
-                                              image={petData.url_foto}
-                                            />
+                                            <GearLoading />
                                             {/* <InputLabel label="Onde você o viu?" style={{marginTop: 10}} /> */}
                                           </CardActionArea>
                                         </p>

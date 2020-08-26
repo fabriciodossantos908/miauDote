@@ -40,10 +40,10 @@ export default function PetTab() {
   useEffect(() => {
     window.addEventListener(
       'load',
-      Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets')
+      Axios.get('http://ec2-107-22-51-247.compute-1.amazonaws.com:3000/pets/10')
         .then((result) => {
           const petsData = result.data;
-          return setPets(petsData);
+          return setPets([petsData]);
         })
         .catch((err) => {
           console.log(err);

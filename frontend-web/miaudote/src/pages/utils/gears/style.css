@@ -34,6 +34,19 @@
   -o-animation: reverseRotate 1.5s linear infinite;
   animation: reverseRotate 1.5s linear infinite;
 }
+.gears .small2 {
+  width: 35px;
+  height: 35px;
+  margin-left: -6px;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation: reverseRotate 1.5s linear infinite;
+  -moz-animation: reverseRotate 1.5s linear infinite;
+  -o-animation: reverseRotate 1.5s linear infinite;
+  animation: reverseRotate 1.5s linear infinite;
+}
 
 @-webkit-keyframes rotate {
   0% {

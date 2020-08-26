@@ -67,7 +67,7 @@ export default function Perfil() {
           </ListItem>
         </Link>
 
-        <Link to="/pet_perdido" className={classesHeader.linksPerfil}>
+        <Link to="/petLost" className={classesHeader.linksPerfil}>
           <ListItem button>
             <ListItemIcon>
               <PetsIcon />

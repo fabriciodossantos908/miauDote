@@ -91,8 +91,7 @@ export default function CheckoutCompanyStep() {
       { headers: { Authorization: AuthStr } },
     )
       .then(function (response) {
-        alert('Cadastrado com sucesso!');
-        console.log(response);
+        localStorage.setItem('id-losted', response.data.id);
       })
       .catch(function (error) {
         alert('ops! erro ao cadastrar');
@@ -204,7 +203,7 @@ export default function CheckoutCompanyStep() {
                   onClick={() => {
                     created
                       ? history.push('/petLost')
-                      : console.log('wait again');
+                      : console.log('wait a sec');
                   }}
                 >
                   {created ? 'Cadastrar' : 'Próximo'}

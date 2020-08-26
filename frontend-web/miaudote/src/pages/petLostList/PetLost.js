@@ -104,7 +104,10 @@ export default function PetLost() {
   const classes = petStyle();
   return (
     <div className={classes.root}>
-      <CardMedia image={background}>
+      <CardMedia
+        image={background}
+        style={{ marginTop: -100, paddingTop: 100 }}
+      >
         {/* Introdução da página */}
         <Grid container direction="column" justify="center" alignItems="center">
           <Grid item xs={12}>
