@@ -11,7 +11,6 @@ import {
 } from '@material-ui/core';
 
 import FilterListIcon from '@material-ui/icons/FilterList';
-import { theme } from '../../../components/Layout/styles';
 import { palette } from '../../../components/Layout/theme';
 
 import { Tab } from './index';

@@ -9,11 +9,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 
-import { Cachorro, Cachorro2, Cachorro3 } from '../../../../images/petImg/dog';
 import Axios from 'axios';
 import { palette } from '../../../../components/Layout/theme';
-
-const dogs = [Cachorro, Cachorro2, Cachorro3];
 
 const useStyles = makeStyles(() => ({
   root: {

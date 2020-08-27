@@ -1,31 +1,7 @@
 import * as Yup from 'yup';
-import moment from 'moment';
 import checkoutPetModel from './checkoutPetModel';
 const {
-  formField: {
-    nome,
-    especie,
-    sexo,
-    descricao,
-    porte,
-    idade,
-    anos,
-    meses,
-    latitude,
-    longitude,
-    url_foto,
-    castrado,
-    cidade,
-    cep,
-    cor,
-    cuidados_veterinarios,
-    raca,
-    uf,
-    vacinado,
-    vermifungado,
-    adocao,
-    perdido,
-  },
+  formField: { nome, especie, sexo, porte, url_foto, cidade, cor, raca, uf },
 } = checkoutPetModel;
 
 export default [

@@ -1,28 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import {
-  Grid,
-  Typography,
-  useScrollTrigger,
-  Slide,
-  Container,
-  makeStyles,
-} from '@material-ui/core';
+import { Grid, Typography, useScrollTrigger } from '@material-ui/core';
 
 import { theme, header } from '../Layout/styles';
 import { LinksInitial } from './headerComp';
 import { palette } from '../Layout/theme';
 
-const classesHeader = makeStyles(() => ({
-  nav: {
-    marginBottom: -100,
-  },
-}));
-
 export default function HeaderMain() {
   const classes = header();
-  const [opacity, setOpacity] = useState(false);
 
   function HideOnScroll(props) {
     const { children, window } = props;

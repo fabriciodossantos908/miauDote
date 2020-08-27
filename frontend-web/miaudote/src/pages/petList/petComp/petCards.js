@@ -13,7 +13,6 @@ import {
   Modal,
   Fade,
   Paper,
-  Divider,
 } from '@material-ui/core';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Favorite from '@material-ui/icons/Favorite';
@@ -23,8 +22,8 @@ import Axios from 'axios';
 import { Male, Female } from '../../../images/iconSex';
 
 const sex = [
-  <img src={Male} width="20" height="20" />,
-  <img src={Female} width="20" height="20" />,
+  <img src={Male} alt="Masculino" width="20" height="20" />,
+  <img src={Female} alt="Feminino" width="20" height="20" />,
 ];
 
 const useStyles = makeStyles({
@@ -77,11 +76,11 @@ export default function PetTab() {
     };
   }, []);
 
-  const handleModal = (id, value) => {
-    console.log(id);
-    console.log(value);
-    setOpen(8);
-  };
+  //   const handleModal = (id, value) => {
+  //     console.log(id);
+  //     console.log(value);
+  //     setOpen(8);
+  //   };
 
   function handleCloseModal(event) {
     setOpen(false);

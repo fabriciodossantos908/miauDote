@@ -40,7 +40,7 @@ export default function MaterialLayout(props) {
       <Grid className={classes.root}>
         <Grid className={classes.container}>{children}</Grid>
       </Grid>
-      {token == true ? <Footer useStyle={useStyle} /> : <SocialIcon />}
+      {token === true ? <Footer useStyle={useStyle} /> : <SocialIcon />}
     </ThemeProvider>
   );
 }

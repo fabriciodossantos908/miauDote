@@ -17,7 +17,7 @@ import PetType from '../FormPet/PetType';
 import PetDesc from '../FormPet/PetDesc';
 import PetAddress from '../FormPet/PetAddress';
 
-import petValidationSchema from '../PetModel/PetValidationSchema';
+// import petValidationSchema from '../PetModel/PetValidationSchema';
 import checkoutPetModal from '../PetModel/checkoutPetModel';
 import petInitialInfo from '../PetModel/petInitialValues';
 

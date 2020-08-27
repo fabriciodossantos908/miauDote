@@ -29,7 +29,7 @@ function Routes() {
   return (
     <React.Fragment>
       <Router>
-        {token === true ? <HeaderBase /> : <HeaderInitial />}
+        {token === false ? <HeaderBase /> : <HeaderInitial />}
 
         <Switch>
           <Route path="/home" exact>

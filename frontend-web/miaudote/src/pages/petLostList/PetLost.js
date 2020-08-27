@@ -16,7 +16,6 @@ import AddIcon from '@material-ui/icons/Add';
 import CheckoutLostPet from '../../components/PetSignUp/typeRegister/CheckoutLostPet';
 
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
-import { useStyle } from '../../components/Layout/styles';
 import { palette } from '../../components/Layout/theme';
 
 const background = require('../../images/background.jpg');

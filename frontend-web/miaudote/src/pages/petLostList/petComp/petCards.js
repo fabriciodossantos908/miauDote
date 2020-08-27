@@ -13,16 +13,12 @@ import {
   Modal,
   Fade,
   Paper,
-  Divider,
-  InputLabel,
 } from '@material-ui/core';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Favorite from '@material-ui/icons/Favorite';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
-import PetsIcon from '@material-ui/icons/Pets';
 import { palette } from '../../../components/Layout/theme';
 import Axios from 'axios';
-import { CardPets } from '../petComp/';
 import Backdrop from '@material-ui/core/Backdrop';
 import GearLoading from '../../utils/gears/gearLoading';
 
@@ -80,9 +76,9 @@ export default function PetTab() {
     };
   }, []);
 
-  function handleModal(event) {
-    setOpen(2);
-  }
+  //   function handleModal(event) {
+  //     setOpen(2);
+  //   }
   function handleCloseModal(event) {
     setOpen(false);
   }

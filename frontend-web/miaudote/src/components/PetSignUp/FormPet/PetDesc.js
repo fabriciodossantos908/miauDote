@@ -1,19 +1,9 @@
 import React from 'react';
-import {
-  Grid,
-  FormControl,
-  Typography,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  Checkbox,
-} from '@material-ui/core';
-import { InputField, TextInputFild } from '../../FieldStyle';
-import { BtnSituation, SelectYesNo } from '../FieldStyle';
+import { Grid, Typography, Checkbox } from '@material-ui/core';
+import { TextInputFild } from '../../FieldStyle';
 import { Field } from 'formik';
 
 export default function PetDesc(props) {
-  const classes = props.useStyle();
   const {
     formField: {
       descricao,
@@ -24,11 +14,11 @@ export default function PetDesc(props) {
     },
   } = props;
 
-  const situation = {
-    cuidados_veterinarios,
-    vermifungado,
-    castrado,
-  };
+  //   const situation = {
+  //     cuidados_veterinarios,
+  //     vermifungado,
+  //     castrado,
+  //   };
 
   return (
     <React.Fragment>

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Grid, Divider, Paper, Typography, Button } from '@material-ui/core';
 import { TabsProfile, IconPerfil } from './compModel';
-import { profile, theme } from '../../../components/Layout/styles';
+import { profile } from '../../../components/Layout/styles';
 import { palette } from '../../../components/Layout/theme';
 import FormUserPhoto from '../../../components/signUp/CheckoutUser/FormUser/FormUserPhoto';
-import { isNil } from 'lodash';
 
 export default function UserProfile() {
   const classesProfile = profile();

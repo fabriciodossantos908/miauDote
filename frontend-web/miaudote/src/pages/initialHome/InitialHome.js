@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { mainHome, theme } from '../../components/Layout/styles';
-import { Grid, CardMedia, Typography, Fade, Slide } from '@material-ui/core';
+import { Grid, CardMedia, Typography, Slide } from '@material-ui/core';
 
 import CheckoutUserStep from '../../components/signUp/CheckoutUser/checkoutUserStep';
 

@@ -15,7 +15,7 @@ const {
     logradouro,
     cidade,
     bairro,
-    complemento,
+    // complemento,
     numero,
     uf,
   },

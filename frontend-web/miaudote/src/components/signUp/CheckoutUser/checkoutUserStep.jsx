@@ -25,7 +25,6 @@ import userInitialValues from '../CheckoutUser/UserModel/userInitialValues';
 import checkoutUserModel from '../CheckoutUser/UserModel/checkoutUserModel';
 
 import checkoutLoginModel from '../../SignIn/loginModel/checkoutLoginModel';
-import loginValidationSchema from '../../SignIn/loginModel/loginValidationSchema';
 import InitialValues from '../../SignIn/loginModel/InitialValues';
 
 import {
@@ -201,9 +200,9 @@ export default function CheckoutUSerStep() {
   }
 
   //   use them as a trigger to change the formik params
-  function handleLogin() {
-    setIsLogin((isLogin) => !isLogin);
-  }
+  //   function handleLogin() {
+  //     setIsLogin((isLogin) => !isLogin);
+  //   }
   function handleBackLogin() {
     setIsLogin((isLogin) => !isLogin);
   }

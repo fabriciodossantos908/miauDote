@@ -9,9 +9,9 @@ import MaskedInput from 'react-text-mask';
  * Used to bind TextField with MaskedInput.
  * @see https://material-ui.com/demos/text-fields/#formatted-inputs
  */
-const getMaskedInput = (mask) => ({ inputRef, ...other }) => (
-  <MaskedInput {...other} ref={inputRef} mask={mask} guide={false} />
-);
+// const getMaskedInput = (mask) => ({ inputRef, ...other }) => (
+//   <MaskedInput {...other} ref={inputRef} mask={mask} guide={false} />
+// );
 
 /**
  * Mimics the logic of `formik-material-ui/TextField`.
@@ -22,7 +22,7 @@ const getMaskedInput = (mask) => ({ inputRef, ...other }) => (
 const parseFormikData = (formik, name) => {
   let outputProps = {};
   if (formik.values && name) {
-    const fieldValue = getIn(formik.values, name);
+    // const fieldValue = getIn(formik.values, name);
     const fieldError = getIn(formik.errors, name);
     const fieldTouched = getIn(formik.touched, name);
     const showError = fieldTouched && Boolean(fieldError);

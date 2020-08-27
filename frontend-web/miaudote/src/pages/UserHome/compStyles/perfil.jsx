@@ -11,13 +11,10 @@ import { mainNav } from './style';
 import { header } from '../../../components/Layout/styles';
 
 import PetsIcon from '@material-ui/icons/Pets';
-import SettingsIcon from '@material-ui/icons/Settings';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { Link } from 'react-router-dom';
 import { palette } from '../../../components/Layout/theme';
-
-const userPhoto = require('../../../images/petImg/dog.jpg');
 
 export default function Perfil() {
   const classesMain = mainNav();

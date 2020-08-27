@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { petStyle } from './styles';
 import {
   Grid,
@@ -11,7 +11,6 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import { PetTab } from './petComp/';
-import Axios from 'axios';
 import AddIcon from '@material-ui/icons/Add';
 
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
@@ -110,8 +109,7 @@ export default function PetList() {
     maximumAge: 0,
   };
   function success(pos) {
-    var crd = pos.coords;
-
+    // var crd = pos.coords;
     // console.log('Sua posição atual é:');
     // console.log('Latitude : ' + crd.latitude);
     // console.log('Longitude: ' + crd.longitude);

@@ -4,12 +4,10 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { Grid, Typography } from '@material-ui/core';
-import { useField, Field } from 'formik';
-import { map } from 'lodash';
+import { Field } from 'formik';
 
 export default function SelectSexType(props) {
   const { label, data, ...rest } = props;
-  const [field] = useField(props);
   const [value, setValue] = React.useState('U');
   const handleChange = (event) => {
     setValue(event.target.value);

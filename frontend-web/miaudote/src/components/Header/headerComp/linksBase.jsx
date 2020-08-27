@@ -2,13 +2,11 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import { header } from '../../Layout/styles';
 import { palette } from '../../Layout/theme';
 
 export default function LinksBase(props) {
-  const classes = header();
   const [value, setValue] = React.useState(0);
 
   const history = useHistory();

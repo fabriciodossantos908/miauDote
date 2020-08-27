@@ -2,8 +2,6 @@ import React from 'react';
 import { Grid, Fade } from '@material-ui/core';
 import { InputField, SelectField } from '../../../FieldStyle';
 import Input from '../../../SignIn/Input';
-import { RemoveMask } from '../../../../validations/RemoveMask';
-import { isLength } from 'lodash';
 import Axios from 'axios';
 
 const states = [

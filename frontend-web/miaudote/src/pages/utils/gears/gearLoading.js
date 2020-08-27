@@ -1,18 +1,12 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useStyle, theme } from '../../../components/Layout/styles';
 
 import './style.css';
 
 import SettingsIcon from '@material-ui/icons/Settings';
-import { Typography, Button, Grid } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import { palette } from '../../../components/Layout/theme';
 
 export default function GearLoading() {
-  const classes = useStyle();
-
-  const history = useHistory();
-
   return (
     <div class="gears">
       <Grid item container justify="center" alignItems="center" direction="row">

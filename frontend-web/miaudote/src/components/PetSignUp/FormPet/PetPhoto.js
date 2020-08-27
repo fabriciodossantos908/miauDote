@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
 export default function PetPhoto(props) {
   const classes = useStyles();
   const history = useHistory();
-  const { values } = props;
 
   var selectedFile = null;
 

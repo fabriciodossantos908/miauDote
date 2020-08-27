@@ -17,8 +17,6 @@ const useStyles = makeStyles((theme) => ({
 export default function PetPhoto(props) {
   const classes = useStyles();
 
-  const { values } = props;
-
   var selectedFile = null;
 
   const fileUploadHandler = (event) => {

@@ -1,25 +1,11 @@
 import React from 'react';
-import {
-  Grid,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  Typography,
-  makeStyles,
-} from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { InputField, SelectField } from '../../FieldStyle';
 import PetsIcon from '@material-ui/icons/Pets';
 
 import { SelectIconField } from '../FieldStyle';
-import ImageField from '../../../pages/utils/fields/ImageField';
 import { IconRadioButton } from '../../FieldStyle';
 import { Field } from 'formik';
-
-const useStyle = makeStyles({
-  fontBase: {
-    fontSize: 10,
-  },
-});
 
 const sex = [
   {
@@ -62,9 +48,6 @@ const specie = [
 ];
 
 export default function PetInfo(props) {
-  const classes = props.useStyle();
-  const classesPet = useStyle();
-
   const {
     formField: { especie, porte, sexo, raca },
   } = props;

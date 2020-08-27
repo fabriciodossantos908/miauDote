@@ -1,13 +1,10 @@
 import React from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
-import Axios from 'axios';
-
-// import Input from './Input';
 
 import { useStyle, login } from '../Layout/styles';
 import { InputField } from '../FieldStyle';
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Facebook, Email } from '@material-ui/icons';
 
@@ -101,24 +98,4 @@ export default function Login(props) {
       {/* <Link to="/formCompany" className={classes.links} > */}
     </Grid>
   );
-}
-
-{
-  /* <Input
-                name="birthdate"
-                label={'birthdate'}
-                mask={[
-                  /\d/,
-                  /\d/,
-                  /\d/,
-                  '/',
-                  /\d/,
-                  /\d/,
-                  '/',
-                  /\d/,
-                  /\d/,
-                  /\d/,
-                  /\d/,
-                ]}
-              /> */
 }

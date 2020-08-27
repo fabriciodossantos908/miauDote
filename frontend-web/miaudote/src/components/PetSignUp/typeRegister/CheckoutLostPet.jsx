@@ -16,21 +16,14 @@ import PetType from '../FormLostPet/PetType';
 import PetDesc from '../FormLostPet/PetDesc';
 import PetAddress from '../FormLostPet/PetLostAddress';
 
-// import petValidationSchema from '../PetModel/PetValidationSchema';
 import checkoutPetModal from '../lostPetModel/checkoutPetModel';
 import petInitialInfo from '../lostPetModel/petInitialValues';
 
 import PetPhoto from '../FormLostPet/PetPhoto';
 
-import {
-  useStyle,
-  formBase,
-  useColorlibStepIconStyles,
-} from '../../Layout/styles';
+import { useStyle, useColorlibStepIconStyles } from '../../Layout/styles';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
-// import TestStepper from '../../pages/testStepper';
-// import { useHistory } from 'react-router-dom';
 
 const steps = [
   'Localização',
@@ -64,17 +57,11 @@ function renderStepContent(step, values) {
 
 export default function CheckoutCompanyStep() {
   const classes = useStyle();
-  const classesForm = formBase();
   const [activeStep, setActiveStep] = useState(0);
-  // const [createStatus, setCreacteStatus] = useState(false);
-  // const currentValidationSchema = petValidationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 2;
   const created = activeStep === steps.length - 1;
 
   const history = useHistory();
-  // function _sleep(ms) {
-  //   return new Promise(resolve => setTimeout(resolve, ms));
-  // }
 
   async function submitForm(values, actions) {
     const USER_TOKEN = localStorage.getItem('token');

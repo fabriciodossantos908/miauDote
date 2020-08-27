@@ -14,7 +14,7 @@ const {
     data,
     hora,
     descricao,
-    id_usuario,
+    // id_usuario,
   },
 } = checkoutPetModel;
 

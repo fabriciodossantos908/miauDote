@@ -3,8 +3,6 @@ import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 
-const profile = require('../../../images/joao.jpg');
-
 const StyledBadge = withStyles((theme) => ({
   badge: {
     backgroundColor: '#44b700',
@@ -35,8 +33,8 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 export default function BadgeAvatars() {
-    const photo = localStorage.getItem('photo')
-    const user = localStorage.getItem('user')
+  const photo = localStorage.getItem('photo');
+  const user = localStorage.getItem('user');
   return (
     <div>
       <StyledBadge

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, FormControlLabel, Checkbox } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { InputField, SelectField } from '../../FieldStyle';
 
 // import { SelectSexType } from '../FieldStyle/';

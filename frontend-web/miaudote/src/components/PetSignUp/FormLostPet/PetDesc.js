@@ -1,20 +1,9 @@
 import React from 'react';
-import { Grid, TextareaAutosize, makeStyles } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { InputField } from '../../FieldStyle';
 import { TextInputFild } from '../../FieldStyle';
 
-import { Field } from 'formik';
-import { theme } from '../../Layout/styles';
-
-const useStyles = makeStyles((theme) => ({
-  textArea: {
-    maxWidth: 450,
-    margin: 0,
-  },
-}));
-
 export default function PetDesc(props) {
-  const classes = props.useStyle();
   const {
     formField: { nome, descricao },
   } = props;

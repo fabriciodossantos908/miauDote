@@ -11,15 +11,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Axios from 'axios';
-import {
-  Cachorro,
-  Cachorro2,
-  Cachorro3,
-  Dog_boxer,
-} from '../../../images/petImg/dog';
 import { Grid } from '@material-ui/core';
-
-const test = require('../../../images/petImg/cat.jpg');
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -45,18 +37,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
 }));
-
-const dogs = [
-  Cachorro,
-  Cachorro2,
-  Cachorro3,
-  Dog_boxer,
-  Cachorro2,
-  Cachorro3,
-  Cachorro,
-  Cachorro3,
-  Cachorro,
-];
 
 export default function ImgMediaCard(props) {
   const classes = useStyles();
