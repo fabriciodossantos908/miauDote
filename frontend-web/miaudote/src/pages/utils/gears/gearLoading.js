@@ -8,7 +8,7 @@ import { palette } from '../../../components/Layout/theme';
 
 export default function GearLoading() {
   return (
-    <div class="gears">
+    <div className="gears">
       <Grid item container justify="center" alignItems="center" direction="row">
         <Grid item xs={3} style={{ marginTop: 40 }}>
           <SettingsIcon

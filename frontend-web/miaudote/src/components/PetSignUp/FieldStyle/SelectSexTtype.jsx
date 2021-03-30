@@ -7,7 +7,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { Field } from 'formik';
 
 export default function SelectSexType(props) {
-  const { label, data, ...rest } = props;
+  const {  data, ...rest } = props;
   const [value, setValue] = React.useState('U');
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -15,7 +15,7 @@ export default function SelectSexType(props) {
 
   return (
     <FormControl {...rest} component="fieldset">
-      <FormLabel component="legend">{label}</FormLabel>
+      <FormLabel component="legend">teste</FormLabel>
       <RadioGroup
         aria-label="gender"
         name="gender"

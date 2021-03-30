@@ -17,8 +17,8 @@ import { isNil } from 'lodash';
 function Routes() {
   const [token, setToken] = useState(false);
   const checkToken = () => {
-    const token = localStorage.getItem('token');
-    isNil(token) ? setToken(false) : setToken(true);
+    const tokenUser = localStorage.getItem('token');
+    isNil(tokenUser) ? setToken(false) : setToken(true);
   };
   useEffect(() => {
     window.addEventListener('load', checkToken());

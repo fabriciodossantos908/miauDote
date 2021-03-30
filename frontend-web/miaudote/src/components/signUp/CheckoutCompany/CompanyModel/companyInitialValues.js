@@ -1,4 +1,5 @@
 import checkoutCompanyModel from './checkoutCompanyModel';
+
 const {
   formField: {
     nome_representante,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { InputField } from '../../FieldStyle';
 import {
   Grid,
   FormControl,
@@ -7,7 +8,6 @@ import {
   Radio,
   FormControlLabel,
 } from '@material-ui/core';
-import { InputField } from '../../FieldStyle';
 import Zoom from '@material-ui/core/Zoom';
 
 // Tell about this. Create the user option to define if the per was founded or are of himself

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PetPhoto(props) {
+export default function PetPhoto() {
   const classes = useStyles();
   const history = useHistory();
 

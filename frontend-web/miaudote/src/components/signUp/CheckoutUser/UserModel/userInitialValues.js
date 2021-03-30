@@ -1,4 +1,5 @@
 import checkoutUserModel from './checkoutUserModel';
+
 const {
   formField: {
     nome,

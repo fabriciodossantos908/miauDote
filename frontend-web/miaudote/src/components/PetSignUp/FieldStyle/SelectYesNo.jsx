@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 
 function SelectYesNo(props) {
-  const { label, data, ...rest } = props;
+  const {  data, ...rest } = props;
   const [field, meta] = useField(props);
   const { value: selectedValue } = field;
   const [touched, error] = at(meta, 'touched', 'error');
@@ -37,7 +37,7 @@ function SelectYesNo(props) {
     <Grid>
       {data.map((item, index) => (
         <FormControl {...rest} error={isError}>
-          <InputLabel>{label}</InputLabel>
+          <InputLabel>teste</InputLabel>
           <Select {...field} value={selectedValue ? selectedValue : ''}>
             <RadioGroup
               aria-label="gender"

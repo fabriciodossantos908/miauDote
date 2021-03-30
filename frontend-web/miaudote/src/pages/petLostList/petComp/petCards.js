@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { palette } from '../../../components/Layout/theme';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -17,7 +18,6 @@ import {
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Favorite from '@material-ui/icons/Favorite';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
-import { palette } from '../../../components/Layout/theme';
 import Axios from 'axios';
 import Backdrop from '@material-ui/core/Backdrop';
 import GearLoading from '../../utils/gears/gearLoading';

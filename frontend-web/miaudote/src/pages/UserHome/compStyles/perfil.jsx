@@ -7,13 +7,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Avatar, Container, Typography } from '@material-ui/core';
-import { mainNav } from './style';
-import { header } from '../../../components/Layout/styles';
-
+import { Link } from 'react-router-dom';
 import PetsIcon from '@material-ui/icons/Pets';
 import MenuIcon from '@material-ui/icons/Menu';
+import { mainNav } from './index';
+import { header } from '../../../components/Layout/styles';
 
-import { Link } from 'react-router-dom';
 import { palette } from '../../../components/Layout/theme';
 
 export default function Perfil() {

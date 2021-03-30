@@ -13,7 +13,7 @@ export default function UserProfile() {
   const user = localStorage.getItem('user');
 
   return (
-    <React.Fragment>
+    <fragment>
       <Grid container>
         <Paper
           className={classesProfile.UserDescription}
@@ -57,6 +57,6 @@ export default function UserProfile() {
         <Divider />
         <TabsProfile />
       </Grid>
-    </React.Fragment>
+    </fragment>
   );
 }

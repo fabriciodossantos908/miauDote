@@ -11,4 +11,4 @@ const mainNav = makeStyles((theme) => ({
   },
 }));
 
-export { mainNav };
+export default mainNav;

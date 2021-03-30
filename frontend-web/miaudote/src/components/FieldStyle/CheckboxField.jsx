@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 
 export default function CheckboxField(props) {
-  const { label, ...rest } = props;
+  const { ...rest } = props;
   const [field, meta, helper] = useField(props);
   const { setValue } = helper;
 
@@ -18,6 +18,7 @@ export default function CheckboxField(props) {
     if (touched && error) {
       return <FormHelperText>{error}</FormHelperText>;
     }
+    return false;
   }
 
   function onChange(e) {
@@ -30,7 +31,7 @@ export default function CheckboxField(props) {
         value={field.checked}
         checked={field.checked}
         control={<Checkbox {...field} onChange={onChange} />}
-        label={label}
+        label="teste"
       />
       {renderHelperText()}
     </FormControl>

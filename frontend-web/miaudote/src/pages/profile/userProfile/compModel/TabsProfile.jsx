@@ -7,7 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-import { PetTab } from '../compModel';
+import PetTab from './PetTab';
 import Gear from '../../../utils/gears/gear';
 import { palette } from '../../../../components/Layout/theme';
 
