@@ -45,7 +45,7 @@
     "react-native-paper": "^3.10.1",
     "react-native-picker-select": "^7.0.0",
     "react-native-progress-steps": "^1.2.9",
-    "react-native-reanimated": "^1.4.0",
+    "react-native-reanimated": "^2.10.0",
     "react-native-safe-area-context": "^0.6.0",
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-svg": "9.13.3",
